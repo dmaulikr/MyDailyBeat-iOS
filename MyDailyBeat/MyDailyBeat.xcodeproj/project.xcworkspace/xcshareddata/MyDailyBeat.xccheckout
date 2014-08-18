@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3AE32978-06D4-4886-B5DC-E52EE2F247DC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MyDailyBeat</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>18AF4C5C-EE6F-4767-80B6-AFD164210D18</key>
+		<string>https://github.com/balabhv/MyDailyBeat-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MyDailyBeat/MyDailyBeat.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>18AF4C5C-EE6F-4767-80B6-AFD164210D18</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/balabhv/MyDailyBeat-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>18AF4C5C-EE6F-4767-80B6-AFD164210D18</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>18AF4C5C-EE6F-4767-80B6-AFD164210D18</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MyDailyBeat-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

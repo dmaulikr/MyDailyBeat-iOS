@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		761D650C19A15A4D0062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650B19A15A4D0062B525 /* Foundation.framework */; };
+		761D650E19A15A4D0062B525 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650D19A15A4D0062B525 /* CoreGraphics.framework */; };
+		761D651019A15A4D0062B525 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650F19A15A4D0062B525 /* UIKit.framework */; };
+		761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 761D651419A15A4D0062B525 /* InfoPlist.strings */; };
+		761D651819A15A4D0062B525 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D651719A15A4D0062B525 /* main.m */; };
+		761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D651B19A15A4D0062B525 /* EVCAppDelegate.m */; };
+		761D652519A15A4D0062B525 /* EVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D652419A15A4D0062B525 /* EVCViewController.m */; };
+		761D652719A15A4D0062B525 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761D652619A15A4D0062B525 /* Images.xcassets */; };
+		761D652E19A15A4D0062B525 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D652D19A15A4D0062B525 /* XCTest.framework */; };
+		761D652F19A15A4D0062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650B19A15A4D0062B525 /* Foundation.framework */; };
+		761D653019A15A4D0062B525 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650F19A15A4D0062B525 /* UIKit.framework */; };
+		761D653819A15A4D0062B525 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 761D653619A15A4D0062B525 /* InfoPlist.strings */; };
+		761D653A19A15A4D0062B525 /* MyDailyBeatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D653919A15A4D0062B525 /* MyDailyBeatTests.m */; };
+		761D65AB19A1606C0062B525 /* libVerveAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D65A619A1600C0062B525 /* libVerveAPI.a */; };
+		761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */; };
+		761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		761D653119A15A4D0062B525 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761D650019A15A4D0062B525 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 761D650719A15A4D0062B525;
+			remoteInfo = MyDailyBeat;
+		};
+		761D65A519A1600C0062B525 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 761D654C19A15B680062B525;
+			remoteInfo = VerveAPI;
+		};
+		761D65A719A1600C0062B525 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 761D655C19A15B680062B525;
+			remoteInfo = VerveAPITests;
+		};
+		761D65A919A1605E0062B525 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 761D654B19A15B680062B525;
+			remoteInfo = VerveAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		761D650819A15A4D0062B525 /* MyDailyBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDailyBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		761D650B19A15A4D0062B525 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		761D650D19A15A4D0062B525 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		761D650F19A15A4D0062B525 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		761D651319A15A4D0062B525 /* MyDailyBeat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyDailyBeat-Info.plist"; sourceTree = "<group>"; };
+		761D651519A15A4D0062B525 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		761D651719A15A4D0062B525 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		761D651919A15A4D0062B525 /* MyDailyBeat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyDailyBeat-Prefix.pch"; sourceTree = "<group>"; };
+		761D651A19A15A4D0062B525 /* EVCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EVCAppDelegate.h; sourceTree = "<group>"; };
+		761D651B19A15A4D0062B525 /* EVCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EVCAppDelegate.m; sourceTree = "<group>"; };
+		761D652319A15A4D0062B525 /* EVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EVCViewController.h; sourceTree = "<group>"; };
+		761D652419A15A4D0062B525 /* EVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EVCViewController.m; sourceTree = "<group>"; };
+		761D652619A15A4D0062B525 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		761D652C19A15A4D0062B525 /* MyDailyBeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDailyBeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		761D652D19A15A4D0062B525 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		761D653519A15A4D0062B525 /* MyDailyBeatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyDailyBeatTests-Info.plist"; sourceTree = "<group>"; };
+		761D653719A15A4D0062B525 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		761D653919A15A4D0062B525 /* MyDailyBeatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDailyBeatTests.m; sourceTree = "<group>"; };
+		761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VerveAPI.xcodeproj; path = ../VerveAPI/VerveAPI.xcodeproj; sourceTree = "<group>"; };
+		761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1408346500_menu-alt.png"; sourceTree = "<group>"; };
+		761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCViewController_iPhone.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		761D650519A15A4D0062B525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761D65AB19A1606C0062B525 /* libVerveAPI.a in Frameworks */,
+				761D650E19A15A4D0062B525 /* CoreGraphics.framework in Frameworks */,
+				761D651019A15A4D0062B525 /* UIKit.framework in Frameworks */,
+				761D650C19A15A4D0062B525 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761D652919A15A4D0062B525 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761D652E19A15A4D0062B525 /* XCTest.framework in Frameworks */,
+				761D653019A15A4D0062B525 /* UIKit.framework in Frameworks */,
+				761D652F19A15A4D0062B525 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		761D64FF19A15A4D0062B525 = {
+			isa = PBXGroup;
+			children = (
+				761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */,
+				761D651119A15A4D0062B525 /* MyDailyBeat */,
+				761D653319A15A4D0062B525 /* MyDailyBeatTests */,
+				761D650A19A15A4D0062B525 /* Frameworks */,
+				761D650919A15A4D0062B525 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		761D650919A15A4D0062B525 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				761D650819A15A4D0062B525 /* MyDailyBeat.app */,
+				761D652C19A15A4D0062B525 /* MyDailyBeatTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		761D650A19A15A4D0062B525 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				761D650B19A15A4D0062B525 /* Foundation.framework */,
+				761D650D19A15A4D0062B525 /* CoreGraphics.framework */,
+				761D650F19A15A4D0062B525 /* UIKit.framework */,
+				761D652D19A15A4D0062B525 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		761D651119A15A4D0062B525 /* MyDailyBeat */ = {
+			isa = PBXGroup;
+			children = (
+				761D651A19A15A4D0062B525 /* EVCAppDelegate.h */,
+				761D651B19A15A4D0062B525 /* EVCAppDelegate.m */,
+				761D652319A15A4D0062B525 /* EVCViewController.h */,
+				761D652419A15A4D0062B525 /* EVCViewController.m */,
+				761D652619A15A4D0062B525 /* Images.xcassets */,
+				761D651219A15A4D0062B525 /* Supporting Files */,
+				761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */,
+			);
+			path = MyDailyBeat;
+			sourceTree = "<group>";
+		};
+		761D651219A15A4D0062B525 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */,
+				761D651319A15A4D0062B525 /* MyDailyBeat-Info.plist */,
+				761D651419A15A4D0062B525 /* InfoPlist.strings */,
+				761D651719A15A4D0062B525 /* main.m */,
+				761D651919A15A4D0062B525 /* MyDailyBeat-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		761D653319A15A4D0062B525 /* MyDailyBeatTests */ = {
+			isa = PBXGroup;
+			children = (
+				761D653919A15A4D0062B525 /* MyDailyBeatTests.m */,
+				761D653419A15A4D0062B525 /* Supporting Files */,
+			);
+			path = MyDailyBeatTests;
+			sourceTree = "<group>";
+		};
+		761D653419A15A4D0062B525 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				761D653519A15A4D0062B525 /* MyDailyBeatTests-Info.plist */,
+				761D653619A15A4D0062B525 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		761D65A119A1600C0062B525 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				761D65A619A1600C0062B525 /* libVerveAPI.a */,
+				761D65A819A1600C0062B525 /* VerveAPITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		761D650719A15A4D0062B525 /* MyDailyBeat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 761D653D19A15A4D0062B525 /* Build configuration list for PBXNativeTarget "MyDailyBeat" */;
+			buildPhases = (
+				761D650419A15A4D0062B525 /* Sources */,
+				761D650519A15A4D0062B525 /* Frameworks */,
+				761D650619A15A4D0062B525 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				761D65AA19A1605E0062B525 /* PBXTargetDependency */,
+			);
+			name = MyDailyBeat;
+			productName = MyDailyBeat;
+			productReference = 761D650819A15A4D0062B525 /* MyDailyBeat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		761D652B19A15A4D0062B525 /* MyDailyBeatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 761D654019A15A4D0062B525 /* Build configuration list for PBXNativeTarget "MyDailyBeatTests" */;
+			buildPhases = (
+				761D652819A15A4D0062B525 /* Sources */,
+				761D652919A15A4D0062B525 /* Frameworks */,
+				761D652A19A15A4D0062B525 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				761D653219A15A4D0062B525 /* PBXTargetDependency */,
+			);
+			name = MyDailyBeatTests;
+			productName = MyDailyBeatTests;
+			productReference = 761D652C19A15A4D0062B525 /* MyDailyBeatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		761D650019A15A4D0062B525 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = EVC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = eVerveCorp;
+				TargetAttributes = {
+					761D652B19A15A4D0062B525 = {
+						TestTargetID = 761D650719A15A4D0062B525;
+					};
+				};
+			};
+			buildConfigurationList = 761D650319A15A4D0062B525 /* Build configuration list for PBXProject "MyDailyBeat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 761D64FF19A15A4D0062B525;
+			productRefGroup = 761D650919A15A4D0062B525 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 761D65A119A1600C0062B525 /* Products */;
+					ProjectRef = 761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				761D650719A15A4D0062B525 /* MyDailyBeat */,
+				761D652B19A15A4D0062B525 /* MyDailyBeatTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		761D65A619A1600C0062B525 /* libVerveAPI.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVerveAPI.a;
+			remoteRef = 761D65A519A1600C0062B525 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		761D65A819A1600C0062B525 /* VerveAPITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VerveAPITests.xctest;
+			remoteRef = 761D65A719A1600C0062B525 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		761D650619A15A4D0062B525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */,
+				761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */,
+				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
+				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761D652A19A15A4D0062B525 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761D653819A15A4D0062B525 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		761D650419A15A4D0062B525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761D651819A15A4D0062B525 /* main.m in Sources */,
+				761D652519A15A4D0062B525 /* EVCViewController.m in Sources */,
+				761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761D652819A15A4D0062B525 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761D653A19A15A4D0062B525 /* MyDailyBeatTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		761D653219A15A4D0062B525 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 761D650719A15A4D0062B525 /* MyDailyBeat */;
+			targetProxy = 761D653119A15A4D0062B525 /* PBXContainerItemProxy */;
+		};
+		761D65AA19A1605E0062B525 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VerveAPI;
+			targetProxy = 761D65A919A1605E0062B525 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		761D651419A15A4D0062B525 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				761D651519A15A4D0062B525 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		761D653619A15A4D0062B525 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				761D653719A15A4D0062B525 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		761D653B19A15A4D0062B525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		761D653C19A15A4D0062B525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		761D653E19A15A4D0062B525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
+				INFOPLIST_FILE = "MyDailyBeat/MyDailyBeat-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		761D653F19A15A4D0062B525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
+				INFOPLIST_FILE = "MyDailyBeat/MyDailyBeat-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		761D654119A15A4D0062B525 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyDailyBeat.app/MyDailyBeat";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MyDailyBeatTests/MyDailyBeatTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		761D654219A15A4D0062B525 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyDailyBeat.app/MyDailyBeat";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
+				INFOPLIST_FILE = "MyDailyBeatTests/MyDailyBeatTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		761D650319A15A4D0062B525 /* Build configuration list for PBXProject "MyDailyBeat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761D653B19A15A4D0062B525 /* Debug */,
+				761D653C19A15A4D0062B525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		761D653D19A15A4D0062B525 /* Build configuration list for PBXNativeTarget "MyDailyBeat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761D653E19A15A4D0062B525 /* Debug */,
+				761D653F19A15A4D0062B525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		761D654019A15A4D0062B525 /* Build configuration list for PBXNativeTarget "MyDailyBeatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761D654119A15A4D0062B525 /* Debug */,
+				761D654219A15A4D0062B525 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 761D650019A15A4D0062B525 /* Project object */;
+}
