@@ -94,6 +94,7 @@
 		761D65B419A1A6BC0062B525 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		761D65B519A1A6BC0062B525 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		769EE9F719A2B6AB00FF072E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +152,7 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				769EE9F319A2B2DA00FF072E /* Other Headers */,
 				761D65B019A1A6B00062B525 /* RESideMenu */,
 				761D658319A15F9F0062B525 /* AFNetworking */,
 				761D657E19A15EDC0062B525 /* API & Connectivity */,
@@ -243,6 +245,14 @@
 				761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */,
 			);
 			name = RESideMenu;
+			sourceTree = "<group>";
+		};
+		769EE9F319A2B2DA00FF072E /* Other Headers */ = {
+			isa = PBXGroup;
+			children = (
+				769EE9F719A2B6AB00FF072E /* Constants.h */,
+			);
+			name = "Other Headers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +460,7 @@
 				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -462,6 +473,7 @@
 				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

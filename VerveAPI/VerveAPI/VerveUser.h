@@ -10,4 +10,13 @@
 
 @interface VerveUser : NSObject
 
+@property(nonatomic, retain) NSString *screenName;
+@property(nonatomic, retain) NSString *password;
+@property(nonatomic, retain) NSString *email;
+@property(nonatomic, retain) NSString *mobile;
+@property(nonatomic, retain) NSString *zipcode;
+@property(nonatomic, retain) NSString *birth_month;
+@property(nonatomic) long *birth_year;
+
+
 @end

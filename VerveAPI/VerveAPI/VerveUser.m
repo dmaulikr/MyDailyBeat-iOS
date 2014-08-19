@@ -10,4 +10,6 @@
 
 @implementation VerveUser
 
+@synthesize screenName, password, email, birth_month, birth_year, mobile, zipcode;
+
 @end
