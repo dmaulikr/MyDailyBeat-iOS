@@ -29,6 +29,8 @@
 		761D65B719A1A6BC0062B525 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B219A1A6BC0062B525 /* RECommonFunctions.m */; };
 		761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B419A1A6BC0062B525 /* RESideMenu.m */; };
 		761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */; };
+		769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2019A55F1100FF072E /* SHViewPager.m */; };
+		769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2219A55F1100FF072E /* SHViewPagerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,10 @@
 		761D65B519A1A6BC0062B525 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
 		769EE9F719A2B6AB00FF072E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		769EEA1F19A55F1100FF072E /* SHViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPager.h; sourceTree = "<group>"; };
+		769EEA2019A55F1100FF072E /* SHViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPager.m; sourceTree = "<group>"; };
+		769EEA2119A55F1100FF072E /* SHViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPagerController.h; sourceTree = "<group>"; };
+		769EEA2219A55F1100FF072E /* SHViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPagerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				769EE9F319A2B2DA00FF072E /* Other Headers */,
+				769EEA1E19A55F0000FF072E /* SHViewPager */,
 				761D65B019A1A6B00062B525 /* RESideMenu */,
 				761D658319A15F9F0062B525 /* AFNetworking */,
 				761D657E19A15EDC0062B525 /* API & Connectivity */,
@@ -255,6 +262,17 @@
 			name = "Other Headers";
 			sourceTree = "<group>";
 		};
+		769EEA1E19A55F0000FF072E /* SHViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA1F19A55F1100FF072E /* SHViewPager.h */,
+				769EEA2019A55F1100FF072E /* SHViewPager.m */,
+				769EEA2119A55F1100FF072E /* SHViewPagerController.h */,
+				769EEA2219A55F1100FF072E /* SHViewPagerController.m */,
+			);
+			name = SHViewPager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -349,6 +367,8 @@
 				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
+				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
+				769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */,
 				761D657719A15BE90062B525 /* API.m in Sources */,
 				761D658219A15F140062B525 /* VerveUser.m in Sources */,
 			);

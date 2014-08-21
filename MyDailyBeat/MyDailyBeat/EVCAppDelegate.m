@@ -14,10 +14,40 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    if ([self hasEverBeenLaunched]) {
+        EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+    } else {
+        EVCRegistrationViewController *controller = [[EVCRegistrationViewController alloc] initWithNibName:@"EVCRegistrationViewController_iPhone" bundle:nil];
+        self.window.rootViewController = controller;
+    }
+    
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)hasEverBeenLaunched
+{
+    // A boolean which determines if app has eer been launched
+    BOOL hasBeenLaunched;
+    
+    // Testig if application has launched before and if it has to show the home-login screen        to login
+    // to social networks (facebook, Twitter)
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasAlreadyLaunched"]) {
+        // Setting variable to YES because app has been launched before
+        hasBeenLaunched = YES;
+        NSLog(@"App has been already launched");
+    } else {
+        // Setting variable to NO because app hasn't been launched before
+        hasBeenLaunched = NO;
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasAlreadyLaunched"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"This is the first run ever...");
+    }
+    
+    return hasBeenLaunched;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

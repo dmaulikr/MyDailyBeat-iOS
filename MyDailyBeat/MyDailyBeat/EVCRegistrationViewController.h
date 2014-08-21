@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "EVCLargeMessageViewController.h"
+#import "EVCPersonalInfo1ViewController.h"
+#import "EVCScreenNameViewController.h"
 #import <Constants.h>
 #import <API.h>
+#import <SHViewPagerController.h>
 
 
-@interface EVCRegistrationViewController : UIViewController <UIPageViewControllerDataSource>
+@interface EVCRegistrationViewController : SHViewPagerController
 
-@property (assign, nonatomic) NSInteger index;
-@property (strong, nonatomic) UIPageViewController *pageController;
+@property (assign, nonatomic) NSInteger currentIndex;
 @property (strong, nonatomic) NSMutableArray *viewControllers;
 @property(strong, nonatomic) API *api;
 

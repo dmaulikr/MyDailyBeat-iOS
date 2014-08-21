@@ -16,17 +16,8 @@
 
 @synthesize messageLabel, message;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (id) initWithMessage: (NSString *) text {
-    self = [super init];
+    self = [super initWithNibName:@"EVCLargeMessageViewController_iPhone" bundle:nil];
     if (self) {
         self.message = text;
     }

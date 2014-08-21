@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EVCViewController.h"
+#import "EVCRegistrationViewController.h"
 
 @interface EVCAppDelegate : UIResponder <UIApplicationDelegate>
 
