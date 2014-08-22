@@ -129,6 +129,8 @@ typedef NS_ENUM(NSInteger, SHViewPagerMenuWidthType) {
 @property (nonatomic, weak) IBOutlet id <SHViewPagerDataSource> dataSource;
 @property (nonatomic, weak) IBOutlet id <SHViewPagerDelegate> delegate;
 
+@property (nonatomic) NSInteger fromIndex, toIndex;
+
 // returns the array of the menu buttons
 @property (nonatomic, readonly) NSArray *menuButtons;
 
@@ -147,5 +149,7 @@ typedef NS_ENUM(NSInteger, SHViewPagerMenuWidthType) {
 // this is a hacky solution, any better solution is welcome.
 // check closed issues #1 & #2 for more details.
 -(void)pagerWillLayoutSubviews;
+
+-(void)moveToTargetIndex;
 
 @end

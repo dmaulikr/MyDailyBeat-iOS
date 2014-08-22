@@ -33,6 +33,9 @@
 		769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */; };
 		769EEA1B19A53C9000FF072E /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA1A19A53C9000FF072E /* KeyboardManager.framework */; };
 		769EEA1D19A53C9A00FF072E /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA1C19A53C9A00FF072E /* IQKeyboardManager.bundle */; };
+		769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */; };
+		769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */; };
+		769EEA3719A6482100FF072E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3619A6482100FF072E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +105,10 @@
 		769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCScreenNameViewController_iPhone.xib; sourceTree = "<group>"; };
 		769EEA1A19A53C9000FF072E /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
 		769EEA1C19A53C9A00FF072E /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		769EEA2619A57F5B00FF072E /* EVCEmailMobileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCEmailMobileViewController.h; sourceTree = "<group>"; };
+		769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCEmailMobileViewController.m; sourceTree = "<group>"; };
+		769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCEmailMobileViewController_iPhone.xib; sourceTree = "<group>"; };
+		769EEA3619A6482100FF072E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769EEA3719A6482100FF072E /* QuartzCore.framework in Frameworks */,
 				769EEA1B19A53C9000FF072E /* KeyboardManager.framework in Frameworks */,
 				761D65AB19A1606C0062B525 /* libVerveAPI.a in Frameworks */,
 				761D650E19A15A4D0062B525 /* CoreGraphics.framework in Frameworks */,
@@ -153,6 +161,7 @@
 		761D650A19A15A4D0062B525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				769EEA3619A6482100FF072E /* QuartzCore.framework */,
 				769EEA1A19A53C9000FF072E /* KeyboardManager.framework */,
 				761D650B19A15A4D0062B525 /* Foundation.framework */,
 				761D650D19A15A4D0062B525 /* CoreGraphics.framework */,
@@ -223,6 +232,7 @@
 				769EE9EE19A2B14900FF072E /* EVCLargeMessageViewController.h */,
 				769EEA0B19A3B03F00FF072E /* EVCPersonalInfo1ViewController.h */,
 				769EEA1519A42F3600FF072E /* EVCScreenNameViewController.h */,
+				769EEA2619A57F5B00FF072E /* EVCEmailMobileViewController.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -236,6 +246,7 @@
 				769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */,
 				769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */,
 				769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */,
+				769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 				769EE9F019A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib */,
 				769EEA0D19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib */,
 				769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */,
+				769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -363,6 +375,7 @@
 			files = (
 				761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */,
 				761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */,
+				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
 				769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
@@ -394,6 +407,7 @@
 				769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */,
 				761D652519A15A4D0062B525 /* EVCViewController.m in Sources */,
 				769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */,
+				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

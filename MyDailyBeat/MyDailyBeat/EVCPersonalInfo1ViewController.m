@@ -14,13 +14,13 @@
 
 @implementation EVCPersonalInfo1ViewController
 
-@synthesize firstName, firstNameField, lastName, lastNameField, zipcode, zipCodeField, birth_month, birth_year, dobField, picker;
+@synthesize firstNameField, lastNameField, zipCodeField, birth_month, birth_year, dobField, picker, parentController;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andParent:(EVCRegistrationViewController *) parent
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        parentController = parent;
     }
     return self;
 }
@@ -71,7 +71,7 @@
         return [months objectAtIndex:row];
     } else {
         return [years objectAtIndex:row];
-    }
+    }		
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

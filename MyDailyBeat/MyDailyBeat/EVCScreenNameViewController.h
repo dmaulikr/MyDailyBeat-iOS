@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class EVCRegistrationViewController;
+
 @interface EVCScreenNameViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, retain) IBOutlet UITextField *screenNameField, *passField, *verifyPassField;
+@property (nonatomic, retain) EVCRegistrationViewController *parentController;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andParent:(EVCRegistrationViewController *) parent;
 
 @end

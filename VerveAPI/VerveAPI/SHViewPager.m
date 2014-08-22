@@ -37,9 +37,6 @@
     
     UIImageView *indexIndicatorImageView;
     
-    NSInteger fromIndex;
-    NSInteger toIndex;
-    
     NSMutableArray *_menuButtons;
     NSMutableDictionary *_contentViewControllers;
 }
@@ -54,6 +51,7 @@
 @synthesize delegate;
 
 @synthesize containerViewController;
+@synthesize fromIndex, toIndex;
 
 #pragma mark - Initialization
 
