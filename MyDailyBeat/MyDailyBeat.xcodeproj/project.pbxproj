@@ -23,6 +23,19 @@
 		761D65AB19A1606C0062B525 /* libVerveAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D65A619A1600C0062B525 /* libVerveAPI.a */; };
 		761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */; };
 		761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */; };
+		769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EE9EA19A2530100FF072E /* EVCRegistrationViewController.m */; };
+		769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EE9EB19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib */; };
+		769EE9F119A2B14900FF072E /* EVCLargeMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */; };
+		769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EE9F019A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib */; };
+		769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */; };
+		769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA0D19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib */; };
+		769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */; };
+		769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */; };
+		769EEA1B19A53C9000FF072E /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA1A19A53C9000FF072E /* KeyboardManager.framework */; };
+		769EEA1D19A53C9A00FF072E /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA1C19A53C9A00FF072E /* IQKeyboardManager.bundle */; };
+		769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */; };
+		769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */; };
+		769EEA3719A6482100FF072E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3619A6482100FF072E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +91,24 @@
 		761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VerveAPI.xcodeproj; path = ../VerveAPI/VerveAPI.xcodeproj; sourceTree = "<group>"; };
 		761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1408346500_menu-alt.png"; sourceTree = "<group>"; };
 		761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCViewController_iPhone.xib; sourceTree = "<group>"; };
+		769EE9E919A2530100FF072E /* EVCRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCRegistrationViewController.h; sourceTree = "<group>"; };
+		769EE9EA19A2530100FF072E /* EVCRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCRegistrationViewController.m; sourceTree = "<group>"; };
+		769EE9EB19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCRegistrationViewController_iPhone.xib; sourceTree = "<group>"; };
+		769EE9EE19A2B14900FF072E /* EVCLargeMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLargeMessageViewController.h; sourceTree = "<group>"; };
+		769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLargeMessageViewController.m; sourceTree = "<group>"; };
+		769EE9F019A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLargeMessageViewController_iPhone.xib; sourceTree = "<group>"; };
+		769EEA0B19A3B03F00FF072E /* EVCPersonalInfo1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCPersonalInfo1ViewController.h; sourceTree = "<group>"; };
+		769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCPersonalInfo1ViewController.m; sourceTree = "<group>"; };
+		769EEA0D19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPersonalInfo1ViewController_iPhone.xib; sourceTree = "<group>"; };
+		769EEA1519A42F3600FF072E /* EVCScreenNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCScreenNameViewController.h; sourceTree = "<group>"; };
+		769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCScreenNameViewController.m; sourceTree = "<group>"; };
+		769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCScreenNameViewController_iPhone.xib; sourceTree = "<group>"; };
+		769EEA1A19A53C9000FF072E /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
+		769EEA1C19A53C9A00FF072E /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		769EEA2619A57F5B00FF072E /* EVCEmailMobileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCEmailMobileViewController.h; sourceTree = "<group>"; };
+		769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCEmailMobileViewController.m; sourceTree = "<group>"; };
+		769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCEmailMobileViewController_iPhone.xib; sourceTree = "<group>"; };
+		769EEA3619A6482100FF072E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769EEA3719A6482100FF072E /* QuartzCore.framework in Frameworks */,
+				769EEA1B19A53C9000FF072E /* KeyboardManager.framework in Frameworks */,
 				761D65AB19A1606C0062B525 /* libVerveAPI.a in Frameworks */,
 				761D650E19A15A4D0062B525 /* CoreGraphics.framework in Frameworks */,
 				761D651019A15A4D0062B525 /* UIKit.framework in Frameworks */,
@@ -128,6 +161,8 @@
 		761D650A19A15A4D0062B525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				769EEA3619A6482100FF072E /* QuartzCore.framework */,
+				769EEA1A19A53C9000FF072E /* KeyboardManager.framework */,
 				761D650B19A15A4D0062B525 /* Foundation.framework */,
 				761D650D19A15A4D0062B525 /* CoreGraphics.framework */,
 				761D650F19A15A4D0062B525 /* UIKit.framework */,
@@ -139,13 +174,11 @@
 		761D651119A15A4D0062B525 /* MyDailyBeat */ = {
 			isa = PBXGroup;
 			children = (
-				761D651A19A15A4D0062B525 /* EVCAppDelegate.h */,
-				761D651B19A15A4D0062B525 /* EVCAppDelegate.m */,
-				761D652319A15A4D0062B525 /* EVCViewController.h */,
-				761D652419A15A4D0062B525 /* EVCViewController.m */,
+				769EEA1119A42E1D00FF072E /* Headers */,
+				769EEA1219A42E2700FF072E /* Source */,
+				769EEA1319A42E3C00FF072E /* xib */,
 				761D652619A15A4D0062B525 /* Images.xcassets */,
 				761D651219A15A4D0062B525 /* Supporting Files */,
-				761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */,
 			);
 			path = MyDailyBeat;
 			sourceTree = "<group>";
@@ -153,6 +186,7 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				769EEA1C19A53C9A00FF072E /* IQKeyboardManager.bundle */,
 				761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */,
 				761D651319A15A4D0062B525 /* MyDailyBeat-Info.plist */,
 				761D651419A15A4D0062B525 /* InfoPlist.strings */,
@@ -187,6 +221,55 @@
 				761D65A819A1600C0062B525 /* VerveAPITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		769EEA1119A42E1D00FF072E /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				761D651A19A15A4D0062B525 /* EVCAppDelegate.h */,
+				761D652319A15A4D0062B525 /* EVCViewController.h */,
+				769EE9E919A2530100FF072E /* EVCRegistrationViewController.h */,
+				769EE9EE19A2B14900FF072E /* EVCLargeMessageViewController.h */,
+				769EEA0B19A3B03F00FF072E /* EVCPersonalInfo1ViewController.h */,
+				769EEA1519A42F3600FF072E /* EVCScreenNameViewController.h */,
+				769EEA2619A57F5B00FF072E /* EVCEmailMobileViewController.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		769EEA1219A42E2700FF072E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				761D651B19A15A4D0062B525 /* EVCAppDelegate.m */,
+				761D652419A15A4D0062B525 /* EVCViewController.m */,
+				769EE9EA19A2530100FF072E /* EVCRegistrationViewController.m */,
+				769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */,
+				769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */,
+				769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */,
+				769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		769EEA1319A42E3C00FF072E /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA1419A42E4200FF072E /* iPhone */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		769EEA1419A42E4200FF072E /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */,
+				769EE9EB19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib */,
+				769EE9F019A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib */,
+				769EEA0D19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib */,
+				769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */,
+				769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */,
+			);
+			name = iPhone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,8 +375,14 @@
 			files = (
 				761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */,
 				761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */,
+				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
+				769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
+				769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */,
+				769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */,
+				769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */,
+				769EEA1D19A53C9A00FF072E /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +402,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				761D651819A15A4D0062B525 /* main.m in Sources */,
+				769EE9F119A2B14900FF072E /* EVCLargeMessageViewController.m in Sources */,
+				769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */,
+				769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */,
 				761D652519A15A4D0062B525 /* EVCViewController.m in Sources */,
+				769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */,
+				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,13 +530,19 @@
 		761D653E19A15A4D0062B525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
 				INFOPLIST_FILE = "MyDailyBeat/MyDailyBeat-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/VerveAPI/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -450,13 +550,19 @@
 		761D653F19A15A4D0062B525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
 				INFOPLIST_FILE = "MyDailyBeat/MyDailyBeat-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/VerveAPI/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -8,12 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		761D655019A15B680062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D654F19A15B680062B525 /* Foundation.framework */; };
-		761D655E19A15B680062B525 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D655D19A15B680062B525 /* XCTest.framework */; };
-		761D655F19A15B680062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D654F19A15B680062B525 /* Foundation.framework */; };
-		761D656119A15B680062B525 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D656019A15B680062B525 /* UIKit.framework */; };
-		761D656419A15B680062B525 /* libVerveAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D654C19A15B680062B525 /* libVerveAPI.a */; };
-		761D656A19A15B680062B525 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 761D656819A15B680062B525 /* InfoPlist.strings */; };
-		761D656C19A15B680062B525 /* VerveAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D656B19A15B680062B525 /* VerveAPITests.m */; };
 		761D657719A15BE90062B525 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D657619A15BE90062B525 /* API.m */; };
 		761D657D19A15DF40062B525 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D657C19A15DF40062B525 /* Reachability.m */; };
 		761D658219A15F140062B525 /* VerveUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D658119A15F140062B525 /* VerveUser.m */; };
@@ -29,17 +23,18 @@
 		761D65B719A1A6BC0062B525 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B219A1A6BC0062B525 /* RECommonFunctions.m */; };
 		761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B419A1A6BC0062B525 /* RESideMenu.m */; };
 		761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */; };
+		769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2019A55F1100FF072E /* SHViewPager.m */; };
+		769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2219A55F1100FF072E /* SHViewPagerController.m */; };
+		769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2E19A646FC00FF072E /* UIView+Toast.m */; };
+		769EEA3D19A6491B00FF072E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3819A6490000FF072E /* UIKit.framework */; };
+		769EEA3E19A6491F00FF072E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3A19A6490600FF072E /* QuartzCore.framework */; };
+		769EEA5E19A64CF000FF072E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA5D19A64CF000FF072E /* CoreFoundation.framework */; };
+		769EEA6419A64CF000FF072E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA6219A64CF000FF072E /* InfoPlist.strings */; };
+		769EEA6C19A64D1D00FF072E /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA6919A64D1D00FF072E /* check.png */; };
+		769EEA6D19A64D1D00FF072E /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA6A19A64D1D00FF072E /* error.png */; };
+		769EEA6E19A64D1D00FF072E /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA6B19A64D1D00FF072E /* warning.png */; };
+		769EEA7019A7A38500FF072E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA6F19A7A38500FF072E /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		761D656219A15B680062B525 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 761D654419A15B680062B525 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 761D654B19A15B680062B525;
-			remoteInfo = VerveAPI;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		761D654A19A15B680062B525 /* CopyFiles */ = {
@@ -57,12 +52,9 @@
 		761D654C19A15B680062B525 /* libVerveAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVerveAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		761D654F19A15B680062B525 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		761D655319A15B680062B525 /* VerveAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerveAPI-Prefix.pch"; sourceTree = "<group>"; };
-		761D655C19A15B680062B525 /* VerveAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerveAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		761D655D19A15B680062B525 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		761D656019A15B680062B525 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		761D656719A15B680062B525 /* VerveAPITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VerveAPITests-Info.plist"; sourceTree = "<group>"; };
 		761D656919A15B680062B525 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		761D656B19A15B680062B525 /* VerveAPITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerveAPITests.m; sourceTree = "<group>"; };
 		761D657519A15BE90062B525 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		761D657619A15BE90062B525 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		761D657B19A15DF40062B525 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -94,6 +86,31 @@
 		761D65B419A1A6BC0062B525 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		761D65B519A1A6BC0062B525 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		769EE9F719A2B6AB00FF072E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		769EEA1F19A55F1100FF072E /* SHViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPager.h; sourceTree = "<group>"; };
+		769EEA2019A55F1100FF072E /* SHViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPager.m; sourceTree = "<group>"; };
+		769EEA2119A55F1100FF072E /* SHViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPagerController.h; sourceTree = "<group>"; };
+		769EEA2219A55F1100FF072E /* SHViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPagerController.m; sourceTree = "<group>"; };
+		769EEA2D19A646FC00FF072E /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		769EEA2E19A646FC00FF072E /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		769EEA3819A6490000FF072E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		769EEA3A19A6490600FF072E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		769EEA4819A64CC600FF072E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		769EEA4B19A64CC600FF072E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		769EEA4C19A64CC600FF072E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		769EEA4D19A64CC600FF072E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		769EEA5019A64CC600FF072E /* VerveAPIBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VerveAPIBundle-Info.plist"; sourceTree = "<group>"; };
+		769EEA5219A64CC600FF072E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		769EEA5419A64CC600FF072E /* VerveAPIBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerveAPIBundle-Prefix.pch"; sourceTree = "<group>"; };
+		769EEA5C19A64CEF00FF072E /* VerveAPIBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerveAPIBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		769EEA5D19A64CF000FF072E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		769EEA6119A64CF000FF072E /* VerveAPIBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VerveAPIBundle-Info.plist"; sourceTree = "<group>"; };
+		769EEA6319A64CF000FF072E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		769EEA6519A64CF000FF072E /* VerveAPIBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerveAPIBundle-Prefix.pch"; sourceTree = "<group>"; };
+		769EEA6919A64D1D00FF072E /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = ../check.png; sourceTree = "<group>"; };
+		769EEA6A19A64D1D00FF072E /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = ../error.png; sourceTree = "<group>"; };
+		769EEA6B19A64D1D00FF072E /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = warning.png; path = ../warning.png; sourceTree = "<group>"; };
+		769EEA6F19A7A38500FF072E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,18 +118,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769EEA7019A7A38500FF072E /* MobileCoreServices.framework in Frameworks */,
+				769EEA3E19A6491F00FF072E /* QuartzCore.framework in Frameworks */,
+				769EEA3D19A6491B00FF072E /* UIKit.framework in Frameworks */,
 				761D655019A15B680062B525 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		761D655919A15B680062B525 /* Frameworks */ = {
+		769EEA5919A64CEF00FF072E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761D655E19A15B680062B525 /* XCTest.framework in Frameworks */,
-				761D656419A15B680062B525 /* libVerveAPI.a in Frameworks */,
-				761D656119A15B680062B525 /* UIKit.framework in Frameworks */,
-				761D655F19A15B680062B525 /* Foundation.framework in Frameworks */,
+				769EEA5E19A64CF000FF072E /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				761D655119A15B680062B525 /* VerveAPI */,
-				761D656519A15B680062B525 /* VerveAPITests */,
+				761D656519A15B680062B525 /* VerveAPIBundle */,
+				769EEA4E19A64CC600FF072E /* VerveAPIBundle */,
+				769EEA5F19A64CF000FF072E /* VerveAPIBundle */,
 				761D654E19A15B680062B525 /* Frameworks */,
 				761D654D19A15B680062B525 /* Products */,
 			);
@@ -133,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				761D654C19A15B680062B525 /* libVerveAPI.a */,
-				761D655C19A15B680062B525 /* VerveAPITests.xctest */,
+				769EEA5C19A64CEF00FF072E /* VerveAPIBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,9 +160,15 @@
 		761D654E19A15B680062B525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				769EEA6F19A7A38500FF072E /* MobileCoreServices.framework */,
+				769EEA3A19A6490600FF072E /* QuartzCore.framework */,
+				769EEA3819A6490000FF072E /* UIKit.framework */,
 				761D654F19A15B680062B525 /* Foundation.framework */,
 				761D655D19A15B680062B525 /* XCTest.framework */,
 				761D656019A15B680062B525 /* UIKit.framework */,
+				769EEA4819A64CC600FF072E /* Cocoa.framework */,
+				769EEA5D19A64CF000FF072E /* CoreFoundation.framework */,
+				769EEA4A19A64CC600FF072E /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,6 +176,9 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				769EE9F319A2B2DA00FF072E /* Other Headers */,
+				769EEA2C19A646C600FF072E /* Toast */,
+				769EEA1E19A55F0000FF072E /* SHViewPager */,
 				761D65B019A1A6B00062B525 /* RESideMenu */,
 				761D658319A15F9F0062B525 /* AFNetworking */,
 				761D657E19A15EDC0062B525 /* API & Connectivity */,
@@ -168,19 +196,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		761D656519A15B680062B525 /* VerveAPITests */ = {
+		761D656519A15B680062B525 /* VerveAPIBundle */ = {
 			isa = PBXGroup;
 			children = (
-				761D656B19A15B680062B525 /* VerveAPITests.m */,
+				769EEA6919A64D1D00FF072E /* check.png */,
+				769EEA6A19A64D1D00FF072E /* error.png */,
+				769EEA6B19A64D1D00FF072E /* warning.png */,
 				761D656619A15B680062B525 /* Supporting Files */,
 			);
+			name = VerveAPIBundle;
 			path = VerveAPITests;
 			sourceTree = "<group>";
 		};
 		761D656619A15B680062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				761D656719A15B680062B525 /* VerveAPITests-Info.plist */,
 				761D656819A15B680062B525 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -245,6 +275,80 @@
 			name = RESideMenu;
 			sourceTree = "<group>";
 		};
+		769EE9F319A2B2DA00FF072E /* Other Headers */ = {
+			isa = PBXGroup;
+			children = (
+				769EE9F719A2B6AB00FF072E /* Constants.h */,
+			);
+			name = "Other Headers";
+			sourceTree = "<group>";
+		};
+		769EEA1E19A55F0000FF072E /* SHViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA1F19A55F1100FF072E /* SHViewPager.h */,
+				769EEA2019A55F1100FF072E /* SHViewPager.m */,
+				769EEA2119A55F1100FF072E /* SHViewPagerController.h */,
+				769EEA2219A55F1100FF072E /* SHViewPagerController.m */,
+			);
+			name = SHViewPager;
+			sourceTree = "<group>";
+		};
+		769EEA2C19A646C600FF072E /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA2D19A646FC00FF072E /* UIView+Toast.h */,
+				769EEA2E19A646FC00FF072E /* UIView+Toast.m */,
+			);
+			name = Toast;
+			sourceTree = "<group>";
+		};
+		769EEA4A19A64CC600FF072E /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA4B19A64CC600FF072E /* Foundation.framework */,
+				769EEA4C19A64CC600FF072E /* CoreData.framework */,
+				769EEA4D19A64CC600FF072E /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		769EEA4E19A64CC600FF072E /* VerveAPIBundle */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA4F19A64CC600FF072E /* Supporting Files */,
+			);
+			path = VerveAPIBundle;
+			sourceTree = "<group>";
+		};
+		769EEA4F19A64CC600FF072E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA5019A64CC600FF072E /* VerveAPIBundle-Info.plist */,
+				769EEA5119A64CC600FF072E /* InfoPlist.strings */,
+				769EEA5419A64CC600FF072E /* VerveAPIBundle-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		769EEA5F19A64CF000FF072E /* VerveAPIBundle */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA6019A64CF000FF072E /* Supporting Files */,
+			);
+			path = VerveAPIBundle;
+			sourceTree = "<group>";
+		};
+		769EEA6019A64CF000FF072E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA6119A64CF000FF072E /* VerveAPIBundle-Info.plist */,
+				769EEA6219A64CF000FF072E /* InfoPlist.strings */,
+				769EEA6519A64CF000FF072E /* VerveAPIBundle-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,23 +369,22 @@
 			productReference = 761D654C19A15B680062B525 /* libVerveAPI.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		761D655B19A15B680062B525 /* VerveAPITests */ = {
+		769EEA5B19A64CEF00FF072E /* VerveAPIBundle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 761D657219A15B680062B525 /* Build configuration list for PBXNativeTarget "VerveAPITests" */;
+			buildConfigurationList = 769EEA6619A64CF000FF072E /* Build configuration list for PBXNativeTarget "VerveAPIBundle" */;
 			buildPhases = (
-				761D655819A15B680062B525 /* Sources */,
-				761D655919A15B680062B525 /* Frameworks */,
-				761D655A19A15B680062B525 /* Resources */,
+				769EEA5819A64CEF00FF072E /* Sources */,
+				769EEA5919A64CEF00FF072E /* Frameworks */,
+				769EEA5A19A64CEF00FF072E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				761D656319A15B680062B525 /* PBXTargetDependency */,
 			);
-			name = VerveAPITests;
-			productName = VerveAPITests;
-			productReference = 761D655C19A15B680062B525 /* VerveAPITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = VerveAPIBundle;
+			productName = VerveAPIBundle;
+			productReference = 769EEA5C19A64CEF00FF072E /* VerveAPIBundle.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -305,17 +408,20 @@
 			projectRoot = "";
 			targets = (
 				761D654B19A15B680062B525 /* VerveAPI */,
-				761D655B19A15B680062B525 /* VerveAPITests */,
+				769EEA5B19A64CEF00FF072E /* VerveAPIBundle */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		761D655A19A15B680062B525 /* Resources */ = {
+		769EEA5A19A64CEF00FF072E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761D656A19A15B680062B525 /* InfoPlist.strings in Resources */,
+				769EEA6419A64CF000FF072E /* InfoPlist.strings in Resources */,
+				769EEA6C19A64D1D00FF072E /* check.png in Resources */,
+				769EEA6D19A64D1D00FF072E /* error.png in Resources */,
+				769EEA6E19A64D1D00FF072E /* warning.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */,
 				761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */,
 				761D657D19A15DF40062B525 /* Reachability.m in Sources */,
 				761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */,
@@ -339,34 +446,43 @@
 				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
+				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
+				769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */,
 				761D657719A15BE90062B525 /* API.m in Sources */,
 				761D658219A15F140062B525 /* VerveUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		761D655819A15B680062B525 /* Sources */ = {
+		769EEA5819A64CEF00FF072E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761D656C19A15B680062B525 /* VerveAPITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		761D656319A15B680062B525 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 761D654B19A15B680062B525 /* VerveAPI */;
-			targetProxy = 761D656219A15B680062B525 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		761D656819A15B680062B525 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				761D656919A15B680062B525 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		769EEA5119A64CC600FF072E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				769EEA5219A64CC600FF072E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		769EEA6219A64CF000FF072E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				769EEA6319A64CF000FF072E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -450,6 +566,7 @@
 				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -462,43 +579,45 @@
 				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		761D657319A15B680062B525 /* Debug */ = {
+		769EEA6719A64CF000FF072E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
+				GCC_PREFIX_HEADER = "VerveAPIBundle/VerveAPIBundle-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "VerveAPITests/VerveAPITests-Info.plist";
+				INFOPLIST_FILE = "VerveAPIBundle/VerveAPIBundle-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
+				SDKROOT = iphoneos7.1;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
-		761D657419A15B680062B525 /* Release */ = {
+		769EEA6819A64CF000FF072E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
-				INFOPLIST_FILE = "VerveAPITests/VerveAPITests-Info.plist";
+				GCC_PREFIX_HEADER = "VerveAPIBundle/VerveAPIBundle-Prefix.pch";
+				INFOPLIST_FILE = "VerveAPIBundle/VerveAPIBundle-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
+				SDKROOT = iphoneos7.1;
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -523,14 +642,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		761D657219A15B680062B525 /* Build configuration list for PBXNativeTarget "VerveAPITests" */ = {
+		769EEA6619A64CF000FF072E /* Build configuration list for PBXNativeTarget "VerveAPIBundle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				761D657319A15B680062B525 /* Debug */,
-				761D657419A15B680062B525 /* Release */,
+				769EEA6719A64CF000FF072E /* Debug */,
+				769EEA6819A64CF000FF072E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,8 +1,7 @@
 //
-// RECommonFunctions.h
-// RESideMenu
-//
-// Copyright (c) 2013-2014 Roman Efimov (https://github.com/romaonthego)
+//  UIWindow+Hierarchy.h
+// https://github.com/hackiftekhar/IQKeyboardManager
+// Copyright (c) 2013-14 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,28 +20,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-//
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h> 
+#import <UIKit/UIWindow.h>
+
+@class UIViewController;
+
+@interface UIWindow (IQ_UIWindow_Hierarchy)
+
+/*!
+    @method topMostController
+ 
+    @return Returns the current Top Most ViewController in hierarchy.
+ */
+- (UIViewController*) topMostController;
+
+/*!
+    @method currentViewController
+ 
+    @return Returns the topViewController in stack of topMostController.
+ */
+- (UIViewController*)currentViewController;
 
 
-#ifndef REUIKitIsFlatMode
-#define REUIKitIsFlatMode() RESideMenuUIKitIsFlatMode()
-#endif
-
-#ifndef kCFCoreFoundationVersionNumber_iOS_6_1
-#define kCFCoreFoundationVersionNumber_iOS_6_1 793.00
-#endif
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
-#define IF_IOS7_OR_GREATER(...) \
-if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_6_1) \
-{ \
-__VA_ARGS__ \
-}
-#else
-#define IF_IOS7_OR_GREATER(...)
-#endif
-
-BOOL RESideMenuUIKitIsFlatMode(void);
+@end
