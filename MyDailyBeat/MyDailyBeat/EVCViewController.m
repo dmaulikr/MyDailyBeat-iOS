@@ -14,6 +14,8 @@
 
 @implementation EVCViewController
 
+@synthesize api;
+
 @synthesize mTableView;
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
@@ -44,7 +46,24 @@
     
     self.mTableView.dataSource = self;
     self.mTableView.delegate = self;
-	// Do any additional setup after loading the view, typically from a nib.
+    api = [API getInstance];
+    
+    if ([api getCurrentUser] == nil) {
+        DLAVAlertView *loginAlert = [[DLAVAlertView alloc] initWithTitle:@"Login to MyDailyBeat" message:@"Please enter your screen name and password." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [loginAlert addTextFieldWithText:@"" placeholder:@"ScreenName"];
+        [loginAlert addTextFieldWithText:@"" placeholder:@"Password"];
+        [loginAlert setSecureTextEntry:YES ofTextFieldAtIndex:1];
+        UITextField *field1 = [loginAlert textFieldAtIndex:0];
+        [field1 setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+        [field1 setAutocorrectionType:UITextAutocorrectionTypeNo];
+        
+        [loginAlert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+            [self loginWithScreenName:[loginAlert textFieldTextAtIndex:0] andPassword:[loginAlert textFieldTextAtIndex:1]];
+        }];
+    } else {
+        [self loginWithScreenName:[api getCurrentUser].screenName andPassword:[api getCurrentUser].password];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,7 +92,26 @@
 }
 
 - (void) showMenu {
+    [self.sideMenuViewController presentLeftMenuViewController];
+}
+
+- (void) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password {
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.verve.VerveAPIBundle"];
     
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+            BOOL success = [api loginWithScreenName:screenName andPassword:password];
+            if (success) {
+                NSLog(@"Damn");
+                [self.view makeToast:@"Login successful!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"check" ofType:@"png"]]];
+            } else {
+                [self.view makeToast:@"Login failed!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"error" ofType:@"png"]]];
+            }
+            [self.view hideToastActivity];
+        });
+    });
 }
 
 @end

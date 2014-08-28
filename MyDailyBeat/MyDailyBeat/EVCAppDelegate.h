@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EVCViewController.h"
 #import "EVCRegistrationViewController.h"
+#import "RESideMenu.h"
+#import "EVCMenuViewController.h"
 
-@interface EVCAppDelegate : UIResponder <UIApplicationDelegate>
+@interface EVCAppDelegate : UIResponder <UIApplicationDelegate, RESideMenuDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -15,4 +15,15 @@
 #define APP_ID_C_STRING "com.verve.MyDailyBeat"
 #define APP_ID_NSSTRING @"com.verve.MyDailyBeat"
 
+#define ASSET_FILENAME @"asset.JPG"
+
+typedef NS_ENUM(NSInteger, SexualPreference) {
+    ManLookingForWoman = 0,
+    WomanLookingForMan = 1,
+    ManLookingForMan = 2,
+    WomanLookingForWoman = 3,
+    CoupleLookingForCouple = 4,
+    BisexualLookingForBisexual = 5
+};
+
 #endif

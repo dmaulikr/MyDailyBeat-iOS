@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DLAVAlertView.h>
+#import <API.h>
+#import <UIView+Toast.h>
+#import "RESideMenu.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, retain) IBOutlet UITableView *mTableView;
+@property(strong, nonatomic) API *api;
 
 @end
