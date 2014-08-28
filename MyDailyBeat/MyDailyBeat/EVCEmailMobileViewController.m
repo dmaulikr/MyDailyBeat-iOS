@@ -89,8 +89,23 @@
                     return;
                 }
                 EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-                EVCAppDelegate *app = [[UIApplication sharedApplication] delegate];
-                app.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+                EVCAppDelegate *app = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
+                EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithNibName:@"EVCMenuViewController_iPhone" bundle:nil];
+                
+
+                RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
+                                                                    leftMenuViewController:menu
+                                                                   rightMenuViewController:nil];
+                sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
+                sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+                sideMenuViewController.delegate = app;
+                sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+                sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+                sideMenuViewController.contentViewShadowOpacity = 0.6;
+                sideMenuViewController.contentViewShadowRadius = 12;
+                sideMenuViewController.contentViewShadowEnabled = YES;
+                app.window.rootViewController = sideMenuViewController;
+
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 
             });

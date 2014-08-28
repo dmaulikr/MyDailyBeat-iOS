@@ -15,9 +15,24 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    RESideMenu *sideMenuViewController;
+    EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithNibName:@"EVCMenuViewController_iPhone" bundle:nil];
+
+    
     if ([self hasEverBeenLaunched]) {
         EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+        sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
+                                                            leftMenuViewController:menu
+                                                           rightMenuViewController:nil];
+        sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
+        sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+        sideMenuViewController.delegate = self;
+        sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+        sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+        sideMenuViewController.contentViewShadowOpacity = 0.6;
+        sideMenuViewController.contentViewShadowRadius = 12;
+        sideMenuViewController.contentViewShadowEnabled = YES;
+        self.window.rootViewController = sideMenuViewController;
     } else {
         EVCRegistrationViewController *controller = [[EVCRegistrationViewController alloc] initWithNibName:@"EVCRegistrationViewController_iPhone" bundle:nil];
         self.window.rootViewController = controller;

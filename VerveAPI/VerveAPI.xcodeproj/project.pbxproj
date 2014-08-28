@@ -34,6 +34,18 @@
 		769EEA6D19A64D1D00FF072E /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA6A19A64D1D00FF072E /* error.png */; };
 		769EEA6E19A64D1D00FF072E /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA6B19A64D1D00FF072E /* warning.png */; };
 		769EEA7019A7A38500FF072E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA6F19A7A38500FF072E /* MobileCoreServices.framework */; };
+		769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7719A8171500FF072E /* DLAVAlertView.m */; };
+		769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7919A8171500FF072E /* DLAVAlertViewButtonTheme.m */; };
+		769EEA8419A8171500FF072E /* DLAVAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7B19A8171500FF072E /* DLAVAlertViewController.m */; };
+		769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7D19A8171500FF072E /* DLAVAlertViewTextControlTheme.m */; };
+		769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7F19A8171500FF072E /* DLAVAlertViewTextFieldTheme.m */; };
+		769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA8119A8171500FF072E /* DLAVAlertViewTheme.m */; };
+		769EEB0219AAC79600FF072E /* MakeFriendsPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB0119AAC79600FF072E /* MakeFriendsPrefs.m */; };
+		769EEB2919ABB89600FF072E /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB2819ABB89600FF072E /* FXForms.m */; };
+		769EEB2A19ABBBD800FF072E /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB2819ABB89600FF072E /* FXForms.m */; };
+		769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */; };
+		769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB3419AC11C100FF072E /* RelationshipPrefs.m */; };
+		769EEB4E19AC2C0500FF072E /* VolunteeringPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,7 +65,6 @@
 		761D654F19A15B680062B525 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		761D655319A15B680062B525 /* VerveAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerveAPI-Prefix.pch"; sourceTree = "<group>"; };
 		761D655D19A15B680062B525 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		761D656019A15B680062B525 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		761D656919A15B680062B525 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		761D657519A15BE90062B525 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		761D657619A15BE90062B525 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
@@ -95,7 +106,6 @@
 		769EEA2E19A646FC00FF072E /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		769EEA3819A6490000FF072E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		769EEA3A19A6490600FF072E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		769EEA4819A64CC600FF072E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		769EEA4B19A64CC600FF072E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		769EEA4C19A64CC600FF072E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		769EEA4D19A64CC600FF072E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -111,6 +121,28 @@
 		769EEA6A19A64D1D00FF072E /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = error.png; path = ../error.png; sourceTree = "<group>"; };
 		769EEA6B19A64D1D00FF072E /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = warning.png; path = ../warning.png; sourceTree = "<group>"; };
 		769EEA6F19A7A38500FF072E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		769EEA7619A8171500FF072E /* DLAVAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertView.h; sourceTree = "<group>"; };
+		769EEA7719A8171500FF072E /* DLAVAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertView.m; sourceTree = "<group>"; };
+		769EEA7819A8171500FF072E /* DLAVAlertViewButtonTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewButtonTheme.h; sourceTree = "<group>"; };
+		769EEA7919A8171500FF072E /* DLAVAlertViewButtonTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewButtonTheme.m; sourceTree = "<group>"; };
+		769EEA7A19A8171500FF072E /* DLAVAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewController.h; sourceTree = "<group>"; };
+		769EEA7B19A8171500FF072E /* DLAVAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewController.m; sourceTree = "<group>"; };
+		769EEA7C19A8171500FF072E /* DLAVAlertViewTextControlTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTextControlTheme.h; sourceTree = "<group>"; };
+		769EEA7D19A8171500FF072E /* DLAVAlertViewTextControlTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTextControlTheme.m; sourceTree = "<group>"; };
+		769EEA7E19A8171500FF072E /* DLAVAlertViewTextFieldTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTextFieldTheme.h; sourceTree = "<group>"; };
+		769EEA7F19A8171500FF072E /* DLAVAlertViewTextFieldTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTextFieldTheme.m; sourceTree = "<group>"; };
+		769EEA8019A8171500FF072E /* DLAVAlertViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTheme.h; sourceTree = "<group>"; };
+		769EEA8119A8171500FF072E /* DLAVAlertViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTheme.m; sourceTree = "<group>"; };
+		769EEB0019AAC79600FF072E /* MakeFriendsPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeFriendsPrefs.h; sourceTree = "<group>"; };
+		769EEB0119AAC79600FF072E /* MakeFriendsPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsPrefs.m; sourceTree = "<group>"; };
+		769EEB2719ABB89600FF072E /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
+		769EEB2819ABB89600FF072E /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
+		769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialPrefs.m; sourceTree = "<group>"; };
+		769EEB2E19AC0C7800FF072E /* SocialPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPrefs.h; sourceTree = "<group>"; };
+		769EEB3319AC11C100FF072E /* RelationshipPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationshipPrefs.h; sourceTree = "<group>"; };
+		769EEB3419AC11C100FF072E /* RelationshipPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationshipPrefs.m; sourceTree = "<group>"; };
+		769EEB4C19AC2BD500FF072E /* VolunteeringPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolunteeringPrefs.h; sourceTree = "<group>"; };
+		769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolunteeringPrefs.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +197,6 @@
 				769EEA3819A6490000FF072E /* UIKit.framework */,
 				761D654F19A15B680062B525 /* Foundation.framework */,
 				761D655D19A15B680062B525 /* XCTest.framework */,
-				761D656019A15B680062B525 /* UIKit.framework */,
-				769EEA4819A64CC600FF072E /* Cocoa.framework */,
 				769EEA5D19A64CF000FF072E /* CoreFoundation.framework */,
 				769EEA4A19A64CC600FF072E /* Other Frameworks */,
 			);
@@ -176,7 +206,9 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				769EEB2619ABB89600FF072E /* FXForms */,
 				769EE9F319A2B2DA00FF072E /* Other Headers */,
+				769EEA7519A816F800FF072E /* DLAlertView */,
 				769EEA2C19A646C600FF072E /* Toast */,
 				769EEA1E19A55F0000FF072E /* SHViewPager */,
 				761D65B019A1A6B00062B525 /* RESideMenu */,
@@ -230,6 +262,7 @@
 		761D657F19A15EEE0062B525 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				769EEB3219AC11A100FF072E /* Prefs */,
 				761D658019A15F140062B525 /* VerveUser.h */,
 				761D658119A15F140062B525 /* VerveUser.m */,
 			);
@@ -349,6 +382,49 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		769EEA7519A816F800FF072E /* DLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				769EEA7619A8171500FF072E /* DLAVAlertView.h */,
+				769EEA7719A8171500FF072E /* DLAVAlertView.m */,
+				769EEA7819A8171500FF072E /* DLAVAlertViewButtonTheme.h */,
+				769EEA7919A8171500FF072E /* DLAVAlertViewButtonTheme.m */,
+				769EEA7A19A8171500FF072E /* DLAVAlertViewController.h */,
+				769EEA7B19A8171500FF072E /* DLAVAlertViewController.m */,
+				769EEA7C19A8171500FF072E /* DLAVAlertViewTextControlTheme.h */,
+				769EEA7D19A8171500FF072E /* DLAVAlertViewTextControlTheme.m */,
+				769EEA7E19A8171500FF072E /* DLAVAlertViewTextFieldTheme.h */,
+				769EEA7F19A8171500FF072E /* DLAVAlertViewTextFieldTheme.m */,
+				769EEA8019A8171500FF072E /* DLAVAlertViewTheme.h */,
+				769EEA8119A8171500FF072E /* DLAVAlertViewTheme.m */,
+			);
+			name = DLAlertView;
+			sourceTree = "<group>";
+		};
+		769EEB2619ABB89600FF072E /* FXForms */ = {
+			isa = PBXGroup;
+			children = (
+				769EEB2719ABB89600FF072E /* FXForms.h */,
+				769EEB2819ABB89600FF072E /* FXForms.m */,
+			);
+			path = FXForms;
+			sourceTree = "<group>";
+		};
+		769EEB3219AC11A100FF072E /* Prefs */ = {
+			isa = PBXGroup;
+			children = (
+				769EEB0019AAC79600FF072E /* MakeFriendsPrefs.h */,
+				769EEB0119AAC79600FF072E /* MakeFriendsPrefs.m */,
+				769EEB4C19AC2BD500FF072E /* VolunteeringPrefs.h */,
+				769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */,
+				769EEB2E19AC0C7800FF072E /* SocialPrefs.h */,
+				769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */,
+				769EEB3319AC11C100FF072E /* RelationshipPrefs.h */,
+				769EEB3419AC11C100FF072E /* RelationshipPrefs.m */,
+			);
+			name = Prefs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -432,8 +508,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769EEB2A19ABBBD800FF072E /* FXForms.m in Sources */,
 				769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */,
 				761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */,
+				769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */,
 				761D657D19A15DF40062B525 /* Reachability.m in Sources */,
 				761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */,
 				761D65B719A1A6BC0062B525 /* RECommonFunctions.m in Sources */,
@@ -441,12 +519,21 @@
 				761D659A19A15FD40062B525 /* AFNetworkReachabilityManager.m in Sources */,
 				761D659E19A15FD40062B525 /* AFURLResponseSerialization.m in Sources */,
 				761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */,
+				769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */,
 				761D659C19A15FD40062B525 /* AFURLConnectionOperation.m in Sources */,
+				769EEB4E19AC2C0500FF072E /* VolunteeringPrefs.m in Sources */,
+				769EEA8419A8171500FF072E /* DLAVAlertViewController.m in Sources */,
+				769EEB0219AAC79600FF072E /* MakeFriendsPrefs.m in Sources */,
+				769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */,
 				761D659B19A15FD40062B525 /* AFSecurityPolicy.m in Sources */,
 				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
+				769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */,
+				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
 				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
+				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,
+				769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */,
 				769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */,
 				761D657719A15BE90062B525 /* API.m in Sources */,
 				761D658219A15F140062B525 /* VerveUser.m in Sources */,
@@ -457,6 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769EEB2919ABB89600FF072E /* FXForms.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,6 +737,7 @@
 				769EEA6819A64CF000FF072E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
