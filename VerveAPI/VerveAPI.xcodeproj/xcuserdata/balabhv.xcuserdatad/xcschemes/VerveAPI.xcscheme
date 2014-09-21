@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0600"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "769EEA4619A64CC600FF072E"
+               BlueprintIdentifier = "769EEA5B19A64CEF00FF072E"
                BuildableName = "VerveAPIBundle.bundle"
                BlueprintName = "VerveAPIBundle"
                ReferencedContainer = "container:VerveAPI.xcodeproj">
@@ -49,6 +49,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "761D654B19A15B680062B525"
+            BuildableName = "libVerveAPI.a"
+            BlueprintName = "VerveAPI"
+            ReferencedContainer = "container:VerveAPI.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

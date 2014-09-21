@@ -105,6 +105,9 @@
             BOOL success = [api loginWithScreenName:screenName andPassword:password];
             if (success) {
                 NSLog(@"Damn");
+                [[NSUserDefaults standardUserDefaults] setObject:screenName forKey:KEY_SCREENNAME];
+                [[NSUserDefaults standardUserDefaults] setObject:password forKey:KEY_PASSWORD];
+                
                 [self.view makeToast:@"Login successful!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"check" ofType:@"png"]]];
             } else {
                 [self.view makeToast:@"Login failed!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"error" ofType:@"png"]]];

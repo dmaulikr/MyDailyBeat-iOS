@@ -433,6 +433,89 @@ static VerveUser *currentUser;
     return mimeType;
 }
 
+- (NSMutableArray *) getGroupsForCurrentUser {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
+    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
+
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i= 0 ; i < [items count] ; ++i) {
+        Group *g = [[Group alloc] init];
+        NSDictionary *item = [items objectAtIndex:i];
+        g.groupName = [item objectForKey:@"groupName"];
+        g.adminName = [item objectForKey:@"adminScreenName"];
+        g.groupID = [[item objectForKey:@"id"] intValue];
+        [retItems addObject:g];
+    }
+    
+    
+    return retItems;
+}
+
+- (BOOL) createGroupWithName:(NSString *) groupName {
+    
+
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:currentUser.screenName forKey:@"screenName"];
+        [postData setObject:currentUser.password forKey:@"password"];
+        [postData setObject:groupName forKey:@"groupName"];
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/create" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+
+- (BOOL) joinGroupWithName:(NSString *) groupName {
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:currentUser.screenName forKey:@"screenName"];
+        [postData setObject:currentUser.password forKey:@"password"];
+        [postData setObject:groupName forKey:@"groupName"];
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/groups/join" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+
+}
+
 
 
 
