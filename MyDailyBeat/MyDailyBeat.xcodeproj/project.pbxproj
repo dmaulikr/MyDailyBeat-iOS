@@ -53,6 +53,9 @@
 		769EEB4119AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEB4019AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib */; };
 		769EEB4619AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEB4519AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib */; };
 		769EEB4A19AC2ADA00FF072E /* EVCVolunteeringPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB4919AC2ADA00FF072E /* EVCVolunteeringPrefsViewController.m */; };
+		76E64EFB19B933650022F189 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64EFA19B933650022F189 /* plus-512.png */; };
+		76E64F0019B9337C0022F189 /* settings-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64EFF19B9337C0022F189 /* settings-512.png */; };
+		76E64F0219B9338C0022F189 /* home-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64F0119B9338C0022F189 /* home-512.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +154,9 @@
 		769EEB4519AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCVolunteeringPrefsViewController_iPhone.xib; sourceTree = "<group>"; };
 		769EEB4919AC2ADA00FF072E /* EVCVolunteeringPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCVolunteeringPrefsViewController.m; sourceTree = "<group>"; };
 		769EEB4B19AC2AED00FF072E /* EVCVolunteeringPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCVolunteeringPrefsViewController.h; sourceTree = "<group>"; };
+		76E64EFA19B933650022F189 /* plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-512.png"; sourceTree = "<group>"; };
+		76E64EFF19B9337C0022F189 /* settings-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-512.png"; sourceTree = "<group>"; };
+		76E64F0119B9338C0022F189 /* home-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-512.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +236,9 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				76E64F0119B9338C0022F189 /* home-512.png */,
+				76E64EFA19B933650022F189 /* plus-512.png */,
+				76E64EFF19B9337C0022F189 /* settings-512.png */,
 				769EEA9519A8DCBB00FF072E /* Stars@2x.png */,
 				769EEA1C19A53C9A00FF072E /* IQKeyboardManager.bundle */,
 				761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */,
@@ -447,10 +456,13 @@
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
+				76E64F0219B9338C0022F189 /* home-512.png in Resources */,
 				769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */,
+				76E64EFB19B933650022F189 /* plus-512.png in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
 				769EEB4119AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib in Resources */,
 				769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */,
+				76E64F0019B9337C0022F189 /* settings-512.png in Resources */,
 				769EEB3719AC167900FF072E /* EVCSocialPrefsViewController_iPhone.xib in Resources */,
 				769EEA8C19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib in Resources */,
 				769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */,

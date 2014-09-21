@@ -10,29 +10,29 @@
 	<string>MyDailyBeat</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>18AF4C5C-EE6F-4767-80B6-AFD164210D18</key>
+		<key>B67084291183FFB3312BBBD21F6B42E5CBEB58AD</key>
 		<string>https://github.com/balabhv/MyDailyBeat-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MyDailyBeat/MyDailyBeat.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>18AF4C5C-EE6F-4767-80B6-AFD164210D18</key>
+		<key>B67084291183FFB3312BBBD21F6B42E5CBEB58AD</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/balabhv/MyDailyBeat-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>18AF4C5C-EE6F-4767-80B6-AFD164210D18</string>
+	<string>B67084291183FFB3312BBBD21F6B42E5CBEB58AD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>18AF4C5C-EE6F-4767-80B6-AFD164210D18</string>
+			<string>B67084291183FFB3312BBBD21F6B42E5CBEB58AD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MyDailyBeat-iOS</string>
 		</dict>

@@ -46,6 +46,7 @@
 		769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */; };
 		769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB3419AC11C100FF072E /* RelationshipPrefs.m */; };
 		769EEB4E19AC2C0500FF072E /* VolunteeringPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */; };
+		76E64EF919B631D10022F189 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E64EF819B631D10022F189 /* Group.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -143,6 +144,8 @@
 		769EEB3419AC11C100FF072E /* RelationshipPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationshipPrefs.m; sourceTree = "<group>"; };
 		769EEB4C19AC2BD500FF072E /* VolunteeringPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolunteeringPrefs.h; sourceTree = "<group>"; };
 		769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolunteeringPrefs.m; sourceTree = "<group>"; };
+		76E64EF719B631D10022F189 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		76E64EF819B631D10022F189 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +268,8 @@
 				769EEB3219AC11A100FF072E /* Prefs */,
 				761D658019A15F140062B525 /* VerveUser.h */,
 				761D658119A15F140062B525 /* VerveUser.m */,
+				76E64EF719B631D10022F189 /* Group.h */,
+				76E64EF819B631D10022F189 /* Group.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -468,7 +473,7 @@
 		761D654419A15B680062B525 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = eVerveCorp;
 			};
 			buildConfigurationList = 761D654719A15B680062B525 /* Build configuration list for PBXProject "VerveAPI" */;
@@ -535,6 +540,7 @@
 				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,
 				769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */,
 				769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */,
+				76E64EF919B631D10022F189 /* Group.m in Sources */,
 				761D657719A15BE90062B525 /* API.m in Sources */,
 				761D658219A15F140062B525 /* VerveUser.m in Sources */,
 			);
@@ -687,7 +693,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -704,7 +710,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;

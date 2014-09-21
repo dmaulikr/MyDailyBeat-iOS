@@ -17,6 +17,7 @@
 #import "SocialPrefs.h"
 #import "RelationshipPrefs.h"
 #import "VolunteeringPrefs.h"
+#import "Group.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 
@@ -45,6 +46,10 @@
 - (VolunteeringPrefs *) retrieveVolunteeringPrefs;
 - (RelationshipPrefs *) retrieveRelationshipPrefs;
 - (RelationshipPrefs *) retrieveFlingPrefs;
+
+- (NSMutableArray *) getGroupsForCurrentUser;
+- (BOOL) createGroupWithName:(NSString *) groupName;
+- (BOOL) joinGroupWithName:(NSString *) groupName;
 
 
 

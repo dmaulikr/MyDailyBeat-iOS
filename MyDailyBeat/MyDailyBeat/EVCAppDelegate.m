@@ -15,30 +15,46 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    RESideMenu *sideMenuViewController;
-    EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithNibName:@"EVCMenuViewController_iPhone" bundle:nil];
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        NSString *defScreenName = [[NSUserDefaults standardUserDefaults] stringForKey:KEY_SCREENNAME];
+        NSString *defPass = [[NSUserDefaults standardUserDefaults] stringForKey:KEY_PASSWORD];
+        if (defScreenName != nil)
+            [[API getInstance] loginWithScreenName:defScreenName andPassword:defPass];
+        NSMutableArray *groups = [[NSMutableArray alloc] init];
+        //NSMutableArray *groups = [[API getInstance] getGroupsForCurrentUser];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            RESideMenu *sideMenuViewController;
+            EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups];
+            
+            
+            if ([self hasEverBeenLaunched]) {
+                EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
+                sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
+                                                                    leftMenuViewController:menu
+                                                                   rightMenuViewController:nil];
+                sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
+                sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+                sideMenuViewController.delegate = self;
+                sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+                sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+                sideMenuViewController.contentViewShadowOpacity = 0.6;
+                sideMenuViewController.contentViewShadowRadius = 12;
+                sideMenuViewController.contentViewShadowEnabled = YES;
+                self.window.rootViewController = sideMenuViewController;
+            } else {
+                EVCRegistrationViewController *controller = [[EVCRegistrationViewController alloc] initWithNibName:@"EVCRegistrationViewController_iPhone" bundle:nil];
+                self.window.rootViewController = controller;
+            }
+            
+            [self.window makeKeyAndVisible];
+            
+        });
+    });
+    
 
-    
-    if ([self hasEverBeenLaunched]) {
-        EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-        sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
-                                                            leftMenuViewController:menu
-                                                           rightMenuViewController:nil];
-        sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
-        sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
-        sideMenuViewController.delegate = self;
-        sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
-        sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
-        sideMenuViewController.contentViewShadowOpacity = 0.6;
-        sideMenuViewController.contentViewShadowRadius = 12;
-        sideMenuViewController.contentViewShadowEnabled = YES;
-        self.window.rootViewController = sideMenuViewController;
-    } else {
-        EVCRegistrationViewController *controller = [[EVCRegistrationViewController alloc] initWithNibName:@"EVCRegistrationViewController_iPhone" bundle:nil];
-        self.window.rootViewController = controller;
-    }
-    
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

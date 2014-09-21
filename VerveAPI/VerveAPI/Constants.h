@@ -26,4 +26,9 @@ typedef NS_ENUM(NSInteger, SexualPreference) {
     BisexualLookingForBisexual = 5
 };
 
+#define KEY_SCREENNAME @"screenName"
+#define KEY_PASSWORD @"password"
+
+#define CREATE_NEW_GROUP @"New Group"
+
 #endif
