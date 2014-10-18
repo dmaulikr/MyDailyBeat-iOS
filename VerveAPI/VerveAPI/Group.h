@@ -13,5 +13,8 @@
 @property (nonatomic, retain) NSString *groupName;
 @property (nonatomic, retain) NSString *adminName;
 @property (nonatomic) int groupID;
+@property (nonatomic, retain) NSMutableArray *posts;
+@property (nonatomic, retain) NSString *blobKey;
+@property (nonatomic, retain) NSString *servingURL;
 
 @end

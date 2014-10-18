@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
-#import "EVCPreferencesViewController.h"
+#import "EVCGroupViewController.h"
 #import "EVCViewController.h"
 #import <API.h>
 

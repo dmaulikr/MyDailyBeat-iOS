@@ -91,11 +91,12 @@
                 EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
                 EVCAppDelegate *app = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
                 EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithNibName:@"EVCMenuViewController_iPhone" bundle:nil];
+                EVCProfileViewController *profile = [[EVCProfileViewController alloc] initWithNibName:@"EVCProfileViewController_iPhone" bundle:nil];
                 
 
                 RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
-                                                                    leftMenuViewController:menu
-                                                                   rightMenuViewController:nil];
+                                                                    leftMenuViewController:profile
+                                                                   rightMenuViewController:menu];
                 sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
                 sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
                 sideMenuViewController.delegate = app;

@@ -10,6 +10,6 @@
 
 @implementation Group
 
-@synthesize groupName, adminName, groupID;
+@synthesize groupName, adminName, groupID, posts, blobKey, servingURL;
 
 @end

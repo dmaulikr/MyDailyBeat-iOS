@@ -58,6 +58,49 @@ static VerveUser *currentUser;
     return NO;
 }
 
+- (void) refreshCurrentUserData {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
+    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    if ([resultDic objectForKey:@"name"] != nil) {
+        currentUser.name = [resultDic objectForKey:@"name"];
+        currentUser.email = [resultDic objectForKey:@"email"];
+        currentUser.screenName = [resultDic objectForKey:@"screenName"];
+        currentUser.password = [resultDic objectForKey:@"password"];
+        currentUser.mobile = [resultDic objectForKey:@"mobile"];
+        currentUser.zipcode = [resultDic objectForKey:@"zipcode"];
+        currentUser.birth_month = [resultDic objectForKey:@"birth_month"];
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        currentUser.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
+        
+    }
+    
+}
+
+- (NSMutableArray *) getPostsForGroup:(Group *) g {
+    NSString *parameters = [NSString stringWithFormat:@"id=%d", g.groupID];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/posts/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i= 0 ; i < [items count] ; ++i) {
+        Post *p = [[Post alloc] init];
+        NSDictionary *post = [items objectAtIndex:i];
+        p.postText = [post objectForKey:@"postText"];
+        p.blobKey = [post objectForKey:@"blobKey"];
+        p.servingURL = [post objectForKey:@"servingURL"];
+        p.userScreenName = [post objectForKey:@"userScreenName"];
+        p.dateTimeMillis = [[post objectForKey:@"when"] longValue];
+        [retItems addObject:p];
+    }
+    
+    
+    return retItems;
+    
+}
+
 - (BOOL) createUser: (VerveUser *) userData {
     
     @try {
@@ -72,6 +115,33 @@ static VerveUser *currentUser;
         }
         
         NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+
+- (BOOL) editUser: (VerveUser *) userData {
+    
+    @try {
+        
+        NSMutableDictionary *postData = [userData toJSON];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/edit" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
         NSString *response = [result objectForKey:@"response"];
         if ([response isEqualToString:@"Operation succeeded"]) {
@@ -117,7 +187,7 @@ static VerveUser *currentUser;
 - (MakeFriendsPrefs *) retrieveMakeFriendsPrefs {
     NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
     parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-
+    
     NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/hobby/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     NSArray *boolArr = [result objectForKey:@"selected"];
@@ -256,7 +326,7 @@ static VerveUser *currentUser;
     
     
     return  prefsObject;
-
+    
 }
 
 - (BOOL) uploadFlingPrefs: (RelationshipPrefs *) prefsObject {
@@ -411,7 +481,7 @@ static VerveUser *currentUser;
             return YES;
         } else
             return NO;
-
+        
         
     } else if (urlResponse.statusCode == 401) {
         NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
@@ -425,6 +495,153 @@ static VerveUser *currentUser;
     return NO;
 }
 
+-(NSURL *) retrieveGroupPictureForGroup:(Group *) group {
+    NSString *parameters = [NSString stringWithFormat:@"id=%d", group.groupID];
+    NSDictionary *getServingURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/blobkey/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSURL *url = [[NSURL alloc] initWithString:[getServingURLResult objectForKey:@"servingURL"]];
+    return url;
+}
+
+-(BOOL) writePost:(Post *) p withPictureData:(NSData *) attachedPic andPictureName:(NSString *) picName toGroup:(Group *) g {
+    
+    NSError *requestError;
+    
+    if (attachedPic != nil) {
+        NSDictionary *getURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getuploadurl" withParameters:@"" withRequestType:GET_REQUEST andPostData:nil];
+        NSString *uploadurl = [getURLResult objectForKey:@"response"];
+        
+        NSLog(@"Upload URL=%@", uploadurl);
+        
+        AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
+        NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileData:attachedPic name:@"file" fileName:picName mimeType:[self getMimeType:picName]];
+            [formData appendPartWithFormData:[[picName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+        } error:nil];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+        [request setHTTPShouldHandleCookies:YES];
+        [request setTimeoutInterval:30];
+        NSLog(@"%@", request);
+        // send the request
+        
+        NSHTTPURLResponse *urlResponse;
+        NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+        if (requestError) NSLog(@"Error received from server: %@", requestError);
+        if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
+            NSDictionary *parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingMutableContainers error:&requestError];
+            NSString *blobKey = [parsedJSONResponse objectForKey:@"blobKey"];
+            NSString *servingURL = [parsedJSONResponse objectForKey:@"servingUrl"];
+            
+            NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+            [postData setObject:blobKey forKey:@"blobKey"];
+            [postData setObject:servingURL forKey:@"servingURL"];
+            [postData setObject:p.postText forKey:@"postText"];
+            [postData setObject:p.userScreenName forKey:@"userScreenName"];
+            [postData setObject:[NSNumber numberWithDouble:p.dateTimeMillis] forKey:@"when"];
+            [postData setObject:[NSNumber numberWithInt:g.groupID] forKey:@"id"];
+            
+            NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&requestError];
+            
+            
+            NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/post" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+            
+            NSString *response = [result objectForKey:@"response"];
+            if ([response isEqualToString:@"Operation succeeded"]) {
+                return YES;
+            } else
+                return NO;
+            
+            
+        } else if (urlResponse.statusCode == 401) {
+            NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+        } else if (urlResponse.statusCode == 422) {
+            NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+        } else if (urlResponse.statusCode == 500) {
+            NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+        } else {
+            NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+        }
+    } else {
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:@"" forKey:@"blobKey"];
+        [postData setObject:@"" forKey:@"servingURL"];
+        [postData setObject:p.postText forKey:@"postText"];
+        [postData setObject:p.userScreenName forKey:@"userScreenName"];
+        [postData setObject:[NSNumber numberWithDouble:p.dateTimeMillis] forKey:@"when"];
+        [postData setObject:[NSNumber numberWithInt:g.groupID] forKey:@"id"];
+        
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&requestError];
+
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/post" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        } else
+            return NO;
+
+    }
+    return NO;
+}
+
+-(BOOL)uploadGroupPicture:(NSData *)groupPicture withName: (NSString *) name toGroup:(Group *) group {
+    
+    //start by getting upload url
+    NSDictionary *getURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getuploadurl" withParameters:@"" withRequestType:GET_REQUEST andPostData:nil];
+    NSString *uploadurl = [getURLResult objectForKey:@"response"];
+    
+    NSLog(@"Upload URL=%@", uploadurl);
+    
+    AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
+    NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:groupPicture name:@"file" fileName:name mimeType:[self getMimeType:name]];
+        [formData appendPartWithFormData:[[name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+    } error:nil];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:YES];
+    [request setTimeoutInterval:30];
+    NSLog(@"%@", request);
+    // send the request
+    NSError *requestError;
+    NSHTTPURLResponse *urlResponse;
+    NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    if (requestError) NSLog(@"Error received from server: %@", requestError);
+    if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
+        NSDictionary *parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingMutableContainers error:&requestError];
+        NSString *blobKey = [parsedJSONResponse objectForKey:@"blobKey"];
+        NSString *servingURL = [parsedJSONResponse objectForKey:@"servingUrl"];
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:blobKey forKey:@"blobKey"];
+        [postData setObject:servingURL forKey:@"servingURL"];
+        [postData setObject:[NSNumber numberWithInt:group.groupID] forKey:@"id"];
+        
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&requestError];
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/blobkey/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        } else
+            return NO;
+        
+        
+    } else if (urlResponse.statusCode == 401) {
+        NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    } else if (urlResponse.statusCode == 422) {
+        NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    } else if (urlResponse.statusCode == 500) {
+        NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    } else {
+        NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    }
+    return NO;
+}
+
+
 -(NSString *)getMimeType:(NSString *)path{
     CFStringRef pathExtension = (__bridge_retained CFStringRef)[path pathExtension];
     CFStringRef type = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension, NULL);
@@ -436,7 +653,7 @@ static VerveUser *currentUser;
 - (NSMutableArray *) getGroupsForCurrentUser {
     NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
     parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-
+    
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     NSMutableArray *items = [resultDic objectForKey:@"items"];
@@ -447,7 +664,22 @@ static VerveUser *currentUser;
         NSDictionary *item = [items objectAtIndex:i];
         g.groupName = [item objectForKey:@"groupName"];
         g.adminName = [item objectForKey:@"adminScreenName"];
+        g.blobKey = [item objectForKey:@"blobKey"];
+        g.servingURL = [item objectForKey:@"servingURL"];
         g.groupID = [[item objectForKey:@"id"] intValue];
+        NSMutableArray *postJSON = [item objectForKey:@"posts"];
+        NSMutableArray *posts = [[NSMutableArray alloc] init];
+        for (int j=0 ; j < [postJSON count] ; ++j) {
+            Post *p = [[Post alloc] init];
+            NSDictionary *post = [postJSON objectAtIndex:j];
+            p.postText = [post objectForKey:@"postText"];
+            p.blobKey = [post objectForKey:@"blobKey"];
+            p.servingURL = [post objectForKey:@"servingURL"];
+            p.userScreenName = [post objectForKey:@"userScreenName"];
+            p.dateTimeMillis = [[post objectForKey:@"when"] longValue];
+            [posts addObject:p];
+        }
+        g.posts = posts;
         [retItems addObject:g];
     }
     
@@ -457,7 +689,7 @@ static VerveUser *currentUser;
 
 - (BOOL) createGroupWithName:(NSString *) groupName {
     
-
+    
     @try {
         
         NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
@@ -472,7 +704,7 @@ static VerveUser *currentUser;
         }
         
         NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/create" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-
+        
         
         NSString *response = [result objectForKey:@"response"];
         if ([response isEqualToString:@"Operation succeeded"]) {
@@ -513,7 +745,7 @@ static VerveUser *currentUser;
     }
     
     return NO;
-
+    
 }
 
 

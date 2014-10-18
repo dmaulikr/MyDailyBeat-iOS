@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self navigationItem].title = @"Home";
+    [self navigationItem].title = @"Welcome to MyDailyBeat!";
     UIImage* image3 = [EVCViewController imageWithImage:[UIImage imageNamed:@"1408346500_menu-alt"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
@@ -42,13 +42,25 @@
     [someButton setShowsTouchWhenHighlighted:YES];
     
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
-    self.navigationItem.leftBarButtonItem=menuButton;
+    self.navigationItem.rightBarButtonItem = menuButton;
+    
+    UIImage* image4 = [EVCViewController imageWithImage:[UIImage imageNamed:@"user-50"] scaledToSize:CGSizeMake(30, 30)];
+    CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
+    UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
+    [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
+    [someButton2 addTarget:self action:@selector(showProfile)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton2 setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
+    self.navigationItem.leftBarButtonItem = profileButton;
     
     self.mTableView.dataSource = self;
     self.mTableView.delegate = self;
     api = [API getInstance];
     
     if ([api getCurrentUser] == nil) {
+        NSLog(@"Entered login");
         DLAVAlertView *loginAlert = [[DLAVAlertView alloc] initWithTitle:@"Login to MyDailyBeat" message:@"Please enter your screen name and password." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [loginAlert addTextFieldWithText:@"" placeholder:@"ScreenName"];
         [loginAlert addTextFieldWithText:@"" placeholder:@"Password"];
@@ -92,6 +104,10 @@
 }
 
 - (void) showMenu {
+    [self.sideMenuViewController presentRightMenuViewController];
+}
+
+- (void) showProfile {
     [self.sideMenuViewController presentLeftMenuViewController];
 }
 

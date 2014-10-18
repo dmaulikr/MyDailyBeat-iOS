@@ -28,13 +28,14 @@
             
             RESideMenu *sideMenuViewController;
             EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups];
+            EVCProfileViewController *profile = [[EVCProfileViewController alloc] initWithNibName:@"EVCProfileViewController_iPhone" bundle:nil];
             
             
             if ([self hasEverBeenLaunched]) {
                 EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
                 sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
-                                                                    leftMenuViewController:menu
-                                                                   rightMenuViewController:nil];
+                                                                    leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
+                                                                   rightMenuViewController:menu];
                 sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
                 sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
                 sideMenuViewController.delegate = self;

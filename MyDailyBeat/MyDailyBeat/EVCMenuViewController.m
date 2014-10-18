@@ -59,11 +59,10 @@
                     
                     break;
                 case 1: {
-                    EVCPreferencesViewController *prefs = [[EVCPreferencesViewController alloc] initWithNibName:@"EVCPreferencesViewController_iPhone" bundle:nil];
-                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:prefs] animated:YES];
+                    EVCGroupViewController *controller = [[EVCGroupViewController alloc] initWithNibName:@"EVCGroupViewController_iPhone" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:controller] animated:YES];
                 }
                     
-                    break;
                     
                 default:
                     break;
@@ -76,6 +75,10 @@
                 DLAVAlertView *groupNameAlertView = [[DLAVAlertView alloc] initWithTitle:@"Enter Name of New Group" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
             } else {
                 //add group selection here
+                Group *g = [groups objectAtIndex:indexPath.row];
+                EVCGroupViewController *controller = [[EVCGroupViewController alloc] initWithGroup:g];
+                [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:controller] animated:YES];
+
             }
             
             break;
@@ -128,7 +131,7 @@
     NSString *cellIdentifier = @"Cell";
     NSLog(@"This method was called: section: %d, row: %d", indexPath.section, indexPath.row);
     
-    NSMutableArray *arrElements = [NSMutableArray arrayWithObjects:@"Home", @"Preferences", nil];
+    NSMutableArray *arrElements = [NSMutableArray arrayWithObjects:@"Home", @"Test Group Page", nil];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
@@ -140,6 +143,7 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
     cell.selectedBackgroundView = [[UIView alloc] init];
+    cell.textLabel.textAlignment = UITextAlignmentRight;
     
     switch (indexPath.section) {
         case 0:
@@ -148,9 +152,6 @@
             switch (indexPath.row) {
                 case 0:
                     cell.imageView.image = [UIImage imageNamed:@"home-512"];
-                    break;
-                case 1:
-                    cell.imageView.image = [UIImage imageNamed:@"settings-512"];
                     break;
                     
             }
