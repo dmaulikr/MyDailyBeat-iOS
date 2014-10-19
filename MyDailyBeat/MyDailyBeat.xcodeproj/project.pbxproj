@@ -69,6 +69,12 @@
 		76BD32A619DF8A7B0054ED88 /* REComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD329E19DF8A7B0054ED88 /* REComposeSheetView.m */; };
 		76BD32A719DF8A7B0054ED88 /* REComposeViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76BD329F19DF8A7B0054ED88 /* REComposeViewController.bundle */; };
 		76BD32A819DF8A7B0054ED88 /* REComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD32A119DF8A7B0054ED88 /* REComposeViewController.m */; };
+		76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B08619F333300010E98B /* EVCLoginViewController.m */; };
+		76C2B08919F333300010E98B /* EVCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08719F333300010E98B /* EVCLoginViewController.xib */; };
+		76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */; };
+		76C2B09119F33EA60010E98B /* EVCLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell.xib */; };
+		76C2B09519F342430010E98B /* EVCTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */; };
+		76C2B09619F342430010E98B /* EVCTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B09419F342430010E98B /* EVCTextFieldTableViewCell.xib */; };
 		76E64EFB19B933650022F189 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64EFA19B933650022F189 /* plus-512.png */; };
 		76E64F0019B9337C0022F189 /* settings-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64EFF19B9337C0022F189 /* settings-512.png */; };
 		76E64F0219B9338C0022F189 /* home-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64F0119B9338C0022F189 /* home-512.png */; };
@@ -195,6 +201,15 @@
 		76BD329F19DF8A7B0054ED88 /* REComposeViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = REComposeViewController.bundle; sourceTree = "<group>"; };
 		76BD32A019DF8A7B0054ED88 /* REComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeViewController.h; sourceTree = "<group>"; };
 		76BD32A119DF8A7B0054ED88 /* REComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeViewController.m; sourceTree = "<group>"; };
+		76C2B08519F333300010E98B /* EVCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLoginViewController.h; sourceTree = "<group>"; };
+		76C2B08619F333300010E98B /* EVCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLoginViewController.m; sourceTree = "<group>"; };
+		76C2B08719F333300010E98B /* EVCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLoginViewController.xib; sourceTree = "<group>"; };
+		76C2B08D19F33EA60010E98B /* EVCLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLabelTableViewCell.h; sourceTree = "<group>"; };
+		76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLabelTableViewCell.m; sourceTree = "<group>"; };
+		76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLabelTableViewCell.xib; sourceTree = "<group>"; };
+		76C2B09219F342430010E98B /* EVCTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCTextFieldTableViewCell.h; sourceTree = "<group>"; };
+		76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCTextFieldTableViewCell.m; sourceTree = "<group>"; };
+		76C2B09419F342430010E98B /* EVCTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		76E64EFA19B933650022F189 /* plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-512.png"; sourceTree = "<group>"; };
 		76E64EFF19B9337C0022F189 /* settings-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-512.png"; sourceTree = "<group>"; };
 		76E64F0119B9338C0022F189 /* home-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-512.png"; sourceTree = "<group>"; };
@@ -343,6 +358,9 @@
 				7636F6B619CF25DB000B68B0 /* EVCProfileViewController.h */,
 				7636F6C019CF9074000B68B0 /* EVCUpdateProfileViewController.h */,
 				7636F6C719D4D881000B68B0 /* EVCGroupViewController.h */,
+				76C2B08519F333300010E98B /* EVCLoginViewController.h */,
+				76C2B08D19F33EA60010E98B /* EVCLabelTableViewCell.h */,
+				76C2B09219F342430010E98B /* EVCTextFieldTableViewCell.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -368,6 +386,9 @@
 				7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */,
 				7636F6C119CF9074000B68B0 /* EVCUpdateProfileViewController.m */,
 				7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */,
+				76C2B08619F333300010E98B /* EVCLoginViewController.m */,
+				76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */,
+				76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -399,6 +420,9 @@
 				7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */,
 				7636F6C219CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib */,
 				7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */,
+				76C2B08719F333300010E98B /* EVCLoginViewController.xib */,
+				76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell.xib */,
+				76C2B09419F342430010E98B /* EVCTextFieldTableViewCell.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -533,8 +557,10 @@
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
+				76C2B08919F333300010E98B /* EVCLoginViewController.xib in Resources */,
 				76E64F0219B9338C0022F189 /* home-512.png in Resources */,
 				769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */,
+				76C2B09619F342430010E98B /* EVCTextFieldTableViewCell.xib in Resources */,
 				76E64EFB19B933650022F189 /* plus-512.png in Resources */,
 				7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
@@ -549,6 +575,7 @@
 				769EEB4619AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib in Resources */,
 				769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */,
 				769EEA9F19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib in Resources */,
+				76C2B09119F33EA60010E98B /* EVCLabelTableViewCell.xib in Resources */,
 				76BD32A719DF8A7B0054ED88 /* REComposeViewController.bundle in Resources */,
 				769EEB3C19AC1A9300FF072E /* EVCRelationshipPrefsViewController_iPhone.xib in Resources */,
 			);
@@ -574,11 +601,13 @@
 				761D651819A15A4D0062B525 /* main.m in Sources */,
 				76BD32A219DF8A7B0054ED88 /* DEComposeRuledView.m in Sources */,
 				769EEA8B19A8D43900FF072E /* EVCPreferencesViewController.m in Sources */,
+				76C2B09519F342430010E98B /* EVCTextFieldTableViewCell.m in Sources */,
 				7636F6C319CF9074000B68B0 /* EVCUpdateProfileViewController.m in Sources */,
 				769EE9F119A2B14900FF072E /* EVCLargeMessageViewController.m in Sources */,
 				769EEA9D19AA35A800FF072E /* EVCProfilePicView.m in Sources */,
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
 				76BD32A619DF8A7B0054ED88 /* REComposeSheetView.m in Sources */,
+				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
 				769EEAA319AA6BE800FF072E /* EVCMakeFriendsPrefsViewController.m in Sources */,
 				76BD32A419DF8A7B0054ED88 /* RECommonFunctions.m in Sources */,
 				769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */,
@@ -590,6 +619,7 @@
 				7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */,
 				769EEA9419A8DBF900FF072E /* EVCMenuViewController.m in Sources */,
 				769EEB3119AC0CDD00FF072E /* EVCSocialPrefsViewController.m in Sources */,
+				76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */,
 				769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */,
 				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				769EEB3A19AC1A5C00FF072E /* EVCRelationshipPrefsViewController.m in Sources */,

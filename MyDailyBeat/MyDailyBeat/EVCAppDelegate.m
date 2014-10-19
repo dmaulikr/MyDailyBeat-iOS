@@ -19,10 +19,11 @@
     dispatch_async(queue, ^{
         NSString *defScreenName = [[NSUserDefaults standardUserDefaults] stringForKey:KEY_SCREENNAME];
         NSString *defPass = [[NSUserDefaults standardUserDefaults] stringForKey:KEY_PASSWORD];
-        if (defScreenName != nil)
-            [[API getInstance] loginWithScreenName:defScreenName andPassword:defPass];
         NSMutableArray *groups = [[NSMutableArray alloc] init];
-        //NSMutableArray *groups = [[API getInstance] getGroupsForCurrentUser];
+        if (defScreenName != nil) {
+            [[API getInstance] loginWithScreenName:defScreenName andPassword:defPass];
+            groups = [[API getInstance] getGroupsForCurrentUser];
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
