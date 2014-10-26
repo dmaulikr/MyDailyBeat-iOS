@@ -8,21 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import <API.h>
-#import <GTScrollViewController.h>
 #import <QuartzCore/CALayer.h>
-#import <REComposeViewController.h>
 #import <UIView+Toast.h>
+#import "EVCCommonMethods.h"
+#import "RESideMenu.h"
+#import "EVCPostView.h"
+#import <EVCComposeViewController.h>
+#import <EVCGroupSettingsViewController.h>
 
-@interface EVCGroupViewController : UIViewController <REComposeViewControllerDelegate>
 
-@property (nonatomic) GTScrollViewController *scroll;
+@interface EVCGroupViewController : UIViewController {
+    int max_post_height;
+}
+
+@property (nonatomic) IBOutlet UIScrollView *scroll;
 @property (nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic) IBOutlet UILabel *screenNameLbl;
-@property (nonatomic) IBOutlet UIButton *composeButton;
+@property (nonatomic) IBOutlet UIButton *composeButton, *settingsButton;
 @property (nonatomic) Group *group;
 
 - (id) initWithGroup:(Group *) g;
 
 - (IBAction)writePost:(id)sender;
+- (IBAction)groupSettings:(id)sender;
+
 
 @end

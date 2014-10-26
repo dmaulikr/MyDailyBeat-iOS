@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "761D654B19A15B680062B525"
-               BuildableName = "libVerveAPI.a"
-               BlueprintName = "VerveAPI"
+               BlueprintIdentifier = "76C2B0F519F9DBD40010E98B"
+               BuildableName = "VerveAPIBundle.bundle"
+               BlueprintName = "VerveAPIBundle"
                ReferencedContainer = "container:VerveAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "76C2B0F519F9DBD40010E98B"
-               BuildableName = "VerveAPIBundle.bundle"
-               BlueprintName = "VerveAPIBundle"
-               ReferencedContainer = "container:VerveAPI.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -52,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "761D654B19A15B680062B525"
-            BuildableName = "libVerveAPI.a"
-            BlueprintName = "VerveAPI"
+            BlueprintIdentifier = "76C2B0F519F9DBD40010E98B"
+            BuildableName = "VerveAPIBundle.bundle"
+            BlueprintName = "VerveAPIBundle"
             ReferencedContainer = "container:VerveAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,6 +57,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "76C2B0F519F9DBD40010E98B"
+            BuildableName = "VerveAPIBundle.bundle"
+            BlueprintName = "VerveAPIBundle"
+            ReferencedContainer = "container:VerveAPI.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

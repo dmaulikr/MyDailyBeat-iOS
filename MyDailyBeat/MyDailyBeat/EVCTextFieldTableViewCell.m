@@ -12,7 +12,8 @@
 @synthesize textField;
 
 - (id) initWithPlaceHolder:(NSString *)placeHolder {
-    self = [self init];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"EVCTextFieldTableViewCell_iPhone" owner:self options:nil];
+    self = [nib objectAtIndex:0];
     if (self) {
         self.placeHolderText = placeHolder;
     }

@@ -14,49 +14,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    EVCLoginViewController *login = [[EVCLoginViewController alloc] initWithNibName:@"EVCLoginViewController_iPhone" bundle:nil];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:login];
     
-    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
-    dispatch_async(queue, ^{
-        NSString *defScreenName = [[NSUserDefaults standardUserDefaults] stringForKey:KEY_SCREENNAME];
-        NSString *defPass = [[NSUserDefaults standardUserDefaults] stringForKey:KEY_PASSWORD];
-        NSMutableArray *groups = [[NSMutableArray alloc] init];
-        if (defScreenName != nil) {
-            [[API getInstance] loginWithScreenName:defScreenName andPassword:defPass];
-            groups = [[API getInstance] getGroupsForCurrentUser];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            RESideMenu *sideMenuViewController;
-            EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups];
-            EVCProfileViewController *profile = [[EVCProfileViewController alloc] initWithNibName:@"EVCProfileViewController_iPhone" bundle:nil];
-            
-            
-            if ([self hasEverBeenLaunched]) {
-                EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-                sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
-                                                                    leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
-                                                                   rightMenuViewController:menu];
-                sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
-                sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
-                sideMenuViewController.delegate = self;
-                sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
-                sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
-                sideMenuViewController.contentViewShadowOpacity = 0.6;
-                sideMenuViewController.contentViewShadowRadius = 12;
-                sideMenuViewController.contentViewShadowEnabled = YES;
-                self.window.rootViewController = sideMenuViewController;
-            } else {
-                EVCRegistrationViewController *controller = [[EVCRegistrationViewController alloc] initWithNibName:@"EVCRegistrationViewController_iPhone" bundle:nil];
-                self.window.rootViewController = controller;
-            }
-            
-            [self.window makeKeyAndVisible];
-            
-        });
-    });
+    [self.window makeKeyAndVisible];
     
-
     return YES;
 }
 
@@ -82,7 +44,7 @@
     
     return hasBeenLaunched;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -91,7 +53,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

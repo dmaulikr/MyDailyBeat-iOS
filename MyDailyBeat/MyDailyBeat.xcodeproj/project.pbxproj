@@ -15,11 +15,6 @@
 		761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D651B19A15A4D0062B525 /* EVCAppDelegate.m */; };
 		761D652519A15A4D0062B525 /* EVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D652419A15A4D0062B525 /* EVCViewController.m */; };
 		761D652719A15A4D0062B525 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761D652619A15A4D0062B525 /* Images.xcassets */; };
-		761D652E19A15A4D0062B525 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D652D19A15A4D0062B525 /* XCTest.framework */; };
-		761D652F19A15A4D0062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650B19A15A4D0062B525 /* Foundation.framework */; };
-		761D653019A15A4D0062B525 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650F19A15A4D0062B525 /* UIKit.framework */; };
-		761D653819A15A4D0062B525 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 761D653619A15A4D0062B525 /* InfoPlist.strings */; };
-		761D653A19A15A4D0062B525 /* MyDailyBeatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D653919A15A4D0062B525 /* MyDailyBeatTests.m */; };
 		761D65AB19A1606C0062B525 /* libVerveAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D65A619A1600C0062B525 /* libVerveAPI.a */; };
 		761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */; };
 		761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */; };
@@ -61,33 +56,25 @@
 		769EEB4119AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEB4019AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib */; };
 		769EEB4619AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEB4519AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib */; };
 		769EEB4A19AC2ADA00FF072E /* EVCVolunteeringPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB4919AC2ADA00FF072E /* EVCVolunteeringPrefsViewController.m */; };
-		76BD329319DF87FE0054ED88 /* edit_file-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 76BD329219DF87FE0054ED88 /* edit_file-50.png */; };
-		76BD32A219DF8A7B0054ED88 /* DEComposeRuledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD329619DF8A7B0054ED88 /* DEComposeRuledView.m */; };
-		76BD32A319DF8A7B0054ED88 /* DEComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD329819DF8A7B0054ED88 /* DEComposeTextView.m */; };
-		76BD32A419DF8A7B0054ED88 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD329A19DF8A7B0054ED88 /* RECommonFunctions.m */; };
-		76BD32A519DF8A7B0054ED88 /* REComposeBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD329C19DF8A7B0054ED88 /* REComposeBackgroundView.m */; };
-		76BD32A619DF8A7B0054ED88 /* REComposeSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD329E19DF8A7B0054ED88 /* REComposeSheetView.m */; };
-		76BD32A719DF8A7B0054ED88 /* REComposeViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76BD329F19DF8A7B0054ED88 /* REComposeViewController.bundle */; };
-		76BD32A819DF8A7B0054ED88 /* REComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD32A119DF8A7B0054ED88 /* REComposeViewController.m */; };
 		76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B08619F333300010E98B /* EVCLoginViewController.m */; };
-		76C2B08919F333300010E98B /* EVCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08719F333300010E98B /* EVCLoginViewController.xib */; };
+		76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08719F333300010E98B /* EVCLoginViewController_iPhone.xib */; };
 		76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */; };
-		76C2B09119F33EA60010E98B /* EVCLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell.xib */; };
+		76C2B09119F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib */; };
 		76C2B09519F342430010E98B /* EVCTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */; };
-		76C2B09619F342430010E98B /* EVCTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B09419F342430010E98B /* EVCTextFieldTableViewCell.xib */; };
+		76C2B09619F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B09419F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib */; };
+		76C2B09919F4111F0010E98B /* EVCCommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B09819F4111F0010E98B /* EVCCommonMethods.m */; };
+		76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B0EA19F4AD680010E98B /* EVCPostView.m */; };
+		76C2B0ED19F4AD9F0010E98B /* EVCPostView_WithPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B0EC19F4AD9F0010E98B /* EVCPostView_WithPicture.xib */; };
+		76C2B0EF19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B0EE19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib */; };
+		76C2B10119F9DD590010E98B /* VerveAPIBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */; };
 		76E64EFB19B933650022F189 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64EFA19B933650022F189 /* plus-512.png */; };
-		76E64F0019B9337C0022F189 /* settings-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64EFF19B9337C0022F189 /* settings-512.png */; };
 		76E64F0219B9338C0022F189 /* home-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64F0119B9338C0022F189 /* home-512.png */; };
+		76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996919FD3CA900E15A14 /* settings-25.png */; };
+		76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */; };
+		76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		761D653119A15A4D0062B525 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 761D650019A15A4D0062B525 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 761D650719A15A4D0062B525;
-			remoteInfo = MyDailyBeat;
-		};
 		761D65A519A1600C0062B525 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */;
@@ -125,11 +112,6 @@
 		761D652319A15A4D0062B525 /* EVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EVCViewController.h; sourceTree = "<group>"; };
 		761D652419A15A4D0062B525 /* EVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EVCViewController.m; sourceTree = "<group>"; };
 		761D652619A15A4D0062B525 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		761D652C19A15A4D0062B525 /* MyDailyBeatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDailyBeatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		761D652D19A15A4D0062B525 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		761D653519A15A4D0062B525 /* MyDailyBeatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyDailyBeatTests-Info.plist"; sourceTree = "<group>"; };
-		761D653719A15A4D0062B525 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		761D653919A15A4D0062B525 /* MyDailyBeatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDailyBeatTests.m; sourceTree = "<group>"; };
 		761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VerveAPI.xcodeproj; path = ../VerveAPI/VerveAPI.xcodeproj; sourceTree = "<group>"; };
 		761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1408346500_menu-alt.png"; sourceTree = "<group>"; };
 		761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -188,31 +170,28 @@
 		769EEB4919AC2ADA00FF072E /* EVCVolunteeringPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCVolunteeringPrefsViewController.m; sourceTree = "<group>"; };
 		769EEB4B19AC2AED00FF072E /* EVCVolunteeringPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCVolunteeringPrefsViewController.h; sourceTree = "<group>"; };
 		76BD329219DF87FE0054ED88 /* edit_file-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_file-50.png"; sourceTree = "<group>"; };
-		76BD329519DF8A7B0054ED88 /* DEComposeRuledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeRuledView.h; sourceTree = "<group>"; };
-		76BD329619DF8A7B0054ED88 /* DEComposeRuledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEComposeRuledView.m; sourceTree = "<group>"; };
-		76BD329719DF8A7B0054ED88 /* DEComposeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEComposeTextView.h; sourceTree = "<group>"; };
-		76BD329819DF8A7B0054ED88 /* DEComposeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEComposeTextView.m; sourceTree = "<group>"; };
-		76BD329919DF8A7B0054ED88 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
-		76BD329A19DF8A7B0054ED88 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
-		76BD329B19DF8A7B0054ED88 /* REComposeBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeBackgroundView.h; sourceTree = "<group>"; };
-		76BD329C19DF8A7B0054ED88 /* REComposeBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeBackgroundView.m; sourceTree = "<group>"; };
-		76BD329D19DF8A7B0054ED88 /* REComposeSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeSheetView.h; sourceTree = "<group>"; };
-		76BD329E19DF8A7B0054ED88 /* REComposeSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeSheetView.m; sourceTree = "<group>"; };
-		76BD329F19DF8A7B0054ED88 /* REComposeViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = REComposeViewController.bundle; sourceTree = "<group>"; };
-		76BD32A019DF8A7B0054ED88 /* REComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REComposeViewController.h; sourceTree = "<group>"; };
-		76BD32A119DF8A7B0054ED88 /* REComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REComposeViewController.m; sourceTree = "<group>"; };
 		76C2B08519F333300010E98B /* EVCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLoginViewController.h; sourceTree = "<group>"; };
 		76C2B08619F333300010E98B /* EVCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLoginViewController.m; sourceTree = "<group>"; };
-		76C2B08719F333300010E98B /* EVCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLoginViewController.xib; sourceTree = "<group>"; };
+		76C2B08719F333300010E98B /* EVCLoginViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLoginViewController_iPhone.xib; sourceTree = "<group>"; };
 		76C2B08D19F33EA60010E98B /* EVCLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLabelTableViewCell.h; sourceTree = "<group>"; };
 		76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLabelTableViewCell.m; sourceTree = "<group>"; };
-		76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLabelTableViewCell.xib; sourceTree = "<group>"; };
+		76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLabelTableViewCell_iPhone.xib; sourceTree = "<group>"; };
 		76C2B09219F342430010E98B /* EVCTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCTextFieldTableViewCell.h; sourceTree = "<group>"; };
 		76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCTextFieldTableViewCell.m; sourceTree = "<group>"; };
-		76C2B09419F342430010E98B /* EVCTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		76C2B09419F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCTextFieldTableViewCell_iPhone.xib; sourceTree = "<group>"; };
+		76C2B09719F4111F0010E98B /* EVCCommonMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCCommonMethods.h; sourceTree = "<group>"; };
+		76C2B09819F4111F0010E98B /* EVCCommonMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCCommonMethods.m; sourceTree = "<group>"; };
+		76C2B0E919F4AD680010E98B /* EVCPostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCPostView.h; sourceTree = "<group>"; };
+		76C2B0EA19F4AD680010E98B /* EVCPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCPostView.m; sourceTree = "<group>"; };
+		76C2B0EC19F4AD9F0010E98B /* EVCPostView_WithPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithPicture.xib; sourceTree = "<group>"; };
+		76C2B0EE19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithoutPicture.xib; sourceTree = "<group>"; };
+		76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VerveAPIBundle.bundle; path = "../../../Library/Developer/Xcode/DerivedData/MyDailyBeat-bodvbyhjqpeiggdehnrkxwklpekv/Build/Products/Debug-iphonesimulator/VerveAPIBundle.bundle"; sourceTree = "<group>"; };
 		76E64EFA19B933650022F189 /* plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-512.png"; sourceTree = "<group>"; };
-		76E64EFF19B9337C0022F189 /* settings-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-512.png"; sourceTree = "<group>"; };
 		76E64F0119B9338C0022F189 /* home-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-512.png"; sourceTree = "<group>"; };
+		76EF996919FD3CA900E15A14 /* settings-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-25.png"; sourceTree = "<group>"; };
+		76EF996B19FD3EA200E15A14 /* EVCGroupSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCGroupSettingsViewController.h; sourceTree = "<group>"; };
+		76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSettingsViewController.m; sourceTree = "<group>"; };
+		76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,16 +209,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		761D652919A15A4D0062B525 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				761D652E19A15A4D0062B525 /* XCTest.framework in Frameworks */,
-				761D653019A15A4D0062B525 /* UIKit.framework in Frameworks */,
-				761D652F19A15A4D0062B525 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -248,7 +217,6 @@
 			children = (
 				761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */,
 				761D651119A15A4D0062B525 /* MyDailyBeat */,
-				761D653319A15A4D0062B525 /* MyDailyBeatTests */,
 				761D650A19A15A4D0062B525 /* Frameworks */,
 				761D650919A15A4D0062B525 /* Products */,
 			);
@@ -258,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				761D650819A15A4D0062B525 /* MyDailyBeat.app */,
-				761D652C19A15A4D0062B525 /* MyDailyBeatTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,7 +239,6 @@
 				761D650B19A15A4D0062B525 /* Foundation.framework */,
 				761D650D19A15A4D0062B525 /* CoreGraphics.framework */,
 				761D650F19A15A4D0062B525 /* UIKit.framework */,
-				761D652D19A15A4D0062B525 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,12 +246,13 @@
 		761D651119A15A4D0062B525 /* MyDailyBeat */ = {
 			isa = PBXGroup;
 			children = (
-				76BD329419DF8A680054ED88 /* REComposeViewController */,
 				769EEA1119A42E1D00FF072E /* Headers */,
 				769EEA1219A42E2700FF072E /* Source */,
 				769EEA1319A42E3C00FF072E /* xib */,
 				761D652619A15A4D0062B525 /* Images.xcassets */,
 				761D651219A15A4D0062B525 /* Supporting Files */,
+				76C2B09719F4111F0010E98B /* EVCCommonMethods.h */,
+				76C2B09819F4111F0010E98B /* EVCCommonMethods.m */,
 			);
 			path = MyDailyBeat;
 			sourceTree = "<group>";
@@ -293,37 +260,20 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */,
 				76BD329219DF87FE0054ED88 /* edit_file-50.png */,
 				7636F6D019D501FD000B68B0 /* texture.png */,
 				7636F6C519D38EE1000B68B0 /* IQKeyboardManager.bundle */,
 				7636F6BE19CF7B0F000B68B0 /* user-50.png */,
 				76E64F0119B9338C0022F189 /* home-512.png */,
 				76E64EFA19B933650022F189 /* plus-512.png */,
-				76E64EFF19B9337C0022F189 /* settings-512.png */,
+				76EF996919FD3CA900E15A14 /* settings-25.png */,
 				769EEA9519A8DCBB00FF072E /* Stars@2x.png */,
 				761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */,
 				761D651319A15A4D0062B525 /* MyDailyBeat-Info.plist */,
 				761D651419A15A4D0062B525 /* InfoPlist.strings */,
 				761D651719A15A4D0062B525 /* main.m */,
 				761D651919A15A4D0062B525 /* MyDailyBeat-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		761D653319A15A4D0062B525 /* MyDailyBeatTests */ = {
-			isa = PBXGroup;
-			children = (
-				761D653919A15A4D0062B525 /* MyDailyBeatTests.m */,
-				761D653419A15A4D0062B525 /* Supporting Files */,
-			);
-			path = MyDailyBeatTests;
-			sourceTree = "<group>";
-		};
-		761D653419A15A4D0062B525 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				761D653519A15A4D0062B525 /* MyDailyBeatTests-Info.plist */,
-				761D653619A15A4D0062B525 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -341,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				769EEA9B19AA35A800FF072E /* EVCProfilePicView.h */,
+				76C2B0E919F4AD680010E98B /* EVCPostView.h */,
 				761D651A19A15A4D0062B525 /* EVCAppDelegate.h */,
 				761D652319A15A4D0062B525 /* EVCViewController.h */,
 				769EE9E919A2530100FF072E /* EVCRegistrationViewController.h */,
@@ -361,6 +312,7 @@
 				76C2B08519F333300010E98B /* EVCLoginViewController.h */,
 				76C2B08D19F33EA60010E98B /* EVCLabelTableViewCell.h */,
 				76C2B09219F342430010E98B /* EVCTextFieldTableViewCell.h */,
+				76EF996B19FD3EA200E15A14 /* EVCGroupSettingsViewController.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -369,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				769EEA9C19AA35A800FF072E /* EVCProfilePicView.m */,
+				76C2B0EA19F4AD680010E98B /* EVCPostView.m */,
 				761D651B19A15A4D0062B525 /* EVCAppDelegate.m */,
 				761D652419A15A4D0062B525 /* EVCViewController.m */,
 				769EE9EA19A2530100FF072E /* EVCRegistrationViewController.m */,
@@ -389,6 +342,7 @@
 				76C2B08619F333300010E98B /* EVCLoginViewController.m */,
 				76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */,
 				76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */,
+				76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -397,6 +351,8 @@
 			isa = PBXGroup;
 			children = (
 				769EEA1419A42E4200FF072E /* iPhone */,
+				76C2B0EC19F4AD9F0010E98B /* EVCPostView_WithPicture.xib */,
+				76C2B0EE19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -420,31 +376,12 @@
 				7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */,
 				7636F6C219CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib */,
 				7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */,
-				76C2B08719F333300010E98B /* EVCLoginViewController.xib */,
-				76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell.xib */,
-				76C2B09419F342430010E98B /* EVCTextFieldTableViewCell.xib */,
+				76C2B08719F333300010E98B /* EVCLoginViewController_iPhone.xib */,
+				76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib */,
+				76C2B09419F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib */,
+				76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */,
 			);
 			name = iPhone;
-			sourceTree = "<group>";
-		};
-		76BD329419DF8A680054ED88 /* REComposeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				76BD329519DF8A7B0054ED88 /* DEComposeRuledView.h */,
-				76BD329619DF8A7B0054ED88 /* DEComposeRuledView.m */,
-				76BD329719DF8A7B0054ED88 /* DEComposeTextView.h */,
-				76BD329819DF8A7B0054ED88 /* DEComposeTextView.m */,
-				76BD329919DF8A7B0054ED88 /* RECommonFunctions.h */,
-				76BD329A19DF8A7B0054ED88 /* RECommonFunctions.m */,
-				76BD329B19DF8A7B0054ED88 /* REComposeBackgroundView.h */,
-				76BD329C19DF8A7B0054ED88 /* REComposeBackgroundView.m */,
-				76BD329D19DF8A7B0054ED88 /* REComposeSheetView.h */,
-				76BD329E19DF8A7B0054ED88 /* REComposeSheetView.m */,
-				76BD329F19DF8A7B0054ED88 /* REComposeViewController.bundle */,
-				76BD32A019DF8A7B0054ED88 /* REComposeViewController.h */,
-				76BD32A119DF8A7B0054ED88 /* REComposeViewController.m */,
-			);
-			name = REComposeViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,24 +405,6 @@
 			productReference = 761D650819A15A4D0062B525 /* MyDailyBeat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		761D652B19A15A4D0062B525 /* MyDailyBeatTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 761D654019A15A4D0062B525 /* Build configuration list for PBXNativeTarget "MyDailyBeatTests" */;
-			buildPhases = (
-				761D652819A15A4D0062B525 /* Sources */,
-				761D652919A15A4D0062B525 /* Frameworks */,
-				761D652A19A15A4D0062B525 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				761D653219A15A4D0062B525 /* PBXTargetDependency */,
-			);
-			name = MyDailyBeatTests;
-			productName = MyDailyBeatTests;
-			productReference = 761D652C19A15A4D0062B525 /* MyDailyBeatTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -495,11 +414,6 @@
 				CLASSPREFIX = EVC;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = eVerveCorp;
-				TargetAttributes = {
-					761D652B19A15A4D0062B525 = {
-						TestTargetID = 761D650719A15A4D0062B525;
-					};
-				};
 			};
 			buildConfigurationList = 761D650319A15A4D0062B525 /* Build configuration list for PBXProject "MyDailyBeat" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -521,7 +435,6 @@
 			projectRoot = "";
 			targets = (
 				761D650719A15A4D0062B525 /* MyDailyBeat */,
-				761D652B19A15A4D0062B525 /* MyDailyBeatTests */,
 			);
 		};
 /* End PBXProject section */
@@ -553,40 +466,34 @@
 				761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */,
 				761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */,
 				7636F6C419CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib in Resources */,
+				76C2B0ED19F4AD9F0010E98B /* EVCPostView_WithPicture.xib in Resources */,
 				7636F6D119D501FD000B68B0 /* texture.png in Resources */,
+				76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */,
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
-				76C2B08919F333300010E98B /* EVCLoginViewController.xib in Resources */,
+				76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */,
 				76E64F0219B9338C0022F189 /* home-512.png in Resources */,
 				769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */,
-				76C2B09619F342430010E98B /* EVCTextFieldTableViewCell.xib in Resources */,
+				76C2B0EF19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib in Resources */,
+				76C2B09619F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib in Resources */,
 				76E64EFB19B933650022F189 /* plus-512.png in Resources */,
 				7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
 				7636F6CB19D4D881000B68B0 /* EVCGroupViewController_iPhone.xib in Resources */,
 				769EEB4119AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib in Resources */,
 				7636F6C619D38EE1000B68B0 /* IQKeyboardManager.bundle in Resources */,
+				76C2B10119F9DD590010E98B /* VerveAPIBundle.bundle in Resources */,
 				769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */,
-				76E64F0019B9337C0022F189 /* settings-512.png in Resources */,
+				76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */,
 				769EEB3719AC167900FF072E /* EVCSocialPrefsViewController_iPhone.xib in Resources */,
 				769EEA8C19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib in Resources */,
 				769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */,
 				769EEB4619AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib in Resources */,
 				769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */,
 				769EEA9F19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib in Resources */,
-				76C2B09119F33EA60010E98B /* EVCLabelTableViewCell.xib in Resources */,
-				76BD32A719DF8A7B0054ED88 /* REComposeViewController.bundle in Resources */,
+				76C2B09119F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib in Resources */,
 				769EEB3C19AC1A9300FF072E /* EVCRelationshipPrefsViewController_iPhone.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		761D652A19A15A4D0062B525 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				76BD329319DF87FE0054ED88 /* edit_file-50.png in Resources */,
-				761D653819A15A4D0062B525 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,30 +504,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76BD32A319DF8A7B0054ED88 /* DEComposeTextView.m in Sources */,
 				761D651819A15A4D0062B525 /* main.m in Sources */,
-				76BD32A219DF8A7B0054ED88 /* DEComposeRuledView.m in Sources */,
 				769EEA8B19A8D43900FF072E /* EVCPreferencesViewController.m in Sources */,
 				76C2B09519F342430010E98B /* EVCTextFieldTableViewCell.m in Sources */,
 				7636F6C319CF9074000B68B0 /* EVCUpdateProfileViewController.m in Sources */,
+				76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */,
 				769EE9F119A2B14900FF072E /* EVCLargeMessageViewController.m in Sources */,
 				769EEA9D19AA35A800FF072E /* EVCProfilePicView.m in Sources */,
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
-				76BD32A619DF8A7B0054ED88 /* REComposeSheetView.m in Sources */,
 				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
 				769EEAA319AA6BE800FF072E /* EVCMakeFriendsPrefsViewController.m in Sources */,
-				76BD32A419DF8A7B0054ED88 /* RECommonFunctions.m in Sources */,
 				769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */,
 				769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */,
 				761D652519A15A4D0062B525 /* EVCViewController.m in Sources */,
-				76BD32A519DF8A7B0054ED88 /* REComposeBackgroundView.m in Sources */,
 				769EEB3E19AC291000FF072E /* EVCFlingPrefsViewController.m in Sources */,
-				76BD32A819DF8A7B0054ED88 /* REComposeViewController.m in Sources */,
 				7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */,
+				76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */,
 				769EEA9419A8DBF900FF072E /* EVCMenuViewController.m in Sources */,
 				769EEB3119AC0CDD00FF072E /* EVCSocialPrefsViewController.m in Sources */,
 				76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */,
 				769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */,
+				76C2B09919F4111F0010E98B /* EVCCommonMethods.m in Sources */,
 				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				769EEB3A19AC1A5C00FF072E /* EVCRelationshipPrefsViewController.m in Sources */,
 				769EEB4A19AC2ADA00FF072E /* EVCVolunteeringPrefsViewController.m in Sources */,
@@ -628,22 +532,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		761D652819A15A4D0062B525 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				761D653A19A15A4D0062B525 /* MyDailyBeatTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		761D653219A15A4D0062B525 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 761D650719A15A4D0062B525 /* MyDailyBeat */;
-			targetProxy = 761D653119A15A4D0062B525 /* PBXContainerItemProxy */;
-		};
 		761D65AA19A1605E0062B525 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VerveAPI;
@@ -656,14 +547,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				761D651519A15A4D0062B525 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		761D653619A15A4D0062B525 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				761D653719A15A4D0062B525 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -785,46 +668,6 @@
 			};
 			name = Release;
 		};
-		761D654119A15A4D0062B525 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyDailyBeat.app/MyDailyBeat";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "MyDailyBeatTests/MyDailyBeatTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		761D654219A15A4D0062B525 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyDailyBeat.app/MyDailyBeat";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
-				INFOPLIST_FILE = "MyDailyBeatTests/MyDailyBeatTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -842,15 +685,6 @@
 			buildConfigurations = (
 				761D653E19A15A4D0062B525 /* Debug */,
 				761D653F19A15A4D0062B525 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		761D654019A15A4D0062B525 /* Build configuration list for PBXNativeTarget "MyDailyBeatTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				761D654119A15A4D0062B525 /* Debug */,
-				761D654219A15A4D0062B525 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

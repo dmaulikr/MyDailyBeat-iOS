@@ -7,12 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EVCTextFieldTableViewCell.h"
+#import "EVCLabelTableViewCell.h"
+#import "EVCRegistrationViewController.h"
+#import "UIView+Toast.h"
 
-@interface EVCLoginViewController : UIViewController <UITableViewDataSource>{
+@interface EVCLoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
     IBOutlet UIImageView *header;
     IBOutlet UIButton *loginButton;
     IBOutlet UITableView *fields;
     IBOutlet UIButton *signUp;
+    UITextField *userNameFeild;
+    UITextField *passWordFeild;
 }
+
+@property(nonatomic, retain) UITextField *userNameFeild;
+@property(nonatomic, retain) UITextField *passWordFeild;
+
+- (IBAction)login:(id)sender;
+- (IBAction)signup:(id)sender;
 
 @end

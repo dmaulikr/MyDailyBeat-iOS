@@ -84,7 +84,9 @@ static VerveUser *currentUser;
     
     NSMutableArray *items = [resultDic objectForKey:@"items"];
     NSMutableArray *retItems = [[NSMutableArray alloc] init];
-    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+
     for (int i= 0 ; i < [items count] ; ++i) {
         Post *p = [[Post alloc] init];
         NSDictionary *post = [items objectAtIndex:i];
@@ -92,7 +94,8 @@ static VerveUser *currentUser;
         p.blobKey = [post objectForKey:@"blobKey"];
         p.servingURL = [post objectForKey:@"servingURL"];
         p.userScreenName = [post objectForKey:@"userScreenName"];
-        p.dateTimeMillis = [[post objectForKey:@"when"] longValue];
+        p.post_id = [[post objectForKey:@"id"] intValue];
+        p.dateTimeMillis = [[f numberFromString:[post objectForKey:@"when"]] longLongValue];
         [retItems addObject:p];
     }
     
@@ -432,9 +435,12 @@ static VerveUser *currentUser;
 
 -(NSURL *) retrieveProfilePicture {
     NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
     NSDictionary *getServingURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/profile/blobkey/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    NSURL *url = [[NSURL alloc] initWithString:[getServingURLResult objectForKey:@"servingURL"]];
+    NSString *s = [getServingURLResult objectForKey:@"servingURL"];
+    if (s == nil) {
+        return nil;
+    }
+    NSURL *url = [[NSURL alloc] initWithString:s];
     return url;
 }
 
@@ -498,8 +504,13 @@ static VerveUser *currentUser;
 -(NSURL *) retrieveGroupPictureForGroup:(Group *) group {
     NSString *parameters = [NSString stringWithFormat:@"id=%d", group.groupID];
     NSDictionary *getServingURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/blobkey/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    NSURL *url = [[NSURL alloc] initWithString:[getServingURLResult objectForKey:@"servingURL"]];
+    NSString *s = [getServingURLResult objectForKey:@"servingURL"];
+    if (s == nil) {
+        return nil;
+    }
+    NSURL *url = [[NSURL alloc] initWithString:s];
     return url;
+
 }
 
 -(BOOL) writePost:(Post *) p withPictureData:(NSData *) attachedPic andPictureName:(NSString *) picName toGroup:(Group *) g {
@@ -537,7 +548,7 @@ static VerveUser *currentUser;
             [postData setObject:servingURL forKey:@"servingURL"];
             [postData setObject:p.postText forKey:@"postText"];
             [postData setObject:p.userScreenName forKey:@"userScreenName"];
-            [postData setObject:[NSNumber numberWithDouble:p.dateTimeMillis] forKey:@"when"];
+            [postData setObject:[NSNumber numberWithLongLong:p.dateTimeMillis] forKey:@"when"];
             [postData setObject:[NSNumber numberWithInt:g.groupID] forKey:@"id"];
             
             NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&requestError];
@@ -675,8 +686,9 @@ static VerveUser *currentUser;
             p.postText = [post objectForKey:@"postText"];
             p.blobKey = [post objectForKey:@"blobKey"];
             p.servingURL = [post objectForKey:@"servingURL"];
+            p.post_id = [[post objectForKey:@"id"] intValue];
             p.userScreenName = [post objectForKey:@"userScreenName"];
-            p.dateTimeMillis = [[post objectForKey:@"when"] longValue];
+            p.dateTimeMillis = [[post objectForKey:@"when"] longLongValue];
             [posts addObject:p];
         }
         g.posts = posts;

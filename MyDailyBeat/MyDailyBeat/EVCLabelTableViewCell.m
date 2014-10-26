@@ -12,7 +12,8 @@
 
 @synthesize messageLbl;
 - (id) initWithMessage:(NSString *)lblText {
-    self = [self init];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"EVCLabelTableViewCell_iPhone" owner:self options:nil];
+    self = [nib objectAtIndex:0];
     if (self) {
         self.message = lblText;
     }

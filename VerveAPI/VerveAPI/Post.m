@@ -10,6 +10,6 @@
 
 @implementation Post
 
-@synthesize postText, blobKey, servingURL, userScreenName, dateTimeMillis;
+@synthesize postText, blobKey, servingURL, userScreenName, dateTimeMillis, post_id;
 
 @end

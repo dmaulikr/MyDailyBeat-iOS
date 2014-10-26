@@ -41,10 +41,15 @@
     
     viewControllers = [NSMutableArray arrayWithObjects:initialViewController, secondViewController, thirdViewController, fourthViewController, fifthViewController, nil];
     
+    
+    
+    
     [self.viewPager reloadData];
     
     
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

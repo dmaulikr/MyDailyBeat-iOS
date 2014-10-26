@@ -75,6 +75,9 @@
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         NSURL *imageURL = [[API getInstance] retrieveProfilePicture];
+        if (imageURL == nil) {
+            return;
+        }
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
@@ -108,6 +111,14 @@
                 [self.sideMenuViewController hideMenuViewController];
                 
                 break;
+            case 2: {
+                EVCLoginViewController *login = [[EVCLoginViewController alloc] initWithNibName:@"EVCLoginViewController_iPhone" bundle:nil];
+                self.sideMenuViewController.contentViewController.view.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:login];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEY_SCREENNAME];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEY_PASSWORD];
+                [self.sideMenuViewController.contentViewController.navigationController popToRootViewControllerAnimated:YES];
+
+            }
                 
             default:
                 break;
@@ -140,7 +151,7 @@ titleForHeaderInSection:(NSInteger)section {
         case 0:
             return 5;
         case 1:
-            return 2;
+            return 3;
         default:
             return 1;
     }
@@ -198,8 +209,10 @@ titleForHeaderInSection:(NSInteger)section {
     } else {
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Edit Profile";
-        } else {
+        } else if (indexPath.row == 1){
             cell.textLabel.text = @"Preferences";
+        } else {
+            cell.textLabel.text = @"Logout";
         }
     }
     

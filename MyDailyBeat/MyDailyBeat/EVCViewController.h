@@ -12,6 +12,7 @@
 #import <UIView+Toast.h>
 #import "RESideMenu.h"
 #import "EVCProfileViewController.h"
+#import "EVCCommonMethods.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

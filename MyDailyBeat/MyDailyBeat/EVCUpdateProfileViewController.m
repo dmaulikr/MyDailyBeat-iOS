@@ -65,13 +65,12 @@
         NSString *fileName = ASSET_FILENAME;
         
         BOOL success = [[API getInstance] uploadProfilePicture:imgData withName:fileName];
-        NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.verve.VerveAPIBundle"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
-                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"check" ofType:@"png"]]];
+                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
             else {
-                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"error" ofType:@"png"]]];
+                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
                 return;
             }
             
@@ -86,11 +85,12 @@
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         NSURL *imageURL = [[API getInstance] retrieveProfilePicture];
+        if (imageURL == nil) return;
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             UIImage *profilePic = [UIImage imageWithData:imageData];
-            EVCProfilePicView *profile = [[EVCProfilePicView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height) andImage:profilePic];
+            EVCProfilePicView *profile = [[EVCProfilePicView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height) andImage:profilePic withName:[[API getInstance] getCurrentUser].screenName];
             [self.navigationController.navigationBar addSubview:profile];
             
         });
@@ -234,11 +234,10 @@
             BOOL result = [[API getInstance] editUser:current];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
-                NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.verve.VerveAPIBundle"];
                 if (result)
-                    [self.view makeToast:@"User edit successful!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"check" ofType:@"png"]]];
+                    [self.view makeToast:@"User edit successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
                 else {
-                    [self.view makeToast:@"User edit failed!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"error" ofType:@"png"]]];
+                    [self.view makeToast:@"User edit failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
                     return;
                 }
                 

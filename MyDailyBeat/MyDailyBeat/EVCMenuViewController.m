@@ -58,10 +58,6 @@
                 }
                     
                     break;
-                case 1: {
-                    EVCGroupViewController *controller = [[EVCGroupViewController alloc] initWithNibName:@"EVCGroupViewController_iPhone" bundle:nil];
-                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:controller] animated:YES];
-                }
                     
                     
                 default:
@@ -73,12 +69,17 @@
             if (indexPath.row == [groups count]) {
                 //create group here
                 DLAVAlertView *groupNameAlertView = [[DLAVAlertView alloc] initWithTitle:@"Enter Name of New Group" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                groupNameAlertView.alertViewStyle = DLAVAlertViewStylePlainTextInput;
+                [groupNameAlertView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+                    [self.sideMenuViewController hideMenuViewController];
+                    [self createGroupWithName:[alertView textFieldTextAtIndex:0]];
+                }];
             } else {
                 //add group selection here
                 Group *g = [groups objectAtIndex:indexPath.row];
                 EVCGroupViewController *controller = [[EVCGroupViewController alloc] initWithGroup:g];
                 [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:controller] animated:YES];
-
+                
             }
             
             break;
@@ -93,6 +94,29 @@
     
     [self.sideMenuViewController hideMenuViewController];
     
+    
+}
+
+- (void) createGroupWithName:(NSString *) name {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        BOOL success = [[API getInstance] createGroupWithName:name];
+        self.groups = [[API getInstance] getGroupsForCurrentUser];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            if (success)
+                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+            else {
+                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                return;
+            }
+            [self.tableView reloadData];
+            [self.tableView layoutIfNeeded];
+        });
+    });
     
 }
 
@@ -116,9 +140,9 @@
     NSLog(@"Another method got called");
     switch (sectionIndex) {
         case 0:
-            return 2;
-            case 1:
-             return [groups count] + 1;
+            return 1;
+        case 1:
+            return [groups count] + 1;
             
         default:
             return 1;
@@ -131,7 +155,6 @@
     NSString *cellIdentifier = @"Cell";
     NSLog(@"This method was called: section: %d, row: %d", indexPath.section, indexPath.row);
     
-    NSMutableArray *arrElements = [NSMutableArray arrayWithObjects:@"Home", @"Test Group Page", nil];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
@@ -148,13 +171,10 @@
     switch (indexPath.section) {
         case 0:
             
-            cell.textLabel.text = [arrElements objectAtIndex:indexPath.row];
-            switch (indexPath.row) {
-                case 0:
-                    cell.imageView.image = [UIImage imageNamed:@"home-512"];
-                    break;
-                    
-            }
+            cell.textLabel.text = @"Home";
+            
+            cell.imageView.image = [UIImage imageNamed:@"home-512"];
+            
             break;
         case 1:
             if (indexPath.row == [groups count]) {

@@ -14,6 +14,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl;
 @property (nonatomic, retain) IBOutlet UIImageView *profilePic;
 
-- (id)initWithFrame:(CGRect)frame andImage:(UIImage *) pic;
+- (id)initWithFrame:(CGRect)frame andImage:(UIImage *) pic withName:(NSString *)name;
 
 @end

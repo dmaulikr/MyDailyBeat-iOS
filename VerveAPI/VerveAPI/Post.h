@@ -10,10 +10,11 @@
 
 @interface Post : NSObject
 
+@property (nonatomic) int post_id;
 @property (nonatomic, retain) NSString *postText;
 @property (nonatomic, retain) NSString *blobKey;
 @property (nonatomic, retain) NSString *servingURL;
 @property (nonatomic, retain) NSString *userScreenName;
-@property (nonatomic) long dateTimeMillis;
+@property (nonatomic) long long dateTimeMillis;
 
 @end

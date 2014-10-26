@@ -17,6 +17,8 @@
 #import "EVCRelationshipPrefsViewController.h"
 #import "EVCFlingPrefsViewController.h"
 #import "EVCVolunteeringPrefsViewController.h"
+#import "EVCCommonMethods.h"
+#import "RESideMenu.h"
 
 @interface EVCPreferencesViewController : UIViewController
 
