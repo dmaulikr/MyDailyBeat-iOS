@@ -13,6 +13,14 @@
 #import <EVCProfilePicView.h>
 #import "UIView+Toast.h"
 
+@class EVCGroupSettingsViewController;
+
+@protocol EVCGroupSettingsViewControllerDelegate <NSObject>
+
+- (void) EVCGroupSettingsViewControllerDelegateDidDeleteGroup:(EVCGroupSettingsViewController *) controller;
+
+@end
+
 typedef void (^EVCGroupSettingsViewControllerCompletionHandler)(void);
 
 @interface EVCGroupSettingsViewController : UIViewController <FXFormControllerDelegate>
@@ -23,6 +31,7 @@ typedef void (^EVCGroupSettingsViewControllerCompletionHandler)(void);
 @property (nonatomic) Group *g;
 
 @property (nonatomic, copy) EVCGroupSettingsViewControllerCompletionHandler handler;
+@property (nonatomic) __weak id<EVCGroupSettingsViewControllerDelegate> delegate;
 
 - (id) initWithGroup:(Group *) group andCompletionBlock:(EVCGroupSettingsViewControllerCompletionHandler) completion;
 

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EVCPostView">
             <connections>
+                <outlet property="deleteButton" destination="3Q5-dD-WAl" id="YVt-dS-6hc"/>
                 <outlet property="postTextLbl" destination="n2Q-Ht-EiP" id="GXM-9b-OPv"/>
                 <outlet property="profilePicView" destination="7pV-xX-vxj" id="Xku-8u-hY8"/>
                 <outlet property="screenNameLbl" destination="euj-qr-lxu" id="wey-mJ-3Ve"/>
@@ -39,6 +40,13 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Q5-dD-WAl">
+                    <rect key="frame" x="267" y="4" width="25" height="25"/>
+                    <state key="normal" image="delete_sign-25.png"/>
+                    <connections>
+                        <action selector="deletePost:" destination="-1" eventType="touchUpInside" id="jf5-wj-kw7"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -46,4 +54,7 @@
             <point key="canvasLocation" x="331" y="315.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="delete_sign-25.png" width="25" height="25"/>
+    </resources>
 </document>

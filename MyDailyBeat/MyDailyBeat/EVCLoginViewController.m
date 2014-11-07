@@ -45,10 +45,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 RESideMenu *sideMenuViewController;
-                EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups];
+                
                 EVCProfileViewController *profile = [[EVCProfileViewController alloc] initWithNibName:@"EVCProfileViewController_iPhone" bundle:nil];
                 EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-                sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
+                UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
+                EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups andParent:root];
+                
+                sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:root
                                                                     leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
                                                                    rightMenuViewController:menu];
                 sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
@@ -151,10 +154,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             [[NSUserDefaults standardUserDefaults] setObject:username forKey:KEY_SCREENNAME];
             [[NSUserDefaults standardUserDefaults] setObject:pass forKey:KEY_PASSWORD];
             RESideMenu *sideMenuViewController;
-            EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups];
             EVCProfileViewController *profile = [[EVCProfileViewController alloc] initWithNibName:@"EVCProfileViewController_iPhone" bundle:nil];
             EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-            sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
+            UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
+            EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups andParent:root];
+            
+            sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:root
                                                                 leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
                                                                rightMenuViewController:menu];
             sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];

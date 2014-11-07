@@ -11,5 +11,6 @@
 @interface EVCCommonMethods : NSObject
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
++ (UIButton *) barButtonSystemItem:(UIBarButtonSystemItem) item withText:(NSString *) title;
 
 @end

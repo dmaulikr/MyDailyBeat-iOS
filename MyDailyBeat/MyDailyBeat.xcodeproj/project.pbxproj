@@ -27,6 +27,9 @@
 		7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */; };
 		7636F6CB19D4D881000B68B0 /* EVCGroupViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */; };
 		7636F6D119D501FD000B68B0 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6D019D501FD000B68B0 /* texture.png */; };
+		7671FC5A19FDCE28000ECDAF /* user-50_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC5919FDCE28000ECDAF /* user-50_white.png */; };
+		7671FC5F19FF316B000ECDAF /* delete_sign-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC5E19FF316B000ECDAF /* delete_sign-25.png */; };
+		7671FC6D1A06F81D000ECDAF /* add_user-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC6C1A06F81C000ECDAF /* add_user-25.png */; };
 		769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EE9EA19A2530100FF072E /* EVCRegistrationViewController.m */; };
 		769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EE9EB19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib */; };
 		769EE9F119A2B14900FF072E /* EVCLargeMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */; };
@@ -127,6 +130,9 @@
 		7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupViewController.m; sourceTree = "<group>"; };
 		7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupViewController_iPhone.xib; sourceTree = "<group>"; };
 		7636F6D019D501FD000B68B0 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		7671FC5919FDCE28000ECDAF /* user-50_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-50_white.png"; sourceTree = "<group>"; };
+		7671FC5E19FF316B000ECDAF /* delete_sign-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_sign-25.png"; sourceTree = "<group>"; };
+		7671FC6C1A06F81C000ECDAF /* add_user-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_user-25.png"; sourceTree = "<group>"; };
 		769EE9E919A2530100FF072E /* EVCRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCRegistrationViewController.h; sourceTree = "<group>"; };
 		769EE9EA19A2530100FF072E /* EVCRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCRegistrationViewController.m; sourceTree = "<group>"; };
 		769EE9EB19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCRegistrationViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -260,11 +266,14 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7671FC6C1A06F81C000ECDAF /* add_user-25.png */,
 				76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */,
 				76BD329219DF87FE0054ED88 /* edit_file-50.png */,
 				7636F6D019D501FD000B68B0 /* texture.png */,
+				7671FC5E19FF316B000ECDAF /* delete_sign-25.png */,
 				7636F6C519D38EE1000B68B0 /* IQKeyboardManager.bundle */,
 				7636F6BE19CF7B0F000B68B0 /* user-50.png */,
+				7671FC5919FDCE28000ECDAF /* user-50_white.png */,
 				76E64F0119B9338C0022F189 /* home-512.png */,
 				76E64EFA19B933650022F189 /* plus-512.png */,
 				76EF996919FD3CA900E15A14 /* settings-25.png */,
@@ -466,8 +475,10 @@
 				761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */,
 				761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */,
 				7636F6C419CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib in Resources */,
+				7671FC6D1A06F81D000ECDAF /* add_user-25.png in Resources */,
 				76C2B0ED19F4AD9F0010E98B /* EVCPostView_WithPicture.xib in Resources */,
 				7636F6D119D501FD000B68B0 /* texture.png in Resources */,
+				7671FC5A19FDCE28000ECDAF /* user-50_white.png in Resources */,
 				76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */,
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
@@ -485,6 +496,7 @@
 				7636F6C619D38EE1000B68B0 /* IQKeyboardManager.bundle in Resources */,
 				76C2B10119F9DD590010E98B /* VerveAPIBundle.bundle in Resources */,
 				769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */,
+				7671FC5F19FF316B000ECDAF /* delete_sign-25.png in Resources */,
 				76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */,
 				769EEB3719AC167900FF072E /* EVCSocialPrefsViewController_iPhone.xib in Resources */,
 				769EEA8C19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib in Resources */,

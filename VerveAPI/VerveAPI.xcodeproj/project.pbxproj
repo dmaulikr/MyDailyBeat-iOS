@@ -22,6 +22,9 @@
 		761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659619A15FD40062B525 /* AFURLSessionManager.m */; };
 		761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B419A1A6BC0062B525 /* RESideMenu.m */; };
 		761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */; };
+		7671FC631A04528D000ECDAF /* EVCUserSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC621A04528D000ECDAF /* EVCUserSearchEngine.m */; };
+		7671FC671A06CE04000ECDAF /* EVCSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC651A06CE04000ECDAF /* EVCSearchViewViewController.m */; };
+		7671FC6E1A06FA52000ECDAF /* EVCSearchViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC661A06CE04000ECDAF /* EVCSearchViewViewController.xib */; };
 		769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2019A55F1100FF072E /* SHViewPager.m */; };
 		769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2219A55F1100FF072E /* SHViewPagerController.m */; };
 		769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2E19A646FC00FF072E /* UIView+Toast.m */; };
@@ -95,6 +98,11 @@
 		761D65B419A1A6BC0062B525 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		761D65B519A1A6BC0062B525 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		7671FC611A04528D000ECDAF /* EVCUserSearchEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCUserSearchEngine.h; sourceTree = "<group>"; };
+		7671FC621A04528D000ECDAF /* EVCUserSearchEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCUserSearchEngine.m; sourceTree = "<group>"; };
+		7671FC641A06CE03000ECDAF /* EVCSearchViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCSearchViewViewController.h; sourceTree = "<group>"; };
+		7671FC651A06CE04000ECDAF /* EVCSearchViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCSearchViewViewController.m; sourceTree = "<group>"; };
+		7671FC661A06CE04000ECDAF /* EVCSearchViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCSearchViewViewController.xib; sourceTree = "<group>"; };
 		769EE9F719A2B6AB00FF072E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		769EEA1F19A55F1100FF072E /* SHViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPager.h; sourceTree = "<group>"; };
 		769EEA2019A55F1100FF072E /* SHViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPager.m; sourceTree = "<group>"; };
@@ -206,6 +214,7 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				7671FC601A04525C000ECDAF /* UserSearch */,
 				76C2B10A19F9F1F10010E98B /* EVCComposeViewController */,
 				769EEB2619ABB89600FF072E /* FXForms */,
 				769EE9F319A2B2DA00FF072E /* Other Headers */,
@@ -291,6 +300,18 @@
 				761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */,
 			);
 			name = RESideMenu;
+			sourceTree = "<group>";
+		};
+		7671FC601A04525C000ECDAF /* UserSearch */ = {
+			isa = PBXGroup;
+			children = (
+				7671FC611A04528D000ECDAF /* EVCUserSearchEngine.h */,
+				7671FC621A04528D000ECDAF /* EVCUserSearchEngine.m */,
+				7671FC641A06CE03000ECDAF /* EVCSearchViewViewController.h */,
+				7671FC651A06CE04000ECDAF /* EVCSearchViewViewController.m */,
+				7671FC661A06CE04000ECDAF /* EVCSearchViewViewController.xib */,
+			);
+			name = UserSearch;
 			sourceTree = "<group>";
 		};
 		769EE9F319A2B2DA00FF072E /* Other Headers */ = {
@@ -480,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7671FC6E1A06FA52000ECDAF /* EVCSearchViewViewController.xib in Resources */,
 				76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */,
 				76C2B10719F9EBC60010E98B /* warning.png in Resources */,
 				76C2B10619F9EBC60010E98B /* error.png in Resources */,
@@ -504,6 +526,7 @@
 				76EF997219FD40A300E15A14 /* GroupPrefs.m in Sources */,
 				76BD327D19DF7F6D0054ED88 /* RECommonFunctions.m in Sources */,
 				76EF996219FC507F00E15A14 /* EVCComposeViewController.m in Sources */,
+				7671FC671A06CE04000ECDAF /* EVCSearchViewViewController.m in Sources */,
 				761D659819A15FD40062B525 /* AFHTTPRequestOperationManager.m in Sources */,
 				761D659A19A15FD40062B525 /* AFNetworkReachabilityManager.m in Sources */,
 				761D659E19A15FD40062B525 /* AFURLResponseSerialization.m in Sources */,
@@ -519,6 +542,7 @@
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
 				769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */,
+				7671FC631A04528D000ECDAF /* EVCUserSearchEngine.m in Sources */,
 				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
 				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
 				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,

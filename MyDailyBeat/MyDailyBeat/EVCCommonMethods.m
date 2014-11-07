@@ -21,4 +21,15 @@
     return newImage;
 }
 
++ (UIButton *) barButtonSystemItem:(UIBarButtonSystemItem) item withText:(NSString *) title {
+    UIBarButtonItem *tempBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:nil action:nil];
+    UIImage *img = tempBarButton.image;
+    UIButton *btn = [[UIButton alloc] init];
+    [btn setBackgroundImage:img forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    
+    return btn;
+
+}
+
 @end

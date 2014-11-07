@@ -18,10 +18,11 @@
 
 @synthesize groups;
 
-- (id) initWithGroups:(NSMutableArray *) groupsArray {
+- (id) initWithGroups:(NSMutableArray *) groupsArray andParent:(UIViewController *) parent {
     self = [self init];
     if (self) {
         groups = groupsArray;
+        self.parentController = parent;
     }
     return self;
 }
@@ -40,6 +41,22 @@
     self.tableView.bounces = NO;
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = [UIColor clearColor];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        self.groups = [[API getInstance] getGroupsForCurrentUser];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            [self.tableView reloadData];
+            [self.tableView layoutIfNeeded];
+        });
+    });
 }
 
 #pragma mark -
@@ -77,7 +94,7 @@
             } else {
                 //add group selection here
                 Group *g = [groups objectAtIndex:indexPath.row];
-                EVCGroupViewController *controller = [[EVCGroupViewController alloc] initWithGroup:g];
+                EVCGroupViewController *controller = [[EVCGroupViewController alloc] initWithGroup:g andParent:self.parentController];
                 [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:controller] animated:YES];
                 
             }

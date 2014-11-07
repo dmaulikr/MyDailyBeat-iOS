@@ -15,6 +15,7 @@
 @interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSMutableArray *groups;
+@property (nonatomic) UIViewController *parentController;
 
-- (id) initWithGroups:(NSMutableArray *) groupsArray;
+- (id) initWithGroups:(NSMutableArray *) groupsArray andParent:(UIViewController *) parent;
 @end

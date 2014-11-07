@@ -15,22 +15,25 @@
 #import "EVCPostView.h"
 #import <EVCComposeViewController.h>
 #import <EVCGroupSettingsViewController.h>
+#import "EVCViewController.h"
+#import <EVCSearchViewViewController.h>
 
-
-@interface EVCGroupViewController : UIViewController {
+@interface EVCGroupViewController : UIViewController <EVCGroupSettingsViewControllerDelegate>{
     int max_post_height;
 }
 
 @property (nonatomic) IBOutlet UIScrollView *scroll;
 @property (nonatomic) IBOutlet UIImageView *imageView;
-@property (nonatomic) IBOutlet UILabel *screenNameLbl;
-@property (nonatomic) IBOutlet UIButton *composeButton, *settingsButton;
+@property (nonatomic) UIBarButtonItem *composeButton, *settingsButton, *inviteButton;
 @property (nonatomic) Group *group;
+@property (nonatomic) IBOutlet UIToolbar *groupBar;
+@property (nonatomic) UIViewController *parentController;
 
-- (id) initWithGroup:(Group *) g;
+- (id) initWithGroup:(Group *) g andParent:(UIViewController *) parent;
 
-- (IBAction)writePost:(id)sender;
-- (IBAction)groupSettings:(id)sender;
+- (void)writePost;
+- (void)groupSettings;
+- (void) deletePost:(Post *) p;
 
 
 @end

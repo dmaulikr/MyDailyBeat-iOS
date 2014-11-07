@@ -102,5 +102,24 @@
     
 }
 
+- (void)deleteGroup:(UITableViewCell<FXFormFieldCell> *)cell {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        
+        BOOL success = [[API getInstance] deleteGroup:self.g];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            if (success)
+                [self.delegate EVCGroupSettingsViewControllerDelegateDidDeleteGroup:self];
+            else
+                NSLog(@"Failed");
+            
+        });
+    });
+}
+
 
 @end

@@ -31,4 +31,7 @@ typedef NS_ENUM(NSInteger, SexualPreference) {
 
 #define CREATE_NEW_GROUP @"New Group"
 
+// hex color
+#define UIColorFromHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 #endif

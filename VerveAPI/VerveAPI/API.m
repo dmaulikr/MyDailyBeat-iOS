@@ -434,7 +434,11 @@ static VerveUser *currentUser;
 }
 
 -(NSURL *) retrieveProfilePicture {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
+    return [self retrieveProfilePictureForUserWithScreenName:currentUser.screenName];
+}
+
+-(NSURL *) retrieveProfilePictureForUserWithScreenName:(NSString *) screenName{
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:screenName]];
     NSDictionary *getServingURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/profile/blobkey/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     NSString *s = [getServingURLResult objectForKey:@"servingURL"];
     if (s == nil) {
@@ -508,6 +512,8 @@ static VerveUser *currentUser;
     if (s == nil) {
         return nil;
     }
+    group.servingURL = s;
+    group.blobKey = [getServingURLResult objectForKey:@"blobKey"];
     NSURL *url = [[NSURL alloc] initWithString:s];
     return url;
 
@@ -661,6 +667,28 @@ static VerveUser *currentUser;
     return mimeType;
 }
 
+- (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(SearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder {
+    NSString *parameters = [@"query=" stringByAppendingString:[self urlencode:currentUser.screenName]];
+    parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
+
+    switch (type) {
+        case SearchByScreenName: {
+            return [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/search/screenName" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+        }
+            break;
+        
+        case SearchByEmail: {
+            return [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/search/email" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+        }
+            break;
+            
+        case SearchByName: {
+            return [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/search/name" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+        }
+            break;
+    }
+}
+
 - (NSMutableArray *) getGroupsForCurrentUser {
     NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
     parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
@@ -754,6 +782,34 @@ static VerveUser *currentUser;
         
     } @catch (NSException *e) {
         NSLog(@"%@", e);
+    }
+    
+    return NO;
+    
+}
+
+- (BOOL) deletePost:(Post *) p {
+    NSString *parameters = [@"id=" stringByAppendingString:[NSString stringWithFormat:@"%d", p.post_id]];
+
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/posts/delete" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSString *response = [resultDic objectForKey:@"response"];
+    if ([response isEqualToString:@"Operation succeeded"]) {
+        return YES;
+    }
+    
+    return NO;
+
+}
+
+- (BOOL) deleteGroup:(Group *) g {
+    NSString *parameters = [@"id=" stringByAppendingString:[NSString stringWithFormat:@"%d", g.groupID]];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/delete" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSString *response = [resultDic objectForKey:@"response"];
+    if ([response isEqualToString:@"Operation succeeded"]) {
+        return YES;
     }
     
     return NO;

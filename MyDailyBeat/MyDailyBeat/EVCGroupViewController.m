@@ -14,10 +14,17 @@
 
 @implementation EVCGroupViewController
 
-- (id) initWithGroup:(Group *) g {
+- (void) EVCGroupSettingsViewControllerDelegateDidDeleteGroup:(EVCGroupSettingsViewController *) controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    [self.sideMenuViewController setContentViewController:self.parentController animated:YES];
+    [self.parentController.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+}
+
+- (id) initWithGroup:(Group *) g andParent:(UIViewController *) parent {
     self = [self initWithNibName:@"EVCGroupViewController_iPhone" bundle:nil];
     if (self) {
         self.group = g;
+        self.parentController = parent;
     }
     return self;
 }
@@ -34,7 +41,7 @@
     });
 }
 
-- (IBAction)writePost:(id)sender {
+- (void)writePost {
     EVCComposeViewControllerCompletionHandler completionHandler = ^(NSString* message, UIImage* image) {
         NSLog(@"Text: %@", message);
         UIImage *attachedImage = image;
@@ -96,8 +103,19 @@
     self.imageView.layer.shadowRadius = 1.0;
     self.imageView.clipsToBounds = NO;
     
+     _composeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(writePost)];
     
-    self.screenNameLbl.text = self.group.groupName;
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    _inviteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add_user-25.png"] style:UIBarButtonItemStylePlain target:self action:@selector(invite)];
+    
+    _settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings-25.png"] style:UIBarButtonItemStylePlain target:self action:@selector(groupSettings)];
+    
+    NSArray *items = [[NSArray alloc] initWithObjects:_composeButton, space, _inviteButton, _settingsButton, nil];
+    [self.groupBar setItems:items animated:YES];
+    
+    
+    self.title = self.group.groupName;
     
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"1408346500_menu-alt"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
@@ -122,9 +140,9 @@
     self.navigationItem.leftBarButtonItem = profileButton;
     
     if ([[[API getInstance] getCurrentUser].screenName isEqualToString:self.group.adminName]) {
-        _settingsButton.hidden = NO;
+        [_settingsButton setEnabled:YES];
     } else {
-        _settingsButton.hidden = YES;
+        [_settingsButton setEnabled:NO];
     }
     
     [self refreshGroupData];
@@ -132,6 +150,12 @@
     [self loadPosts];
     
     
+}
+
+- (void) invite {
+    EVCSearchViewViewController *searchController = [[EVCSearchViewViewController alloc] init];
+    [self presentViewController:searchController animated:YES completion:nil];
+
 }
 
 - (void) loadPicture {
@@ -149,12 +173,36 @@
     
 }
 
-- (IBAction)groupSettings:(id)sender {
+- (void) deletePost:(Post *) p {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        
+        BOOL success = [[API getInstance] deletePost:p];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            if (success)
+                [self.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+            else {
+                [self.view makeToast:@"Delete failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                return;
+            }
+            [self refreshGroupData];
+            [self loadPosts];
+        });
+        
+    });
+}
+
+- (void)groupSettings {
     EVCGroupSettingsViewController *settingsController = [[EVCGroupSettingsViewController alloc] initWithGroup:self.group andCompletionBlock:^{
         [self refreshGroupData];
         [self loadPicture];
         [self loadPosts];
     }];
+    settingsController.delegate = self;
     [settingsController setTitle:@"Group Settings"];
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:settingsController] animated:YES completion:nil];
 }
@@ -189,7 +237,7 @@
     UIView *postView;
     [postView setBackgroundColor:[UIColor whiteColor]];
     if (inputPost.blobKey != nil) {
-        EVCPostView *post = [[EVCPostView alloc] initWithFrame:CGRectMake(0, 0, 300, 400) andPost:inputPost withPostType:EVCPostTypeHasPicture];
+        EVCPostView *post = [[EVCPostView alloc] initWithFrame:CGRectMake(0, 0, 300, 400) andPost:inputPost withPostType:EVCPostTypeHasPicture andParent:self];
         postView = [[UIView alloc] initWithFrame:CGRectMake(10, max_post_height, 300, 400)];
         [postView addSubview:post];
         
@@ -197,7 +245,7 @@
         
         
     } else {
-        EVCPostView *post = [[EVCPostView alloc] initWithFrame:CGRectMake(0, 0, 300, 178) andPost:inputPost withPostType:EVCPostTypeDoesNotHavePicture];
+        EVCPostView *post = [[EVCPostView alloc] initWithFrame:CGRectMake(0, 0, 300, 178) andPost:inputPost withPostType:EVCPostTypeDoesNotHavePicture andParent:self];
         postView = [[UIView alloc] initWithFrame:CGRectMake(10, max_post_height, 300, 178)];
         [postView addSubview:post];
         

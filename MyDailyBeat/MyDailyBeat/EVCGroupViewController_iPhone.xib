@@ -7,11 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EVCGroupViewController">
             <connections>
-                <outlet property="composeButton" destination="Y6i-Rw-NTy" id="ySO-IK-cJH"/>
+                <outlet property="groupBar" destination="SQJ-xx-nLG" id="4G9-ym-XSC"/>
                 <outlet property="imageView" destination="qDK-ge-Uiv" id="uLq-zC-TWg"/>
-                <outlet property="screenNameLbl" destination="jBA-8M-7lS" id="oBb-xB-xvS"/>
-                <outlet property="scroll" destination="Wzq-i4-Riz" id="VK2-iW-WII"/>
-                <outlet property="settingsButton" destination="hTe-YC-4mM" id="nIT-E1-xtZ"/>
+                <outlet property="scroll" destination="6W1-vr-z7N" id="iXD-H3-7Ok"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,55 +18,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sk-4b-FTA">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qDK-ge-Uiv">
-                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBA-8M-7lS">
-                            <rect key="frame" x="136" y="53" width="176" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGA-Xw-taf">
-                    <rect key="frame" x="0.0" y="128" width="320" height="44"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6i-Rw-NTy">
-                            <rect key="frame" x="8" y="0.0" width="68" height="43"/>
-                            <state key="normal" title="New Post">
-                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="writePost:" destination="-1" eventType="touchUpInside" id="nuE-FO-iJV"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTe-YC-4mM">
-                            <rect key="frame" x="277" y="0.0" width="43" height="43"/>
-                            <state key="normal" image="settings-25.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="groupSettings:" destination="-1" eventType="touchUpInside" id="23g-3V-KqA"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wzq-i4-Riz">
-                    <rect key="frame" x="0.0" y="172" width="320" height="308"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6W1-vr-z7N">
+                    <rect key="frame" x="0.0" y="193" width="320" height="287"/>
                 </scrollView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQJ-xx-nLG">
+                    <rect key="frame" x="0.0" y="193" width="320" height="44"/>
+                    <items/>
+                </toolbar>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qDK-ge-Uiv">
+                    <rect key="frame" x="0.0" y="65" width="320" height="128"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="269" y="292"/>
         </view>
     </objects>
-    <resources>
-        <image name="settings-25.png" width="25" height="25"/>
-    </resources>
 </document>

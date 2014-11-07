@@ -38,4 +38,11 @@
     return @{FXFormFieldTitle: @"Change Group Picture"};
 }
 
+- (NSArray *)extraFields
+{
+    return @[
+             @{FXFormFieldTitle: @"Delete Group", FXFormFieldHeader: @"", FXFormFieldAction: @"deleteGroup:", @"contentView.backgroundColor": [UIColor redColor], @"textLabel.color": [UIColor whiteColor]},
+             ];
+}
+
 @end

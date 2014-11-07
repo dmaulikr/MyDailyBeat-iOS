@@ -11,7 +11,7 @@
 @implementation EVCPostView
 @synthesize postObj, postType, postTextLbl, screenNameLbl, whenLbl, postPicView, profilePicView;
 
-- (id) initWithFrame:(CGRect)frame andPost:(Post *) pObj withPostType:(EVCPostType) type {
+- (id) initWithFrame:(CGRect)frame andPost:(Post *) pObj withPostType:(EVCPostType) type andParent:(UIViewController *) parent {
     NSLog(@"Loading a post...");
     self = [super initWithFrame:frame];
     if(!self){
@@ -28,8 +28,13 @@
     
     postObj = pObj;
     postType = type;
+    self.parentViewController = parent;
     [self loadData];
     return self;
+}
+
+- (IBAction)deletePost:(id)sender {
+    [(EVCGroupViewController *) _parentViewController deletePost:postObj];
 }
 
 - (BOOL) automaticallyAdjustsScrollViewInsets {

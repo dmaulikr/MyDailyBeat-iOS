@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 #import <API.h>
+#import "EVCGroupViewController.h"
 
 typedef enum {
     EVCPostTypeHasPicture = 1,
@@ -21,8 +22,11 @@ typedef enum {
 @property EVCPostType postType;
 @property (nonatomic) IBOutlet UILabel *screenNameLbl, *whenLbl;
 @property (nonatomic) IBOutlet UITextView *postTextLbl;
+@property (nonatomic) IBOutlet UIButton *deleteButton;
 @property (nonatomic) Post *postObj;
+@property (nonatomic) UIViewController *parentViewController;
 
-- (id) initWithFrame:(CGRect)frame andPost:(Post *) pObj withPostType:(EVCPostType) type;
+- (id) initWithFrame:(CGRect)frame andPost:(Post *) pObj withPostType:(EVCPostType) type andParent:(UIViewController *) parent;
+- (IBAction)deletePost:(id)sender;
 
 @end
