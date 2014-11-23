@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Group : NSObject
+@interface Group : NSObject <NSCopying>
 
 @property (nonatomic, retain) NSString *groupName;
 @property (nonatomic, retain) NSString *adminName;

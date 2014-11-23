@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Post : NSObject
+@interface Post : NSObject <NSCopying>
 
 @property (nonatomic) int post_id;
 @property (nonatomic, retain) NSString *postText;

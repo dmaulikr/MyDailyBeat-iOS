@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "API.h"
 
-@interface EVCUserSearchEngine : NSObject
+@interface EVCSearchEngine : NSObject
 
 - (NSMutableArray *) getUsersWithScreenNameContainingString:(NSString *) searchString withSortOrder:(EVCSearchSortOrder) sort_order;
 
 - (NSMutableArray *) getUsersWithNameContainingString:(NSString *) searchString withSortOrder:(EVCSearchSortOrder) sort_order;
 
 - (NSMutableArray *) getUsersWithEmailContainingString:(NSString *) searchString withSortOrder:(EVCSearchSortOrder) sort_order;
+
+- (NSMutableArray *) getGroupsWithNameContainingString:(NSString *) queryString withSortOrder:(EVCSearchSortOrder) sort_order;
 
 
 @end

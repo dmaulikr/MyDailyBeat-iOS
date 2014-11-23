@@ -85,12 +85,12 @@
 			remoteGlobalIDString = 761D654C19A15B680062B525;
 			remoteInfo = VerveAPI;
 		};
-		761D65A919A1605E0062B525 /* PBXContainerItemProxy */ = {
+		7671FC821A0DC079000ECDAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 761D654B19A15B680062B525;
-			remoteInfo = VerveAPI;
+			remoteGlobalIDString = 7671FC791A0DBE9F000ECDAF;
+			remoteInfo = VerveAPITarget;
 		};
 		769EEA7319A80B5400FF072E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -407,7 +407,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				761D65AA19A1605E0062B525 /* PBXTargetDependency */,
+				7671FC831A0DC079000ECDAF /* PBXTargetDependency */,
 			);
 			name = MyDailyBeat;
 			productName = MyDailyBeat;
@@ -547,10 +547,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		761D65AA19A1605E0062B525 /* PBXTargetDependency */ = {
+		7671FC831A0DC079000ECDAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = VerveAPI;
-			targetProxy = 761D65A919A1605E0062B525 /* PBXContainerItemProxy */;
+			name = VerveAPITarget;
+			targetProxy = 7671FC821A0DC079000ECDAF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

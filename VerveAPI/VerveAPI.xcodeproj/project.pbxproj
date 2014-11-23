@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		7671FC791A0DBE9F000ECDAF /* VerveAPITarget */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7671FC7A1A0DBEA0000ECDAF /* Build configuration list for PBXAggregateTarget "VerveAPITarget" */;
+			buildPhases = (
+			);
+			dependencies = (
+				7671FC7E1A0DBEE6000ECDAF /* PBXTargetDependency */,
+				7671FC801A0DBEE9000ECDAF /* PBXTargetDependency */,
+			);
+			name = VerveAPITarget;
+			productName = VerveAPITarget;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		761D655019A15B680062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D654F19A15B680062B525 /* Foundation.framework */; };
 		761D657719A15BE90062B525 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D657619A15BE90062B525 /* API.m */; };
@@ -22,9 +37,17 @@
 		761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659619A15FD40062B525 /* AFURLSessionManager.m */; };
 		761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B419A1A6BC0062B525 /* RESideMenu.m */; };
 		761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */; };
-		7671FC631A04528D000ECDAF /* EVCUserSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC621A04528D000ECDAF /* EVCUserSearchEngine.m */; };
-		7671FC671A06CE04000ECDAF /* EVCSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC651A06CE04000ECDAF /* EVCSearchViewViewController.m */; };
-		7671FC6E1A06FA52000ECDAF /* EVCSearchViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC661A06CE04000ECDAF /* EVCSearchViewViewController.xib */; };
+		7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC621A04528D000ECDAF /* EVCSearchEngine.m */; };
+		7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC651A06CE04000ECDAF /* EVCUserSearchViewViewController.m */; };
+		7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC661A06CE04000ECDAF /* EVCUserSearchViewViewController_iPhone.xib */; };
+		7671FC731A0DB515000ECDAF /* EVCUserInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC711A0DB515000ECDAF /* EVCUserInviteViewController.m */; };
+		7671FC741A0DB51F000ECDAF /* EVCUserInviteViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC721A0DB515000ECDAF /* EVCUserInviteViewController_iPhone.xib */; };
+		7671FC761A0DB740000ECDAF /* message-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC751A0DB740000ECDAF /* message-25.png */; };
+		7671FC781A0DB7C6000ECDAF /* chat-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC771A0DB7C6000ECDAF /* chat-25.png */; };
+		7671FC851A0E74A5000ECDAF /* default-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC841A0E74A4000ECDAF /* default-avatar.png */; };
+		7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */; };
+		7671FC8D1A0FD8B9000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */; };
+		7671FC911A0FE3B0000ECDAF /* search-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC901A0FE3B0000ECDAF /* search-25.png */; };
 		769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2019A55F1100FF072E /* SHViewPager.m */; };
 		769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2219A55F1100FF072E /* SHViewPagerController.m */; };
 		769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2E19A646FC00FF072E /* UIView+Toast.m */; };
@@ -52,6 +75,23 @@
 		76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996119FC507F00E15A14 /* EVCComposeViewController_iPhone.xib */; };
 		76EF997219FD40A300E15A14 /* GroupPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF997119FD40A300E15A14 /* GroupPrefs.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7671FC7D1A0DBEE6000ECDAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761D654419A15B680062B525 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 761D654B19A15B680062B525;
+			remoteInfo = VerveAPI;
+		};
+		7671FC7F1A0DBEE9000ECDAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761D654419A15B680062B525 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76C2B0F519F9DBD40010E98B;
+			remoteInfo = VerveAPIBundle;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		761D654A19A15B680062B525 /* CopyFiles */ = {
@@ -98,11 +138,21 @@
 		761D65B419A1A6BC0062B525 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		761D65B519A1A6BC0062B525 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
-		7671FC611A04528D000ECDAF /* EVCUserSearchEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCUserSearchEngine.h; sourceTree = "<group>"; };
-		7671FC621A04528D000ECDAF /* EVCUserSearchEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCUserSearchEngine.m; sourceTree = "<group>"; };
-		7671FC641A06CE03000ECDAF /* EVCSearchViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCSearchViewViewController.h; sourceTree = "<group>"; };
-		7671FC651A06CE04000ECDAF /* EVCSearchViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCSearchViewViewController.m; sourceTree = "<group>"; };
-		7671FC661A06CE04000ECDAF /* EVCSearchViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCSearchViewViewController.xib; sourceTree = "<group>"; };
+		7671FC611A04528D000ECDAF /* EVCSearchEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCSearchEngine.h; sourceTree = "<group>"; };
+		7671FC621A04528D000ECDAF /* EVCSearchEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCSearchEngine.m; sourceTree = "<group>"; };
+		7671FC641A06CE03000ECDAF /* EVCUserSearchViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCUserSearchViewViewController.h; sourceTree = "<group>"; };
+		7671FC651A06CE04000ECDAF /* EVCUserSearchViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCUserSearchViewViewController.m; sourceTree = "<group>"; };
+		7671FC661A06CE04000ECDAF /* EVCUserSearchViewViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCUserSearchViewViewController_iPhone.xib; sourceTree = "<group>"; };
+		7671FC701A0DB515000ECDAF /* EVCUserInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCUserInviteViewController.h; sourceTree = "<group>"; };
+		7671FC711A0DB515000ECDAF /* EVCUserInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCUserInviteViewController.m; sourceTree = "<group>"; };
+		7671FC721A0DB515000ECDAF /* EVCUserInviteViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCUserInviteViewController_iPhone.xib; sourceTree = "<group>"; };
+		7671FC751A0DB740000ECDAF /* message-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-25.png"; sourceTree = "<group>"; };
+		7671FC771A0DB7C6000ECDAF /* chat-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-25.png"; sourceTree = "<group>"; };
+		7671FC841A0E74A4000ECDAF /* default-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-avatar.png"; sourceTree = "<group>"; };
+		7671FC891A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCGroupSearchViewViewController.h; sourceTree = "<group>"; };
+		7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSearchViewViewController.m; sourceTree = "<group>"; };
+		7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSearchViewViewController_iPhone.xib; sourceTree = "<group>"; };
+		7671FC901A0FE3B0000ECDAF /* search-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-25.png"; sourceTree = "<group>"; };
 		769EE9F719A2B6AB00FF072E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		769EEA1F19A55F1100FF072E /* SHViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPager.h; sourceTree = "<group>"; };
 		769EEA2019A55F1100FF072E /* SHViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPager.m; sourceTree = "<group>"; };
@@ -214,6 +264,8 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				7671FC881A0FC855000ECDAF /* EVCSearchEngine */,
+				7671FC861A0F123C000ECDAF /* JoinGroup */,
 				7671FC601A04525C000ECDAF /* UserSearch */,
 				76C2B10A19F9F1F10010E98B /* EVCComposeViewController */,
 				769EEB2619ABB89600FF072E /* FXForms */,
@@ -305,13 +357,41 @@
 		7671FC601A04525C000ECDAF /* UserSearch */ = {
 			isa = PBXGroup;
 			children = (
-				7671FC611A04528D000ECDAF /* EVCUserSearchEngine.h */,
-				7671FC621A04528D000ECDAF /* EVCUserSearchEngine.m */,
-				7671FC641A06CE03000ECDAF /* EVCSearchViewViewController.h */,
-				7671FC651A06CE04000ECDAF /* EVCSearchViewViewController.m */,
-				7671FC661A06CE04000ECDAF /* EVCSearchViewViewController.xib */,
+				7671FC6F1A0DB4E9000ECDAF /* InviteUserToGroup */,
+				7671FC641A06CE03000ECDAF /* EVCUserSearchViewViewController.h */,
+				7671FC651A06CE04000ECDAF /* EVCUserSearchViewViewController.m */,
+				7671FC661A06CE04000ECDAF /* EVCUserSearchViewViewController_iPhone.xib */,
 			);
 			name = UserSearch;
+			sourceTree = "<group>";
+		};
+		7671FC6F1A0DB4E9000ECDAF /* InviteUserToGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7671FC701A0DB515000ECDAF /* EVCUserInviteViewController.h */,
+				7671FC711A0DB515000ECDAF /* EVCUserInviteViewController.m */,
+				7671FC721A0DB515000ECDAF /* EVCUserInviteViewController_iPhone.xib */,
+			);
+			name = InviteUserToGroup;
+			sourceTree = "<group>";
+		};
+		7671FC861A0F123C000ECDAF /* JoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7671FC891A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.h */,
+				7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */,
+				7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */,
+			);
+			name = JoinGroup;
+			sourceTree = "<group>";
+		};
+		7671FC881A0FC855000ECDAF /* EVCSearchEngine */ = {
+			isa = PBXGroup;
+			children = (
+				7671FC611A04528D000ECDAF /* EVCSearchEngine.h */,
+				7671FC621A04528D000ECDAF /* EVCSearchEngine.m */,
+			);
+			name = EVCSearchEngine;
 			sourceTree = "<group>";
 		};
 		769EE9F319A2B2DA00FF072E /* Other Headers */ = {
@@ -403,6 +483,10 @@
 				76C2B10219F9EBC60010E98B /* check.png */,
 				76C2B10319F9EBC60010E98B /* error.png */,
 				76C2B10419F9EBC60010E98B /* warning.png */,
+				7671FC901A0FE3B0000ECDAF /* search-25.png */,
+				7671FC841A0E74A4000ECDAF /* default-avatar.png */,
+				7671FC751A0DB740000ECDAF /* message-25.png */,
+				7671FC771A0DB7C6000ECDAF /* chat-25.png */,
 				76C2B0F819F9DBD40010E98B /* Supporting Files */,
 			);
 			path = VerveAPIBundle;
@@ -473,6 +557,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = eVerveCorp;
 				TargetAttributes = {
+					7671FC791A0DBE9F000ECDAF = {
+						CreatedOnToolsVersion = 6.1;
+					};
 					76C2B0F519F9DBD40010E98B = {
 						CreatedOnToolsVersion = 6.0.1;
 					};
@@ -492,6 +579,7 @@
 			targets = (
 				761D654B19A15B680062B525 /* VerveAPI */,
 				76C2B0F519F9DBD40010E98B /* VerveAPIBundle */,
+				7671FC791A0DBE9F000ECDAF /* VerveAPITarget */,
 			);
 		};
 /* End PBXProject section */
@@ -501,9 +589,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7671FC6E1A06FA52000ECDAF /* EVCSearchViewViewController.xib in Resources */,
+				7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */,
 				76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */,
+				7671FC781A0DB7C6000ECDAF /* chat-25.png in Resources */,
+				7671FC761A0DB740000ECDAF /* message-25.png in Resources */,
+				7671FC911A0FE3B0000ECDAF /* search-25.png in Resources */,
 				76C2B10719F9EBC60010E98B /* warning.png in Resources */,
+				7671FC741A0DB51F000ECDAF /* EVCUserInviteViewController_iPhone.xib in Resources */,
+				7671FC8D1A0FD8B9000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib in Resources */,
+				7671FC851A0E74A5000ECDAF /* default-avatar.png in Resources */,
 				76C2B10619F9EBC60010E98B /* error.png in Resources */,
 				76C2B10519F9EBC60010E98B /* check.png in Resources */,
 			);
@@ -519,6 +613,7 @@
 				769EEB2A19ABBBD800FF072E /* FXForms.m in Sources */,
 				769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */,
 				761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */,
+				7671FC731A0DB515000ECDAF /* EVCUserInviteViewController.m in Sources */,
 				769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */,
 				761D657D19A15DF40062B525 /* Reachability.m in Sources */,
 				761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */,
@@ -526,10 +621,11 @@
 				76EF997219FD40A300E15A14 /* GroupPrefs.m in Sources */,
 				76BD327D19DF7F6D0054ED88 /* RECommonFunctions.m in Sources */,
 				76EF996219FC507F00E15A14 /* EVCComposeViewController.m in Sources */,
-				7671FC671A06CE04000ECDAF /* EVCSearchViewViewController.m in Sources */,
+				7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */,
 				761D659819A15FD40062B525 /* AFHTTPRequestOperationManager.m in Sources */,
 				761D659A19A15FD40062B525 /* AFNetworkReachabilityManager.m in Sources */,
 				761D659E19A15FD40062B525 /* AFURLResponseSerialization.m in Sources */,
+				7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */,
 				761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */,
 				769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */,
 				761D659C19A15FD40062B525 /* AFURLConnectionOperation.m in Sources */,
@@ -542,7 +638,7 @@
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
 				769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */,
-				7671FC631A04528D000ECDAF /* EVCUserSearchEngine.m in Sources */,
+				7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */,
 				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
 				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
 				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,
@@ -562,6 +658,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7671FC7E1A0DBEE6000ECDAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 761D654B19A15B680062B525 /* VerveAPI */;
+			targetProxy = 7671FC7D1A0DBEE6000ECDAF /* PBXContainerItemProxy */;
+		};
+		7671FC801A0DBEE9000ECDAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76C2B0F519F9DBD40010E98B /* VerveAPIBundle */;
+			targetProxy = 7671FC7F1A0DBEE9000ECDAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		761D656D19A15B680062B525 /* Debug */ = {
@@ -673,6 +782,20 @@
 			};
 			name = Release;
 		};
+		7671FC7B1A0DBEA0000ECDAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7671FC7C1A0DBEA0000ECDAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		76C2B0FB19F9DBD40010E98B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -684,8 +807,6 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VerveAPIBundle/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -702,8 +823,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = VerveAPIBundle/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -732,6 +851,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7671FC7A1A0DBEA0000ECDAF /* Build configuration list for PBXAggregateTarget "VerveAPITarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7671FC7B1A0DBEA0000ECDAF /* Debug */,
+				7671FC7C1A0DBEA0000ECDAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		76C2B0FA19F9DBD40010E98B /* Build configuration list for PBXNativeTarget "VerveAPIBundle" */ = {
 			isa = XCConfigurationList;

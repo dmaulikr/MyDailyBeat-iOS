@@ -13,6 +13,7 @@
 #import "RESideMenu.h"
 #import "EVCProfileViewController.h"
 #import "EVCCommonMethods.h"
+#import <EVCGroupSearchViewViewController.h>
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

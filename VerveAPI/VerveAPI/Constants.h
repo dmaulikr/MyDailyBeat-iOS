@@ -9,6 +9,8 @@
 #ifndef VerveAPI_Constants_h
 #define VerveAPI_Constants_h
 
+#import "UIView+Toast.h"
+
 #define WELCOME_MESSAGE_1 @"You are about to join the most vibrant community for older adults.\n\nLook No Further!"
 #define WELCOME_MESSAGE_2 @"Let MyDailyBeat be the place you come to every day to help manage your personal life, keep you engaged, socialize, and stay connected."
 
@@ -33,5 +35,21 @@ typedef NS_ENUM(NSInteger, SexualPreference) {
 
 // hex color
 #define UIColorFromHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+typedef enum {
+    SendByEmail = 0,
+    SendByMobile = 1
+} EVCUserInviteSendingMethod;
+
+typedef enum {
+    SearchByScreenName = 0,
+    SearchByName = 1,
+    SearchByEmail = 2
+}UserSearchType;
+
+typedef enum {
+    ASCENDING = 0,
+    DESCENDING = 1
+} EVCSearchSortOrder;
 
 #endif

@@ -153,8 +153,9 @@
 }
 
 - (void) invite {
-    EVCSearchViewViewController *searchController = [[EVCSearchViewViewController alloc] init];
-    [self presentViewController:searchController animated:YES completion:nil];
+    EVCUserSearchViewViewController *searchController = [[EVCUserSearchViewViewController alloc] init];
+    searchController.groupToInviteTo = self.group;
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:searchController] animated:YES completion:nil];
 
 }
 

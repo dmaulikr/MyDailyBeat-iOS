@@ -23,7 +23,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self navigationItem].title = @"Welcome to MyDailyBeat!";
+    [self navigationItem].title = @"MyDailyBeat";
+    
+    UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"VerveAPIBundle.bundle/search-25.png"] scaledToSize:CGSizeMake(30, 30)];
+    CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
+    UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
+    [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
+    [someButton3 addTarget:self action:@selector(searchGroups)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton3 setShowsTouchWhenHighlighted:YES];
+    UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];
+
+    
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"1408346500_menu-alt"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
@@ -33,7 +44,8 @@
     [someButton setShowsTouchWhenHighlighted:YES];
     
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
-    self.navigationItem.rightBarButtonItem = menuButton;
+    NSArray *rightItems = [NSArray arrayWithObjects:menuButton, searchButton, nil];
+    self.navigationItem.rightBarButtonItems = rightItems;
     
     UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"user-50"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
@@ -52,10 +64,10 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)searchGroups {
+    EVCGroupSearchViewViewController *searchController = [[EVCGroupSearchViewViewController alloc] init];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:searchController] animated:YES completion:nil];
+    
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

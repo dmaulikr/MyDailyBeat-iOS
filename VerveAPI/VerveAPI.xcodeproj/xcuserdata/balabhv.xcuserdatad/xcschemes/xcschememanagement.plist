@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>VerveAPITarget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>761D655B19A15B680062B525</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7671FC791A0DBE9F000ECDAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

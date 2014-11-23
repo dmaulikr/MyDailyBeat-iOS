@@ -667,8 +667,8 @@ static VerveUser *currentUser;
     return mimeType;
 }
 
-- (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(SearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder {
-    NSString *parameters = [@"query=" stringByAppendingString:[self urlencode:currentUser.screenName]];
+- (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(UserSearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder {
+    NSString *parameters = [@"query=" stringByAppendingString:[self urlencode:query]];
     parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
 
     switch (type) {
@@ -689,9 +689,19 @@ static VerveUser *currentUser;
     }
 }
 
+- (NSDictionary *) searchGroupsWithQueryString:(NSString *) query withSortOrder:(EVCSearchSortOrder) sortOrder {
+    NSString *parameters = [@"query=" stringByAppendingString:[self urlencode:query]];
+    parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
+    return [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/search" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+}
+
 - (NSMutableArray *) getGroupsForCurrentUser {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
+    return [self getGroupsForUser:currentUser];
+}
+
+- (NSMutableArray *) getGroupsForUser:(VerveUser *) user {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
+    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:user.password]]];
     
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
@@ -816,6 +826,46 @@ static VerveUser *currentUser;
     
 }
 
+- (BOOL) inviteUser:(VerveUser *) invitee toJoinGroup:(Group *) groupOfChoice by:(EVCUserInviteSendingMethod) method withMessage:(NSString *) inviteMessage {
+    switch (method) {
+        case SendByEmail:
+            @try {
+                
+                NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+                [postData setObject:currentUser.email forKey:@"senderemail"];
+                [postData setObject:invitee.email forKey:@"recipientemail"];
+                [postData setObject:inviteMessage forKey:@"inviteMessage"];
+                [postData setObject:[NSNumber numberWithInt:groupOfChoice.groupID] forKey:@"groupID"];
+                
+                NSError *error;
+                NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+                
+                if (error) {
+                    NSLog(@"Error parsing object to JSON: %@", error);
+                }
+                
+                NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/invite/email" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+                
+                
+                NSString *response = [result objectForKey:@"response"];
+                if ([response isEqualToString:@"Operation succeeded"]) {
+                    return YES;
+                }
+                
+            } @catch (NSException *e) {
+                NSLog(@"%@", e);
+            }
+            
+            break;
+        case SendByMobile:
+            //send by mobile
+            NSLog(@"Not implemented yet due to logistical issues");
+            break;
+    }
+    
+    return NO;
+}
+
 
 
 
@@ -842,7 +892,7 @@ static VerveUser *currentUser;
  * @param path The path to append to the request URL
  * @param parameters Parameters separated by ampersands (&)
  * @param reqType The request type as a string (i.e. GET or POST)
- * @param postData The data to be given to iSENSE as NSData
+ * @param postData The data to be given to MyDailyBeat as NSData
  * @return An object dump of a JSONObject or JSONArray representing the requested data
  */
 -(id)makeRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData {

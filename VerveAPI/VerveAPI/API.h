@@ -19,17 +19,7 @@
 #import "VolunteeringPrefs.h"
 #import "Group.h"
 #import "Post.h"
-
-typedef enum {
-    SearchByScreenName = 0,
-    SearchByName = 1,
-    SearchByEmail = 2
-}SearchType;
-
-typedef enum {
-    ASCENDING = 0,
-    DESCENDING = 1
-} EVCSearchSortOrder;
+#import "Constants.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 
@@ -63,6 +53,7 @@ typedef enum {
 - (RelationshipPrefs *) retrieveFlingPrefs;
 
 - (NSMutableArray *) getGroupsForCurrentUser;
+- (NSMutableArray *) getGroupsForUser:(VerveUser *) user;
 - (BOOL) createGroupWithName:(NSString *) groupName;
 - (BOOL) joinGroupWithName:(NSString *) groupName;
 -(BOOL)uploadGroupPicture:(NSData *)groupPicture withName: (NSString *) name toGroup:(Group *) group;
@@ -73,7 +64,11 @@ typedef enum {
 - (BOOL) deletePost:(Post *) p;
 - (BOOL) deleteGroup:(Group *) g;
 
-- (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(SearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder;
+- (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(UserSearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder;
+
+- (BOOL) inviteUser:(VerveUser *) invitee toJoinGroup:(Group *) groupOfChoice by:(EVCUserInviteSendingMethod) method withMessage:(NSString *) inviteMessage;
+
+- (NSDictionary *) searchGroupsWithQueryString:(NSString *) query withSortOrder:(EVCSearchSortOrder) sortOrder; 
 
 
 

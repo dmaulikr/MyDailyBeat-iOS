@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VerveUser : NSObject
+@interface VerveUser : NSObject <NSCopying>
 
 @property(nonatomic, retain) NSString *name;
 @property(nonatomic, retain) NSString *screenName;

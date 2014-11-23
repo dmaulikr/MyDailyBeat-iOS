@@ -16,7 +16,7 @@
 #import <EVCComposeViewController.h>
 #import <EVCGroupSettingsViewController.h>
 #import "EVCViewController.h"
-#import <EVCSearchViewViewController.h>
+#import <EVCUserSearchViewViewController.h>
 
 @interface EVCGroupViewController : UIViewController <EVCGroupSettingsViewControllerDelegate>{
     int max_post_height;

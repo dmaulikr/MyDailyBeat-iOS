@@ -6,26 +6,31 @@
 //  Copyright (c) 2014 eVerveCorp. All rights reserved.
 //
 
-#import "EVCUserSearchEngine.h"
+#import "EVCSearchEngine.h"
 
-@implementation EVCUserSearchEngine
+@implementation EVCSearchEngine
 
 - (NSMutableArray *) getUsersWithScreenNameContainingString:(NSString *) searchString withSortOrder:(EVCSearchSortOrder) sort_order {
     NSDictionary *dict = [[API getInstance] searchUsersWithQueryString:searchString andQueryType:SearchByScreenName withSortOrder:sort_order];
-    return [self dictToArray:dict];
+    return [self dictofUsersToArray:dict];
 }
 
 - (NSMutableArray *) getUsersWithNameContainingString:(NSString *) searchString withSortOrder:(EVCSearchSortOrder) sort_order {
     NSDictionary *dict = [[API getInstance] searchUsersWithQueryString:searchString andQueryType:SearchByName withSortOrder:sort_order];
-    return [self dictToArray:dict];
+    return [self dictofUsersToArray:dict];
 }
 
 - (NSMutableArray *) getUsersWithEmailContainingString:(NSString *) searchString withSortOrder:(EVCSearchSortOrder) sort_order {
     NSDictionary *dict = [[API getInstance] searchUsersWithQueryString:searchString andQueryType:SearchByEmail withSortOrder:sort_order];
-    return [self dictToArray:dict];
+    return [self dictofUsersToArray:dict];
 }
 
-- (NSMutableArray *) dictToArray:(NSDictionary *) dict {
+- (NSMutableArray *) getGroupsWithNameContainingString:(NSString *) queryString withSortOrder:(EVCSearchSortOrder) sort_order {
+    NSDictionary *dict = [[API getInstance] searchGroupsWithQueryString:queryString withSortOrder:sort_order];
+    return [self dictofGroupsToArray:dict];
+}
+
+- (NSMutableArray *) dictofUsersToArray:(NSDictionary *) dict {
     NSArray *jsonArr = [dict objectForKey:@"items"];
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (int i = 0 ; i < [jsonArr count] ; ++i) {
@@ -45,6 +50,40 @@
     }
     
     return result;
+}
+
+- (NSMutableArray *) dictofGroupsToArray:(NSDictionary *) dict {
+    NSMutableArray *items = [dict objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i= 0 ; i < [items count] ; ++i) {
+        Group *g = [[Group alloc] init];
+        NSDictionary *item = [items objectAtIndex:i];
+        g.groupName = [item objectForKey:@"groupName"];
+        g.adminName = [item objectForKey:@"adminScreenName"];
+        g.blobKey = [item objectForKey:@"blobKey"];
+        g.servingURL = [item objectForKey:@"servingURL"];
+        g.groupID = [[item objectForKey:@"id"] intValue];
+        NSMutableArray *postJSON = [item objectForKey:@"posts"];
+        NSMutableArray *posts = [[NSMutableArray alloc] init];
+        for (int j=0 ; j < [postJSON count] ; ++j) {
+            Post *p = [[Post alloc] init];
+            NSDictionary *post = [postJSON objectAtIndex:j];
+            p.postText = [post objectForKey:@"postText"];
+            p.blobKey = [post objectForKey:@"blobKey"];
+            p.servingURL = [post objectForKey:@"servingURL"];
+            p.post_id = [[post objectForKey:@"id"] intValue];
+            p.userScreenName = [post objectForKey:@"userScreenName"];
+            p.dateTimeMillis = [[post objectForKey:@"when"] longLongValue];
+            [posts addObject:p];
+        }
+        g.posts = posts;
+        [retItems addObject:g];
+    }
+    
+    
+    return retItems;
+
 }
 
 @end

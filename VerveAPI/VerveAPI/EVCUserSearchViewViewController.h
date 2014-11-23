@@ -7,23 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EVCUserSearchEngine.h"
+#import "EVCSearchEngine.h"
 #import "UIView+Toast.h"
 #import "VerveUser.h"
 #import "API.h"
+#import "EVCUserInviteViewController.h"
 
-@interface EVCSearchViewViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface EVCUserSearchViewViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
     IBOutlet UITableView *mTableView;
     IBOutlet UISearchBar *mSearchBar;
-    IBOutlet UISegmentedControl *chooser;
+    UIBarButtonItem *cancel;
     BOOL isFiltered;
-    SearchType type;
-    EVCUserSearchEngine *currentSearch;
+    UserSearchType type;
+    EVCSearchEngine *currentSearch;
     
 }
 
 @property (strong, nonatomic) NSMutableArray* data;
-
-- (id) init;
+@property (nonatomic, strong) Group *groupToInviteTo;
 
 @end

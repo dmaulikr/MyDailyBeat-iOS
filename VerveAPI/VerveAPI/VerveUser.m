@@ -27,4 +27,22 @@
     return data;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    id copy = [[[self class] alloc] init];
+    
+    if (copy) {
+        [copy setName:[self.name copyWithZone:zone]];
+        [copy setEmail:[self.email copyWithZone:zone]];
+        [copy setScreenName:[self.screenName copyWithZone:zone]];
+        [copy setPassword:[self.password copyWithZone:zone]];
+        [copy setMobile:[self.mobile copyWithZone:zone]];
+        [copy setZipcode:[self.zipcode copyWithZone:zone]];
+        [copy setBirth_month:[self.birth_month copyWithZone:zone]];
+        [copy setBirth_year:self.birth_year];
+    }
+    
+    return copy;
+}
+
 @end
