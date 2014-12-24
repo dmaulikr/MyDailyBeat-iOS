@@ -14,8 +14,11 @@
 #import "EVCProfileViewController.h"
 #import "EVCCommonMethods.h"
 #import <EVCGroupSearchViewViewController.h>
+#import "EVCFlingViewController.h"
 
-@interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    NSArray *options;
+}
 
 @property(nonatomic, retain) IBOutlet UITableView *mTableView;
 @property(strong, nonatomic) API *api;

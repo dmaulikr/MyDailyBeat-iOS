@@ -23,7 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self navigationItem].title = @"MyDailyBeat";
+    [self navigationItem].title = @"Welcome to MyDailyBeat";
+    
+    options = [NSArray arrayWithObjects:@"My Friends", @"My Fling", @"My Community", @"Health", @"Finance", @"Travel", @"Jobs", @"Volunteering", @"Shopping", nil];
     
     UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"VerveAPIBundle.bundle/search-25.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -75,8 +77,11 @@
     switch (indexPath.section) {
         case 1:
             switch (indexPath.row) {
-                case 0:
-                    //bla
+                case 1: {
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil];
+                    [self.navigationController pushViewController:fling animated:YES];
+                }
+                    
                     break;
                     
                 default:
@@ -95,6 +100,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    
+    
     if (cell == nil) {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -106,14 +113,7 @@
             cell.textLabel.text = @"What would you like to do today?";
             break;
         case 1:
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = @"Fling";
-                    break;
-                    
-                default:
-                    break;
-            }
+            cell.textLabel.text = [options objectAtIndex:indexPath.row];
             break;
             
         default:
@@ -133,7 +133,7 @@
         case 0:
             return 1;
         case 1:
-            return 1;
+            return [options count];
         default:
             return 1;
     }
