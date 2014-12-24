@@ -37,6 +37,15 @@
 		761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659619A15FD40062B525 /* AFURLSessionManager.m */; };
 		761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B419A1A6BC0062B525 /* RESideMenu.m */; };
 		761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */; };
+		766DEF591A48C5B10049CA2A /* SLKTextView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA41A48BA92009CD94F /* SLKTextView+SLKAdditions.m */; };
+		766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA71A48BA92009CD94F /* UIScrollView+SLKAdditions.m */; };
+		766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA91A48BA92009CD94F /* UIView+SLKAdditions.m */; };
+		766DEF601A48C5BC0049CA2A /* SLKInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAAC1A48BA92009CD94F /* SLKInputAccessoryView.m */; };
+		766DEF621A48C5BC0049CA2A /* SLKTextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAAE1A48BA92009CD94F /* SLKTextInputbar.m */; };
+		766DEF641A48C5BC0049CA2A /* SLKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB01A48BA92009CD94F /* SLKTextView.m */; };
+		766DEF661A48C5BC0049CA2A /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB21A48BA92009CD94F /* SLKTextViewController.m */; };
+		766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB41A48BA92009CD94F /* SLKTypingIndicatorView.m */; };
+		766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */; };
 		7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC621A04528D000ECDAF /* EVCSearchEngine.m */; };
 		7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC651A06CE04000ECDAF /* EVCUserSearchViewViewController.m */; };
 		7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC661A06CE04000ECDAF /* EVCUserSearchViewViewController_iPhone.xib */; };
@@ -70,6 +79,14 @@
 		76C2B10519F9EBC60010E98B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10219F9EBC60010E98B /* check.png */; };
 		76C2B10619F9EBC60010E98B /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10319F9EBC60010E98B /* error.png */; };
 		76C2B10719F9EBC60010E98B /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10419F9EBC60010E98B /* warning.png */; };
+		76DEDAB51A48BA92009CD94F /* SLKTextView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA41A48BA92009CD94F /* SLKTextView+SLKAdditions.m */; };
+		76DEDAB61A48BA92009CD94F /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA71A48BA92009CD94F /* UIScrollView+SLKAdditions.m */; };
+		76DEDAB71A48BA92009CD94F /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA91A48BA92009CD94F /* UIView+SLKAdditions.m */; };
+		76DEDAB81A48BA92009CD94F /* SLKInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAAC1A48BA92009CD94F /* SLKInputAccessoryView.m */; };
+		76DEDAB91A48BA92009CD94F /* SLKTextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAAE1A48BA92009CD94F /* SLKTextInputbar.m */; };
+		76DEDABA1A48BA92009CD94F /* SLKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB01A48BA92009CD94F /* SLKTextView.m */; };
+		76DEDABB1A48BA92009CD94F /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB21A48BA92009CD94F /* SLKTextViewController.m */; };
+		76DEDABC1A48BA92009CD94F /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB41A48BA92009CD94F /* SLKTypingIndicatorView.m */; };
 		76E64EF919B631D10022F189 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E64EF819B631D10022F189 /* Group.m */; };
 		76EF996219FC507F00E15A14 /* EVCComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996019FC507F00E15A14 /* EVCComposeViewController.m */; };
 		76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996119FC507F00E15A14 /* EVCComposeViewController_iPhone.xib */; };
@@ -138,6 +155,8 @@
 		761D65B419A1A6BC0062B525 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		761D65B519A1A6BC0062B525 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		766DEF691A48E4F00049CA2A /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		7671FC611A04528D000ECDAF /* EVCSearchEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCSearchEngine.h; sourceTree = "<group>"; };
 		7671FC621A04528D000ECDAF /* EVCSearchEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCSearchEngine.m; sourceTree = "<group>"; };
 		7671FC641A06CE03000ECDAF /* EVCUserSearchViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCUserSearchViewViewController.h; sourceTree = "<group>"; };
@@ -198,6 +217,23 @@
 		76C2B10219F9EBC60010E98B /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		76C2B10319F9EBC60010E98B /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		76C2B10419F9EBC60010E98B /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
+		76DEDAA31A48BA92009CD94F /* SLKTextView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLKTextView+SLKAdditions.h"; sourceTree = "<group>"; };
+		76DEDAA41A48BA92009CD94F /* SLKTextView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SLKTextView+SLKAdditions.m"; sourceTree = "<group>"; };
+		76DEDAA51A48BA92009CD94F /* SLKUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKUIConstants.h; sourceTree = "<group>"; };
+		76DEDAA61A48BA92009CD94F /* UIScrollView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SLKAdditions.h"; sourceTree = "<group>"; };
+		76DEDAA71A48BA92009CD94F /* UIScrollView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SLKAdditions.m"; sourceTree = "<group>"; };
+		76DEDAA81A48BA92009CD94F /* UIView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SLKAdditions.h"; sourceTree = "<group>"; };
+		76DEDAA91A48BA92009CD94F /* UIView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SLKAdditions.m"; sourceTree = "<group>"; };
+		76DEDAAB1A48BA92009CD94F /* SLKInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKInputAccessoryView.h; sourceTree = "<group>"; };
+		76DEDAAC1A48BA92009CD94F /* SLKInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKInputAccessoryView.m; sourceTree = "<group>"; };
+		76DEDAAD1A48BA92009CD94F /* SLKTextInputbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextInputbar.h; sourceTree = "<group>"; };
+		76DEDAAE1A48BA92009CD94F /* SLKTextInputbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextInputbar.m; sourceTree = "<group>"; };
+		76DEDAAF1A48BA92009CD94F /* SLKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextView.h; sourceTree = "<group>"; };
+		76DEDAB01A48BA92009CD94F /* SLKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextView.m; sourceTree = "<group>"; };
+		76DEDAB11A48BA92009CD94F /* SLKTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextViewController.h; sourceTree = "<group>"; };
+		76DEDAB21A48BA92009CD94F /* SLKTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextViewController.m; sourceTree = "<group>"; };
+		76DEDAB31A48BA92009CD94F /* SLKTypingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTypingIndicatorView.h; sourceTree = "<group>"; };
+		76DEDAB41A48BA92009CD94F /* SLKTypingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTypingIndicatorView.m; sourceTree = "<group>"; };
 		76E64EF719B631D10022F189 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		76E64EF819B631D10022F189 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		76EF995F19FC507F00E15A14 /* EVCComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVCComposeViewController.h; path = VerveAPI/EVCComposeViewController.h; sourceTree = "<group>"; };
@@ -264,6 +300,7 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				76DEDAA01A48BA7E009CD94F /* SlackTextViewController */,
 				7671FC881A0FC855000ECDAF /* EVCSearchEngine */,
 				7671FC861A0F123C000ECDAF /* JoinGroup */,
 				7671FC601A04525C000ECDAF /* UserSearch */,
@@ -511,6 +548,56 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		76DEDAA01A48BA7E009CD94F /* SlackTextViewController */ = {
+			isa = PBXGroup;
+			children = (
+				766DEF691A48E4F00049CA2A /* MessageTableViewCell.h */,
+				766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */,
+				76DEDAA11A48BA92009CD94F /* Source */,
+			);
+			name = SlackTextViewController;
+			sourceTree = "<group>";
+		};
+		76DEDAA11A48BA92009CD94F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				76DEDAA21A48BA92009CD94F /* Additions */,
+				76DEDAAA1A48BA92009CD94F /* Classes */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		76DEDAA21A48BA92009CD94F /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				76DEDAA31A48BA92009CD94F /* SLKTextView+SLKAdditions.h */,
+				76DEDAA41A48BA92009CD94F /* SLKTextView+SLKAdditions.m */,
+				76DEDAA51A48BA92009CD94F /* SLKUIConstants.h */,
+				76DEDAA61A48BA92009CD94F /* UIScrollView+SLKAdditions.h */,
+				76DEDAA71A48BA92009CD94F /* UIScrollView+SLKAdditions.m */,
+				76DEDAA81A48BA92009CD94F /* UIView+SLKAdditions.h */,
+				76DEDAA91A48BA92009CD94F /* UIView+SLKAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		76DEDAAA1A48BA92009CD94F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				76DEDAAB1A48BA92009CD94F /* SLKInputAccessoryView.h */,
+				76DEDAAC1A48BA92009CD94F /* SLKInputAccessoryView.m */,
+				76DEDAAD1A48BA92009CD94F /* SLKTextInputbar.h */,
+				76DEDAAE1A48BA92009CD94F /* SLKTextInputbar.m */,
+				76DEDAAF1A48BA92009CD94F /* SLKTextView.h */,
+				76DEDAB01A48BA92009CD94F /* SLKTextView.m */,
+				76DEDAB11A48BA92009CD94F /* SLKTextViewController.h */,
+				76DEDAB21A48BA92009CD94F /* SLKTextViewController.m */,
+				76DEDAB31A48BA92009CD94F /* SLKTypingIndicatorView.h */,
+				76DEDAB41A48BA92009CD94F /* SLKTypingIndicatorView.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -610,6 +697,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				766DEF601A48C5BC0049CA2A /* SLKInputAccessoryView.m in Sources */,
+				766DEF621A48C5BC0049CA2A /* SLKTextInputbar.m in Sources */,
+				766DEF641A48C5BC0049CA2A /* SLKTextView.m in Sources */,
+				766DEF661A48C5BC0049CA2A /* SLKTextViewController.m in Sources */,
+				766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */,
+				766DEF591A48C5B10049CA2A /* SLKTextView+SLKAdditions.m in Sources */,
+				766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */,
+				766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */,
 				769EEB2A19ABBBD800FF072E /* FXForms.m in Sources */,
 				769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */,
 				761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */,
@@ -637,6 +732,7 @@
 				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
+				766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */,
 				769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */,
 				7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */,
 				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
@@ -654,6 +750,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76DEDABC1A48BA92009CD94F /* SLKTypingIndicatorView.m in Sources */,
+				76DEDAB61A48BA92009CD94F /* UIScrollView+SLKAdditions.m in Sources */,
+				76DEDAB71A48BA92009CD94F /* UIView+SLKAdditions.m in Sources */,
+				76DEDABB1A48BA92009CD94F /* SLKTextViewController.m in Sources */,
+				76DEDABA1A48BA92009CD94F /* SLKTextView.m in Sources */,
+				76DEDAB51A48BA92009CD94F /* SLKTextView+SLKAdditions.m in Sources */,
+				76DEDAB81A48BA92009CD94F /* SLKInputAccessoryView.m in Sources */,
+				76DEDAB91A48BA92009CD94F /* SLKTextInputbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,6 +963,7 @@
 				7671FC7C1A0DBEA0000ECDAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76C2B0FA19F9DBD40010E98B /* Build configuration list for PBXNativeTarget "VerveAPIBundle" */ = {
 			isa = XCConfigurationList;
