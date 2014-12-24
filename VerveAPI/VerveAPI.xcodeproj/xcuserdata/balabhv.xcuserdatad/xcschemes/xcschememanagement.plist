@@ -7,7 +7,17 @@
 		<key>VerveAPI.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+		<key>VerveAPIBundle.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>VerveAPITarget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -22,12 +32,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7671FC791A0DBE9F000ECDAF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>769EEA4619A64CC600FF072E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>769EEA5B19A64CEF00FF072E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>76C2B0F519F9DBD40010E98B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

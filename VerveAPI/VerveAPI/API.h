@@ -18,6 +18,8 @@
 #import "RelationshipPrefs.h"
 #import "VolunteeringPrefs.h"
 #import "Group.h"
+#import "Post.h"
+#import "Constants.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 
@@ -30,10 +32,13 @@
 
 -(VerveUser *) getCurrentUser;
 - (BOOL) createUser: (VerveUser *) userData;
+- (BOOL) editUser: (VerveUser *) userData;
 - (BOOL) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password;
+- (void) refreshCurrentUserData;
 
 -(BOOL)uploadProfilePicture:(NSData *)profilePicture withName: (NSString *) name;
 -(NSURL *) retrieveProfilePicture;
+-(NSURL *) retrieveProfilePictureForUserWithScreenName:(NSString *) screenName;
 
 - (BOOL) uploadMakeFriendsPrefs: (MakeFriendsPrefs *) prefsObject;
 - (BOOL) uploadSocialPrefs: (SocialPrefs *) prefsObject;
@@ -48,8 +53,22 @@
 - (RelationshipPrefs *) retrieveFlingPrefs;
 
 - (NSMutableArray *) getGroupsForCurrentUser;
+- (NSMutableArray *) getGroupsForUser:(VerveUser *) user;
 - (BOOL) createGroupWithName:(NSString *) groupName;
 - (BOOL) joinGroupWithName:(NSString *) groupName;
+-(BOOL)uploadGroupPicture:(NSData *)groupPicture withName: (NSString *) name toGroup:(Group *) group;
+-(NSURL *) retrieveGroupPictureForGroup:(Group *) group;
+-(BOOL) writePost:(Post *) p withPictureData:(NSData *) attachedPic andPictureName:(NSString *) picName toGroup:(Group *) g;
+- (NSMutableArray *) getPostsForGroup:(Group *) g;
+
+- (BOOL) deletePost:(Post *) p;
+- (BOOL) deleteGroup:(Group *) g;
+
+- (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(UserSearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder;
+
+- (BOOL) inviteUser:(VerveUser *) invitee toJoinGroup:(Group *) groupOfChoice by:(EVCUserInviteSendingMethod) method withMessage:(NSString *) inviteMessage;
+
+- (NSDictionary *) searchGroupsWithQueryString:(NSString *) query withSortOrder:(EVCSearchSortOrder) sortOrder; 
 
 
 

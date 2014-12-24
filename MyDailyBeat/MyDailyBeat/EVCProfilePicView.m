@@ -12,8 +12,7 @@
 
 @synthesize nameLbl, profilePic;
 
-- (id)initWithFrame:(CGRect)frame andImage:(UIImage *) pic
-{
+- (id)initWithFrame:(CGRect)frame andImage:(UIImage *) pic withName:(NSString *)name {
     self = [super initWithFrame:frame];
     if (self) {
         UIView* xibView = [[[NSBundle mainBundle] loadNibNamed:@"EVCProfilePicView_iPhone" owner:self options:nil] objectAtIndex:0];
@@ -21,7 +20,7 @@
         [xibView setFrame:[self bounds]];
         [self addSubview:xibView];
         self.profilePic.image = pic;
-        self.nameLbl.text =[[API getInstance] getCurrentUser].screenName;
+        self.nameLbl.text = name;
     }
     return self;
 }

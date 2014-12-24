@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
-#import "EVCPreferencesViewController.h"
+#import "EVCGroupViewController.h"
 #import "EVCViewController.h"
 #import <API.h>
 
 @interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) NSMutableArray *groups;
+@property (nonatomic) UIViewController *parentController;
 
-- (id) initWithGroups:(NSMutableArray *) groupsArray;
+- (id) initWithGroups:(NSMutableArray *) groupsArray andParent:(UIViewController *) parent;
 @end

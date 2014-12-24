@@ -17,15 +17,15 @@
 #import "EVCRelationshipPrefsViewController.h"
 #import "EVCFlingPrefsViewController.h"
 #import "EVCVolunteeringPrefsViewController.h"
+#import "EVCCommonMethods.h"
+#import "RESideMenu.h"
 
-@interface EVCPreferencesViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface EVCPreferencesViewController : UIViewController
 
-@property(nonatomic, retain) IBOutlet UIButton *changePic, *makeFriends, *date, *fling, *social, *volunteer;
+@property(nonatomic, retain) IBOutlet UIButton *makeFriends, *date, *fling, *social, *volunteer;
 
-@property (nonatomic, retain) UIImagePickerController *imgPicker;
 @property (nonatomic, retain) API *api;
 
-- (IBAction)changeProfilePic:(id)sender;
 - (IBAction)makeFriends:(id)sender;
 - (IBAction)socialActivites:(id)sender;
 - (IBAction)relationship:(id)sender;

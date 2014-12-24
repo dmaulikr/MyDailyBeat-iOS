@@ -14,7 +14,7 @@
 		<string>https://github.com/balabhv/MyDailyBeat-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MyDailyBeat/MyDailyBeat.xcodeproj/project.xcworkspace</string>
+	<string>MyDailyBeat/MyDailyBeat.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B67084291183FFB3312BBBD21F6B42E5CBEB58AD</key>

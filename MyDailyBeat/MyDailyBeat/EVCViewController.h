@@ -11,6 +11,9 @@
 #import <API.h>
 #import <UIView+Toast.h>
 #import "RESideMenu.h"
+#import "EVCProfileViewController.h"
+#import "EVCCommonMethods.h"
+#import <EVCGroupSearchViewViewController.h>
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

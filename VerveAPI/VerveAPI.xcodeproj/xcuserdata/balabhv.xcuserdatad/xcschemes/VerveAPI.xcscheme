@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "769EEA5B19A64CEF00FF072E"
+               BlueprintIdentifier = "76C2B0F519F9DBD40010E98B"
                BuildableName = "VerveAPIBundle.bundle"
                BlueprintName = "VerveAPIBundle"
                ReferencedContainer = "container:VerveAPI.xcodeproj">

@@ -81,32 +81,14 @@
             BOOL result = [[API getInstance] createUser:user];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
-                NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.verve.VerveAPIBundle"];
                 if (result)
-                    [self.view makeToast:@"User creation successful!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"check" ofType:@"png"]]];
+                    [self.view makeToast:@"User creation successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
                 else {
-                    [self.view makeToast:@"User creation failed!" duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"error" ofType:@"png"]]];
+                    [self.view makeToast:@"User creation failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
                     return;
                 }
-                EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-                EVCAppDelegate *app = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
-                EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithNibName:@"EVCMenuViewController_iPhone" bundle:nil];
                 
-
-                RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:controller]
-                                                                    leftMenuViewController:menu
-                                                                   rightMenuViewController:nil];
-                sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
-                sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
-                sideMenuViewController.delegate = app;
-                sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
-                sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
-                sideMenuViewController.contentViewShadowOpacity = 0.6;
-                sideMenuViewController.contentViewShadowRadius = 12;
-                sideMenuViewController.contentViewShadowEnabled = YES;
-                app.window.rootViewController = sideMenuViewController;
-
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self.parentController.navigationController popToRootViewControllerAnimated:YES];
                 
             });
         });
