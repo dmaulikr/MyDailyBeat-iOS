@@ -35,6 +35,8 @@
     self.formController.form = [[RelationshipPrefs alloc] init];
     api = [API getInstance];
     
+    [self retrievePrefs];
+    
         
 }
 
@@ -43,7 +45,11 @@
     [super viewWillAppear:animated];
     
     //reload the table
-    [self retrievePrefs];
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    
 }
 
 - (void) retrievePrefs {
@@ -83,6 +89,10 @@
             
         });
     });
+}
+
+- (void)itemSelected {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

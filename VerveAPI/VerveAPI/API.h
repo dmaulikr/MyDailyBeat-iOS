@@ -20,6 +20,9 @@
 #import "Group.h"
 #import "Post.h"
 #import "Constants.h"
+#import "MessageChatroom.h"
+#import "FlingProfile.h"
+#import "VerveMessage.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 
@@ -35,6 +38,7 @@
 - (BOOL) editUser: (VerveUser *) userData;
 - (BOOL) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password;
 - (void) refreshCurrentUserData;
+- (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName;
 
 -(BOOL)uploadProfilePicture:(NSData *)profilePicture withName: (NSString *) name;
 -(NSURL *) retrieveProfilePicture;
@@ -51,6 +55,7 @@
 - (VolunteeringPrefs *) retrieveVolunteeringPrefs;
 - (RelationshipPrefs *) retrieveRelationshipPrefs;
 - (RelationshipPrefs *) retrieveFlingPrefs;
+- (RelationshipPrefs *) retrieveFlingPrefsWithScreenName:(NSString *) screenName;
 
 - (NSMutableArray *) getGroupsForCurrentUser;
 - (NSMutableArray *) getGroupsForUser:(VerveUser *) user;
@@ -70,7 +75,19 @@
 
 - (NSDictionary *) searchGroupsWithQueryString:(NSString *) query withSortOrder:(EVCSearchSortOrder) sortOrder; 
 
+- (BOOL) writeMessage:(NSString *) message asUser:(VerveUser *) user inChatRoomWithID: (int) chatID atTime: (long long) dateTimeMillis;
+- (MessageChatroom *) createChatroomForUsersWithScreenName: (NSString *) firstUser andScreenName: (NSString *) secondUser;
 
+- (NSArray *) getChatroomsForUser: (VerveUser *) user;
+
+- (NSArray *) getFlingProfilesBasedOnPrefsOfUser:(VerveUser *) user;
+- (NSArray *) getFlingFavoritesForUser: (VerveUser *) user;
+- (BOOL) addUser:(VerveUser *) user1 ToFlingFavoritesOfUser:(VerveUser *) user2;
+- (FlingProfile *) getFlingProfileForUser:(VerveUser *) user;
+- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about;
+
+- (MessageChatroom *) getChatroomByID: (int) ID;
+- (NSArray *) getMessagesForChatroomWithID: (int) ID;
 
 
 @end

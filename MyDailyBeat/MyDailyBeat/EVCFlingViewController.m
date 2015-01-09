@@ -16,14 +16,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil];
     EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil];
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil];
-    EVCFlingMessagingViewController *messaging = [[EVCFlingMessagingViewController alloc] init];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getCurrentUser]];
+    EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] init];
+    
+    UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:partnerMatch];
+    UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:partners];
+    UINavigationController *third = [[UINavigationController alloc] initWithRootViewController:messaging];
+    UINavigationController *fourth = [[UINavigationController alloc] initWithRootViewController:prof];
     
     UITabBar *bar = self.tabBar;
 
-    self.viewControllers = [NSArray arrayWithObjects:partnerMatch, partners, messaging, prof, nil];
+    self.viewControllers = [NSArray arrayWithObjects:first, second, third, fourth, nil];
     
     UITabBarItem *matchItem = [bar.items objectAtIndex:0];
     UITabBarItem *partnersItem = [bar.items objectAtIndex:1];
@@ -36,9 +42,17 @@
     profItem.title = @"My Fling Profile";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) flingProf {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([[API getInstance] getFlingProfileForUser:[[API getInstance] getCurrentUser]] != nil)
+            {
+                EVCFlingProfileCreatorViewController *creator = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil];
+                [self.navigationController presentViewController:creator animated:YES completion:nil];
+            }
+        });
+    });
 }
 
 /*

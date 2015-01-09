@@ -22,13 +22,12 @@
 
 @interface EVCPreferencesViewController : UIViewController
 
-@property(nonatomic, retain) IBOutlet UIButton *makeFriends, *date, *fling, *social, *volunteer;
+@property(nonatomic, retain) IBOutlet UIButton *makeFriends, *fling, *social, *volunteer;
 
 @property (nonatomic, retain) API *api;
 
 - (IBAction)makeFriends:(id)sender;
 - (IBAction)socialActivites:(id)sender;
-- (IBAction)relationship:(id)sender;
 - (IBAction)fling:(id)sender;
 - (IBAction)volunteer:(id)sender;
 

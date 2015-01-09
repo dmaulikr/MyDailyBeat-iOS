@@ -14,7 +14,7 @@
 
 @implementation EVCPreferencesViewController
 
-@synthesize date, makeFriends, fling, volunteer, social, api;
+@synthesize makeFriends, fling, volunteer, social, api;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,11 +69,6 @@
 
 - (IBAction)socialActivites:(id)sender {
     EVCSocialPrefsViewController *controller = [[EVCSocialPrefsViewController alloc] initWithNibName:@"EVCSocialPrefsViewController_iPhone" bundle:nil];
-    [self.navigationController pushViewController: controller animated:YES];
-}
-
-- (IBAction)relationship:(id)sender {
-    EVCRelationshipPrefsViewController *controller = [[EVCRelationshipPrefsViewController alloc] initWithNibName:@"EVCRelationshipPrefsViewController_iPhone" bundle:nil];
     [self.navigationController pushViewController: controller animated:YES];
 }
 - (IBAction)fling:(id)sender {

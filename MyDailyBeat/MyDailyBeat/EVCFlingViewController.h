@@ -11,6 +11,9 @@
 #import "EVCPartnersTableViewController.h"
 #import "EVCFlingProfileViewController.h"
 #import "EVCFlingMessagingViewController.h"
+#import "EVCChatroomTableViewController.h"
+#import <API.h>
+#import "EVCFlingProfileCreatorViewController.h"
 
 @interface EVCFlingViewController : UITabBarController <UITabBarControllerDelegate>
 

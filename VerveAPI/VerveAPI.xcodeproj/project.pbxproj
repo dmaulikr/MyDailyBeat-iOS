@@ -46,6 +46,7 @@
 		766DEF661A48C5BC0049CA2A /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB21A48BA92009CD94F /* SLKTextViewController.m */; };
 		766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB41A48BA92009CD94F /* SLKTypingIndicatorView.m */; };
 		766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */; };
+		766DEF861A4E5C220049CA2A /* MessageChatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF851A4E5C220049CA2A /* MessageChatroom.m */; };
 		7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC621A04528D000ECDAF /* EVCSearchEngine.m */; };
 		7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC651A06CE04000ECDAF /* EVCUserSearchViewViewController.m */; };
 		7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC661A06CE04000ECDAF /* EVCUserSearchViewViewController_iPhone.xib */; };
@@ -57,6 +58,8 @@
 		7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */; };
 		7671FC8D1A0FD8B9000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */; };
 		7671FC911A0FE3B0000ECDAF /* search-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC901A0FE3B0000ECDAF /* search-25.png */; };
+		769B0A881A54664200BB287E /* FlingProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A871A54664200BB287E /* FlingProfile.m */; };
+		769B0A8B1A59AF7100BB287E /* VerveMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A8A1A59AF7100BB287E /* VerveMessage.m */; };
 		769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2019A55F1100FF072E /* SHViewPager.m */; };
 		769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2219A55F1100FF072E /* SHViewPagerController.m */; };
 		769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2E19A646FC00FF072E /* UIView+Toast.m */; };
@@ -157,6 +160,8 @@
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
 		766DEF691A48E4F00049CA2A /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		766DEF841A4E5C220049CA2A /* MessageChatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageChatroom.h; sourceTree = "<group>"; };
+		766DEF851A4E5C220049CA2A /* MessageChatroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageChatroom.m; sourceTree = "<group>"; };
 		7671FC611A04528D000ECDAF /* EVCSearchEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCSearchEngine.h; sourceTree = "<group>"; };
 		7671FC621A04528D000ECDAF /* EVCSearchEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCSearchEngine.m; sourceTree = "<group>"; };
 		7671FC641A06CE03000ECDAF /* EVCUserSearchViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCUserSearchViewViewController.h; sourceTree = "<group>"; };
@@ -172,6 +177,10 @@
 		7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSearchViewViewController.m; sourceTree = "<group>"; };
 		7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSearchViewViewController_iPhone.xib; sourceTree = "<group>"; };
 		7671FC901A0FE3B0000ECDAF /* search-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-25.png"; sourceTree = "<group>"; };
+		769B0A861A54664200BB287E /* FlingProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlingProfile.h; sourceTree = "<group>"; };
+		769B0A871A54664200BB287E /* FlingProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlingProfile.m; sourceTree = "<group>"; };
+		769B0A891A59AF7100BB287E /* VerveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveMessage.h; sourceTree = "<group>"; };
+		769B0A8A1A59AF7100BB287E /* VerveMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerveMessage.m; sourceTree = "<group>"; };
 		769EE9F719A2B6AB00FF072E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		769EEA1F19A55F1100FF072E /* SHViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPager.h; sourceTree = "<group>"; };
 		769EEA2019A55F1100FF072E /* SHViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPager.m; sourceTree = "<group>"; };
@@ -348,6 +357,12 @@
 				76E64EF819B631D10022F189 /* Group.m */,
 				76BD325F19DCC5C90054ED88 /* Post.h */,
 				76BD326019DCC5C90054ED88 /* Post.m */,
+				766DEF841A4E5C220049CA2A /* MessageChatroom.h */,
+				766DEF851A4E5C220049CA2A /* MessageChatroom.m */,
+				769B0A861A54664200BB287E /* FlingProfile.h */,
+				769B0A871A54664200BB287E /* FlingProfile.m */,
+				769B0A891A59AF7100BB287E /* VerveMessage.h */,
+				769B0A8A1A59AF7100BB287E /* VerveMessage.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -702,9 +717,11 @@
 				766DEF641A48C5BC0049CA2A /* SLKTextView.m in Sources */,
 				766DEF661A48C5BC0049CA2A /* SLKTextViewController.m in Sources */,
 				766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */,
+				766DEF861A4E5C220049CA2A /* MessageChatroom.m in Sources */,
 				766DEF591A48C5B10049CA2A /* SLKTextView+SLKAdditions.m in Sources */,
 				766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */,
 				766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */,
+				769B0A8B1A59AF7100BB287E /* VerveMessage.m in Sources */,
 				769EEB2A19ABBBD800FF072E /* FXForms.m in Sources */,
 				769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */,
 				761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */,
@@ -738,6 +755,7 @@
 				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
 				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
 				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,
+				769B0A881A54664200BB287E /* FlingProfile.m in Sources */,
 				769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */,
 				769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */,
 				76E64EF919B631D10022F189 /* Group.m in Sources */,

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <API.h>
+#import "FlingProfile.h"
+#import "EVCFlingProfileViewController.h"
 
 @interface EVCPartnerMatchViewController : UITableViewController
+
+@property (nonatomic, retain) NSMutableArray *partners;
 
 @end

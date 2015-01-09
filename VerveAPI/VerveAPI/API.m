@@ -86,7 +86,7 @@ static VerveUser *currentUser;
     NSMutableArray *retItems = [[NSMutableArray alloc] init];
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
-
+    
     for (int i= 0 ; i < [items count] ; ++i) {
         Post *p = [[Post alloc] init];
         NSDictionary *post = [items objectAtIndex:i];
@@ -102,6 +102,27 @@ static VerveUser *currentUser;
     
     return retItems;
     
+}
+
+- (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName {
+    VerveUser *user = nil;
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:screenName]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo2" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    if ([resultDic objectForKey:@"name"] != nil) {
+        user = [[VerveUser alloc] init];
+        user.name = [resultDic objectForKey:@"name"];
+        user.email = [resultDic objectForKey:@"email"];
+        user.screenName = screenName;
+        user.password = [resultDic objectForKey:@"password"];;
+        user.mobile = [resultDic objectForKey:@"mobile"];
+        user.zipcode = [resultDic objectForKey:@"zipcode"];
+        user.birth_month = [resultDic objectForKey:@"birth_month"];
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        user.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
+    }
+    
+    return user;
 }
 
 - (BOOL) createUser: (VerveUser *) userData {
@@ -388,6 +409,26 @@ static VerveUser *currentUser;
     
 }
 
+- (RelationshipPrefs *) retrieveFlingPrefsWithScreenName:(NSString *) screenName {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:screenName]];
+    
+    NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/fling/retrieve2" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSArray *prefs = [result objectForKey:@"prefs"];
+    NSDictionary *sex = [prefs objectAtIndex:0];
+    NSDictionary *ageObject =  [prefs objectAtIndex:1];
+    RelationshipPrefs *prefsObject = [[RelationshipPrefs alloc] init];
+    int index = [[sex objectForKey:@"index"] intValue];
+    SexualPreference sexualPref = [prefsObject indexToEnum:index];
+    int age = [[ageObject objectForKey:@"data"] intValue];
+    prefsObject.sexualPref = sexualPref;
+    prefsObject.age = age;
+    
+    
+    return  prefsObject;
+    
+}
+
 
 - (BOOL) uploadVolunteeringPrefs: (VolunteeringPrefs *) prefsObject {
     
@@ -516,7 +557,7 @@ static VerveUser *currentUser;
     group.blobKey = [getServingURLResult objectForKey:@"blobKey"];
     NSURL *url = [[NSURL alloc] initWithString:s];
     return url;
-
+    
 }
 
 -(BOOL) writePost:(Post *) p withPictureData:(NSData *) attachedPic andPictureName:(NSString *) picName toGroup:(Group *) g {
@@ -588,7 +629,7 @@ static VerveUser *currentUser;
         [postData setObject:[NSNumber numberWithInt:g.groupID] forKey:@"id"];
         
         NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&requestError];
-
+        
         
         NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/post" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
@@ -597,7 +638,7 @@ static VerveUser *currentUser;
             return YES;
         } else
             return NO;
-
+        
     }
     return NO;
 }
@@ -670,13 +711,13 @@ static VerveUser *currentUser;
 - (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(UserSearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder {
     NSString *parameters = [@"query=" stringByAppendingString:[self urlencode:query]];
     parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
-
+    
     switch (type) {
         case SearchByScreenName: {
             return [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/search/screenName" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
         }
             break;
-        
+            
         case SearchByEmail: {
             return [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/search/email" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
         }
@@ -800,7 +841,7 @@ static VerveUser *currentUser;
 
 - (BOOL) deletePost:(Post *) p {
     NSString *parameters = [@"id=" stringByAppendingString:[NSString stringWithFormat:@"%d", p.post_id]];
-
+    
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/posts/delete" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     NSString *response = [resultDic objectForKey:@"response"];
@@ -809,7 +850,7 @@ static VerveUser *currentUser;
     }
     
     return NO;
-
+    
 }
 
 - (BOOL) deleteGroup:(Group *) g {
@@ -866,7 +907,256 @@ static VerveUser *currentUser;
     return NO;
 }
 
+- (BOOL) writeMessage:(NSString *) message asUser:(VerveUser *) user inChatRoomWithID: (int) chatID atTime: (long long) dateTimeMillis {
+    
+    @try {
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:user.screenName forKey:@"screenName"];
+        [postData setObject:message forKey:@"messageText"];
+        [postData setObject:[NSNumber numberWithLongLong:dateTimeMillis] forKey:@"dateTimeMillis"];
+        [postData setObject:[NSNumber numberWithInt:chatID] forKey:@"chatID"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/messaging/post" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
 
+- (MessageChatroom *) createChatroomForUsersWithScreenName: (NSString *) firstUser andScreenName: (NSString *) secondUser {
+    @try {
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:firstUser forKey:@"screenName1"];
+        [postData setObject:secondUser forKey:@"screenName2"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/messaging/newchatroom" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        MessageChatroom *m = [[MessageChatroom alloc] init];
+        
+        if ([result objectForKey:@"screenNames"] != nil) {
+            m.chatroomID = [[result objectForKey:@"CHATROOM_ID"] intValue];
+            m.screenNames = [result objectForKey:@"screenNames"];
+            m.messages = [result objectForKey:@"messages"];
+            return m;
+        }
+        
+        
+        
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return nil;
+}
+
+- (NSArray *) getChatroomsForUser: (VerveUser *) user {
+    NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:user.screenName]];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/messaging/getchatrooms" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i= 0 ; i < [items count] ; ++i) {
+        MessageChatroom *m = [[MessageChatroom alloc] init];
+        NSDictionary *item = [items objectAtIndex:i];
+        m.chatroomID = [[item objectForKey:@"CHATROOM_ID"] intValue];
+        m.screenNames = [item objectForKey:@"screenNames"];
+        m.messages = [item objectForKey:@"messages"];
+        
+        [retItems addObject:m];
+    }
+    
+    
+    return retItems;
+    
+}
+
+- (NSArray *) getFlingProfilesBasedOnPrefsOfUser:(VerveUser *) user {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
+    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:user.password]]];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/partners/match" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    NSLog(@"Matches: %d", [items count]);
+    for (int i = 0 ; i < [items count] ; ++i) {
+        
+        NSDictionary *item = [items objectAtIndex:i];
+        FlingProfile *prof = [[FlingProfile alloc] init];
+        
+        prof.screenName = [item objectForKey:@"screenName"];
+        prof.aboutMe = [ item objectForKey:@"aboutMe"];
+        prof.age = [[item objectForKey:@"age"] intValue];
+        
+        [retItems addObject:prof];
+    }
+    
+    return retItems;
+    
+    
+}
+
+- (NSArray *) getFlingFavoritesForUser: (VerveUser *) user {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/favorites/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i = 0 ; i < [items count] ; ++i) {
+        NSDictionary *item = [items objectAtIndex:i];
+        FlingProfile *prof = [[FlingProfile alloc] init];
+        
+        prof.screenName = [item objectForKey:@"screenName"];
+        prof.aboutMe = [ item objectForKey:@"aboutMe"];
+        prof.age = [[item objectForKey:@"age"] intValue];
+        
+        [retItems addObject:prof];
+    }
+    
+    return retItems;
+    
+}
+- (BOOL) addUser:(VerveUser *) user1 ToFlingFavoritesOfUser:(VerveUser *) user2 {
+    @try {
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:user2.screenName forKey:@"screenName"];
+        [postData setObject:[self getFlingProfileForUser:user1] forKey:@"other"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/favorites/add" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+    
+}
+
+- (FlingProfile *) getFlingProfileForUser:(VerveUser *) user {
+    NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:user.screenName]];
+    
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/profile/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    
+    FlingProfile *prof = [[FlingProfile alloc] init];
+    
+    prof.screenName = [resultDic objectForKey:@"screenName"];
+    prof.aboutMe = [resultDic objectForKey:@"aboutMe"];
+    prof.age = [[resultDic objectForKey:@"age"] intValue];
+    
+    return prof;
+    
+    
+}
+
+- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about {
+    
+    @try {
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:user.screenName forKey:@"screenName"];
+        [postData setObject:about forKey:@"aboutMe"];
+        [postData setObject:[NSNumber numberWithInt:age] forKey:@"age"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/profile/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+    
+}
+
+- (MessageChatroom *) getChatroomByID: (int) ID {
+    NSString *parameters = [NSString stringWithFormat:@"id=%d", ID];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/messaging/getchatroomsbyid" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    MessageChatroom *m = [[MessageChatroom alloc] init];
+    m.chatroomID = [[resultDic objectForKey:@"CHATROOM_ID"] intValue];
+    m.screenNames = [resultDic objectForKey:@"screenNames"];
+    m.messages = [resultDic objectForKey:@"messages"];
+    
+    return m;
+
+}
+
+- (NSArray *) getMessagesForChatroomWithID: (int) ID {
+    NSString *parameters = [NSString stringWithFormat:@"id=%d", ID];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/messaging/getmessages" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i = 0 ; i < [items count] ; ++i) {
+        NSDictionary *item = [items objectAtIndex:i];
+        VerveMessage *prof = [[VerveMessage alloc] init];
+        
+        prof.screenName = [item objectForKey:@"screenName"];
+        prof.message = [item objectForKey:@"messageText"];
+        
+        [retItems addObject:prof];
+    }
+    
+    return retItems;
+
+}
 
 
 /*

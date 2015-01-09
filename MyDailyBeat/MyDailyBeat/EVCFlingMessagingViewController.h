@@ -8,8 +8,16 @@
 
 #import <SLKTextViewController.h>
 #import "MessageTableViewCell.h"
+#import "EVCCommonMethods.h"
+#import <API.h>
+#import <VerveMessage.h>
+#import "MessageChatroom.h"
 
 @class SLKTextViewController;
 @interface EVCFlingMessagingViewController : SLKTextViewController
+
+@property (nonatomic, strong) MessageChatroom *chatroom;
+
+- (id) initWithChatroom: (MessageChatroom *) chatroom;
 
 @end

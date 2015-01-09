@@ -14,7 +14,7 @@
 - (NSArray *)fields
 {
     return @[
-             @{FXFormFieldKey: @"sexualPref", FXFormFieldTitle:@"Sexual Preference", FXFormFieldOptions: [self stringArray]},
+             @{FXFormFieldKey: @"sexualPref", FXFormFieldTitle:@"Sexual Preference", FXFormFieldOptions: [self stringArray], FXFormFieldAction: @"itemSelected"},
              @{FXFormFieldKey: @"age", FXFormFieldTitle: @"Age", FXFormFieldCell: [FXFormStepperCell class]},
              ];
     

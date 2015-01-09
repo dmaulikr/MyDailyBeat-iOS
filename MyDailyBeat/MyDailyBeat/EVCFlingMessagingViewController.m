@@ -14,6 +14,7 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
 @interface EVCFlingMessagingViewController ()
 
 @property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) NSMutableArray *messages2;
 
 @property (nonatomic, strong) NSArray *searchResult;
 
@@ -22,14 +23,17 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
 
 @implementation EVCFlingMessagingViewController
 
-- (id) init {
+- (id) initWithChatroom:(MessageChatroom *)chatroom {
     self = [super initWithTableViewStyle:UITableViewStylePlain];
     if (self) {
         
         self.messages = [[NSMutableArray alloc] init];
+        self.messages2 = [[NSMutableArray alloc] init];
         self.searchResult = [[NSMutableArray alloc] init];
         
-        [self.messages addObject:@"This is the first message. "];
+        self.chatroom = chatroom;
+        
+        
         self.bounces = YES;
         self.shakeToClearEnabled = YES;
         self.keyboardPanningEnabled = YES;
@@ -61,39 +65,67 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
         
         [self.autoCompletionView registerClass:[MessageTableViewCell class] forCellReuseIdentifier:AutoCompletionCellIdentifier];
         [self registerPrefixesForAutoCompletion:@[@"@", @"#", @":"]];
-
+        
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self getMessagesAsync];
 }
 
-- (void)editCellMessage:(UIGestureRecognizer *)gesture
-{
-    MessageTableViewCell *cell = (MessageTableViewCell *)gesture.view;
-    NSString *message = self.messages[cell.indexPath.row];
+- (void) getMessagesAsync {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        
+        self.messages2 = [[NSMutableArray alloc] initWithArray:[[API getInstance] getMessagesForChatroomWithID:self.chatroom.chatroomID] copyItems:YES];
+        
+        for (VerveMessage * m in self.messages2) {
+            self.messages = [[NSMutableArray alloc] init];
+            [self.messages addObject:m.message];
+        }
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            [self.tableView reloadData];
+        });
+    });
     
-    [self editText:message];
-    
-    [self.tableView scrollToRowAtIndexPath:cell.indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
-- (void)editLastMessage:(id)sender
-{
-    if (self.textView.text.length > 0) {
-        return;
-    }
-    
-    NSInteger lastSectionIndex = [self.tableView numberOfSections]-1;
-    NSInteger lastRowIndex = [self.tableView numberOfRowsInSection:lastSectionIndex]-1;
-    
-    NSString *lastMessage = [self.messages objectAtIndex:lastRowIndex];
-    [self editText:lastMessage];
-    
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:lastRowIndex inSection:lastSectionIndex] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+- (void) writeMessageAsync:(NSString *) message {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        
+        long long milliseconds = (long long)([[NSDate date] timeIntervalSince1970] * 1000.0);
+        
+        [[API getInstance] writeMessage:message asUser:[[API getInstance] getCurrentUser] inChatRoomWithID:self.chatroom.chatroomID atTime:milliseconds];
+        
+        VerveMessage *m = [[VerveMessage alloc] init];
+        m.message = message;
+        m.screenName = [[API getInstance] getCurrentUser].screenName;
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            
+            [self.tableView beginUpdates];
+            [self.messages insertObject:message atIndex:0];
+            [self.messages2 insertObject:m atIndex:0];
+            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+            [self.tableView endUpdates];
+            
+            [self.tableView slk_scrollToTopAnimated:YES];
+        });
+    });
 }
 
 #pragma mark - Overriden Methods
@@ -133,26 +165,10 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
     
     NSString *message = [self.textView.text copy];
     
-    [self.tableView beginUpdates];
-    [self.messages insertObject:message atIndex:0];
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
-    NSLog(@"Inserted");
-    [self.tableView endUpdates];
+    [self writeMessageAsync:message];
     
-    [self.tableView slk_scrollToTopAnimated:YES];
     
     [super didPressRightButton:sender];
-}
-
-- (void)didPressArrowKey:(id)sender
-{
-    [super didPressArrowKey:sender];
-    
-    UIKeyCommand *keyCommand = (UIKeyCommand *)sender;
-    
-    if ([keyCommand.input isEqualToString:UIKeyInputUpArrow]) {
-        [self editLastMessage:nil];
-    }
 }
 
 - (NSString *)keyForTextCaching
@@ -180,8 +196,14 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
     
     NSString *message = [self.textView.text copy];
     
+    VerveMessage *m = [[VerveMessage alloc] init];
+    m.message = message;
+    m.screenName = [[API getInstance] getCurrentUser].screenName;
+    
     [self.messages removeObjectAtIndex:0];
     [self.messages insertObject:message atIndex:0];
+    [self.messages2 removeObjectAtIndex:0];
+    [self.messages2 insertObject:m atIndex:0];
     [self.tableView reloadData];
     
     [super didCommitTextEditing:sender];
@@ -223,23 +245,18 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-        return [self messageCellForRowAtIndexPath:indexPath];
-}
-
-- (MessageTableViewCell *)messageCellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    MessageTableViewCell *cell = (MessageTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:MessengerCellIdentifier];
     
-    if (!cell.textLabel.text) {
-        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(editCellMessage:)];
-        [cell addGestureRecognizer:longPress];
+    NSLog(@"This is a cell");
+    MessageTableViewCell *cell = (MessageTableViewCell *)[tableView dequeueReusableCellWithIdentifier:MessengerCellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MessengerCellIdentifier];
     }
     
-    NSString *message = self.messages[indexPath.row];
-    cell.textLabel.text = message;
+    cell.textLabel.text = [self.messages objectAtIndex:indexPath.row];
     cell.indexPath = indexPath;
     cell.usedForMessage = YES;
+    VerveMessage *m = [self.messages2 objectAtIndex:indexPath.row];
     
     if (cell.needsPlaceholder)
     {
@@ -250,7 +267,20 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
         }
         
         CGSize imgSize = CGSizeMake(kAvatarSize*scale, kAvatarSize*scale);
-        
+        dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+        dispatch_async(queue, ^{
+            NSURL *imageURL = [[API getInstance] retrieveProfilePictureForUserWithScreenName:m.screenName];
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+                UIImage *img = [UIImage imageWithData:imageData];
+                [cell setPlaceholder:[EVCCommonMethods imageWithImage:img scaledToSize:imgSize] scale:scale];
+                
+            });
+            
+        });
     }
     
     // Cells must inherit the table view's transform
@@ -258,29 +288,7 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
     cell.transform = self.tableView.transform;
     
     return cell;
-}
 
-- (MessageTableViewCell *)autoCompletionCellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    MessageTableViewCell *cell = (MessageTableViewCell *)[self.autoCompletionView dequeueReusableCellWithIdentifier:AutoCompletionCellIdentifier];
-    cell.indexPath = indexPath;
-    cell.usedForMessage = NO;
-    
-    NSString *item = self.searchResult[indexPath.row];
-    
-    if ([self.foundPrefix isEqualToString:@"#"]) {
-        item = [NSString stringWithFormat:@"# %@", item];
-    }
-    else if ([self.foundPrefix isEqualToString:@":"]) {
-        item = [NSString stringWithFormat:@":%@:", item];
-    }
-    
-    cell.textLabel.text = item;
-    cell.textLabel.font = [UIFont systemFontOfSize:14.0];
-    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    cell.textLabel.numberOfLines = 1;
-    
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
