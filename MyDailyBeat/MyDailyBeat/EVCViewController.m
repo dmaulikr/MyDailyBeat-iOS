@@ -27,7 +27,7 @@
     
     options = [NSArray arrayWithObjects:@"My Friends", @"My Fling", @"My Community", @"Health", @"Finance", @"Travel", @"Jobs", @"Volunteering", @"Shopping", nil];
     
-    UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"VerveAPIBundle.bundle/search-25.png"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"VerveAPIBundle.bundle/search-icon.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
     UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
     [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
@@ -37,7 +37,7 @@
     UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];
 
     
-    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"1408346500_menu-alt"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"menu-icon"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
@@ -49,7 +49,7 @@
     NSArray *rightItems = [NSArray arrayWithObjects:menuButton, searchButton, nil];
     self.navigationItem.rightBarButtonItems = rightItems;
     
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"user-50"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
@@ -82,6 +82,12 @@
                     [self.navigationController pushViewController:fling animated:YES];
                 }
                     
+                    break;
+                case 8:
+                {
+                    EVCShoppingViewController *shop = [[EVCShoppingViewController alloc] initWithNibName:@"EVCShoppingViewController" bundle:nil];
+                    [self.navigationController pushViewController:shop animated:YES];
+                }
                     break;
                     
                 default:

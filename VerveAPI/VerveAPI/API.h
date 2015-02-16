@@ -39,6 +39,7 @@
 - (BOOL) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password;
 - (void) refreshCurrentUserData;
 - (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName;
+- (BOOL) logout;
 
 -(BOOL)uploadProfilePicture:(NSData *)profilePicture withName: (NSString *) name;
 -(NSURL *) retrieveProfilePicture;
@@ -89,5 +90,10 @@
 - (MessageChatroom *) getChatroomByID: (int) ID;
 - (NSArray *) getMessagesForChatroomWithID: (int) ID;
 
+- (NSDictionary *) searchShoppingURLSWithQueryString: (NSString *) query withSortOrder: (EVCSearchSortOrder) sortOrder;
+- (NSDictionary *) getShoppingFavoritesForUser: (VerveUser *) user withSortOrder: (EVCSearchSortOrder) sortOrder;
+- (BOOL) addShoppingFavoriteURL: (NSString * ) string ForUser: (VerveUser *) user;
+
+- (NSDictionary *) getUsersForFeelingBlue;
 
 @end

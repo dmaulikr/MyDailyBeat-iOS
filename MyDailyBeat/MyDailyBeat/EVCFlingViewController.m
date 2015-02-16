@@ -36,10 +36,29 @@
     UITabBarItem *messagingItem = [bar.items objectAtIndex:2];
     UITabBarItem *profItem = [bar.items objectAtIndex:3];
     
+    UIImage *firstIm = [UIImage imageNamed:@"search-green"];
+    UIImage *secondIm = [UIImage imageNamed:@"search-yellow"];
+    
     matchItem.title = @"Partner Match";
+    [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
+    firstIm = [UIImage imageNamed:@"view-partners-green"];
+    secondIm = [UIImage imageNamed:@"view-partners-yellow"];
+    
     partnersItem.title = @"View Partners";
+    [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
+    firstIm = [UIImage imageNamed:@"messages-green"];
+    secondIm = [UIImage imageNamed:@"messages-yellow"];
+    
     messagingItem.title = @"Messaging";
+    [messagingItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
+    firstIm = [UIImage imageNamed:@"profile-green"];
+    secondIm = [UIImage imageNamed:@"profile-yellow"];
+    
     profItem.title = @"My Fling Profile";
+    [profItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
 }
 
 - (void) flingProf {

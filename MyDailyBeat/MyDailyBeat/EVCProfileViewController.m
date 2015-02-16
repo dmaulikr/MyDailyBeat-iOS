@@ -89,6 +89,23 @@
     
 }
 
+- (void) logout {
+    
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+            [[API getInstance] logout];
+            [self.view hideToastActivity];
+            EVCLoginViewController *login = [[EVCLoginViewController alloc] initWithNibName:@"EVCLoginViewController_iPhone" bundle:nil];
+            self.sideMenuViewController.contentViewController.view.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:login];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEY_SCREENNAME];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEY_PASSWORD];
+            [self.sideMenuViewController.contentViewController.navigationController popToRootViewControllerAnimated:YES];
+        });
+    });
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -112,11 +129,7 @@
                 
                 break;
             case 2: {
-                EVCLoginViewController *login = [[EVCLoginViewController alloc] initWithNibName:@"EVCLoginViewController_iPhone" bundle:nil];
-                self.sideMenuViewController.contentViewController.view.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:login];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEY_SCREENNAME];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEY_PASSWORD];
-                [self.sideMenuViewController.contentViewController.navigationController popToRootViewControllerAnimated:YES];
+                [self logout];
 
             }
                 

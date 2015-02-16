@@ -30,6 +30,11 @@
     return [self dictofGroupsToArray:dict];
 }
 
+- (NSMutableArray *) getUsersForFeelingBlue {
+    NSDictionary *dict = [[API getInstance] getUsersForFeelingBlue];
+    return [self dictofUsersToArray:dict];
+}
+
 - (NSMutableArray *) dictofUsersToArray:(NSDictionary *) dict {
     NSArray *jsonArr = [dict objectForKey:@"items"];
     NSMutableArray *result = [[NSMutableArray alloc] init];

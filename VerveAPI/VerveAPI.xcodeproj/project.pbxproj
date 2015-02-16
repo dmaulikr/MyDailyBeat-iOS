@@ -37,6 +37,7 @@
 		761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659619A15FD40062B525 /* AFURLSessionManager.m */; };
 		761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B419A1A6BC0062B525 /* RESideMenu.m */; };
 		761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */; };
+		766A7D571A923D8D00B6C81E /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D561A923D8D00B6C81E /* search-icon.png */; };
 		766DEF591A48C5B10049CA2A /* SLKTextView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA41A48BA92009CD94F /* SLKTextView+SLKAdditions.m */; };
 		766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA71A48BA92009CD94F /* UIScrollView+SLKAdditions.m */; };
 		766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA91A48BA92009CD94F /* UIView+SLKAdditions.m */; };
@@ -158,6 +159,7 @@
 		761D65B419A1A6BC0062B525 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		761D65B519A1A6BC0062B525 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		766A7D561A923D8D00B6C81E /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon.png"; sourceTree = "<group>"; };
 		766DEF691A48E4F00049CA2A /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		766DEF841A4E5C220049CA2A /* MessageChatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageChatroom.h; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 				76C2B10319F9EBC60010E98B /* error.png */,
 				76C2B10419F9EBC60010E98B /* warning.png */,
 				7671FC901A0FE3B0000ECDAF /* search-25.png */,
+				766A7D561A923D8D00B6C81E /* search-icon.png */,
 				7671FC841A0E74A4000ECDAF /* default-avatar.png */,
 				7671FC751A0DB740000ECDAF /* message-25.png */,
 				7671FC771A0DB7C6000ECDAF /* chat-25.png */,
@@ -693,6 +696,7 @@
 			files = (
 				7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */,
 				76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */,
+				766A7D571A923D8D00B6C81E /* search-icon.png in Resources */,
 				7671FC781A0DB7C6000ECDAF /* chat-25.png in Resources */,
 				7671FC761A0DB740000ECDAF /* message-25.png in Resources */,
 				7671FC911A0FE3B0000ECDAF /* search-25.png in Resources */,

@@ -15,6 +15,7 @@
 #import "EVCCommonMethods.h"
 #import <EVCGroupSearchViewViewController.h>
 #import "EVCFlingViewController.h"
+#import "EVCShoppingViewController.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     NSArray *options;

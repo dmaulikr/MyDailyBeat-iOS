@@ -19,5 +19,7 @@
 
 - (NSMutableArray *) getGroupsWithNameContainingString:(NSString *) queryString withSortOrder:(EVCSearchSortOrder) sort_order;
 
+- (NSMutableArray *) getUsersForFeelingBlue;
+
 
 @end
