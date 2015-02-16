@@ -36,23 +36,72 @@ static VerveUser *currentUser;
 }
 
 - (BOOL) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:password]]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
-        currentUser = [[VerveUser alloc] init];
-        currentUser.name = [resultDic objectForKey:@"name"];
-        currentUser.email = [resultDic objectForKey:@"email"];
-        currentUser.screenName = screenName;
-        currentUser.password = password;
-        currentUser.mobile = [resultDic objectForKey:@"mobile"];
-        currentUser.zipcode = [resultDic objectForKey:@"zipcode"];
-        currentUser.birth_month = [resultDic objectForKey:@"birth_month"];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        currentUser.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
+    @try {
         
-        return YES;
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:screenName forKey:@"screenName"];
+        [postData setObject:password forKey:@"password"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/login" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        if ([resultDic objectForKey:@"name"] != nil) {
+            currentUser = [[VerveUser alloc] init];
+            currentUser.name = [resultDic objectForKey:@"name"];
+            currentUser.email = [resultDic objectForKey:@"email"];
+            currentUser.screenName = screenName;
+            currentUser.password = password;
+            currentUser.mobile = [resultDic objectForKey:@"mobile"];
+            currentUser.zipcode = [resultDic objectForKey:@"zipcode"];
+            currentUser.birth_month = [resultDic objectForKey:@"birth_month"];
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            currentUser.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
+            
+            return YES;
+        }
+        
+        return NO;
+
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+
+- (BOOL) logout {
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:currentUser.screenName forKey:@"screenName"];
+        [postData setObject:currentUser.password forKey:@"password"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/logout" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [resultDic objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        return NO;
+        
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
     }
     
     return NO;
@@ -1172,6 +1221,51 @@ static VerveUser *currentUser;
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     return !(networkStatus == NotReachable);
+}
+
+- (NSDictionary *) searchShoppingURLSWithQueryString: (NSString *) query withSortOrder: (EVCSearchSortOrder) sortOrder {
+        NSString *parameters = [@"query=" stringByAppendingString:[self urlencode:query]];
+        parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
+        return [self makeRequestWithBaseUrl:BASE_URL withPath:@"shopping/url/search" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+}
+
+- (NSDictionary *) getShoppingFavoritesForUser: (VerveUser *) user withSortOrder: (EVCSearchSortOrder) sortOrder {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
+    parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
+    return [self makeRequestWithBaseUrl:BASE_URL withPath:@"shopping/url/favorites/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+}
+
+- (BOOL) addShoppingFavoriteURL: (NSString * ) string ForUser: (VerveUser *) user {
+    @try {
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:user.screenName forKey:@"screenName"];
+        [postData setObject:string forKey:@"URL"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"shopping/url/favorites/add" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+
+- (NSDictionary *) getUsersForFeelingBlue {
+    
+    return [self makeRequestWithBaseUrl:BASE_URL withPath:@"feelingblue/anonymous/load" withParameters:nil withRequestType:GET_REQUEST andPostData:nil];
 }
 
 /**
