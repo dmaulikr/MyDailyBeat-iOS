@@ -37,10 +37,12 @@
     self.tableView.opaque = NO;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundView = nil;
+    self.tableView.contentInset = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = [UIColor clearColor];
+    options = [NSArray arrayWithObjects:@"Check my Finances", @"Feeling Blue", @"Find a job", @"Go Shopping", @"Have a Fling", @"Make Friends", @"Manage my Health", @"Participate in my Community", @"Travel", @"Volunteer in the community", nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -82,7 +84,7 @@
             }
             break;
             
-        case 1:
+        case 2:
             if (indexPath.row == [groups count]) {
                 //create group here
                 DLAVAlertView *groupNameAlertView = [[DLAVAlertView alloc] initWithTitle:@"Enter Name of New Group" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
@@ -99,6 +101,31 @@
                 
             }
             
+            break;
+        case 1:
+            switch (indexPath.row) {
+                case 4: {
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
+                }
+                    
+                    break;
+                case 3:
+                {
+                    EVCShoppingViewController *shop = [[EVCShoppingViewController alloc] initWithNibName:@"EVCShoppingViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:shop] animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                    EVCFeelingBlueViewController *fb = [[EVCFeelingBlueViewController alloc] initWithNibName:@"EVCFeelingBlueViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fb] animated:YES];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
             break;
             
         default:
@@ -147,19 +174,52 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"Yet Another method got called");
-    return 2;
+    return 3;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return nil;
+        case 1:
+            return @"Navigation";
+        case 2:
+            return @"Groups";
+            
+        default:
+            break;
+    }
+    return @"";
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.text=[self tableView:tableView titleForHeaderInSection:section];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+    label.backgroundColor=[UIColor whiteColor];
+    label.textAlignment=UITextAlignmentRight;
+    return label;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return 0;
+    return 50;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
     
-    NSLog(@"Another method got called");
     switch (sectionIndex) {
         case 0:
             return 1;
-        case 1:
+        case 2:
             return [groups count] + 1;
+        case 1:
+            return [options count];
             
         default:
             return 1;
@@ -170,7 +230,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = @"Cell";
-    NSLog(@"This method was called: section: %d, row: %d", indexPath.section, indexPath.row);
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -190,16 +249,16 @@
             
             cell.textLabel.text = @"Home";
             
-            cell.imageView.image = [UIImage imageNamed:@"home-512"];
-            
             break;
-        case 1:
+        case 2:
             if (indexPath.row == [groups count]) {
                 cell.textLabel.text = CREATE_NEW_GROUP;
-                cell.imageView.image = [UIImage imageNamed:@"plus-512"];
             } else {
                 cell.textLabel.text = [[groups objectAtIndex:indexPath.row] groupName];
             }
+            break;
+        case 1:
+            cell.textLabel.text = [options objectAtIndex:indexPath.row];
             break;
             
         default:

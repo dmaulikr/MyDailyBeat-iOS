@@ -24,6 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     if ([self.currentViewedUser isEqual:[[API getInstance] getCurrentUser]]) {
         [self.addFavsBtn setHidden:YES];
         [self.sendMessageBtn setHidden:YES];
@@ -32,7 +37,14 @@
     self.nameLbl.text = self.currentViewedUser.screenName;
     self.distanceLbl.text = @"";
     [self loadPicture];
-    
+    if ([self.currentViewedUser isEqual:[[API getInstance] getCurrentUser]]) {
+        self.editBtn.hidden=FALSE;
+    }
+}
+
+- (IBAction)edit:(id)sender {
+    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] init];
+    [self presentViewController:edit animated:YES completion:nil];
 }
 
 - (void) loadPicture {

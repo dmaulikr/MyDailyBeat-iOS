@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EVCShoppingSearchViewController.h"
 #import "EVCShoppingFavoritesTableViewController.h"
+#import <SVModalWebViewController.h>
 
 @interface EVCShoppingViewController : UITabBarController <UITabBarControllerDelegate>
 

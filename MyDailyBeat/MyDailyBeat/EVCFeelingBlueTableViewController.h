@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "EVCSearchEngine.h"
+#import "EVCCommonMethods.h"
+#import "RESideMenu.h"
 
 @interface EVCFeelingBlueTableViewController : UITableViewController {
     EVCSearchEngine *search;

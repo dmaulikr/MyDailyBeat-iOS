@@ -11,12 +11,13 @@
 #import <API.h>
 #import <RelationshipPrefs.h>
 #import "EVCFlingMessagingViewController.h"
+#import "EVCFlingProfileCreatorViewController.h"
 
 @interface EVCFlingProfileViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet UIImageView *profilePicView, *favoriteImgView;
+@property (nonatomic, retain) IBOutlet UIImageView *profilePicView;
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl, *ageLbl, *genderLbl, *distanceLbl, *orientationlbl;
-@property (nonatomic, retain) IBOutlet UIButton *addFavsBtn, *sendMessageBtn;
+@property (nonatomic, retain) IBOutlet UIButton *addFavsBtn, *sendMessageBtn, *editBtn;
 @property (nonatomic, retain) IBOutlet UITextView *aboutMeView;
 @property (nonatomic, retain) VerveUser *currentViewedUser;
 @property (nonatomic, retain) RelationshipPrefs *prefs;
@@ -25,5 +26,6 @@
 
 - (IBAction)fav:(id)sender;
 - (IBAction)message:(id)sender;
+- (IBAction)edit:(id)sender;
 
 @end

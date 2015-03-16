@@ -353,7 +353,6 @@
 				761D651219A15A4D0062B525 /* Supporting Files */,
 				76C2B09719F4111F0010E98B /* EVCCommonMethods.h */,
 				76C2B09819F4111F0010E98B /* EVCCommonMethods.m */,
-				76EBBEA41A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib */,
 			);
 			path = MyDailyBeat;
 			sourceTree = "<group>";
@@ -518,8 +517,9 @@
 			children = (
 				767000DC1A7AFA73005F9DC4 /* Shopping */,
 				76DEDA891A47505F009CD94F /* Fling */,
-				769EEAA219AA6BE800FF072E /* EVCMakeFriendsPrefsViewController_iPhone.xib */,
+				76EBBEA41A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib */,
 				769B0A971A607C2300BB287E /* EVCFeelingBlueViewController.xib */,
+				769EEAA219AA6BE800FF072E /* EVCMakeFriendsPrefsViewController_iPhone.xib */,
 				769EEB4519AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib */,
 				769EEB3B19AC1A9300FF072E /* EVCRelationshipPrefsViewController_iPhone.xib */,
 				769EEB4019AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib */,

@@ -23,9 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self navigationItem].title = @"Welcome to MyDailyBeat";
     
-    options = [NSArray arrayWithObjects:@"My Friends", @"My Fling", @"My Community", @"Health", @"Finance", @"Travel", @"Jobs", @"Volunteering", @"Shopping", nil];
+    
+    options = [NSArray arrayWithObjects:@"Check my Finances", @"Feeling Blue", @"Find a job", @"Go Shopping", @"Have a Fling", @"Make Friends", @"Manage my Health", @"Participate in my Community", @"Travel", @"Volunteer in the community", nil];
     
     UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"VerveAPIBundle.bundle/search-icon.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -63,12 +63,15 @@
     self.mTableView.dataSource = self;
     self.mTableView.delegate = self;
     api = [API getInstance];
+    NSString *name = [api getCurrentUser].name;
+    NSArray *fields = [name componentsSeparatedByString:@" "];
+    [self navigationItem].title = [NSString stringWithFormat:@"Welcome %@!", fields[0]];
     
 }
 
 - (void)searchGroups {
     EVCGroupSearchViewViewController *searchController = [[EVCGroupSearchViewViewController alloc] init];
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:searchController] animated:YES completion:nil];
+    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:searchController] animated:YES];
     
 }
 
@@ -77,16 +80,22 @@
     switch (indexPath.section) {
         case 1:
             switch (indexPath.row) {
-                case 1: {
+                case 4: {
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil];
-                    [self.navigationController pushViewController:fling animated:YES];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
                     break;
-                case 8:
+                case 3:
                 {
                     EVCShoppingViewController *shop = [[EVCShoppingViewController alloc] initWithNibName:@"EVCShoppingViewController" bundle:nil];
-                    [self.navigationController pushViewController:shop animated:YES];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:shop] animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                     EVCFeelingBlueViewController *fb = [[EVCFeelingBlueViewController alloc] initWithNibName:@"EVCFeelingBlueViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fb] animated:YES];
                 }
                     break;
                     
@@ -114,6 +123,7 @@
         
     }
     
+    
     switch (indexPath.section) {
         case 0:
             cell.textLabel.text = @"What would you like to do today?";
@@ -127,6 +137,10 @@
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 35;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -42,6 +42,29 @@
     
     partnersItem.title = @"View Favorites";
     [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"menu-icon"] scaledToSize:CGSizeMake(30, 30)];
+    CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
+    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
+    [someButton addTarget:self action:@selector(showMenu)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
+    
+    self.navigationItem.rightBarButtonItem = menuButton;
+    
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon"] scaledToSize:CGSizeMake(30, 30)];
+    CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
+    UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
+    [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
+    [someButton2 addTarget:self action:@selector(showProfile)
+          forControlEvents:UIControlEventTouchUpInside];
+    [someButton2 setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
+    self.navigationItem.leftBarButtonItem = profileButton;
 
 
 }
@@ -51,14 +74,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) showMenu {
+    [self.sideMenuViewController presentRightMenuViewController];
 }
-*/
+
+- (void) showProfile {
+    [self.sideMenuViewController presentLeftMenuViewController];
+}
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <API.h>
+#import <SVModalWebViewController.h>
 
 @interface EVCShoppingSearchViewController : UIViewController <UISearchBarDelegate,UITableViewDataSource, UITableViewDelegate> {
     BOOL isFiltered;
