@@ -78,6 +78,12 @@
 		769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */; };
 		769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB3419AC11C100FF072E /* RelationshipPrefs.m */; };
 		769EEB4E19AC2C0500FF072E /* VolunteeringPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */; };
+		76AE55F01A97D4C4000B95B6 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */; };
+		76AE55F11A97D4C4000B95B6 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55EF1A97D4C4000B95B6 /* SVWebViewController.m */; };
+		76AE55F41A97D567000B95B6 /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55F31A97D567000B95B6 /* SVWebViewControllerActivity.m */; };
+		76AE55F71A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55F61A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m */; };
+		76AE55FA1A97D589000B95B6 /* SVWebViewControllerActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55F91A97D589000B95B6 /* SVWebViewControllerActivitySafari.m */; };
+		76AE55FC1A9A856C000B95B6 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76AE55FB1A9A856C000B95B6 /* SVWebViewController.bundle */; };
 		76BD326119DCC5C90054ED88 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD326019DCC5C90054ED88 /* Post.m */; };
 		76BD327D19DF7F6D0054ED88 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD327C19DF7F6D0054ED88 /* RECommonFunctions.m */; };
 		76C2B10519F9EBC60010E98B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10219F9EBC60010E98B /* check.png */; };
@@ -219,6 +225,17 @@
 		769EEB3419AC11C100FF072E /* RelationshipPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationshipPrefs.m; sourceTree = "<group>"; };
 		769EEB4C19AC2BD500FF072E /* VolunteeringPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolunteeringPrefs.h; sourceTree = "<group>"; };
 		769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolunteeringPrefs.m; sourceTree = "<group>"; };
+		76AE55EC1A97D4C4000B95B6 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
+		76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
+		76AE55EE1A97D4C4000B95B6 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
+		76AE55EF1A97D4C4000B95B6 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
+		76AE55F21A97D567000B95B6 /* SVWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivity.h; sourceTree = "<group>"; };
+		76AE55F31A97D567000B95B6 /* SVWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivity.m; sourceTree = "<group>"; };
+		76AE55F51A97D57C000B95B6 /* SVWebViewControllerActivityChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivityChrome.h; sourceTree = "<group>"; };
+		76AE55F61A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivityChrome.m; sourceTree = "<group>"; };
+		76AE55F81A97D589000B95B6 /* SVWebViewControllerActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivitySafari.h; sourceTree = "<group>"; };
+		76AE55F91A97D589000B95B6 /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
+		76AE55FB1A9A856C000B95B6 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
 		76BD325F19DCC5C90054ED88 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		76BD326019DCC5C90054ED88 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		76BD327B19DF7F6D0054ED88 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
@@ -311,6 +328,7 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				76AE55EB1A97D4A7000B95B6 /* SVWebViewController */,
 				76DEDAA01A48BA7E009CD94F /* SlackTextViewController */,
 				7671FC881A0FC855000ECDAF /* EVCSearchEngine */,
 				7671FC861A0F123C000ECDAF /* JoinGroup */,
@@ -531,9 +549,27 @@
 			name = Prefs;
 			sourceTree = "<group>";
 		};
+		76AE55EB1A97D4A7000B95B6 /* SVWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				76AE55F81A97D589000B95B6 /* SVWebViewControllerActivitySafari.h */,
+				76AE55F91A97D589000B95B6 /* SVWebViewControllerActivitySafari.m */,
+				76AE55F51A97D57C000B95B6 /* SVWebViewControllerActivityChrome.h */,
+				76AE55F61A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m */,
+				76AE55F21A97D567000B95B6 /* SVWebViewControllerActivity.h */,
+				76AE55F31A97D567000B95B6 /* SVWebViewControllerActivity.m */,
+				76AE55EC1A97D4C4000B95B6 /* SVModalWebViewController.h */,
+				76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */,
+				76AE55EE1A97D4C4000B95B6 /* SVWebViewController.h */,
+				76AE55EF1A97D4C4000B95B6 /* SVWebViewController.m */,
+			);
+			name = SVWebViewController;
+			sourceTree = "<group>";
+		};
 		76C2B0F719F9DBD40010E98B /* VerveAPIBundle */ = {
 			isa = PBXGroup;
 			children = (
+				76AE55FB1A9A856C000B95B6 /* SVWebViewController.bundle */,
 				76C2B10219F9EBC60010E98B /* check.png */,
 				76C2B10319F9EBC60010E98B /* error.png */,
 				76C2B10419F9EBC60010E98B /* warning.png */,
@@ -703,6 +739,7 @@
 				76C2B10719F9EBC60010E98B /* warning.png in Resources */,
 				7671FC741A0DB51F000ECDAF /* EVCUserInviteViewController_iPhone.xib in Resources */,
 				7671FC8D1A0FD8B9000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib in Resources */,
+				76AE55FC1A9A856C000B95B6 /* SVWebViewController.bundle in Resources */,
 				7671FC851A0E74A5000ECDAF /* default-avatar.png in Resources */,
 				76C2B10619F9EBC60010E98B /* error.png in Resources */,
 				76C2B10519F9EBC60010E98B /* check.png in Resources */,
@@ -723,6 +760,7 @@
 				766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */,
 				766DEF861A4E5C220049CA2A /* MessageChatroom.m in Sources */,
 				766DEF591A48C5B10049CA2A /* SLKTextView+SLKAdditions.m in Sources */,
+				76AE55F41A97D567000B95B6 /* SVWebViewControllerActivity.m in Sources */,
 				766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */,
 				766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */,
 				769B0A8B1A59AF7100BB287E /* VerveMessage.m in Sources */,
@@ -732,6 +770,8 @@
 				7671FC731A0DB515000ECDAF /* EVCUserInviteViewController.m in Sources */,
 				769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */,
 				761D657D19A15DF40062B525 /* Reachability.m in Sources */,
+				76AE55FA1A97D589000B95B6 /* SVWebViewControllerActivitySafari.m in Sources */,
+				76AE55F11A97D4C4000B95B6 /* SVWebViewController.m in Sources */,
 				761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */,
 				76BD326119DCC5C90054ED88 /* Post.m in Sources */,
 				76EF997219FD40A300E15A14 /* GroupPrefs.m in Sources */,
@@ -744,6 +784,7 @@
 				7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */,
 				761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */,
 				769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */,
+				76AE55F01A97D4C4000B95B6 /* SVModalWebViewController.m in Sources */,
 				761D659C19A15FD40062B525 /* AFURLConnectionOperation.m in Sources */,
 				769EEB4E19AC2C0500FF072E /* VolunteeringPrefs.m in Sources */,
 				769EEA8419A8171500FF072E /* DLAVAlertViewController.m in Sources */,
@@ -751,6 +792,7 @@
 				769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */,
 				761D659B19A15FD40062B525 /* AFSecurityPolicy.m in Sources */,
 				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
+				76AE55F71A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m in Sources */,
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
 				766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */,

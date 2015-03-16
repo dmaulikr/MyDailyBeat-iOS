@@ -14,6 +14,8 @@
 #import "EVCChatroomTableViewController.h"
 #import <API.h>
 #import "EVCFlingProfileCreatorViewController.h"
+#import "RESideMenu.h"
+#import "EVCCommonMethods.h"
 
 @interface EVCFlingViewController : UITabBarController <UITabBarControllerDelegate>
 

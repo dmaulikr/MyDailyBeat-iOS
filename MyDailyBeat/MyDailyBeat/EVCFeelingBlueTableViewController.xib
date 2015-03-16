@@ -15,6 +15,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <color key="separatorColor" red="0.57647058819999997" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="sectionIndexBackgroundColor" red="0.53333333329999999" green="0.66274509800000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>
                 <outlet property="delegate" destination="-1" id="9aC-8N-iBw"/>

@@ -61,9 +61,29 @@
         cell.textLabel.text = @"No Results Found";
     } else {
         cell.textLabel.text = ((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName;
+        cell.imageView.image = [self loadPictureForUser:((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName];
     }
     
     return cell;
+}
+
+- (UIImage *) loadPictureForUser: (NSString *) screenName {
+    __block UIImage *img;
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        NSURL *imageURL = [[API getInstance] retrieveProfilePictureForUserWithScreenName:screenName];
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            img = [UIImage imageWithData:imageData];
+            
+        });
+        
+    });
+    
+    return img;
+    
 }
 
 

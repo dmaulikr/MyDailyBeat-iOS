@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <API.h>
+#import <SVModalWebViewController.h>
+#import "RESideMenu.h"
+#import "EVCCommonMethods.h"
 
 @interface EVCShoppingFavoritesTableViewController : UITableViewController
 

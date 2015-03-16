@@ -100,8 +100,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void) openURLinBrowser: (NSString *) url {
     NSString *fullURL = [NSString stringWithFormat:@"http://www.%@", url];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:
-                                                fullURL]];
+    SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:fullURL];
+    [self presentViewController:webViewController animated:YES completion:NULL];
 }
 
 - (void) addToFavs: (NSString *) url {

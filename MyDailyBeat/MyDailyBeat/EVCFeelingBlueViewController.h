@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "EVCFeelingBlueTableViewController.h"
+#import "EVCCommonMethods.h"
+#import "RESideMenu.h"
 
 
 @interface EVCFeelingBlueViewController : UIViewController

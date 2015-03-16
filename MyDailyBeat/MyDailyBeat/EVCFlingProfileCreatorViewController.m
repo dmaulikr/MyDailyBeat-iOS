@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self navigationItem].title = @"Edit Fling Profile";
+    
 }
 
 - (IBAction)save:(id)sender {
@@ -34,7 +35,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success) {
-                [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                [self dismissViewControllerAnimated:YES completion:^{
                     [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
                 }];
             } else {

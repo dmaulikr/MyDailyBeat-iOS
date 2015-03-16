@@ -12,7 +12,9 @@
 #import "EVCViewController.h"
 #import <API.h>
 
-@interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    NSArray *options;
+}
 
 @property (nonatomic, retain) NSMutableArray *groups;
 @property (nonatomic) UIViewController *parentController;
