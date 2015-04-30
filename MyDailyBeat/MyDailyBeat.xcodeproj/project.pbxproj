@@ -27,21 +27,25 @@
 		7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */; };
 		7636F6CB19D4D881000B68B0 /* EVCGroupViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */; };
 		7636F6D119D501FD000B68B0 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6D019D501FD000B68B0 /* texture.png */; };
+		76607AAF1AD35A270097E520 /* star-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AA31AD35A270097E520 /* star-icon-green.png */; };
+		76607AB01AD35A270097E520 /* profile-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AA41AD35A270097E520 /* profile-icon-gray.png */; };
+		76607AB11AD35A270097E520 /* hamburger-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AA51AD35A270097E520 /* hamburger-icon-gray.png */; };
+		76607AB21AD35A270097E520 /* hamburger-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AA61AD35A270097E520 /* hamburger-icon-green.png */; };
+		76607AB31AD35A270097E520 /* view-partners-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AA71AD35A270097E520 /* view-partners-icon-green.png */; };
+		76607AB41AD35A270097E520 /* search-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AA81AD35A270097E520 /* search-icon-green.png */; };
+		76607AB51AD35A270097E520 /* search-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AA91AD35A270097E520 /* search-icon-gray.png */; };
+		76607AB61AD35A270097E520 /* profile-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AAA1AD35A270097E520 /* profile-icon-green.png */; };
+		76607AB71AD35A270097E520 /* messages-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AAB1AD35A270097E520 /* messages-icon-green.png */; };
+		76607AB81AD35A270097E520 /* view-partners-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AAC1AD35A270097E520 /* view-partners-icon-gray.png */; };
+		76607AB91AD35A270097E520 /* star-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AAD1AD35A270097E520 /* star-icon-gray.png */; };
+		76607ABA1AD35A270097E520 /* messages-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607AAE1AD35A270097E520 /* messages-icon-gray.png */; };
+		76607ABF1AD35A6E0097E520 /* banner-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABD1AD35A6E0097E520 /* banner-green.png */; };
+		76607AC01AD35A6E0097E520 /* banner-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABE1AD35A6E0097E520 /* banner-white.png */; };
 		7667E73F1A241F0E00B006D5 /* menubg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7667E73E1A241F0E00B006D5 /* menubg.jpg */; };
 		766A7D4F1A900A5E00B6C81E /* EVCHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D4E1A900A5E00B6C81E /* EVCHeader.png */; };
 		766A7D511A900C0400B6C81E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D501A900C0400B6C81E /* Default-568h@2x.png */; };
 		766A7D531A923CE200B6C81E /* profile-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D521A923CE200B6C81E /* profile-icon.png */; };
 		766A7D551A923CFF00B6C81E /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D541A923CFF00B6C81E /* menu-icon.png */; };
-		766A7D601A923FB100B6C81E /* messages-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D581A923FB100B6C81E /* messages-green.png */; };
-		766A7D611A923FB100B6C81E /* messages-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D591A923FB100B6C81E /* messages-yellow.png */; };
-		766A7D621A923FB100B6C81E /* profile-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D5A1A923FB100B6C81E /* profile-green.png */; };
-		766A7D631A923FB100B6C81E /* profile-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D5B1A923FB100B6C81E /* profile-yellow.png */; };
-		766A7D641A923FB100B6C81E /* search-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D5C1A923FB100B6C81E /* search-green.png */; };
-		766A7D651A923FB100B6C81E /* search-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D5D1A923FB100B6C81E /* search-yellow.png */; };
-		766A7D661A923FB100B6C81E /* view-partners-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D5E1A923FB100B6C81E /* view-partners-green.png */; };
-		766A7D671A923FB100B6C81E /* view-partners-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D5F1A923FB100B6C81E /* view-partners-yellow.png */; };
-		766A7D6A1A92419800B6C81E /* favorite-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D681A92419800B6C81E /* favorite-icon-green.png */; };
-		766A7D6B1A92419800B6C81E /* favorite-icon-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D691A92419800B6C81E /* favorite-icon-yellow.png */; };
 		766DEF7A1A4BC2870049CA2A /* EVCChatroomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF791A4BC2870049CA2A /* EVCChatroomTableViewController.m */; };
 		766DEF7E1A4BC6180049CA2A /* EVCChatroomTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 766DEF7D1A4BC6180049CA2A /* EVCChatroomTableViewController.xib */; };
 		766DEF821A4BC8060049CA2A /* EVCChatroomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF801A4BC8060049CA2A /* EVCChatroomCell.m */; };
@@ -170,21 +174,25 @@
 		7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupViewController.m; sourceTree = "<group>"; };
 		7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupViewController_iPhone.xib; sourceTree = "<group>"; };
 		7636F6D019D501FD000B68B0 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		76607AA31AD35A270097E520 /* star-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon-green.png"; sourceTree = "<group>"; };
+		76607AA41AD35A270097E520 /* profile-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon-gray.png"; sourceTree = "<group>"; };
+		76607AA51AD35A270097E520 /* hamburger-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-icon-gray.png"; sourceTree = "<group>"; };
+		76607AA61AD35A270097E520 /* hamburger-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-icon-green.png"; sourceTree = "<group>"; };
+		76607AA71AD35A270097E520 /* view-partners-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-partners-icon-green.png"; sourceTree = "<group>"; };
+		76607AA81AD35A270097E520 /* search-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-green.png"; sourceTree = "<group>"; };
+		76607AA91AD35A270097E520 /* search-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-gray.png"; sourceTree = "<group>"; };
+		76607AAA1AD35A270097E520 /* profile-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon-green.png"; sourceTree = "<group>"; };
+		76607AAB1AD35A270097E520 /* messages-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-icon-green.png"; sourceTree = "<group>"; };
+		76607AAC1AD35A270097E520 /* view-partners-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-partners-icon-gray.png"; sourceTree = "<group>"; };
+		76607AAD1AD35A270097E520 /* star-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon-gray.png"; sourceTree = "<group>"; };
+		76607AAE1AD35A270097E520 /* messages-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-icon-gray.png"; sourceTree = "<group>"; };
+		76607ABD1AD35A6E0097E520 /* banner-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-green.png"; sourceTree = "<group>"; };
+		76607ABE1AD35A6E0097E520 /* banner-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-white.png"; sourceTree = "<group>"; };
 		7667E73E1A241F0E00B006D5 /* menubg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menubg.jpg; sourceTree = "<group>"; };
 		766A7D4E1A900A5E00B6C81E /* EVCHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EVCHeader.png; sourceTree = "<group>"; };
 		766A7D501A900C0400B6C81E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		766A7D521A923CE200B6C81E /* profile-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon.png"; sourceTree = "<group>"; };
 		766A7D541A923CFF00B6C81E /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
-		766A7D581A923FB100B6C81E /* messages-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-green.png"; sourceTree = "<group>"; };
-		766A7D591A923FB100B6C81E /* messages-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-yellow.png"; sourceTree = "<group>"; };
-		766A7D5A1A923FB100B6C81E /* profile-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-green.png"; sourceTree = "<group>"; };
-		766A7D5B1A923FB100B6C81E /* profile-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-yellow.png"; sourceTree = "<group>"; };
-		766A7D5C1A923FB100B6C81E /* search-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-green.png"; sourceTree = "<group>"; };
-		766A7D5D1A923FB100B6C81E /* search-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-yellow.png"; sourceTree = "<group>"; };
-		766A7D5E1A923FB100B6C81E /* view-partners-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-partners-green.png"; sourceTree = "<group>"; };
-		766A7D5F1A923FB100B6C81E /* view-partners-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-partners-yellow.png"; sourceTree = "<group>"; };
-		766A7D681A92419800B6C81E /* favorite-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite-icon-green.png"; sourceTree = "<group>"; };
-		766A7D691A92419800B6C81E /* favorite-icon-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite-icon-yellow.png"; sourceTree = "<group>"; };
 		766DEF781A4BC2870049CA2A /* EVCChatroomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCChatroomTableViewController.h; sourceTree = "<group>"; };
 		766DEF791A4BC2870049CA2A /* EVCChatroomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCChatroomTableViewController.m; sourceTree = "<group>"; };
 		766DEF7D1A4BC6180049CA2A /* EVCChatroomTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCChatroomTableViewController.xib; sourceTree = "<group>"; };
@@ -360,16 +368,18 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				766A7D681A92419800B6C81E /* favorite-icon-green.png */,
-				766A7D691A92419800B6C81E /* favorite-icon-yellow.png */,
-				766A7D581A923FB100B6C81E /* messages-green.png */,
-				766A7D591A923FB100B6C81E /* messages-yellow.png */,
-				766A7D5A1A923FB100B6C81E /* profile-green.png */,
-				766A7D5B1A923FB100B6C81E /* profile-yellow.png */,
-				766A7D5C1A923FB100B6C81E /* search-green.png */,
-				766A7D5D1A923FB100B6C81E /* search-yellow.png */,
-				766A7D5E1A923FB100B6C81E /* view-partners-green.png */,
-				766A7D5F1A923FB100B6C81E /* view-partners-yellow.png */,
+				76607AA31AD35A270097E520 /* star-icon-green.png */,
+				76607AA41AD35A270097E520 /* profile-icon-gray.png */,
+				76607AA51AD35A270097E520 /* hamburger-icon-gray.png */,
+				76607AA61AD35A270097E520 /* hamburger-icon-green.png */,
+				76607AA71AD35A270097E520 /* view-partners-icon-green.png */,
+				76607AA81AD35A270097E520 /* search-icon-green.png */,
+				76607AA91AD35A270097E520 /* search-icon-gray.png */,
+				76607AAA1AD35A270097E520 /* profile-icon-green.png */,
+				76607AAB1AD35A270097E520 /* messages-icon-green.png */,
+				76607AAC1AD35A270097E520 /* view-partners-icon-gray.png */,
+				76607AAD1AD35A270097E520 /* star-icon-gray.png */,
+				76607AAE1AD35A270097E520 /* messages-icon-gray.png */,
 				7671FC6C1A06F81C000ECDAF /* add_user-25.png */,
 				76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */,
 				76BD329219DF87FE0054ED88 /* edit_file-50.png */,
@@ -380,6 +390,8 @@
 				766A7D521A923CE200B6C81E /* profile-icon.png */,
 				7671FC5919FDCE28000ECDAF /* user-50_white.png */,
 				76E64F0119B9338C0022F189 /* home-512.png */,
+				76607ABD1AD35A6E0097E520 /* banner-green.png */,
+				76607ABE1AD35A6E0097E520 /* banner-white.png */,
 				766A7D4E1A900A5E00B6C81E /* EVCHeader.png */,
 				76E64EFA19B933650022F189 /* plus-512.png */,
 				76EF996919FD3CA900E15A14 /* settings-25.png */,
@@ -673,44 +685,45 @@
 				7636F6C419CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib in Resources */,
 				7671FC6D1A06F81D000ECDAF /* add_user-25.png in Resources */,
 				766A7D511A900C0400B6C81E /* Default-568h@2x.png in Resources */,
+				76607ABF1AD35A6E0097E520 /* banner-green.png in Resources */,
 				76C2B0ED19F4AD9F0010E98B /* EVCPostView_WithPicture.xib in Resources */,
 				7636F6D119D501FD000B68B0 /* texture.png in Resources */,
-				766A7D661A923FB100B6C81E /* view-partners-green.png in Resources */,
+				76607AB61AD35A270097E520 /* profile-icon-green.png in Resources */,
 				7671FC5A19FDCE28000ECDAF /* user-50_white.png in Resources */,
+				76607AB51AD35A270097E520 /* search-icon-gray.png in Resources */,
 				76DEDA811A474E19009CD94F /* EVCFlingViewController.xib in Resources */,
 				76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */,
 				766A7D551A923CFF00B6C81E /* menu-icon.png in Resources */,
-				766A7D631A923FB100B6C81E /* profile-yellow.png in Resources */,
+				76607AB11AD35A270097E520 /* hamburger-icon-gray.png in Resources */,
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				7667E73F1A241F0E00B006D5 /* menubg.jpg in Resources */,
 				76DEDA8E1A475E68009CD94F /* EVCPartnersTableViewController.xib in Resources */,
+				76607AB21AD35A270097E520 /* hamburger-icon-green.png in Resources */,
+				76607AAF1AD35A270097E520 /* star-icon-green.png in Resources */,
 				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
 				766A7D531A923CE200B6C81E /* profile-icon.png in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
 				76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */,
 				766A7D4F1A900A5E00B6C81E /* EVCHeader.png in Resources */,
 				76E64F0219B9338C0022F189 /* home-512.png in Resources */,
-				766A7D671A923FB100B6C81E /* view-partners-yellow.png in Resources */,
 				769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */,
 				76C2B0EF19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib in Resources */,
 				76C2B09619F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib in Resources */,
-				766A7D621A923FB100B6C81E /* profile-green.png in Resources */,
+				76607AB41AD35A270097E520 /* search-icon-green.png in Resources */,
 				768AFF3F1A754E300055F258 /* EVCShoppingSearchViewController.xib in Resources */,
 				76E64EFB19B933650022F189 /* plus-512.png in Resources */,
 				769B0A901A59F22C00BB287E /* EVCFlingProfileCreatorViewController.xib in Resources */,
-				766A7D651A923FB100B6C81E /* search-yellow.png in Resources */,
 				7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
+				76607AB81AD35A270097E520 /* view-partners-icon-gray.png in Resources */,
 				76DEDA881A47504B009CD94F /* EVCPartnerMatchViewController.xib in Resources */,
-				766A7D611A923FB100B6C81E /* messages-yellow.png in Resources */,
 				7636F6CB19D4D881000B68B0 /* EVCGroupViewController_iPhone.xib in Resources */,
 				769EEB4119AC295300FF072E /* EVCFlingPrefsViewController_iPhone.xib in Resources */,
 				7636F6C619D38EE1000B68B0 /* IQKeyboardManager.bundle in Resources */,
-				766A7D641A923FB100B6C81E /* search-green.png in Resources */,
 				76C2B10119F9DD590010E98B /* VerveAPIBundle.bundle in Resources */,
 				76DEDA931A476310009CD94F /* EVCFlingProfileViewController.xib in Resources */,
-				766A7D6B1A92419800B6C81E /* favorite-icon-yellow.png in Resources */,
 				769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */,
+				76607AB01AD35A270097E520 /* profile-icon-gray.png in Resources */,
 				7671FC5F19FF316B000ECDAF /* delete_sign-25.png in Resources */,
 				76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */,
 				769EEB3719AC167900FF072E /* EVCSocialPrefsViewController_iPhone.xib in Resources */,
@@ -718,14 +731,17 @@
 				769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */,
 				769EEB4619AC2A7100FF072E /* EVCVolunteeringPrefsViewController_iPhone.xib in Resources */,
 				769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */,
+				76607AC01AD35A6E0097E520 /* banner-white.png in Resources */,
 				766DEF831A4BC8060049CA2A /* EVCChatroomCell.xib in Resources */,
 				769EEA9F19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib in Resources */,
 				76C2B09119F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib in Resources */,
+				76607ABA1AD35A270097E520 /* messages-icon-gray.png in Resources */,
 				768AFF381A7540AA0055F258 /* EVCShoppingViewController.xib in Resources */,
+				76607AB31AD35A270097E520 /* view-partners-icon-green.png in Resources */,
+				76607AB91AD35A270097E520 /* star-icon-gray.png in Resources */,
 				766DEF7E1A4BC6180049CA2A /* EVCChatroomTableViewController.xib in Resources */,
-				766A7D601A923FB100B6C81E /* messages-green.png in Resources */,
 				769EEB3C19AC1A9300FF072E /* EVCRelationshipPrefsViewController_iPhone.xib in Resources */,
-				766A7D6A1A92419800B6C81E /* favorite-icon-green.png in Resources */,
+				76607AB71AD35A270097E520 /* messages-icon-green.png in Resources */,
 				76EBBEA61A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

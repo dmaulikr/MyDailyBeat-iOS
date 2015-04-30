@@ -26,7 +26,7 @@
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
-    header.image = [UIImage imageNamed:@"EVCHeader.png"];
+    header.image = [UIImage imageNamed:@"banner-green.png"];
 
     
 }

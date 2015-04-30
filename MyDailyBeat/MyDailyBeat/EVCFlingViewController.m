@@ -36,31 +36,31 @@
     UITabBarItem *messagingItem = [bar.items objectAtIndex:2];
     UITabBarItem *profItem = [bar.items objectAtIndex:3];
     
-    UIImage *firstIm = [UIImage imageNamed:@"search-green"];
-    UIImage *secondIm = [UIImage imageNamed:@"search-yellow"];
+    UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
     matchItem.title = @"Partner Match";
     [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
-    firstIm = [UIImage imageNamed:@"view-partners-green"];
-    secondIm = [UIImage imageNamed:@"view-partners-yellow"];
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"view-partners-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"view-partners-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
     partnersItem.title = @"Favorite Partners";
     [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
-    firstIm = [UIImage imageNamed:@"messages-green"];
-    secondIm = [UIImage imageNamed:@"messages-yellow"];
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"messages-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"messages-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
     messagingItem.title = @"Messaging";
     [messagingItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
-    firstIm = [UIImage imageNamed:@"profile-green"];
-    secondIm = [UIImage imageNamed:@"profile-yellow"];
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
     profItem.title = @"My Fling Profile";
     [profItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
-    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"menu-icon"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-green"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
@@ -72,7 +72,7 @@
     
     self.navigationItem.rightBarButtonItem = menuButton;
     
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-green"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
