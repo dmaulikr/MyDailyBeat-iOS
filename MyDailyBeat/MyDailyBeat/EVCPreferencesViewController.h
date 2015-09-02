@@ -12,23 +12,16 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "API.h"
 #import "EVCProfilePicView.h"
-#import "EVCMakeFriendsPrefsViewController.h"
-#import "EVCSocialPrefsViewController.h"
-#import "EVCRelationshipPrefsViewController.h"
-#import "EVCFlingPrefsViewController.h"
-#import "EVCVolunteeringPrefsViewController.h"
 #import "EVCCommonMethods.h"
 #import "RESideMenu.h"
+#import "FXForms.h"
+#import "VervePreferences.h"
+#import "EVCViewController.h"
 
-@interface EVCPreferencesViewController : UIViewController
+@interface EVCPreferencesViewController : UIViewController <FXFormControllerDelegate>
 
-@property(nonatomic, retain) IBOutlet UIButton *makeFriends, *fling, *social, *volunteer;
-
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) API *api;
-
-- (IBAction)makeFriends:(id)sender;
-- (IBAction)socialActivites:(id)sender;
-- (IBAction)fling:(id)sender;
-- (IBAction)volunteer:(id)sender;
+@property (nonatomic, strong) FXFormController *formController;
 
 @end

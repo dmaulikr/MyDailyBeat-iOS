@@ -42,7 +42,7 @@
     self.tableView.bounces = NO;
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = [UIColor clearColor];
-    options = [NSArray arrayWithObjects:@"Check my Finances", @"Feeling Blue", @"Find a job", @"Go Shopping", @"Have a Fling", @"Make Friends", @"Manage my Health", @"Participate in my Community", @"Travel", @"Volunteer in the community", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -169,45 +169,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 54;
+    return 35;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    switch (section) {
-        case 0:
-            return nil;
-        case 1:
-            return @"Navigation";
-        case 2:
-            return @"Groups";
-            
-        default:
-            break;
-    }
-    return @"";
-}
-
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UILabel *label = [[UILabel alloc] init];
-    label.text=[self tableView:tableView titleForHeaderInSection:section];
-    label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
-    label.backgroundColor=[UIColor whiteColor];
-    label.textAlignment=UITextAlignmentRight;
-    return label;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-        return 0;
-    return 50;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex

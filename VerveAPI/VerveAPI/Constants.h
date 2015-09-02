@@ -33,8 +33,28 @@ typedef NS_ENUM(NSInteger, SexualPreference) {
 
 #define CREATE_NEW_GROUP @"New Group"
 
+#define GENDER_STRING_LIST @[@"Male",@"Female",@"Trans Male",@"Trans Female"]
+#define STATUS_STRING_LIST @[@"Single", @"Married", @"Widow/Widower"]
+#define ETHNICITY_STRING_LIST_1 @[@"White/Caucasian", @"Black/African-American", @"Asian", @"Native American Indian/Native Alaskan", @"Latino/Hispanic", @"Other"]
+#define ETHNICITY_STRING_LIST_2 @[@"White/Caucasian", @"Black/African-American", @"Asian", @"Native American Indian/Native Alaskan", @"Latino/Hispanic", @"No Preference"]
+#define DRINKER_STRING_LIST @[@"I don't drink.", @"I seldom drink.", @"I enjoy drinking regularly."]
+#define BELIEFS_STRING_LIST_1 @[@"Buddhist", @"Christian", @"Catholic", @"Hindu", @"Jewish", @"Muslim", @"Agnostic", @"Non-religious", @"Other"]
+#define BELIEFS_STRING_LIST_2 @[@"Buddhist", @"Christian", @"Catholic", @"Hindu", @"Jewish", @"Muslim", @"Agnostic", @"Non-religious", @"No preference"]
+#define CONTACT_STRING_LIST @[@"MDB online chat", @"Mobile - phone/text", @"Email", @"In person"]
+#define AGE_STRING_LIST @[@"50-54", @"55-59", @"60-64", @"65-69", @"70-74", @"75-79", @"80-84", @"85-89", @"90-94", @"95-99", @"100+"]
+#define RELATIONSHIP_STRING_LIST @[@"Fling", @"Companionship", @"Committed Relationship"]
+
+#define TOP_TEN_BANKS @[@"JPMorgan Chase", @"Bank of America", @"Citigroup", @"Wells Fargo", @"The Bank of New York Mellon", @"U.S. Bancorp", @"HSBC Bank USA", @"Capital One", @"PNC Financial Services", @"State Street Bank", @"TD Bank", @"BB&T", @"SunTrust Banks", @"American Express", @"Ally Financial", @"Santander", @"Citizen's Bank", @"Eastern Bank"];
+#define TRAVEL_SITES @[@"kayak.com", @"hotels.com", @"priceline.com", @"orbitz.com", @"travelocity.com", @"expedia.com", @"BreadAndBreakfast.com", @"airbnb.com", @"Hotwire.com", @"cruises.com", @"GrandcircleCruiseline.com", @"Cheaptickets.com", @"Onetravel.com", @"CheapAir.com", @"fly.com"]
+
 // hex color
 #define UIColorFromHex(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 typedef enum {
     SendByEmail = 0,

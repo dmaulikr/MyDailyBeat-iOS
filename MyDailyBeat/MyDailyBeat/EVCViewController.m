@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     
-    options = [NSArray arrayWithObjects:@"Check my Finances", @"Feeling Blue", @"Find a job", @"Go Shopping", @"Have a Fling", @"Make Friends", @"Manage my Health", @"Participate in my Community", @"Travel", @"Volunteer in the community", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out...I'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
     
     UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-green.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -67,7 +67,9 @@
     NSArray *fields = [name componentsSeparatedByString:@" "];
     [self navigationItem].title = [NSString stringWithFormat:@"Welcome %@!", fields[0]];
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor :[UIColor colorWithRed:0.416 green:0.741 blue:0.275 alpha:1] } forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor :[UIColor colorWithRed:0.03921568627 green:0.71372549019 blue:0.66274509803 alpha:1] } forState:UIControlStateSelected];
+    
+    
     
 }
 
@@ -101,6 +103,12 @@
                 }
                     break;
                     
+                case 0:
+                {
+                    EVCFinanceViewController *finance = [[EVCFinanceViewController alloc] initWithNibName:@"EVCFinanceViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:finance] animated:YES];
+                }
+                    
                 default:
                     break;
             }
@@ -128,10 +136,13 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = @"What would you like to do today?";
+            cell.textLabel.text = @"What would you like to do?";
             break;
-        case 1:
+        case 1: {
             cell.textLabel.text = [options objectAtIndex:indexPath.row];
+            UIImage *icon = [UIImage imageNamed:@"star-icon-green"];
+            cell.imageView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(40, 40)];
+        }
             break;
             
         default:

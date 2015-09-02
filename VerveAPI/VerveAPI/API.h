@@ -13,16 +13,15 @@
 #import "AFHTTPRequestOperation.h"
 #import <MobileCoreServices/UTType.h>
 #import <sys/time.h>
-#import "MakeFriendsPrefs.h"
-#import "SocialPrefs.h"
-#import "RelationshipPrefs.h"
-#import "VolunteeringPrefs.h"
 #import "Group.h"
 #import "Post.h"
 #import "Constants.h"
 #import "MessageChatroom.h"
 #import "FlingProfile.h"
 #import "VerveMessage.h"
+#import "VerveUserPreferences.h"
+#import "VerveMatchingPreferences.h"
+#import "VerveBankObject.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 
@@ -45,18 +44,12 @@
 -(NSURL *) retrieveProfilePicture;
 -(NSURL *) retrieveProfilePictureForUserWithScreenName:(NSString *) screenName;
 
-- (BOOL) uploadMakeFriendsPrefs: (MakeFriendsPrefs *) prefsObject;
-- (BOOL) uploadSocialPrefs: (SocialPrefs *) prefsObject;
-- (BOOL) uploadRelationshipPrefs: (RelationshipPrefs *) prefsObject;
-- (BOOL) uploadFlingPrefs: (RelationshipPrefs *) prefsObject;
-- (BOOL) uploadVolunteeringPrefs: (VolunteeringPrefs *) prefsObject;
+- (VerveUserPreferences *) getUserPreferencesForUser: (VerveUser *) user;
+- (VerveMatchingPreferences *) getMatchingPreferencesForUser: (VerveUser *) user;
+- (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences andMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user;
 
-- (MakeFriendsPrefs *) retrieveMakeFriendsPrefs;
-- (SocialPrefs *) retrieveSocialPrefs;
-- (VolunteeringPrefs *) retrieveVolunteeringPrefs;
-- (RelationshipPrefs *) retrieveRelationshipPrefs;
-- (RelationshipPrefs *) retrieveFlingPrefs;
-- (RelationshipPrefs *) retrieveFlingPrefsWithScreenName:(NSString *) screenName;
+- (BOOL) doesAppExistWithTerm: (NSString *) name andCountry: (NSString *) country;
+- (VerveBankObject *) getBankInfoForBankWithName: (NSString *) name inCountry: (NSString *) country;
 
 - (NSMutableArray *) getGroupsForCurrentUser;
 - (NSMutableArray *) getGroupsForUser:(VerveUser *) user;

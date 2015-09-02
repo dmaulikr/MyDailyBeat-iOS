@@ -17,6 +17,7 @@
 #import "EVCFlingViewController.h"
 #import "EVCShoppingViewController.h"
 #import "EVCFeelingBlueViewController.h"
+#import "EVCFinanceViewController.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     NSArray *options;

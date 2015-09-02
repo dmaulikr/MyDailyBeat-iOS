@@ -12,6 +12,7 @@
 #import "RESideMenu.h"
 #import "EVCCommonMethods.h"
 
+
 @interface EVCShoppingFavoritesTableViewController : UITableViewController
 
 @property (nonatomic) NSMutableArray *searchResults;
