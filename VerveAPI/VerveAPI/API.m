@@ -228,299 +228,87 @@ static VerveUser *currentUser;
     return NO;
 }
 
-- (BOOL) uploadMakeFriendsPrefs: (MakeFriendsPrefs *) prefsObject {
-    
-    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-    [postData setObject:currentUser.screenName forKey:@"screenName"];
-    [postData setObject:currentUser.password forKey:@"password"];
-    
-    NSMutableArray *interests = [self interestsJSON];
-    NSMutableArray *selected = [prefsObject getBoolArray];
-    
-    [postData setObject:interests forKey:@"options"];
-    [postData setObject:selected forKey:@"selected"];
-    
-    NSError *error;
-    NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
-    
-    if (error) {
-        NSLog(@"Error parsing object to JSON: %@", error);
+- (VerveUserPreferences *) getUserPreferencesForUser: (VerveUser *) user {
+    VerveUserPreferences *prefs = [[VerveUserPreferences alloc] init];
+    NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:user.screenName]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/user/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSLog(@"%@", resultDic);
+    if (resultDic != nil) {
+        prefs.gender = [[resultDic objectForKey:@"gender"] intValue];
+        prefs.age = [[resultDic objectForKey:@"age"] intValue];
+        prefs.status = [[resultDic objectForKey:@"status"] intValue];
+        prefs.ethnicity = [[resultDic objectForKey:@"ethnicity"] intValue];
+        prefs.beliefs = [[resultDic objectForKey:@"beliefs"] intValue];
+        prefs.contact = [[resultDic objectForKey:@"contact"] intValue];
+        prefs.drinker = [[resultDic objectForKey:@"drinker"] intValue];
+        prefs.smoker = [[resultDic objectForKey:@"smoker"] boolValue];
+        prefs.veteran = [[resultDic objectForKey:@"veteran"] boolValue];
+        prefs.feelingBlue = [[resultDic objectForKey:@"feelingBlue"] boolValue];
+        prefs.otherEthnicity = (NSString *) [resultDic objectForKey:@"otherEthnicity"];
+        prefs.otherBeliefs = (NSString *) [resultDic objectForKey:@"otherBeliefs"];
+        
     }
-    
-    NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/hobby/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-    
-    if ([[result objectForKey:@"response"] isEqualToString:@"Operation succeeded"]) {
-        return YES;
-    }
-    
-    return NO;
-    
-}
 
-- (MakeFriendsPrefs *) retrieveMakeFriendsPrefs {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-    
-    NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/hobby/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    
-    NSArray *boolArr = [result objectForKey:@"selected"];
-    MakeFriendsPrefs *prefsObject = [[MakeFriendsPrefs alloc] init];
-    prefsObject.artsCulture = [[boolArr objectAtIndex:0] boolValue];
-    prefsObject.books = [[boolArr objectAtIndex:1] boolValue];
-    prefsObject.carEnthusiast = [[boolArr objectAtIndex:2] boolValue];
-    prefsObject.cardGames = [[boolArr objectAtIndex:3] boolValue];
-    prefsObject.dancing = [[boolArr objectAtIndex:4] boolValue];
-    prefsObject.diningOut = [[boolArr objectAtIndex:5] boolValue];
-    prefsObject.fitnessWellbeing = [[boolArr objectAtIndex:6] boolValue];
-    prefsObject.golf = [[boolArr objectAtIndex:7] boolValue];
-    prefsObject.ladiesNightOut = [[boolArr objectAtIndex:8] boolValue];
-    prefsObject.mensNightOut = [[boolArr objectAtIndex:9] boolValue];
-    prefsObject.movies = [[boolArr objectAtIndex:10] boolValue];
-    prefsObject.outdoorActivities = [[boolArr objectAtIndex:11] boolValue];
-    prefsObject.spiritual = [[boolArr objectAtIndex:12] boolValue];
-    prefsObject.baseball = [[boolArr objectAtIndex:13] boolValue];
-    prefsObject.football = [[boolArr objectAtIndex:14] boolValue];
-    prefsObject.hockey = [[boolArr objectAtIndex:15] boolValue];
-    prefsObject.carRacing = [[boolArr objectAtIndex:16] boolValue];
-    prefsObject.woodworking = [[boolArr objectAtIndex:17] boolValue];
-    
-    return prefsObject;
+    return prefs;
 }
-
-- (BOOL) uploadSocialPrefs: (SocialPrefs *) prefsObject {
-    
-    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-    [postData setObject:currentUser.screenName forKey:@"screenName"];
-    [postData setObject:currentUser.password forKey:@"password"];
-    
-    NSMutableArray *interests = [self interestsJSON];
-    NSMutableArray *selected = [prefsObject getBoolArray];
-    
-    [postData setObject:interests forKey:@"options"];
-    [postData setObject:selected forKey:@"selected"];
-    
-    NSError *error;
-    NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
-    
-    if (error) {
-        NSLog(@"Error parsing object to JSON: %@", error);
+- (VerveMatchingPreferences *) getMatchingPreferencesForUser: (VerveUser *) user {
+    VerveMatchingPreferences *prefs = [[VerveMatchingPreferences alloc] init];
+    NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:user.screenName]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/matching/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    if (resultDic != nil) {
+        prefs.gender = [[resultDic objectForKey:@"gender"] intValue];
+        prefs.age = [[resultDic objectForKey:@"age"] intValue];
+        prefs.status = [[resultDic objectForKey:@"status"] intValue];
+        prefs.ethnicity = [[resultDic objectForKey:@"ethnicity"] intValue];
+        prefs.beliefs = [[resultDic objectForKey:@"beliefs"] intValue];
+        prefs.drinker = [[resultDic objectForKey:@"drinker"] intValue];
+        prefs.smoker = [[resultDic objectForKey:@"smoker"] boolValue];
+        prefs.veteran = [[resultDic objectForKey:@"veteran"] boolValue];
+        prefs.relationshipTypes = [[VerveRelationshipPrefs alloc] init];
+        NSMutableArray * arr = (NSMutableArray *) [resultDic objectForKey:@"relationship"];
+        if ([arr containsObject:[NSNumber numberWithInt:0]]) {
+            prefs.relationshipTypes.fling = true;
+        }
+        if ([arr containsObject:[NSNumber numberWithInt:1]]) {
+            prefs.relationshipTypes.companionship = true;
+        }
+        if ([arr containsObject:[NSNumber numberWithInt:2]]) {
+            prefs.relationshipTypes.committedrelationship = true;
+        }
+        
     }
     
-    NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/social/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-    
-    if ([[result objectForKey:@"response"] isEqualToString:@"Operation succeeded"]) {
-        return YES;
+    return prefs;
+}
+- (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences andMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user {
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:currentUser.screenName forKey:@"screenName"];
+        [postData setObject:currentUser.password forKey:@"password"];
+        
+        [postData setObject:[preferences toJSON] forKey:@"prefs"];
+        [postData setObject:[matchingPreferences toJSON] forKey:@"matchingPrefs"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
     }
     
     return NO;
-    
-}
-
-- (SocialPrefs *) retrieveSocialPrefs {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-    
-    NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/social/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    
-    NSArray *boolArr = [result objectForKey:@"selected"];
-    SocialPrefs *prefsObject = [[SocialPrefs alloc] init];
-    prefsObject.artsCulture = [[boolArr objectAtIndex:0] boolValue];
-    prefsObject.books = [[boolArr objectAtIndex:1] boolValue];
-    prefsObject.carEnthusiast = [[boolArr objectAtIndex:2] boolValue];
-    prefsObject.cardGames = [[boolArr objectAtIndex:3] boolValue];
-    prefsObject.dancing = [[boolArr objectAtIndex:4] boolValue];
-    prefsObject.diningOut = [[boolArr objectAtIndex:5] boolValue];
-    prefsObject.fitnessWellbeing = [[boolArr objectAtIndex:6] boolValue];
-    prefsObject.golf = [[boolArr objectAtIndex:7] boolValue];
-    prefsObject.ladiesNightOut = [[boolArr objectAtIndex:8] boolValue];
-    prefsObject.mensNightOut = [[boolArr objectAtIndex:9] boolValue];
-    prefsObject.movies = [[boolArr objectAtIndex:10] boolValue];
-    prefsObject.outdoorActivities = [[boolArr objectAtIndex:11] boolValue];
-    prefsObject.spiritual = [[boolArr objectAtIndex:12] boolValue];
-    prefsObject.baseball = [[boolArr objectAtIndex:13] boolValue];
-    prefsObject.football = [[boolArr objectAtIndex:14] boolValue];
-    prefsObject.hockey = [[boolArr objectAtIndex:15] boolValue];
-    prefsObject.carRacing = [[boolArr objectAtIndex:16] boolValue];
-    prefsObject.woodworking = [[boolArr objectAtIndex:17] boolValue];
-    
-    return prefsObject;
-}
-
-- (BOOL) uploadRelationshipPrefs: (RelationshipPrefs *) prefsObject {
-    
-    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-    [postData setObject:currentUser.screenName forKey:@"screenName"];
-    [postData setObject:currentUser.password forKey:@"password"];
-    
-    NSMutableArray *prefArray = [[NSMutableArray alloc] init];
-    NSMutableArray *strings = [prefsObject stringArray];
-    
-    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] init];
-    [prefs setObject:strings forKey:@"strings"];
-    [prefs setObject:[NSNumber numberWithInt:[prefsObject enumToIndex]] forKey:@"index"];
-    
-    [prefArray addObject:prefs];
-    [prefArray addObject:[NSNumber numberWithInt:prefsObject.age]];
-    
-    [postData setObject:prefArray forKey:@"prefs"];
-    
-    NSError *error;
-    NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
-    
-    if (error) {
-        NSLog(@"Error parsing object to JSON: %@", error);
-    }
-    
-    NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/relationship/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-    
-    if ([[result objectForKey:@"response"] isEqualToString:@"Operation succeeded"]) {
-        return YES;
-    }
-    
-    return NO;
-    
-}
-
-- (RelationshipPrefs *) retrieveRelationshipPrefs {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-    
-    NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/relationship/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    
-    NSArray *prefs = [result objectForKey:@"prefs"];
-    NSDictionary *sex = [prefs objectAtIndex:0];
-    NSDictionary *ageObject =  [prefs objectAtIndex:1];
-    RelationshipPrefs *prefsObject = [[RelationshipPrefs alloc] init];
-    int index = [[sex objectForKey:@"index"] intValue];
-    SexualPreference sexualPref = [prefsObject indexToEnum:index];
-    int age = [[ageObject objectForKey:@"data"] intValue];
-    prefsObject.sexualPref = sexualPref;
-    prefsObject.age = age;
-    
-    
-    return  prefsObject;
-    
-}
-
-- (BOOL) uploadFlingPrefs: (RelationshipPrefs *) prefsObject {
-    
-    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-    [postData setObject:currentUser.screenName forKey:@"screenName"];
-    [postData setObject:currentUser.password forKey:@"password"];
-    
-    NSMutableArray *prefArray = [[NSMutableArray alloc] init];
-    NSMutableArray *strings = [prefsObject stringArray];
-    
-    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] init];
-    [prefs setObject:strings forKey:@"strings"];
-    [prefs setObject:[NSNumber numberWithInt:[prefsObject enumToIndex]] forKey:@"index"];
-    
-    [prefArray addObject:prefs];
-    [prefArray addObject:[NSNumber numberWithInt:prefsObject.age]];
-    
-    [postData setObject:prefArray forKey:@"prefs"];
-    
-    NSError *error;
-    NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
-    
-    if (error) {
-        NSLog(@"Error parsing object to JSON: %@", error);
-    }
-    
-    NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/fling/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-    
-    if ([[result objectForKey:@"response"] isEqualToString:@"Operation succeeded"]) {
-        return YES;
-    }
-    
-    return NO;
-    
-}
-
-- (RelationshipPrefs *) retrieveFlingPrefs {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-    
-    NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/fling/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    
-    NSArray *prefs = [result objectForKey:@"prefs"];
-    NSDictionary *sex = [prefs objectAtIndex:0];
-    NSDictionary *ageObject =  [prefs objectAtIndex:1];
-    RelationshipPrefs *prefsObject = [[RelationshipPrefs alloc] init];
-    int index = [[sex objectForKey:@"index"] intValue];
-    SexualPreference sexualPref = [prefsObject indexToEnum:index];
-    int age = [[ageObject objectForKey:@"data"] intValue];
-    prefsObject.sexualPref = sexualPref;
-    prefsObject.age = age;
-    
-    
-    return  prefsObject;
-    
-}
-
-- (RelationshipPrefs *) retrieveFlingPrefsWithScreenName:(NSString *) screenName {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:screenName]];
-    
-    NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/fling/retrieve2" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    
-    NSArray *prefs = [result objectForKey:@"prefs"];
-    NSDictionary *sex = [prefs objectAtIndex:0];
-    NSDictionary *ageObject =  [prefs objectAtIndex:1];
-    RelationshipPrefs *prefsObject = [[RelationshipPrefs alloc] init];
-    int index = [[sex objectForKey:@"index"] intValue];
-    SexualPreference sexualPref = [prefsObject indexToEnum:index];
-    int age = [[ageObject objectForKey:@"data"] intValue];
-    prefsObject.sexualPref = sexualPref;
-    prefsObject.age = age;
-    
-    
-    return  prefsObject;
-    
-}
-
-
-- (BOOL) uploadVolunteeringPrefs: (VolunteeringPrefs *) prefsObject {
-    
-    NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-    [postData setObject:currentUser.screenName forKey:@"screenName"];
-    [postData setObject:currentUser.password forKey:@"password"];
-    
-    NSMutableArray *interests = [self interestsJSON];
-    NSMutableArray *selected = [prefsObject getBoolArray];
-    
-    [postData setObject:interests forKey:@"options"];
-    [postData setObject:selected forKey:@"selected"];
-    
-    NSError *error;
-    NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
-    
-    if (error) {
-        NSLog(@"Error parsing object to JSON: %@", error);
-    }
-    
-    NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/volunteering/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-    
-    if ([[result objectForKey:@"response"] isEqualToString:@"Operation succeeded"]) {
-        return YES;
-    }
-    
-    return NO;
-    
-}
-
-- (VolunteeringPrefs *) retrieveVolunteeringPrefs {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-    
-    NSDictionary *result  = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/prefs/volunteering/retrieve" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    
-    NSArray *boolArr = [result objectForKey:@"selected"];
-    VolunteeringPrefs *prefsObject = [[VolunteeringPrefs alloc] init];
-    prefsObject.spiritual = [[boolArr objectAtIndex:0] boolValue];
-    prefsObject.nonprofit = [[boolArr objectAtIndex:1] boolValue];
-    prefsObject.community = [[boolArr objectAtIndex:2] boolValue];
-    
-    return prefsObject;
 }
 
 -(NSURL *) retrieveProfilePicture {
@@ -783,6 +571,38 @@ static VerveUser *currentUser;
     NSString *parameters = [@"query=" stringByAppendingString:[self urlencode:query]];
     parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
     return [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/search" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+}
+
+- (VerveBankObject *) getBankInfoForBankWithName: (NSString *) name inCountry: (NSString *) country {
+    NSString *parameters = [@"term=" stringByAppendingString:[self urlencode:name]];
+    parameters = [parameters stringByAppendingString:@"&country="];
+    parameters = [parameters stringByAppendingString:[self urlencode:country]];
+    parameters = [parameters stringByAppendingString:@"&media=software"];
+    parameters = [parameters stringByAppendingString:@"&limit=200"];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:@"https://itunes.apple.com" withPath:@"search" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSArray *results = [resultDic objectForKey:@"results"];
+    NSDictionary *bankDic = [results objectAtIndex:0];
+    VerveBankObject *bankObj = [[VerveBankObject alloc] init];
+    bankObj.appName = [bankDic objectForKey:@"trackCensoredName"];
+    bankObj.appStoreListing = [bankDic objectForKey:@"trackViewUrl"];
+    bankObj.appIconURL = [bankDic objectForKey:@"artworkUrl60"];
+    
+    return bankObj;
+}
+
+- (BOOL) doesAppExistWithTerm: (NSString *) name andCountry: (NSString *) country {
+    
+    NSString *parameters = [@"term=" stringByAppendingString:[self urlencode:name]];
+    parameters = [parameters stringByAppendingString:@"&country="];
+    parameters = [parameters stringByAppendingString:[self urlencode:country]];
+    parameters = [parameters stringByAppendingString:@"&media=software"];
+    parameters = [parameters stringByAppendingString:@"&limit=200"];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:@"https://itunes.apple.com" withPath:@"search" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSString *count = [resultDic objectForKey:@"resultCount"];
+    if ([count intValue] < 1) {
+        return false;
+    }
+    return true;
 }
 
 - (NSMutableArray *) getGroupsForCurrentUser {

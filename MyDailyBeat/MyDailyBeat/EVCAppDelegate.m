@@ -19,6 +19,18 @@
     
     [self.window makeKeyAndVisible];
     
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.94901960784 green:0.91764705882 blue:0.54901960784 alpha:1]];
+        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:0.94901960784 green:0.91764705882 blue:0.54901960784 alpha:1]];
+    } else {
+        [[UINavigationBar appearance] setTintColor:UIColorFromHex(0x00B6A9)];
+        [[UITabBar appearance] setTintColor:UIColorFromHex(0x00B6A9)];
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.94901960784 green:0.91764705882 blue:0.54901960784 alpha:1]];
+        [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:0.94901960784 green:0.91764705882 blue:0.54901960784 alpha:1]];
+    }
+    
+    
+    
     return YES;
 }
 

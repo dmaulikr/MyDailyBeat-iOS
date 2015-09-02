@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <VerveUser.h>
 #import <API.h>
-#import <RelationshipPrefs.h>
 #import "EVCFlingMessagingViewController.h"
 #import "EVCFlingProfileCreatorViewController.h"
 
@@ -20,7 +19,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *addFavsBtn, *sendMessageBtn, *editBtn;
 @property (nonatomic, retain) IBOutlet UITextView *aboutMeView;
 @property (nonatomic, retain) VerveUser *currentViewedUser;
-@property (nonatomic, retain) RelationshipPrefs *prefs;
+@property (nonatomic, retain) VerveUserPreferences *prefs;
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user;
 

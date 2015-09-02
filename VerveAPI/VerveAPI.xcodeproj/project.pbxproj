@@ -22,6 +22,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		76011C411B935EB5000EC003 /* VerveBankObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76011C401B935EB5000EC003 /* VerveBankObject.m */; };
+		760D02A31B7D889C001CFE25 /* VerveUserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 760D02A21B7D889C001CFE25 /* VerveUserPreferences.m */; };
+		760D02A61B7D8987001CFE25 /* VerveMatchingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 760D02A51B7D8987001CFE25 /* VerveMatchingPreferences.m */; };
+		760E57151B8EAF110075A89F /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E57141B8EAF110075A89F /* FXForms.m */; };
+		761642C91B8C141900BEC59C /* VerveRelationshipPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 761642C81B8C141900BEC59C /* VerveRelationshipPrefs.m */; };
 		761D655019A15B680062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D654F19A15B680062B525 /* Foundation.framework */; };
 		761D657719A15BE90062B525 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D657619A15BE90062B525 /* API.m */; };
 		761D657D19A15DF40062B525 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D657C19A15DF40062B525 /* Reachability.m */; };
@@ -73,11 +78,6 @@
 		769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7D19A8171500FF072E /* DLAVAlertViewTextControlTheme.m */; };
 		769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7F19A8171500FF072E /* DLAVAlertViewTextFieldTheme.m */; };
 		769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA8119A8171500FF072E /* DLAVAlertViewTheme.m */; };
-		769EEB0219AAC79600FF072E /* MakeFriendsPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB0119AAC79600FF072E /* MakeFriendsPrefs.m */; };
-		769EEB2A19ABBBD800FF072E /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB2819ABB89600FF072E /* FXForms.m */; };
-		769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */; };
-		769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB3419AC11C100FF072E /* RelationshipPrefs.m */; };
-		769EEB4E19AC2C0500FF072E /* VolunteeringPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */; };
 		76AE55F01A97D4C4000B95B6 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */; };
 		76AE55F11A97D4C4000B95B6 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55EF1A97D4C4000B95B6 /* SVWebViewController.m */; };
 		76AE55F41A97D567000B95B6 /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55F31A97D567000B95B6 /* SVWebViewControllerActivity.m */; };
@@ -100,7 +100,8 @@
 		76E64EF919B631D10022F189 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E64EF819B631D10022F189 /* Group.m */; };
 		76EF996219FC507F00E15A14 /* EVCComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996019FC507F00E15A14 /* EVCComposeViewController.m */; };
 		76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996119FC507F00E15A14 /* EVCComposeViewController_iPhone.xib */; };
-		76EF997219FD40A300E15A14 /* GroupPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF997119FD40A300E15A14 /* GroupPrefs.m */; };
+		76FE75BE1B82C5C100D791B6 /* GroupPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FE75BD1B82C5C100D791B6 /* GroupPrefs.m */; };
+		76FE75C11B82D1AF00D791B6 /* VervePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FE75C01B82D1AF00D791B6 /* VervePreferences.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		76011C3F1B935EB5000EC003 /* VerveBankObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveBankObject.h; sourceTree = "<group>"; };
+		76011C401B935EB5000EC003 /* VerveBankObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerveBankObject.m; sourceTree = "<group>"; };
+		760D02A11B7D889C001CFE25 /* VerveUserPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveUserPreferences.h; sourceTree = "<group>"; };
+		760D02A21B7D889C001CFE25 /* VerveUserPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerveUserPreferences.m; sourceTree = "<group>"; };
+		760D02A41B7D8987001CFE25 /* VerveMatchingPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveMatchingPreferences.h; sourceTree = "<group>"; };
+		760D02A51B7D8987001CFE25 /* VerveMatchingPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerveMatchingPreferences.m; sourceTree = "<group>"; };
+		760E57131B8EAF110075A89F /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXForms.h; path = VerveAPI/FXForms.h; sourceTree = SOURCE_ROOT; };
+		760E57141B8EAF110075A89F /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXForms.m; path = VerveAPI/FXForms.m; sourceTree = SOURCE_ROOT; };
+		761642C71B8C141900BEC59C /* VerveRelationshipPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveRelationshipPrefs.h; sourceTree = "<group>"; };
+		761642C81B8C141900BEC59C /* VerveRelationshipPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerveRelationshipPrefs.m; sourceTree = "<group>"; };
 		761D654C19A15B680062B525 /* libVerveAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVerveAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		761D654F19A15B680062B525 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		761D655319A15B680062B525 /* VerveAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerveAPI-Prefix.pch"; sourceTree = "<group>"; };
@@ -215,16 +226,6 @@
 		769EEA7F19A8171500FF072E /* DLAVAlertViewTextFieldTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTextFieldTheme.m; sourceTree = "<group>"; };
 		769EEA8019A8171500FF072E /* DLAVAlertViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTheme.h; sourceTree = "<group>"; };
 		769EEA8119A8171500FF072E /* DLAVAlertViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTheme.m; sourceTree = "<group>"; };
-		769EEB0019AAC79600FF072E /* MakeFriendsPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeFriendsPrefs.h; sourceTree = "<group>"; };
-		769EEB0119AAC79600FF072E /* MakeFriendsPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeFriendsPrefs.m; sourceTree = "<group>"; };
-		769EEB2719ABB89600FF072E /* FXForms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXForms.h; sourceTree = "<group>"; };
-		769EEB2819ABB89600FF072E /* FXForms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXForms.m; sourceTree = "<group>"; };
-		769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialPrefs.m; sourceTree = "<group>"; };
-		769EEB2E19AC0C7800FF072E /* SocialPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPrefs.h; sourceTree = "<group>"; };
-		769EEB3319AC11C100FF072E /* RelationshipPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationshipPrefs.h; sourceTree = "<group>"; };
-		769EEB3419AC11C100FF072E /* RelationshipPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationshipPrefs.m; sourceTree = "<group>"; };
-		769EEB4C19AC2BD500FF072E /* VolunteeringPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolunteeringPrefs.h; sourceTree = "<group>"; };
-		769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolunteeringPrefs.m; sourceTree = "<group>"; };
 		76AE55EC1A97D4C4000B95B6 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
 		76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
 		76AE55EE1A97D4C4000B95B6 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
@@ -267,8 +268,10 @@
 		76EF995F19FC507F00E15A14 /* EVCComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVCComposeViewController.h; path = VerveAPI/EVCComposeViewController.h; sourceTree = "<group>"; };
 		76EF996019FC507F00E15A14 /* EVCComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVCComposeViewController.m; path = VerveAPI/EVCComposeViewController.m; sourceTree = "<group>"; };
 		76EF996119FC507F00E15A14 /* EVCComposeViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EVCComposeViewController_iPhone.xib; path = VerveAPI/EVCComposeViewController_iPhone.xib; sourceTree = "<group>"; };
-		76EF997019FD40A300E15A14 /* GroupPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPrefs.h; sourceTree = "<group>"; };
-		76EF997119FD40A300E15A14 /* GroupPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPrefs.m; sourceTree = "<group>"; };
+		76FE75BC1B82C5C100D791B6 /* GroupPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPrefs.h; sourceTree = "<group>"; };
+		76FE75BD1B82C5C100D791B6 /* GroupPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPrefs.m; sourceTree = "<group>"; };
+		76FE75BF1B82D1AF00D791B6 /* VervePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VervePreferences.h; sourceTree = "<group>"; };
+		76FE75C01B82D1AF00D791B6 /* VervePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VervePreferences.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +386,8 @@
 				769B0A871A54664200BB287E /* FlingProfile.m */,
 				769B0A891A59AF7100BB287E /* VerveMessage.h */,
 				769B0A8A1A59AF7100BB287E /* VerveMessage.m */,
+				76011C3F1B935EB5000EC003 /* VerveBankObject.h */,
+				76011C401B935EB5000EC003 /* VerveBankObject.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -526,8 +531,8 @@
 		769EEB2619ABB89600FF072E /* FXForms */ = {
 			isa = PBXGroup;
 			children = (
-				769EEB2719ABB89600FF072E /* FXForms.h */,
-				769EEB2819ABB89600FF072E /* FXForms.m */,
+				760E57131B8EAF110075A89F /* FXForms.h */,
+				760E57141B8EAF110075A89F /* FXForms.m */,
 			);
 			path = FXForms;
 			sourceTree = "<group>";
@@ -535,16 +540,16 @@
 		769EEB3219AC11A100FF072E /* Prefs */ = {
 			isa = PBXGroup;
 			children = (
-				769EEB0019AAC79600FF072E /* MakeFriendsPrefs.h */,
-				769EEB0119AAC79600FF072E /* MakeFriendsPrefs.m */,
-				769EEB4C19AC2BD500FF072E /* VolunteeringPrefs.h */,
-				769EEB4D19AC2C0500FF072E /* VolunteeringPrefs.m */,
-				769EEB2E19AC0C7800FF072E /* SocialPrefs.h */,
-				769EEB2C19AC0C6B00FF072E /* SocialPrefs.m */,
-				769EEB3319AC11C100FF072E /* RelationshipPrefs.h */,
-				769EEB3419AC11C100FF072E /* RelationshipPrefs.m */,
-				76EF997019FD40A300E15A14 /* GroupPrefs.h */,
-				76EF997119FD40A300E15A14 /* GroupPrefs.m */,
+				760D02A11B7D889C001CFE25 /* VerveUserPreferences.h */,
+				760D02A21B7D889C001CFE25 /* VerveUserPreferences.m */,
+				760D02A41B7D8987001CFE25 /* VerveMatchingPreferences.h */,
+				760D02A51B7D8987001CFE25 /* VerveMatchingPreferences.m */,
+				76FE75BC1B82C5C100D791B6 /* GroupPrefs.h */,
+				76FE75BD1B82C5C100D791B6 /* GroupPrefs.m */,
+				76FE75BF1B82D1AF00D791B6 /* VervePreferences.h */,
+				76FE75C01B82D1AF00D791B6 /* VervePreferences.m */,
+				761642C71B8C141900BEC59C /* VerveRelationshipPrefs.h */,
+				761642C81B8C141900BEC59C /* VerveRelationshipPrefs.m */,
 			);
 			name = Prefs;
 			sourceTree = "<group>";
@@ -764,18 +769,17 @@
 				766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */,
 				766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */,
 				769B0A8B1A59AF7100BB287E /* VerveMessage.m in Sources */,
-				769EEB2A19ABBBD800FF072E /* FXForms.m in Sources */,
 				769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */,
 				761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */,
 				7671FC731A0DB515000ECDAF /* EVCUserInviteViewController.m in Sources */,
-				769EEB2D19AC0C6B00FF072E /* SocialPrefs.m in Sources */,
 				761D657D19A15DF40062B525 /* Reachability.m in Sources */,
 				76AE55FA1A97D589000B95B6 /* SVWebViewControllerActivitySafari.m in Sources */,
 				76AE55F11A97D4C4000B95B6 /* SVWebViewController.m in Sources */,
 				761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */,
 				76BD326119DCC5C90054ED88 /* Post.m in Sources */,
-				76EF997219FD40A300E15A14 /* GroupPrefs.m in Sources */,
+				76FE75BE1B82C5C100D791B6 /* GroupPrefs.m in Sources */,
 				76BD327D19DF7F6D0054ED88 /* RECommonFunctions.m in Sources */,
+				76FE75C11B82D1AF00D791B6 /* VervePreferences.m in Sources */,
 				76EF996219FC507F00E15A14 /* EVCComposeViewController.m in Sources */,
 				7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */,
 				761D659819A15FD40062B525 /* AFHTTPRequestOperationManager.m in Sources */,
@@ -786,21 +790,23 @@
 				769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */,
 				76AE55F01A97D4C4000B95B6 /* SVModalWebViewController.m in Sources */,
 				761D659C19A15FD40062B525 /* AFURLConnectionOperation.m in Sources */,
-				769EEB4E19AC2C0500FF072E /* VolunteeringPrefs.m in Sources */,
 				769EEA8419A8171500FF072E /* DLAVAlertViewController.m in Sources */,
-				769EEB0219AAC79600FF072E /* MakeFriendsPrefs.m in Sources */,
 				769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */,
 				761D659B19A15FD40062B525 /* AFSecurityPolicy.m in Sources */,
 				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
 				76AE55F71A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m in Sources */,
+				760E57151B8EAF110075A89F /* FXForms.m in Sources */,
 				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
 				766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */,
-				769EEB3519AC11C100FF072E /* RelationshipPrefs.m in Sources */,
 				7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */,
 				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
 				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
+				760D02A31B7D889C001CFE25 /* VerveUserPreferences.m in Sources */,
+				761642C91B8C141900BEC59C /* VerveRelationshipPrefs.m in Sources */,
+				76011C411B935EB5000EC003 /* VerveBankObject.m in Sources */,
 				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,
+				760D02A61B7D8987001CFE25 /* VerveMatchingPreferences.m in Sources */,
 				769B0A881A54664200BB287E /* FlingProfile.m in Sources */,
 				769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */,
 				769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */,

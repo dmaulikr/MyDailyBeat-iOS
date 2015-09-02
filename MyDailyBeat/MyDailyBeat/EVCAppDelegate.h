@@ -13,6 +13,7 @@
 #import "EVCMenuViewController.h"
 #import "EVCProfileViewController.h"
 #import "EVCLoginViewController.h"
+#import "Constants.h"
 
 @interface EVCAppDelegate : UIResponder <UIApplicationDelegate, RESideMenuDelegate>
 

@@ -26,7 +26,7 @@
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
-    header.image = [UIImage imageNamed:@"EVCHeader.png"];
+    header.image = [UIImage imageNamed:@"banner-green.png"];
 
     
 }
@@ -55,7 +55,6 @@
                 sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:root
                                                                     leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
                                                                    rightMenuViewController:menu];
-                sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menubg.jpg"];
                 sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
                 sideMenuViewController.delegate = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
                 sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
@@ -163,7 +162,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:root
                                                                 leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
                                                                rightMenuViewController:menu];
-            sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menubg.jpg"];
             sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
             sideMenuViewController.delegate = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
             sideMenuViewController.contentViewShadowColor = [UIColor blackColor];

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <API.h>
 #import <FXForms.h>
-#import "GroupPrefs.h"
 #import <EVCProfilePicView.h>
 #import "UIView+Toast.h"
+#import "GroupPrefs.h"
 
 @class EVCGroupSettingsViewController;
 

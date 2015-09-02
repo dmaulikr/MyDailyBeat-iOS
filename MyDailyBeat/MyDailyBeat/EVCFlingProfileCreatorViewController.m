@@ -29,7 +29,8 @@
             [self.view makeToastActivity];
         });
         
-        int age = [[API getInstance] retrieveFlingPrefs].age;
+        VerveUserPreferences* prefs = [[API getInstance] getUserPreferencesForUser:[[API getInstance] getCurrentUser]];
+        int age = prefs.age;
         BOOL success = [[API getInstance] saveFlingProfileForUser:[[API getInstance] getCurrentUser] withAge:age andDescription:about];
         
         dispatch_async(dispatch_get_main_queue(), ^{

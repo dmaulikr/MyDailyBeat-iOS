@@ -69,7 +69,7 @@
             [self.view makeToastActivity];
         });
         
-        self.prefs = [[API getInstance] retrieveFlingPrefs];
+        self.prefs = [[API getInstance] getUserPreferencesForUser: [[API getInstance] getCurrentUser]];
         NSMutableArray *favs = [[NSMutableArray alloc] initWithArray:[[API getInstance] getFlingFavoritesForUser:[[API getInstance] getCurrentUser]]];
         
         
@@ -79,7 +79,7 @@
                 [self.addFavsBtn setTitle:@"Remove Favorite" forState:UIControlStateNormal];
             }
             if (self.prefs == nil)
-                self.prefs = [[RelationshipPrefs alloc] init];
+                self.prefs = [[VerveUserPreferences alloc] init];
             self.ageLbl.text = [NSString stringWithFormat:@"Age: %d", self.prefs.age];
             self.aboutMeView.text = [[API getInstance] getFlingProfileForUser:self.currentViewedUser].aboutMe;
         });
