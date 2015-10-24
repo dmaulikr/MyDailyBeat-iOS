@@ -20,7 +20,6 @@
     if (type == EVCPostTypeHasPicture) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"EVCPostView_WithPicture" owner:self options:nil];
         [self addSubview:[nib lastObject]];
-        
     } else {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"EVCPostView_WithoutPicture" owner:self options:nil];
         [self addSubview:[nib lastObject]];
@@ -65,6 +64,10 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Update the UI
                 [postPicView setImage:[UIImage imageWithData:imageData]];
+                self.mediaFocusManager = [[ASMediaFocusManager alloc] init];
+                self.mediaFocusManager.delegate = self;
+                [self.mediaFocusManager installOnView:postPicView];
+                self.mediaFocusManager.defocusOnVerticalSwipe = YES;
                 
             });
         }
@@ -84,6 +87,28 @@
         });
     });
     
+}
+
+#pragma mark - ASMediaFocusDelegate
+// Returns the view controller in which the focus controller is going to be added.
+// This can be any view controller, full screen or not.
+- (UIViewController *)parentViewControllerForMediaFocusManager:(ASMediaFocusManager *)mediaFocusManager
+{
+    return self.parentViewController;
+}
+
+// Returns the URL where the media (image or video) is stored. The URL may be local (file://) or distant (http://).
+- (NSURL *)mediaFocusManager:(ASMediaFocusManager *)mediaFocusManager mediaURLForView:(UIView *)view
+{
+    NSURL *imageURL = [[NSURL alloc] initWithString:self.postObj.servingURL];
+    
+    return imageURL;
+}
+
+// Returns the title for this media view. Return nil if you don't want any title to appear.
+- (NSString *)mediaFocusManager:(ASMediaFocusManager *)mediaFocusManager titleForView:(UIView *)view
+{
+    return nil;
 }
 
 @end

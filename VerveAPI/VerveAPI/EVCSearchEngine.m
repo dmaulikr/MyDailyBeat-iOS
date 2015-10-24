@@ -91,4 +91,14 @@
 
 }
 
+- (NSMutableArray *) getPlacesWithName: (NSString *) name {
+    return [[API getInstance] getPlacesWithType:@"name" withName:name andCategory:nil inRadius:0];
+}
+- (NSMutableArray *) getPlacesWithCategory: (NSString *) category {
+    return [[API getInstance] getPlacesWithType:@"category" withName:nil andCategory:category inRadius:0];
+}
+- (NSMutableArray *) getPlacesInRadius: (NSInteger) radius {
+    return [[API getInstance] getPlacesWithType:@"radius" withName:nil andCategory:nil inRadius:radius];
+}
+
 @end

@@ -8,8 +8,8 @@
             <connections>
                 <outlet property="callAnonymous" destination="pkd-19-cAR" id="NuZ-15-XQD"/>
                 <outlet property="callSuicide" destination="NHW-yr-uEJ" id="aO6-Ug-kvC"/>
+                <outlet property="callTest" destination="FAf-3s-KgO" id="a85-iD-ZlU"/>
                 <outlet property="callVeterans" destination="yL7-9w-XPS" id="Z1n-Z8-5EB"/>
-                <outlet property="imgView" destination="TmN-3O-e1f" id="YgB-M7-lL4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,13 +18,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TmN-3O-e1f">
-                    <rect key="frame" x="0.0" y="63" width="320" height="66"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHW-yr-uEJ">
-                    <rect key="frame" x="93" y="137" width="134" height="30"/>
+                    <rect key="frame" x="93" y="142" width="134" height="30"/>
                     <state key="normal" title="Call Suicide Hotline">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -32,9 +28,8 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL7-9w-XPS">
-                    <rect key="frame" x="89" y="175" width="143" height="30"/>
+                    <rect key="frame" x="89" y="180" width="143" height="30"/>
                     <state key="normal" title="Call Veterans Hotline">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -42,17 +37,25 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-19-cAR">
-                    <rect key="frame" x="66" y="213" width="189" height="30"/>
+                    <rect key="frame" x="66" y="218" width="189" height="30"/>
                     <state key="normal" title="Call someone anonymously">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="callAnonymousAction:" destination="-1" eventType="touchUpInside" id="8kI-EZ-699"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAf-3s-KgO">
+                    <rect key="frame" x="137" y="256" width="59" height="30"/>
+                    <state key="normal" title="Test Call">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="callTestAction:" destination="-1" eventType="touchUpInside" id="C0P-SK-pZg"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.039215686274509803" green="0.71372549019607845" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="338" y="208"/>

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.bankList=  [[NSMutableArray alloc] init];
+    self.iconList = [[NSMutableArray alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self retrieveBanksData];
@@ -39,7 +40,13 @@
         for (int i = 0; i < [temp count]; ++i) {
             NSString *tempString = [temp objectAtIndex: i];
             if ([[API getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
-                [self.bankList addObject:[[API getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"]];
+                VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
+                [self.bankList addObject:bank];
+                NSString *urlS = bank.appIconURL;
+                NSURL *url = [NSURL URLWithString:urlS];
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                UIImage *img = [[UIImage alloc] initWithData:data];
+                [self.iconList addObject:img];
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -71,17 +78,7 @@
     
     if ([self.bankList count] >= 1) {
         cell.textLabel.text = ((VerveBankObject *)[self.bankList objectAtIndex:indexPath.row]).appName;
-        dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
-        dispatch_async(queue, ^{
-            VerveBankObject *obj = [self.bankList objectAtIndex:indexPath.row];
-            NSString *urlS = obj.appIconURL;
-            NSURL *url = [NSURL URLWithString:urlS];
-            NSData *data = [NSData dataWithContentsOfURL:url];
-            UIImage *img = [[UIImage alloc] initWithData:data];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                cell.imageView.image = img;
-            });
-        });
+        cell.imageView.image = [self.iconList objectAtIndex:indexPath.row];
     }
     
     

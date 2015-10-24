@@ -46,39 +46,23 @@
 }
 
 - (IBAction)callSuicideAction:(id)sender {
-    UIAlertController *action = [UIAlertController alertControllerWithTitle:@"Call Suicide Hotline?" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self makeCall: @"1-800-273-8255"];
-    }];
-    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        //none
-    }];
-    
-    [action addAction:no];
-    [action addAction:yes];
-    [self presentViewController:action animated:YES completion:nil];
+    [self makeCall: @"1-800-273-8255"];
 }
 - (IBAction)callVeteransAction:(id)sender {
-    UIAlertController *action = [UIAlertController alertControllerWithTitle:@"Call Veterans Hotline?" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self makeCall: @"1-800-273-8255" withAccessCode:@"1"];
-    }];
-    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        //none
-    }];
-    
-    [action addAction:no];
-    [action addAction:yes];
-    [self presentViewController:action animated:YES completion:nil];
+    [self makeCall: @"1-800-273-8255" withAccessCode:@"1"];
+}
+
+- (IBAction)callTestAction:(id)sender {
+    [self makeCall: @"1-978-761-3113"];
 }
 
 - (void) makeCall:(NSString *) num {
-    NSString *dialstring = [[NSString alloc] initWithFormat:@"telprompt://*671%@", num];
+    NSString *dialstring = [[NSString alloc] initWithFormat:@"telprompt://%@", num];
     NSURL *url = [NSURL URLWithString:dialstring];
     [[UIApplication sharedApplication] openURL:url];
 }
 - (void) makeCall:(NSString *) num withAccessCode: (NSString *) code{
-    NSString *dialstring = [[NSString alloc] initWithFormat:@"telprompt://*671%@,,%@", num, code];
+    NSString *dialstring = [[NSString alloc] initWithFormat:@"telprompt://%@,,%@", num, code];
     NSURL *url = [NSURL URLWithString:dialstring];
     [[UIApplication sharedApplication] openURL:url];
 }

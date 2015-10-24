@@ -35,7 +35,7 @@
     self.navigationItem.leftBarButtonItem = cancelBarButton;
 
     
-    UIBarButtonItem *postBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
+    UIBarButtonItem *postBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
     self.navigationItem.rightBarButtonItem = postBarButton;
 
 

@@ -32,4 +32,15 @@
 
 }
 
++ (UIImage*) imageWithColor:(UIColor*)color size:(CGSize)size
+{
+    UIGraphicsBeginImageContext(size);
+    UIBezierPath* rPath = [UIBezierPath bezierPathWithRect:CGRectMake(0., 0., size.width, size.height)];
+    [color setFill];
+    [rPath fill];
+    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 @end

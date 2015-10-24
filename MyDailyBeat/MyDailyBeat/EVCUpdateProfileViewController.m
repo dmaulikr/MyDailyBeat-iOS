@@ -278,10 +278,10 @@
     
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
     cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor blackColor];
     cell.detailTextLabel.highlightedTextColor = [UIColor lightGrayColor];
     cell.selectedBackgroundView = [[UIView alloc] init];
 

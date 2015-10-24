@@ -12,5 +12,6 @@
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 + (UIButton *) barButtonSystemItem:(UIBarButtonSystemItem) item withText:(NSString *) title;
++ (UIImage*) imageWithColor:(UIColor*)color size:(CGSize)size;
 
 @end

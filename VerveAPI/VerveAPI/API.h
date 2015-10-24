@@ -63,6 +63,9 @@
 - (BOOL) deletePost:(Post *) p;
 - (BOOL) deleteGroup:(Group *) g;
 
+- (NSMutableArray *) getPlacesWithType: (NSString *) searchType withName: (NSString *) name andCategory: (NSString *) category inRadius: (NSInteger) radius;
+
+
 - (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(UserSearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder;
 
 - (BOOL) inviteUser:(VerveUser *) invitee toJoinGroup:(Group *) groupOfChoice by:(EVCUserInviteSendingMethod) method withMessage:(NSString *) inviteMessage;

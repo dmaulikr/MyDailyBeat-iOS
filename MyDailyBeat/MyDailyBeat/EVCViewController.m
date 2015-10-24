@@ -25,16 +25,17 @@
     [super viewDidLoad];
     
     
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out...I'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"peeps", @"health", @"plane", @"hands", nil];
     
-    UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-green.png"] scaledToSize:CGSizeMake(30, 30)];
+    /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-green.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
     UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
     [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
     [someButton3 addTarget:self action:@selector(searchGroups)
          forControlEvents:UIControlEventTouchUpInside];
     [someButton3 setShowsTouchWhenHighlighted:YES];
-    UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];
+    UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];*/
 
     
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-green"] scaledToSize:CGSizeMake(30, 30)];
@@ -46,7 +47,7 @@
     [someButton setShowsTouchWhenHighlighted:YES];
     
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
-    NSArray *rightItems = [NSArray arrayWithObjects:menuButton, searchButton, nil];
+    NSArray *rightItems = [NSArray arrayWithObjects:menuButton, nil];
     self.navigationItem.rightBarButtonItems = rightItems;
     
     UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-green"] scaledToSize:CGSizeMake(30, 30)];
@@ -71,11 +72,17 @@
     
     
     
+    
+}
+
+- (void) dismissGroupSearchViewController: (EVCGroupSearchViewViewController *) controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)searchGroups {
-    EVCGroupSearchViewViewController *searchController = [[EVCGroupSearchViewViewController alloc] init];
-    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:searchController] animated:YES];
+    /*EVCGroupSearchViewViewController *searchController = [[EVCGroupSearchViewViewController alloc] init];
+    searchController.delegate = self;
+    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:searchController] animated:YES];*/
     
 }
 
@@ -109,6 +116,11 @@
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:finance] animated:YES];
                 }
                     
+                case 8: {
+                    EVCVolunteeringMapViewController *mapTest = [[EVCVolunteeringMapViewController alloc] initWithNibName:@"EVCVolunteeringMapViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:mapTest] animated:YES];
+                }
+                    
                 default:
                     break;
             }
@@ -133,15 +145,21 @@
         
     }
     
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;
+    
     
     switch (indexPath.section) {
         case 0:
             cell.textLabel.text = @"What would you like to do?";
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
         case 1: {
             cell.textLabel.text = [options objectAtIndex:indexPath.row];
-            UIImage *icon = [UIImage imageNamed:@"star-icon-green"];
-            cell.imageView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(40, 40)];
+            cell.textLabel.textAlignment = NSTextAlignmentLeft;
+            UIImage *icon = [UIImage imageNamed:[imageNames objectAtIndex:indexPath.row]];
+            cell.imageView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];
         }
             break;
             
@@ -153,6 +171,19 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:
+            return 35;
+            break;
+            
+        case 1:
+            if ([(NSString *)[options objectAtIndex:indexPath.row] isEqualToString:@"Reach Out ...\nI'm Feeling Blue"]) {
+                return 43;
+            } else {
+                return 42;
+            }
+            break;
+    }
     return 35;
 }
 

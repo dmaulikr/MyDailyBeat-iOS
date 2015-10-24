@@ -18,6 +18,7 @@
 #import "EVCViewController.h"
 #import <EVCUserSearchViewViewController.h>
 
+
 @interface EVCGroupViewController : UIViewController <EVCGroupSettingsViewControllerDelegate>{
     int max_post_height;
 }
@@ -28,6 +29,7 @@
 @property (nonatomic) Group *group;
 @property (nonatomic) IBOutlet UIToolbar *groupBar;
 @property (nonatomic) UIViewController *parentController;
+
 
 - (id) initWithGroup:(Group *) g andParent:(UIViewController *) parent;
 

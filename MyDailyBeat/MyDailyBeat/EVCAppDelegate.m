@@ -25,8 +25,9 @@
     } else {
         [[UINavigationBar appearance] setTintColor:UIColorFromHex(0x00B6A9)];
         [[UITabBar appearance] setTintColor:UIColorFromHex(0x00B6A9)];
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.94901960784 green:0.91764705882 blue:0.54901960784 alpha:1]];
-        [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:0.94901960784 green:0.91764705882 blue:0.54901960784 alpha:1]];
+        [[UINavigationBar appearance] setBarTintColor:UIColorFromHex(0xFCF58B)];
+        [[UITabBar appearance] setBarTintColor:UIColorFromHex(0xFCF58B)];
+
     }
     
     

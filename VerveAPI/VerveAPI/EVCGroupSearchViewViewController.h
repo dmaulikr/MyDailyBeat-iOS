@@ -12,6 +12,14 @@
 #import "UIView+Toast.h"
 #import "DLAVAlertView.h"
 
+@class EVCGroupSearchViewViewController;
+
+@protocol EVCGroupSearchViewDelegate <NSObject>
+
+- (void) dismissGroupSearchViewController: (EVCGroupSearchViewViewController *) controller;
+
+@end
+
 @interface EVCGroupSearchViewViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
     UIBarButtonItem *cancel;
     BOOL isFiltered;
@@ -22,6 +30,7 @@
 @property (nonatomic) IBOutlet UITableView *mTableView;
 @property (nonatomic) IBOutlet UISearchBar *mSearchBar;
 @property (strong, nonatomic) NSMutableArray* data;
+@property (nonatomic, weak) id<EVCGroupSearchViewDelegate> delegate;
 
 
 @end

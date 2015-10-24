@@ -146,7 +146,7 @@
 {
     int rowCount;
     if(isFiltered)
-        rowCount = self.data.count;
+        rowCount = (int) self.data.count;
     else
         rowCount = 1;
     

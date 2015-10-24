@@ -27,8 +27,8 @@
     self.mTableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     self.mScreenNameLabel.text = [[API getInstance] getCurrentUser].screenName;
     self.mScreenNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    self.mScreenNameLabel.textColor = [UIColor whiteColor];
-    self.profilePicView.layer.cornerRadius = 55;
+    self.mScreenNameLabel.textColor = [UIColor blackColor];
+    self.profilePicView.layer.cornerRadius = 50;
     self.profilePicView.clipsToBounds = YES;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                              forBarMetrics:UIBarMetricsDefault];
@@ -82,6 +82,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             self.profilePic = [UIImage imageWithData:imageData];
+            self.profilePic = [EVCCommonMethods imageWithImage:self.profilePic scaledToSize:CGSizeMake(100, 100)];
             [self.profilePicView setImage:self.profilePic];
             
         });
@@ -183,10 +184,10 @@ titleForHeaderInSection:(NSInteger)section {
     
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
     cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor blackColor];
     cell.detailTextLabel.highlightedTextColor = [UIColor lightGrayColor];
     cell.selectedBackgroundView = [[UIView alloc] init];
     
@@ -200,9 +201,47 @@ titleForHeaderInSection:(NSInteger)section {
                 cell.textLabel.text = @"Email";
                 cell.detailTextLabel.text  = [[API getInstance] getCurrentUser].email;
                 break;
-            case 2:
+            case 2: {
                 cell.textLabel.text = @"Mobile";
-                cell.detailTextLabel.text  = [[API getInstance] getCurrentUser].mobile;
+                NSString *mobile = [[API getInstance] getCurrentUser].mobile;
+                NSString *mobile2 = @"";
+                NSString *temp;
+                if ([mobile length] == 11) {
+                    temp = [mobile substringFromIndex:1];
+                    mobile2 = [@"1-(" stringByAppendingString:[temp substringToIndex:3]];
+                    temp = [temp substringFromIndex:3];
+                    mobile2 = [mobile2 stringByAppendingString:@")-"];
+                    mobile2 = [mobile2 stringByAppendingString:[temp substringToIndex:3]];
+                    temp = [temp substringFromIndex:3];
+                    mobile2 = [mobile2 stringByAppendingString:@"-"];
+                    mobile2 = [mobile2 stringByAppendingString:temp];
+                    cell.detailTextLabel.text  = mobile2;
+                } else if ([mobile length] == 10) {
+                    temp = mobile;
+                    mobile2 = [@"(" stringByAppendingString:[temp substringToIndex:3]];
+                    temp = [temp substringFromIndex:3];
+                    mobile2 = [mobile2 stringByAppendingString:@")-"];
+                    mobile2 = [mobile2 stringByAppendingString:[temp substringToIndex:3]];
+                    temp = [temp substringFromIndex:3];
+                    mobile2 = [mobile2 stringByAppendingString:@"-"];
+                    mobile2 = [mobile2 stringByAppendingString:temp];
+                    cell.detailTextLabel.text  = mobile2;
+
+                } else if ([mobile length] == 12) {
+                    mobile2 = [@"(" stringByAppendingString:[mobile substringToIndex:3]];
+                    temp = [mobile substringFromIndex:3];
+                    mobile2 = [mobile2 stringByAppendingString:@")"];
+                    mobile2 = [mobile2 stringByAppendingString:temp];
+                    cell.detailTextLabel.text  = mobile2;
+                } else if ([mobile length] == 14) {
+                    NSMutableString *mutableS = [[NSMutableString alloc] initWithString:mobile];
+                    [mutableS insertString:@"(" atIndex:2];
+                    [mutableS insertString:@")" atIndex:6];
+                    mobile2 = mutableS;
+                    cell.detailTextLabel.text  = mobile2;
+                }
+                
+            }
                 break;
             case 3: {
                 cell.textLabel.text = @"DOB";
