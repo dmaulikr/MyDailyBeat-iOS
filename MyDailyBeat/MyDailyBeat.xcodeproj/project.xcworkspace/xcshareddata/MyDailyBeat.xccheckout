@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3AE32978-06D4-4886-B5DC-E52EE2F247DC</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MyDailyBeat</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B67084291183FFB3312BBBD21F6B42E5CBEB58AD</key>
 		<string>https://github.com/balabhv/MyDailyBeat-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MyDailyBeat/MyDailyBeat.xcodeproj/project.xcworkspace</string>
+	<string>MyDailyBeat/MyDailyBeat.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B67084291183FFB3312BBBD21F6B42E5CBEB58AD</key>

@@ -18,9 +18,10 @@
 #import "EVCShoppingViewController.h"
 #import "EVCFeelingBlueViewController.h"
 #import "EVCFinanceViewController.h"
+#import "EVCVolunteeringMapViewController.h"
 
-@interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    NSArray *options;
+@interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EVCGroupSearchViewDelegate> {
+    NSArray *options, *imageNames;
 }
 
 @property(nonatomic, retain) IBOutlet UITableView *mTableView;

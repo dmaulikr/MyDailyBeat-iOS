@@ -16,8 +16,10 @@
 
 - (void) EVCGroupSettingsViewControllerDelegateDidDeleteGroup:(EVCGroupSettingsViewController *) controller {
     [controller dismissViewControllerAnimated:YES completion:nil];
-    [self.sideMenuViewController setContentViewController:self.parentController animated:YES];
-    [self.parentController.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+    EVCViewController *newcontroller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
+    [newcontroller.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:newcontroller] animated:YES];
+    
 }
 
 - (id) initWithGroup:(Group *) g andParent:(UIViewController *) parent {

@@ -647,6 +647,26 @@ static VerveUser *currentUser;
     return retItems;
 }
 
+- (NSMutableArray *) getPlacesWithType: (NSString *) searchType withName: (NSString *) name andCategory: (NSString *) category inRadius: (NSInteger) radius {
+    NSString *baseurl = @"https://maps.googleapis.com";
+    NSString *path = @"maps/api/place/nearbysearch/json";
+    NSString *parameters = @"";
+    if ([searchType isEqualToString:@"name"] ) {
+        parameters = [NSString stringWithFormat:@"name=%@&rankby=distance", name];
+    } else if ([searchType isEqualToString:@"category"]) {
+        parameters = [NSString stringWithFormat:@"types=%@&rankby=distance", category];
+    } else {
+        parameters = [NSString stringWithFormat:@"radius=%ld", (long)radius];
+    }
+    
+    parameters = [parameters stringByAppendingString:[NSString stringWithFormat:@"&key=%@", PLACES_API_KEY]];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:baseurl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    return [resultDic objectForKey:@"results"];
+
+}
+
 - (BOOL) createGroupWithName:(NSString *) groupName {
     
     

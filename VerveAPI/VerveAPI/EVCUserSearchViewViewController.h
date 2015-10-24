@@ -13,6 +13,14 @@
 #import "API.h"
 #import "EVCUserInviteViewController.h"
 
+@class EVCUserSearchViewViewController;
+
+@protocol EVCUserSearchViewDelegate <NSObject>
+
+- (void) dismissUserSearchViewController: (EVCUserSearchViewViewController *) controller;
+
+@end
+
 @interface EVCUserSearchViewViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
     IBOutlet UITableView *mTableView;
     IBOutlet UISearchBar *mSearchBar;
@@ -25,5 +33,6 @@
 
 @property (strong, nonatomic) NSMutableArray* data;
 @property (nonatomic, strong) Group *groupToInviteTo;
+@property (nonatomic, weak) id<EVCUserSearchViewDelegate> delegate;
 
 @end

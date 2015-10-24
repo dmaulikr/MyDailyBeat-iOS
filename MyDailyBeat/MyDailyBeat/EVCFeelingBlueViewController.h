@@ -15,10 +15,11 @@
 @interface EVCFeelingBlueViewController : UIViewController
 
 @property (nonatomic) IBOutlet UIImageView *imgView;
-@property (nonatomic) IBOutlet UIButton *callSuicide, *callVeterans, *callAnonymous;
+@property (nonatomic) IBOutlet UIButton *callSuicide, *callVeterans, *callAnonymous, *callTest;
 
 - (IBAction)callSuicideAction:(id)sender;
 - (IBAction)callVeteransAction:(id)sender;
 - (IBAction)callAnonymousAction:(id)sender;
+- (IBAction)callTestAction:(id)sender;
 
 @end

@@ -72,4 +72,6 @@ typedef enum {
     DESCENDING = 1
 } EVCSearchSortOrder;
 
+#define PLACES_API_KEY @"AIzaSyD12-W6HiSv3gVnCIQSUCvDTNtXrQRp1o8"
+
 #endif

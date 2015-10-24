@@ -11,13 +11,16 @@
 #import "EVCGroupViewController.h"
 #import "EVCViewController.h"
 #import <API.h>
+#import "EVCMenuTableViewCell.h"
 
 @interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    NSArray *options;
+    NSArray *options, *imageNames;
 }
 
 @property (nonatomic, retain) NSMutableArray *groups;
 @property (nonatomic) UIViewController *parentController;
+@property (nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) IBOutlet UIImageView *logoView;
 
 - (id) initWithGroups:(NSMutableArray *) groupsArray andParent:(UIViewController *) parent;
 @end

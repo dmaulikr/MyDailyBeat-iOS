@@ -15,6 +15,14 @@
 		76011C3E1B928189000EC003 /* EVCFinanceHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76011C3C1B928189000EC003 /* EVCFinanceHomeViewController.xib */; };
 		76063C4F1B94B03A002F9171 /* EVCTravelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76063C4D1B94B03A002F9171 /* EVCTravelTableViewController.m */; };
 		76063C501B94B03A002F9171 /* EVCTravelTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76063C4E1B94B03A002F9171 /* EVCTravelTableViewController.xib */; };
+		760ECE9F1BAD06E400F3D9A2 /* 1408346500_menu-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECE9E1BAD06E400F3D9A2 /* 1408346500_menu-alt.png */; };
+		760ECEB21BAD073D00F3D9A2 /* asmedia_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAC1BAD073D00F3D9A2 /* asmedia_pause.png */; };
+		760ECEB31BAD073D00F3D9A2 /* asmedia_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAD1BAD073D00F3D9A2 /* asmedia_pause@2x.png */; };
+		760ECEB41BAD073D00F3D9A2 /* asmedia_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAE1BAD073D00F3D9A2 /* asmedia_play.png */; };
+		760ECEB51BAD073D00F3D9A2 /* asmedia_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAF1BAD073D00F3D9A2 /* asmedia_play@2x.png */; };
+		760ECEB61BAD073D00F3D9A2 /* asmedia_playbig.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEB01BAD073D00F3D9A2 /* asmedia_playbig.png */; };
+		760ECEB71BAD073D00F3D9A2 /* asmedia_playbig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEB11BAD073D00F3D9A2 /* asmedia_playbig@2x.png */; };
+		761923E71BC8B57E00E182F4 /* VerveAPIBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 761923E61BC8B57E00E182F4 /* VerveAPIBundle.bundle */; settings = {ASSET_TAGS = (); }; };
 		761D650C19A15A4D0062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650B19A15A4D0062B525 /* Foundation.framework */; };
 		761D650E19A15A4D0062B525 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650D19A15A4D0062B525 /* CoreGraphics.framework */; };
 		761D651019A15A4D0062B525 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650F19A15A4D0062B525 /* UIKit.framework */; };
@@ -24,8 +32,21 @@
 		761D652519A15A4D0062B525 /* EVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D652419A15A4D0062B525 /* EVCViewController.m */; };
 		761D652719A15A4D0062B525 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761D652619A15A4D0062B525 /* Images.xcassets */; };
 		761D65AB19A1606C0062B525 /* libVerveAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D65A619A1600C0062B525 /* libVerveAPI.a */; };
-		761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */; };
 		761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */; };
+		762F13391BBCDC80001BD716 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762F13381BBCDC80001BD716 /* CoreLocation.framework */; };
+		762F133D1BBCDC8A001BD716 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762F133C1BBCDC8A001BD716 /* MapKit.framework */; };
+		762F13411BBCDCCE001BD716 /* EVCVolunteeringMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762F133F1BBCDCCE001BD716 /* EVCVolunteeringMapViewController.m */; settings = {ASSET_TAGS = (); }; };
+		762F13421BBCDCCE001BD716 /* EVCVolunteeringMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762F13401BBCDCCE001BD716 /* EVCVolunteeringMapViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		7630B5881BACD57600FA2617 /* search-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 7630B5871BACD57600FA2617 /* search-icon-green.png */; };
+		7630B59A1BACFA0A00FA2617 /* ASImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B58C1BACFA0A00FA2617 /* ASImageScrollView.m */; };
+		7630B59B1BACFA0A00FA2617 /* ASMediaFocusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B58E1BACFA0A00FA2617 /* ASMediaFocusController.m */; };
+		7630B59C1BACFA0A00FA2617 /* ASMediaFocusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7630B58F1BACFA0A00FA2617 /* ASMediaFocusController.xib */; };
+		7630B59D1BACFA0A00FA2617 /* ASMediaFocusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5911BACFA0A00FA2617 /* ASMediaFocusManager.m */; };
+		7630B59E1BACFA0A00FA2617 /* ASTransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5931BACFA0A00FA2617 /* ASTransparentView.m */; };
+		7630B59F1BACFA0A00FA2617 /* ASVideoBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5951BACFA0A00FA2617 /* ASVideoBehavior.m */; };
+		7630B5A01BACFA0A00FA2617 /* ASVideoControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5971BACFA0A00FA2617 /* ASVideoControlView.m */; };
+		7630B5A11BACFA0A00FA2617 /* ASVideoControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7630B5981BACFA0A00FA2617 /* ASVideoControlView.xib */; };
+		7630B5A51BACFA5200FA2617 /* ASBPlayerScrubbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5A41BACFA5200FA2617 /* ASBPlayerScrubbing.m */; };
 		7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */; };
 		7636F6BA19CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */; };
 		7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6BE19CF7B0F000B68B0 /* user-50.png */; };
@@ -57,7 +78,6 @@
 		767DF3E01B5DE1DA000D4D5D /* profile-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D41B5DE1DA000D4D5D /* profile-icon-gray.png */; };
 		767DF3E11B5DE1DA000D4D5D /* profile-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D51B5DE1DA000D4D5D /* profile-icon-green.png */; };
 		767DF3E21B5DE1DA000D4D5D /* search-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D61B5DE1DA000D4D5D /* search-icon-gray.png */; };
-		767DF3E31B5DE1DA000D4D5D /* search-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D71B5DE1DA000D4D5D /* search-icon-green.png */; };
 		767DF3E41B5DE1DA000D4D5D /* star-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D81B5DE1DA000D4D5D /* star-icon-gray.png */; };
 		767DF3E61B5DE1DA000D4D5D /* view-partners-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3DA1B5DE1DA000D4D5D /* view-partners-icon-gray.png */; };
 		767DF3E71B5DE1DA000D4D5D /* view-partners-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3DB1B5DE1DA000D4D5D /* view-partners-icon-green.png */; };
@@ -88,6 +108,21 @@
 		769EEA9819A923EF00FF072E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA9719A923EE00FF072E /* AssetsLibrary.framework */; };
 		769EEA9D19AA35A800FF072E /* EVCProfilePicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA9C19AA35A800FF072E /* EVCProfilePicView.m */; };
 		769EEA9F19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA9E19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib */; };
+		76A204C61BB0510B0028BFF8 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204C51BB0510B0028BFF8 /* Logo.png */; };
+		76A204CC1BB062730028BFF8 /* EVCMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A204CA1BB062730028BFF8 /* EVCMenuTableViewCell.m */; };
+		76A204D31BB0E7CE0028BFF8 /* briefcase.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204CE1BB0E7CE0028BFF8 /* briefcase.png */; };
+		76A204D41BB0E7CE0028BFF8 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204CF1BB0E7CE0028BFF8 /* cart.png */; };
+		76A204D51BB0E7CE0028BFF8 /* hands.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204D01BB0E7CE0028BFF8 /* hands.png */; };
+		76A204D61BB0E7CE0028BFF8 /* health.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204D11BB0E7CE0028BFF8 /* health.png */; };
+		76A204D71BB0E7CE0028BFF8 /* hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204D21BB0E7CE0028BFF8 /* hearts.png */; };
+		76A204DB1BB0E7D60028BFF8 /* peeps.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204D81BB0E7D60028BFF8 /* peeps.png */; };
+		76A204DC1BB0E7D60028BFF8 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204D91BB0E7D60028BFF8 /* phone.png */; };
+		76A204DD1BB0E7D60028BFF8 /* plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204DA1BB0E7D60028BFF8 /* plane.png */; };
+		76A204DF1BB177950028BFF8 /* EVCMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A204DE1BB177950028BFF8 /* EVCMenuViewController.xib */; };
+		76A204E31BB1EE8F0028BFF8 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204E21BB1EE8F0028BFF8 /* home.png */; };
+		76A204E51BB1EE950028BFF8 /* finance.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204E41BB1EE950028BFF8 /* finance.png */; };
+		76A204E71BB200580028BFF8 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204E61BB200580028BFF8 /* group.png */; };
+		76A204E91BB200610028BFF8 /* newgroup.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204E81BB200610028BFF8 /* newgroup.png */; };
 		76ABFCA71B5DDF950092C5D1 /* star-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76ABFCA61B5DDF950092C5D1 /* star-icon-green.png */; };
 		76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B08619F333300010E98B /* EVCLoginViewController.m */; };
 		76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08719F333300010E98B /* EVCLoginViewController_iPhone.xib */; };
@@ -99,7 +134,6 @@
 		76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B0EA19F4AD680010E98B /* EVCPostView.m */; };
 		76C2B0ED19F4AD9F0010E98B /* EVCPostView_WithPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B0EC19F4AD9F0010E98B /* EVCPostView_WithPicture.xib */; };
 		76C2B0EF19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B0EE19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib */; };
-		76C2B10119F9DD590010E98B /* VerveAPIBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */; };
 		76DEDA801A474E19009CD94F /* EVCFlingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDA7E1A474E19009CD94F /* EVCFlingViewController.m */; };
 		76DEDA811A474E19009CD94F /* EVCFlingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DEDA7F1A474E19009CD94F /* EVCFlingViewController.xib */; };
 		76DEDA871A47504B009CD94F /* EVCPartnerMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDA851A47504B009CD94F /* EVCPartnerMatchViewController.m */; };
@@ -155,6 +189,14 @@
 		76063C4C1B94B03A002F9171 /* EVCTravelTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCTravelTableViewController.h; sourceTree = "<group>"; };
 		76063C4D1B94B03A002F9171 /* EVCTravelTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCTravelTableViewController.m; sourceTree = "<group>"; };
 		76063C4E1B94B03A002F9171 /* EVCTravelTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCTravelTableViewController.xib; sourceTree = "<group>"; };
+		760ECE9E1BAD06E400F3D9A2 /* 1408346500_menu-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1408346500_menu-alt.png"; sourceTree = "<group>"; };
+		760ECEAC1BAD073D00F3D9A2 /* asmedia_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asmedia_pause.png; sourceTree = "<group>"; };
+		760ECEAD1BAD073D00F3D9A2 /* asmedia_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asmedia_pause@2x.png"; sourceTree = "<group>"; };
+		760ECEAE1BAD073D00F3D9A2 /* asmedia_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asmedia_play.png; sourceTree = "<group>"; };
+		760ECEAF1BAD073D00F3D9A2 /* asmedia_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asmedia_play@2x.png"; sourceTree = "<group>"; };
+		760ECEB01BAD073D00F3D9A2 /* asmedia_playbig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asmedia_playbig.png; sourceTree = "<group>"; };
+		760ECEB11BAD073D00F3D9A2 /* asmedia_playbig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asmedia_playbig@2x.png"; sourceTree = "<group>"; };
+		761923E61BC8B57E00E182F4 /* VerveAPIBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VerveAPIBundle.bundle; path = "../../../Library/Developer/Xcode/DerivedData/MyDailyBeat-bodvbyhjqpeiggdehnrkxwklpekv/Build/Products/Debug-iphoneos/VerveAPIBundle.bundle"; sourceTree = "<group>"; };
 		761D650819A15A4D0062B525 /* MyDailyBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDailyBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		761D650B19A15A4D0062B525 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		761D650D19A15A4D0062B525 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,8 +211,29 @@
 		761D652419A15A4D0062B525 /* EVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EVCViewController.m; sourceTree = "<group>"; };
 		761D652619A15A4D0062B525 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VerveAPI.xcodeproj; path = ../VerveAPI/VerveAPI.xcodeproj; sourceTree = "<group>"; };
-		761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1408346500_menu-alt.png"; sourceTree = "<group>"; };
 		761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCViewController_iPhone.xib; sourceTree = "<group>"; };
+		762F13381BBCDC80001BD716 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		762F133C1BBCDC8A001BD716 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		762F133E1BBCDCCE001BD716 /* EVCVolunteeringMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCVolunteeringMapViewController.h; sourceTree = "<group>"; };
+		762F133F1BBCDCCE001BD716 /* EVCVolunteeringMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCVolunteeringMapViewController.m; sourceTree = "<group>"; };
+		762F13401BBCDCCE001BD716 /* EVCVolunteeringMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCVolunteeringMapViewController.xib; sourceTree = "<group>"; };
+		7630B5871BACD57600FA2617 /* search-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-green.png"; sourceTree = "<group>"; };
+		7630B58B1BACFA0A00FA2617 /* ASImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASImageScrollView.h; sourceTree = "<group>"; };
+		7630B58C1BACFA0A00FA2617 /* ASImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASImageScrollView.m; sourceTree = "<group>"; };
+		7630B58D1BACFA0A00FA2617 /* ASMediaFocusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMediaFocusController.h; sourceTree = "<group>"; };
+		7630B58E1BACFA0A00FA2617 /* ASMediaFocusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMediaFocusController.m; sourceTree = "<group>"; };
+		7630B58F1BACFA0A00FA2617 /* ASMediaFocusController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASMediaFocusController.xib; sourceTree = "<group>"; };
+		7630B5901BACFA0A00FA2617 /* ASMediaFocusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMediaFocusManager.h; sourceTree = "<group>"; };
+		7630B5911BACFA0A00FA2617 /* ASMediaFocusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMediaFocusManager.m; sourceTree = "<group>"; };
+		7630B5921BACFA0A00FA2617 /* ASTransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTransparentView.h; sourceTree = "<group>"; };
+		7630B5931BACFA0A00FA2617 /* ASTransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTransparentView.m; sourceTree = "<group>"; };
+		7630B5941BACFA0A00FA2617 /* ASVideoBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVideoBehavior.h; sourceTree = "<group>"; };
+		7630B5951BACFA0A00FA2617 /* ASVideoBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoBehavior.m; sourceTree = "<group>"; };
+		7630B5961BACFA0A00FA2617 /* ASVideoControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVideoControlView.h; sourceTree = "<group>"; };
+		7630B5971BACFA0A00FA2617 /* ASVideoControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoControlView.m; sourceTree = "<group>"; };
+		7630B5981BACFA0A00FA2617 /* ASVideoControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASVideoControlView.xib; sourceTree = "<group>"; };
+		7630B5A31BACFA5200FA2617 /* ASBPlayerScrubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBPlayerScrubbing.h; sourceTree = "<group>"; };
+		7630B5A41BACFA5200FA2617 /* ASBPlayerScrubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBPlayerScrubbing.m; sourceTree = "<group>"; };
 		7636F6B619CF25DB000B68B0 /* EVCProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCProfileViewController.h; sourceTree = "<group>"; };
 		7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCProfileViewController.m; sourceTree = "<group>"; };
 		7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCProfileViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -208,7 +271,6 @@
 		767DF3D41B5DE1DA000D4D5D /* profile-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon-gray.png"; sourceTree = "<group>"; };
 		767DF3D51B5DE1DA000D4D5D /* profile-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon-green.png"; sourceTree = "<group>"; };
 		767DF3D61B5DE1DA000D4D5D /* search-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-gray.png"; sourceTree = "<group>"; };
-		767DF3D71B5DE1DA000D4D5D /* search-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-green.png"; sourceTree = "<group>"; };
 		767DF3D81B5DE1DA000D4D5D /* star-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon-gray.png"; sourceTree = "<group>"; };
 		767DF3D91B5DE1DA000D4D5D /* star-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon-green.png"; sourceTree = "<group>"; };
 		767DF3DA1B5DE1DA000D4D5D /* view-partners-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-partners-icon-gray.png"; sourceTree = "<group>"; };
@@ -252,6 +314,22 @@
 		769EEA9B19AA35A800FF072E /* EVCProfilePicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCProfilePicView.h; sourceTree = "<group>"; };
 		769EEA9C19AA35A800FF072E /* EVCProfilePicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCProfilePicView.m; sourceTree = "<group>"; };
 		769EEA9E19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EVCProfilePicView_iPhone.xib; path = ../EVCProfilePicView_iPhone.xib; sourceTree = "<group>"; };
+		76A204C51BB0510B0028BFF8 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		76A204C91BB062730028BFF8 /* EVCMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCMenuTableViewCell.h; sourceTree = "<group>"; };
+		76A204CA1BB062730028BFF8 /* EVCMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCMenuTableViewCell.m; sourceTree = "<group>"; };
+		76A204CE1BB0E7CE0028BFF8 /* briefcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = briefcase.png; sourceTree = "<group>"; };
+		76A204CF1BB0E7CE0028BFF8 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
+		76A204D01BB0E7CE0028BFF8 /* hands.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hands.png; sourceTree = "<group>"; };
+		76A204D11BB0E7CE0028BFF8 /* health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = health.png; sourceTree = "<group>"; };
+		76A204D21BB0E7CE0028BFF8 /* hearts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hearts.png; sourceTree = "<group>"; };
+		76A204D81BB0E7D60028BFF8 /* peeps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peeps.png; sourceTree = "<group>"; };
+		76A204D91BB0E7D60028BFF8 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		76A204DA1BB0E7D60028BFF8 /* plane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane.png; sourceTree = "<group>"; };
+		76A204DE1BB177950028BFF8 /* EVCMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCMenuViewController.xib; sourceTree = "<group>"; };
+		76A204E21BB1EE8F0028BFF8 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		76A204E41BB1EE950028BFF8 /* finance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finance.png; sourceTree = "<group>"; };
+		76A204E61BB200580028BFF8 /* group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group.png; sourceTree = "<group>"; };
+		76A204E81BB200610028BFF8 /* newgroup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newgroup.png; sourceTree = "<group>"; };
 		76ABFCA61B5DDF950092C5D1 /* star-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon-green.png"; sourceTree = "<group>"; };
 		76ABFCA81B5DDFC50092C5D1 /* profile-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon-gray.png"; sourceTree = "<group>"; };
 		76BD329219DF87FE0054ED88 /* edit_file-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_file-50.png"; sourceTree = "<group>"; };
@@ -270,7 +348,6 @@
 		76C2B0EA19F4AD680010E98B /* EVCPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCPostView.m; sourceTree = "<group>"; };
 		76C2B0EC19F4AD9F0010E98B /* EVCPostView_WithPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithPicture.xib; sourceTree = "<group>"; };
 		76C2B0EE19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithoutPicture.xib; sourceTree = "<group>"; };
-		76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VerveAPIBundle.bundle; path = "../../../Library/Developer/Xcode/DerivedData/MyDailyBeat-bodvbyhjqpeiggdehnrkxwklpekv/Build/Products/Debug-iphonesimulator/VerveAPIBundle.bundle"; sourceTree = "<group>"; };
 		76DEDA7D1A474E19009CD94F /* EVCFlingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFlingViewController.h; sourceTree = "<group>"; };
 		76DEDA7E1A474E19009CD94F /* EVCFlingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFlingViewController.m; sourceTree = "<group>"; };
 		76DEDA7F1A474E19009CD94F /* EVCFlingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFlingViewController.xib; sourceTree = "<group>"; };
@@ -301,6 +378,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				762F133D1BBCDC8A001BD716 /* MapKit.framework in Frameworks */,
+				762F13391BBCDC80001BD716 /* CoreLocation.framework in Frameworks */,
 				769EEA9819A923EF00FF072E /* AssetsLibrary.framework in Frameworks */,
 				769EEA3719A6482100FF072E /* QuartzCore.framework in Frameworks */,
 				769EEA1B19A53C9000FF072E /* KeyboardManager.framework in Frameworks */,
@@ -344,6 +423,7 @@
 		76063C471B949F14002F9171 /* Travel */ = {
 			isa = PBXGroup;
 			children = (
+				76063C4E1B94B03A002F9171 /* EVCTravelTableViewController.xib */,
 			);
 			name = Travel;
 			sourceTree = "<group>";
@@ -351,6 +431,7 @@
 		76063C4A1B94B017002F9171 /* Travel */ = {
 			isa = PBXGroup;
 			children = (
+				76063C4D1B94B03A002F9171 /* EVCTravelTableViewController.m */,
 			);
 			name = Travel;
 			sourceTree = "<group>";
@@ -358,6 +439,7 @@
 		76063C4B1B94B021002F9171 /* Travel */ = {
 			isa = PBXGroup;
 			children = (
+				76063C4C1B94B03A002F9171 /* EVCTravelTableViewController.h */,
 			);
 			name = Travel;
 			sourceTree = "<group>";
@@ -384,6 +466,8 @@
 		761D650A19A15A4D0062B525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				762F133C1BBCDC8A001BD716 /* MapKit.framework */,
+				762F13381BBCDC80001BD716 /* CoreLocation.framework */,
 				769EEA9719A923EE00FF072E /* AssetsLibrary.framework */,
 				769EEA3619A6482100FF072E /* QuartzCore.framework */,
 				769EEA1A19A53C9000FF072E /* KeyboardManager.framework */,
@@ -397,6 +481,8 @@
 		761D651119A15A4D0062B525 /* MyDailyBeat */ = {
 			isa = PBXGroup;
 			children = (
+				7630B58A1BACF9C400FA2617 /* ASBPlayerScrubbing */,
+				7630B5891BACF9B200FA2617 /* ASMediaFocusManager */,
 				769EEA1119A42E1D00FF072E /* Headers */,
 				769EEA1219A42E2700FF072E /* Source */,
 				769EEA1319A42E3C00FF072E /* xib */,
@@ -404,9 +490,11 @@
 				761D651219A15A4D0062B525 /* Supporting Files */,
 				76C2B09719F4111F0010E98B /* EVCCommonMethods.h */,
 				76C2B09819F4111F0010E98B /* EVCCommonMethods.m */,
-				76063C4C1B94B03A002F9171 /* EVCTravelTableViewController.h */,
-				76063C4D1B94B03A002F9171 /* EVCTravelTableViewController.m */,
-				76063C4E1B94B03A002F9171 /* EVCTravelTableViewController.xib */,
+				76A204C91BB062730028BFF8 /* EVCMenuTableViewCell.h */,
+				76A204CA1BB062730028BFF8 /* EVCMenuTableViewCell.m */,
+				762F133E1BBCDCCE001BD716 /* EVCVolunteeringMapViewController.h */,
+				762F133F1BBCDCCE001BD716 /* EVCVolunteeringMapViewController.m */,
+				762F13401BBCDCCE001BD716 /* EVCVolunteeringMapViewController.xib */,
 			);
 			path = MyDailyBeat;
 			sourceTree = "<group>";
@@ -414,6 +502,21 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				76A204CE1BB0E7CE0028BFF8 /* briefcase.png */,
+				76A204CF1BB0E7CE0028BFF8 /* cart.png */,
+				76A204E41BB1EE950028BFF8 /* finance.png */,
+				76A204E61BB200580028BFF8 /* group.png */,
+				76A204D01BB0E7CE0028BFF8 /* hands.png */,
+				76A204D11BB0E7CE0028BFF8 /* health.png */,
+				76A204D21BB0E7CE0028BFF8 /* hearts.png */,
+				76A204E21BB1EE8F0028BFF8 /* home.png */,
+				76A204E81BB200610028BFF8 /* newgroup.png */,
+				76A204D81BB0E7D60028BFF8 /* peeps.png */,
+				76A204D91BB0E7D60028BFF8 /* phone.png */,
+				76A204DA1BB0E7D60028BFF8 /* plane.png */,
+				76A204C51BB0510B0028BFF8 /* Logo.png */,
+				760ECE9E1BAD06E400F3D9A2 /* 1408346500_menu-alt.png */,
+				7630B5871BACD57600FA2617 /* search-icon-green.png */,
 				767DF3D01B5DE1DA000D4D5D /* hamburger-icon-gray.png */,
 				767DF3D11B5DE1DA000D4D5D /* hamburger-icon-green.png */,
 				767DF3D21B5DE1DA000D4D5D /* messages-icon-gray.png */,
@@ -421,7 +524,6 @@
 				767DF3D41B5DE1DA000D4D5D /* profile-icon-gray.png */,
 				767DF3D51B5DE1DA000D4D5D /* profile-icon-green.png */,
 				767DF3D61B5DE1DA000D4D5D /* search-icon-gray.png */,
-				767DF3D71B5DE1DA000D4D5D /* search-icon-green.png */,
 				767DF3D81B5DE1DA000D4D5D /* star-icon-gray.png */,
 				767DF3D91B5DE1DA000D4D5D /* star-icon-green.png */,
 				767DF3DA1B5DE1DA000D4D5D /* view-partners-icon-gray.png */,
@@ -429,8 +531,8 @@
 				76ABFCA61B5DDF950092C5D1 /* star-icon-green.png */,
 				76ABFCA81B5DDFC50092C5D1 /* profile-icon-gray.png */,
 				7671FC6C1A06F81C000ECDAF /* add_user-25.png */,
-				76C2B10019F9DD590010E98B /* VerveAPIBundle.bundle */,
 				76BD329219DF87FE0054ED88 /* edit_file-50.png */,
+				761923E61BC8B57E00E182F4 /* VerveAPIBundle.bundle */,
 				7636F6D019D501FD000B68B0 /* texture.png */,
 				7671FC5E19FF316B000ECDAF /* delete_sign-25.png */,
 				7636F6C519D38EE1000B68B0 /* IQKeyboardManager.bundle */,
@@ -445,7 +547,6 @@
 				769EEA9519A8DCBB00FF072E /* Stars@2x.png */,
 				7667E73E1A241F0E00B006D5 /* menubg.jpg */,
 				766A7D541A923CFF00B6C81E /* menu-icon.png */,
-				761D65AC19A19E090062B525 /* 1408346500_menu-alt.png */,
 				761D651319A15A4D0062B525 /* MyDailyBeat-Info.plist */,
 				761D651419A15A4D0062B525 /* InfoPlist.strings */,
 				761D651719A15A4D0062B525 /* main.m */,
@@ -461,6 +562,42 @@
 				769EEA7419A80B5400FF072E /* VerveAPIBundle.bundle */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7630B5891BACF9B200FA2617 /* ASMediaFocusManager */ = {
+			isa = PBXGroup;
+			children = (
+				7630B58B1BACFA0A00FA2617 /* ASImageScrollView.h */,
+				7630B58C1BACFA0A00FA2617 /* ASImageScrollView.m */,
+				7630B58D1BACFA0A00FA2617 /* ASMediaFocusController.h */,
+				7630B58E1BACFA0A00FA2617 /* ASMediaFocusController.m */,
+				7630B58F1BACFA0A00FA2617 /* ASMediaFocusController.xib */,
+				7630B5901BACFA0A00FA2617 /* ASMediaFocusManager.h */,
+				7630B5911BACFA0A00FA2617 /* ASMediaFocusManager.m */,
+				7630B5921BACFA0A00FA2617 /* ASTransparentView.h */,
+				7630B5931BACFA0A00FA2617 /* ASTransparentView.m */,
+				7630B5941BACFA0A00FA2617 /* ASVideoBehavior.h */,
+				7630B5951BACFA0A00FA2617 /* ASVideoBehavior.m */,
+				7630B5961BACFA0A00FA2617 /* ASVideoControlView.h */,
+				7630B5971BACFA0A00FA2617 /* ASVideoControlView.m */,
+				7630B5981BACFA0A00FA2617 /* ASVideoControlView.xib */,
+				760ECEAC1BAD073D00F3D9A2 /* asmedia_pause.png */,
+				760ECEAD1BAD073D00F3D9A2 /* asmedia_pause@2x.png */,
+				760ECEAE1BAD073D00F3D9A2 /* asmedia_play.png */,
+				760ECEAF1BAD073D00F3D9A2 /* asmedia_play@2x.png */,
+				760ECEB01BAD073D00F3D9A2 /* asmedia_playbig.png */,
+				760ECEB11BAD073D00F3D9A2 /* asmedia_playbig@2x.png */,
+			);
+			name = ASMediaFocusManager;
+			sourceTree = "<group>";
+		};
+		7630B58A1BACF9C400FA2617 /* ASBPlayerScrubbing */ = {
+			isa = PBXGroup;
+			children = (
+				7630B5A31BACFA5200FA2617 /* ASBPlayerScrubbing.h */,
+				7630B5A41BACFA5200FA2617 /* ASBPlayerScrubbing.m */,
+			);
+			name = ASBPlayerScrubbing;
 			sourceTree = "<group>";
 		};
 		767000DA1A7AFA3D005F9DC4 /* Shopping */ = {
@@ -592,6 +729,7 @@
 				76C2B09419F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib */,
 				76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */,
 				76003B141B93C38E00133773 /* EVCResourceLinksTableViewController.xib */,
+				76A204DE1BB177950028BFF8 /* EVCMenuViewController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -670,6 +808,11 @@
 				CLASSPREFIX = EVC;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = eVerveCorp;
+				TargetAttributes = {
+					761D650719A15A4D0062B525 = {
+						DevelopmentTeam = 38MW53VVGD;
+					};
+				};
 			};
 			buildConfigurationList = 761D650319A15A4D0062B525 /* Build configuration list for PBXProject "MyDailyBeat" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -718,31 +861,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				76011C341B927BDB000EC003 /* EVCFinanceViewController.xib in Resources */,
+				761923E71BC8B57E00E182F4 /* VerveAPIBundle.bundle in Resources */,
+				760ECEB21BAD073D00F3D9A2 /* asmedia_pause.png in Resources */,
 				7636F6BA19CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib in Resources */,
 				769B0A991A607C2300BB287E /* EVCFeelingBlueViewController.xib in Resources */,
+				76A204D61BB0E7CE0028BFF8 /* health.png in Resources */,
+				76A204DC1BB0E7D60028BFF8 /* phone.png in Resources */,
+				76A204E31BB1EE8F0028BFF8 /* home.png in Resources */,
 				761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */,
-				761D65AD19A19E090062B525 /* 1408346500_menu-alt.png in Resources */,
+				76A204DF1BB177950028BFF8 /* EVCMenuViewController.xib in Resources */,
 				767000E11A7AFB04005F9DC4 /* EVCShoppingFavoritesTableViewController.xib in Resources */,
 				767DF3E21B5DE1DA000D4D5D /* search-icon-gray.png in Resources */,
 				767DF3E01B5DE1DA000D4D5D /* profile-icon-gray.png in Resources */,
+				760ECEB71BAD073D00F3D9A2 /* asmedia_playbig@2x.png in Resources */,
+				7630B5A11BACFA0A00FA2617 /* ASVideoControlView.xib in Resources */,
 				7636F6C419CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib in Resources */,
 				767DF3E11B5DE1DA000D4D5D /* profile-icon-green.png in Resources */,
 				7671FC6D1A06F81D000ECDAF /* add_user-25.png in Resources */,
+				76A204D41BB0E7CE0028BFF8 /* cart.png in Resources */,
 				766A7D511A900C0400B6C81E /* Default-568h@2x.png in Resources */,
 				76607ABF1AD35A6E0097E520 /* banner-green.png in Resources */,
 				76C2B0ED19F4AD9F0010E98B /* EVCPostView_WithPicture.xib in Resources */,
 				7636F6D119D501FD000B68B0 /* texture.png in Resources */,
 				7671FC5A19FDCE28000ECDAF /* user-50_white.png in Resources */,
 				76DEDA811A474E19009CD94F /* EVCFlingViewController.xib in Resources */,
+				760ECEB31BAD073D00F3D9A2 /* asmedia_pause@2x.png in Resources */,
+				76A204E71BB200580028BFF8 /* group.png in Resources */,
+				76A204DB1BB0E7D60028BFF8 /* peeps.png in Resources */,
 				76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */,
-				767DF3E31B5DE1DA000D4D5D /* search-icon-green.png in Resources */,
+				7630B5881BACD57600FA2617 /* search-icon-green.png in Resources */,
 				766A7D551A923CFF00B6C81E /* menu-icon.png in Resources */,
+				76A204E91BB200610028BFF8 /* newgroup.png in Resources */,
 				767DF3DE1B5DE1DA000D4D5D /* messages-icon-gray.png in Resources */,
+				76A204D51BB0E7CE0028BFF8 /* hands.png in Resources */,
+				76A204C61BB0510B0028BFF8 /* Logo.png in Resources */,
 				767DF3DD1B5DE1DA000D4D5D /* hamburger-icon-green.png in Resources */,
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				7667E73F1A241F0E00B006D5 /* menubg.jpg in Resources */,
 				76DEDA8E1A475E68009CD94F /* EVCPartnersTableViewController.xib in Resources */,
 				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
+				760ECEB51BAD073D00F3D9A2 /* asmedia_play@2x.png in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
 				76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */,
 				766A7D4F1A900A5E00B6C81E /* EVCHeader.png in Resources */,
@@ -753,8 +911,11 @@
 				768AFF3F1A754E300055F258 /* EVCShoppingSearchViewController.xib in Resources */,
 				76E64EFB19B933650022F189 /* plus-512.png in Resources */,
 				767DF3E61B5DE1DA000D4D5D /* view-partners-icon-gray.png in Resources */,
+				762F13421BBCDCCE001BD716 /* EVCVolunteeringMapViewController.xib in Resources */,
 				769B0A901A59F22C00BB287E /* EVCFlingProfileCreatorViewController.xib in Resources */,
 				7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */,
+				760ECEB41BAD073D00F3D9A2 /* asmedia_play.png in Resources */,
+				76A204DD1BB0E7D60028BFF8 /* plane.png in Resources */,
 				76003B161B93C38E00133773 /* EVCResourceLinksTableViewController.xib in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
 				767DF3DF1B5DE1DA000D4D5D /* messages-icon-green.png in Resources */,
@@ -762,22 +923,27 @@
 				76DEDA881A47504B009CD94F /* EVCPartnerMatchViewController.xib in Resources */,
 				7636F6CB19D4D881000B68B0 /* EVCGroupViewController_iPhone.xib in Resources */,
 				7636F6C619D38EE1000B68B0 /* IQKeyboardManager.bundle in Resources */,
-				76C2B10119F9DD590010E98B /* VerveAPIBundle.bundle in Resources */,
+				76A204D31BB0E7CE0028BFF8 /* briefcase.png in Resources */,
 				76011C3E1B928189000EC003 /* EVCFinanceHomeViewController.xib in Resources */,
 				76ABFCA71B5DDF950092C5D1 /* star-icon-green.png in Resources */,
 				76DEDA931A476310009CD94F /* EVCFlingProfileViewController.xib in Resources */,
 				769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */,
+				760ECE9F1BAD06E400F3D9A2 /* 1408346500_menu-alt.png in Resources */,
 				7671FC5F19FF316B000ECDAF /* delete_sign-25.png in Resources */,
 				76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */,
+				760ECEB61BAD073D00F3D9A2 /* asmedia_playbig.png in Resources */,
 				769EEA8C19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib in Resources */,
 				769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */,
 				767DF3DC1B5DE1DA000D4D5D /* hamburger-icon-gray.png in Resources */,
+				76A204D71BB0E7CE0028BFF8 /* hearts.png in Resources */,
 				769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */,
 				76607AC01AD35A6E0097E520 /* banner-white.png in Resources */,
 				766DEF831A4BC8060049CA2A /* EVCChatroomCell.xib in Resources */,
+				76A204E51BB1EE950028BFF8 /* finance.png in Resources */,
 				769EEA9F19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib in Resources */,
 				76C2B09119F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib in Resources */,
 				767DF3E71B5DE1DA000D4D5D /* view-partners-icon-green.png in Resources */,
+				7630B59C1BACFA0A00FA2617 /* ASMediaFocusController.xib in Resources */,
 				768AFF381A7540AA0055F258 /* EVCShoppingViewController.xib in Resources */,
 				766DEF7E1A4BC6180049CA2A /* EVCChatroomTableViewController.xib in Resources */,
 				76EBBEA61A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib in Resources */,
@@ -801,14 +967,19 @@
 				76EBBEA51A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m in Sources */,
 				7636F6C319CF9074000B68B0 /* EVCUpdateProfileViewController.m in Sources */,
 				769B0A8F1A59F22C00BB287E /* EVCFlingProfileCreatorViewController.m in Sources */,
+				7630B59F1BACFA0A00FA2617 /* ASVideoBehavior.m in Sources */,
 				76DEDA801A474E19009CD94F /* EVCFlingViewController.m in Sources */,
 				766DEF821A4BC8060049CA2A /* EVCChatroomCell.m in Sources */,
 				76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */,
 				769EE9F119A2B14900FF072E /* EVCLargeMessageViewController.m in Sources */,
+				762F13411BBCDCCE001BD716 /* EVCVolunteeringMapViewController.m in Sources */,
 				76011C331B927BDB000EC003 /* EVCFinanceViewController.m in Sources */,
+				7630B59E1BACFA0A00FA2617 /* ASTransparentView.m in Sources */,
 				76DEDA871A47504B009CD94F /* EVCPartnerMatchViewController.m in Sources */,
+				7630B5A51BACFA5200FA2617 /* ASBPlayerScrubbing.m in Sources */,
 				769EEA9D19AA35A800FF072E /* EVCProfilePicView.m in Sources */,
 				768AFF3E1A754E300055F258 /* EVCShoppingSearchViewController.m in Sources */,
+				7630B59A1BACFA0A00FA2617 /* ASImageScrollView.m in Sources */,
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
 				76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */,
 				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
@@ -820,15 +991,19 @@
 				76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */,
 				769EEA9419A8DBF900FF072E /* EVCMenuViewController.m in Sources */,
 				76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */,
+				7630B5A01BACFA0A00FA2617 /* ASVideoControlView.m in Sources */,
 				769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */,
+				7630B59B1BACFA0A00FA2617 /* ASMediaFocusController.m in Sources */,
 				76DEDA8D1A475E68009CD94F /* EVCPartnersTableViewController.m in Sources */,
 				76C2B09919F4111F0010E98B /* EVCCommonMethods.m in Sources */,
 				767000E01A7AFB04005F9DC4 /* EVCShoppingFavoritesTableViewController.m in Sources */,
+				76A204CC1BB062730028BFF8 /* EVCMenuTableViewCell.m in Sources */,
 				769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */,
 				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				766DEF7A1A4BC2870049CA2A /* EVCChatroomTableViewController.m in Sources */,
 				768AFF371A7540AA0055F258 /* EVCShoppingViewController.m in Sources */,
 				761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */,
+				7630B59D1BACFA0A00FA2617 /* ASMediaFocusManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,8 +1045,10 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -887,7 +1064,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -909,8 +1088,10 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -920,6 +1101,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -932,6 +1115,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Virinchi Balabhadrapatruni (ZF6D3MVZL5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Virinchi Balabhadrapatruni (ZF6D3MVZL5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -940,9 +1125,10 @@
 				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INFOPLIST_FILE = "MyDailyBeat/MyDailyBeat-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d7713e4c-41c4-4bb4-a10a-d47393ea8115";
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/VerveAPI/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -954,6 +1140,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: EVERVE CORPORATION (38MW53VVGD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: EVERVE CORPORATION (38MW53VVGD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -962,9 +1150,10 @@
 				GCC_PREFIX_HEADER = "MyDailyBeat/MyDailyBeat-Prefix.pch";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INFOPLIST_FILE = "MyDailyBeat/MyDailyBeat-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d7713e4c-41c4-4bb4-a10a-d47393ea8115";
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/VerveAPI/**";
 				WRAPPER_EXTENSION = app;
 			};

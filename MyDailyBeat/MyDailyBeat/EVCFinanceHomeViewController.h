@@ -14,6 +14,6 @@
 @interface EVCFinanceHomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSMutableArray *bankList;
+@property (nonatomic, retain) NSMutableArray *bankList, *iconList;
 
 @end

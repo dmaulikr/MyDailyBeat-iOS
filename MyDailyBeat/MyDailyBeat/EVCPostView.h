@@ -10,13 +10,14 @@
 #import "Post.h"
 #import <API.h>
 #import "EVCGroupViewController.h"
+#import <ASMediaFocusManager.h>
 
 typedef enum {
     EVCPostTypeHasPicture = 1,
     EVCPostTypeDoesNotHavePicture = 0
 } EVCPostType;
 
-@interface EVCPostView : UIView
+@interface EVCPostView : UIView <ASMediasFocusDelegate>
 
 @property (nonatomic) IBOutlet UIImageView *profilePicView, *postPicView;
 @property EVCPostType postType;
@@ -25,6 +26,7 @@ typedef enum {
 @property (nonatomic) IBOutlet UIButton *deleteButton;
 @property (nonatomic) Post *postObj;
 @property (nonatomic) UIViewController *parentViewController;
+@property (nonatomic) ASMediaFocusManager *mediaFocusManager;
 
 - (id) initWithFrame:(CGRect)frame andPost:(Post *) pObj withPostType:(EVCPostType) type andParent:(UIViewController *) parent;
 - (IBAction)deletePost:(id)sender;
