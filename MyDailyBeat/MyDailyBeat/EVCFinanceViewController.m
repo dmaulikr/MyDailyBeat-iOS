@@ -30,19 +30,19 @@
     UITabBarItem *matchItem = [bar.items objectAtIndex:0];
     UITabBarItem *partnersItem = [bar.items objectAtIndex:1];
     
-    UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
     matchItem.title = @"Search URLs";
     [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
-    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
     partnersItem.title = @"View Favorites";
     [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
-    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
@@ -54,7 +54,7 @@
     
     self.navigationItem.rightBarButtonItem = menuButton;
     
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];

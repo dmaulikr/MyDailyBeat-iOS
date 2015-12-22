@@ -14,18 +14,21 @@
 #import "EVCCommonMethods.h"
 #import "RESideMenu.h"
 #import "DownPicker.h"
+#import <API.h>
+#import "VerveVolunteering.h"
+#import "AHKActionSheet.h"
 
-@interface EVCVolunteeringMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate> {
+@interface EVCVolunteeringMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
     CLLocationCoordinate2D currentCentre;
     int currentDist;
+    NSString *currentKeyword, *currentType;
     BOOL firstLaunch;
     
 }
 
 @property (nonatomic) IBOutlet MKMapView *mapView;
-@property (nonatomic) IBOutlet UISearchBar *searchBar;
-@property (nonatomic) IBOutlet UITextField *radiusField;
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) DownPicker *downPicker;
+@property (nonatomic) NSArray *volList;
 
 @end

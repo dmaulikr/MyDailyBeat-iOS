@@ -28,7 +28,7 @@
     options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
     imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"peeps", @"health", @"plane", @"hands", nil];
     
-    /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-green.png"] scaledToSize:CGSizeMake(30, 30)];
+    /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
     UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
     [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
@@ -38,7 +38,7 @@
     UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];*/
 
     
-    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
@@ -50,7 +50,7 @@
     NSArray *rightItems = [NSArray arrayWithObjects:menuButton, nil];
     self.navigationItem.rightBarButtonItems = rightItems;
     
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
@@ -68,8 +68,9 @@
     NSArray *fields = [name componentsSeparatedByString:@" "];
     [self navigationItem].title = [NSString stringWithFormat:@"Welcome %@!", fields[0]];
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor :[UIColor colorWithRed:0.03921568627 green:0.71372549019 blue:0.66274509803 alpha:1] } forState:UIControlStateSelected];
     
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor :[UIColor whiteColor] } forState:UIControlStateSelected];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     
     
@@ -114,12 +115,20 @@
                 {
                     EVCFinanceViewController *finance = [[EVCFinanceViewController alloc] initWithNibName:@"EVCFinanceViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:finance] animated:YES];
+                    break;
                 }
                     
                 case 8: {
                     EVCVolunteeringMapViewController *mapTest = [[EVCVolunteeringMapViewController alloc] initWithNibName:@"EVCVolunteeringMapViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:mapTest] animated:YES];
+                    break;
                 }
+                case 7: {
+                    EVCTravelTableViewController *travel = [[EVCTravelTableViewController alloc] initWithNibName:@"EVCTravelTableViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:travel] animated:YES];
+                    break;
+                }
+                    
                     
                 default:
                     break;
@@ -150,14 +159,17 @@
     
     
     switch (indexPath.section) {
-        case 0:
+        case 0: {
             cell.textLabel.text = @"What would you like to do?";
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
+        }
         case 1: {
             cell.textLabel.text = [options objectAtIndex:indexPath.row];
             cell.textLabel.textAlignment = NSTextAlignmentLeft;
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
             UIImage *icon = [UIImage imageNamed:[imageNames objectAtIndex:indexPath.row]];
             cell.imageView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];
         }
@@ -166,6 +178,8 @@
         default:
             break;
     }
+    
+    //cell.contentView.backgroundColor = UIColorFromHex(0xEEE2BE);
     
     return cell;
 }

@@ -23,6 +23,11 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    MapPoint *copy = [[MapPoint alloc] initWithName:self.name address:self.address coordinate:self.coordinate];
+    return copy;
+}
+
 -(NSString *)title {
     if ([_name isKindOfClass:[NSNull class]])
         return @"Unknown charge";

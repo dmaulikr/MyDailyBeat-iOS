@@ -18,6 +18,29 @@
     [super viewDidLoad];
     self.travelSites = [[NSMutableArray alloc] initWithArray:TRAVEL_SITES copyItems:YES];
     
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
+    CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
+    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
+    [someButton addTarget:self action:@selector(showMenu)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
+    
+    self.navigationItem.rightBarButtonItem = menuButton;
+    
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
+    CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
+    UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
+    [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
+    [someButton2 addTarget:self action:@selector(showProfile)
+          forControlEvents:UIControlEventTouchUpInside];
+    [someButton2 setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
+    self.navigationItem.leftBarButtonItem = profileButton;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,23 +73,28 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIAlertController *action = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *open = [UIAlertAction actionWithTitle:@"Open URL in Browser" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    AHKActionSheet *sheet = [[AHKActionSheet alloc] initWithTitle:@""];
+    [sheet addButtonWithTitle:@"Open in Browser" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         [self openURLinBrowser: [self.travelSites objectAtIndex:indexPath.row]];
     }];
-    UIAlertAction *addFav = [UIAlertAction actionWithTitle:@"Add URL to Favorites" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [sheet addButtonWithTitle:@"Add to Favorites" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
 
     }];
-    
-    [action addAction:open];
-    [action addAction:addFav];
-    [self presentViewController:action animated:YES completion:nil];
+    [sheet show];
 }
 
 - (void) openURLinBrowser: (NSString *) url {
     NSString *fullURL = [NSString stringWithFormat:@"http://www.%@", url];
     SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:fullURL];
     [self presentViewController:webViewController animated:YES completion:NULL];
+}
+
+- (void) showMenu {
+    [self.sideMenuViewController presentRightMenuViewController];
+}
+
+- (void) showProfile {
+    [self.sideMenuViewController presentLeftMenuViewController];
 }
 
 

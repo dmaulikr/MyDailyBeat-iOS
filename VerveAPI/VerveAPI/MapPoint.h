@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface MapPoint : NSObject <MKAnnotation>
+@interface MapPoint : NSObject <MKAnnotation, NSCopying>
 {
     
     NSString *_name;

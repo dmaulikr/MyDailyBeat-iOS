@@ -41,10 +41,11 @@
     
     viewControllers = [NSMutableArray arrayWithObjects:initialViewController, secondViewController, thirdViewController, fourthViewController, fifthViewController, nil];
     
+    self.dataSource = self;
+    self.delegate = self;
     
     
     
-    [self.viewPager reloadData];
     
     
 }
@@ -57,30 +58,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIViewController *)viewControllerAtIndex:(NSUInteger)I {
+#pragma mark - ViewPagerDataSource
+- (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
+    return [self.viewControllers count];
+}
+
+#pragma mark - ViewPagerDataSource
+- (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     
-    return [viewControllers objectAtIndex:I];
+    UILabel *label = [UILabel new];
+    label.text = [NSString stringWithFormat:@"Step %lu", index + 1];
+    [label sizeToFit];
     
+    return label;
 }
 
-- (NSInteger)numberOfPagesInViewPager:(SHViewPager *)viewPager {
-    return [viewControllers count];
-}
-
-- (UIViewController *)containerControllerForViewPager:(SHViewPager *)viewPager {
-    return self;
-}
-
-- (UIViewController *)viewPager:(SHViewPager *)viewPager controllerForPageAtIndex:(NSInteger)index {
-    return [self viewControllerAtIndex:index];
-}
-
-- (NSString *)viewPager:(SHViewPager *)viewPager titleForPageMenuAtIndex:(NSInteger)index {
-    return @"";
-}
-
-- (UIImage *)indexIndicatorImageForViewPager:(SHViewPager *)viewPager {
-    return nil;
+#pragma mark - ViewPagerDataSource
+- (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
+    
+    return [self.viewControllers objectAtIndex:index];
 }
 
 @end

@@ -27,7 +27,7 @@
     self.mTableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     self.mScreenNameLabel.text = [[API getInstance] getCurrentUser].screenName;
     self.mScreenNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    self.mScreenNameLabel.textColor = [UIColor blackColor];
+    self.mScreenNameLabel.textColor = [UIColor whiteColor];
     self.profilePicView.layer.cornerRadius = 50;
     self.profilePicView.clipsToBounds = YES;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -184,10 +184,10 @@ titleForHeaderInSection:(NSInteger)section {
     
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
-    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
     cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    cell.detailTextLabel.textColor = [UIColor blackColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.highlightedTextColor = [UIColor lightGrayColor];
     cell.selectedBackgroundView = [[UIView alloc] init];
     

@@ -13,10 +13,10 @@
 #import "EVCEmailMobileViewController.h"
 #import <Constants.h>
 #import <API.h>
-#import <SHViewPagerController.h>
+#import <ViewPagerController.h>
 
 
-@interface EVCRegistrationViewController : SHViewPagerController
+@interface EVCRegistrationViewController : ViewPagerController <ViewPagerDataSource, ViewPagerDelegate>
 
 @property (assign, nonatomic) NSInteger currentIndex;
 @property (strong, nonatomic) NSMutableArray *viewControllers;

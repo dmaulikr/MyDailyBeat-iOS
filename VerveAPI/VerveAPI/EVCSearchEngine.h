@@ -21,8 +21,4 @@
 
 - (NSMutableArray *) getUsersForFeelingBlue;
 
-- (NSMutableArray *) getPlacesWithName: (NSString *) name;
-- (NSMutableArray *) getPlacesWithCategory: (NSString *) category;
-- (NSMutableArray *) getPlacesInRadius: (NSInteger) radius;
-
 @end

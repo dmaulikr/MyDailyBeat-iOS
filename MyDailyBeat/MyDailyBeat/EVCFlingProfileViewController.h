@@ -20,6 +20,7 @@
 @property (nonatomic, retain) IBOutlet UITextView *aboutMeView;
 @property (nonatomic, retain) VerveUser *currentViewedUser;
 @property (nonatomic, retain) VerveUserPreferences *prefs;
+@property (nonatomic, retain) VerveMatchingPreferences *matching;
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user;
 

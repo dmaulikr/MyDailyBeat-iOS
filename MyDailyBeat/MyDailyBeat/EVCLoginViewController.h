@@ -11,6 +11,7 @@
 #import "EVCLabelTableViewCell.h"
 #import "EVCRegistrationViewController.h"
 #import "UIView+Toast.h"
+#import "Constants.h"
 
 @interface EVCLoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
     IBOutlet UIImageView *header;

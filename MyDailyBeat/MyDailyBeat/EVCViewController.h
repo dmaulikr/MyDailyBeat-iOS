@@ -19,6 +19,7 @@
 #import "EVCFeelingBlueViewController.h"
 #import "EVCFinanceViewController.h"
 #import "EVCVolunteeringMapViewController.h"
+#import "EVCTravelTableViewController.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EVCGroupSearchViewDelegate> {
     NSArray *options, *imageNames;

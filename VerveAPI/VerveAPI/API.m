@@ -647,24 +647,130 @@ static VerveUser *currentUser;
     return retItems;
 }
 
-- (NSMutableArray *) getPlacesWithType: (NSString *) searchType withName: (NSString *) name andCategory: (NSString *) category inRadius: (NSInteger) radius {
+- (NSMutableArray *) getPlacesWithType: (NSString *) searchType withName: (NSString *) name andCategory: (NSString *) category fromLocation: (CLLocationCoordinate2D) coordinate {
     NSString *baseurl = @"https://maps.googleapis.com";
-    NSString *path = @"maps/api/place/nearbysearch/json";
+    NSString *path = @"maps/api/place/radarsearch/json";
     NSString *parameters = @"";
     if ([searchType isEqualToString:@"name"] ) {
-        parameters = [NSString stringWithFormat:@"name=%@&rankby=distance", name];
+        parameters = [NSString stringWithFormat:@"keyword=%@", [self urlencode:name]];
     } else if ([searchType isEqualToString:@"category"]) {
-        parameters = [NSString stringWithFormat:@"types=%@&rankby=distance", category];
-    } else {
-        parameters = [NSString stringWithFormat:@"radius=%ld", (long)radius];
+        parameters = [NSString stringWithFormat:@"types=%@", category];
     }
     
+    parameters = [parameters stringByAppendingString:@"&radius=50000"];
+    parameters = [parameters stringByAppendingString:[NSString stringWithFormat:@"&location=%f,%f", (double)coordinate.latitude, (double) coordinate.longitude]];
+    
     parameters = [parameters stringByAppendingString:[NSString stringWithFormat:@"&key=%@", PLACES_API_KEY]];
+    
+    NSLog(@"%@/%@?%@", baseurl, path, parameters);
     
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:baseurl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     return [resultDic objectForKey:@"results"];
 
+}
+
+- (NSDictionary *) getDetailsForPlaceWithID: (NSString *) placeID {
+    NSString *baseurl = @"https://maps.googleapis.com";
+    NSString *path = @"maps/api/place/details/json";
+    NSString *parameters = [NSString stringWithFormat:@"placeid=%@&key=%@", placeID, PLACES_API_KEY];
+    
+    NSLog(@"%@/%@?%@", baseurl, path, parameters);
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:baseurl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    return [resultDic objectForKey:@"result"];
+    
+}
+
+- (NSMutableArray *) getGeocodesForPlaces: (NSArray *) places {
+    NSMutableArray *outP = [[NSMutableArray alloc] init];
+    NSString *baseurl = @"https://maps.googleapis.com";
+    NSString *path = @"maps/api/geocode/json";
+    
+    for (int i = 0; i < [places count]; i++) {
+        
+        VerveVolunteering *v = [places objectAtIndex:i];
+        NSString *address = v.address;
+        address = [address stringByAppendingString:@", "];
+        address = [address stringByAppendingString:v.city];
+        address = [address stringByAppendingString:@", "];
+        address = [address stringByAppendingString:v.state];
+        
+        NSString *parameters = [NSString stringWithFormat:@"address=%@&key=%@", [self urlencode:address], PLACES_API_KEY];
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:baseurl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+        NSDictionary *geo = [resultDic objectForKey:@"geometry"];
+        NSDictionary *loc = [geo objectForKey:@"location"];
+        MapPoint *pnt = [[MapPoint alloc] initWithName:v.npName address:address coordinate:CLLocationCoordinate2DMake([[loc objectForKey:@"lat"] doubleValue], [[loc objectForKey:@"lng"] doubleValue])];
+        
+        v.pnt = pnt;
+        [outP addObject:v];
+
+        
+    }
+    
+    return outP;
+}
+
+- (NSArray *) getVolunteeringList {
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"volunteering/get" withParameters:nil withRequestType:GET_REQUEST andPostData:nil];
+    NSArray *arr = [resultDic objectForKey:@"items"];
+    NSMutableArray *outA = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [arr count]; i++) {
+        NSDictionary *item = [arr objectAtIndex:i];
+        VerveVolunteering *v = [[VerveVolunteering alloc] init];
+        v.npName = [item objectForKey:@"npName"];
+        v.address = [item objectForKey:@"address"];
+        v.category = [item objectForKey:@"category"];
+        v.city = [item objectForKey:@"city"];
+        v.state = [item objectForKey:@"state"];
+        v.zipcode = [item objectForKey:@"zipcode"];
+        [outA addObject:v];
+    }
+    
+    return outA;
+}
+
+- (BOOL) saveVolunteeringList:(NSArray *)arr {
+    
+    @try {
+        
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i < [arr count]; i++) {
+            NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+            VerveVolunteering *v = [arr objectAtIndex:i];
+            [item setObject:v.npName forKey:@"npName"];
+            [item setObject:v.address forKey:@"address"];
+            [item setObject:v.category forKey:@"category"];
+            [item setObject:v.city forKey:@"city"];
+            [item setObject:v.state forKey:@"state"];
+            [item setObject:v.zipcode forKey:@"zipcode"];
+            [items addObject:item];
+        }
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:items forKey:@"items"];
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"volunteering/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
 }
 
 - (BOOL) createGroupWithName:(NSString *) groupName {
@@ -893,7 +999,7 @@ static VerveUser *currentUser;
     
     NSMutableArray *items = [resultDic objectForKey:@"items"];
     NSMutableArray *retItems = [[NSMutableArray alloc] init];
-    NSLog(@"Matches: %d", [items count]);
+    NSLog(@"Matches: %lu", (unsigned long)[items count]);
     for (int i = 0 ; i < [items count] ; ++i) {
         
         NSDictionary *item = [items objectAtIndex:i];

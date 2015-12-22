@@ -22,6 +22,8 @@
 #import "VerveUserPreferences.h"
 #import "VerveMatchingPreferences.h"
 #import "VerveBankObject.h"
+#import "VerveVolunteering.h"
+#import "MapPoint.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 
@@ -63,7 +65,9 @@
 - (BOOL) deletePost:(Post *) p;
 - (BOOL) deleteGroup:(Group *) g;
 
-- (NSMutableArray *) getPlacesWithType: (NSString *) searchType withName: (NSString *) name andCategory: (NSString *) category inRadius: (NSInteger) radius;
+- (NSMutableArray *) getPlacesWithType: (NSString *) searchType withName: (NSString *) name andCategory: (NSString *) category fromLocation: (CLLocationCoordinate2D) coordinate;
+- (NSMutableArray *) getGeocodesForPlaces: (NSArray *) places;
+- (NSDictionary *) getDetailsForPlaceWithID: (NSString *) placeID;
 
 
 - (NSDictionary *) searchUsersWithQueryString:(NSString *) query andQueryType:(UserSearchType) type withSortOrder:(EVCSearchSortOrder) sortOrder;
@@ -83,6 +87,9 @@
 - (FlingProfile *) getFlingProfileForUser:(VerveUser *) user;
 - (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about;
 
+- (NSArray *) getVolunteeringList;
+- (BOOL) saveVolunteeringList:(NSArray *) arr;
+
 - (MessageChatroom *) getChatroomByID: (int) ID;
 - (NSArray *) getMessagesForChatroomWithID: (int) ID;
 
@@ -91,5 +98,6 @@
 - (BOOL) addShoppingFavoriteURL: (NSString * ) string ForUser: (VerveUser *) user;
 
 - (NSDictionary *) getUsersForFeelingBlue;
+- (NSString *)urlencode: (NSString *) input;
 
 @end

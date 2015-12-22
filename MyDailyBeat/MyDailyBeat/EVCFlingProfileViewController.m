@@ -70,6 +70,7 @@
         });
         
         self.prefs = [[API getInstance] getUserPreferencesForUser: [[API getInstance] getCurrentUser]];
+        self.matching = [[API getInstance] getMatchingPreferencesForUser:[[API getInstance] getCurrentUser]];
         NSMutableArray *favs = [[NSMutableArray alloc] initWithArray:[[API getInstance] getFlingFavoritesForUser:[[API getInstance] getCurrentUser]]];
         
         
@@ -80,8 +81,95 @@
             }
             if (self.prefs == nil)
                 self.prefs = [[VerveUserPreferences alloc] init];
-            self.ageLbl.text = [NSString stringWithFormat:@"Age: %d", self.prefs.age];
+            switch (self.prefs.age) {
+                case 0:
+                    self.ageLbl.text = @"50-54";
+                    break;
+                case 1:
+                    self.ageLbl.text = @"55-59";
+                    break;
+                case 2:
+                    self.ageLbl.text = @"60-64";
+                    break;
+                case 3:
+                    self.ageLbl.text = @"65-69";
+                    break;
+                case 4:
+                    self.ageLbl.text = @"70-74";
+                    break;
+                case 5:
+                    self.ageLbl.text = @"75-79";
+                    break;
+                case 6:
+                    self.ageLbl.text = @"80-84";
+                    break;
+                case 7:
+                    self.ageLbl.text = @"85-89";
+                    break;
+                case 8:
+                    self.ageLbl.text = @"90-94";
+                    break;
+                case 9:
+                    self.ageLbl.text = @"95-99";
+                    break;
+                case 10:
+                    self.ageLbl.text = @"100+";
+                    break;
+            }
             self.aboutMeView.text = [[API getInstance] getFlingProfileForUser:self.currentViewedUser].aboutMe;
+            switch (self.prefs.gender) {
+                case 0:
+                    self.genderLbl.text = @"Male";
+                    break;
+                case 1:
+                    self.genderLbl.text = @"Female";
+                    break;
+                case 2:
+                    self.genderLbl.text = @"Transgender Male";
+                    break;
+                case 3:
+                    self.genderLbl.text = @"Transgender Female";
+                    break;
+            }
+            NSString *orientation = @"";
+            switch (self.matching.gender) {
+                case 0:
+                    orientation = @"Male";
+                    break;
+                case 1:
+                    orientation = @"Female";
+                    break;
+                case 2:
+                    orientation = @"Transgender Male";
+                    break;
+                case 3:
+                    orientation = @"Transgender Female";
+                    break;
+            }
+            
+            orientation = [@"Looking for a\n" stringByAppendingString:orientation];
+            self.orientationlbl.text = orientation;
+            switch (self.prefs.ethnicity) {
+                case 0:
+                    self.distanceLbl.text = @"White/Caucasian";
+                    break;
+                case 1:
+                    self.distanceLbl.text = @"Black/African-American";
+                    break;
+                case 2:
+                    self.distanceLbl.text = @"Asian";
+                    break;
+                case 3:
+                    self.distanceLbl.text = @"Native American Indian/Native Alaskan";
+                    break;
+                case 4:
+                    self.distanceLbl.text = @"Latino/Hispanic";
+                    break;
+                case 5:
+                    self.distanceLbl.text = self.prefs.otherEthnicity;
+                    break;
+            }
+            
         });
     });
     
