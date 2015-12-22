@@ -43,4 +43,11 @@
     return image;
 }
 
++ (double) metersForRadius: (double) miles {
+    return miles * 1609.34;
+}
++ (double) milesForRadius: (double) meters {
+    return meters/1609.34;
+}
+
 @end

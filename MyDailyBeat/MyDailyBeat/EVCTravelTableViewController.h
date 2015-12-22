@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 #import "SVModalWebViewController.h"
+#import "AHKActionSheet.h"
+#import "EVCCommonMethods.h"
+#import "RESideMenu.h"
 
 @interface EVCTravelTableViewController : UITableViewController
 

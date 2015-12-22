@@ -48,7 +48,7 @@ static NSString *CellIdentifier2 = @"CustomCellReuse2";
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
-            NSLog(@"count = %d", [self.chatrooms count]);
+            NSLog(@"count = %lu", (unsigned long)[self.chatrooms count]);
         });
     });
 }

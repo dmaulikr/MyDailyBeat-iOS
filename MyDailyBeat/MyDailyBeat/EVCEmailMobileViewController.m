@@ -40,12 +40,11 @@
 - (IBAction)go:(id)sender {
     NSMutableArray *controllerArray = [parentController viewControllers];
     EVCPersonalInfo1ViewController *personalInfo = [controllerArray objectAtIndex:PERSONAL_INFO_INDEX];
-    NSString *name = @" ";
-        /*NSString *name = [[[personalInfo firstNameField] text] stringByAppendingString:[@" " stringByAppendingString:[[personalInfo lastNameField] text]]];
+    NSString *name = [[[personalInfo firstNameField] text] stringByAppendingString:[@" " stringByAppendingString:[[personalInfo lastNameField] text]]];
     
     if (name == nil) {
         name = @"Test Name";
-    }*/
+    }
     NSString *birth_month = [personalInfo birth_month];
     long birth_year = [personalInfo birth_year];
     NSString *zipcode = [personalInfo zipCodeField].text;
@@ -77,7 +76,15 @@
             user.birth_year = birth_year;
             user.zipcode = zipcode;
             user.email = [emailField text];
+            if ([user.email isEqualToString:@""] || user.email == nil) {
+                [self.view makeToast:@"Email address is required." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                return;
+            }
             user.mobile = [mobileField text];
+            if ([user.mobile isEqualToString:@""] || user.mobile == nil) {
+                [self.view makeToast:@"Mobile number is required." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                return;
+            }
             BOOL result = [[API getInstance] createUser:user];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
@@ -93,9 +100,7 @@
             });
         });
     } else {
-        //        [parentController viewPager].fromIndex = [parentController viewPager].toIndex;
-        //        [parentController viewPager].toIndex--;
-        //        [[parentController viewPager] moveToTargetIndex];
+        [self.parentController selectTabAtIndex:3];
         NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.verve.VerveAPIBundle"];
         [self.view makeToast:@"Passwords don't match. Please try again." duration:3.5 position:@"bottom" image:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"error" ofType:@"png"]]];
         return;

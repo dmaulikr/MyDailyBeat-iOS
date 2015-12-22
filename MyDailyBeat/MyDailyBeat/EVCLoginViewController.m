@@ -57,7 +57,7 @@
                                                                    rightMenuViewController:menu];
                 sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
                 sideMenuViewController.delegate = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
-                UIColor *bgcolor = UIColorFromHex(0xFCF58B);
+                UIColor *bgcolor = UIColorFromHex(0x0097A4);
                 CGSize bgsize = CGSizeMake(640, 1136);
                 sideMenuViewController.backgroundImage = [EVCCommonMethods imageWithColor:bgcolor size:bgsize];
                 sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
@@ -102,6 +102,7 @@
             userNameFeild.textColor = [UIColor blackColor];
             userNameFeild.clearButtonMode  = UITextFieldViewModeAlways;
             userNameFeild.font = [UIFont fontWithName:@"Helvetica" size:14.0];
+            userNameFeild.autocapitalizationType = UITextAutocapitalizationTypeNone;
             [cell.contentView addSubview:userNameFeild];
             break;
         case 1:
@@ -112,6 +113,7 @@
             passWordFeild.clearButtonMode = UITextFieldViewModeAlways;
             passWordFeild.secureTextEntry = YES;
             passWordFeild.font = [UIFont fontWithName:@"Helvetica" size:14.0];
+            passWordFeild.autocapitalizationType = UITextAutocapitalizationTypeNone;
             [cell.contentView addSubview:passWordFeild];
             
             break;
@@ -151,35 +153,42 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             [self.view makeToastActivity];
         });
         NSMutableArray *groups = [[NSMutableArray alloc] init];
-        [[API getInstance] loginWithScreenName:username andPassword:pass];
-        groups = [[API getInstance] getGroupsForCurrentUser];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSUserDefaults standardUserDefaults] setObject:username forKey:KEY_SCREENNAME];
-            [[NSUserDefaults standardUserDefaults] setObject:pass forKey:KEY_PASSWORD];
-            RESideMenu *sideMenuViewController;
-            EVCProfileViewController *profile = [[EVCProfileViewController alloc] initWithNibName:@"EVCProfileViewController_iPhone" bundle:nil];
-            EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-            UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
-            EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups andParent:root];
-            
-            sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:root
-                                                                leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
-                                                               rightMenuViewController:menu];
-            sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
-            sideMenuViewController.delegate = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
-            UIColor *bgcolor = UIColorFromHex(0xFCF58B);
-            CGSize bgsize = CGSizeMake(640, 1136);
-            sideMenuViewController.backgroundImage = [EVCCommonMethods imageWithColor:bgcolor size:bgsize];
-            sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
-            sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
-            sideMenuViewController.contentViewShadowOpacity = 0.6;
-            sideMenuViewController.contentViewShadowRadius = 12;
-            sideMenuViewController.contentViewShadowEnabled = YES;
-            self.view.window.rootViewController = sideMenuViewController;
-            [self.view hideToastActivity];
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        });
+        BOOL success = [[API getInstance] loginWithScreenName:username andPassword:pass];
+        if (success) {
+            groups = [[API getInstance] getGroupsForCurrentUser];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSUserDefaults standardUserDefaults] setObject:username forKey:KEY_SCREENNAME];
+                [[NSUserDefaults standardUserDefaults] setObject:pass forKey:KEY_PASSWORD];
+                RESideMenu *sideMenuViewController;
+                EVCProfileViewController *profile = [[EVCProfileViewController alloc] initWithNibName:@"EVCProfileViewController_iPhone" bundle:nil];
+                EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
+                UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
+                EVCMenuViewController *menu = [[EVCMenuViewController alloc] initWithGroups:groups andParent:root];
+                
+                sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:root
+                                                                    leftMenuViewController:[[UINavigationController alloc] initWithRootViewController:profile]
+                                                                   rightMenuViewController:menu];
+                sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+                sideMenuViewController.delegate = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
+                UIColor *bgcolor = UIColorFromHex(0xFCF58B);
+                CGSize bgsize = CGSizeMake(640, 1136);
+                sideMenuViewController.backgroundImage = [EVCCommonMethods imageWithColor:bgcolor size:bgsize];
+                sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+                sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+                sideMenuViewController.contentViewShadowOpacity = 0.6;
+                sideMenuViewController.contentViewShadowRadius = 12;
+                sideMenuViewController.contentViewShadowEnabled = YES;
+                self.view.window.rootViewController = sideMenuViewController;
+                [self.view hideToastActivity];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view hideToastActivity];
+                [self.view makeToast:@"Username and password do not match." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+            });
+        }
         
     });
     

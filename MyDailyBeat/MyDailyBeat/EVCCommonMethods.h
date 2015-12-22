@@ -14,4 +14,7 @@
 + (UIButton *) barButtonSystemItem:(UIBarButtonSystemItem) item withText:(NSString *) title;
 + (UIImage*) imageWithColor:(UIColor*)color size:(CGSize)size;
 
++ (double) metersForRadius: (double) miles;
++ (double) milesForRadius: (double) meters;
+
 @end

@@ -35,7 +35,7 @@
     self.tableView.bounces = NO;
     self.view.backgroundColor = [UIColor clearColor];
     options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"peeps", @"health", @"plane", @"hands", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"hearts2", @"peeps2", @"health2", @"plane2", @"hands2", nil];
     self.logoView.image = [UIImage imageNamed:@"Logo.png"];
     self.logoView.backgroundColor = [UIColor whiteColor];
     self.logoView.layer.cornerRadius = 52;
@@ -217,7 +217,7 @@
         
     
     cell.backgroundColor = [UIColor clearColor];
-    cell.lbl.textColor = [UIColor blackColor];
+    cell.lbl.textColor = [UIColor whiteColor];
     cell.lbl.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
     cell.lbl.highlightedTextColor = [UIColor lightGrayColor];
     cell.selectedBackgroundView = [[UIView alloc] init];
@@ -229,7 +229,7 @@
         case 0: {
             
             cell.lbl.text = @"Home";
-            UIImage *icon = [UIImage imageNamed:@"home.png"];
+            UIImage *icon = [UIImage imageNamed:@"home2.png"];
             cell.imgView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];
 
         }
@@ -237,7 +237,7 @@
         case 2:
             if (indexPath.row == [groups count]) {
                 cell.lbl.text = CREATE_NEW_GROUP;
-                UIImage *icon = [UIImage imageNamed:@"newgroup.png"];
+                UIImage *icon = [UIImage imageNamed:@"newgroup2.png"];
                 cell.imgView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];
             } else {
                 cell.lbl.text = [[groups objectAtIndex:indexPath.row] groupName];
@@ -246,7 +246,7 @@
                     NSURL *imageURL = [[API getInstance] retrieveGroupPictureForGroup:[groups objectAtIndex:indexPath.row]];
                     if (imageURL == nil) {
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            UIImage *icon = [UIImage imageNamed:@"group.png"];
+                            UIImage *icon = [UIImage imageNamed:@"group2.png"];
                             cell.imgView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];
                             
                         });

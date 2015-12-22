@@ -18,7 +18,7 @@
     [super viewDidLoad];
     search = [[EVCSearchEngine alloc] init];
     [self loadData];
-    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
@@ -30,7 +30,7 @@
     
     self.navigationItem.rightBarButtonItem = menuButton;
     
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-green"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
@@ -56,7 +56,7 @@
         });
         
         self.peeps = [[NSMutableArray alloc] initWithArray:[search getUsersForFeelingBlue]];
-        NSLog(@"Partners: %d", [self.peeps count]);
+        NSLog(@"Partners: %lu", (unsigned long)[self.peeps count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
@@ -96,17 +96,7 @@
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIAlertController *action = [UIAlertController alertControllerWithTitle:@"Call User?" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self makeCall: indexPath.row];
-    }];
-    UIAlertAction *no = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        //none
-    }];
-    
-    [action addAction:no];
-    [action addAction:yes];
-    [self presentViewController:action animated:YES completion:nil];
+    [self makeCall:indexPath.row];
 
 }
 

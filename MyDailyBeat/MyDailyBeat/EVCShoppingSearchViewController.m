@@ -53,7 +53,7 @@
             }
         }
         
-        NSLog(@"Count: %d", [self.searchResults count]);
+        NSLog(@"Count: %lu", (unsigned long)[self.searchResults count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.mTableView reloadData];
@@ -85,17 +85,14 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIAlertController *action = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *open = [UIAlertAction actionWithTitle:@"Open URL in Browser" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    AHKActionSheet *sheet = [[AHKActionSheet alloc] initWithTitle:@""];
+    [sheet addButtonWithTitle:@"Open in Browser" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         [self openURLinBrowser: [self.searchResults objectAtIndex:indexPath.row]];
     }];
-    UIAlertAction *addFav = [UIAlertAction actionWithTitle:@"Add URL to Favorites" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [sheet addButtonWithTitle:@"Add to Favorites" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         [self addToFavs: [self.searchResults objectAtIndex:indexPath.row]];
     }];
-    
-    [action addAction:open];
-    [action addAction:addFav];
-    [self presentViewController:action animated:YES completion:nil];
+    [sheet show];
 }
 
 - (void) openURLinBrowser: (NSString *) url {

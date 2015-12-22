@@ -29,7 +29,7 @@
         });
         
         self.partners = [[NSMutableArray alloc] initWithArray:[[API getInstance] getFlingProfilesBasedOnPrefsOfUser:[[API getInstance] getCurrentUser]]];
-        NSLog(@"Partners: %d", [self.partners count]);
+        NSLog(@"Partners: %lu", (unsigned long)[self.partners count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
