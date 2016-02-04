@@ -10,14 +10,6 @@
 
 @implementation VervePreferences
 
-- (NSDictionary *) userPreferencesField {
-    return @{FXFormFieldHeader: @"User Preferences"};
-}
-
-- (NSDictionary *) matchingPreferencesField {
-    return @{FXFormFieldHeader: @"Matching Preferences"};
-}
-
 - (NSArray *)extraFields
 {
     return @[

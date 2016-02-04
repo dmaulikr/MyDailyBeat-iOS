@@ -33,13 +33,13 @@
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    matchItem.title = @"Search URLs";
+    matchItem.title = @"Banking Applications";
     [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    partnersItem.title = @"View Favorites";
+    partnersItem.title = @"Resource Links";
     [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];

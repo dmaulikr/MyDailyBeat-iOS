@@ -74,6 +74,8 @@
 		7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */; };
 		7636F6CB19D4D881000B68B0 /* EVCGroupViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */; };
 		7636F6D119D501FD000B68B0 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6D019D501FD000B68B0 /* texture.png */; };
+		7641406D1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7641406B1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m */; };
+		7641406E1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7641406C1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib */; };
 		76607ABF1AD35A6E0097E520 /* banner-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABD1AD35A6E0097E520 /* banner-green.png */; };
 		76607AC01AD35A6E0097E520 /* banner-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABE1AD35A6E0097E520 /* banner-white.png */; };
 		7667E73F1A241F0E00B006D5 /* menubg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7667E73E1A241F0E00B006D5 /* menubg.jpg */; };
@@ -151,6 +153,8 @@
 		76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B0EA19F4AD680010E98B /* EVCPostView.m */; };
 		76C2B0ED19F4AD9F0010E98B /* EVCPostView_WithPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B0EC19F4AD9F0010E98B /* EVCPostView_WithPicture.xib */; };
 		76C2B0EF19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B0EE19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib */; };
+		76C37F131C2A0AFB005D8960 /* EVCJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C37F111C2A0AFA005D8960 /* EVCJobsViewController.m */; };
+		76C37F141C2A0AFB005D8960 /* EVCJobsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C37F121C2A0AFA005D8960 /* EVCJobsViewController.xib */; };
 		76DEDA801A474E19009CD94F /* EVCFlingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDA7E1A474E19009CD94F /* EVCFlingViewController.m */; };
 		76DEDA811A474E19009CD94F /* EVCFlingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DEDA7F1A474E19009CD94F /* EVCFlingViewController.xib */; };
 		76DEDA871A47504B009CD94F /* EVCPartnerMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDA851A47504B009CD94F /* EVCPartnerMatchViewController.m */; };
@@ -167,6 +171,7 @@
 		76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996919FD3CA900E15A14 /* settings-25.png */; };
 		76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */; };
 		76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */; };
+		76F043BC1C3B631A00870C77 /* Finance.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F043BB1C3B631A00870C77 /* Finance.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,6 +286,9 @@
 		7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EVCGroupViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupViewController_iPhone.xib; sourceTree = "<group>"; };
 		7636F6D019D501FD000B68B0 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		7641406A1C31FE5400DF9A6C /* EVCJobsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsDetailsViewController.h; sourceTree = "<group>"; };
+		7641406B1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCJobsDetailsViewController.m; sourceTree = "<group>"; };
+		7641406C1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCJobsDetailsViewController.xib; sourceTree = "<group>"; };
 		76607ABD1AD35A6E0097E520 /* banner-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-green.png"; sourceTree = "<group>"; };
 		76607ABE1AD35A6E0097E520 /* banner-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-white.png"; sourceTree = "<group>"; };
 		7667E73E1A241F0E00B006D5 /* menubg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menubg.jpg; sourceTree = "<group>"; };
@@ -382,6 +390,9 @@
 		76C2B0EA19F4AD680010E98B /* EVCPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCPostView.m; sourceTree = "<group>"; };
 		76C2B0EC19F4AD9F0010E98B /* EVCPostView_WithPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithPicture.xib; sourceTree = "<group>"; };
 		76C2B0EE19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithoutPicture.xib; sourceTree = "<group>"; };
+		76C37F101C2A0AFA005D8960 /* EVCJobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsViewController.h; sourceTree = "<group>"; };
+		76C37F111C2A0AFA005D8960 /* EVCJobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCJobsViewController.m; sourceTree = "<group>"; };
+		76C37F121C2A0AFA005D8960 /* EVCJobsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCJobsViewController.xib; sourceTree = "<group>"; };
 		76DEDA7D1A474E19009CD94F /* EVCFlingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFlingViewController.h; sourceTree = "<group>"; };
 		76DEDA7E1A474E19009CD94F /* EVCFlingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EVCFlingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		76DEDA7F1A474E19009CD94F /* EVCFlingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFlingViewController.xib; sourceTree = "<group>"; };
@@ -405,6 +416,7 @@
 		76EF996B19FD3EA200E15A14 /* EVCGroupSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCGroupSettingsViewController.h; sourceTree = "<group>"; };
 		76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSettingsViewController.m; sourceTree = "<group>"; };
 		76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
+		76F043BB1C3B631A00870C77 /* Finance.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Finance.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +540,12 @@
 				762F133E1BBCDCCE001BD716 /* EVCVolunteeringMapViewController.h */,
 				762F133F1BBCDCCE001BD716 /* EVCVolunteeringMapViewController.m */,
 				762F13401BBCDCCE001BD716 /* EVCVolunteeringMapViewController.xib */,
+				7641406A1C31FE5400DF9A6C /* EVCJobsDetailsViewController.h */,
+				7641406B1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m */,
+				7641406C1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib */,
+				76C37F101C2A0AFA005D8960 /* EVCJobsViewController.h */,
+				76C37F111C2A0AFA005D8960 /* EVCJobsViewController.m */,
+				76C37F121C2A0AFA005D8960 /* EVCJobsViewController.xib */,
 			);
 			path = MyDailyBeat;
 			sourceTree = "<group>";
@@ -602,6 +620,7 @@
 				761D651419A15A4D0062B525 /* InfoPlist.strings */,
 				761D651719A15A4D0062B525 /* main.m */,
 				761D651919A15A4D0062B525 /* MyDailyBeat-Prefix.pch */,
+				76F043BB1C3B631A00870C77 /* Finance.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -922,6 +941,7 @@
 				76A204DC1BB0E7D60028BFF8 /* phone.png in Resources */,
 				76A204E31BB1EE8F0028BFF8 /* home.png in Resources */,
 				761D65AF19A1A5520062B525 /* EVCViewController_iPhone.xib in Resources */,
+				7641406E1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib in Resources */,
 				76A204DF1BB177950028BFF8 /* EVCMenuViewController.xib in Resources */,
 				767000E11A7AFB04005F9DC4 /* EVCShoppingFavoritesTableViewController.xib in Resources */,
 				767DF3E21B5DE1DA000D4D5D /* search-icon-gray.png in Resources */,
@@ -940,6 +960,7 @@
 				76264E6A1BE6E7F500292FBF /* plane2.png in Resources */,
 				76DEDA811A474E19009CD94F /* EVCFlingViewController.xib in Resources */,
 				760ECEB31BAD073D00F3D9A2 /* asmedia_pause@2x.png in Resources */,
+				76C37F141C2A0AFB005D8960 /* EVCJobsViewController.xib in Resources */,
 				76A204E71BB200580028BFF8 /* group.png in Resources */,
 				76A204DB1BB0E7D60028BFF8 /* peeps.png in Resources */,
 				76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */,
@@ -1000,6 +1021,7 @@
 				76264E651BE6E7F500292FBF /* health2.png in Resources */,
 				76264E611BE6E7F500292FBF /* finance2.png in Resources */,
 				769EEA8C19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib in Resources */,
+				76F043BC1C3B631A00870C77 /* Finance.plist in Resources */,
 				769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */,
 				767DF3DC1B5DE1DA000D4D5D /* hamburger-icon-gray.png in Resources */,
 				76A204D71BB0E7CE0028BFF8 /* hearts.png in Resources */,
@@ -1036,6 +1058,7 @@
 				7636F6C319CF9074000B68B0 /* EVCUpdateProfileViewController.m in Sources */,
 				769B0A8F1A59F22C00BB287E /* EVCFlingProfileCreatorViewController.m in Sources */,
 				7630B59F1BACFA0A00FA2617 /* ASVideoBehavior.m in Sources */,
+				7641406D1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m in Sources */,
 				76DEDA801A474E19009CD94F /* EVCFlingViewController.m in Sources */,
 				766DEF821A4BC8060049CA2A /* EVCChatroomCell.m in Sources */,
 				76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */,
@@ -1059,6 +1082,7 @@
 				76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */,
 				769EEA9419A8DBF900FF072E /* EVCMenuViewController.m in Sources */,
 				76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */,
+				76C37F131C2A0AFB005D8960 /* EVCJobsViewController.m in Sources */,
 				7630B5A01BACFA0A00FA2617 /* ASVideoControlView.m in Sources */,
 				769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */,
 				7630B59B1BACFA0A00FA2617 /* ASMediaFocusController.m in Sources */,

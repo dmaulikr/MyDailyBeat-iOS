@@ -52,6 +52,7 @@
 		762341021BE5955700FA2FDE /* AHKActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762340FC1BE5955700FA2FDE /* AHKActionSheetViewController.m */; };
 		762341031BE5955700FA2FDE /* UIImage+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 762340FE1BE5955700FA2FDE /* UIImage+AHKAdditions.m */; };
 		762341041BE5955700FA2FDE /* UIWindow+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 762341001BE5955700FA2FDE /* UIWindow+AHKAdditions.m */; };
+		7623C9F31C2A52F5006C4D46 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7623C9F21C2A52F5006C4D46 /* XMLDictionary.m */; };
 		76264E7A1BE822C100292FBF /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76264E791BE822C000292FBF /* ViewPagerController.m */; };
 		762F13461BBF6D3F001BD716 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 762F13451BBF6D3F001BD716 /* MapPoint.m */; };
 		766A7D571A923D8D00B6C81E /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D561A923D8D00B6C81E /* search-icon.png */; };
@@ -196,6 +197,8 @@
 		762340FE1BE5955700FA2FDE /* UIImage+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AHKAdditions.m"; sourceTree = "<group>"; };
 		762340FF1BE5955700FA2FDE /* UIWindow+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AHKAdditions.h"; sourceTree = "<group>"; };
 		762341001BE5955700FA2FDE /* UIWindow+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AHKAdditions.m"; sourceTree = "<group>"; };
+		7623C9F11C2A52F5006C4D46 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
+		7623C9F21C2A52F5006C4D46 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		76264E781BE822C000292FBF /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		76264E791BE822C000292FBF /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		762F13441BBF6D3F001BD716 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
@@ -359,6 +362,7 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				7623C9F01C2A52BB006C4D46 /* XMLDictionary */,
 				76264E771BE8228400292FBF /* ICViewPager */,
 				762340F81BE594C300FA2FDE /* AHKActionSheet */,
 				761923D91BC8B47200E182F4 /* DownPicker */,
@@ -478,6 +482,15 @@
 				762341001BE5955700FA2FDE /* UIWindow+AHKAdditions.m */,
 			);
 			name = AHKActionSheet;
+			sourceTree = "<group>";
+		};
+		7623C9F01C2A52BB006C4D46 /* XMLDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				7623C9F11C2A52F5006C4D46 /* XMLDictionary.h */,
+				7623C9F21C2A52F5006C4D46 /* XMLDictionary.m */,
+			);
+			name = XMLDictionary;
 			sourceTree = "<group>";
 		};
 		76264E771BE8228400292FBF /* ICViewPager */ = {
@@ -828,6 +841,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7623C9F31C2A52F5006C4D46 /* XMLDictionary.m in Sources */,
 				766DEF601A48C5BC0049CA2A /* SLKInputAccessoryView.m in Sources */,
 				766DEF621A48C5BC0049CA2A /* SLKTextInputbar.m in Sources */,
 				766DEF641A48C5BC0049CA2A /* SLKTextView.m in Sources */,

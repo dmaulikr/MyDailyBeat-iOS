@@ -8,12 +8,7 @@
 
 #import "API.h"
 
-#define GET_REQUEST @"GET"
-#define POST_REQUEST @"POST"
-#define PUT_REQUEST @"PUT"
-#define DELETE_REQUEST @"DELETE"
-#define NONE @""
-#define BOUNDARY @"*****"
+
 
 @implementation API
 
@@ -1260,6 +1255,43 @@ static VerveUser *currentUser;
     }
     return nil;
 }
+
+-(id)makeXMLRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData {
+    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@", baseUrl, path, parameters]];
+    NSLog(@"Connect to: %@", url);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                       timeoutInterval:10];
+    [request setHTTPMethod:reqType];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    if (postData) {
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)postData.length] forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:postData];
+        NSString *LOG_STR = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        NSLog(@"API: posting data:\n%@", LOG_STR);
+    }
+    NSError *requestError;
+    NSHTTPURLResponse *urlResponse;
+    NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    if (requestError) NSLog(@"Error received from server: %@", requestError);
+    if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
+        XMLDictionaryParser *parser = [[XMLDictionaryParser alloc] init];
+        return [parser dictionaryWithData:dataResponse];
+    } else if (urlResponse.statusCode == 401) {
+        NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    } else if (urlResponse.statusCode == 422) {
+        NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    } else if (urlResponse.statusCode == 500) {
+        NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    } else if (urlResponse.statusCode == 404) {
+        NSLog(@"Not found. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    } else {
+        NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+    }
+    return nil;
+}
+
 - (NSString *)urlencode: (NSString *) input {
     NSMutableString *output = [NSMutableString string];
     const unsigned char *source = (const unsigned char *)[input UTF8String];

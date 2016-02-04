@@ -128,6 +128,7 @@
     [someButton setShowsTouchWhenHighlighted:YES];
     
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
+    
     self.navigationItem.rightBarButtonItem = menuButton;
     
     UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];

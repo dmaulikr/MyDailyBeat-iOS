@@ -39,13 +39,13 @@
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    matchItem.title = @"Partner Match";
+    matchItem.title = @"Match";
     [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"view-partners-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"view-partners-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    partnersItem.title = @"Favorite Partners";
+    partnersItem.title = @"Favorites";
     [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"messages-icon-white"] scaledToSize:CGSizeMake(30, 30)];

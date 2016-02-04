@@ -103,6 +103,7 @@
             userNameFeild.clearButtonMode  = UITextFieldViewModeAlways;
             userNameFeild.font = [UIFont fontWithName:@"Helvetica" size:14.0];
             userNameFeild.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            userNameFeild.autocorrectionType = UITextAutocorrectionTypeNo;
             [cell.contentView addSubview:userNameFeild];
             break;
         case 1:
@@ -114,6 +115,7 @@
             passWordFeild.secureTextEntry = YES;
             passWordFeild.font = [UIFont fontWithName:@"Helvetica" size:14.0];
             passWordFeild.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            passWordFeild.autocorrectionType = UITextAutocorrectionTypeNo;
             [cell.contentView addSubview:passWordFeild];
             
             break;

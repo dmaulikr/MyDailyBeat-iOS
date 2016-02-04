@@ -129,6 +129,12 @@
                     break;
                 }
                     
+                case 2: {
+                    EVCJobsViewController *jobs = [[EVCJobsViewController alloc] initWithNibName:@"EVCJobsViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:jobs] animated:YES];
+                    break;
+                }
+                    
                     
                 default:
                     break;

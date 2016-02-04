@@ -24,8 +24,16 @@
 #import "VerveBankObject.h"
 #import "VerveVolunteering.h"
 #import "MapPoint.h"
+#import "XMLDictionary.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
+
+#define GET_REQUEST @"GET"
+#define POST_REQUEST @"POST"
+#define PUT_REQUEST @"PUT"
+#define DELETE_REQUEST @"DELETE"
+#define NONE @""
+#define BOUNDARY @"*****"
 
 @interface API : NSObject
 
@@ -99,5 +107,8 @@
 
 - (NSDictionary *) getUsersForFeelingBlue;
 - (NSString *)urlencode: (NSString *) input;
+
+-(id)makeRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData;
+-(id)makeXMLRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData;
 
 @end

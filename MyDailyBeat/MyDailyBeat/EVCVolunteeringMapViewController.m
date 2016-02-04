@@ -29,15 +29,6 @@
     [locationManager setDistanceFilter:kCLDistanceFilterNone];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     
-    UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white.png"] scaledToSize:CGSizeMake(30, 30)];
-     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
-     UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
-     [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
-     [someButton3 addTarget:self action:@selector(view_directory)
-     forControlEvents:UIControlEventTouchUpInside];
-     [someButton3 setShowsTouchWhenHighlighted:YES];
-     UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];
-    
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
@@ -48,7 +39,7 @@
     
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
     
-    self.navigationItem.rightBarButtonItems = @[menuButton, searchButton];
+    self.navigationItem.rightBarButtonItem = menuButton;
     
     UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
@@ -60,6 +51,7 @@
     
     UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
     self.navigationItem.leftBarButtonItem = profileButton;
+
     
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
