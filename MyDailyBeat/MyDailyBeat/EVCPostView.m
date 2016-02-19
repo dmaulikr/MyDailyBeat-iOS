@@ -111,4 +111,14 @@
     return nil;
 }
 
+- (void)mediaFocusManagerWillAppear:(ASMediaFocusManager *)mediaFocusManager
+{
+    self.parentViewController.navigationController.navigationBar.hidden = TRUE;
+}
+
+- (void)mediaFocusManagerWillDisappear:(ASMediaFocusManager *)mediaFocusManager
+{
+    self.parentViewController.navigationController.navigationBar.hidden = FALSE;
+}
+
 @end

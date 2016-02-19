@@ -93,7 +93,7 @@
 - (NSArray *) getFlingFavoritesForUser: (VerveUser *) user;
 - (BOOL) addUser:(VerveUser *) user1 ToFlingFavoritesOfUser:(VerveUser *) user2;
 - (FlingProfile *) getFlingProfileForUser:(VerveUser *) user;
-- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about;
+- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about andInterests: (NSArray *) array;
 
 - (NSArray *) getVolunteeringList;
 - (BOOL) saveVolunteeringList:(NSArray *) arr;

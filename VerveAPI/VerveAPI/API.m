@@ -1003,6 +1003,7 @@ static VerveUser *currentUser;
         prof.screenName = [item objectForKey:@"screenName"];
         prof.aboutMe = [ item objectForKey:@"aboutMe"];
         prof.age = [[item objectForKey:@"age"] intValue];
+        prof.interests = [item objectForKey:@"interests"];
         
         [retItems addObject:prof];
     }
@@ -1027,6 +1028,7 @@ static VerveUser *currentUser;
         prof.screenName = [item objectForKey:@"screenName"];
         prof.aboutMe = [ item objectForKey:@"aboutMe"];
         prof.age = [[item objectForKey:@"age"] intValue];
+        prof.interests = [item objectForKey:@"interests"];
         
         [retItems addObject:prof];
     }
@@ -1075,19 +1077,21 @@ static VerveUser *currentUser;
     prof.screenName = [resultDic objectForKey:@"screenName"];
     prof.aboutMe = [resultDic objectForKey:@"aboutMe"];
     prof.age = [[resultDic objectForKey:@"age"] intValue];
+    prof.interests = [resultDic objectForKey:@"interests"];
     
     return prof;
     
     
 }
 
-- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about {
+- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about andInterests: (NSArray *) array {
     
     @try {
         NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
         [postData setObject:user.screenName forKey:@"screenName"];
         [postData setObject:about forKey:@"aboutMe"];
         [postData setObject:[NSNumber numberWithInt:age] forKey:@"age"];
+        [postData setObject:array  forKey:@"interests"];
         
         NSError *error;
         NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];

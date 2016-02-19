@@ -19,4 +19,8 @@
 
 @interface EVCFlingViewController : UITabBarController <UITabBarControllerDelegate>
 
+@property (nonatomic) NSNumber *friendsMode;
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andInMode: (NSNumber *) friendsMode;
+
 @end

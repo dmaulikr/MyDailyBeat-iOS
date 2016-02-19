@@ -14,6 +14,14 @@
 
 @implementation EVCPartnersTableViewController
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(NSNumber *) mode {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.friendsMode = mode;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -97,7 +105,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.favs objectAtIndex:indexPath.row]).screenName]];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.favs objectAtIndex:indexPath.row]).screenName] andMode:self.friendsMode];
     
     // Pass the selected object to the new view controller.
     

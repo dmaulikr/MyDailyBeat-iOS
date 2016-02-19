@@ -93,7 +93,14 @@
         case 1:
             switch (indexPath.row) {
                 case 4: {
-                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil];
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:[NSNumber numberWithBool:NO]];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
+                }
+                    
+                    break;
+                case 5: {
+                    NSLog(@"Hello World");
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:[NSNumber numberWithBool:YES]];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     

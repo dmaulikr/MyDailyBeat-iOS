@@ -17,6 +17,14 @@ static NSString *CellIdentifier2 = @"CustomCellReuse2";
 
 @implementation EVCChatroomTableViewController
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(NSNumber *) mode {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.friendsMode = mode;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
