@@ -60,6 +60,8 @@
     self.mBar.showsCancelButton = TRUE;
     self.results.tableHeaderView = self.mBar;
     
+    [self run:@""];
+    
     
     
     // Do any additional setup after loading the view from its nib.
