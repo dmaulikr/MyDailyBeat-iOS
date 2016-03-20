@@ -24,6 +24,7 @@
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
             [manager requestWhenInUseAuthorization];
         geocoder = [[CLGeocoder alloc] init];
+        currentQuery = @"";
         
     }
     return self;
@@ -53,14 +54,22 @@
     
     UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
     self.navigationItem.leftBarButtonItem = profileButton;
-    [manager startUpdatingLocation];
+    
+    if (SYSTEM_VERSION_GREATER_THAN(@"9.0")) {
+        [manager requestLocation];
+    } else {
+        [manager startUpdatingLocation];
+    }
+    
     self.results.dataSource = self;
     self.results.delegate = self;
     self.mBar.delegate = self;
     self.mBar.showsCancelButton = TRUE;
     self.results.tableHeaderView = self.mBar;
     
-    [self run:@""];
+    currentZip = @"";
+    
+    //[self run:@""];
     
     
     
@@ -70,15 +79,27 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-    [manager startUpdatingLocation];
+    if (SYSTEM_VERSION_GREATER_THAN(@"9.0")) {
+        [manager requestLocation];
+    } else {
+        [manager startUpdatingLocation];
+    }
     NSString *query = [searchBar text];
+    currentQuery = query;
+    currentZip = @"";
     [self run:query];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
-    [manager startUpdatingLocation];
+    if (SYSTEM_VERSION_GREATER_THAN(@"9.0")) {
+        [manager requestLocation];
+    } else {
+        [manager startUpdatingLocation];
+    }
+    currentZip = @"";
     NSString *query = @"";
+    currentQuery = @"";
     [self run:query];
 }
 
@@ -93,7 +114,7 @@
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
-            [manager stopUpdatingLocation];
+            
         });
         self.resultsDictionary = [[API getInstance] makeXMLRequestWithBaseUrl:baseUrl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
         NSLog(@"Results: %@", self.resultsDictionary);
@@ -106,15 +127,31 @@
     });
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:(BOOL)animated];    // Call the super class implementation.
+    // Usually calling super class implementation is done before self class implementation, but it's up to your application.
+    
+    [manager stopUpdatingLocation];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *loc = [locations lastObject];
     [geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         CLPlacemark *mark = placemarks[0];
         NSLog(@"%@", placemarks);
+        if ( [currentZip caseInsensitiveCompare:@""] == NSOrderedSame ) {
+            [self->manager stopUpdatingLocation];
+        }
         currentZip = mark.postalCode;
-        [self run:@""];
+        NSLog(@"%@", currentZip);
+        [self run:currentQuery];
     }];
     
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
+    // do nothing
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

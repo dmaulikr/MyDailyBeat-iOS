@@ -18,7 +18,7 @@
 @interface EVCJobsViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
     CLLocationManager *manager;
     CLGeocoder *geocoder;
-    NSString *currentZip;
+    NSString *currentZip, *currentQuery;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *results;

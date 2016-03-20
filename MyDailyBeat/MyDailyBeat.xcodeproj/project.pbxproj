@@ -78,6 +78,9 @@
 		7636F6D119D501FD000B68B0 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6D019D501FD000B68B0 /* texture.png */; };
 		7641406D1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7641406B1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m */; };
 		7641406E1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7641406C1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib */; };
+		7646C8C71C9EEC0E00D9D374 /* suicide.png in Resources */ = {isa = PBXBuildFile; fileRef = 7646C8C41C9EEC0E00D9D374 /* suicide.png */; };
+		7646C8C81C9EEC0E00D9D374 /* anonymous.png in Resources */ = {isa = PBXBuildFile; fileRef = 7646C8C51C9EEC0E00D9D374 /* anonymous.png */; };
+		7646C8C91C9EEC0E00D9D374 /* veterans.png in Resources */ = {isa = PBXBuildFile; fileRef = 7646C8C61C9EEC0E00D9D374 /* veterans.png */; };
 		7648843A1C6920AE0079C016 /* interests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 764884391C6920AE0079C016 /* interests.plist */; };
 		7648843F1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7648843E1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m */; };
 		76607ABF1AD35A6E0097E520 /* banner-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABD1AD35A6E0097E520 /* banner-green.png */; };
@@ -295,6 +298,9 @@
 		7641406A1C31FE5400DF9A6C /* EVCJobsDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsDetailsViewController.h; sourceTree = "<group>"; };
 		7641406B1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCJobsDetailsViewController.m; sourceTree = "<group>"; };
 		7641406C1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCJobsDetailsViewController.xib; sourceTree = "<group>"; };
+		7646C8C41C9EEC0E00D9D374 /* suicide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suicide.png; sourceTree = "<group>"; };
+		7646C8C51C9EEC0E00D9D374 /* anonymous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anonymous.png; sourceTree = "<group>"; };
+		7646C8C61C9EEC0E00D9D374 /* veterans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veterans.png; sourceTree = "<group>"; };
 		764884391C6920AE0079C016 /* interests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interests.plist; sourceTree = "<group>"; };
 		7648843D1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCInterestsSelectorTableViewController.h; sourceTree = "<group>"; };
 		7648843E1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCInterestsSelectorTableViewController.m; sourceTree = "<group>"; };
@@ -562,6 +568,9 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7646C8C41C9EEC0E00D9D374 /* suicide.png */,
+				7646C8C51C9EEC0E00D9D374 /* anonymous.png */,
+				7646C8C61C9EEC0E00D9D374 /* veterans.png */,
 				76264E511BE6E7F400292FBF /* briefcase2.png */,
 				76264E521BE6E7F500292FBF /* cart2.png */,
 				76264E531BE6E7F500292FBF /* finance2.png */,
@@ -977,6 +986,7 @@
 				76C37F141C2A0AFB005D8960 /* EVCJobsViewController.xib in Resources */,
 				76A204E71BB200580028BFF8 /* group.png in Resources */,
 				76A204DB1BB0E7D60028BFF8 /* peeps.png in Resources */,
+				7646C8C91C9EEC0E00D9D374 /* veterans.png in Resources */,
 				76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */,
 				76264E621BE6E7F500292FBF /* group2.png in Resources */,
 				7630B5881BACD57600FA2617 /* search-icon-green.png in Resources */,
@@ -1012,7 +1022,9 @@
 				76264E671BE6E7F500292FBF /* home2.png in Resources */,
 				7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */,
 				760ECEB41BAD073D00F3D9A2 /* asmedia_play.png in Resources */,
+				7646C8C71C9EEC0E00D9D374 /* suicide.png in Resources */,
 				76A204DD1BB0E7D60028BFF8 /* plane.png in Resources */,
+				7646C8C81C9EEC0E00D9D374 /* anonymous.png in Resources */,
 				76264E5F1BE6E7F500292FBF /* briefcase2.png in Resources */,
 				76003B161B93C38E00133773 /* EVCResourceLinksTableViewController.xib in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,

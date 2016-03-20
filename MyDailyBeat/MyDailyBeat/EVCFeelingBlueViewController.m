@@ -38,11 +38,78 @@
     
     UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
     self.navigationItem.leftBarButtonItem = profileButton;
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *TAG = @"TAG";
+    
+    UITableViewCell *cell = cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TAG];
+    
+    switch (indexPath.row) {
+        case 0: {
+            cell.textLabel.text = @"Call Suicide Hotline";
+            UIImage *image = [UIImage imageNamed:@"suicide.png"];
+            image = [EVCCommonMethods imageWithImage:image scaledToSize:CGSizeMake(60, 60)];
+            cell.imageView.image = image;
+        }
+            break;
+        case 1: {
+            cell.textLabel.text = @"Call Veterans Hotline";
+            UIImage *image = [UIImage imageNamed:@"veterans.png"];
+            image = [EVCCommonMethods imageWithImage:image scaledToSize:CGSizeMake(60, 60)];
+            cell.imageView.image = image;
+        }
+            break;
+        case 2: {
+            cell.textLabel.text = @"Call Anonymously";
+            UIImage *image = [UIImage imageNamed:@"anonymous.png"];
+            image = [EVCCommonMethods imageWithImage:image scaledToSize:CGSizeMake(60, 60)];
+            cell.imageView.image = image;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return cell;
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:
+            [self makeCall: @"1-800-273-8255"];
+            break;
+        case 1:
+            [self makeCall: @"1-800-273-8255" withAccessCode:@"1"];
+            break;
+        case 2: {
+            EVCFeelingBlueTableViewController *table = [[EVCFeelingBlueTableViewController alloc] initWithNibName:@"EVCFeelingBlueTableViewController" bundle:nil];
+            [self.navigationController pushViewController:table animated:YES];
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 - (IBAction)callSuicideAction:(id)sender {
@@ -65,11 +132,6 @@
     NSString *dialstring = [[NSString alloc] initWithFormat:@"telprompt://%@,,%@", num, code];
     NSURL *url = [NSURL URLWithString:dialstring];
     [[UIApplication sharedApplication] openURL:url];
-}
-
-- (IBAction)callAnonymousAction:(id)sender {
-    EVCFeelingBlueTableViewController *table = [[EVCFeelingBlueTableViewController alloc] initWithNibName:@"EVCFeelingBlueTableViewController" bundle:nil];
-    [self.navigationController pushViewController:table animated:YES];
 }
 
 - (void) showMenu {

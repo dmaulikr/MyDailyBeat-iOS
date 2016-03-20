@@ -12,10 +12,9 @@
 #import "RESideMenu.h"
 
 
-@interface EVCFeelingBlueViewController : UIViewController
+@interface EVCFeelingBlueViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic) IBOutlet UIImageView *imgView;
-@property (nonatomic) IBOutlet UIButton *callSuicide, *callVeterans, *callAnonymous, *callTest;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 - (IBAction)callSuicideAction:(id)sender;
 - (IBAction)callVeteransAction:(id)sender;
