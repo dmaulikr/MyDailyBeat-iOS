@@ -12,6 +12,9 @@
 #import "EVCViewController.h"
 #import <API.h>
 #import "EVCMenuTableViewCell.h"
+#import "EVCJobsViewController.h"
+#import "EVCTravelTableViewController.h"
+#import "EVCVolunteeringMapViewController.h"
 
 @interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     NSArray *options, *imageNames;

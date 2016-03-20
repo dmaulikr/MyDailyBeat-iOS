@@ -24,8 +24,16 @@
 #import "VerveBankObject.h"
 #import "VerveVolunteering.h"
 #import "MapPoint.h"
+#import "XMLDictionary.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
+
+#define GET_REQUEST @"GET"
+#define POST_REQUEST @"POST"
+#define PUT_REQUEST @"PUT"
+#define DELETE_REQUEST @"DELETE"
+#define NONE @""
+#define BOUNDARY @"*****"
 
 @interface API : NSObject
 
@@ -85,7 +93,7 @@
 - (NSArray *) getFlingFavoritesForUser: (VerveUser *) user;
 - (BOOL) addUser:(VerveUser *) user1 ToFlingFavoritesOfUser:(VerveUser *) user2;
 - (FlingProfile *) getFlingProfileForUser:(VerveUser *) user;
-- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about;
+- (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about andInterests: (NSArray *) array;
 
 - (NSArray *) getVolunteeringList;
 - (BOOL) saveVolunteeringList:(NSArray *) arr;
@@ -99,5 +107,8 @@
 
 - (NSDictionary *) getUsersForFeelingBlue;
 - (NSString *)urlencode: (NSString *) input;
+
+-(id)makeRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData;
+-(id)makeXMLRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData;
 
 @end

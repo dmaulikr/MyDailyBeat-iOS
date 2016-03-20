@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>JPMorgan</key>
+	<dict>
+		<key>appName</key>
+		<string>J.P. Morgan ACCESS Mobile</string>
+		<key>appStoreListing</key>
+		<string>https://itunes.apple.com/us/app/j.p.-morgan-access-mobile/id445405909?mt=8&amp;uo=4</string>
+		<key>appIconURL</key>
+		<string>http://is2.mzstatic.com/image/thumb/Purple69/v4/b1/0e/5d/b10e5df1-37e5-a3ed-907e-776801755f47/source/60x60bb.jpg</string>
+	</dict>
+	<key>BankofAmerica</key>
+	<dict>
+		<key>appName</key>
+		<string>Bank of America - Mobile Banking</string>
+		<key>appStoreListing</key>
+		<string>https://itunes.apple.com/us/app/bank-america-mobile-banking/id284847138?mt=8&amp;uo=4</string>
+		<key>appIconURL</key>
+		<string>http://is2.mzstatic.com/image/thumb/Purple6/v4/42/1a/86/421a86e6-5923-a97f-848a-1d38451343c2/source/60x60bb.jpg</string>
+	</dict>
+	<key>Citigroup</key>
+	<dict>
+		<key>appName</key>
+		<string>Citi Mobile</string>
+		<key>appStoreListing</key>
+		<string>https://itunes.apple.com/us/app/citi-mobile/id301724680?mt=8&amp;uo=4</string>
+		<key>appIconURL</key>
+		<string>http://is5.mzstatic.com/image/thumb/Purple69/v4/a9/0e/8a/a90e8ae6-f07f-8840-f498-238b5fcde84a/source/60x60bb.jpg</string>
+	</dict>
+	<key>WellsFargo</key>
+	<dict>
+		<key>appName</key>
+		<string>Wells Fargo Mobile</string>
+		<key>appStoreListing</key>
+		<string>https://itunes.apple.com/us/app/wells-fargo-mobile/id311548709?mt=8&amp;uo=4</string>
+		<key>appIconURL</key>
+		<string>http://is5.mzstatic.com/image/thumb/Purple69/v4/a9/0e/8a/a90e8ae6-f07f-8840-f498-238b5fcde84a/source/60x60bb.jpg</string>
+	</dict>
+	<key>BoNY</key>
+	<dict/>
+</dict>
+</plist>

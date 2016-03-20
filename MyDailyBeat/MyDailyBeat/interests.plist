@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Reading</key>
+	<array>
+		<string>Library</string>
+		<string>Reading Club</string>
+		<string>Fantasy</string>
+		<string>Fiction</string>
+		<string>Classic</string>
+		<string>Religious</string>
+	</array>
+	<key>Travel</key>
+	<array>
+		<string>Country</string>
+		<string>Popular</string>
+		<string>International</string>
+		<string>Leisure</string>
+		<string>Historic</string>
+	</array>
+	<key>Volunteer</key>
+	<array>
+		<string>Religious</string>
+		<string>Social</string>
+		<string>Other Volunteering</string>
+	</array>
+	<key>Fine Arts</key>
+	<array>
+		<string>Dance</string>
+		<string>Theatre</string>
+		<string>Music</string>
+	</array>
+	<key>Arts and Crafts</key>
+	<array>
+		<string>Paint</string>
+		<string>Make jewelry</string>
+		<string>Cross-stitch, embroider, knit</string>
+		<string>Quilt or sew</string>
+		<string>Make pottery</string>
+		<string>Learn basket-weaving or chair-caning</string>
+		<string>Wood working</string>
+		<string>Making stained glass projects</string>
+	</array>
+	<key>Clubs and Associations</key>
+	<array>
+		<string>Chess</string>
+		<string>Reading</string>
+		<string>Other Club</string>
+	</array>
+	<key>Exercise</key>
+	<array>
+		<string>Yoga</string>
+		<string>Pilates</string>
+		<string>Kickboxing</string>
+		<string>Swimming</string>
+		<string>Running</string>
+		<string>Skiing</string>
+		<string>Other</string>
+	</array>
+	<key>Cooking</key>
+	<array>
+		<string>Baking</string>
+		<string>Grill</string>
+		<string>Authentic Italian</string>
+		<string>Authentic Greek</string>
+		<string>Authentic Middle Eastern</string>
+		<string>Fusion</string>
+		<string>Authentic Indian</string>
+		<string>Authentic Chinese</string>
+		<string>American</string>
+		<string>Authentic French</string>
+		<string>Authentic Mediterranean</string>
+		<string>Halal</string>
+		<string>Kosher</string>
+		<string>Vegetarian</string>
+		<string>Vegan</string>
+	</array>
+	<key>Outdoors</key>
+	<array>
+		<string>Bird watching</string>
+		<string>Flowers</string>
+		<string>Hiking</string>
+		<string>Camping</string>
+		<string>Beach</string>
+		<string>Boardwalk</string>
+		<string>Country Ski</string>
+		<string>Walking</string>
+		<string>Picnic</string>
+	</array>
+	<key>Teaching</key>
+	<array>
+		<string>Quilts</string>
+		<string>Carpentry</string>
+		<string>Painting</string>
+		<string>Handyman</string>
+		<string>Eletrical</string>
+		<string>Plumbing</string>
+		<string>Interior Decoration</string>
+		<string>Accounting</string>
+		<string>Taxation</string>
+		<string>Chess</string>
+		<string>Math</string>
+		<string>English</string>
+	</array>
+</dict>
+</plist>

@@ -14,10 +14,12 @@
 
 @implementation EVCFlingProfileViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user{
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode:(NSNumber *)friendsMode {
     self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.currentViewedUser = user;
+        self.friendsMode = friendsMode;
+        NSLog(@"The value of bool2 is = %@", (self.friendsMode ? @"YES" : @"NO"));
     }
     return self;
 }
@@ -32,22 +34,23 @@
     if ([self.currentViewedUser isEqual:[[API getInstance] getCurrentUser]]) {
         [self.addFavsBtn setHidden:YES];
         [self.sendMessageBtn setHidden:YES];
+        [self.editBtn setHidden:NO];
+    } else {
+        [self.editBtn setHidden:YES];
     }
     [self retrievePrefs];
     self.nameLbl.text = self.currentViewedUser.screenName;
     self.distanceLbl.text = @"";
+    [self loadProfile];
     [self loadPicture];
-    if ([self.currentViewedUser isEqual:[[API getInstance] getCurrentUser]]) {
-        self.editBtn.hidden=FALSE;
-    }
 }
 
 - (IBAction)edit:(id)sender {
-    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] init];
-    [self presentViewController:edit animated:YES completion:nil];
+    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil andMode:self.friendsMode];
+    [self.navigationController pushViewController:edit animated:YES];
 }
 
-- (void) loadPicture {
+- (void) loadProfile {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         NSURL *imageURL = [[API getInstance] retrieveProfilePictureForUserWithScreenName:self.currentViewedUser.screenName];
@@ -56,6 +59,19 @@
             // Update the UI
             [self.profilePicView setImage:[UIImage imageWithData:imageData]];
             
+        });
+        
+    });
+    
+}
+
+- (void) loadPicture {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        FlingProfile *prof = [[API getInstance] getFlingProfileForUser:self.currentViewedUser];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            self.aboutMeView.text = prof.aboutMe;
         });
         
     });

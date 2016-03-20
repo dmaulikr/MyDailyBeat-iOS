@@ -17,12 +17,13 @@
 @property (nonatomic, retain) IBOutlet UIImageView *profilePicView;
 @property (nonatomic, retain) IBOutlet UILabel *nameLbl, *ageLbl, *genderLbl, *distanceLbl, *orientationlbl;
 @property (nonatomic, retain) IBOutlet UIButton *addFavsBtn, *sendMessageBtn, *editBtn;
-@property (nonatomic, retain) IBOutlet UITextView *aboutMeView;
+@property (nonatomic, retain) IBOutlet UILabel *aboutMeView;
 @property (nonatomic, retain) VerveUser *currentViewedUser;
 @property (nonatomic, retain) VerveUserPreferences *prefs;
 @property (nonatomic, retain) VerveMatchingPreferences *matching;
+@property (nonatomic) NSNumber *friendsMode;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user;
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode: (NSNumber *) friendsMode;
 
 - (IBAction)fav:(id)sender;
 - (IBAction)message:(id)sender;

@@ -67,7 +67,7 @@
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     
     UILabel *label = [UILabel new];
-    label.text = [NSString stringWithFormat:@"Step %lu", index + 1];
+    label.text = [NSString stringWithFormat:@"Step %lu", (long) index + 1];
     [label sizeToFit];
     
     return label;
@@ -77,6 +77,18 @@
 - (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
     
     return [self.viewControllers objectAtIndex:index];
+}
+
+- (UIColor *) viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
+    switch (component) {
+        case ViewPagerIndicator:
+            return UIColorFromHex(0x0097A4);
+            break;
+            
+        default:
+            return color;
+            break;
+    }
 }
 
 @end

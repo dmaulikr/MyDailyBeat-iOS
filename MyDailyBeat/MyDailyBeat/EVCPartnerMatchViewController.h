@@ -14,5 +14,8 @@
 @interface EVCPartnerMatchViewController : UITableViewController
 
 @property (nonatomic, retain) NSMutableArray *partners;
+@property (nonatomic) NSNumber *friendsMode;
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(NSNumber *) mode;
 
 @end

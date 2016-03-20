@@ -41,6 +41,7 @@
             NSString *tempString = [temp objectAtIndex: i];
             if ([[API getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
                 VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
+                
                 [self.bankList addObject:bank];
                 NSString *urlS = bank.appIconURL;
                 NSURL *url = [NSURL URLWithString:urlS];
@@ -92,16 +93,21 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Inside this method");
     VerveBankObject *obj = [self.bankList objectAtIndex:indexPath.row];
+    
     if ([self isAppInstalled:obj.appName]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[obj.appName stringByAppendingString:@":"]]];
+        NSString *name = obj.appName;
+        name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
     } else {
-
+        NSLog(@"%@", obj);
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.appStoreListing]];
     }
 }
 
 - (BOOL) isAppInstalled: (NSString *) name {
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[name stringByAppendingString:@":"]]];
+    name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+    NSLog(@"%@", [name stringByAppendingString:@"://"]);
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
 }
 
 - (BOOL) doesAppExist: (NSString *) name {

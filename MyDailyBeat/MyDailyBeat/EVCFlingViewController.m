@@ -14,13 +14,22 @@
 
 @implementation EVCFlingViewController
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andInMode: (NSNumber *) friendsMode {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.friendsMode = friendsMode;
+        NSLog(@"The value of bool is = %@", (self.friendsMode ? @"YES" : @"NO"));
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil];
-    EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil];
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getCurrentUser]];
-    EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] init];
+    EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil andMode:self.friendsMode];
+    EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil andMode:self.friendsMode];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getCurrentUser] andMode:self.friendsMode];
+    EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] initWithNibName:@"EVCChatroomTableViewController" bundle:nil andMode:self.friendsMode];
     
     UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:partnerMatch];
     UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:partners];
@@ -39,13 +48,13 @@
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    matchItem.title = @"Partner Match";
+    matchItem.title = @"Match";
     [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"view-partners-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"view-partners-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    partnersItem.title = @"Favorite Partners";
+    partnersItem.title = @"Favorites";
     [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"messages-icon-white"] scaledToSize:CGSizeMake(30, 30)];
