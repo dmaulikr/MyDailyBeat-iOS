@@ -19,10 +19,13 @@
     CLLocationManager *manager;
     CLGeocoder *geocoder;
     NSString *currentZip, *currentQuery;
+    int currentPage;
+    int total;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *results;
 @property (nonatomic, retain) IBOutlet UISearchBar *mBar;
 @property (nonatomic, retain) NSDictionary *resultsDictionary;
+@property (nonatomic, retain) NSMutableArray *currentSet;
 
 @end

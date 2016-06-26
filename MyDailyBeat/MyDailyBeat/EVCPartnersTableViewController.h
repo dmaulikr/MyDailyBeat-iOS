@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <API.h>
 #import "EVCFlingProfileViewController.h"
+#import "Constants.h"
 
 @interface EVCPartnersTableViewController : UITableViewController
 
 @property (nonatomic, retain) NSMutableArray *favs;
-@property (nonatomic) NSNumber *friendsMode;
+@property (nonatomic) REL_MODE mode;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(NSNumber *) mode;
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(REL_MODE) mode;
 
 @end

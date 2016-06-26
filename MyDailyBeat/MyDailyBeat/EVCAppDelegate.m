@@ -7,6 +7,7 @@
 //
 
 #import "EVCAppDelegate.h"
+#import "BankDatabase.h"
 
 @implementation EVCAppDelegate
 
@@ -19,18 +20,14 @@
     
     [self.window makeKeyAndVisible];
     
-    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:15.0f], UITextAttributeFont, nil] forState:UIControlStateNormal];
-    } else {
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setBarTintColor:UIColorFromHex(0x0097A4)];
-        [[UITabBar appearance] setBarTintColor:UIColorFromHex(0x0097A4)];
-        [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:15.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
-
-    }
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromHex(0x0097A4)];
+    [[UITabBar appearance] setBarTintColor:UIColorFromHex(0x0097A4)];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:15.0f], NSFontAttributeName, UIColorFromHex(0xE6E6E6), NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:15.0f], NSFontAttributeName, UIColorFromHex(0xFFFFFF), NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
+    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     
     
@@ -42,7 +39,7 @@
     // A boolean which determines if app has eer been launched
     BOOL hasBeenLaunched;
     
-    // Testig if application has launched before and if it has to show the home-login screen        to login
+    // Testig if application has launched before and if it has to show the home-login screen to login
     // to social networks (facebook, Twitter)
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasAlreadyLaunched"]) {
         // Setting variable to YES because app has been launched before

@@ -7,6 +7,8 @@
 //
 
 #import "EVCViewController.h"
+#import "BankDatabase.h"
+#import "HealthDatabase.h"
 
 @interface EVCViewController ()
 
@@ -25,8 +27,8 @@
     [super viewDidLoad];
     
     
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"peeps", @"health", @"plane", @"hands", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"hands", nil];
     
     /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -72,6 +74,31 @@
     [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor :[UIColor whiteColor] } forState:UIControlStateSelected];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
+    BankDatabase *db = [BankDatabase database];
+    NSArray *arr = [db bankInfos];
+    if ([arr count] == 0) {
+        dispatch_queue_t queue = dispatch_queue_create(APP_ID_C_STRING, NULL);
+        dispatch_async(queue, ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view makeToast:@"Initializing database..." duration:3.5 position:@"bottom"];
+                [self.view makeToastActivity];
+            });
+            // initialize db
+            NSArray *temp = TOP_TEN_BANKS;
+            for (int i = 0; i < [temp count]; ++i) {
+                NSString *tempString = [temp objectAtIndex: i];
+                if ([[API getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
+                    VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
+                    BankInfo *info = [[BankInfo alloc] initWithUniqueId:0 name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
+                    [db insertIntoDatabase:info];
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view hideToastActivity];
+                [self.view makeToast:@"Database Initialization Complete" duration:3.5 position:@"bottom"];
+            });
+        });
+    }
     
     
 }
@@ -93,14 +120,21 @@
         case 1:
             switch (indexPath.row) {
                 case 4: {
-                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:[NSNumber numberWithBool:NO]];
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:1];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
                     break;
                 case 5: {
                     NSLog(@"Hello World");
-                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:[NSNumber numberWithBool:YES]];
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:2];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
+                }
+                    
+                    break;
+                case 6: {
+                    NSLog(@"Hello World");
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:0];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -113,7 +147,7 @@
                     break;
                 case 1:
                 {
-                     EVCFeelingBlueViewController *fb = [[EVCFeelingBlueViewController alloc] initWithNibName:@"EVCFeelingBlueViewController" bundle:nil];
+                     EVCFeelingBlueTabViewController *fb = [[EVCFeelingBlueTabViewController alloc] initWithNibName:@"EVCFeelingBlueTabViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fb] animated:YES];
                 }
                     break;
@@ -125,12 +159,12 @@
                     break;
                 }
                     
-                case 8: {
+                case 9: {
                     EVCVolunteeringMapViewController *mapTest = [[EVCVolunteeringMapViewController alloc] initWithNibName:@"EVCVolunteeringMapViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:mapTest] animated:YES];
                     break;
                 }
-                case 7: {
+                case 8: {
                     EVCTravelTableViewController *travel = [[EVCTravelTableViewController alloc] initWithNibName:@"EVCTravelTableViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:travel] animated:YES];
                     break;
@@ -140,6 +174,11 @@
                     EVCJobsViewController *jobs = [[EVCJobsViewController alloc] initWithNibName:@"EVCJobsViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:jobs] animated:YES];
                     break;
+                }
+                    
+                case 7: {
+                    EVCHealthViewController *health = [[EVCHealthViewController alloc] initWithNibName:@"EVCHealthViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
                 }
                     
                     

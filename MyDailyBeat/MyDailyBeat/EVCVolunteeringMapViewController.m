@@ -26,6 +26,8 @@
     currentKeyword = @"";
     currentType = @"name";
     
+    self.navigationItem.title = @"Volunteer";
+    
     [locationManager setDistanceFilter:kCLDistanceFilterNone];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)

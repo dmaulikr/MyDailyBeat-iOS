@@ -26,6 +26,8 @@
          forControlEvents:UIControlEventTouchUpInside];
     [someButton setShowsTouchWhenHighlighted:YES];
     
+    self.navigationItem.title = @"Travel";
+    
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
     
     self.navigationItem.rightBarButtonItem = menuButton;

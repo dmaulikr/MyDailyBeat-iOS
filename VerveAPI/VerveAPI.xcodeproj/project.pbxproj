@@ -66,6 +66,9 @@
 		766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB41A48BA92009CD94F /* SLKTypingIndicatorView.m */; };
 		766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */; };
 		766DEF861A4E5C220049CA2A /* MessageChatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF851A4E5C220049CA2A /* MessageChatroom.m */; };
+		7670EFBA1CFA950700831967 /* HealthDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7670EFB91CFA950700831967 /* HealthDatabase.m */; };
+		7670EFC31CFA960000831967 /* HealthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7670EFC21CFA960000831967 /* HealthInfo.m */; };
+		7670EFC81CFC9DFA00831967 /* PrescripProviderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7670EFC71CFC9DFA00831967 /* PrescripProviderInfo.m */; };
 		7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC621A04528D000ECDAF /* EVCSearchEngine.m */; };
 		7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC651A06CE04000ECDAF /* EVCUserSearchViewViewController.m */; };
 		7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC661A06CE04000ECDAF /* EVCUserSearchViewViewController_iPhone.xib */; };
@@ -76,6 +79,12 @@
 		7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */; };
 		7671FC8D1A0FD8B9000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */; };
 		7671FC911A0FE3B0000ECDAF /* search-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC901A0FE3B0000ECDAF /* search-25.png */; };
+		767BDC991CFFB856004DA0D8 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDC981CFFB856004DA0D8 /* Stack.m */; };
+		767BDC9C1CFFBA04004DA0D8 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDC9B1CFFBA04004DA0D8 /* Queue.m */; };
+		767BDCA51D105C71004DA0D8 /* HobbiesPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDCA41D105C71004DA0D8 /* HobbiesPreferences.m */; };
+		767BDCA81D106599004DA0D8 /* HobbiesMatchObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDCA71D106599004DA0D8 /* HobbiesMatchObject.m */; };
+		768E3EF41CEFEAF400A26909 /* BankDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E3EF31CEFEAF400A26909 /* BankDatabase.m */; };
+		768E3EF71CEFEB2600A26909 /* BankInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E3EF61CEFEB2600A26909 /* BankInfo.m */; };
 		769B0A881A54664200BB287E /* FlingProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A871A54664200BB287E /* FlingProfile.m */; };
 		769B0A8B1A59AF7100BB287E /* VerveMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A8A1A59AF7100BB287E /* VerveMessage.m */; };
 		769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2019A55F1100FF072E /* SHViewPager.m */; };
@@ -208,6 +217,12 @@
 		766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		766DEF841A4E5C220049CA2A /* MessageChatroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageChatroom.h; sourceTree = "<group>"; };
 		766DEF851A4E5C220049CA2A /* MessageChatroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageChatroom.m; sourceTree = "<group>"; };
+		7670EFB81CFA950700831967 /* HealthDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthDatabase.h; sourceTree = "<group>"; };
+		7670EFB91CFA950700831967 /* HealthDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthDatabase.m; sourceTree = "<group>"; };
+		7670EFC11CFA960000831967 /* HealthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthInfo.h; sourceTree = "<group>"; };
+		7670EFC21CFA960000831967 /* HealthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthInfo.m; sourceTree = "<group>"; };
+		7670EFC61CFC9DFA00831967 /* PrescripProviderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescripProviderInfo.h; sourceTree = "<group>"; };
+		7670EFC71CFC9DFA00831967 /* PrescripProviderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescripProviderInfo.m; sourceTree = "<group>"; };
 		7671FC611A04528D000ECDAF /* EVCSearchEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCSearchEngine.h; sourceTree = "<group>"; };
 		7671FC621A04528D000ECDAF /* EVCSearchEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCSearchEngine.m; sourceTree = "<group>"; };
 		7671FC641A06CE03000ECDAF /* EVCUserSearchViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCUserSearchViewViewController.h; sourceTree = "<group>"; };
@@ -223,6 +238,18 @@
 		7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSearchViewViewController.m; sourceTree = "<group>"; };
 		7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSearchViewViewController_iPhone.xib; sourceTree = "<group>"; };
 		7671FC901A0FE3B0000ECDAF /* search-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-25.png"; sourceTree = "<group>"; };
+		767BDC971CFFB856004DA0D8 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		767BDC981CFFB856004DA0D8 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
+		767BDC9A1CFFBA04004DA0D8 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		767BDC9B1CFFBA04004DA0D8 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
+		767BDCA31D105C71004DA0D8 /* HobbiesPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HobbiesPreferences.h; sourceTree = "<group>"; };
+		767BDCA41D105C71004DA0D8 /* HobbiesPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HobbiesPreferences.m; sourceTree = "<group>"; };
+		767BDCA61D106599004DA0D8 /* HobbiesMatchObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HobbiesMatchObject.h; sourceTree = "<group>"; };
+		767BDCA71D106599004DA0D8 /* HobbiesMatchObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HobbiesMatchObject.m; sourceTree = "<group>"; };
+		768E3EF21CEFEAF400A26909 /* BankDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankDatabase.h; sourceTree = "<group>"; };
+		768E3EF31CEFEAF400A26909 /* BankDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankDatabase.m; sourceTree = "<group>"; };
+		768E3EF51CEFEB2600A26909 /* BankInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankInfo.h; sourceTree = "<group>"; };
+		768E3EF61CEFEB2600A26909 /* BankInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankInfo.m; sourceTree = "<group>"; };
 		769B0A861A54664200BB287E /* FlingProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlingProfile.h; sourceTree = "<group>"; };
 		769B0A871A54664200BB287E /* FlingProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlingProfile.m; sourceTree = "<group>"; };
 		769B0A891A59AF7100BB287E /* VerveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveMessage.h; sourceTree = "<group>"; };
@@ -362,6 +389,7 @@
 		761D655119A15B680062B525 /* VerveAPI */ = {
 			isa = PBXGroup;
 			children = (
+				768E3EF01CEFEAC400A26909 /* DB */,
 				7623C9F01C2A52BB006C4D46 /* XMLDictionary */,
 				76264E771BE8228400292FBF /* ICViewPager */,
 				762340F81BE594C300FA2FDE /* AHKActionSheet */,
@@ -511,6 +539,19 @@
 			name = Maps;
 			sourceTree = "<group>";
 		};
+		7670EFB71CFA94D100831967 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				7670EFB81CFA950700831967 /* HealthDatabase.h */,
+				7670EFB91CFA950700831967 /* HealthDatabase.m */,
+				7670EFC61CFC9DFA00831967 /* PrescripProviderInfo.h */,
+				7670EFC71CFC9DFA00831967 /* PrescripProviderInfo.m */,
+				7670EFC11CFA960000831967 /* HealthInfo.h */,
+				7670EFC21CFA960000831967 /* HealthInfo.m */,
+			);
+			name = Health;
+			sourceTree = "<group>";
+		};
 		7671FC601A04525C000ECDAF /* UserSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,10 +592,34 @@
 			name = EVCSearchEngine;
 			sourceTree = "<group>";
 		};
+		768E3EF01CEFEAC400A26909 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				7670EFB71CFA94D100831967 /* Health */,
+				768E3EF11CEFEACE00A26909 /* Banks */,
+			);
+			name = DB;
+			sourceTree = "<group>";
+		};
+		768E3EF11CEFEACE00A26909 /* Banks */ = {
+			isa = PBXGroup;
+			children = (
+				768E3EF21CEFEAF400A26909 /* BankDatabase.h */,
+				768E3EF31CEFEAF400A26909 /* BankDatabase.m */,
+				768E3EF51CEFEB2600A26909 /* BankInfo.h */,
+				768E3EF61CEFEB2600A26909 /* BankInfo.m */,
+			);
+			name = Banks;
+			sourceTree = "<group>";
+		};
 		769EE9F319A2B2DA00FF072E /* Other Headers */ = {
 			isa = PBXGroup;
 			children = (
 				769EE9F719A2B6AB00FF072E /* Constants.h */,
+				767BDC971CFFB856004DA0D8 /* Stack.h */,
+				767BDC981CFFB856004DA0D8 /* Stack.m */,
+				767BDC9A1CFFBA04004DA0D8 /* Queue.h */,
+				767BDC9B1CFFBA04004DA0D8 /* Queue.m */,
 			);
 			name = "Other Headers";
 			sourceTree = "<group>";
@@ -630,6 +695,10 @@
 				76FE75C01B82D1AF00D791B6 /* VervePreferences.m */,
 				761642C71B8C141900BEC59C /* VerveRelationshipPrefs.h */,
 				761642C81B8C141900BEC59C /* VerveRelationshipPrefs.m */,
+				767BDCA31D105C71004DA0D8 /* HobbiesPreferences.h */,
+				767BDCA41D105C71004DA0D8 /* HobbiesPreferences.m */,
+				767BDCA61D106599004DA0D8 /* HobbiesMatchObject.h */,
+				767BDCA71D106599004DA0D8 /* HobbiesMatchObject.m */,
 			);
 			name = Prefs;
 			sourceTree = "<group>";
@@ -841,6 +910,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7670EFC81CFC9DFA00831967 /* PrescripProviderInfo.m in Sources */,
 				7623C9F31C2A52F5006C4D46 /* XMLDictionary.m in Sources */,
 				766DEF601A48C5BC0049CA2A /* SLKInputAccessoryView.m in Sources */,
 				766DEF621A48C5BC0049CA2A /* SLKTextInputbar.m in Sources */,
@@ -865,6 +935,7 @@
 				761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */,
 				761923DF1BC8B48000E182F4 /* UIDownPicker.m in Sources */,
 				76BD326119DCC5C90054ED88 /* Post.m in Sources */,
+				767BDCA51D105C71004DA0D8 /* HobbiesPreferences.m in Sources */,
 				76FE75BE1B82C5C100D791B6 /* GroupPrefs.m in Sources */,
 				76BD327D19DF7F6D0054ED88 /* RECommonFunctions.m in Sources */,
 				762F13461BBF6D3F001BD716 /* MapPoint.m in Sources */,
@@ -873,14 +944,18 @@
 				7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */,
 				761D659819A15FD40062B525 /* AFHTTPRequestOperationManager.m in Sources */,
 				76264E7A1BE822C100292FBF /* ViewPagerController.m in Sources */,
+				767BDC991CFFB856004DA0D8 /* Stack.m in Sources */,
 				761D659A19A15FD40062B525 /* AFNetworkReachabilityManager.m in Sources */,
 				761D659E19A15FD40062B525 /* AFURLResponseSerialization.m in Sources */,
 				7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */,
 				761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */,
 				769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */,
+				767BDC9C1CFFBA04004DA0D8 /* Queue.m in Sources */,
 				76AE55F01A97D4C4000B95B6 /* SVModalWebViewController.m in Sources */,
+				7670EFBA1CFA950700831967 /* HealthDatabase.m in Sources */,
 				761D659C19A15FD40062B525 /* AFURLConnectionOperation.m in Sources */,
 				769EEA8419A8171500FF072E /* DLAVAlertViewController.m in Sources */,
+				767BDCA81D106599004DA0D8 /* HobbiesMatchObject.m in Sources */,
 				769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */,
 				761D659B19A15FD40062B525 /* AFSecurityPolicy.m in Sources */,
 				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
@@ -891,11 +966,14 @@
 				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
 				766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */,
 				7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */,
+				768E3EF71CEFEB2600A26909 /* BankInfo.m in Sources */,
+				768E3EF41CEFEAF400A26909 /* BankDatabase.m in Sources */,
 				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
 				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
 				760D02A31B7D889C001CFE25 /* VerveUserPreferences.m in Sources */,
 				761642C91B8C141900BEC59C /* VerveRelationshipPrefs.m in Sources */,
 				76011C411B935EB5000EC003 /* VerveBankObject.m in Sources */,
+				7670EFC31CFA960000831967 /* HealthInfo.m in Sources */,
 				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,
 				760D02A61B7D8987001CFE25 /* VerveMatchingPreferences.m in Sources */,
 				769B0A881A54664200BB287E /* FlingProfile.m in Sources */,

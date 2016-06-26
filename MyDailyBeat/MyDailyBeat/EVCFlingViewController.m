@@ -14,22 +14,37 @@
 
 @implementation EVCFlingViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andInMode: (NSNumber *) friendsMode {
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andInMode: (int) inMode {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.friendsMode = friendsMode;
-        NSLog(@"The value of bool is = %@", (self.friendsMode ? @"YES" : @"NO"));
+        if (inMode == 0) {
+            self.mode = FRIENDS_MODE;
+        } else if (inMode == 1) {
+            self.mode = FLING_MODE;
+        } else {
+            self.mode = RELATIONSHIP_MODE;
+        }
     }
     return self;
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.mode == FRIENDS_MODE) {
+        self.navigationItem.title = @"Make Friends";
+    } else if (self.mode == FLING_MODE) {
+        self.navigationItem.title = @"Have a Fling";
+    } else {
+        self.navigationItem.title = @"Start a Relationship";
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil andMode:self.friendsMode];
-    EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil andMode:self.friendsMode];
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getCurrentUser] andMode:self.friendsMode];
-    EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] initWithNibName:@"EVCChatroomTableViewController" bundle:nil andMode:self.friendsMode];
+    EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil andMode:self.mode];
+    EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil andMode:self.mode];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getCurrentUser] andMode:self.mode];
+    EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] initWithNibName:@"EVCChatroomTableViewController" bundle:nil andMode:self.mode];
     
     UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:partnerMatch];
     UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:partners];
@@ -81,6 +96,18 @@
     
     self.navigationItem.rightBarButtonItem = menuButton;
     
+    UIImage* image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"filter_icon_white"] scaledToSize:CGSizeMake(30, 30)];
+    CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
+    UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
+    [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
+    [someButton3 addTarget:self action:@selector(filter)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton3 setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *filterButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];
+    
+    self.navigationItem.rightBarButtonItems = @[menuButton, filterButton];
+    
     UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
@@ -112,6 +139,10 @@
 
 - (void) showProfile {
     [self.sideMenuViewController presentLeftMenuViewController];
+}
+
+- (void) filter {
+
 }
 
 @end

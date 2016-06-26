@@ -14,12 +14,11 @@
 
 @implementation EVCFlingProfileViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode:(NSNumber *)friendsMode {
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode:(REL_MODE) mode {
     self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.currentViewedUser = user;
-        self.friendsMode = friendsMode;
-        NSLog(@"The value of bool2 is = %@", (self.friendsMode ? @"YES" : @"NO"));
+        self.mode = mode;
     }
     return self;
 }
@@ -46,7 +45,7 @@
 }
 
 - (IBAction)edit:(id)sender {
-    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil andMode:self.friendsMode];
+    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil andMode:self.mode];
     [self.navigationController pushViewController:edit animated:YES];
 }
 

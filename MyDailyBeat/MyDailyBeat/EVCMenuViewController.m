@@ -34,8 +34,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     self.view.backgroundColor = [UIColor clearColor];
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"hearts2", @"peeps2", @"health2", @"plane2", @"hands2", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"hearts2", @"hearts2", @"peeps2", @"health2", @"plane2", @"hands2", nil];
     self.logoView.image = [UIImage imageNamed:@"Logo.png"];
     self.logoView.backgroundColor = [UIColor whiteColor];
     self.logoView.layer.cornerRadius = 52;
@@ -105,14 +105,21 @@
         case 1:
             switch (indexPath.row) {
                 case 4: {
-                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:[NSNumber numberWithBool:NO]];
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:1];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
                     break;
                 case 5: {
                     NSLog(@"Hello World");
-                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:[NSNumber numberWithBool:YES]];
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:2];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
+                }
+                    
+                    break;
+                case 6: {
+                    NSLog(@"Hello World");
+                    EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:0];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -125,7 +132,7 @@
                     break;
                 case 1:
                 {
-                    EVCFeelingBlueViewController *fb = [[EVCFeelingBlueViewController alloc] initWithNibName:@"EVCFeelingBlueViewController" bundle:nil];
+                    EVCFeelingBlueTabViewController *fb = [[EVCFeelingBlueTabViewController alloc] initWithNibName:@"EVCFeelingBlueTabViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fb] animated:YES];
                 }
                     break;
@@ -141,15 +148,19 @@
                     break;
                 }
                     
-                case 7: {
+                case 8: {
                     EVCTravelTableViewController *travel = [[EVCTravelTableViewController alloc] initWithNibName:@"EVCTravelTableViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:travel] animated:YES];
                     break;
                 }
-                case 8: {
+                case 9: {
                     EVCVolunteeringMapViewController *volunteer = [[EVCVolunteeringMapViewController alloc] initWithNibName:@"EVCVolunteeringMapViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:volunteer] animated:YES];
                     break;
+                }
+                case 7: {
+                    EVCHealthViewController *health = [[EVCHealthViewController alloc] initWithNibName:@"EVCHealthViewController" bundle:nil];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
                 }
                     
                 default:

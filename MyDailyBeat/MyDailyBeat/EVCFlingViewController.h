@@ -16,11 +16,12 @@
 #import "EVCFlingProfileCreatorViewController.h"
 #import "RESideMenu.h"
 #import "EVCCommonMethods.h"
+#import "Constants.h"
 
 @interface EVCFlingViewController : UITabBarController <UITabBarControllerDelegate>
 
-@property (nonatomic) NSNumber *friendsMode;
+@property (nonatomic) REL_MODE mode;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andInMode: (NSNumber *) friendsMode;
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andInMode: (int) inMode;
 
 @end

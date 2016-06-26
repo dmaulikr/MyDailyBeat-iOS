@@ -16,9 +16,4 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
-- (IBAction)callSuicideAction:(id)sender;
-- (IBAction)callVeteransAction:(id)sender;
-- (IBAction)callAnonymousAction:(id)sender;
-- (IBAction)callTestAction:(id)sender;
-
 @end

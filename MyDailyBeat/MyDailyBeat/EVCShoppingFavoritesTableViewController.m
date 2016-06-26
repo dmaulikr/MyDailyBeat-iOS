@@ -35,7 +35,6 @@
         self.searchResults = [dic2 objectForKey:@"items"];
         
         
-        NSLog(@"Count: %d", [self.searchResults count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];

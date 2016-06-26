@@ -11,6 +11,7 @@
 #import <API.h>
 #import "EVCFlingMessagingViewController.h"
 #import "EVCFlingProfileCreatorViewController.h"
+#import "EVCFlingViewController.h"
 
 @interface EVCFlingProfileViewController : UIViewController
 
@@ -21,9 +22,9 @@
 @property (nonatomic, retain) VerveUser *currentViewedUser;
 @property (nonatomic, retain) VerveUserPreferences *prefs;
 @property (nonatomic, retain) VerveMatchingPreferences *matching;
-@property (nonatomic) NSNumber *friendsMode;
+@property (nonatomic) REL_MODE mode;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode: (NSNumber *) friendsMode;
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode: (REL_MODE) mode;
 
 - (IBAction)fav:(id)sender;
 - (IBAction)message:(id)sender;

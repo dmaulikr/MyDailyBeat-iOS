@@ -17,8 +17,8 @@
 
 @property (nonatomic, retain) NSMutableArray *chatrooms;
 @property (nonatomic, retain) UIBarButtonItem *addChatroom;
-@property (nonatomic) NSNumber *friendsMode;
+@property (nonatomic) REL_MODE mode;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(NSNumber *) mode;
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(REL_MODE) mode;
 
 @end

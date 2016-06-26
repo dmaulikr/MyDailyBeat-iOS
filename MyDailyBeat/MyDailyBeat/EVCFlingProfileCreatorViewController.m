@@ -14,11 +14,10 @@
 
 @implementation EVCFlingProfileCreatorViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(NSNumber *) mode {
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(REL_MODE) mode {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.friendsMode = mode;
-        NSLog(@"The value of bool2 is = %@", (self.friendsMode ? @"YES" : @"NO"));
+        self.mode = mode;
     }
     return self;
 }
@@ -26,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self navigationItem].title = @"Edit Fling Profile";
-    if (self.friendsMode) {
+    if (self.mode == FRIENDS_MODE) {
         [self.interestsButton setHidden:NO];
     } else {
         [self.interestsButton setHidden:YES];

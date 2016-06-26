@@ -7,6 +7,10 @@
 //
 
 #import "EVCFinanceHomeViewController.h"
+#import "BankDatabase.h"
+#import <DLAVAlertView.h>
+#import "EVCCommonMethods.h"
+#import <AHKActionSheet.h>
 
 @interface EVCFinanceHomeViewController ()
 
@@ -36,19 +40,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        NSArray *temp = TOP_TEN_BANKS;
-        for (int i = 0; i < [temp count]; ++i) {
-            NSString *tempString = [temp objectAtIndex: i];
-            if ([[API getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
-                VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
-                
-                [self.bankList addObject:bank];
-                NSString *urlS = bank.appIconURL;
-                NSURL *url = [NSURL URLWithString:urlS];
-                NSData *data = [NSData dataWithContentsOfURL:url];
-                UIImage *img = [[UIImage alloc] initWithData:data];
-                [self.iconList addObject:img];
-            }
+        BankDatabase *db = [BankDatabase database];
+        self.bankList = [[NSMutableArray alloc] initWithArray:[db bankInfos]];
+        for (int i = 0 ; i < [self.bankList count] ; i++) {
+            NSURL *imgurl = [NSURL URLWithString:((BankInfo *)[self.bankList objectAtIndex:i]).iconURL];
+            NSData *data = [NSData dataWithContentsOfURL:imgurl];
+            UIImage *img = [[UIImage alloc] initWithData:data];
+            [self.iconList addObject:img];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
@@ -67,7 +65,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return ([self.bankList count] >= 1) ? [self.bankList count] : 1;
+    return ([self.bankList count] >= 1) ? [self.bankList count] + 1 : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -78,13 +76,17 @@
     }
     
     if ([self.bankList count] >= 1) {
-        cell.textLabel.text = ((VerveBankObject *)[self.bankList objectAtIndex:indexPath.row]).appName;
-        cell.imageView.image = [self.iconList objectAtIndex:indexPath.row];
+        if (indexPath.row < [self.bankList count]) {
+            cell.textLabel.text = ((BankInfo *)[self.bankList objectAtIndex:indexPath.row]).appName;
+            cell.imageView.image = [self.iconList objectAtIndex:indexPath.row];
+        } else {
+            cell.textLabel.text = @"Add Bank";
+            cell.imageView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"plus-512.png"] scaledToSize:CGSizeMake(30, 30)];
+        }
+    } else {
+        cell.textLabel.text = @"Add Bank";
+        cell.imageView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"plus-512.png"] scaledToSize:CGSizeMake(30, 30)];
     }
-    
-    
-    
-    
     
     return cell;
 }
@@ -92,16 +94,65 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Inside this method");
-    VerveBankObject *obj = [self.bankList objectAtIndex:indexPath.row];
-    
-    if ([self isAppInstalled:obj.appName]) {
-        NSString *name = obj.appName;
-        name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
+    if ([self.bankList count] >= 1) {
+        if (indexPath.row < [self.bankList count]) {
+            [self popupActionMenu:indexPath.row];
+        } else {
+            // add new bank
+            [self addBank];
+        }
+        
     } else {
-        NSLog(@"%@", obj);
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.appStoreListing]];
+        // add new bank
+        [self addBank];
     }
+    
+}
+
+- (void) popupActionMenu: (int) row {
+    AHKActionSheet *sheet = [[AHKActionSheet alloc] initWithTitle:@""];
+    [sheet addButtonWithTitle:@"Open App" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
+        BankInfo *obj = [self.bankList objectAtIndex:row];
+        
+        if ([self isAppInstalled:obj.appName]) {
+            NSString *name = obj.appName;
+            name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
+        } else {
+            NSLog(@"%@", obj);
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.appURL]];
+        }
+    }];
+    [sheet addButtonWithTitle:@"Set as My Bank" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
+        BankInfo *obj = [self.bankList objectAtIndex:row];
+        NSData *bankEncoded = [NSKeyedArchiver archivedDataWithRootObject:obj];
+        [[NSUserDefaults standardUserDefaults] setObject:bankEncoded forKey:@"myBank"];
+    }];
+    [sheet show];
+}
+
+- (void) addBank {
+    DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Add new bank" message:@"Enter the name of the bank you wish to add." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add Bank", nil];
+    [alert addTextFieldWithText:@"" placeholder:@"Bank name"];
+    [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+        NSString *text = [alert textFieldTextAtIndex:0] ;
+        dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+        dispatch_async(queue, ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view makeToastActivity];
+            });
+            if ([[API getInstance] doesAppExistWithTerm:text andCountry:@"US"]) {
+                VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:text inCountry:@"US"];
+                BankInfo *info = [[BankInfo alloc] initWithUniqueId:0 name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
+                BankDatabase *db = [BankDatabase database];
+                [db insertIntoDatabase:info];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view hideToastActivity];
+                [self retrieveBanksData];
+            });
+        });
+    }];
 }
 
 - (BOOL) isAppInstalled: (NSString *) name {

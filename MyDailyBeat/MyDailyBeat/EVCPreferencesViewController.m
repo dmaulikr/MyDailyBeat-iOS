@@ -86,6 +86,7 @@
         });
         prefs.userPreferences = [api getUserPreferencesForUser:[api getCurrentUser]];
         prefs.matchingPreferences = [api getMatchingPreferencesForUser:[api getCurrentUser]];
+        prefs.hobbiesPreferences = [api getHobbiesPreferencesForUserWithScreenName:[api getCurrentUser].screenName];
         self.formController.form = prefs;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
@@ -103,9 +104,10 @@
         });
         
         BOOL success = [api saveUserPreferences:prefs.userPreferences andMatchingPreferences:prefs.matchingPreferences forUser:[api getCurrentUser]];
+        BOOL success2 = [api saveHobbiesPreferences:prefs.hobbiesPreferences forUserWithScreenName:[api getCurrentUser].screenName];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
-            if (success) {
+            if (success && success2) {
                 EVCViewController *controller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
                 [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:controller] animated:YES];
             } else

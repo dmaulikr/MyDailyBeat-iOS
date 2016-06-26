@@ -16,19 +16,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    EVCBankViewController *bank;
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"myBank"];
+    BankInfo * bankInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSLog(@"Bank Info: %@", bankInfo);
+    bank = [[EVCBankViewController alloc] initWithNibName:@"EVCBankViewController" bundle:nil andBank:bankInfo];
     EVCFinanceHomeViewController *search = [[EVCFinanceHomeViewController alloc] initWithNibName:@"EVCFinanceHomeViewController" bundle:nil];
     EVCResourceLinksTableViewController *favs = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil];
     
-    UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:search];
-    UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:favs];
+    UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:bank];
+    UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:search];
+    UINavigationController *third = [[UINavigationController alloc] initWithRootViewController:favs];
     
     UITabBar *bar = self.tabBar;
     
-    self.viewControllers = [NSArray arrayWithObjects:first, second, nil];
+    self.navigationItem.title = @"Check my Finances";
     
-    UITabBarItem *matchItem = [bar.items objectAtIndex:0];
-    UITabBarItem *partnersItem = [bar.items objectAtIndex:1];
+    self.viewControllers = [NSArray arrayWithObjects:first, second, third, nil];
+    
+    UITabBarItem *favItem = [bar.items objectAtIndex:0];
+    UITabBarItem *matchItem = [bar.items objectAtIndex:1];
+    UITabBarItem *resItem = [bar.items objectAtIndex:2];
     
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
@@ -39,8 +47,15 @@
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    partnersItem.title = @"Resource Links";
-    [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    favItem.title = @"My Bank";
+    [favItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-white"] scaledToSize:CGSizeMake(30, 30)];
+    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
+    
+    resItem.title = @"Resource Links";
+    [resItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
     
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);

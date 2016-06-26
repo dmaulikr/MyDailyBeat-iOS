@@ -58,6 +58,7 @@ static VerveUser *currentUser;
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             currentUser.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
+            currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
             
             return YES;
         }
@@ -117,6 +118,7 @@ static VerveUser *currentUser;
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
         currentUser.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
+        currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
         
     }
     
@@ -164,6 +166,7 @@ static VerveUser *currentUser;
         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
         user.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
+        currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
     }
     
     return user;
@@ -580,7 +583,7 @@ static VerveUser *currentUser;
     VerveBankObject *bankObj = [[VerveBankObject alloc] init];
     bankObj.appName = [bankDic objectForKey:@"trackCensoredName"];
     bankObj.appStoreListing = [bankDic objectForKey:@"trackViewUrl"];
-    bankObj.appIconURL = [bankDic objectForKey:@"artworkUrl60"];
+    bankObj.appIconURL = [bankDic objectForKey:@"artworkUrl512"];
     
     return bankObj;
 }
@@ -598,6 +601,72 @@ static VerveUser *currentUser;
         return false;
     }
     return true;
+}
+
+- (HobbiesPreferences *) getHobbiesPreferencesForUserWithScreenName: (NSString *) screenName {
+    NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:screenName]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"prefs/hobbies/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *list = [resultDic objectForKey:@"hobbyList"];
+    return [HobbiesPreferences fromJSON:list];
+}
+- (BOOL) saveHobbiesPreferences: (HobbiesPreferences *) prefs forUserWithScreenName: (NSString *) screenName {
+    @try {
+        NSMutableArray *array = [HobbiesPreferences toJSON:prefs];
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:array forKey:@"hobbyList"];
+        [postData setObject:screenName forKey:@"screenName"];
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"prefs/hobbies/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+
+- (NSMutableArray *) getHobbiesMatchesForUserWithScreenName:(NSString *) screenName {
+    NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:screenName]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"hobbies/match" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i= 0 ; i < [items count] ; ++i) {
+        HobbiesMatchObject *match = [[HobbiesMatchObject alloc] init];
+        NSDictionary *item = [items objectAtIndex:i];
+        match.prefs = [HobbiesPreferences fromJSON:[item objectForKey:@"prefs"]];
+        NSDictionary *userDic = [item objectForKey:@"userObj"];
+        VerveUser *temp = [[VerveUser alloc] init];
+        temp.name = [userDic objectForKey:@"name"];
+        temp.email = [userDic objectForKey:@"email"];
+        temp.screenName = screenName;
+        temp.password = [userDic objectForKey:@"password"];
+        temp.mobile = [userDic objectForKey:@"mobile"];
+        temp.zipcode = [userDic objectForKey:@"zipcode"];
+        temp.birth_month = [userDic objectForKey:@"birth_month"];
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        temp.birth_date = [[f numberFromString:[userDic objectForKey:@"birth_date"]] longValue];
+        temp.birth_year = [[f numberFromString:[userDic objectForKey:@"birth_year"]] longValue];
+        match.userObj = temp;
+        [retItems addObject:match];
+    }
+    
+    return retItems;
 }
 
 - (NSMutableArray *) getGroupsForCurrentUser {
