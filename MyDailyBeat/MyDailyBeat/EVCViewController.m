@@ -27,8 +27,8 @@
     [super viewDidLoad];
     
     
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"hands", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", @"Test First Time Setup", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"hands", @"cart", nil];
     
     /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -179,6 +179,11 @@
                 case 7: {
                     EVCHealthViewController *health = [[EVCHealthViewController alloc] initWithNibName:@"EVCHealthViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
+                }
+                    break;
+                case 10: {
+                    EVCFirstTimeSetupViewController *first = [[EVCFirstTimeSetupViewController alloc] init];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:first] animated:YES];
                 }
                     
                     

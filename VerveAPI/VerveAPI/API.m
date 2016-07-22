@@ -278,6 +278,63 @@ static VerveUser *currentUser;
     
     return prefs;
 }
+
+- (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences forUser: (VerveUser *) user {
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:currentUser.screenName forKey:@"screenName"];
+        
+        [postData setObject:[preferences toJSON] forKey:@"prefs"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/user/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+- (BOOL) saveMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user {
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:currentUser.screenName forKey:@"screenName"];
+        
+        [postData setObject:[matchingPreferences toJSON] forKey:@"matchingPrefs"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/matching/save" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
 - (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences andMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user {
     @try {
         

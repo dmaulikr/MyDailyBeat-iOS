@@ -60,6 +60,8 @@
 - (VerveUserPreferences *) getUserPreferencesForUser: (VerveUser *) user;
 - (VerveMatchingPreferences *) getMatchingPreferencesForUser: (VerveUser *) user;
 - (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences andMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user;
+- (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences forUser: (VerveUser *) user;
+- (BOOL) saveMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user;
 
 - (BOOL) doesAppExistWithTerm: (NSString *) name andCountry: (NSString *) country;
 - (VerveBankObject *) getBankInfoForBankWithName: (NSString *) name inCountry: (NSString *) country;

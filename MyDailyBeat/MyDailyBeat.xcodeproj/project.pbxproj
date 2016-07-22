@@ -111,6 +111,8 @@
 		767BDC9F1D0609D8004DA0D8 /* res-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767BDC9D1D0609D8004DA0D8 /* res-icon-gray.png */; };
 		767BDCA01D0609D8004DA0D8 /* res-icon-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 767BDC9E1D0609D8004DA0D8 /* res-icon-white.png */; };
 		767BDCA21D0653B3004DA0D8 /* phone-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767BDCA11D0653B3004DA0D8 /* phone-icon-gray.png */; };
+		767BDCAB1D297250004DA0D8 /* EVCHobbiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDCAA1D29724F004DA0D8 /* EVCHobbiesViewController.m */; };
+		767BDCB11D2974F5004DA0D8 /* EVCHobbiesMatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDCB01D2974F5004DA0D8 /* EVCHobbiesMatchTableViewController.m */; };
 		767DF3DC1B5DE1DA000D4D5D /* hamburger-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D01B5DE1DA000D4D5D /* hamburger-icon-gray.png */; };
 		767DF3DD1B5DE1DA000D4D5D /* hamburger-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D11B5DE1DA000D4D5D /* hamburger-icon-green.png */; };
 		767DF3DE1B5DE1DA000D4D5D /* messages-icon-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 767DF3D21B5DE1DA000D4D5D /* messages-icon-gray.png */; };
@@ -197,6 +199,9 @@
 		76E64F0219B9338C0022F189 /* home-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64F0119B9338C0022F189 /* home-512.png */; };
 		76EBBEA51A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EBBEA31A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m */; };
 		76EBBEA61A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EBBEA41A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib */; };
+		76EDB2981D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EDB2971D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m */; };
+		76EDB29B1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EDB29A1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m */; };
+		76EDB29D1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EDB29C1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib */; };
 		76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996919FD3CA900E15A14 /* settings-25.png */; };
 		76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */; };
 		76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */; };
@@ -345,9 +350,9 @@
 		767000DD1A7AFB04005F9DC4 /* EVCShoppingFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCShoppingFavoritesTableViewController.h; sourceTree = "<group>"; };
 		767000DE1A7AFB04005F9DC4 /* EVCShoppingFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCShoppingFavoritesTableViewController.m; sourceTree = "<group>"; };
 		767000DF1A7AFB04005F9DC4 /* EVCShoppingFavoritesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCShoppingFavoritesTableViewController.xib; sourceTree = "<group>"; };
-		7670EFB01CFA038600831967 /* EVCBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVCBankViewController.h; path = MyDailyBeat/EVCBankViewController.h; sourceTree = "<group>"; };
-		7670EFB11CFA038600831967 /* EVCBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVCBankViewController.m; path = MyDailyBeat/EVCBankViewController.m; sourceTree = "<group>"; };
-		7670EFB21CFA038600831967 /* EVCBankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EVCBankViewController.xib; path = MyDailyBeat/EVCBankViewController.xib; sourceTree = "<group>"; };
+		7670EFB01CFA038600831967 /* EVCBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCBankViewController.h; sourceTree = "<group>"; };
+		7670EFB11CFA038600831967 /* EVCBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCBankViewController.m; sourceTree = "<group>"; };
+		7670EFB21CFA038600831967 /* EVCBankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCBankViewController.xib; sourceTree = "<group>"; };
 		7670EFCE1CFCBD2400831967 /* EVCMyHealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCMyHealthViewController.h; sourceTree = "<group>"; };
 		7670EFCF1CFCBD2400831967 /* EVCMyHealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCMyHealthViewController.m; sourceTree = "<group>"; };
 		7670EFD01CFCBD2400831967 /* EVCMyHealthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCMyHealthViewController.xib; sourceTree = "<group>"; };
@@ -359,6 +364,10 @@
 		767BDC9D1D0609D8004DA0D8 /* res-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "res-icon-gray.png"; sourceTree = "<group>"; };
 		767BDC9E1D0609D8004DA0D8 /* res-icon-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "res-icon-white.png"; sourceTree = "<group>"; };
 		767BDCA11D0653B3004DA0D8 /* phone-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone-icon-gray.png"; sourceTree = "<group>"; };
+		767BDCA91D29724F004DA0D8 /* EVCHobbiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCHobbiesViewController.h; sourceTree = "<group>"; };
+		767BDCAA1D29724F004DA0D8 /* EVCHobbiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCHobbiesViewController.m; sourceTree = "<group>"; };
+		767BDCAF1D2974F5004DA0D8 /* EVCHobbiesMatchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCHobbiesMatchTableViewController.h; sourceTree = "<group>"; };
+		767BDCB01D2974F5004DA0D8 /* EVCHobbiesMatchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCHobbiesMatchTableViewController.m; sourceTree = "<group>"; };
 		767DF3D01B5DE1DA000D4D5D /* hamburger-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-icon-gray.png"; sourceTree = "<group>"; };
 		767DF3D11B5DE1DA000D4D5D /* hamburger-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-icon-green.png"; sourceTree = "<group>"; };
 		767DF3D21B5DE1DA000D4D5D /* messages-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messages-icon-gray.png"; sourceTree = "<group>"; };
@@ -376,8 +385,8 @@
 		768AFF3B1A754E2F0055F258 /* EVCShoppingSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCShoppingSearchViewController.h; sourceTree = "<group>"; };
 		768AFF3C1A754E300055F258 /* EVCShoppingSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCShoppingSearchViewController.m; sourceTree = "<group>"; };
 		768AFF3D1A754E300055F258 /* EVCShoppingSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCShoppingSearchViewController.xib; sourceTree = "<group>"; };
-		768CDED71CE7701A000CC29A /* EVCCallHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVCCallHistoryTableViewController.h; path = MyDailyBeat/EVCCallHistoryTableViewController.h; sourceTree = "<group>"; };
-		768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVCCallHistoryTableViewController.m; path = MyDailyBeat/EVCCallHistoryTableViewController.m; sourceTree = "<group>"; };
+		768CDED71CE7701A000CC29A /* EVCCallHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCCallHistoryTableViewController.h; sourceTree = "<group>"; };
+		768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCCallHistoryTableViewController.m; sourceTree = "<group>"; };
 		768E3EF81CEFED6700A26909 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		769B0A8C1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EVCFlingProfileCreatorViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		769B0A8D1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFlingProfileCreatorViewController.m; sourceTree = "<group>"; };
@@ -477,6 +486,11 @@
 		76EBBEA21A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFeelingBlueTableViewController.h; sourceTree = "<group>"; };
 		76EBBEA31A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EVCFeelingBlueTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		76EBBEA41A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFeelingBlueTableViewController.xib; sourceTree = "<group>"; };
+		76EDB2961D35EDBE00200E9C /* EVCFirstTimeSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFirstTimeSetupViewController.h; sourceTree = "<group>"; };
+		76EDB2971D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFirstTimeSetupViewController.m; sourceTree = "<group>"; };
+		76EDB2991D35EFF100200E9C /* EVCFirstTimePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFirstTimePreferencesViewController.h; sourceTree = "<group>"; };
+		76EDB29A1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFirstTimePreferencesViewController.m; sourceTree = "<group>"; };
+		76EDB29C1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFirstTimePreferencesViewController.xib; sourceTree = "<group>"; };
 		76EF996919FD3CA900E15A14 /* settings-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-25.png"; sourceTree = "<group>"; };
 		76EF996B19FD3EA200E15A14 /* EVCGroupSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCGroupSettingsViewController.h; sourceTree = "<group>"; };
 		76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSettingsViewController.m; sourceTree = "<group>"; };
@@ -507,6 +521,7 @@
 		76011C371B927D80000EC003 /* Finance */ = {
 			isa = PBXGroup;
 			children = (
+				7670EFB21CFA038600831967 /* EVCBankViewController.xib */,
 				76011C3C1B928189000EC003 /* EVCFinanceHomeViewController.xib */,
 				76011C321B927BDB000EC003 /* EVCFinanceViewController.xib */,
 			);
@@ -516,6 +531,7 @@
 		76011C381B927D99000EC003 /* Finance */ = {
 			isa = PBXGroup;
 			children = (
+				7670EFB01CFA038600831967 /* EVCBankViewController.h */,
 				76011C3A1B928189000EC003 /* EVCFinanceHomeViewController.h */,
 				76011C301B927BDB000EC003 /* EVCFinanceViewController.h */,
 			);
@@ -525,6 +541,7 @@
 		76011C391B927DAB000EC003 /* Finance */ = {
 			isa = PBXGroup;
 			children = (
+				7670EFB11CFA038600831967 /* EVCBankViewController.m */,
 				76011C3B1B928189000EC003 /* EVCFinanceHomeViewController.m */,
 				76011C311B927BDB000EC003 /* EVCFinanceViewController.m */,
 			);
@@ -558,11 +575,6 @@
 		761D64FF19A15A4D0062B525 = {
 			isa = PBXGroup;
 			children = (
-				7670EFB01CFA038600831967 /* EVCBankViewController.h */,
-				7670EFB11CFA038600831967 /* EVCBankViewController.m */,
-				7670EFB21CFA038600831967 /* EVCBankViewController.xib */,
-				768CDED71CE7701A000CC29A /* EVCCallHistoryTableViewController.h */,
-				768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */,
 				761D65A019A1600C0062B525 /* VerveAPI.xcodeproj */,
 				761D651119A15A4D0062B525 /* MyDailyBeat */,
 				761D650A19A15A4D0062B525 /* Frameworks */,
@@ -597,6 +609,7 @@
 		761D651119A15A4D0062B525 /* MyDailyBeat */ = {
 			isa = PBXGroup;
 			children = (
+				76EDB2911D35ECDE00200E9C /* FirstTimeSetup */,
 				7630B58A1BACF9C400FA2617 /* ASBPlayerScrubbing */,
 				7630B5891BACF9B200FA2617 /* ASMediaFocusManager */,
 				769EEA1119A42E1D00FF072E /* Headers */,
@@ -779,8 +792,8 @@
 			children = (
 				769B0A961A607C2300BB287E /* EVCFeelingBlueViewController.m */,
 				76EBBEA31A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m */,
-				767BDC921CFFB6EB004DA0D8 /* EVCFeelingBlueTabViewController.h */,
 				767BDC931CFFB6EB004DA0D8 /* EVCFeelingBlueTabViewController.m */,
+				768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */,
 			);
 			name = "Feeling Blue";
 			sourceTree = "<group>";
@@ -788,6 +801,8 @@
 		768CDED61CE76DA1000CC29A /* Feeling Blue */ = {
 			isa = PBXGroup;
 			children = (
+				767BDC921CFFB6EB004DA0D8 /* EVCFeelingBlueTabViewController.h */,
+				768CDED71CE7701A000CC29A /* EVCCallHistoryTableViewController.h */,
 				769B0A951A607C2300BB287E /* EVCFeelingBlueViewController.h */,
 				76EBBEA21A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.h */,
 			);
@@ -797,6 +812,7 @@
 		769EEA1119A42E1D00FF072E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				76EDB28F1D35EC0E00200E9C /* Hobbies */,
 				768CDED61CE76DA1000CC29A /* Feeling Blue */,
 				76B70B471CA774A700AF735E /* Health */,
 				76B70B461CA774A000AF735E /* Jobs */,
@@ -833,6 +849,7 @@
 		769EEA1219A42E2700FF072E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				76EDB2901D35EC6C00200E9C /* Hobbies */,
 				768CDED51CE76D8D000CC29A /* Feeling Blue */,
 				76B70B4A1CA7752400AF735E /* Health */,
 				76B70B481CA774B200AF735E /* Jobs */,
@@ -945,6 +962,7 @@
 		76B70B471CA774A700AF735E /* Health */ = {
 			isa = PBXGroup;
 			children = (
+				7670EFCE1CFCBD2400831967 /* EVCMyHealthViewController.h */,
 				76B70B551CA7794700AF735E /* EVCHealthPortalTableViewController.h */,
 				76B70B521CA776A800AF735E /* EVCPrescriptionProviderTableViewController.h */,
 				76B70B4D1CA775D200AF735E /* EVCHealthViewController.h */,
@@ -967,9 +985,7 @@
 				76B70B561CA7794700AF735E /* EVCHealthPortalTableViewController.m */,
 				76B70B531CA776A800AF735E /* EVCPrescriptionProviderTableViewController.m */,
 				76B70B4E1CA775D200AF735E /* EVCHealthViewController.m */,
-				7670EFCE1CFCBD2400831967 /* EVCMyHealthViewController.h */,
 				7670EFCF1CFCBD2400831967 /* EVCMyHealthViewController.m */,
-				7670EFD01CFCBD2400831967 /* EVCMyHealthViewController.xib */,
 			);
 			name = Health;
 			sourceTree = "<group>";
@@ -986,6 +1002,7 @@
 		76B70B4C1CA7755A00AF735E /* Health */ = {
 			isa = PBXGroup;
 			children = (
+				7670EFD01CFCBD2400831967 /* EVCMyHealthViewController.xib */,
 				76B70B4F1CA775D200AF735E /* EVCHealthViewController.xib */,
 			);
 			name = Health;
@@ -1035,6 +1052,68 @@
 				769B0A8E1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.xib */,
 			);
 			name = Fling;
+			sourceTree = "<group>";
+		};
+		76EDB28F1D35EC0E00200E9C /* Hobbies */ = {
+			isa = PBXGroup;
+			children = (
+				767BDCA91D29724F004DA0D8 /* EVCHobbiesViewController.h */,
+				767BDCAF1D2974F5004DA0D8 /* EVCHobbiesMatchTableViewController.h */,
+			);
+			name = Hobbies;
+			sourceTree = "<group>";
+		};
+		76EDB2901D35EC6C00200E9C /* Hobbies */ = {
+			isa = PBXGroup;
+			children = (
+				767BDCAA1D29724F004DA0D8 /* EVCHobbiesViewController.m */,
+				767BDCB01D2974F5004DA0D8 /* EVCHobbiesMatchTableViewController.m */,
+			);
+			name = Hobbies;
+			sourceTree = "<group>";
+		};
+		76EDB2911D35ECDE00200E9C /* FirstTimeSetup */ = {
+			isa = PBXGroup;
+			children = (
+				76EDB2921D35ECE900200E9C /* Header */,
+				76EDB2931D35ECF700200E9C /* Source */,
+				76EDB2941D35ECFD00200E9C /* xib */,
+			);
+			name = FirstTimeSetup;
+			sourceTree = "<group>";
+		};
+		76EDB2921D35ECE900200E9C /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				76EDB2961D35EDBE00200E9C /* EVCFirstTimeSetupViewController.h */,
+				76EDB2991D35EFF100200E9C /* EVCFirstTimePreferencesViewController.h */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		76EDB2931D35ECF700200E9C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				76EDB2971D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m */,
+				76EDB29A1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m */,
+				76EDB29C1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		76EDB2941D35ECFD00200E9C /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				76EDB2951D35ED1D00200E9C /* iPhone */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		76EDB2951D35ED1D00200E9C /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPhone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1183,6 +1262,7 @@
 				76264E641BE6E7F500292FBF /* hands2.png in Resources */,
 				766A7D4F1A900A5E00B6C81E /* EVCHeader.png in Resources */,
 				76E64F0219B9338C0022F189 /* home-512.png in Resources */,
+				76EDB29D1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib in Resources */,
 				769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */,
 				76D3F5BB1CFD2548003C9B1F /* healthlist.sql in Resources */,
 				76C2B0EF19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib in Resources */,
@@ -1263,6 +1343,7 @@
 				76DEDA921A476310009CD94F /* EVCFlingProfileViewController.m in Sources */,
 				769EEA8B19A8D43900FF072E /* EVCPreferencesViewController.m in Sources */,
 				76C2B09519F342430010E98B /* EVCTextFieldTableViewCell.m in Sources */,
+				767BDCB11D2974F5004DA0D8 /* EVCHobbiesMatchTableViewController.m in Sources */,
 				76EBBEA51A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m in Sources */,
 				768CDED91CE7701B000CC29A /* EVCCallHistoryTableViewController.m in Sources */,
 				7636F6C319CF9074000B68B0 /* EVCUpdateProfileViewController.m in Sources */,
@@ -1287,6 +1368,7 @@
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
 				76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */,
 				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
+				76EDB2981D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m in Sources */,
 				769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */,
 				76063C4F1B94B03A002F9171 /* EVCTravelTableViewController.m in Sources */,
 				769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */,
@@ -1300,6 +1382,7 @@
 				76C37F131C2A0AFB005D8960 /* EVCJobsViewController.m in Sources */,
 				7630B5A01BACFA0A00FA2617 /* ASVideoControlView.m in Sources */,
 				769EE9EC19A2530100FF072E /* EVCRegistrationViewController.m in Sources */,
+				767BDCAB1D297250004DA0D8 /* EVCHobbiesViewController.m in Sources */,
 				7630B59B1BACFA0A00FA2617 /* ASMediaFocusController.m in Sources */,
 				76DEDA8D1A475E68009CD94F /* EVCPartnersTableViewController.m in Sources */,
 				767BDC941CFFB6EB004DA0D8 /* EVCFeelingBlueTabViewController.m in Sources */,
@@ -1309,6 +1392,7 @@
 				769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */,
 				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				766DEF7A1A4BC2870049CA2A /* EVCChatroomTableViewController.m in Sources */,
+				76EDB29B1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m in Sources */,
 				768AFF371A7540AA0055F258 /* EVCShoppingViewController.m in Sources */,
 				761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */,
 				7630B59D1BACFA0A00FA2617 /* ASMediaFocusManager.m in Sources */,
