@@ -29,13 +29,14 @@
     self.companyLabel.text = [self.jobEntry objectForKey:@"company"];
     self.locLabel.text = [self.jobEntry objectForKey:@"formattedLocationFull"];
     self.snippetLabel.text = [self.jobEntry objectForKey:@"snippet"];
-    self.urlLabel.text = [self.jobEntry objectForKey:@"url"];
+    self.urlTextView.text = [self.jobEntry objectForKey:@"url"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 

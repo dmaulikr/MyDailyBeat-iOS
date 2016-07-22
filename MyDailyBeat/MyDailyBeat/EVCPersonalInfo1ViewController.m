@@ -14,7 +14,7 @@
 
 @implementation EVCPersonalInfo1ViewController
 
-@synthesize firstNameField, lastNameField, zipCodeField, birth_month, birth_year, dobField, picker, parentController;
+@synthesize firstNameField, lastNameField, zipCodeField, birth_month, birth_date, birth_year, dobField, picker, parentController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andParent:(EVCRegistrationViewController *) parent
 {
@@ -29,64 +29,32 @@
 {
     [super viewDidLoad];
     
-    picker = [[UIPickerView alloc] init];
-    picker.dataSource = self;
-    picker.delegate = self;
+    picker = [[UIDatePicker alloc] init];
+    picker.datePickerMode = UIDatePickerModeDate;
+    picker.minimumDate = [NSDate dateWithTimeIntervalSince1970:-2207520000];
     self.dobField.inputView = picker;
-    months = [NSMutableArray arrayWithObjects:@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November",@"December", nil];
-    years = [[NSMutableArray alloc] init];
-    
-    birth_month = @"January";
-    birth_year = 2014;
-    NSString *dob = [birth_month stringByAppendingString:[NSString stringWithFormat:@" %d", birth_year]];
-    self.dobField.text = dob;
-    for (int i = [[[NSCalendar currentCalendar]
-                   components:NSYearCalendarUnit fromDate:[NSDate date]]
-                  year] ; i >= 1900 ; i--) {
-        [years addObject:[NSString stringWithFormat:@"%d", i]];
-    }
-    
+    [picker addTarget:self action:@selector(dateChanged:)
+     forControlEvents:UIControlEventValueChanged];
     zipCodeField.keyboardType = UIKeyboardTypeDecimalPad;
-    
+    self.monthFormatter = [[NSDateFormatter alloc] init];
+    self.dayFormatter = [[NSDateFormatter alloc] init];
+    self.yearFormatter = [[NSDateFormatter alloc] init];
+    [self.monthFormatter setDateFormat:@"MMMM"];
+    [self.dayFormatter setDateFormat:@"dd"];
+    [self.yearFormatter setDateFormat:@"yyyy"];
+}
+
+- (void) dateChanged:(id)sender{
+    NSDate *date = picker.date;
+    birth_month = [self.monthFormatter stringFromDate:date];
+    birth_date = [[self.dayFormatter stringFromDate:date] intValue];
+    birth_year = [[self.yearFormatter stringFromDate:date] intValue];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component == 0) {
-        return 12;
-    } else {
-        return [years count];
-    }
-}
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
-}
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if (component == 0) {
-        return [months objectAtIndex:row];
-    } else {
-        return [years objectAtIndex:row];
-    }		
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSString *dob = @"";
-    if (component == 0) {
-        dob = [[self pickerView:picker titleForRow:row forComponent:0] stringByAppendingString:[NSString stringWithFormat:@" %d", birth_year]];
-        birth_month = [self pickerView:picker titleForRow:row forComponent:0];
-    } else {
-        dob = [birth_month stringByAppendingString:[@" " stringByAppendingString:[self pickerView:picker titleForRow:row forComponent:1]]];
-        birth_year = [[years objectAtIndex:row] intValue];
-    }
-    
-    self.dobField.text = dob;
-    
-    
 }
 
 @end

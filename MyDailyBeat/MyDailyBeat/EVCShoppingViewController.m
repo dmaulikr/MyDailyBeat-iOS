@@ -26,6 +26,8 @@
     
     UITabBar *bar = self.tabBar;
     
+    self.navigationItem.title = @"Go Shopping";
+    
     self.viewControllers = [NSArray arrayWithObjects:first, second, nil];
     
     UITabBarItem *matchItem = [bar.items objectAtIndex:0];

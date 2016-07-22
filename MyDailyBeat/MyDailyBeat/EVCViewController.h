@@ -16,11 +16,14 @@
 #import <EVCGroupSearchViewViewController.h>
 #import "EVCFlingViewController.h"
 #import "EVCShoppingViewController.h"
-#import "EVCFeelingBlueViewController.h"
+#import "EVCFeelingBlueTabViewController.h"
 #import "EVCFinanceViewController.h"
 #import "EVCVolunteeringMapViewController.h"
 #import "EVCTravelTableViewController.h"
 #import "EVCJobsViewController.h"
+#import "EVCHealthViewController.h"
+#import "EVCHobbiesViewController.h"
+#import "EVCFirstTimeSetupViewController.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EVCGroupSearchViewDelegate> {
     NSArray *options, *imageNames;

@@ -25,6 +25,9 @@
 #import "VerveVolunteering.h"
 #import "MapPoint.h"
 #import "XMLDictionary.h"
+#import "PrescripProviderInfo.h"
+#import "HobbiesPreferences.h"
+#import "HobbiesMatchObject.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 
@@ -57,9 +60,15 @@
 - (VerveUserPreferences *) getUserPreferencesForUser: (VerveUser *) user;
 - (VerveMatchingPreferences *) getMatchingPreferencesForUser: (VerveUser *) user;
 - (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences andMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user;
+- (BOOL) saveUserPreferences: (VerveUserPreferences *) preferences forUser: (VerveUser *) user;
+- (BOOL) saveMatchingPreferences: (VerveMatchingPreferences *) matchingPreferences forUser: (VerveUser *) user;
 
 - (BOOL) doesAppExistWithTerm: (NSString *) name andCountry: (NSString *) country;
 - (VerveBankObject *) getBankInfoForBankWithName: (NSString *) name inCountry: (NSString *) country;
+
+- (HobbiesPreferences *) getHobbiesPreferencesForUserWithScreenName: (NSString *) screenName;
+- (BOOL) saveHobbiesPreferences: (HobbiesPreferences *) prefs forUserWithScreenName: (NSString *) screenName;
+- (NSMutableArray *) getHobbiesMatchesForUserWithScreenName:(NSString *) screenName;
 
 - (NSMutableArray *) getGroupsForCurrentUser;
 - (NSMutableArray *) getGroupsForUser:(VerveUser *) user;

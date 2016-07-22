@@ -46,6 +46,7 @@
         name = @"Test Name";
     }
     NSString *birth_month = [personalInfo birth_month];
+    long birth_date = [personalInfo birth_date];
     long birth_year = [personalInfo birth_year];
     NSString *zipcode = [personalInfo zipCodeField].text;
     NSLog(@"First Name=%@", [[personalInfo firstNameField] text]);
@@ -75,16 +76,14 @@
             user.birth_month = birth_month;
             user.birth_year = birth_year;
             user.zipcode = zipcode;
+            user.birth_date = birth_date;
             user.email = [emailField text];
-            if ([user.email isEqualToString:@""] || user.email == nil) {
-                [self.view makeToast:@"Email address is required." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
-                return;
-            }
             user.mobile = [mobileField text];
-            if ([user.mobile isEqualToString:@""] || user.mobile == nil) {
-                [self.view makeToast:@"Mobile number is required." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
-                return;
+            
+            if ([user hasNilField]) {
+                [self.view makeToast:@"Required information missing!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
             }
+            
             BOOL result = [[API getInstance] createUser:user];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];

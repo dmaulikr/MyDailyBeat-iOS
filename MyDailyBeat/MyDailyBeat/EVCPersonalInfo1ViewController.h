@@ -11,16 +11,15 @@
 
 @class EVCRegistrationViewController;
 
-@interface EVCPersonalInfo1ViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> {
-    NSMutableArray *months, *years;
-}
+@interface EVCPersonalInfo1ViewController : UIViewController
 
 @property (nonatomic, retain) NSString *birth_month;
-@property (nonatomic) int birth_year;
+@property (nonatomic) int birth_date, birth_year;
 @property (nonatomic, retain) IBOutlet UITextField *firstNameField, *lastNameField, *dobField, *zipCodeField;
 
-@property (nonatomic, retain) UIPickerView *picker;
+@property (nonatomic, retain) UIDatePicker *picker;
 @property (nonatomic, retain) EVCRegistrationViewController *parentController;
+@property (nonatomic, retain) NSDateFormatter *monthFormatter, *dayFormatter, *yearFormatter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andParent:(EVCRegistrationViewController *) parent;
 

@@ -17,9 +17,10 @@
 @property(nonatomic, retain) NSString *mobile;
 @property(nonatomic, retain) NSString *zipcode;
 @property(nonatomic, retain) NSString *birth_month;
-@property(nonatomic) long birth_year;
+@property(nonatomic) long birth_date, birth_year;
 
 -(NSMutableDictionary *) toJSON;
+- (BOOL) hasNilField; 
 
 
 @end
