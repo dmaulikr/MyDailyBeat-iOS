@@ -7,6 +7,9 @@
 //
 
 #import "EVCFirstTimePreferencesViewController.h"
+#import "VervePreferences.h"
+#import <RESideMenu.h>
+#import "EVCViewController.h"
 
 @interface EVCFirstTimePreferencesViewController ()
 
@@ -16,21 +19,33 @@
 
 @synthesize api;
 
-- (id) initWithPrefs: (id<FXForm>) prefs {
-    self = [super initWithNibName:@"EVCFirstTimePreferencesViewController" bundle:nil];
-    if (self) {
-        self.prefs = prefs;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.formController = [[FXFormController alloc] init];
     self.formController.tableView = self.tableView;
-    self.formController.form = self.prefs;
     self.formController.delegate = self;
-    self.api = [API getInstance];
+    self.formController.form = [[VervePreferences alloc] init];
+    api = [API getInstance];
+    
+    [self retrievePrefs];
+}
+
+- (void) retrievePrefs {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        VervePreferences *prefs = [[VervePreferences alloc] init];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        prefs.userPreferences = [api getUserPreferencesForUser:[api getCurrentUser]];
+        prefs.matchingPreferences = [api getMatchingPreferencesForUser:[api getCurrentUser]];
+        prefs.hobbiesPreferences = [api getHobbiesPreferencesForUserWithScreenName:[api getCurrentUser].screenName];
+        self.formController.form = prefs;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            [self.tableView reloadData];
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,23 +53,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)submit:(id)sender {
+- (void) selectEthnicity:(UITableViewCell<FXFormFieldCell> *)cell {
+    VervePreferences *prefs = cell.field.form;
+    self.formController.form = prefs;
+    NSLog(@"Hello World");
+    [self.tableView reloadData];
+}
+
+- (void) selectBeliefs:(UITableViewCell<FXFormFieldCell> *)cell {
+    VervePreferences *prefs = cell.field.form;
+    self.formController.form = prefs;
+    [self.tableView reloadData];
+}
+
+- (void)submit:(UITableViewCell<FXFormFieldCell> *)cell {
+    VervePreferences *prefs = cell.field.form;
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
         
-        BOOL success;
-        if ([self.formController.form isKindOfClass:[VerveUserPreferences class]]) {
-            success = [api saveUserPreferences:(VerveUserPreferences *) self.formController.form forUser:[api getCurrentUser]];
-        } else if ([self.formController.form isKindOfClass:[VerveMatchingPreferences class]]) {
-            success = [api saveMatchingPreferences:(VerveMatchingPreferences *) self.formController.form forUser:[api getCurrentUser]];
-        } else {
-            success = [api saveHobbiesPreferences:(HobbiesPreferences *)self.formController.form forUserWithScreenName:[api getCurrentUser].screenName];
-        }
+        BOOL success = [api saveUserPreferences:prefs.userPreferences andMatchingPreferences:prefs.matchingPreferences forUser:[api getCurrentUser]];
+        BOOL success2 = [api saveHobbiesPreferences:prefs.hobbiesPreferences forUserWithScreenName:[api getCurrentUser].screenName];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
+            if (success && success2) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            } else
+                NSLog(@"Failed");
             
         });
     });

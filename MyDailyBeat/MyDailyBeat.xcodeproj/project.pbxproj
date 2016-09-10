@@ -168,6 +168,8 @@
 		76A204E71BB200580028BFF8 /* group.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204E61BB200580028BFF8 /* group.png */; };
 		76A204E91BB200610028BFF8 /* newgroup.png in Resources */ = {isa = PBXBuildFile; fileRef = 76A204E81BB200610028BFF8 /* newgroup.png */; };
 		76ABFCA71B5DDF950092C5D1 /* star-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76ABFCA61B5DDF950092C5D1 /* star-icon-green.png */; };
+		76B64AE91D689F5900CC7A7A /* EVCFirstTimeSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B64AE71D689F5800CC7A7A /* EVCFirstTimeSetupViewController.m */; };
+		76B64AEB1D68A6BF00CC7A7A /* EVCFirstTimeSetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76B64AEA1D68A6BF00CC7A7A /* EVCFirstTimeSetupViewController.xib */; };
 		76B70B501CA775D200AF735E /* EVCHealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B70B4E1CA775D200AF735E /* EVCHealthViewController.m */; };
 		76B70B511CA775D200AF735E /* EVCHealthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76B70B4F1CA775D200AF735E /* EVCHealthViewController.xib */; };
 		76B70B541CA776A800AF735E /* EVCPrescriptionProviderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76B70B531CA776A800AF735E /* EVCPrescriptionProviderTableViewController.m */; };
@@ -199,7 +201,6 @@
 		76E64F0219B9338C0022F189 /* home-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64F0119B9338C0022F189 /* home-512.png */; };
 		76EBBEA51A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EBBEA31A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m */; };
 		76EBBEA61A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EBBEA41A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib */; };
-		76EDB2981D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EDB2971D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m */; };
 		76EDB29B1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EDB29A1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m */; };
 		76EDB29D1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EDB29C1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib */; };
 		76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996919FD3CA900E15A14 /* settings-25.png */; };
@@ -439,6 +440,9 @@
 		76A204E81BB200610028BFF8 /* newgroup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newgroup.png; sourceTree = "<group>"; };
 		76ABFCA61B5DDF950092C5D1 /* star-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-icon-green.png"; sourceTree = "<group>"; };
 		76ABFCA81B5DDFC50092C5D1 /* profile-icon-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon-gray.png"; sourceTree = "<group>"; };
+		76B64AE71D689F5800CC7A7A /* EVCFirstTimeSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFirstTimeSetupViewController.m; sourceTree = "<group>"; };
+		76B64AE81D689F5800CC7A7A /* EVCFirstTimeSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFirstTimeSetupViewController.h; sourceTree = "<group>"; };
+		76B64AEA1D68A6BF00CC7A7A /* EVCFirstTimeSetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFirstTimeSetupViewController.xib; sourceTree = "<group>"; };
 		76B70B4D1CA775D200AF735E /* EVCHealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCHealthViewController.h; sourceTree = "<group>"; };
 		76B70B4E1CA775D200AF735E /* EVCHealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCHealthViewController.m; sourceTree = "<group>"; };
 		76B70B4F1CA775D200AF735E /* EVCHealthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCHealthViewController.xib; sourceTree = "<group>"; };
@@ -486,8 +490,6 @@
 		76EBBEA21A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFeelingBlueTableViewController.h; sourceTree = "<group>"; };
 		76EBBEA31A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EVCFeelingBlueTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		76EBBEA41A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFeelingBlueTableViewController.xib; sourceTree = "<group>"; };
-		76EDB2961D35EDBE00200E9C /* EVCFirstTimeSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFirstTimeSetupViewController.h; sourceTree = "<group>"; };
-		76EDB2971D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFirstTimeSetupViewController.m; sourceTree = "<group>"; };
 		76EDB2991D35EFF100200E9C /* EVCFirstTimePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFirstTimePreferencesViewController.h; sourceTree = "<group>"; };
 		76EDB29A1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFirstTimePreferencesViewController.m; sourceTree = "<group>"; };
 		76EDB29C1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFirstTimePreferencesViewController.xib; sourceTree = "<group>"; };
@@ -866,12 +868,12 @@
 				769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */,
 				769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */,
 				769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */,
-				769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */,
 				769EEA8919A8D43900FF072E /* EVCPreferencesViewController.m */,
 				769EEA9319A8DBF900FF072E /* EVCMenuViewController.m */,
 				7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */,
 				7636F6C119CF9074000B68B0 /* EVCUpdateProfileViewController.m */,
 				7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */,
+				769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */,
 				76C2B08619F333300010E98B /* EVCLoginViewController.m */,
 				76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */,
 				76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */,
@@ -1085,7 +1087,7 @@
 		76EDB2921D35ECE900200E9C /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				76EDB2961D35EDBE00200E9C /* EVCFirstTimeSetupViewController.h */,
+				76B64AE81D689F5800CC7A7A /* EVCFirstTimeSetupViewController.h */,
 				76EDB2991D35EFF100200E9C /* EVCFirstTimePreferencesViewController.h */,
 			);
 			name = Header;
@@ -1094,9 +1096,8 @@
 		76EDB2931D35ECF700200E9C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				76EDB2971D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m */,
+				76B64AE71D689F5800CC7A7A /* EVCFirstTimeSetupViewController.m */,
 				76EDB29A1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m */,
-				76EDB29C1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -1112,6 +1113,8 @@
 		76EDB2951D35ED1D00200E9C /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				76EDB29C1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib */,
+				76B64AEA1D68A6BF00CC7A7A /* EVCFirstTimeSetupViewController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -1282,6 +1285,7 @@
 				76A204DD1BB0E7D60028BFF8 /* plane.png in Resources */,
 				7646C8C81C9EEC0E00D9D374 /* anonymous.png in Resources */,
 				76264E5F1BE6E7F500292FBF /* briefcase2.png in Resources */,
+				76B64AEB1D68A6BF00CC7A7A /* EVCFirstTimeSetupViewController.xib in Resources */,
 				76003B161B93C38E00133773 /* EVCResourceLinksTableViewController.xib in Resources */,
 				7670EFD21CFCBD2400831967 /* EVCMyHealthViewController.xib in Resources */,
 				761D651619A15A4D0062B525 /* InfoPlist.strings in Resources */,
@@ -1368,7 +1372,6 @@
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
 				76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */,
 				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
-				76EDB2981D35EDBE00200E9C /* EVCFirstTimeSetupViewController.m in Sources */,
 				769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */,
 				76063C4F1B94B03A002F9171 /* EVCTravelTableViewController.m in Sources */,
 				769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */,
@@ -1392,6 +1395,7 @@
 				769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */,
 				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				766DEF7A1A4BC2870049CA2A /* EVCChatroomTableViewController.m in Sources */,
+				76B64AE91D689F5900CC7A7A /* EVCFirstTimeSetupViewController.m in Sources */,
 				76EDB29B1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m in Sources */,
 				768AFF371A7540AA0055F258 /* EVCShoppingViewController.m in Sources */,
 				761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */,
@@ -1507,7 +1511,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Virinchi Balabhadrapatruni (ZF6D3MVZL5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Virinchi Balabhadrapatruni (ZF6D3MVZL5)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1532,7 +1536,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: EVERVE CORPORATION (38MW53VVGD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: EVERVE CORPORATION (38MW53VVGD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

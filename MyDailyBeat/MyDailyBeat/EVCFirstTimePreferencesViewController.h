@@ -16,13 +16,8 @@
 @interface EVCFirstTimePreferencesViewController : UIViewController <FXFormControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) IBOutlet UILabel *topLabel;
-@property (nonatomic, retain) IBOutlet UIButton *submitButton;
 @property (nonatomic, retain) id<FXForm> prefs;
 @property (nonatomic, retain) API *api;
 @property (nonatomic, strong) FXFormController *formController;
-
-- (id) initWithPrefs: (id<FXForm>) prefs;
-- (IBAction)submit:(id)sender;
 
 @end
