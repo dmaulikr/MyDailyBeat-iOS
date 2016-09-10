@@ -6,16 +6,19 @@
 //  Copyright © 2016 eVerveCorp. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "ViewPagerController.h"
 #import "Constants.h"
 #import <API.h>
 #import "VervePreferences.h"
 
-@interface EVCFirstTimeSetupViewController : ViewPagerController <ViewPagerDataSource, ViewPagerDelegate>
+@interface EVCFirstTimeSetupViewController : UIViewController
 
-@property (assign, nonatomic) NSInteger currentIndex;
-@property (strong, nonatomic) NSMutableArray *viewControllers;
 @property (strong, nonatomic) API *api;
+@property (strong, nonatomic) IBOutlet UILabel *message;
+@property (strong, nonatomic) IBOutlet UIButton *next;
+
+- (IBAction)next:(id)sender;
 
 
 

@@ -253,6 +253,7 @@ static VerveUser *currentUser;
     VerveMatchingPreferences *prefs = [[VerveMatchingPreferences alloc] init];
     NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:user.screenName]];
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/matching/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSLog(@"%@", resultDic);
     if (resultDic != nil) {
         prefs.gender = [[resultDic objectForKey:@"gender"] intValue];
         prefs.age = [[resultDic objectForKey:@"age"] intValue];
@@ -663,7 +664,7 @@ static VerveUser *currentUser;
 - (HobbiesPreferences *) getHobbiesPreferencesForUserWithScreenName: (NSString *) screenName {
     NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:screenName]];
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"prefs/hobbies/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    
+    NSLog(@"%@", resultDic);
     NSMutableArray *list = [resultDic objectForKey:@"hobbyList"];
     return [HobbiesPreferences fromJSON:list];
 }

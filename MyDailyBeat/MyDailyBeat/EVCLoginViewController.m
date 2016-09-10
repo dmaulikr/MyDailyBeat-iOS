@@ -21,7 +21,6 @@
     fields.dataSource = self;
     fields.delegate = self;
     fields.scrollEnabled = FALSE;
-    [self loadLoginData];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
@@ -29,6 +28,11 @@
     header.image = [UIImage imageNamed:@"Logo.png"];
 
     
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self loadLoginData];
 }
 
 - (void) loadLoginData {

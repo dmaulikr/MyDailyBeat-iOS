@@ -56,7 +56,6 @@
     self.formController.tableView = self.tableView;
     self.formController.delegate = self;
     self.formController.form = [[VervePreferences alloc] init];
-    api = [API getInstance];
     
     [self retrievePrefs];
 

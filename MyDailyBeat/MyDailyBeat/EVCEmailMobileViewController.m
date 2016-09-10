@@ -7,6 +7,7 @@
 //
 
 #import "EVCEmailMobileViewController.h"
+#import "EVCFirstTimeSetupViewController.h"
 
 @interface EVCEmailMobileViewController ()
 
@@ -87,14 +88,17 @@
             BOOL result = [[API getInstance] createUser:user];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
-                if (result)
+                if (result) {
                     [self.view makeToast:@"User creation successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
-                else {
+                    [[NSUserDefaults standardUserDefaults] setObject:user.screenName forKey:KEY_SCREENNAME];
+                    [[NSUserDefaults standardUserDefaults] setObject:user.password forKey:KEY_PASSWORD];
+                    EVCFirstTimeSetupViewController *first = [[EVCFirstTimeSetupViewController alloc] initWithNibName:@"EVCFirstTimeSetupViewController" bundle:nil];
+                    [self.parentViewController.navigationController pushViewController:first animated:YES];
+                } else {
                     [self.view makeToast:@"User creation failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
                     return;
                 }
                 
-                [self.parentController.navigationController popToRootViewControllerAnimated:YES];
                 
             });
         });
