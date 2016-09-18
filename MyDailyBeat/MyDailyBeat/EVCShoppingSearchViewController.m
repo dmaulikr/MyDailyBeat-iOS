@@ -23,6 +23,8 @@
     [self.sBar setShowsScopeBar:true];
     [self.sBar setShowsCancelButton:false animated:true];
     [self.sBar sizeToFit];
+    self.sBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.sBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     isFiltered = FALSE;
     
     [self loadData];
