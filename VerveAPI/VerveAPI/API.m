@@ -1117,7 +1117,7 @@ static VerveUser *currentUser;
     NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
     parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:user.password]]];
     
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"fling/partners/match" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"relationship/match" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     NSMutableArray *items = [resultDic objectForKey:@"items"];
     NSMutableArray *retItems = [[NSMutableArray alloc] init];
@@ -1303,7 +1303,6 @@ static VerveUser *currentUser;
 
 - (NSDictionary *) getShoppingFavoritesForUser: (VerveUser *) user withSortOrder: (EVCSearchSortOrder) sortOrder {
     NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&sort_order=" stringByAppendingString:[NSString stringWithFormat:@"%d", sortOrder]]];
     return [self makeRequestWithBaseUrl:BASE_URL withPath:@"shopping/url/favorites/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
 }
 

@@ -14,14 +14,42 @@
 
 @implementation EVCResourceLinksTableViewController
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andModuleName: (NSString *) m {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self->module = m;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    path = RES_LINKS;
+    resLinks = [NSDictionary dictionaryWithContentsOfFile:path];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) reloadData {
+    if ([module isEqualToString:@"Finance"]) {
+        _dataArr = [resLinks objectForKey:@"Finance"];
+    } else if ([module isEqualToString:@"FeelingBlue"]) {
+        _dataArr = [resLinks objectForKey:@"FeelingBlue"];
+    } else if ([module isEqualToString:@"Relationships"]) {
+        _dataArr = [resLinks objectForKey:@"Relationships"];
+    } else if ([module isEqualToString:@"Jobs"]) {
+        _dataArr = [resLinks objectForKey:@"Jobs"];
+    } else if ([module isEqualToString:@"Health"]) {
+        _dataArr = [resLinks objectForKey:@"Health"];
+    } else if ([module isEqualToString:@"Travel"]) {
+        _dataArr = [resLinks objectForKey:@"Travel"];
+    } else if ([module isEqualToString:@"Volunteering"]) {
+        _dataArr = [resLinks objectForKey:@"Volunteering"];
+    } else {
+        _dataArr = [[NSArray alloc] init];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,35 +67,36 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return 1;
+    return [_dataArr count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
     
-    cell.textLabel.text = @"No Links";
+    if ([[_dataArr objectAtIndex:indexPath.row] isEqualToString:@""]) {
+        cell.textLabel.text = @"No Links Found";
+    } else {
+        cell.textLabel.text = [_dataArr objectAtIndex:indexPath.row];
+    }
     
-    // Configure the cell...
     
     return cell;
 }
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self openURLinBrowser:[_dataArr objectAtIndex:indexPath.row]];
 }
-*/
+
+- (void) openURLinBrowser: (NSString *) url {
+    NSString *fullURL = [NSString stringWithFormat:@"http://www.%@", url];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:fullURL]];
+    
+}
 
 
 @end

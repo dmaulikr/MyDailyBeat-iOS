@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Constants.h"
 
-@interface EVCResourceLinksTableViewController : UITableViewController
+@interface EVCResourceLinksTableViewController : UITableViewController {
+    NSString *path, *module;
+    NSDictionary *resLinks;
+}
+
+@property (nonatomic, retain) NSArray *dataArr;
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andModuleName: (NSString *) m;
 
 @end

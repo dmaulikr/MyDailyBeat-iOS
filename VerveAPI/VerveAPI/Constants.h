@@ -60,6 +60,8 @@ typedef NS_ENUM(NSInteger, SexualPreference) {
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
+#define RES_LINKS [[NSBundle mainBundle] pathForResource:@"res_links" ofType:@"plist"]
+
 typedef enum {
     SendByEmail = 0,
     SendByMobile = 1
