@@ -138,13 +138,7 @@
 		769EE9ED19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EE9EB19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib */; };
 		769EE9F119A2B14900FF072E /* EVCLargeMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */; };
 		769EE9F219A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EE9F019A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib */; };
-		769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */; };
-		769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA0D19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib */; };
-		769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */; };
-		769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */; };
 		769EEA1B19A53C9000FF072E /* KeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA1A19A53C9000FF072E /* KeyboardManager.framework */; };
-		769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */; };
-		769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */; };
 		769EEA3719A6482100FF072E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3619A6482100FF072E /* QuartzCore.framework */; };
 		769EEA8B19A8D43900FF072E /* EVCPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA8919A8D43900FF072E /* EVCPreferencesViewController.m */; };
 		769EEA8C19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769EEA8A19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib */; };
@@ -403,16 +397,7 @@
 		769EE9EE19A2B14900FF072E /* EVCLargeMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLargeMessageViewController.h; sourceTree = "<group>"; };
 		769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLargeMessageViewController.m; sourceTree = "<group>"; };
 		769EE9F019A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLargeMessageViewController_iPhone.xib; sourceTree = "<group>"; };
-		769EEA0B19A3B03F00FF072E /* EVCPersonalInfo1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCPersonalInfo1ViewController.h; sourceTree = "<group>"; };
-		769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCPersonalInfo1ViewController.m; sourceTree = "<group>"; };
-		769EEA0D19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPersonalInfo1ViewController_iPhone.xib; sourceTree = "<group>"; };
-		769EEA1519A42F3600FF072E /* EVCScreenNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCScreenNameViewController.h; sourceTree = "<group>"; };
-		769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCScreenNameViewController.m; sourceTree = "<group>"; };
-		769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCScreenNameViewController_iPhone.xib; sourceTree = "<group>"; };
 		769EEA1A19A53C9000FF072E /* KeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KeyboardManager.framework; sourceTree = "<group>"; };
-		769EEA2619A57F5B00FF072E /* EVCEmailMobileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCEmailMobileViewController.h; sourceTree = "<group>"; };
-		769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCEmailMobileViewController.m; sourceTree = "<group>"; };
-		769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCEmailMobileViewController_iPhone.xib; sourceTree = "<group>"; };
 		769EEA3619A6482100FF072E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		769EEA8819A8D43900FF072E /* EVCPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCPreferencesViewController.h; sourceTree = "<group>"; };
 		769EEA8919A8D43900FF072E /* EVCPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EVCPreferencesViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -832,9 +817,6 @@
 				761D652319A15A4D0062B525 /* EVCViewController.h */,
 				769EE9E919A2530100FF072E /* EVCRegistrationViewController.h */,
 				769EE9EE19A2B14900FF072E /* EVCLargeMessageViewController.h */,
-				769EEA0B19A3B03F00FF072E /* EVCPersonalInfo1ViewController.h */,
-				769EEA1519A42F3600FF072E /* EVCScreenNameViewController.h */,
-				769EEA2619A57F5B00FF072E /* EVCEmailMobileViewController.h */,
 				769EEA8819A8D43900FF072E /* EVCPreferencesViewController.h */,
 				769EEA9219A8DBF900FF072E /* EVCMenuViewController.h */,
 				7636F6B619CF25DB000B68B0 /* EVCProfileViewController.h */,
@@ -869,14 +851,11 @@
 				761D652419A15A4D0062B525 /* EVCViewController.m */,
 				769EE9EA19A2530100FF072E /* EVCRegistrationViewController.m */,
 				769EE9EF19A2B14900FF072E /* EVCLargeMessageViewController.m */,
-				769EEA0C19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m */,
-				769EEA1619A42F3600FF072E /* EVCScreenNameViewController.m */,
 				769EEA8919A8D43900FF072E /* EVCPreferencesViewController.m */,
 				769EEA9319A8DBF900FF072E /* EVCMenuViewController.m */,
 				7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */,
 				7636F6C119CF9074000B68B0 /* EVCUpdateProfileViewController.m */,
 				7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */,
-				769EEA2719A57F5B00FF072E /* EVCEmailMobileViewController.m */,
 				76C2B08619F333300010E98B /* EVCLoginViewController.m */,
 				76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */,
 				76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */,
@@ -914,9 +893,6 @@
 				761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */,
 				769EE9EB19A2530100FF072E /* EVCRegistrationViewController_iPhone.xib */,
 				769EE9F019A2B14900FF072E /* EVCLargeMessageViewController_iPhone.xib */,
-				769EEA0D19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib */,
-				769EEA1719A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib */,
-				769EEA2819A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib */,
 				769EEA8A19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib */,
 				7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */,
 				7636F6C219CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib */,
@@ -1261,7 +1237,6 @@
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				7667E73F1A241F0E00B006D5 /* menubg.jpg in Resources */,
 				76DEDA8E1A475E68009CD94F /* EVCPartnersTableViewController.xib in Resources */,
-				769EEA2A19A57F5B00FF072E /* EVCEmailMobileViewController_iPhone.xib in Resources */,
 				760ECEB51BAD073D00F3D9A2 /* asmedia_play@2x.png in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
 				76264E6C1BE6E7F500292FBF /* search-icon-white.png in Resources */,
@@ -1316,11 +1291,9 @@
 				766B1D311CB1680D00C69FAD /* pill-bottle-grey.png in Resources */,
 				76264E611BE6E7F500292FBF /* finance2.png in Resources */,
 				769EEA8C19A8D43900FF072E /* EVCPreferencesViewController_iPhone.xib in Resources */,
-				769EEA1919A42F3600FF072E /* EVCScreenNameViewController_iPhone.xib in Resources */,
 				767DF3DC1B5DE1DA000D4D5D /* hamburger-icon-gray.png in Resources */,
 				76A204D71BB0E7CE0028BFF8 /* hearts.png in Resources */,
 				761B963D1C68FA9D0019C224 /* profile-icon-black.png in Resources */,
-				769EEA0F19A3B03F00FF072E /* EVCPersonalInfo1ViewController_iPhone.xib in Resources */,
 				76607AC01AD35A6E0097E520 /* banner-white.png in Resources */,
 				767BDC9F1D0609D8004DA0D8 /* res-icon-gray.png in Resources */,
 				766B1D321CB1680D00C69FAD /* pill-bottle-white.png in Resources */,
@@ -1377,9 +1350,7 @@
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
 				76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */,
 				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
-				769EEA1819A42F3600FF072E /* EVCScreenNameViewController.m in Sources */,
 				76063C4F1B94B03A002F9171 /* EVCTravelTableViewController.m in Sources */,
-				769EEA0E19A3B03F00FF072E /* EVCPersonalInfo1ViewController.m in Sources */,
 				761D652519A15A4D0062B525 /* EVCViewController.m in Sources */,
 				7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */,
 				76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */,
@@ -1398,7 +1369,6 @@
 				767000E01A7AFB04005F9DC4 /* EVCShoppingFavoritesTableViewController.m in Sources */,
 				76A204CC1BB062730028BFF8 /* EVCMenuTableViewCell.m in Sources */,
 				769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */,
-				769EEA2919A57F5B00FF072E /* EVCEmailMobileViewController.m in Sources */,
 				766DEF7A1A4BC2870049CA2A /* EVCChatroomTableViewController.m in Sources */,
 				76B64AE91D689F5900CC7A7A /* EVCFirstTimeSetupViewController.m in Sources */,
 				76EDB29B1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m in Sources */,
