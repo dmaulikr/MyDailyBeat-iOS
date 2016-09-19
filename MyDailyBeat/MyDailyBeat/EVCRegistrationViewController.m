@@ -14,7 +14,7 @@
 
 @implementation EVCRegistrationViewController
 
-@synthesize currentIndex, viewControllers, api, firstName, lastName, birth_month, birth_year, screenName, password, email, mobile, zipcode;
+@synthesize api, firstName, lastName, birth_month, birth_year, screenName, password, email, mobile, zipcode;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,20 +29,13 @@
 {
     [super viewDidLoad];
     
+    
     api = [API getInstance];
-    currentIndex = 0;
+    [welcome1 setText:WELCOME_MESSAGE_1];
+    [welcome2 setText:WELCOME_MESSAGE_2];
     
-    EVCLargeMessageViewController *initialViewController = [[EVCLargeMessageViewController alloc] initWithMessage:WELCOME_MESSAGE_1];
-    EVCLargeMessageViewController *secondViewController  = [[EVCLargeMessageViewController alloc] initWithMessage:WELCOME_MESSAGE_2];
-    EVCPersonalInfo1ViewController *thirdViewController = [[EVCPersonalInfo1ViewController alloc] initWithNibName:@"EVCPersonalInfo1ViewController_iPhone" bundle:nil andParent:self];
-    EVCScreenNameViewController *fourthViewController = [[EVCScreenNameViewController alloc] initWithNibName:@"EVCScreenNameViewController_iPhone" bundle:nil andParent:self];
-    EVCEmailMobileViewController *fifthViewController = [[EVCEmailMobileViewController alloc] initWithNibName:@"EVCEmailMobileViewController_iPhone" bundle:nil andParent:self];
+    contentView = page1;
     
-    
-    viewControllers = [NSMutableArray arrayWithObjects:initialViewController, secondViewController, thirdViewController, fourthViewController, fifthViewController, nil];
-    
-    self.dataSource = self;
-    self.delegate = self;
     
     
     
@@ -56,39 +49,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - ViewPagerDataSource
-- (NSUInteger)numberOfTabsForViewPager:(ViewPagerController *)viewPager {
-    return [self.viewControllers count];
-}
-
-#pragma mark - ViewPagerDataSource
-- (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
-    
-    UILabel *label = [UILabel new];
-    label.text = [NSString stringWithFormat:@"Step %lu", (long) index + 1];
-    [label sizeToFit];
-    
-    return label;
-}
-
-#pragma mark - ViewPagerDataSource
-- (UIViewController *)viewPager:(ViewPagerController *)viewPager contentViewControllerForTabAtIndex:(NSUInteger)index {
-    
-    return [self.viewControllers objectAtIndex:index];
-}
-
-- (UIColor *) viewPager:(ViewPagerController *)viewPager colorForComponent:(ViewPagerComponent)component withDefault:(UIColor *)color {
-    switch (component) {
-        case ViewPagerIndicator:
-            return UIColorFromHex(0x0097A4);
-            break;
-            
-        default:
-            return color;
-            break;
-    }
 }
 
 @end

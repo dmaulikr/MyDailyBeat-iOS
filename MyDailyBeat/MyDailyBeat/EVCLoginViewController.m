@@ -7,6 +7,7 @@
 //
 
 #import "EVCLoginViewController.h"
+#import "VerveAPI/Constants.h"
 
 @interface EVCLoginViewController ()
 

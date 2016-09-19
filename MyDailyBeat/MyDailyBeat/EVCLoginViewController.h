@@ -12,6 +12,8 @@
 #import "EVCRegistrationViewController.h"
 #import "UIView+Toast.h"
 #import "Constants.h"
+#import "RESideMenu.h"
+#import "EVCProfileViewController.h"
 
 @interface EVCLoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
     IBOutlet UIImageView *header;

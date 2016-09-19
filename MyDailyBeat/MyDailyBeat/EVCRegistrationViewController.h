@@ -7,19 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EVCLargeMessageViewController.h"
-#import "EVCPersonalInfo1ViewController.h"
-#import "EVCScreenNameViewController.h"
-#import "EVCEmailMobileViewController.h"
 #import <Constants.h>
 #import <API.h>
-#import <ViewPagerController.h>
 
 
-@interface EVCRegistrationViewController : ViewPagerController <ViewPagerDataSource, ViewPagerDelegate>
+@interface EVCRegistrationViewController : UIViewController {
+    IBOutlet UIView *page1, *page2, *page3, *page4, *page5, *contentView;
+    IBOutlet UITextField *first, *last, *uname, *pass, *pass_repeat, *emailaddr, *mobilephone;
+    IBOutlet UIButton *page1b, *page2b, *page2p, *page3b, *page3p, *page4b, *page4p, *page5b, *page5p;
+    IBOutlet UILabel *welcome1, *welcome2;
+}
 
-@property (assign, nonatomic) NSInteger currentIndex;
-@property (strong, nonatomic) NSMutableArray *viewControllers;
 @property(strong, nonatomic) API *api;
 
 @property(strong, nonatomic) NSString *firstName;
