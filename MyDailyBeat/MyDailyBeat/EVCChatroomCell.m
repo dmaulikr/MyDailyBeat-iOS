@@ -10,10 +10,6 @@
 
 @implementation EVCChatroomCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     
@@ -26,7 +22,7 @@
         NSString *firsts = [chatroom.screenNames objectAtIndex:0];
         NSString *seconds = [chatroom.screenNames objectAtIndex:1];
         NSString *thirds = [chatroom.screenNames objectAtIndex:2];
-        self.chatroomNameLbl.text = [NSString stringWithFormat:@"%@, %@, and %lu others", firsts, seconds, [chatroom.screenNames count] - 2];
+        self.chatroomNameLbl.text = [NSString stringWithFormat:@"%@, %@, and %lu others", firsts, seconds, (u_long)([chatroom.screenNames count] - 2)];
         
         
         dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);

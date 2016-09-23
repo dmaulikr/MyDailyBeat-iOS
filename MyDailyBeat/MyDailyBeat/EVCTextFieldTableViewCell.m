@@ -16,12 +16,9 @@
     self = [nib objectAtIndex:0];
     if (self) {
         self.placeHolderText = placeHolder;
+        textField.placeholder = self.placeHolderText;
     }
     return self;
-}
-
-- (void)awakeFromNib {
-    textField.placeholder = self.placeHolderText;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
