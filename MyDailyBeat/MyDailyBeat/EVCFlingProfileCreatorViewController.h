@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <API.h>
+#import <RestAPI.h>
 #import "EVCInterestsSelectorTableViewController.h"
 #import "Constants.h"
 

@@ -30,7 +30,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    if ([self.currentViewedUser isEqual:[[API getInstance] getCurrentUser]]) {
+    if ([self.currentViewedUser isEqual:[[RestAPI getInstance] getCurrentUser]]) {
         [self.addFavsBtn setHidden:YES];
         [self.sendMessageBtn setHidden:YES];
         [self.editBtn setHidden:NO];
@@ -52,7 +52,7 @@
 - (void) loadProfile {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveProfilePictureForUserWithScreenName:self.currentViewedUser.screenName];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:self.currentViewedUser.screenName];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
@@ -67,7 +67,7 @@
 - (void) loadPicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        FlingProfile *prof = [[API getInstance] getFlingProfileForUser:self.currentViewedUser];
+        FlingProfile *prof = [[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             self.aboutMeView.text = prof.aboutMe;
@@ -84,14 +84,14 @@
             [self.view makeToastActivity];
         });
         
-        self.prefs = [[API getInstance] getUserPreferencesForUser: [[API getInstance] getCurrentUser]];
-        self.matching = [[API getInstance] getMatchingPreferencesForUser:[[API getInstance] getCurrentUser]];
-        NSMutableArray *favs = [[NSMutableArray alloc] initWithArray:[[API getInstance] getFlingFavoritesForUser:[[API getInstance] getCurrentUser]]];
+        self.prefs = [[RestAPI getInstance] getUserPreferencesForUser: [[RestAPI getInstance] getCurrentUser]];
+        self.matching = [[RestAPI getInstance] getMatchingPreferencesForUser:[[RestAPI getInstance] getCurrentUser]];
+        NSMutableArray *favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingFavoritesForUser:[[RestAPI getInstance] getCurrentUser]]];
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
-            if ([favs indexOfObject:[[API getInstance] getFlingProfileForUser:self.currentViewedUser]] != NSNotFound) {
+            if ([favs indexOfObject:[[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser]] != NSNotFound) {
                 [self.addFavsBtn setTitle:@"Remove Favorite" forState:UIControlStateNormal];
             }
             if (self.prefs == nil)
@@ -131,7 +131,7 @@
                     self.ageLbl.text = @"100+";
                     break;
             }
-            self.aboutMeView.text = [[API getInstance] getFlingProfileForUser:self.currentViewedUser].aboutMe;
+            self.aboutMeView.text = [[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser].aboutMe;
             switch (self.prefs.gender) {
                 case 0:
                     self.genderLbl.text = @"Male";
@@ -197,17 +197,17 @@
             [self.view makeToastActivity];
         });
         
-        NSMutableArray *favs = [[NSMutableArray alloc] initWithArray:[[API getInstance] getFlingFavoritesForUser:[[API getInstance] getCurrentUser]]];
+        NSMutableArray *favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingFavoritesForUser:[[RestAPI getInstance] getCurrentUser]]];
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
-            if ([favs indexOfObject:[[API getInstance] getFlingProfileForUser:self.currentViewedUser]] != NSNotFound) {
+            if ([favs indexOfObject:[[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser]] != NSNotFound) {
                 [self.addFavsBtn setTitle:@"Add Favorite" forState:UIControlStateNormal];
                 // remove favorite
             } else {
                 [self.addFavsBtn setTitle:@"Remove Favorite" forState:UIControlStateNormal];
-                [[API getInstance] addUser:self.currentViewedUser ToFlingFavoritesOfUser:[[API getInstance] getCurrentUser]];
+                [[RestAPI getInstance] addUser:self.currentViewedUser ToFlingFavoritesOfUser:[[RestAPI getInstance] getCurrentUser]];
             }
         });
     });
@@ -220,7 +220,7 @@
             [self.view makeToastActivity];
         });
         
-        MessageChatroom *chatroom = [[API getInstance] createChatroomForUsersWithScreenName:[[API getInstance] getCurrentUser].screenName andScreenName:self.currentViewedUser.screenName];
+        MessageChatroom *chatroom = [[RestAPI getInstance] createChatroomForUsersWithScreenName:[[RestAPI getInstance] getCurrentUser].screenName andScreenName:self.currentViewedUser.screenName];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];

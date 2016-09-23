@@ -8,9 +8,9 @@
 
 #import "EVCFinanceHomeViewController.h"
 #import "BankDatabase.h"
-#import <DLAVAlertView.h>
+#import "DLAVAlertView.h"
 #import "EVCCommonMethods.h"
-#import <AHKActionSheet.h>
+#import "AHKActionSheet.h"
 
 @interface EVCFinanceHomeViewController ()
 
@@ -141,8 +141,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view makeToastActivity];
             });
-            if ([[API getInstance] doesAppExistWithTerm:text andCountry:@"US"]) {
-                VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:text inCountry:@"US"];
+            if ([[RestAPI getInstance] doesAppExistWithTerm:text andCountry:@"US"]) {
+                VerveBankObject *bank = [[RestAPI getInstance] getBankInfoForBankWithName:text inCountry:@"US"];
                 BankInfo *info = [[BankInfo alloc] initWithUniqueId:0 name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
                 BankDatabase *db = [BankDatabase database];
                 [db insertIntoDatabase:info];
@@ -168,7 +168,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        val = [[API getInstance] doesAppExistWithTerm:name andCountry:@"US"];
+        val = [[RestAPI getInstance] doesAppExistWithTerm:name andCountry:@"US"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
         });

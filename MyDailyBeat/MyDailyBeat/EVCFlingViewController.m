@@ -43,7 +43,7 @@
     [super viewDidLoad];
     EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil andMode:self.mode];
     EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil andMode:self.mode];
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getCurrentUser] andMode:self.mode];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[RestAPI getInstance] getCurrentUser] andMode:self.mode];
     EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] initWithNibName:@"EVCChatroomTableViewController" bundle:nil andMode:self.mode];
     
     UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:partnerMatch];
@@ -124,7 +124,7 @@
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([[API getInstance] getFlingProfileForUser:[[API getInstance] getCurrentUser]] != nil)
+            if ([[RestAPI getInstance] getFlingProfileForUser:[[RestAPI getInstance] getCurrentUser]] != nil)
             {
                 EVCFlingProfileCreatorViewController *creator = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil];
                 [self.navigationController presentViewController:creator animated:YES completion:nil];

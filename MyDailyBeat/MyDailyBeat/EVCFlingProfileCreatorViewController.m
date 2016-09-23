@@ -47,9 +47,9 @@
             [self.view makeToastActivity];
         });
         
-        VerveUserPreferences* prefs = [[API getInstance] getUserPreferencesForUser:[[API getInstance] getCurrentUser]];
+        VerveUserPreferences* prefs = [[RestAPI getInstance] getUserPreferencesForUser:[[RestAPI getInstance] getCurrentUser]];
         int age = prefs.age;
-        BOOL success = [[API getInstance] saveFlingProfileForUser:[[API getInstance] getCurrentUser] withAge:age andDescription:about andInterests:self.interests];
+        BOOL success = [[RestAPI getInstance] saveFlingProfileForUser:[[RestAPI getInstance] getCurrentUser] withAge:age andDescription:about andInterests:self.interests];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];

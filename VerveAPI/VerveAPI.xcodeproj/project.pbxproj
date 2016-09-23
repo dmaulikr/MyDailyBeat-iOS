@@ -6,146 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		7671FC791A0DBE9F000ECDAF /* VerveAPITarget */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 7671FC7A1A0DBEA0000ECDAF /* Build configuration list for PBXAggregateTarget "VerveAPITarget" */;
-			buildPhases = (
-			);
-			dependencies = (
-				7671FC7E1A0DBEE6000ECDAF /* PBXTargetDependency */,
-				7671FC801A0DBEE9000ECDAF /* PBXTargetDependency */,
-			);
-			name = VerveAPITarget;
-			productName = VerveAPITarget;
-		};
-/* End PBXAggregateTarget section */
-
-/* Begin PBXBuildFile section */
-		76011C411B935EB5000EC003 /* VerveBankObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 76011C401B935EB5000EC003 /* VerveBankObject.m */; };
-		760D02A31B7D889C001CFE25 /* VerveUserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 760D02A21B7D889C001CFE25 /* VerveUserPreferences.m */; };
-		760D02A61B7D8987001CFE25 /* VerveMatchingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 760D02A51B7D8987001CFE25 /* VerveMatchingPreferences.m */; };
-		760E57151B8EAF110075A89F /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 760E57141B8EAF110075A89F /* FXForms.m */; };
-		761642C91B8C141900BEC59C /* VerveRelationshipPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 761642C81B8C141900BEC59C /* VerveRelationshipPrefs.m */; };
-		761923DE1BC8B48000E182F4 /* DownPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 761923DB1BC8B48000E182F4 /* DownPicker.m */; };
-		761923DF1BC8B48000E182F4 /* UIDownPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 761923DD1BC8B48000E182F4 /* UIDownPicker.m */; };
-		761923E31BC8B4E100E182F4 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 761923E01BC8B4E100E182F4 /* downArrow.png */; };
-		761923E41BC8B4E100E182F4 /* downArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 761923E11BC8B4E100E182F4 /* downArrow@2x.png */; };
-		761923E51BC8B4E100E182F4 /* downArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 761923E21BC8B4E100E182F4 /* downArrow@3x.png */; };
-		761D655019A15B680062B525 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D654F19A15B680062B525 /* Foundation.framework */; };
-		761D657719A15BE90062B525 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D657619A15BE90062B525 /* API.m */; };
-		761D657D19A15DF40062B525 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D657C19A15DF40062B525 /* Reachability.m */; };
-		761D658219A15F140062B525 /* VerveUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D658119A15F140062B525 /* VerveUser.m */; };
-		761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D658519A15FD40062B525 /* AFHTTPRequestOperation.m */; };
-		761D659819A15FD40062B525 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D658719A15FD40062B525 /* AFHTTPRequestOperationManager.m */; };
-		761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D658919A15FD40062B525 /* AFHTTPSessionManager.m */; };
-		761D659A19A15FD40062B525 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D658C19A15FD40062B525 /* AFNetworkReachabilityManager.m */; };
-		761D659B19A15FD40062B525 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D658E19A15FD40062B525 /* AFSecurityPolicy.m */; };
-		761D659C19A15FD40062B525 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659019A15FD40062B525 /* AFURLConnectionOperation.m */; };
-		761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659219A15FD40062B525 /* AFURLRequestSerialization.m */; };
-		761D659E19A15FD40062B525 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659419A15FD40062B525 /* AFURLResponseSerialization.m */; };
-		761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D659619A15FD40062B525 /* AFURLSessionManager.m */; };
-		761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B419A1A6BC0062B525 /* RESideMenu.m */; };
-		761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 761D65B619A1A6BC0062B525 /* UIViewController+RESideMenu.m */; };
-		762340E91BDF134500FA2FDE /* VerveVolunteering.m in Sources */ = {isa = PBXBuildFile; fileRef = 762340E81BDF134500FA2FDE /* VerveVolunteering.m */; };
-		762341011BE5955700FA2FDE /* AHKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 762340FA1BE5955700FA2FDE /* AHKActionSheet.m */; };
-		762341021BE5955700FA2FDE /* AHKActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762340FC1BE5955700FA2FDE /* AHKActionSheetViewController.m */; };
-		762341031BE5955700FA2FDE /* UIImage+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 762340FE1BE5955700FA2FDE /* UIImage+AHKAdditions.m */; };
-		762341041BE5955700FA2FDE /* UIWindow+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 762341001BE5955700FA2FDE /* UIWindow+AHKAdditions.m */; };
-		7623C9F31C2A52F5006C4D46 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7623C9F21C2A52F5006C4D46 /* XMLDictionary.m */; };
-		76264E7A1BE822C100292FBF /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76264E791BE822C000292FBF /* ViewPagerController.m */; };
-		762F13461BBF6D3F001BD716 /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 762F13451BBF6D3F001BD716 /* MapPoint.m */; };
-		766A7D571A923D8D00B6C81E /* search-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 766A7D561A923D8D00B6C81E /* search-icon.png */; };
-		766DEF591A48C5B10049CA2A /* SLKTextView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA41A48BA92009CD94F /* SLKTextView+SLKAdditions.m */; };
-		766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA71A48BA92009CD94F /* UIScrollView+SLKAdditions.m */; };
-		766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAA91A48BA92009CD94F /* UIView+SLKAdditions.m */; };
-		766DEF601A48C5BC0049CA2A /* SLKInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAAC1A48BA92009CD94F /* SLKInputAccessoryView.m */; };
-		766DEF621A48C5BC0049CA2A /* SLKTextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAAE1A48BA92009CD94F /* SLKTextInputbar.m */; };
-		766DEF641A48C5BC0049CA2A /* SLKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB01A48BA92009CD94F /* SLKTextView.m */; };
-		766DEF661A48C5BC0049CA2A /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB21A48BA92009CD94F /* SLKTextViewController.m */; };
-		766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDAB41A48BA92009CD94F /* SLKTypingIndicatorView.m */; };
-		766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF6A1A48E4F00049CA2A /* MessageTableViewCell.m */; };
-		766DEF861A4E5C220049CA2A /* MessageChatroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 766DEF851A4E5C220049CA2A /* MessageChatroom.m */; };
-		7670EFBA1CFA950700831967 /* HealthDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7670EFB91CFA950700831967 /* HealthDatabase.m */; };
-		7670EFC31CFA960000831967 /* HealthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7670EFC21CFA960000831967 /* HealthInfo.m */; };
-		7670EFC81CFC9DFA00831967 /* PrescripProviderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7670EFC71CFC9DFA00831967 /* PrescripProviderInfo.m */; };
-		7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC621A04528D000ECDAF /* EVCSearchEngine.m */; };
-		7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC651A06CE04000ECDAF /* EVCUserSearchViewViewController.m */; };
-		7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC661A06CE04000ECDAF /* EVCUserSearchViewViewController_iPhone.xib */; };
-		7671FC731A0DB515000ECDAF /* EVCUserInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC711A0DB515000ECDAF /* EVCUserInviteViewController.m */; };
-		7671FC741A0DB51F000ECDAF /* EVCUserInviteViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC721A0DB515000ECDAF /* EVCUserInviteViewController_iPhone.xib */; };
-		7671FC761A0DB740000ECDAF /* message-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC751A0DB740000ECDAF /* message-25.png */; };
-		7671FC781A0DB7C6000ECDAF /* chat-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC771A0DB7C6000ECDAF /* chat-25.png */; };
-		7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7671FC8A1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m */; };
-		7671FC8D1A0FD8B9000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC8B1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib */; };
-		7671FC911A0FE3B0000ECDAF /* search-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 7671FC901A0FE3B0000ECDAF /* search-25.png */; };
-		767BDC991CFFB856004DA0D8 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDC981CFFB856004DA0D8 /* Stack.m */; };
-		767BDC9C1CFFBA04004DA0D8 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDC9B1CFFBA04004DA0D8 /* Queue.m */; };
-		767BDCA51D105C71004DA0D8 /* HobbiesPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDCA41D105C71004DA0D8 /* HobbiesPreferences.m */; };
-		767BDCA81D106599004DA0D8 /* HobbiesMatchObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 767BDCA71D106599004DA0D8 /* HobbiesMatchObject.m */; };
-		768E3EF41CEFEAF400A26909 /* BankDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E3EF31CEFEAF400A26909 /* BankDatabase.m */; };
-		768E3EF71CEFEB2600A26909 /* BankInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 768E3EF61CEFEB2600A26909 /* BankInfo.m */; };
-		769B0A881A54664200BB287E /* FlingProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A871A54664200BB287E /* FlingProfile.m */; };
-		769B0A8B1A59AF7100BB287E /* VerveMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A8A1A59AF7100BB287E /* VerveMessage.m */; };
-		769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2019A55F1100FF072E /* SHViewPager.m */; };
-		769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2219A55F1100FF072E /* SHViewPagerController.m */; };
-		769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA2E19A646FC00FF072E /* UIView+Toast.m */; };
-		769EEA3D19A6491B00FF072E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3819A6490000FF072E /* UIKit.framework */; };
-		769EEA3E19A6491F00FF072E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3A19A6490600FF072E /* QuartzCore.framework */; };
-		769EEA7019A7A38500FF072E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA6F19A7A38500FF072E /* MobileCoreServices.framework */; };
-		769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7719A8171500FF072E /* DLAVAlertView.m */; };
-		769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7919A8171500FF072E /* DLAVAlertViewButtonTheme.m */; };
-		769EEA8419A8171500FF072E /* DLAVAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7B19A8171500FF072E /* DLAVAlertViewController.m */; };
-		769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7D19A8171500FF072E /* DLAVAlertViewTextControlTheme.m */; };
-		769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA7F19A8171500FF072E /* DLAVAlertViewTextFieldTheme.m */; };
-		769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA8119A8171500FF072E /* DLAVAlertViewTheme.m */; };
-		76AE55F01A97D4C4000B95B6 /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */; };
-		76AE55F11A97D4C4000B95B6 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55EF1A97D4C4000B95B6 /* SVWebViewController.m */; };
-		76AE55F41A97D567000B95B6 /* SVWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55F31A97D567000B95B6 /* SVWebViewControllerActivity.m */; };
-		76AE55F71A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55F61A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m */; };
-		76AE55FA1A97D589000B95B6 /* SVWebViewControllerActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 76AE55F91A97D589000B95B6 /* SVWebViewControllerActivitySafari.m */; };
-		76AE55FC1A9A856C000B95B6 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 76AE55FB1A9A856C000B95B6 /* SVWebViewController.bundle */; };
-		76BD326119DCC5C90054ED88 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD326019DCC5C90054ED88 /* Post.m */; };
-		76BD327D19DF7F6D0054ED88 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BD327C19DF7F6D0054ED88 /* RECommonFunctions.m */; };
-		76C2B10519F9EBC60010E98B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10219F9EBC60010E98B /* check.png */; };
-		76C2B10619F9EBC60010E98B /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10319F9EBC60010E98B /* error.png */; };
-		76C2B10719F9EBC60010E98B /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B10419F9EBC60010E98B /* warning.png */; };
-		76E64EF919B631D10022F189 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E64EF819B631D10022F189 /* Group.m */; };
-		76EF996219FC507F00E15A14 /* EVCComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996019FC507F00E15A14 /* EVCComposeViewController.m */; };
-		76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996119FC507F00E15A14 /* EVCComposeViewController_iPhone.xib */; };
-		76FE75BE1B82C5C100D791B6 /* GroupPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FE75BD1B82C5C100D791B6 /* GroupPrefs.m */; };
-		76FE75C11B82D1AF00D791B6 /* VervePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FE75C01B82D1AF00D791B6 /* VervePreferences.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7671FC7D1A0DBEE6000ECDAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 761D654419A15B680062B525 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 761D654B19A15B680062B525;
-			remoteInfo = VerveAPI;
-		};
-		7671FC7F1A0DBEE9000ECDAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 761D654419A15B680062B525 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 76C2B0F519F9DBD40010E98B;
-			remoteInfo = VerveAPIBundle;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		761D654A19A15B680062B525 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		76011C3F1B935EB5000EC003 /* VerveBankObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveBankObject.h; sourceTree = "<group>"; };
 		76011C401B935EB5000EC003 /* VerveBankObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerveBankObject.m; sourceTree = "<group>"; };
@@ -164,7 +24,6 @@
 		761923E01BC8B4E100E182F4 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
 		761923E11BC8B4E100E182F4 /* downArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downArrow@2x.png"; sourceTree = "<group>"; };
 		761923E21BC8B4E100E182F4 /* downArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downArrow@3x.png"; sourceTree = "<group>"; };
-		761D654C19A15B680062B525 /* libVerveAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVerveAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		761D654F19A15B680062B525 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		761D655319A15B680062B525 /* VerveAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VerveAPI-Prefix.pch"; sourceTree = "<group>"; };
 		761D657519A15BE90062B525 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
@@ -208,8 +67,6 @@
 		762341001BE5955700FA2FDE /* UIWindow+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AHKAdditions.m"; sourceTree = "<group>"; };
 		7623C9F11C2A52F5006C4D46 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		7623C9F21C2A52F5006C4D46 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
-		76264E781BE822C000292FBF /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
-		76264E791BE822C000292FBF /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		762F13441BBF6D3F001BD716 /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPoint.h; sourceTree = "<group>"; };
 		762F13451BBF6D3F001BD716 /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPoint.m; sourceTree = "<group>"; };
 		766A7D561A923D8D00B6C81E /* search-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon.png"; sourceTree = "<group>"; };
@@ -255,10 +112,6 @@
 		769B0A891A59AF7100BB287E /* VerveMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerveMessage.h; sourceTree = "<group>"; };
 		769B0A8A1A59AF7100BB287E /* VerveMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerveMessage.m; sourceTree = "<group>"; };
 		769EE9F719A2B6AB00FF072E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		769EEA1F19A55F1100FF072E /* SHViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPager.h; sourceTree = "<group>"; };
-		769EEA2019A55F1100FF072E /* SHViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPager.m; sourceTree = "<group>"; };
-		769EEA2119A55F1100FF072E /* SHViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHViewPagerController.h; sourceTree = "<group>"; };
-		769EEA2219A55F1100FF072E /* SHViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHViewPagerController.m; sourceTree = "<group>"; };
 		769EEA2D19A646FC00FF072E /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		769EEA2E19A646FC00FF072E /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		769EEA3819A6490000FF072E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -280,26 +133,26 @@
 		769EEA7F19A8171500FF072E /* DLAVAlertViewTextFieldTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTextFieldTheme.m; sourceTree = "<group>"; };
 		769EEA8019A8171500FF072E /* DLAVAlertViewTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAVAlertViewTheme.h; sourceTree = "<group>"; };
 		769EEA8119A8171500FF072E /* DLAVAlertViewTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAVAlertViewTheme.m; sourceTree = "<group>"; };
-		76AE55EC1A97D4C4000B95B6 /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
-		76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
-		76AE55EE1A97D4C4000B95B6 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
-		76AE55EF1A97D4C4000B95B6 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
-		76AE55F21A97D567000B95B6 /* SVWebViewControllerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivity.h; sourceTree = "<group>"; };
-		76AE55F31A97D567000B95B6 /* SVWebViewControllerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivity.m; sourceTree = "<group>"; };
-		76AE55F51A97D57C000B95B6 /* SVWebViewControllerActivityChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivityChrome.h; sourceTree = "<group>"; };
-		76AE55F61A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivityChrome.m; sourceTree = "<group>"; };
-		76AE55F81A97D589000B95B6 /* SVWebViewControllerActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewControllerActivitySafari.h; sourceTree = "<group>"; };
-		76AE55F91A97D589000B95B6 /* SVWebViewControllerActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewControllerActivitySafari.m; sourceTree = "<group>"; };
-		76AE55FB1A9A856C000B95B6 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
 		76BD325F19DCC5C90054ED88 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		76BD326019DCC5C90054ED88 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		76BD327B19DF7F6D0054ED88 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		76BD327C19DF7F6D0054ED88 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
-		76C2B0F619F9DBD40010E98B /* VerveAPIBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerveAPIBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		76C2B0F919F9DBD40010E98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76C2B10219F9EBC60010E98B /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		76C2B10319F9EBC60010E98B /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		76C2B10419F9EBC60010E98B /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
+		76CCA8AF1D8F77B700DB935B /* RegisterObject1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterObject1.h; sourceTree = "<group>"; };
+		76CCA8B01D8F77B700DB935B /* RegisterObject1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterObject1.m; sourceTree = "<group>"; };
+		76CCA8B21D8F787400DB935B /* RegisterForm2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterForm2.h; sourceTree = "<group>"; };
+		76CCA8B31D8F787400DB935B /* RegisterForm2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterForm2.m; sourceTree = "<group>"; };
+		76CCA8B51D8F78FD00DB935B /* RegisterForm3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterForm3.h; sourceTree = "<group>"; };
+		76CCA8B61D8F78FD00DB935B /* RegisterForm3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterForm3.m; sourceTree = "<group>"; };
+		76CCA8B81D8F810700DB935B /* FXFormTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXFormTextCell.h; path = VerveAPI/FXFormTextCell.h; sourceTree = SOURCE_ROOT; };
+		76CCA8B91D8F810700DB935B /* FXFormTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXFormTextCell.m; path = VerveAPI/FXFormTextCell.m; sourceTree = SOURCE_ROOT; };
+		76CCA8C91D9366DC00DB935B /* FXFormScreenNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXFormScreenNameCell.h; path = VerveAPI/FXFormScreenNameCell.h; sourceTree = SOURCE_ROOT; };
+		76CCA8CA1D9366DC00DB935B /* FXFormScreenNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXFormScreenNameCell.m; path = VerveAPI/FXFormScreenNameCell.m; sourceTree = SOURCE_ROOT; };
+		76CCA8CC1D93695000DB935B /* FXFormZipcodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXFormZipcodeCell.h; path = VerveAPI/FXFormZipcodeCell.h; sourceTree = SOURCE_ROOT; };
+		76CCA8CD1D93695000DB935B /* FXFormZipcodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXFormZipcodeCell.m; path = VerveAPI/FXFormZipcodeCell.m; sourceTree = SOURCE_ROOT; };
 		76DEDAA31A48BA92009CD94F /* SLKTextView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLKTextView+SLKAdditions.h"; sourceTree = "<group>"; };
 		76DEDAA41A48BA92009CD94F /* SLKTextView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SLKTextView+SLKAdditions.m"; sourceTree = "<group>"; };
 		76DEDAA51A48BA92009CD94F /* SLKUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKUIConstants.h; sourceTree = "<group>"; };
@@ -328,20 +181,6 @@
 		76FE75C01B82D1AF00D791B6 /* VervePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VervePreferences.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		761D654919A15B680062B525 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				769EEA7019A7A38500FF072E /* MobileCoreServices.framework in Frameworks */,
-				769EEA3E19A6491F00FF072E /* QuartzCore.framework in Frameworks */,
-				769EEA3D19A6491B00FF072E /* UIKit.framework in Frameworks */,
-				761D655019A15B680062B525 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		761923D91BC8B47200E182F4 /* DownPicker */ = {
 			isa = PBXGroup;
@@ -367,8 +206,6 @@
 		761D654D19A15B680062B525 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				761D654C19A15B680062B525 /* libVerveAPI.a */,
-				76C2B0F619F9DBD40010E98B /* VerveAPIBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -391,11 +228,9 @@
 			children = (
 				768E3EF01CEFEAC400A26909 /* DB */,
 				7623C9F01C2A52BB006C4D46 /* XMLDictionary */,
-				76264E771BE8228400292FBF /* ICViewPager */,
 				762340F81BE594C300FA2FDE /* AHKActionSheet */,
 				761923D91BC8B47200E182F4 /* DownPicker */,
 				762F13431BBF6D1F001BD716 /* Maps */,
-				76AE55EB1A97D4A7000B95B6 /* SVWebViewController */,
 				76DEDAA01A48BA7E009CD94F /* SlackTextViewController */,
 				7671FC881A0FC855000ECDAF /* EVCSearchEngine */,
 				7671FC861A0F123C000ECDAF /* JoinGroup */,
@@ -405,7 +240,6 @@
 				769EE9F319A2B2DA00FF072E /* Other Headers */,
 				769EEA7519A816F800FF072E /* DLAlertView */,
 				769EEA2C19A646C600FF072E /* Toast */,
-				769EEA1E19A55F0000FF072E /* SHViewPager */,
 				761D65B019A1A6B00062B525 /* RESideMenu */,
 				761D658319A15F9F0062B525 /* AFNetworking */,
 				761D657E19A15EDC0062B525 /* API & Connectivity */,
@@ -454,6 +288,12 @@
 				76011C401B935EB5000EC003 /* VerveBankObject.m */,
 				762340E71BDF134500FA2FDE /* VerveVolunteering.h */,
 				762340E81BDF134500FA2FDE /* VerveVolunteering.m */,
+				76CCA8AF1D8F77B700DB935B /* RegisterObject1.h */,
+				76CCA8B01D8F77B700DB935B /* RegisterObject1.m */,
+				76CCA8B21D8F787400DB935B /* RegisterForm2.h */,
+				76CCA8B31D8F787400DB935B /* RegisterForm2.m */,
+				76CCA8B51D8F78FD00DB935B /* RegisterForm3.h */,
+				76CCA8B61D8F78FD00DB935B /* RegisterForm3.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -519,15 +359,6 @@
 				7623C9F21C2A52F5006C4D46 /* XMLDictionary.m */,
 			);
 			name = XMLDictionary;
-			sourceTree = "<group>";
-		};
-		76264E771BE8228400292FBF /* ICViewPager */ = {
-			isa = PBXGroup;
-			children = (
-				76264E781BE822C000292FBF /* ViewPagerController.h */,
-				76264E791BE822C000292FBF /* ViewPagerController.m */,
-			);
-			name = ICViewPager;
 			sourceTree = "<group>";
 		};
 		762F13431BBF6D1F001BD716 /* Maps */ = {
@@ -624,17 +455,6 @@
 			name = "Other Headers";
 			sourceTree = "<group>";
 		};
-		769EEA1E19A55F0000FF072E /* SHViewPager */ = {
-			isa = PBXGroup;
-			children = (
-				769EEA1F19A55F1100FF072E /* SHViewPager.h */,
-				769EEA2019A55F1100FF072E /* SHViewPager.m */,
-				769EEA2119A55F1100FF072E /* SHViewPagerController.h */,
-				769EEA2219A55F1100FF072E /* SHViewPagerController.m */,
-			);
-			name = SHViewPager;
-			sourceTree = "<group>";
-		};
 		769EEA2C19A646C600FF072E /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +498,12 @@
 			children = (
 				760E57131B8EAF110075A89F /* FXForms.h */,
 				760E57141B8EAF110075A89F /* FXForms.m */,
+				76CCA8B81D8F810700DB935B /* FXFormTextCell.h */,
+				76CCA8B91D8F810700DB935B /* FXFormTextCell.m */,
+				76CCA8C91D9366DC00DB935B /* FXFormScreenNameCell.h */,
+				76CCA8CA1D9366DC00DB935B /* FXFormScreenNameCell.m */,
+				76CCA8CC1D93695000DB935B /* FXFormZipcodeCell.h */,
+				76CCA8CD1D93695000DB935B /* FXFormZipcodeCell.m */,
 			);
 			path = FXForms;
 			sourceTree = "<group>";
@@ -703,30 +529,12 @@
 			name = Prefs;
 			sourceTree = "<group>";
 		};
-		76AE55EB1A97D4A7000B95B6 /* SVWebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				76AE55F81A97D589000B95B6 /* SVWebViewControllerActivitySafari.h */,
-				76AE55F91A97D589000B95B6 /* SVWebViewControllerActivitySafari.m */,
-				76AE55F51A97D57C000B95B6 /* SVWebViewControllerActivityChrome.h */,
-				76AE55F61A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m */,
-				76AE55F21A97D567000B95B6 /* SVWebViewControllerActivity.h */,
-				76AE55F31A97D567000B95B6 /* SVWebViewControllerActivity.m */,
-				76AE55EC1A97D4C4000B95B6 /* SVModalWebViewController.h */,
-				76AE55ED1A97D4C4000B95B6 /* SVModalWebViewController.m */,
-				76AE55EE1A97D4C4000B95B6 /* SVWebViewController.h */,
-				76AE55EF1A97D4C4000B95B6 /* SVWebViewController.m */,
-			);
-			name = SVWebViewController;
-			sourceTree = "<group>";
-		};
 		76C2B0F719F9DBD40010E98B /* VerveAPIBundle */ = {
 			isa = PBXGroup;
 			children = (
 				761923E01BC8B4E100E182F4 /* downArrow.png */,
 				761923E11BC8B4E100E182F4 /* downArrow@2x.png */,
 				761923E21BC8B4E100E182F4 /* downArrow@3x.png */,
-				76AE55FB1A9A856C000B95B6 /* SVWebViewController.bundle */,
 				76C2B10219F9EBC60010E98B /* check.png */,
 				76C2B10319F9EBC60010E98B /* error.png */,
 				76C2B10419F9EBC60010E98B /* warning.png */,
@@ -811,55 +619,12 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		761D654B19A15B680062B525 /* VerveAPI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 761D656F19A15B680062B525 /* Build configuration list for PBXNativeTarget "VerveAPI" */;
-			buildPhases = (
-				761D654819A15B680062B525 /* Sources */,
-				761D654919A15B680062B525 /* Frameworks */,
-				761D654A19A15B680062B525 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = VerveAPI;
-			productName = VerveAPI;
-			productReference = 761D654C19A15B680062B525 /* libVerveAPI.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		76C2B0F519F9DBD40010E98B /* VerveAPIBundle */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 76C2B0FA19F9DBD40010E98B /* Build configuration list for PBXNativeTarget "VerveAPIBundle" */;
-			buildPhases = (
-				76C2B0F419F9DBD40010E98B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = VerveAPIBundle;
-			productName = VerveAPIBundle;
-			productReference = 76C2B0F619F9DBD40010E98B /* VerveAPIBundle.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-/* End PBXNativeTarget section */
-
 /* Begin PBXProject section */
 		761D654419A15B680062B525 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = eVerveCorp;
-				TargetAttributes = {
-					7671FC791A0DBE9F000ECDAF = {
-						CreatedOnToolsVersion = 6.1;
-					};
-					76C2B0F519F9DBD40010E98B = {
-						CreatedOnToolsVersion = 6.0.1;
-					};
-				};
 			};
 			buildConfigurationList = 761D654719A15B680062B525 /* Build configuration list for PBXProject "VerveAPI" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -873,134 +638,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				761D654B19A15B680062B525 /* VerveAPI */,
-				76C2B0F519F9DBD40010E98B /* VerveAPIBundle */,
-				7671FC791A0DBE9F000ECDAF /* VerveAPITarget */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		76C2B0F419F9DBD40010E98B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7671FC6E1A06FA52000ECDAF /* EVCUserSearchViewViewController_iPhone.xib in Resources */,
-				76EF996319FC664C00E15A14 /* EVCComposeViewController_iPhone.xib in Resources */,
-				761923E51BC8B4E100E182F4 /* downArrow@3x.png in Resources */,
-				761923E31BC8B4E100E182F4 /* downArrow.png in Resources */,
-				766A7D571A923D8D00B6C81E /* search-icon.png in Resources */,
-				7671FC781A0DB7C6000ECDAF /* chat-25.png in Resources */,
-				7671FC761A0DB740000ECDAF /* message-25.png in Resources */,
-				761923E41BC8B4E100E182F4 /* downArrow@2x.png in Resources */,
-				7671FC911A0FE3B0000ECDAF /* search-25.png in Resources */,
-				76C2B10719F9EBC60010E98B /* warning.png in Resources */,
-				7671FC741A0DB51F000ECDAF /* EVCUserInviteViewController_iPhone.xib in Resources */,
-				7671FC8D1A0FD8B9000ECDAF /* EVCGroupSearchViewViewController_iPhone.xib in Resources */,
-				76AE55FC1A9A856C000B95B6 /* SVWebViewController.bundle in Resources */,
-				76C2B10619F9EBC60010E98B /* error.png in Resources */,
-				76C2B10519F9EBC60010E98B /* check.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		761D654819A15B680062B525 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7670EFC81CFC9DFA00831967 /* PrescripProviderInfo.m in Sources */,
-				7623C9F31C2A52F5006C4D46 /* XMLDictionary.m in Sources */,
-				766DEF601A48C5BC0049CA2A /* SLKInputAccessoryView.m in Sources */,
-				766DEF621A48C5BC0049CA2A /* SLKTextInputbar.m in Sources */,
-				766DEF641A48C5BC0049CA2A /* SLKTextView.m in Sources */,
-				766DEF661A48C5BC0049CA2A /* SLKTextViewController.m in Sources */,
-				766DEF681A48C5BC0049CA2A /* SLKTypingIndicatorView.m in Sources */,
-				766DEF861A4E5C220049CA2A /* MessageChatroom.m in Sources */,
-				766DEF591A48C5B10049CA2A /* SLKTextView+SLKAdditions.m in Sources */,
-				76AE55F41A97D567000B95B6 /* SVWebViewControllerActivity.m in Sources */,
-				766DEF5C1A48C5B10049CA2A /* UIScrollView+SLKAdditions.m in Sources */,
-				762340E91BDF134500FA2FDE /* VerveVolunteering.m in Sources */,
-				766DEF5E1A48C5B10049CA2A /* UIView+SLKAdditions.m in Sources */,
-				769B0A8B1A59AF7100BB287E /* VerveMessage.m in Sources */,
-				769EEA2F19A646FC00FF072E /* UIView+Toast.m in Sources */,
-				761923DE1BC8B48000E182F4 /* DownPicker.m in Sources */,
-				761D659719A15FD40062B525 /* AFHTTPRequestOperation.m in Sources */,
-				7671FC731A0DB515000ECDAF /* EVCUserInviteViewController.m in Sources */,
-				761D657D19A15DF40062B525 /* Reachability.m in Sources */,
-				76AE55FA1A97D589000B95B6 /* SVWebViewControllerActivitySafari.m in Sources */,
-				762341011BE5955700FA2FDE /* AHKActionSheet.m in Sources */,
-				76AE55F11A97D4C4000B95B6 /* SVWebViewController.m in Sources */,
-				761D65B919A1A6BC0062B525 /* UIViewController+RESideMenu.m in Sources */,
-				761923DF1BC8B48000E182F4 /* UIDownPicker.m in Sources */,
-				76BD326119DCC5C90054ED88 /* Post.m in Sources */,
-				767BDCA51D105C71004DA0D8 /* HobbiesPreferences.m in Sources */,
-				76FE75BE1B82C5C100D791B6 /* GroupPrefs.m in Sources */,
-				76BD327D19DF7F6D0054ED88 /* RECommonFunctions.m in Sources */,
-				762F13461BBF6D3F001BD716 /* MapPoint.m in Sources */,
-				76FE75C11B82D1AF00D791B6 /* VervePreferences.m in Sources */,
-				76EF996219FC507F00E15A14 /* EVCComposeViewController.m in Sources */,
-				7671FC671A06CE04000ECDAF /* EVCUserSearchViewViewController.m in Sources */,
-				761D659819A15FD40062B525 /* AFHTTPRequestOperationManager.m in Sources */,
-				76264E7A1BE822C100292FBF /* ViewPagerController.m in Sources */,
-				767BDC991CFFB856004DA0D8 /* Stack.m in Sources */,
-				761D659A19A15FD40062B525 /* AFNetworkReachabilityManager.m in Sources */,
-				761D659E19A15FD40062B525 /* AFURLResponseSerialization.m in Sources */,
-				7671FC8C1A0FD8AA000ECDAF /* EVCGroupSearchViewViewController.m in Sources */,
-				761D65B819A1A6BC0062B525 /* RESideMenu.m in Sources */,
-				769EEA8619A8171500FF072E /* DLAVAlertViewTextFieldTheme.m in Sources */,
-				767BDC9C1CFFBA04004DA0D8 /* Queue.m in Sources */,
-				76AE55F01A97D4C4000B95B6 /* SVModalWebViewController.m in Sources */,
-				7670EFBA1CFA950700831967 /* HealthDatabase.m in Sources */,
-				761D659C19A15FD40062B525 /* AFURLConnectionOperation.m in Sources */,
-				769EEA8419A8171500FF072E /* DLAVAlertViewController.m in Sources */,
-				767BDCA81D106599004DA0D8 /* HobbiesMatchObject.m in Sources */,
-				769EEA8519A8171500FF072E /* DLAVAlertViewTextControlTheme.m in Sources */,
-				761D659B19A15FD40062B525 /* AFSecurityPolicy.m in Sources */,
-				761D659919A15FD40062B525 /* AFHTTPSessionManager.m in Sources */,
-				76AE55F71A97D57C000B95B6 /* SVWebViewControllerActivityChrome.m in Sources */,
-				760E57151B8EAF110075A89F /* FXForms.m in Sources */,
-				762341041BE5955700FA2FDE /* UIWindow+AHKAdditions.m in Sources */,
-				761D659D19A15FD40062B525 /* AFURLRequestSerialization.m in Sources */,
-				761D659F19A15FD40062B525 /* AFURLSessionManager.m in Sources */,
-				766DEF6B1A48E4F00049CA2A /* MessageTableViewCell.m in Sources */,
-				7671FC631A04528D000ECDAF /* EVCSearchEngine.m in Sources */,
-				768E3EF71CEFEB2600A26909 /* BankInfo.m in Sources */,
-				768E3EF41CEFEAF400A26909 /* BankDatabase.m in Sources */,
-				769EEA8319A8171500FF072E /* DLAVAlertViewButtonTheme.m in Sources */,
-				769EEA2419A55F1100FF072E /* SHViewPagerController.m in Sources */,
-				760D02A31B7D889C001CFE25 /* VerveUserPreferences.m in Sources */,
-				761642C91B8C141900BEC59C /* VerveRelationshipPrefs.m in Sources */,
-				76011C411B935EB5000EC003 /* VerveBankObject.m in Sources */,
-				7670EFC31CFA960000831967 /* HealthInfo.m in Sources */,
-				769EEA8219A8171500FF072E /* DLAVAlertView.m in Sources */,
-				760D02A61B7D8987001CFE25 /* VerveMatchingPreferences.m in Sources */,
-				769B0A881A54664200BB287E /* FlingProfile.m in Sources */,
-				762341021BE5955700FA2FDE /* AHKActionSheetViewController.m in Sources */,
-				769EEA8719A8171500FF072E /* DLAVAlertViewTheme.m in Sources */,
-				769EEA2319A55F1100FF072E /* SHViewPager.m in Sources */,
-				76E64EF919B631D10022F189 /* Group.m in Sources */,
-				761D657719A15BE90062B525 /* API.m in Sources */,
-				762341031BE5955700FA2FDE /* UIImage+AHKAdditions.m in Sources */,
-				761D658219A15F140062B525 /* VerveUser.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7671FC7E1A0DBEE6000ECDAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 761D654B19A15B680062B525 /* VerveAPI */;
-			targetProxy = 7671FC7D1A0DBEE6000ECDAF /* PBXContainerItemProxy */;
-		};
-		7671FC801A0DBEE9000ECDAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 76C2B0F519F9DBD40010E98B /* VerveAPIBundle */;
-			targetProxy = 7671FC7F1A0DBEE9000ECDAF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		761D656D19A15B680062B525 /* Debug */ = {
@@ -1071,98 +711,6 @@
 			};
 			name = Release;
 		};
-		761D657019A15B680062B525 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DSTROOT = /tmp/VerveAPI.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "VerveAPI-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		761D657119A15B680062B525 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DSTROOT = /tmp/VerveAPI.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VerveAPI/VerveAPI-Prefix.pch";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "VerveAPI-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		7671FC7B1A0DBEA0000ECDAF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		7671FC7C1A0DBEA0000ECDAF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		76C2B0FB19F9DBD40010E98B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = VerveAPIBundle/Info.plist;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		76C2B0FC19F9DBD40010E98B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = VerveAPIBundle/Info.plist;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1171,33 +719,6 @@
 			buildConfigurations = (
 				761D656D19A15B680062B525 /* Debug */,
 				761D656E19A15B680062B525 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		761D656F19A15B680062B525 /* Build configuration list for PBXNativeTarget "VerveAPI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				761D657019A15B680062B525 /* Debug */,
-				761D657119A15B680062B525 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7671FC7A1A0DBEA0000ECDAF /* Build configuration list for PBXAggregateTarget "VerveAPITarget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7671FC7B1A0DBEA0000ECDAF /* Debug */,
-				7671FC7C1A0DBEA0000ECDAF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		76C2B0FA19F9DBD40010E98B /* Build configuration list for PBXNativeTarget "VerveAPIBundle" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				76C2B0FB19F9DBD40010E98B /* Debug */,
-				76C2B0FC19F9DBD40010E98B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Constants.h"
 #import "VerveBankObject.h"
-#import "API.h"
+#import "RestAPI.h"
 
 @interface EVCFinanceHomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

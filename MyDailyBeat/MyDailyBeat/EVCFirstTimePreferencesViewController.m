@@ -25,7 +25,7 @@
     self.formController.tableView = self.tableView;
     self.formController.delegate = self;
     self.formController.form = [[VervePreferences alloc] init];
-    api = [API getInstance];
+    api = [RestAPI getInstance];
     
     [self retrievePrefs];
 }
@@ -79,6 +79,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success && success2) {
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FirstTimeLogin"];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             } else
                 NSLog(@"Failed");

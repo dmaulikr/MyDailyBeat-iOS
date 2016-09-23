@@ -65,7 +65,7 @@
     
     self.mTableView.dataSource = self;
     self.mTableView.delegate = self;
-    api = [API getInstance];
+    api = [RestAPI getInstance];
     NSString *name = [api getCurrentUser].name;
     NSArray *fields = [name componentsSeparatedByString:@" "];
     [self navigationItem].title = [NSString stringWithFormat:@"Welcome %@!", fields[0]];
@@ -87,8 +87,8 @@
             NSArray *temp = TOP_TEN_BANKS;
             for (int i = 0; i < [temp count]; ++i) {
                 NSString *tempString = [temp objectAtIndex: i];
-                if ([[API getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
-                    VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
+                if ([[RestAPI getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
+                    VerveBankObject *bank = [[RestAPI getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
                     BankInfo *info = [[BankInfo alloc] initWithUniqueId:0 name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
                     [db insertIntoDatabase:info];
                 }
@@ -98,6 +98,11 @@
                 [self.view makeToast:@"Database Initialization Complete" duration:3.5 position:@"bottom"];
             });
         });
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FirstTimeLogin"]) {
+        EVCFirstTimeSetupViewController *first = [[EVCFirstTimeSetupViewController alloc] initWithNibName:@"EVCFirstTimeSetupViewController" bundle:nil];
+        [self.navigationController pushViewController:first animated:YES];
     }
     
     

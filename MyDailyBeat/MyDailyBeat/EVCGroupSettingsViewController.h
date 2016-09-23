@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <API.h>
+#import <RestAPI.h>
 #import <FXForms.h>
 #import <EVCProfilePicView.h>
 #import "UIView+Toast.h"
@@ -26,7 +26,7 @@ typedef void (^EVCGroupSettingsViewControllerCompletionHandler)(void);
 @interface EVCGroupSettingsViewController : UIViewController <FXFormControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property(nonatomic, retain) API *api;
+@property(nonatomic, retain) RestAPI *api;
 @property (nonatomic, strong) FXFormController *formController;
 @property (nonatomic) Group *g;
 

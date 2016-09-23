@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 eVerveCorp. All rights reserved.
 //
 
-#import <API.h>
 #import <UIKit/UIKit.h>
 
 @interface EVCProfilePicView : UIView

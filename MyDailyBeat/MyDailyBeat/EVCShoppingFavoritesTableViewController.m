@@ -31,7 +31,7 @@
             [self.view makeToastActivity];
         });
         
-        NSDictionary *dic2 = [[API getInstance] getShoppingFavoritesForUser:[[API getInstance] getCurrentUser] withSortOrder:ASCENDING];
+        NSDictionary *dic2 = [[RestAPI getInstance] getShoppingFavoritesForUser:[[RestAPI getInstance] getCurrentUser] withSortOrder:ASCENDING];
         self.searchResults = [dic2 objectForKey:@"items"];
         
         
@@ -91,7 +91,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        [[API getInstance] addShoppingFavoriteURL:url ForUser:[[API getInstance] getCurrentUser]];
+        [[RestAPI getInstance] addShoppingFavoriteURL:url ForUser:[[RestAPI getInstance] getCurrentUser]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];

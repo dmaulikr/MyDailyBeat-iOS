@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <DLAVAlertView.h>
-#import <API.h>
+#import <RestAPI.h>
 #import <UIView+Toast.h>
 #import "RESideMenu.h"
 #import "EVCProfileViewController.h"
@@ -30,6 +30,6 @@
 }
 
 @property(nonatomic, retain) IBOutlet UITableView *mTableView;
-@property(strong, nonatomic) API *api;
+@property(strong, nonatomic) RestAPI *api;
 
 @end

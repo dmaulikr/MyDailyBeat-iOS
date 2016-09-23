@@ -36,7 +36,7 @@
             [self.view makeToastActivity];
         });
         if (self.mode == FLING_MODE || self.mode == RELATIONSHIP_MODE) {
-            self.partners = [[NSMutableArray alloc] initWithArray:[[API getInstance] getFlingProfilesBasedOnPrefsOfUser:[[API getInstance] getCurrentUser]]];
+            self.partners = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingProfilesBasedOnPrefsOfUser:[[RestAPI getInstance] getCurrentUser]]];
         } else {
             
         }
@@ -82,7 +82,7 @@
     __block UIImage *img;
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveProfilePictureForUserWithScreenName:screenName];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:screenName];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -105,7 +105,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName] andMode:self.mode];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[RestAPI getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName] andMode:self.mode];
     
     // Pass the selected object to the new view controller.
     

@@ -25,7 +25,7 @@
     self.mTableView.bounces = NO;
     self.view.backgroundColor = [UIColor clearColor];
     self.mTableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
-    self.mScreenNameLabel.text = [[API getInstance] getCurrentUser].screenName;
+    self.mScreenNameLabel.text = [[RestAPI getInstance] getCurrentUser].screenName;
     self.mScreenNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
     self.mScreenNameLabel.textColor = [UIColor whiteColor];
     self.profilePicView.layer.cornerRadius = 50;
@@ -46,7 +46,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([[API getInstance] getCurrentUser] != nil) {
+    if ([[RestAPI getInstance] getCurrentUser] != nil) {
         [self reloadData];
     }
     
@@ -64,7 +64,7 @@
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
-            [[API getInstance] refreshCurrentUserData];
+            [[RestAPI getInstance] refreshCurrentUserData];
             [self.view hideToastActivity];
         });
     });
@@ -74,7 +74,7 @@
 - (void) loadProfilePicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveProfilePicture];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePicture];
         if (imageURL == nil) {
             return;
         }
@@ -96,7 +96,7 @@
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
-            [[API getInstance] logout];
+            [[RestAPI getInstance] logout];
             [self.view hideToastActivity];
             EVCLoginViewController *login = [[EVCLoginViewController alloc] initWithNibName:@"EVCLoginViewController_iPhone" bundle:nil];
             self.sideMenuViewController.contentViewController.view.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:login];
@@ -195,15 +195,15 @@ titleForHeaderInSection:(NSInteger)section {
         switch (indexPath.row) {
             case 0:
                 cell.textLabel.text = @"Name";
-                cell.detailTextLabel.text  = [[API getInstance] getCurrentUser].name;
+                cell.detailTextLabel.text  = [[RestAPI getInstance] getCurrentUser].name;
                 break;
             case 1:
                 cell.textLabel.text = @"Email";
-                cell.detailTextLabel.text  = [[API getInstance] getCurrentUser].email;
+                cell.detailTextLabel.text  = [[RestAPI getInstance] getCurrentUser].email;
                 break;
             case 2: {
                 cell.textLabel.text = @"Mobile";
-                NSString *mobile = [[API getInstance] getCurrentUser].mobile;
+                NSString *mobile = [[RestAPI getInstance] getCurrentUser].mobile;
                 NSString *mobile2 = @"";
                 NSString *temp;
                 if ([mobile length] == 11) {
@@ -245,13 +245,13 @@ titleForHeaderInSection:(NSInteger)section {
                 break;
             case 3: {
                 cell.textLabel.text = @"DOB";
-                NSString *dob = [[API getInstance] getCurrentUser].birth_month;
-                cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ %ld", dob,[[API getInstance] getCurrentUser].birth_year];
+                NSString *dob = [[RestAPI getInstance] getCurrentUser].birth_month;
+                cell.detailTextLabel.text  = [NSString stringWithFormat:@"%@ %ld", dob,[[RestAPI getInstance] getCurrentUser].birth_year];
                 break;
             }
             case 4:
                 cell.textLabel.text = @"Zip Code";
-                cell.detailTextLabel.text  = [[API getInstance] getCurrentUser].zipcode;
+                cell.detailTextLabel.text  = [[RestAPI getInstance] getCurrentUser].zipcode;
                 break;
                 
             default:

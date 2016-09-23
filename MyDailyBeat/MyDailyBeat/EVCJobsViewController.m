@@ -73,7 +73,7 @@
     self.mBar.delegate = self;
     self.currentSet = [[NSMutableArray alloc] init];
     
-    currentZip = [[API getInstance] getCurrentUser].zipcode;
+    currentZip = [[RestAPI getInstance] getCurrentUser].zipcode;
     
     [self run:currentQuery];
     
@@ -124,7 +124,7 @@
             [self.view makeToastActivity];
             
         });
-        self.resultsDictionary = [[API getInstance] makeXMLRequestWithBaseUrl:baseUrl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+        self.resultsDictionary = [[RestAPI getInstance] makeXMLRequestWithBaseUrl:baseUrl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
         NSLog(@"Results: %@", self.resultsDictionary);
         NSDictionary *results = [self.resultsDictionary objectForKey:@"results"];
         NSArray *temp = [results objectForKey:@"result"];

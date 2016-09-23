@@ -37,7 +37,7 @@
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
-            self.group.posts = [[API getInstance] getPostsForGroup:self.group];
+            self.group.posts = [[RestAPI getInstance] getPostsForGroup:self.group];
             [self.view hideToastActivity];
         });
     });
@@ -52,7 +52,7 @@
         Post *written = [[Post alloc] init];
         written.postText = postText;
         written.dateTimeMillis = millis;
-        written.userScreenName = [[API getInstance] getCurrentUser].screenName;
+        written.userScreenName = [[RestAPI getInstance] getCurrentUser].screenName;
         dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
         dispatch_async(queue, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -62,7 +62,7 @@
             
             NSString *fileName = ASSET_FILENAME;
             
-            BOOL success = [[API getInstance] writePost:written withPictureData:imgData andPictureName:fileName toGroup:self.group];
+            BOOL success = [[RestAPI getInstance] writePost:written withPictureData:imgData andPictureName:fileName toGroup:self.group];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
                 if (success)
@@ -142,7 +142,7 @@
     UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
     self.navigationItem.leftBarButtonItem = profileButton;
     
-    if ([[[API getInstance] getCurrentUser].screenName isEqualToString:self.group.adminName]) {
+    if ([[[RestAPI getInstance] getCurrentUser].screenName isEqualToString:self.group.adminName]) {
         [_settingsButton setEnabled:YES];
     } else {
         [_settingsButton setEnabled:NO];
@@ -165,7 +165,7 @@
 - (void) loadPicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveGroupPictureForGroup:self.group];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveGroupPictureForGroup:self.group];
         if (imageURL == nil) return;
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -184,7 +184,7 @@
             [self.view makeToastActivity];
         });
         
-        BOOL success = [[API getInstance] deletePost:p];
+        BOOL success = [[RestAPI getInstance] deletePost:p];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)

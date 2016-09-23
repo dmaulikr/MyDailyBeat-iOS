@@ -48,7 +48,7 @@ static NSString *CellIdentifier2 = @"CustomCellReuse2";
             [self.view makeToastActivity];
         });
         self.chatrooms = [[NSMutableArray alloc] init];
-        NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:[[API getInstance] getChatroomsForUser:[[API getInstance] getCurrentUser]] copyItems:YES];
+        NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getChatroomsForUser:[[RestAPI getInstance] getCurrentUser]] copyItems:YES];
         
         if ([temp count] > 0) {
             self.chatrooms = temp;

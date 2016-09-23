@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageChatroom.h>
-#import <API.h>
+#import <RestAPI.h>
 
 @interface EVCChatroomCell : UITableViewCell
 

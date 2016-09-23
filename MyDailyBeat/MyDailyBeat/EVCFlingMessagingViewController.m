@@ -82,7 +82,7 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
             [self.view makeToastActivity];
         });
         
-        self.messages2 = [[NSMutableArray alloc] initWithArray:[[API getInstance] getMessagesForChatroomWithID:self.chatroom.chatroomID] copyItems:YES];
+        self.messages2 = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getMessagesForChatroomWithID:self.chatroom.chatroomID] copyItems:YES];
         
         for (VerveMessage * m in self.messages2) {
             self.messages = [[NSMutableArray alloc] init];
@@ -107,11 +107,11 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
         
         long long milliseconds = (long long)([[NSDate date] timeIntervalSince1970] * 1000.0);
         
-        [[API getInstance] writeMessage:message asUser:[[API getInstance] getCurrentUser] inChatRoomWithID:self.chatroom.chatroomID atTime:milliseconds];
+        [[RestAPI getInstance] writeMessage:message asUser:[[RestAPI getInstance] getCurrentUser] inChatRoomWithID:self.chatroom.chatroomID atTime:milliseconds];
         
         VerveMessage *m = [[VerveMessage alloc] init];
         m.message = message;
-        m.screenName = [[API getInstance] getCurrentUser].screenName;
+        m.screenName = [[RestAPI getInstance] getCurrentUser].screenName;
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -198,7 +198,7 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
     
     VerveMessage *m = [[VerveMessage alloc] init];
     m.message = message;
-    m.screenName = [[API getInstance] getCurrentUser].screenName;
+    m.screenName = [[RestAPI getInstance] getCurrentUser].screenName;
     
     [self.messages removeObjectAtIndex:0];
     [self.messages insertObject:message atIndex:0];
@@ -269,7 +269,7 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
         CGSize imgSize = CGSizeMake(kAvatarSize*scale, kAvatarSize*scale);
         dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
         dispatch_async(queue, ^{
-            NSURL *imageURL = [[API getInstance] retrieveProfilePictureForUserWithScreenName:m.screenName];
+            NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:m.screenName];
             NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
             
             

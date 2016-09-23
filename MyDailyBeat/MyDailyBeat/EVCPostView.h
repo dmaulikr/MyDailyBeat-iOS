@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Post.h"
-#import <API.h>
+#import <RestAPI.h>
 #import "EVCGroupViewController.h"
 #import <ASMediaFocusManager.h>
 

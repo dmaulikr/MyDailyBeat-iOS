@@ -9,7 +9,7 @@
 #import "EVCBankViewController.h"
 #import "Constants.h"
 #import "VerveBankObject.h"
-#import "API.h"
+#import "RestAPI.h"
 #import "EVCCommonMethods.h"
 
 @interface EVCBankViewController ()
@@ -70,7 +70,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        val = [[API getInstance] doesAppExistWithTerm:name andCountry:@"US"];
+        val = [[RestAPI getInstance] doesAppExistWithTerm:name andCountry:@"US"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
         });

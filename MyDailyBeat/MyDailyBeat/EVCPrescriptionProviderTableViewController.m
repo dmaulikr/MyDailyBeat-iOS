@@ -10,7 +10,7 @@
 #import "Constants.h"
 #import "HealthDatabase.h"
 #import <DLAVAlertView.h>
-#import "API.h"
+#import "RestAPI.h"
 #import "EVCCommonMethods.h"
 #import <AHKActionSheet.h>
 

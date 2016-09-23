@@ -50,7 +50,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        self.groups = [[API getInstance] getGroupsForCurrentUser];
+        self.groups = [[RestAPI getInstance] getGroupsForCurrentUser];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
@@ -187,8 +187,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        BOOL success = [[API getInstance] createGroupWithName:name];
-        self.groups = [[API getInstance] getGroupsForCurrentUser];
+        BOOL success = [[RestAPI getInstance] createGroupWithName:name];
+        self.groups = [[RestAPI getInstance] getGroupsForCurrentUser];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
@@ -278,7 +278,7 @@
                 cell.lbl.text = [[groups objectAtIndex:indexPath.row] groupName];
                 dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
                 dispatch_async(queue, ^{
-                    NSURL *imageURL = [[API getInstance] retrieveGroupPictureForGroup:[groups objectAtIndex:indexPath.row]];
+                    NSURL *imageURL = [[RestAPI getInstance] retrieveGroupPictureForGroup:[groups objectAtIndex:indexPath.row]];
                     if (imageURL == nil) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             UIImage *icon = [UIImage imageNamed:@"group2.png"];

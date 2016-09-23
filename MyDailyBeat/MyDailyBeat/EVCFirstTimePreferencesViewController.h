@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FXForms.h"
-#import <API.h>
+#import <RestAPI.h>
 #import "VerveUserPreferences.h"
 #import "VerveMatchingPreferences.h"
 #import "HobbiesPreferences.h"
@@ -17,7 +17,7 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) id<FXForm> prefs;
-@property (nonatomic, retain) API *api;
+@property (nonatomic, retain) RestAPI *api;
 @property (nonatomic, strong) FXFormController *formController;
 
 @end

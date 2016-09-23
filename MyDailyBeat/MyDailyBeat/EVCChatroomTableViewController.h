@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <EVCChatroomCell.h>
 #import <UIView+Toast.h>
-#import <API.h>
+#import <RestAPI.h>
 #import "EVCFlingMessagingViewController.h"
 #import <DLAVAlertView.h>
 

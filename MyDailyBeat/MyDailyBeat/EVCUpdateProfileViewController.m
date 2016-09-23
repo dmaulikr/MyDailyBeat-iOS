@@ -25,12 +25,12 @@
     self.mTableView.bounces = NO;
     self.view.backgroundColor = [UIColor clearColor];
     self.mTableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
-    self.name = [[API getInstance] getCurrentUser].name;
-    self.email = [[API getInstance] getCurrentUser].email;
-    self.mobile = [[API getInstance] getCurrentUser].mobile;
-    self.month = [[API getInstance] getCurrentUser].birth_month;
-    self.year = [[API getInstance] getCurrentUser].birth_year;
-    self.zipcode = [[API getInstance] getCurrentUser].zipcode;
+    self.name = [[RestAPI getInstance] getCurrentUser].name;
+    self.email = [[RestAPI getInstance] getCurrentUser].email;
+    self.mobile = [[RestAPI getInstance] getCurrentUser].mobile;
+    self.month = [[RestAPI getInstance] getCurrentUser].birth_month;
+    self.year = [[RestAPI getInstance] getCurrentUser].birth_year;
+    self.zipcode = [[RestAPI getInstance] getCurrentUser].zipcode;
     self.imgPicker = [[UIImagePickerController alloc] init];
     self.imgPicker.delegate = self;
     
@@ -64,7 +64,7 @@
         
         NSString *fileName = ASSET_FILENAME;
         
-        BOOL success = [[API getInstance] uploadProfilePicture:imgData withName:fileName];
+        BOOL success = [[RestAPI getInstance] uploadProfilePicture:imgData withName:fileName];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
@@ -84,13 +84,13 @@
 - (void) loadProfilePicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveProfilePicture];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePicture];
         if (imageURL == nil) return;
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             UIImage *profilePic = [UIImage imageWithData:imageData];
-            EVCProfilePicView *profile = [[EVCProfilePicView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height) andImage:profilePic withName:[[API getInstance] getCurrentUser].screenName];
+            EVCProfilePicView *profile = [[EVCProfilePicView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.bounds.size.width, self.navigationController.navigationBar.bounds.size.height) andImage:profilePic withName:[[RestAPI getInstance] getCurrentUser].screenName];
             [self.navigationController.navigationBar addSubview:profile];
             
         });
@@ -109,7 +109,7 @@
             case 0:
             {
                 DLAVAlertView *nameAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Name" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-                [nameAlert addTextFieldWithText:[[API getInstance] getCurrentUser].name placeholder:@"Name"];
+                [nameAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].name placeholder:@"Name"];
                 [nameAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeWords;
                 [nameAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;
                 [nameAlert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
@@ -128,7 +128,7 @@
             case 1:
             {
                 DLAVAlertView *emailAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Email" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-                [emailAlert addTextFieldWithText:[[API getInstance] getCurrentUser].email placeholder:@"Email"];
+                [emailAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].email placeholder:@"Email"];
                 [emailAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeNone;
                 [emailAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;
                 [emailAlert textFieldAtIndex:0].keyboardType = UIKeyboardTypeEmailAddress;
@@ -149,7 +149,7 @@
                 //mobile
             {
                 DLAVAlertView *mobileAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Mobile Phone #" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-                [mobileAlert addTextFieldWithText:[[API getInstance] getCurrentUser].mobile placeholder:@"Name"];
+                [mobileAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].mobile placeholder:@"Name"];
                 [mobileAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeWords;
                 [mobileAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;
                 [mobileAlert textFieldAtIndex:0].keyboardType = UIKeyboardTypeNamePhonePad;
@@ -191,7 +191,7 @@
                 //zipcode
             {
                 DLAVAlertView *zipAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Zip Code" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-                [zipAlert addTextFieldWithText:[[API getInstance] getCurrentUser].zipcode placeholder:@"Name"];
+                [zipAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].zipcode placeholder:@"Name"];
                 [zipAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeWords;
                 [zipAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;
                 [zipAlert textFieldAtIndex:0].keyboardType = UIKeyboardTypeNumberPad;
@@ -217,7 +217,7 @@
         
     } else {
         //save
-        VerveUser *current = [[API getInstance] getCurrentUser];
+        VerveUser *current = [[RestAPI getInstance] getCurrentUser];
         [current setName:self.name];
         [current setEmail:self.email];
         [current setMobile:self.mobile];
@@ -231,7 +231,7 @@
                 [self.view makeToastActivity];
             });
             
-            BOOL result = [[API getInstance] editUser:current];
+            BOOL result = [[RestAPI getInstance] editUser:current];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
                 if (result)

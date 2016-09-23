@@ -12,7 +12,7 @@
 #import "EVCFlingProfileViewController.h"
 #import "EVCFlingMessagingViewController.h"
 #import "EVCChatroomTableViewController.h"
-#import <API.h>
+#import <RestAPI.h>
 #import "EVCFlingProfileCreatorViewController.h"
 #import "RESideMenu.h"
 #import "EVCCommonMethods.h"

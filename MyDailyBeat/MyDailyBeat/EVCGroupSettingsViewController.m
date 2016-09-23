@@ -29,7 +29,7 @@
     self.formController.tableView = self.tableView;
     self.formController.delegate = self;
     self.formController.form = [[GroupPrefs alloc] init];
-    self.api = [API getInstance];
+    self.api = [RestAPI getInstance];
     
     UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelBarButton;
@@ -57,7 +57,7 @@
         
         NSString *fileName = ASSET_FILENAME;
         
-        BOOL success = [[API getInstance] uploadGroupPicture:imgData withName:fileName toGroup:self.g];
+        BOOL success = [[RestAPI getInstance] uploadGroupPicture:imgData withName:fileName toGroup:self.g];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
@@ -89,7 +89,7 @@
 - (void) loadGroupPicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveGroupPictureForGroup:self.g];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveGroupPictureForGroup:self.g];
         if (imageURL == nil) return;
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -109,7 +109,7 @@
             [self.view makeToastActivity];
         });
         
-        BOOL success = [[API getInstance] deleteGroup:self.g];
+        BOOL success = [[RestAPI getInstance] deleteGroup:self.g];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)

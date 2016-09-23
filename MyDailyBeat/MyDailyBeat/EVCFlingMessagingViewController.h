@@ -9,7 +9,7 @@
 #import <SLKTextViewController.h>
 #import "MessageTableViewCell.h"
 #import "EVCCommonMethods.h"
-#import <API.h>
+#import <RestAPI.h>
 #import <VerveMessage.h>
 #import "MessageChatroom.h"
 

@@ -82,7 +82,7 @@
 - (void) loadProfilePicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveProfilePicture];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePicture];
         if (imageURL == nil) {
             return;
         }
