@@ -15,7 +15,7 @@
 @implementation EVCUserInviteViewController
 
 - (id) initWithGroup:(Group *) g andRecipient:(VerveUser *) rec withSender:(VerveUser *) send {
-    self = [super initWithNibName:@"VerveAPIBundle.bundle/EVCUserInviteViewController_iPhone" bundle:nil];
+    self = [super initWithNibName:@"EVCUserInviteViewController_iPhone" bundle:[NSBundle bundleForClass:[self class]]];
     if (self) {
         self.groupToInviteTo = g;
         self.recipient = rec;
@@ -64,9 +64,9 @@
             [self.view hideToastActivity];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             if (success)
-                [self.presentingViewController.view makeToast:@"Invite sent!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                [self.presentingViewController.view makeToast:@"Invite sent!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
             else {
-                [self.presentingViewController.view makeToast:@"Invite send failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.presentingViewController.view makeToast:@"Invite send failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                 return;
             }
 

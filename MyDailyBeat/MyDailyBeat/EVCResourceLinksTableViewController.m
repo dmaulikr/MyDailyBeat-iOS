@@ -26,14 +26,14 @@
     [super viewDidLoad];
     path = RES_LINKS;
     resLinks = [NSDictionary dictionaryWithContentsOfFile:path];
-    
+    [self reloadData];
      
     
 }
 
 - (void) reloadData {
     if ([module isEqualToString:@"Finance"]) {
-        _dataArr = [resLinks objectForKey:@"Finance"];
+        _dataArr = [resLinks objectForKey:@"Finances"];
     } else if ([module isEqualToString:@"FeelingBlue"]) {
         _dataArr = [resLinks objectForKey:@"FeelingBlue"];
     } else if ([module isEqualToString:@"Relationships"]) {

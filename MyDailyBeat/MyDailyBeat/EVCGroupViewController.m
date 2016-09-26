@@ -17,7 +17,7 @@
 - (void) EVCGroupSettingsViewControllerDelegateDidDeleteGroup:(EVCGroupSettingsViewController *) controller {
     [controller dismissViewControllerAnimated:YES completion:nil];
     EVCViewController *newcontroller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-    [newcontroller.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+    [newcontroller.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:newcontroller] animated:YES];
     
 }
@@ -66,9 +66,9 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
                 if (success)
-                    [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                    [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
                 else {
-                    [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                    [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                     return;
                 }
                 [self refreshGroupData];
@@ -90,8 +90,6 @@
     self.scroll.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"texture.png"]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                   forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
     if (self.scroll.bounds.size.height >= max_post_height) {
         self.scroll.contentSize = self.scroll.bounds.size;
     } else {
@@ -188,9 +186,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
-                [self.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                [self.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
             else {
-                [self.view makeToast:@"Delete failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.view makeToast:@"Delete failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                 return;
             }
             [self refreshGroupData];

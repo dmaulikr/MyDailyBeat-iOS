@@ -114,14 +114,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [sheet addButtonWithTitle:@"Open App" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         BankInfo *obj = [self.bankList objectAtIndex:row];
         
-        if ([self isAppInstalled:obj.appName]) {
-            NSString *name = obj.appName;
-            name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
-        } else {
-            NSLog(@"%@", obj);
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.appURL]];
-        }
+        NSLog(@"%@", obj);
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.appURL]];
     }];
     [sheet addButtonWithTitle:@"Set as My Bank" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         BankInfo *obj = [self.bankList objectAtIndex:row];

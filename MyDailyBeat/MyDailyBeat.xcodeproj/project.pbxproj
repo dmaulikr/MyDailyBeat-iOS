@@ -79,7 +79,10 @@
 		7646C8C81C9EEC0E00D9D374 /* anonymous.png in Resources */ = {isa = PBXBuildFile; fileRef = 7646C8C51C9EEC0E00D9D374 /* anonymous.png */; };
 		7646C8C91C9EEC0E00D9D374 /* veterans.png in Resources */ = {isa = PBXBuildFile; fileRef = 7646C8C61C9EEC0E00D9D374 /* veterans.png */; };
 		7648843A1C6920AE0079C016 /* interests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 764884391C6920AE0079C016 /* interests.plist */; };
-		7648843F1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7648843E1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m */; };
+		76603A2D1D9851660030CDFB /* EVCTravelTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76603A2C1D9851660030CDFB /* EVCTravelTabViewController.m */; };
+		76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 76603A2F1D98CD0D0030CDFB /* EVCModalLargeEditor.h */; };
+		76603A331D98CD0E0030CDFB /* EVCModalLargeEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 76603A301D98CD0D0030CDFB /* EVCModalLargeEditor.m */; };
+		76603A341D98CD0E0030CDFB /* EVCModalLargeEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76603A311D98CD0D0030CDFB /* EVCModalLargeEditor.xib */; };
 		76607ABF1AD35A6E0097E520 /* banner-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABD1AD35A6E0097E520 /* banner-green.png */; };
 		76607AC01AD35A6E0097E520 /* banner-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABE1AD35A6E0097E520 /* banner-white.png */; };
 		7667E73F1A241F0E00B006D5 /* menubg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7667E73E1A241F0E00B006D5 /* menubg.jpg */; };
@@ -180,7 +183,6 @@
 		769B0A8F1A59F22C00BB287E /* EVCFlingProfileCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A8D1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.m */; };
 		769B0A901A59F22C00BB287E /* EVCFlingProfileCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769B0A8E1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.xib */; };
 		769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A961A607C2300BB287E /* EVCFeelingBlueViewController.m */; };
-		769B0A991A607C2300BB287E /* EVCFeelingBlueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769B0A971A607C2300BB287E /* EVCFeelingBlueViewController.xib */; };
 		769EC5071D8D8DA7001CB282 /* res_links.plist in Resources */ = {isa = PBXBuildFile; fileRef = 769EC5061D8D8DA7001CB282 /* res_links.plist */; };
 		769EEA3719A6482100FF072E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769EEA3619A6482100FF072E /* QuartzCore.framework */; };
 		769EEA8B19A8D43900FF072E /* EVCPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769EEA8919A8D43900FF072E /* EVCPreferencesViewController.m */; };
@@ -509,8 +511,11 @@
 		7646C8C51C9EEC0E00D9D374 /* anonymous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anonymous.png; sourceTree = "<group>"; };
 		7646C8C61C9EEC0E00D9D374 /* veterans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veterans.png; sourceTree = "<group>"; };
 		764884391C6920AE0079C016 /* interests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = interests.plist; sourceTree = "<group>"; };
-		7648843D1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCInterestsSelectorTableViewController.h; sourceTree = "<group>"; };
-		7648843E1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCInterestsSelectorTableViewController.m; sourceTree = "<group>"; };
+		76603A2B1D9851660030CDFB /* EVCTravelTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCTravelTabViewController.h; sourceTree = "<group>"; };
+		76603A2C1D9851660030CDFB /* EVCTravelTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCTravelTabViewController.m; sourceTree = "<group>"; };
+		76603A2F1D98CD0D0030CDFB /* EVCModalLargeEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCModalLargeEditor.h; sourceTree = "<group>"; };
+		76603A301D98CD0D0030CDFB /* EVCModalLargeEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCModalLargeEditor.m; sourceTree = "<group>"; };
+		76603A311D98CD0D0030CDFB /* EVCModalLargeEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCModalLargeEditor.xib; sourceTree = "<group>"; };
 		76607ABD1AD35A6E0097E520 /* banner-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-green.png"; sourceTree = "<group>"; };
 		76607ABE1AD35A6E0097E520 /* banner-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-white.png"; sourceTree = "<group>"; };
 		7667E73E1A241F0E00B006D5 /* menubg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menubg.jpg; sourceTree = "<group>"; };
@@ -625,7 +630,6 @@
 		769B0A8E1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFlingProfileCreatorViewController.xib; sourceTree = "<group>"; };
 		769B0A951A607C2300BB287E /* EVCFeelingBlueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCFeelingBlueViewController.h; sourceTree = "<group>"; };
 		769B0A961A607C2300BB287E /* EVCFeelingBlueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EVCFeelingBlueViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		769B0A971A607C2300BB287E /* EVCFeelingBlueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFeelingBlueViewController.xib; sourceTree = "<group>"; };
 		769EC5061D8D8DA7001CB282 /* res_links.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = res_links.plist; sourceTree = "<group>"; };
 		769EEA3619A6482100FF072E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		769EEA8819A8D43900FF072E /* EVCPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCPreferencesViewController.h; sourceTree = "<group>"; };
@@ -931,6 +935,7 @@
 			isa = PBXGroup;
 			children = (
 				76063C4D1B94B03A002F9171 /* EVCTravelTableViewController.m */,
+				76603A2C1D9851660030CDFB /* EVCTravelTabViewController.m */,
 			);
 			name = Travel;
 			sourceTree = "<group>";
@@ -939,6 +944,7 @@
 			isa = PBXGroup;
 			children = (
 				76063C4C1B94B03A002F9171 /* EVCTravelTableViewController.h */,
+				76603A2B1D9851660030CDFB /* EVCTravelTabViewController.h */,
 			);
 			name = Travel;
 			sourceTree = "<group>";
@@ -1120,6 +1126,16 @@
 			name = ASBPlayerScrubbing;
 			sourceTree = "<group>";
 		};
+		76603A2E1D98CC6F0030CDFB /* EVCModalLargeEditor */ = {
+			isa = PBXGroup;
+			children = (
+				76603A2F1D98CD0D0030CDFB /* EVCModalLargeEditor.h */,
+				76603A301D98CD0D0030CDFB /* EVCModalLargeEditor.m */,
+				76603A311D98CD0D0030CDFB /* EVCModalLargeEditor.xib */,
+			);
+			name = EVCModalLargeEditor;
+			sourceTree = "<group>";
+		};
 		767000DA1A7AFA3D005F9DC4 /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,8 +1279,8 @@
 				767000DB1A7AFA54005F9DC4 /* Shopping */,
 				76DEDA821A47500F009CD94F /* Fling */,
 				769EEA9B19AA35A800FF072E /* EVCProfilePicView.h */,
-				76CCA8BB1D90DB1700DB935B /* EVCRegistrationMessageViewController.h */,
 				76C2B0E919F4AD680010E98B /* EVCPostView.h */,
+				76CCA8BB1D90DB1700DB935B /* EVCRegistrationMessageViewController.h */,
 				761D651A19A15A4D0062B525 /* EVCAppDelegate.h */,
 				761D652319A15A4D0062B525 /* EVCViewController.h */,
 				769EEA8819A8D43900FF072E /* EVCPreferencesViewController.h */,
@@ -1339,7 +1355,6 @@
 				767000DC1A7AFA73005F9DC4 /* Shopping */,
 				76DEDA891A47505F009CD94F /* Fling */,
 				76EBBEA41A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib */,
-				769B0A971A607C2300BB287E /* EVCFeelingBlueViewController.xib */,
 				769EEA9E19AA35BF00FF072E /* EVCProfilePicView_iPhone.xib */,
 				761D65AE19A1A5520062B525 /* EVCViewController_iPhone.xib */,
 				76CCA8BD1D90DB1700DB935B /* EVCRegistrationMessageViewController.xib */,
@@ -1448,6 +1463,7 @@
 				76CCAB461D94ACCB00DB935B /* DB */,
 				76CCAB3C1D94AC0000DB935B /* DLAlertView */,
 				76CCAB3D1D94AC1C00DB935B /* DownPicker */,
+				76603A2E1D98CC6F0030CDFB /* EVCModalLargeEditor */,
 				76CCAB3E1D94AC2F00DB935B /* EVCComposeViewController */,
 				76CCAB3F1D94AC5300DB935B /* EVCGroupSearchViewViewController */,
 				76CCAB431D94ACA600DB935B /* Search */,
@@ -1841,7 +1857,6 @@
 				766DEF781A4BC2870049CA2A /* EVCChatroomTableViewController.h */,
 				766DEF7F1A4BC8060049CA2A /* EVCChatroomCell.h */,
 				769B0A8C1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.h */,
-				7648843D1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.h */,
 			);
 			name = Fling;
 			sourceTree = "<group>";
@@ -1857,7 +1872,6 @@
 				766DEF791A4BC2870049CA2A /* EVCChatroomTableViewController.m */,
 				766DEF801A4BC8060049CA2A /* EVCChatroomCell.m */,
 				769B0A8D1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.m */,
-				7648843E1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m */,
 			);
 			name = Fling;
 			sourceTree = "<group>";
@@ -1967,6 +1981,7 @@
 				76CCAAD61D94AB8A00DB935B /* DLAVAlertViewTextFieldTheme.h in Headers */,
 				76CCAB061D94AB8A00DB935B /* Post.h in Headers */,
 				76CCAAFA1D94AB8A00DB935B /* HealthInfo.h in Headers */,
+				76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */,
 				76CCAAD01D94AB8A00DB935B /* DLAVAlertViewButtonTheme.h in Headers */,
 				76CCAB0C1D94AB8A00DB935B /* Reachability.h in Headers */,
 				76CCAAF61D94AB8A00DB935B /* GroupPrefs.h in Headers */,
@@ -2131,7 +2146,6 @@
 				760ECEB21BAD073D00F3D9A2 /* asmedia_pause.png in Resources */,
 				7636F6BA19CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib in Resources */,
 				766B1D2E1CB1680D00C69FAD /* add-friends-white.png in Resources */,
-				769B0A991A607C2300BB287E /* EVCFeelingBlueViewController.xib in Resources */,
 				766B1D261CB0864B00C69FAD /* filter_icon_white.png in Resources */,
 				76264E681BE6E7F500292FBF /* peeps2.png in Resources */,
 				76A204D61BB0E7CE0028BFF8 /* health.png in Resources */,
@@ -2258,6 +2272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76CCAB811D94AF2600DB935B /* warning.png in Resources */,
+				76603A341D98CD0E0030CDFB /* EVCModalLargeEditor.xib in Resources */,
 				768193F21D94BAA100F97CA5 /* IQKeyboardManager.bundle in Resources */,
 				76CCAADC1D94AB8A00DB935B /* EVCComposeViewController_iPhone.xib in Resources */,
 				76CCAADF1D94AB8A00DB935B /* EVCGroupSearchViewViewController_iPhone.xib in Resources */,
@@ -2290,7 +2305,6 @@
 				768CDED91CE7701B000CC29A /* EVCCallHistoryTableViewController.m in Sources */,
 				7636F6C319CF9074000B68B0 /* EVCUpdateProfileViewController.m in Sources */,
 				769B0A8F1A59F22C00BB287E /* EVCFlingProfileCreatorViewController.m in Sources */,
-				7648843F1C692D6B0079C016 /* EVCInterestsSelectorTableViewController.m in Sources */,
 				76CCA8BE1D90DB1700DB935B /* EVCRegistrationMessageViewController.m in Sources */,
 				7630B59F1BACFA0A00FA2617 /* ASVideoBehavior.m in Sources */,
 				7641406D1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m in Sources */,
@@ -2321,6 +2335,7 @@
 				7670EFD11CFCBD2400831967 /* EVCMyHealthViewController.m in Sources */,
 				76C37F131C2A0AFB005D8960 /* EVCJobsViewController.m in Sources */,
 				7630B5A01BACFA0A00FA2617 /* ASVideoControlView.m in Sources */,
+				76603A2D1D9851660030CDFB /* EVCTravelTabViewController.m in Sources */,
 				767BDCAB1D297250004DA0D8 /* EVCHobbiesViewController.m in Sources */,
 				7630B59B1BACFA0A00FA2617 /* ASMediaFocusController.m in Sources */,
 				76DEDA8D1A475E68009CD94F /* EVCPartnersTableViewController.m in Sources */,
@@ -2378,6 +2393,7 @@
 				76CCAB0D1D94AB8A00DB935B /* Reachability.m in Sources */,
 				76CCAB241D94AB8A00DB935B /* UIWindow+AHKAdditions.m in Sources */,
 				76CCAAE31D94AB8A00DB935B /* EVCSearchEngine.m in Sources */,
+				76603A331D98CD0E0030CDFB /* EVCModalLargeEditor.m in Sources */,
 				76CCAAB81D94AB8A00DB935B /* AFNetworkReachabilityManager.m in Sources */,
 				76CCAACA1D94AB8A00DB935B /* BankDatabase.m in Sources */,
 				76CCAB071D94AB8A00DB935B /* Post.m in Sources */,

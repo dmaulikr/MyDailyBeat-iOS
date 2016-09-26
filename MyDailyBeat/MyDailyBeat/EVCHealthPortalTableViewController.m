@@ -35,20 +35,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.healthPortals count] + 1;
+    return [self.healthPortals count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
     
-    if (indexPath.row < [self.healthPortals count]) {
-        cell.textLabel.text = ((HealthInfo * )[self.healthPortals objectAtIndex:indexPath.row]).URL;
-    } else {
-        cell.textLabel.text = @"Add Health Portal";
-        cell.imageView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"plus-512.png"] scaledToSize:CGSizeMake(30, 30)];
-    }
-    
+    cell.textLabel.text = ((HealthInfo * )[self.healthPortals objectAtIndex:indexPath.row]).URL;
     
     
     
@@ -59,30 +53,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row < [self.healthPortals count]) {
-        [self popupActionMenu:indexPath.row];
-    } else {
-        DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Enter new health portal" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        [alert addTextFieldWithText:@"" placeholder:@""];
-        [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
-            switch (buttonIndex) {
-                case 0:
-                    // cancel
-                    break;
-                case 1: {
-                    // ok
-                    NSString *text = [alertView textFieldTextAtIndex:0];
-                    HealthInfo *info = [[HealthInfo alloc] initWithUniqueId:0 URL:text logoURL:@""];
-                    [[HealthDatabase database] insertIntoDatabase:info orPrescriptionProvider:nil];
-                    self.healthPortals = [[NSMutableArray alloc] initWithArray:[[HealthDatabase database] healthPortals]];
-                    [self.tableView reloadData];
-                }
-                    
-                default:
-                    break;
-            }
-        }];
-    }
+    [self popupActionMenu:indexPath.row];
     
 }
 

@@ -19,17 +19,6 @@
     [dic setObject:[NSNumber numberWithInt:self.ethnicity] forKey:@"ethnicity"];
     [dic setObject:[NSNumber numberWithInt:self.drinker] forKey:@"drinker"];
     [dic setObject:[NSNumber numberWithInt:self.beliefs] forKey:@"beliefs"];
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
-    if (self.relationshipTypes.fling) {
-        [arr addObject:[NSNumber numberWithInt:0]];
-    }
-    if (self.relationshipTypes.companionship) {
-        [arr addObject:[NSNumber numberWithInt:1]];
-    }
-    if (self.relationshipTypes.committedrelationship) {
-        [arr addObject:[NSNumber numberWithInt:2]];
-    }
-    [dic setObject:arr forKey:@"relationship"];
     [dic setObject:[NSNumber numberWithBool:self.smoker] forKey:@"smoker"];
     [dic setObject:[NSNumber numberWithBool:self.veteran] forKey:@"veteran"];
     

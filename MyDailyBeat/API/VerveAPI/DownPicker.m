@@ -49,7 +49,7 @@
         
         // setup the arrow image
         UIImage* img = [UIImage imageNamed:@"downArrow.png"];   // non-CocoaPods
-        if (img == nil) img = [UIImage imageNamed:@"VerveAPIBundle.bundle/downArrow.png"]; // CocoaPods
+        if (img == nil) img = [UIImage imageNamed:@"downArrow.png"]; // CocoaPods
         if (img != nil) self->textField.rightView = [[UIImageView alloc] initWithImage:img];
         self->textField.rightView.contentMode = UIViewContentModeScaleAspectFit;
         self->textField.rightView.clipsToBounds = YES;

@@ -18,24 +18,29 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fss-Q2-i5D">
-                    <frame key="frameInset" width="381" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="goP-1z-fH0">
+                    <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fss-Q2-i5D">
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="goP-1z-fH0" secondAttribute="trailing" id="9MB-1J-K3o"/>
+                <constraint firstAttribute="bottom" secondItem="fss-Q2-i5D" secondAttribute="bottom" id="F20-bw-9Xy"/>
+                <constraint firstItem="fss-Q2-i5D" firstAttribute="top" secondItem="goP-1z-fH0" secondAttribute="bottom" id="NZo-Ab-fJp"/>
+                <constraint firstItem="goP-1z-fH0" firstAttribute="leading" secondItem="fss-Q2-i5D" secondAttribute="leading" id="Usf-WO-fe1"/>
+                <constraint firstItem="goP-1z-fH0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aoX-Bu-z3p"/>
+                <constraint firstItem="goP-1z-fH0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="63" id="xJ9-6d-7H5"/>
+                <constraint firstItem="goP-1z-fH0" firstAttribute="trailing" secondItem="fss-Q2-i5D" secondAttribute="trailing" id="yla-Cx-qSE"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="46.5" y="114.5"/>
         </view>
-        <searchBar contentMode="redraw" id="goP-1z-fH0">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-            <textInputTraits key="textInputTraits"/>
-            <scopeButtonTitles>
-                <string>Title</string>
-                <string>Title</string>
-            </scopeButtonTitles>
-            <point key="canvasLocation" x="345" y="616"/>
-        </searchBar>
     </objects>
 </document>

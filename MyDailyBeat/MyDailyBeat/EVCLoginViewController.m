@@ -193,7 +193,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
-                [self.view makeToast:@"Username and password do not match." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.view makeToast:@"Username and password do not match." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
             });
         }
         

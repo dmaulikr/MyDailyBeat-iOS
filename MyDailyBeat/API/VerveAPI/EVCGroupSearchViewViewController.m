@@ -17,7 +17,7 @@
 @synthesize mSearchBar, mTableView, data;
 
 - (id) init {
-    self = [super initWithNibName:@"VerveAPIBundle.bundle/EVCGroupSearchViewViewController_iPhone" bundle:nil];
+    self = [super initWithNibName:@"EVCGroupSearchViewViewController_iPhone" bundle:[NSBundle bundleForClass:[self class]]];
     if (self) {
         
     }
@@ -66,9 +66,9 @@
                     [self.view hideToastActivity];
                     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                     if (success)
-                        [self.presentingViewController.view makeToast:@"Successfully joined group!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                        [self.presentingViewController.view makeToast:@"Successfully joined group!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
                     else {
-                        [self.presentingViewController.view makeToast:@"Failed to join group!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                        [self.presentingViewController.view makeToast:@"Failed to join group!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                         return;
                     }
                 });

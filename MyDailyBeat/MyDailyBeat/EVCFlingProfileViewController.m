@@ -14,11 +14,11 @@
 
 @implementation EVCFlingProfileViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode:(REL_MODE) mode {
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user {
     self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.currentViewedUser = user;
-        self.mode = mode;
+        self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     }
     return self;
 }
@@ -45,7 +45,7 @@
 }
 
 - (IBAction)edit:(id)sender {
-    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil andMode:self.mode];
+    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil];
     [self.navigationController pushViewController:edit animated:YES];
 }
 

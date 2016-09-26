@@ -14,28 +14,11 @@
 
 @implementation EVCFlingProfileCreatorViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(REL_MODE) mode {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.mode = mode;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     [self navigationItem].title = @"Edit Fling Profile";
-    if (self.mode == FRIENDS_MODE) {
-        [self.interestsButton setHidden:NO];
-    } else {
-        [self.interestsButton setHidden:YES];
-    }
     
-}
-
-- (IBAction)selectInterests:(id)sender {
-    EVCInterestsSelectorTableViewController *selector = [[EVCInterestsSelectorTableViewController alloc] init];
-    [self.navigationController pushViewController:selector animated:YES];
 }
 
 - (IBAction)save:(id)sender {
@@ -49,15 +32,15 @@
         
         VerveUserPreferences* prefs = [[RestAPI getInstance] getUserPreferencesForUser:[[RestAPI getInstance] getCurrentUser]];
         int age = prefs.age;
-        BOOL success = [[RestAPI getInstance] saveFlingProfileForUser:[[RestAPI getInstance] getCurrentUser] withAge:age andDescription:about andInterests:self.interests];
+        BOOL success = [[RestAPI getInstance] saveFlingProfileForUser:[[RestAPI getInstance] getCurrentUser] withAge:age andDescription:about andInterests:nil];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success) {
-                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
                 [self.navigationController popToViewController:self.parentViewController animated:YES];
             } else {
-                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                 return;
             }
         });

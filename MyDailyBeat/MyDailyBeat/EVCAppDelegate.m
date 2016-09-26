@@ -19,6 +19,11 @@
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:login];
     
     [self.window makeKeyAndVisible];
+    NSArray *bundz = [[NSBundle bundleForClass:[self class]] URLsForResourcesWithExtension:@"framework" subdirectory:nil];
+    for (NSURL *bundleURL in bundz) {
+        NSBundle *child = [NSBundle bundleWithURL:bundleURL];
+        [child load];
+    }
     
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:

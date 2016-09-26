@@ -47,14 +47,8 @@
 }
 
 - (IBAction)gotoBank:(id)sender {
-    if ([self isAppInstalled:self.bank.appName]) {
-        NSString *name = self.bank.appName;
-        name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
-    } else {
-        NSLog(@"%@", self.bank);
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.bank.appURL]];
-    }
+    NSLog(@"%@", self.bank);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.bank.appURL]];
 }
 
 - (BOOL) isAppInstalled: (NSString *) name {

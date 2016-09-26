@@ -7,6 +7,7 @@
 //
 
 #import "EVCFlingViewController.h"
+#import "EVCResourceLinksTableViewController.h"
 
 @interface EVCFlingViewController ()
 
@@ -29,22 +30,18 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    NSLog(@"Mode: %d", self.mode);
     [super viewDidAppear:animated];
-    if (self.mode == FRIENDS_MODE) {
-        self.navigationItem.title = @"Make Friends";
-    } else if (self.mode == FLING_MODE) {
-        self.navigationItem.title = @"Have a Fling";
-    } else {
-        self.navigationItem.title = @"Start a Relationship";
-    }
+    [[NSUserDefaults standardUserDefaults] setInteger:self.mode forKey:@"REL_MODE"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil andMode:self.mode];
-    EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil andMode:self.mode];
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[RestAPI getInstance] getCurrentUser] andMode:self.mode];
-    EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] initWithNibName:@"EVCChatroomTableViewController" bundle:nil andMode:self.mode];
+    EVCPartnerMatchViewController *partnerMatch = [[EVCPartnerMatchViewController alloc]initWithNibName:@"EVCPartnerMatchViewController" bundle:nil];
+    EVCPartnersTableViewController *partners = [[EVCPartnersTableViewController alloc]initWithNibName:@"EVCPartnersTableViewController" bundle:nil];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc]initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[RestAPI getInstance] getCurrentUser]];
+    EVCChatroomTableViewController *messaging = [[EVCChatroomTableViewController alloc] initWithNibName:@"EVCChatroomTableViewController" bundle:nil];
+    EVCResourceLinksTableViewController *rl = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil andModuleName:@"Relationships"];
     
     UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:partnerMatch];
     UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:partners];
@@ -53,12 +50,13 @@
     
     UITabBar *bar = self.tabBar;
 
-    self.viewControllers = [NSArray arrayWithObjects:first, second, third, fourth, nil];
+    self.viewControllers = [NSArray arrayWithObjects:first, second, third, fourth, rl, nil];
     
     UITabBarItem *matchItem = [bar.items objectAtIndex:0];
     UITabBarItem *partnersItem = [bar.items objectAtIndex:1];
     UITabBarItem *messagingItem = [bar.items objectAtIndex:2];
     UITabBarItem *profItem = [bar.items objectAtIndex:3];
+    UITabBarItem *rlItem = [bar.items objectAtIndex:4];
     
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
@@ -81,8 +79,16 @@
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    profItem.title = @"My Profile";
+    profItem.title = @"Profile";
     [profItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"res-icon-white"] scaledToSize:CGSizeMake(30, 30)];
+    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"res-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
+    
+    
+    rlItem.title = @"Resources";
+    [rlItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+
     
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
@@ -95,18 +101,6 @@
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
     
     self.navigationItem.rightBarButtonItem = menuButton;
-    
-    UIImage* image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"filter_icon_white"] scaledToSize:CGSizeMake(30, 30)];
-    CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
-    UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
-    [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
-    [someButton3 addTarget:self action:@selector(filter)
-         forControlEvents:UIControlEventTouchUpInside];
-    [someButton3 setShowsTouchWhenHighlighted:YES];
-    
-    UIBarButtonItem *filterButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];
-    
-    self.navigationItem.rightBarButtonItems = @[menuButton, filterButton];
     
     UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);

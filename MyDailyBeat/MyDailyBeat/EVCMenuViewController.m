@@ -34,11 +34,11 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     self.view.backgroundColor = [UIColor clearColor];
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"hearts2", @"hearts2", @"peeps2", @"health2", @"plane2", @"hands2", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"hearts2", @"hearts2", @"peeps2", @"health2", @"plane2", nil];
     self.logoView.image = [UIImage imageNamed:@"Logo.png"];
     self.logoView.backgroundColor = [UIColor whiteColor];
-    self.logoView.layer.cornerRadius = 52;
+    self.logoView.layer.cornerRadius = 55;
     self.logoView.clipsToBounds = YES;
 
 }
@@ -153,11 +153,6 @@
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:travel] animated:YES];
                     break;
                 }
-                case 9: {
-                    EVCVolunteeringMapViewController *volunteer = [[EVCVolunteeringMapViewController alloc] initWithNibName:@"EVCVolunteeringMapViewController" bundle:nil];
-                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:volunteer] animated:YES];
-                    break;
-                }
                 case 7: {
                     EVCHealthViewController *health = [[EVCHealthViewController alloc] initWithNibName:@"EVCHealthViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
@@ -192,9 +187,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
-                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
             else {
-                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                 return;
             }
             [self.tableView reloadData];

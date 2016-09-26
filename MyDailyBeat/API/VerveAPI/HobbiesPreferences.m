@@ -33,6 +33,7 @@
 
 + (HobbiesPreferences *) fromJSON: (NSMutableArray *) array {
     HobbiesPreferences *prefs = [[HobbiesPreferences alloc] init];
+    NSLog(@"%@", array);
     prefs.books = [[array objectAtIndex:0] boolValue];
     prefs.golf = [[array objectAtIndex:1] boolValue];
     prefs.cars = [[array objectAtIndex:2] boolValue];

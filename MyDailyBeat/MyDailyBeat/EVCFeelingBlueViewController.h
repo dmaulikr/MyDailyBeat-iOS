@@ -12,8 +12,6 @@
 #import "RESideMenu.h"
 
 
-@interface EVCFeelingBlueViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@interface EVCFeelingBlueViewController : UITableViewController
 
 @end

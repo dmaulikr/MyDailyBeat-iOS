@@ -14,18 +14,11 @@
 
 @implementation EVCPartnerMatchViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(REL_MODE) mode {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.mode = mode;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"Mode: %d", self.mode);
     self.partners = [[NSMutableArray alloc] init];
+    self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     [self retrievePartners];
 }
 
@@ -35,9 +28,15 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        if (self.mode == FLING_MODE || self.mode == RELATIONSHIP_MODE) {
+        if (self.mode != FRIENDS_MODE) {
             self.partners = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingProfilesBasedOnPrefsOfUser:[[RestAPI getInstance] getCurrentUser]]];
+            [self.partners removeObjectAtIndex:0];
         } else {
+            NSArray *hobbMatches = [[RestAPI getInstance] getHobbiesMatchesForUserWithScreenName:[[RestAPI getInstance] getCurrentUser].screenName];
+            self.partners = [[NSMutableArray alloc] init];
+            for (HobbiesMatchObject *obj in hobbMatches) {
+                [self.partners addObject:[[RestAPI getInstance] getFlingProfileForUser:obj.userObj]];
+            }
             
         }
         NSLog(@"Partners: %lu", (unsigned long)[self.partners count]);
@@ -105,7 +104,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[RestAPI getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName] andMode:self.mode];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[RestAPI getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName]];
     
     // Pass the selected object to the new view controller.
     

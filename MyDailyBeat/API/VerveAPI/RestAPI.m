@@ -185,7 +185,7 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register/private" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
         NSString *response = [result objectForKey:@"response"];
         if ([response isEqualToString:@"Operation succeeded"]) {
@@ -263,17 +263,6 @@ static VerveUser *currentUser;
         prefs.drinker = [[resultDic objectForKey:@"drinker"] intValue];
         prefs.smoker = [[resultDic objectForKey:@"smoker"] boolValue];
         prefs.veteran = [[resultDic objectForKey:@"veteran"] boolValue];
-        prefs.relationshipTypes = [[VerveRelationshipPrefs alloc] init];
-        NSMutableArray * arr = (NSMutableArray *) [resultDic objectForKey:@"relationship"];
-        if ([arr containsObject:[NSNumber numberWithInt:0]]) {
-            prefs.relationshipTypes.fling = true;
-        }
-        if ([arr containsObject:[NSNumber numberWithInt:1]]) {
-            prefs.relationshipTypes.companionship = true;
-        }
-        if ([arr containsObject:[NSNumber numberWithInt:2]]) {
-            prefs.relationshipTypes.committedrelationship = true;
-        }
         
     }
     
@@ -706,12 +695,14 @@ static VerveUser *currentUser;
     for (int i= 0 ; i < [items count] ; ++i) {
         HobbiesMatchObject *match = [[HobbiesMatchObject alloc] init];
         NSDictionary *item = [items objectAtIndex:i];
-        match.prefs = [HobbiesPreferences fromJSON:[item objectForKey:@"prefs"]];
+        NSDictionary *prefs = [item objectForKey:@"prefs"];
+        NSLog(@"%@", prefs);
+        match.prefs = [HobbiesPreferences fromJSON:[prefs objectForKey:@"hobbyList"]];
         NSDictionary *userDic = [item objectForKey:@"userObj"];
         VerveUser *temp = [[VerveUser alloc] init];
         temp.name = [userDic objectForKey:@"name"];
         temp.email = [userDic objectForKey:@"email"];
-        temp.screenName = screenName;
+        temp.screenName = [userDic objectForKey:@"screenName"];
         temp.password = [userDic objectForKey:@"password"];
         temp.mobile = [userDic objectForKey:@"mobile"];
         temp.zipcode = [userDic objectForKey:@"zipcode"];
@@ -1129,8 +1120,6 @@ static VerveUser *currentUser;
         
         prof.screenName = [item objectForKey:@"screenName"];
         prof.aboutMe = [ item objectForKey:@"aboutMe"];
-        prof.age = [[item objectForKey:@"age"] intValue];
-        prof.interests = [item objectForKey:@"interests"];
         
         [retItems addObject:prof];
     }
@@ -1154,8 +1143,6 @@ static VerveUser *currentUser;
         
         prof.screenName = [item objectForKey:@"screenName"];
         prof.aboutMe = [ item objectForKey:@"aboutMe"];
-        prof.age = [[item objectForKey:@"age"] intValue];
-        prof.interests = [item objectForKey:@"interests"];
         
         [retItems addObject:prof];
     }
@@ -1203,8 +1190,6 @@ static VerveUser *currentUser;
     
     prof.screenName = [resultDic objectForKey:@"screenName"];
     prof.aboutMe = [resultDic objectForKey:@"aboutMe"];
-    prof.age = [[resultDic objectForKey:@"age"] intValue];
-    prof.interests = [resultDic objectForKey:@"interests"];
     
     return prof;
     
@@ -1218,7 +1203,7 @@ static VerveUser *currentUser;
         [postData setObject:user.screenName forKey:@"screenName"];
         [postData setObject:about forKey:@"aboutMe"];
         [postData setObject:[NSNumber numberWithInt:age] forKey:@"age"];
-        [postData setObject:array  forKey:@"interests"];
+
         
         NSError *error;
         NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
@@ -1310,7 +1295,7 @@ static VerveUser *currentUser;
     @try {
         NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
         [postData setObject:user.screenName forKey:@"screenName"];
-        [postData setObject:string forKey:@"URL"];
+        [postData setObject:string forKey:@"url"];
         
         NSError *error;
         NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];

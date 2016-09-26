@@ -15,7 +15,8 @@
 @implementation EVCUserSearchViewViewController
 
 - (id) init {
-    self = [super initWithNibName:@"VerveAPIBundle.bundle/EVCUserSearchViewViewController_iPhone" bundle:nil];
+    
+    self = [super initWithNibName:@"EVCUserSearchViewViewController_iPhone" bundle:[NSBundle bundleForClass:[self class]]];
     if (self) {
         
     }
@@ -187,7 +188,7 @@
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.view hideToastActivity];
-                    [cell.imageView setImage:[UIImage imageNamed:@"VerveAPIBundle.bundle/default-avatar.png"]];
+                    [cell.imageView setImage:[UIImage imageNamed:@"default-avatar.png"]];
                 });
             }
             

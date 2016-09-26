@@ -15,7 +15,6 @@
 
 @property (nonatomic) int gender, age, status, ethnicity, beliefs, drinker;
 @property (nonatomic) BOOL smoker, veteran;
-@property (nonatomic, retain) VerveRelationshipPrefs *relationshipTypes;
 
 - (NSMutableDictionary *) toJSON;
 

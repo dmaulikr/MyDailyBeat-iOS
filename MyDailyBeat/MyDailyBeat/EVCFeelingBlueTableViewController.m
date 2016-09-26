@@ -101,9 +101,55 @@
 }
 
 - (void) makeCall:(NSInteger) index {
-    NSString *dialstring = [[NSString alloc] initWithFormat:@"telprompt://*671%@", [[self.peeps objectAtIndex:index] mobile]];
+    NSString *dialstring = [[self.peeps objectAtIndex:index] mobile];
+    [self makeCall2:dialstring];
+}
+
+- (void) makeCall2:(NSString *) num {
+    NSString *dialstring = [[NSString alloc] initWithFormat:@"tel://%@", num];
     NSURL *url = [NSURL URLWithString:dialstring];
-    [[UIApplication sharedApplication] openURL:url];
+    static UIWebView *webView = nil;
+    static dispatch_once_t onceToken;
+    [self saveToCallHistoryNumber:num withAccessCode:@""];
+    dispatch_once(&onceToken, ^{
+        webView = [UIWebView new];
+    });
+    [webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
+- (void) saveToCallHistoryNumber: (NSString *) num withAccessCode: (NSString *) code {
+    if (code == nil) {
+        if ([num isEqualToString:@"1-800-273-8255"]) {
+            // suicide
+            NSMutableArray *callHistory = [[NSUserDefaults standardUserDefaults] objectForKey:@"callHistory"];
+            if (callHistory == nil) {
+                callHistory = [[NSMutableArray alloc] init];
+            }
+            
+            [callHistory insertObject:@"Suicide Hotline" atIndex:0];
+            [[NSUserDefaults standardUserDefaults] setObject:callHistory forKey:@"callHistory"];
+        } else {
+            // save number
+            NSMutableArray *callHistory = [[NSUserDefaults standardUserDefaults] objectForKey:@"callHistory"];
+            if (callHistory == nil) {
+                callHistory = [[NSMutableArray alloc] init];
+            }
+            
+            [callHistory insertObject:num atIndex:0];
+            [[NSUserDefaults standardUserDefaults] setObject:callHistory forKey:@"callHistory"];
+        }
+    } else {
+        // veterans
+        NSMutableArray *callHistory = [[NSUserDefaults standardUserDefaults] objectForKey:@"callHistory"];
+        if (callHistory == nil) {
+            callHistory = [[NSMutableArray alloc] init];
+        }
+        
+        [callHistory insertObject:@"Veterans' Hotline" atIndex:0];
+        [[NSUserDefaults standardUserDefaults] setObject:callHistory forKey:@"callHistory"];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) showMenu {

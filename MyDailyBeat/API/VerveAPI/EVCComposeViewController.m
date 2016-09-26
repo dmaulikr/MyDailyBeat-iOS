@@ -19,7 +19,7 @@
 @implementation EVCComposeViewController
 
 - (id) initWithPostBlock:(EVCComposeViewControllerCompletionHandler) callback {
-    self = [self initWithNibName:@"VerveAPIBundle.bundle/EVCComposeViewController_iPhone" bundle:nil];
+    self = [self initWithNibName:@"EVCComposeViewController_iPhone" bundle:[NSBundle bundleForClass:[self class]]];
     if (self) {
         _completionHandler = callback;
         

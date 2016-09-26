@@ -11,7 +11,5 @@
 @interface FlingProfile : NSObject
 
 @property (nonatomic, retain) NSString *screenName, *aboutMe;
-@property (nonatomic) int age;
-@property (nonatomic, retain) NSMutableArray *interests;
 
 @end

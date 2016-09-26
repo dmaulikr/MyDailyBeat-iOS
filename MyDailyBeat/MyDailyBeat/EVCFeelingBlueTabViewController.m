@@ -20,9 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    EVCFeelingBlueViewController *fb = [[EVCFeelingBlueViewController alloc] initWithNibName:@"EVCFeelingBlueViewController" bundle:nil];
+    EVCFeelingBlueViewController *fb = [[EVCFeelingBlueViewController alloc] initWithStyle:UITableViewStylePlain];
     EVCCallHistoryTableViewController *ch = [[EVCCallHistoryTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    EVCResourceLinksTableViewController *rl = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil];
+    EVCResourceLinksTableViewController *rl = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil andModuleName:@"FeelingBlue"];
     UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:fb];
     UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:ch];
     UINavigationController *third = [[UINavigationController alloc] initWithRootViewController:rl];
