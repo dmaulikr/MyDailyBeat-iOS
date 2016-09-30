@@ -88,8 +88,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.scroll.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"texture.png"]];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
     if (self.scroll.bounds.size.height >= max_post_height) {
         self.scroll.contentSize = self.scroll.bounds.size;
     } else {
@@ -101,7 +99,7 @@
     self.imageView.layer.shadowOffset = CGSizeMake(0, 1);
     self.imageView.layer.shadowOpacity = 1;
     self.imageView.layer.shadowRadius = 1.0;
-    self.imageView.clipsToBounds = NO;
+    self.imageView.clipsToBounds = YES;
     
      _composeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(writePost)];
     
@@ -117,7 +115,7 @@
     
     self.title = self.group.groupName;
     
-    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-black"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
@@ -129,7 +127,7 @@
     
     self.navigationItem.rightBarButtonItem = menuButton;
     
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-black"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
@@ -163,11 +161,15 @@
 - (void) loadPicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
         NSURL *imageURL = [[RestAPI getInstance] retrieveGroupPictureForGroup:self.group];
         if (imageURL == nil) return;
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
+            [self.view hideToastActivity];
             self.imageView.image = [UIImage imageWithData:imageData];
             
         });
@@ -216,8 +218,12 @@
     }
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
         [self refreshGroupData];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
             [self.group.posts sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
                 
                 int id1 = [(Post *)obj1 post_id];

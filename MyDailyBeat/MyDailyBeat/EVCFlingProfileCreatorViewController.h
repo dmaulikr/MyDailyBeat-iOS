@@ -13,7 +13,7 @@
 @interface EVCFlingProfileCreatorViewController : UIViewController
 
 @property (nonatomic, retain) IBOutlet UITextView *aboutMeView;
-@property (nonatomic, retain) IBOutlet UIButton *okButton, *interestsButton;
+@property (nonatomic, retain) IBOutlet UIButton *okButton;
 
 @property (nonatomic) REL_MODE mode;
 

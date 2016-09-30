@@ -69,6 +69,7 @@ static BankDatabase *_database;
                 NSString *name = [[NSString alloc] initWithUTF8String:nameChars];
                 NSString *appURL = [[NSString alloc] initWithUTF8String:appChars];
                 NSString *iconURL = [[NSString alloc] initWithUTF8String:iconChars];
+                uniqueId = [[appURL stringByReplacingOccurrencesOfString:@"itms-apps://itunes.apple.com/app/id" withString:@""] intValue];
                 BankInfo *info = [[BankInfo alloc]
                                   initWithUniqueId:uniqueId name:name appURL:appURL iconURL:iconURL];
                 [retval addObject:info];

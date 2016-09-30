@@ -20,7 +20,7 @@
 #import "EVCFinanceViewController.h"
 #import "EVCVolunteeringMapViewController.h"
 #import "EVCTravelTabViewController.h"
-#import "EVCJobsViewController.h"
+#import "EVCJobsTabViewController.h"
 #import "EVCHealthViewController.h"
 #import "EVCHobbiesViewController.h"
 #import "EVCFirstTimeSetupViewController.h"

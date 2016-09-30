@@ -48,7 +48,9 @@
 
 - (IBAction)gotoBank:(id)sender {
     NSLog(@"%@", self.bank);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.bank.appURL]];
+    NSString *appURL = self.bank.appURL;
+    NSLog(@"%@", appURL);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appURL]];
 }
 
 - (BOOL) isAppInstalled: (NSString *) name {

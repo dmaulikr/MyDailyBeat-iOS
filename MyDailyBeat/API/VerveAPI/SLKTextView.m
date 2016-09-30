@@ -144,7 +144,7 @@ NSString * const SLKTextViewPastedItemData =                    @"SLKTextViewPas
 
 - (NSUInteger)numberOfLines
 {
-    return abs(self.contentSize.height/self.font.lineHeight);
+    return abs((int) (self.contentSize.height/self.font.lineHeight));
 }
 
 // Returns a different number of lines when landscape and only on iPhone

@@ -180,6 +180,7 @@
 		768AFF3E1A754E300055F258 /* EVCShoppingSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768AFF3C1A754E300055F258 /* EVCShoppingSearchViewController.m */; };
 		768AFF3F1A754E300055F258 /* EVCShoppingSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 768AFF3D1A754E300055F258 /* EVCShoppingSearchViewController.xib */; };
 		768CDED91CE7701B000CC29A /* EVCCallHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */; };
+		76995CAA1D9B6F5A004ED977 /* EVCJobsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */; };
 		769B0A8F1A59F22C00BB287E /* EVCFlingProfileCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A8D1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.m */; };
 		769B0A901A59F22C00BB287E /* EVCFlingProfileCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769B0A8E1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.xib */; };
 		769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A961A607C2300BB287E /* EVCFeelingBlueViewController.m */; };
@@ -625,6 +626,8 @@
 		768CDED71CE7701A000CC29A /* EVCCallHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCCallHistoryTableViewController.h; sourceTree = "<group>"; };
 		768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCCallHistoryTableViewController.m; sourceTree = "<group>"; };
 		768E3EF81CEFED6700A26909 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		76995CA81D9B6F59004ED977 /* EVCJobsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsTabViewController.h; sourceTree = "<group>"; };
+		76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCJobsTabViewController.m; sourceTree = "<group>"; };
 		769B0A8C1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EVCFlingProfileCreatorViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		769B0A8D1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFlingProfileCreatorViewController.m; sourceTree = "<group>"; };
 		769B0A8E1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFlingProfileCreatorViewController.xib; sourceTree = "<group>"; };
@@ -1399,6 +1402,7 @@
 		76B70B461CA774A000AF735E /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
+				76995CA81D9B6F59004ED977 /* EVCJobsTabViewController.h */,
 				7641406A1C31FE5400DF9A6C /* EVCJobsDetailsViewController.h */,
 				76C37F101C2A0AFA005D8960 /* EVCJobsViewController.h */,
 			);
@@ -1419,6 +1423,7 @@
 		76B70B481CA774B200AF735E /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
+				76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */,
 				7641406B1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m */,
 				76C37F111C2A0AFA005D8960 /* EVCJobsViewController.m */,
 			);
@@ -2316,6 +2321,7 @@
 				762F13411BBCDCCE001BD716 /* EVCVolunteeringMapViewController.m in Sources */,
 				76011C331B927BDB000EC003 /* EVCFinanceViewController.m in Sources */,
 				7630B59E1BACFA0A00FA2617 /* ASTransparentView.m in Sources */,
+				76995CAA1D9B6F5A004ED977 /* EVCJobsTabViewController.m in Sources */,
 				76DEDA871A47504B009CD94F /* EVCPartnerMatchViewController.m in Sources */,
 				7630B5A51BACFA5200FA2617 /* ASBPlayerScrubbing.m in Sources */,
 				769EEA9D19AA35A800FF072E /* EVCProfilePicView.m in Sources */,
@@ -2584,6 +2590,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2613,6 +2620,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat/**";
 				WRAPPER_EXTENSION = app;
 			};

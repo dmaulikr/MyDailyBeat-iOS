@@ -24,6 +24,10 @@
     self.iconList = [[NSMutableArray alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.tabBarController.tabBar.frame), 0);
+    self.tableView.contentInset = insets;
+    self.tableView.scrollIndicatorInsets = insets;
+    self.edgesForExtendedLayout = UIRectEdgeAll;
     [self retrieveBanksData];
     // Do any additional setup after loading the view from its nib.
     
@@ -65,7 +69,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return ([self.bankList count] >= 1) ? [self.bankList count] + 1 : 1;
+    return ([self.bankList count] >= 1) ? [self.bankList count] + 3 : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -79,9 +83,12 @@
         if (indexPath.row < [self.bankList count]) {
             cell.textLabel.text = ((BankInfo *)[self.bankList objectAtIndex:indexPath.row]).appName;
             cell.imageView.image = [self.iconList objectAtIndex:indexPath.row];
-        } else {
+        } else if (indexPath.row == [self.bankList count]) {
             cell.textLabel.text = @"Add Bank";
             cell.imageView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"plus-512.png"] scaledToSize:CGSizeMake(30, 30)];
+        } else {
+            cell.textLabel.text = @"";
+            cell.imageView.image = nil;
         }
     } else {
         cell.textLabel.text = @"Add Bank";
@@ -97,9 +104,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.bankList count] >= 1) {
         if (indexPath.row < [self.bankList count]) {
             [self popupActionMenu:indexPath.row];
-        } else {
+        } else if (indexPath.row == [self.bankList count]){
             // add new bank
             [self addBank];
+        } else {
+            // do nothing
         }
         
     } else {
@@ -115,7 +124,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         BankInfo *obj = [self.bankList objectAtIndex:row];
         
         NSLog(@"%@", obj);
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.appURL]];
+        NSString *appURL = obj.appURL;
+        NSLog(@"%@", appURL);
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appURL]];
     }];
     [sheet addButtonWithTitle:@"Set as My Bank" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         BankInfo *obj = [self.bankList objectAtIndex:row];

@@ -1,54 +1,39 @@
 //
-//  EVCFinanceViewController.m
+//  EVCJobsTabViewController.m
 //  MyDailyBeat
 //
-//  Created by Virinchi Balabhadrapatruni on 8/29/15.
-//  Copyright (c) 2015 eVerveCorp. All rights reserved.
+//  Created by Virinchi Balabhadrapatruni on 9/27/16.
+//  Copyright © 2016 eVerveCorp. All rights reserved.
 //
 
-#import "EVCFinanceViewController.h"
+#import "EVCJobsTabViewController.h"
 
-@interface EVCFinanceViewController ()
+@interface EVCJobsTabViewController ()
 
 @end
 
-@implementation EVCFinanceViewController
+@implementation EVCJobsTabViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    EVCBankViewController *bank;
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"myBank"];
-    BankInfo * bankInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSLog(@"Bank Info: %@", bankInfo);
-    bank = [[EVCBankViewController alloc] initWithNibName:@"EVCBankViewController" bundle:nil andBank:bankInfo];
-    EVCFinanceHomeViewController *search = [[EVCFinanceHomeViewController alloc] initWithNibName:@"EVCFinanceHomeViewController" bundle:nil];
-    EVCResourceLinksTableViewController *favs = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil andModuleName:@"Finance"];
-    
-    
-    UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:bank];
-    UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:search];
-    UINavigationController *third = [[UINavigationController alloc] initWithRootViewController:favs];
+    EVCJobsViewController *jobs = [[EVCJobsViewController alloc] initWithNibName:@"EVCJobsViewController" bundle:nil];
+    EVCResourceLinksTableViewController *rl = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil andModuleName:@"Jobs"];
+    UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:jobs];
+    UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:rl];
     
     UITabBar *bar = self.tabBar;
     
-    self.navigationItem.title = @"Check My Finances";
+    self.navigationItem.title = @"Find a Job";
     
-    self.viewControllers = [NSArray arrayWithObjects:first, second, third, nil];
+    self.viewControllers = [NSArray arrayWithObjects:first, second, nil];
     
     UITabBarItem *favItem = [bar.items objectAtIndex:0];
-    UITabBarItem *matchItem = [bar.items objectAtIndex:1];
-    UITabBarItem *resItem = [bar.items objectAtIndex:2];
+    UITabBarItem *resItem = [bar.items objectAtIndex:1];
     
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    matchItem.title = @"Banking Apps";
-    [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
-    
-    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-white"] scaledToSize:CGSizeMake(30, 30)];
-    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
-    
-    favItem.title = @"My Bank";
+    favItem.title = @"Search Jobs";
     [favItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"res-icon-white"] scaledToSize:CGSizeMake(30, 30)];
@@ -95,15 +80,5 @@
 - (void) showProfile {
     [self.sideMenuViewController presentLeftMenuViewController];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

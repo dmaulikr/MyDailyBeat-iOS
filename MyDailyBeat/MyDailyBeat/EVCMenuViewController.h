@@ -12,8 +12,8 @@
 #import "EVCViewController.h"
 #import <RestAPI.h>
 #import "EVCMenuTableViewCell.h"
-#import "EVCJobsViewController.h"
-#import "EVCTravelTableViewController.h"
+#import "EVCJobsTabViewController.h"
+#import "EVCTravelTabViewController.h"
 #import "EVCVolunteeringMapViewController.h"
 #import "EVCFeelingBlueTabViewController.h"
 

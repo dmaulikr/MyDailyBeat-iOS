@@ -177,7 +177,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                                                    rightMenuViewController:menu];
                 sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
                 sideMenuViewController.delegate = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
-                UIColor *bgcolor = UIColorFromHex(0xFCF58B);
+                UIColor *bgcolor = UIColorFromHex(0x0097A4);
                 CGSize bgsize = CGSizeMake(640, 1136);
                 sideMenuViewController.backgroundImage = [EVCCommonMethods imageWithColor:bgcolor size:bgsize];
                 sideMenuViewController.contentViewShadowColor = [UIColor blackColor];

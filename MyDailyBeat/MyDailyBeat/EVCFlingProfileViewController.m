@@ -25,11 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.aboutMeView.layer.borderWidth = 1.0f;
+    self.aboutMeView.layer.borderColor =  [UIColorFromHex(0x0097A4) CGColor];
     
 }
 
-- (void) viewDidAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL)animated {
     if ([self.currentViewedUser isEqual:[[RestAPI getInstance] getCurrentUser]]) {
         [self.addFavsBtn setHidden:YES];
         [self.sendMessageBtn setHidden:YES];
@@ -49,7 +50,7 @@
     [self.navigationController pushViewController:edit animated:YES];
 }
 
-- (void) loadProfile {
+- (void) loadPicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:self.currentViewedUser.screenName];
@@ -64,13 +65,20 @@
     
 }
 
-- (void) loadPicture {
+- (void) loadProfile  {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         FlingProfile *prof = [[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
-            self.aboutMeView.text = prof.aboutMe;
+            NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+            style.alignment = NSTextAlignmentJustified;
+            style.firstLineHeadIndent = 10.0f;
+            style.headIndent = 10.0f;
+            style.tailIndent = -10.0f;
+            NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:prof.aboutMe attributes:@{NSParagraphStyleAttributeName: style}];
+            self.aboutMeView.attributedText = attrText;
+            self.aboutMeView.numberOfLines = 0;
         });
         
     });
@@ -131,7 +139,6 @@
                     self.ageLbl.text = @"100+";
                     break;
             }
-            self.aboutMeView.text = [[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser].aboutMe;
             switch (self.prefs.gender) {
                 case 0:
                     self.genderLbl.text = @"Male";

@@ -182,7 +182,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
  Notifies the view controller that the text did update.
  You can override this method to perform additional tasks associated with presenting the view. You MUST call super at some point in your implementation.
  
- @param If YES, the text input bar will be resized using an animation.
+ @param animated If YES, the text input bar will be resized using an animation.
  */
 - (void)textDidUpdate:(BOOL)animated NS_REQUIRES_SUPER;
 

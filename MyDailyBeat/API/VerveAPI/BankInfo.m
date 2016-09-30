@@ -20,7 +20,7 @@
     if ((self = [super init])) {
         self.uniqueId = uniqueId;
         self.appName = appName;
-        self.appURL = appURL;
+        self.appURL = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%d", self.uniqueId];
         self.iconURL = iconURL;
     }
     return self;

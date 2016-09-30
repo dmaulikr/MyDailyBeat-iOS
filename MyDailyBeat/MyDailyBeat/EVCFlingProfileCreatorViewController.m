@@ -18,7 +18,9 @@
     [super viewDidLoad];
     self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     [self navigationItem].title = @"Edit Fling Profile";
-    
+    self.aboutMeView.layer.borderWidth = 1.0f;
+    self.aboutMeView.layer.borderColor =  [UIColorFromHex(0x0097A4) CGColor];
+    self.aboutMeView.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 - (IBAction)save:(id)sender {
@@ -38,7 +40,7 @@
             [self.view hideToastActivity];
             if (success) {
                 [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
-                [self.navigationController popToViewController:self.parentViewController animated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             } else {
                 [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                 return;

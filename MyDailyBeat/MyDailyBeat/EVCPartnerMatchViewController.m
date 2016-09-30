@@ -30,7 +30,11 @@
         });
         if (self.mode != FRIENDS_MODE) {
             self.partners = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingProfilesBasedOnPrefsOfUser:[[RestAPI getInstance] getCurrentUser]]];
-            [self.partners removeObjectAtIndex:0];
+            if ([self.partners count] >= 1) {
+                if ([((FlingProfile *)[self.partners objectAtIndex:0]).screenName isEqualToString:[[RestAPI getInstance] getCurrentUser].screenName]) {
+                    [self.partners removeObjectAtIndex:0];
+                }
+            }
         } else {
             NSArray *hobbMatches = [[RestAPI getInstance] getHobbiesMatchesForUserWithScreenName:[[RestAPI getInstance] getCurrentUser].screenName];
             self.partners = [[NSMutableArray alloc] init];

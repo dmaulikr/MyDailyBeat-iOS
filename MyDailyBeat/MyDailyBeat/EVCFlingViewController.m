@@ -118,10 +118,13 @@
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([[RestAPI getInstance] getFlingProfileForUser:[[RestAPI getInstance] getCurrentUser]] != nil)
+            if ([[RestAPI getInstance] getFlingProfileForUser:[[RestAPI getInstance] getCurrentUser]].screenName == nil)
             {
-                EVCFlingProfileCreatorViewController *creator = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil];
-                [self.navigationController presentViewController:creator animated:YES completion:nil];
+                DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Create your Profile" message:@"To fully enjoy all the features of MyDailyBeat, you need to create a relationship profile. This unified profile is used across the Have a Fling, Start a Relationship, and Make Friends sections of this app." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+                [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+                    EVCFlingProfileCreatorViewController *edit = [[EVCFlingProfileCreatorViewController alloc] initWithNibName:@"EVCFlingProfileCreatorViewController" bundle:nil];
+                    [self.navigationController pushViewController:edit animated:YES];
+                }];
             }
         });
     });

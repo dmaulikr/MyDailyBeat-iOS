@@ -31,17 +31,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     UIImage* image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
-    CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
-    UIButton *someButton3 = [[UIButton alloc] initWithFrame:frameimg3];
-    [someButton3 setBackgroundImage:image2 forState:UIControlStateNormal];
-    [someButton3 addTarget:self action:@selector(showSearchBar)
+    CGRect frameimg2 = CGRectMake(0, 0, image2.size.width, image2.size.height);
+    UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
+    [someButton2 setBackgroundImage:image2 forState:UIControlStateNormal];
+    [someButton2 addTarget:self action:@selector(showSearchBar)
          forControlEvents:UIControlEventTouchUpInside];
-    [someButton3 setShowsTouchWhenHighlighted:YES];
+    [someButton2 setShowsTouchWhenHighlighted:YES];
     
-    self.navigationItem.title = @"Find a Job";
-    
-    UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton3];
+    UIBarButtonItem *searchButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
     
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
@@ -53,20 +52,7 @@
     
     UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
     
-    NSArray *array = [[NSArray alloc] initWithObjects:menuButton, searchButton, nil];
-    
-    self.navigationItem.rightBarButtonItems = array;
-    
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
-    CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
-    UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
-    [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
-    [someButton2 addTarget:self action:@selector(showProfile)
-          forControlEvents:UIControlEventTouchUpInside];
-    [someButton2 setShowsTouchWhenHighlighted:YES];
-    
-    UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
-    self.navigationItem.leftBarButtonItem = profileButton;
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:menuButton, searchButton, nil];
     
     self.results.dataSource = self;
     self.results.delegate = self;
@@ -155,8 +141,16 @@
         cell.textLabel.text = [result objectForKey:@"jobtitle"];
         cell.detailTextLabel.text = [result objectForKey:@"company"];
         
+    } else if ([self hasMore]) {
+        if (indexPath.row == [self.currentSet count]) {
+            cell.textLabel.text = @"More Results...";
+            cell.detailTextLabel.text = @"";
+        } else {
+            cell.textLabel.text = @"";
+            cell.detailTextLabel.text = @"";
+        }
     } else {
-        cell.textLabel.text = @"More Results...";
+        cell.textLabel.text = @"";
         cell.detailTextLabel.text = @"";
     }
     
@@ -166,9 +160,9 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     if ([self hasMore]) {
-        return [self.currentSet count] + 1;
+        return [self.currentSet count] + 3;
     } else {
-        return [self.currentSet count];
+        return [self.currentSet count] + 2;
     }
 }
 
@@ -181,22 +175,20 @@
         EVCJobsDetailsViewController *details = [[EVCJobsDetailsViewController alloc] initWithNibName:@"EVCJobsDetailsViewController" bundle:nil andJob:result];
         [self.navigationController pushViewController:details animated:YES];
         
-    } else {
+    } else if (indexPath.row == [self.currentSet count] && [self hasMore]) {
         currentPage += 1;
         [self run:currentQuery];
+    } else {
+        
     }
-}
-
-- (void) showMenu {
-    [self.sideMenuViewController presentRightMenuViewController];
-}
-
-- (void) showProfile {
-    [self.sideMenuViewController presentLeftMenuViewController];
 }
 
 - (void) showSearchBar {
     self.results.tableHeaderView = self.mBar;
+}
+
+- (void) showMenu {
+    [self.sideMenuViewController presentRightMenuViewController];
 }
 
 @end

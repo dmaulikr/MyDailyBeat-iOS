@@ -11,5 +11,6 @@
 @interface VerveBankObject : NSObject
 
 @property (nonatomic, retain) NSString *appName, *appStoreListing, *appIconURL;
+@property int uniqueID;
 
 @end

@@ -106,6 +106,7 @@
             switch (indexPath.row) {
                 case 4: {
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:1];
+                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -113,6 +114,7 @@
                 case 5: {
                     NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:2];
+                    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -120,6 +122,7 @@
                 case 6: {
                     NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:0];
+                    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -143,13 +146,13 @@
                 }
                     break;
                 case 2: {
-                    EVCJobsViewController *jobs = [[EVCJobsViewController alloc] initWithNibName:@"EVCJobsViewController" bundle:nil];
+                    EVCJobsTabViewController *jobs = [[EVCJobsTabViewController alloc] init];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:jobs] animated:YES];
                     break;
                 }
                     
                 case 8: {
-                    EVCTravelTableViewController *travel = [[EVCTravelTableViewController alloc] initWithNibName:@"EVCTravelTableViewController" bundle:nil];
+                    EVCTravelTabViewController *travel = [[EVCTravelTabViewController alloc] init];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:travel] animated:YES];
                     break;
                 }

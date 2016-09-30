@@ -25,7 +25,7 @@
                 </toolbar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qDK-ge-Uiv">
                     <constraints>
-                        <constraint firstAttribute="height" constant="172" id="QBg-7D-hyV"/>
+                        <constraint firstAttribute="height" constant="128" id="QBg-7D-hyV"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -37,7 +37,7 @@
                 <constraint firstItem="SQJ-xx-nLG" firstAttribute="trailing" secondItem="6W1-vr-z7N" secondAttribute="trailing" id="Gff-mp-U9W"/>
                 <constraint firstAttribute="trailing" secondItem="qDK-ge-Uiv" secondAttribute="trailing" id="JYy-HX-9jl"/>
                 <constraint firstItem="qDK-ge-Uiv" firstAttribute="leading" secondItem="SQJ-xx-nLG" secondAttribute="leading" id="QE2-4w-vH1"/>
-                <constraint firstItem="qDK-ge-Uiv" firstAttribute="bottom" secondItem="SQJ-xx-nLG" secondAttribute="bottom" id="Zxp-S0-DdN"/>
+                <constraint firstItem="qDK-ge-Uiv" firstAttribute="bottom" secondItem="SQJ-xx-nLG" secondAttribute="bottom" constant="-44" id="Zxp-S0-DdN"/>
                 <constraint firstItem="SQJ-xx-nLG" firstAttribute="top" secondItem="6W1-vr-z7N" secondAttribute="top" id="oZi-Qj-0fg"/>
                 <constraint firstItem="qDK-ge-Uiv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="vfS-aT-znK"/>
                 <constraint firstItem="SQJ-xx-nLG" firstAttribute="leading" secondItem="6W1-vr-z7N" secondAttribute="leading" id="zqH-F9-HF9"/>

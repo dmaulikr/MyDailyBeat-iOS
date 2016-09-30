@@ -89,7 +89,7 @@
                 NSString *tempString = [temp objectAtIndex: i];
                 if ([[RestAPI getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
                     VerveBankObject *bank = [[RestAPI getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
-                    BankInfo *info = [[BankInfo alloc] initWithUniqueId:0 name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
+                    BankInfo *info = [[BankInfo alloc] initWithUniqueId:bank.uniqueID name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
                     [db insertIntoDatabase:info];
                 }
             }
@@ -126,6 +126,7 @@
             switch (indexPath.row) {
                 case 4: {
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:1];
+                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -133,6 +134,7 @@
                 case 5: {
                     NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:2];
+                    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -140,6 +142,7 @@
                 case 6: {
                     NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:0];
+                    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -170,7 +173,7 @@
                 }
                     
                 case 2: {
-                    EVCJobsViewController *jobs = [[EVCJobsViewController alloc] initWithNibName:@"EVCJobsViewController" bundle:nil];
+                    EVCJobsTabViewController *jobs = [[EVCJobsTabViewController alloc] init];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:jobs] animated:YES];
                     break;
                 }
@@ -195,40 +198,38 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Celler";
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    
-    
-    if (cell == nil) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-    }
-    
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.numberOfLines = 0;
     
     
     switch (indexPath.section) {
         case 0: {
-            cell.textLabel.text = @"What would you like to do?";
-            cell.textLabel.textAlignment = NSTextAlignmentCenter;
-            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
+            
+            UILabel *textLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+            
+            
+            textLabel.text = @"What would you like to do?";
+            textLabel.textAlignment = NSTextAlignmentCenter;
+            textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
+            textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            textLabel.numberOfLines = 0;
+            [cell addSubview:textLabel];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
         }
         case 1: {
+            
+            
+            cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.textLabel.numberOfLines = 0;
             cell.textLabel.text = [options objectAtIndex:indexPath.row];
             cell.textLabel.textAlignment = NSTextAlignmentLeft;
             cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
             UIImage *icon = [UIImage imageNamed:[imageNames objectAtIndex:indexPath.row]];
             cell.imageView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];
+            break;
         }
-            break;
             
-        default:
-            break;
     }
     
     //cell.contentView.backgroundColor = UIColorFromHex(0xEEE2BE);
