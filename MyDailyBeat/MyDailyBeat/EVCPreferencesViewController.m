@@ -65,7 +65,6 @@
 - (void) selectEthnicity:(UITableViewCell<FXFormFieldCell> *)cell {
     VervePreferences *prefs = cell.field.form;
     self.formController.form = prefs;
-    NSLog(@"Hello World");
     [self.tableView reloadData];
 }
 

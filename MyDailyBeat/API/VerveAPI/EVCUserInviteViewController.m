@@ -39,11 +39,9 @@
     switch (sender.selectedSegmentIndex) {
         case 0:
             self.sendingmethod = SendByEmail;
-            NSLog(@"Send invite by email");
             break;
         case 1:
             self.sendingmethod = SendByMobile;
-            NSLog(@"Send invite by mobile");
             break;
     }
 }
@@ -53,7 +51,6 @@
 }
 
 - (void) sendInvite {
-    NSLog(@"Sending invite");
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{

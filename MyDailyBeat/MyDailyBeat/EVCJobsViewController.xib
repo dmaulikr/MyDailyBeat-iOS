@@ -8,7 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EVCJobsViewController">
             <connections>
-                <outlet property="mBar" destination="XZW-Ve-PzL" id="Pjr-cf-wzc"/>
                 <outlet property="results" destination="JQ6-t8-2fb" id="yO5-Ut-U1k"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,11 +28,5 @@
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <point key="canvasLocation" x="32.5" y="126.5"/>
         </view>
-        <searchBar contentMode="redraw" id="XZW-Ve-PzL">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-            <textInputTraits key="textInputTraits"/>
-            <point key="canvasLocation" x="638" y="196"/>
-        </searchBar>
     </objects>
 </document>

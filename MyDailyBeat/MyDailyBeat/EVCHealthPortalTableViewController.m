@@ -60,7 +60,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == [self.healthPortals count]) {
-        DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Enter new health portal." message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Enter new health portal." message:@"Enter the link to the health portal you wish to add." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alert addTextFieldWithText:@"" placeholder:@""];
         [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
             switch (buttonIndex) {

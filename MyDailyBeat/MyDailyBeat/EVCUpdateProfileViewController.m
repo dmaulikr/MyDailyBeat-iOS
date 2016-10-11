@@ -60,7 +60,6 @@
         });
         NSData *imgData = UIImagePNGRepresentation(img);
         NSURL *assetURL = [info objectForKey:UIImagePickerControllerReferenceURL];
-        NSLog(@"Asset URL = %@", assetURL);
         
         NSString *fileName = ASSET_FILENAME;
         
@@ -108,7 +107,7 @@
         switch (indexPath.row) {
             case 0:
             {
-                DLAVAlertView *nameAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Name" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                DLAVAlertView *nameAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Name" message:@"Enter your updated name:" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 [nameAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].name placeholder:@"Name"];
                 [nameAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeWords;
                 [nameAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;
@@ -127,7 +126,7 @@
                 break;
             case 1:
             {
-                DLAVAlertView *emailAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Email" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                DLAVAlertView *emailAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Email" message:@"Enter your new email address." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 [emailAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].email placeholder:@"Email"];
                 [emailAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeNone;
                 [emailAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;
@@ -148,7 +147,7 @@
             case 2:
                 //mobile
             {
-                DLAVAlertView *mobileAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Mobile Phone #" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                DLAVAlertView *mobileAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Mobile Phone #" message:@"Enter your new mobile phone number." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 [mobileAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].mobile placeholder:@"Name"];
                 [mobileAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeWords;
                 [mobileAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;
@@ -171,7 +170,7 @@
             case 3:
                 //dob
             {
-                DLAVAlertView *dobAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Date of Birth" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                DLAVAlertView *dobAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Date of Birth" message:@"Enter your date of birth." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 [dobAlert setContentView:self.picker];
                 [dobAlert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
                     switch (buttonIndex) {
@@ -190,7 +189,7 @@
             case 4:
                 //zipcode
             {
-                DLAVAlertView *zipAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Zip Code" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                DLAVAlertView *zipAlert = [[DLAVAlertView alloc] initWithTitle:@"Enter New Zip Code" message:@"Enter your zip code." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 [zipAlert addTextFieldWithText:[[RestAPI getInstance] getCurrentUser].zipcode placeholder:@"Name"];
                 [zipAlert textFieldAtIndex:0].autocapitalizationType = UITextAutocapitalizationTypeWords;
                 [zipAlert textFieldAtIndex:0].autocorrectionType = UITextAutocorrectionTypeNo;

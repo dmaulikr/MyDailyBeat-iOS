@@ -100,7 +100,6 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Inside this method");
     if ([self.bankList count] >= 1) {
         if (indexPath.row < [self.bankList count]) {
             [self popupActionMenu:indexPath.row];
@@ -123,9 +122,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [sheet addButtonWithTitle:@"Open App" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         BankInfo *obj = [self.bankList objectAtIndex:row];
         
-        NSLog(@"%@", obj);
         NSString *appURL = obj.appURL;
-        NSLog(@"%@", appURL);
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appURL]];
     }];
     [sheet addButtonWithTitle:@"Set as My Bank" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
@@ -162,7 +159,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (BOOL) isAppInstalled: (NSString *) name {
     name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-    NSLog(@"%@", [name stringByAppendingString:@"://"]);
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
 }
 

@@ -95,6 +95,8 @@ typedef void (^DLAVAlertViewCompletionHandler)(DLAVAlertView *alertView, NSInteg
 - (void)setKeyboardType:(UIKeyboardType)keyboardType ofTextFieldAtIndex:(NSInteger)index;
 - (void)setInputView:(UIView *)inputView ofTextFieldAtIndex:(NSInteger)index;
 - (void)setSecureTextEntry:(BOOL)secureTextEntry ofTextFieldAtIndex:(NSInteger)index;
+- (void) setAutoCapitalizationType: (UITextAutocapitalizationType) type ofTextFieldAtIndex:(NSInteger) index;
+- (void) setAutoCorrectionType: (UITextAutocorrectionType) type ofTextFieldAtIndex:(NSInteger) index;
 
 #pragma mark - Buttons
 

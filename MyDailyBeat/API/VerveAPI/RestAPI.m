@@ -124,6 +124,37 @@ static VerveUser *currentUser;
     
 }
 
+- (BOOL) sendReferralFromUser: (VerveUser *) user toPersonWithName: (NSString *) name andEmail: (NSString *) email {
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:user.screenName forKey:@"screenName"];
+        [postData setObject:name forKey:@"name"];
+        [postData setObject:email forKey:@"email"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"user/refer" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [resultDic objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        return NO;
+        
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+
 - (NSMutableArray *) getPostsForGroup:(Group *) g {
     NSString *parameters = [NSString stringWithFormat:@"id=%d", g.groupID];
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/posts/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
@@ -186,7 +217,7 @@ static VerveUser *currentUser;
         }
         
         NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-        
+        NSLog(@"%@", result);
         NSString *response = [result objectForKey:@"response"];
         if ([response isEqualToString:@"Operation succeeded"]) {
             return YES;
@@ -197,6 +228,38 @@ static VerveUser *currentUser;
     }
     
     return NO;
+}
+
+- (BOOL) doesUserExistWithScreenName: (NSString *) screenName {
+    NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:screenName]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/exists/screenName" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSString *response = [resultDic objectForKey:@"response"];
+    if ([response isEqualToString:@"Operation succeeded"]) {
+        return NO;
+    }
+    return YES;
+
+}
+- (BOOL) doesUserExistWithEmail:(NSString *)email {
+    NSString *parameters = [@"email=" stringByAppendingString:[self urlencode:email]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/exists/email" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSString *response = [resultDic objectForKey:@"response"];
+    if ([response isEqualToString:@"Operation succeeded"]) {
+        return NO;
+    }
+    return YES;
+}
+- (BOOL) doesUserExistWithMobile:(NSString *)mobile {
+    NSString *parameters = [@"mobile=" stringByAppendingString:[self urlencode:mobile]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/exists/mobile" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSString *response = [resultDic objectForKey:@"response"];
+    if ([response isEqualToString:@"Operation succeeded"]) {
+        return NO;
+    }
+    return YES;
 }
 
 - (BOOL) editUser: (VerveUser *) userData {
@@ -230,7 +293,6 @@ static VerveUser *currentUser;
     VerveUserPreferences *prefs = [[VerveUserPreferences alloc] init];
     NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:user.screenName]];
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/user/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    NSLog(@"%@", resultDic);
     if (resultDic != nil) {
         prefs.gender = [[resultDic objectForKey:@"gender"] intValue];
         prefs.age = [[resultDic objectForKey:@"age"] intValue];
@@ -253,7 +315,6 @@ static VerveUser *currentUser;
     VerveMatchingPreferences *prefs = [[VerveMatchingPreferences alloc] init];
     NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:user.screenName]];
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"preferences/matching/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    NSLog(@"%@", resultDic);
     if (resultDic != nil) {
         prefs.gender = [[resultDic objectForKey:@"gender"] intValue];
         prefs.age = [[resultDic objectForKey:@"age"] intValue];
@@ -377,8 +438,6 @@ static VerveUser *currentUser;
     NSDictionary *getURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getuploadurl" withParameters:@"" withRequestType:GET_REQUEST andPostData:nil];
     NSString *uploadurl = [getURLResult objectForKey:@"response"];
     
-    NSLog(@"Upload URL=%@", uploadurl);
-    
     AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
     NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:profilePicture name:@"file" fileName:name mimeType:[self getMimeType:name]];
@@ -449,8 +508,6 @@ static VerveUser *currentUser;
     if (attachedPic != nil) {
         NSDictionary *getURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getuploadurl" withParameters:@"" withRequestType:GET_REQUEST andPostData:nil];
         NSString *uploadurl = [getURLResult objectForKey:@"response"];
-        
-        NSLog(@"Upload URL=%@", uploadurl);
         
         AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
         NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -530,8 +587,6 @@ static VerveUser *currentUser;
     //start by getting upload url
     NSDictionary *getURLResult = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getuploadurl" withParameters:@"" withRequestType:GET_REQUEST andPostData:nil];
     NSString *uploadurl = [getURLResult objectForKey:@"response"];
-    
-    NSLog(@"Upload URL=%@", uploadurl);
     
     AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
     NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -654,7 +709,6 @@ static VerveUser *currentUser;
 - (HobbiesPreferences *) getHobbiesPreferencesForUserWithScreenName: (NSString *) screenName {
     NSString *parameters = [@"screenName=" stringByAppendingString:[self urlencode:screenName]];
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"prefs/hobbies/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    NSLog(@"%@", resultDic);
     NSMutableArray *list = [resultDic objectForKey:@"hobbyList"];
     return [HobbiesPreferences fromJSON:list];
 }
@@ -697,7 +751,6 @@ static VerveUser *currentUser;
         HobbiesMatchObject *match = [[HobbiesMatchObject alloc] init];
         NSDictionary *item = [items objectAtIndex:i];
         NSDictionary *prefs = [item objectForKey:@"prefs"];
-        NSLog(@"%@", prefs);
         match.prefs = [HobbiesPreferences fromJSON:[prefs objectForKey:@"hobbyList"]];
         NSDictionary *userDic = [item objectForKey:@"userObj"];
         VerveUser *temp = [[VerveUser alloc] init];
@@ -766,8 +819,6 @@ static VerveUser *currentUser;
     
     parameters = [parameters stringByAppendingString:[NSString stringWithFormat:@"&key=%@", PLACES_API_KEY]];
     
-    NSLog(@"%@/%@?%@", baseurl, path, parameters);
-    
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:baseurl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     return [resultDic objectForKey:@"results"];
@@ -778,8 +829,6 @@ static VerveUser *currentUser;
     NSString *baseurl = @"https://maps.googleapis.com";
     NSString *path = @"maps/api/place/details/json";
     NSString *parameters = [NSString stringWithFormat:@"placeid=%@&key=%@", placeID, PLACES_API_KEY];
-    
-    NSLog(@"%@/%@?%@", baseurl, path, parameters);
     
     NSDictionary *resultDic = [self makeRequestWithBaseUrl:baseurl withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
@@ -1328,7 +1377,6 @@ static VerveUser *currentUser;
  */
 -(id)makeRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData {
     NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@", baseUrl, path, parameters]];
-    NSLog(@"Connect to: %@", url);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                        timeoutInterval:30];
@@ -1339,7 +1387,6 @@ static VerveUser *currentUser;
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)postData.length] forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:postData];
         NSString *LOG_STR = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
-        NSLog(@"API: posting data:\n%@", LOG_STR);
     }
     NSError *requestError;
     NSHTTPURLResponse *urlResponse;
@@ -1364,7 +1411,6 @@ static VerveUser *currentUser;
 
 -(id)makeXMLRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData {
     NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@", baseUrl, path, parameters]];
-    NSLog(@"Connect to: %@", url);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                        timeoutInterval:10];
@@ -1375,7 +1421,6 @@ static VerveUser *currentUser;
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)postData.length] forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:postData];
         NSString *LOG_STR = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
-        NSLog(@"API: posting data:\n%@", LOG_STR);
     }
     NSError *requestError;
     NSHTTPURLResponse *urlResponse;

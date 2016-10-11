@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Mode: %d", self.mode);
     self.partners = [[NSMutableArray alloc] init];
     self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     [self retrievePartners];
@@ -43,7 +42,6 @@
             }
             
         }
-        NSLog(@"Partners: %lu", (unsigned long)[self.partners count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];

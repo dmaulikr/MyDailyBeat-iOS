@@ -246,7 +246,6 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSLog(@"This is a cell");
     MessageTableViewCell *cell = (MessageTableViewCell *)[tableView dequeueReusableCellWithIdentifier:MessengerCellIdentifier];
     
     if (cell == nil) {

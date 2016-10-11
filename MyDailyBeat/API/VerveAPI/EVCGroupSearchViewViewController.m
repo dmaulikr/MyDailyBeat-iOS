@@ -42,7 +42,6 @@
 }
 
 - (void) cancelSearch {
-    NSLog(@"Inside");
     [self.delegate dismissGroupSearchViewController:self];
 }
 

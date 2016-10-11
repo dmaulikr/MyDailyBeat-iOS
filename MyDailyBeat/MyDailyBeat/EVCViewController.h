@@ -24,6 +24,7 @@
 #import "EVCHealthViewController.h"
 #import "EVCHobbiesViewController.h"
 #import "EVCFirstTimeSetupViewController.h"
+#import "DLAVAlertView.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EVCGroupSearchViewDelegate> {
     NSArray *options, *imageNames;

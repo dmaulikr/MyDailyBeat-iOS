@@ -257,6 +257,14 @@ static const CGFloat DLAVAlertViewAnimationDuration = 0.3;
 	[self textFieldAtIndex:index].keyboardType = keyboardType;
 }
 
+- (void) setAutoCapitalizationType: (UITextAutocapitalizationType) type ofTextFieldAtIndex:(NSInteger) index {
+    [self textFieldAtIndex:index].autocapitalizationType = type;
+}
+
+- (void) setAutoCorrectionType: (UITextAutocorrectionType) type ofTextFieldAtIndex:(NSInteger) index {
+    [self textFieldAtIndex:index].autocorrectionType = type;
+}
+
 - (void)setInputView:(UIView *)inputView ofTextFieldAtIndex:(NSInteger)index {
 	[self textFieldAtIndex:index].inputView = inputView;
 }

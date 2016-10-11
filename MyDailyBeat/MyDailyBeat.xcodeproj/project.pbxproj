@@ -80,7 +80,7 @@
 		7646C8C91C9EEC0E00D9D374 /* veterans.png in Resources */ = {isa = PBXBuildFile; fileRef = 7646C8C61C9EEC0E00D9D374 /* veterans.png */; };
 		7648843A1C6920AE0079C016 /* interests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 764884391C6920AE0079C016 /* interests.plist */; };
 		76603A2D1D9851660030CDFB /* EVCTravelTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76603A2C1D9851660030CDFB /* EVCTravelTabViewController.m */; };
-		76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 76603A2F1D98CD0D0030CDFB /* EVCModalLargeEditor.h */; };
+		76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 76603A2F1D98CD0D0030CDFB /* EVCModalLargeEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76603A331D98CD0E0030CDFB /* EVCModalLargeEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 76603A301D98CD0D0030CDFB /* EVCModalLargeEditor.m */; };
 		76603A341D98CD0E0030CDFB /* EVCModalLargeEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76603A311D98CD0D0030CDFB /* EVCModalLargeEditor.xib */; };
 		76607ABF1AD35A6E0097E520 /* banner-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 76607ABD1AD35A6E0097E520 /* banner-green.png */; };
@@ -181,6 +181,11 @@
 		768AFF3F1A754E300055F258 /* EVCShoppingSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 768AFF3D1A754E300055F258 /* EVCShoppingSearchViewController.xib */; };
 		768CDED91CE7701B000CC29A /* EVCCallHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */; };
 		76995CAA1D9B6F5A004ED977 /* EVCJobsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */; };
+		76995CAD1DA0A77D004ED977 /* EVCJobsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 76995CAC1DA0A77D004ED977 /* EVCJobsFilter.m */; };
+		76995CAF1DA0A86B004ED977 /* EVCJobsFilter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76995CAE1DA0A86B004ED977 /* EVCJobsFilter.xib */; };
+		76995CB11DA17A84004ED977 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76995CB01DA17A84004ED977 /* Accelerate.framework */; };
+		76995CB51DA17F53004ED977 /* FXBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 76995CB31DA17F53004ED977 /* FXBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76995CB61DA17F53004ED977 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76995CB41DA17F53004ED977 /* FXBlurView.m */; };
 		769B0A8F1A59F22C00BB287E /* EVCFlingProfileCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A8D1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.m */; };
 		769B0A901A59F22C00BB287E /* EVCFlingProfileCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769B0A8E1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.xib */; };
 		769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 769B0A961A607C2300BB287E /* EVCFeelingBlueViewController.m */; };
@@ -628,6 +633,12 @@
 		768E3EF81CEFED6700A26909 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		76995CA81D9B6F59004ED977 /* EVCJobsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsTabViewController.h; sourceTree = "<group>"; };
 		76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCJobsTabViewController.m; sourceTree = "<group>"; };
+		76995CAB1DA0A77D004ED977 /* EVCJobsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsFilter.h; sourceTree = "<group>"; };
+		76995CAC1DA0A77D004ED977 /* EVCJobsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCJobsFilter.m; sourceTree = "<group>"; };
+		76995CAE1DA0A86B004ED977 /* EVCJobsFilter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCJobsFilter.xib; sourceTree = "<group>"; };
+		76995CB01DA17A84004ED977 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		76995CB31DA17F53004ED977 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		76995CB41DA17F53004ED977 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		769B0A8C1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EVCFlingProfileCreatorViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		769B0A8D1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCFlingProfileCreatorViewController.m; sourceTree = "<group>"; };
 		769B0A8E1A59F22B00BB287E /* EVCFlingProfileCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFlingProfileCreatorViewController.xib; sourceTree = "<group>"; };
@@ -888,6 +899,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76995CB11DA17A84004ED977 /* Accelerate.framework in Frameworks */,
 				768193F51D94BB7300F97CA5 /* libsqlite3.0.tbd in Frameworks */,
 				768193F31D94BB7300F97CA5 /* libsqlite3.tbd in Frameworks */,
 			);
@@ -974,6 +986,7 @@
 		761D650A19A15A4D0062B525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76995CB01DA17A84004ED977 /* Accelerate.framework */,
 				768193F41D94BB7300F97CA5 /* libsqlite3.0.tbd */,
 				768E3EF81CEFED6700A26909 /* libsqlite3.tbd */,
 				762F133C1BBCDC8A001BD716 /* MapKit.framework */,
@@ -1269,6 +1282,15 @@
 			name = "Feeling Blue";
 			sourceTree = "<group>";
 		};
+		76995CB21DA17A94004ED977 /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				76995CB31DA17F53004ED977 /* FXBlurView.h */,
+				76995CB41DA17F53004ED977 /* FXBlurView.m */,
+			);
+			name = FXBlurView;
+			sourceTree = "<group>";
+		};
 		769EEA1119A42E1D00FF072E /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1405,6 +1427,7 @@
 				76995CA81D9B6F59004ED977 /* EVCJobsTabViewController.h */,
 				7641406A1C31FE5400DF9A6C /* EVCJobsDetailsViewController.h */,
 				76C37F101C2A0AFA005D8960 /* EVCJobsViewController.h */,
+				76995CAB1DA0A77D004ED977 /* EVCJobsFilter.h */,
 			);
 			name = Jobs;
 			sourceTree = "<group>";
@@ -1426,6 +1449,7 @@
 				76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */,
 				7641406B1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m */,
 				76C37F111C2A0AFA005D8960 /* EVCJobsViewController.m */,
+				76995CAC1DA0A77D004ED977 /* EVCJobsFilter.m */,
 			);
 			name = Jobs;
 			sourceTree = "<group>";
@@ -1446,6 +1470,7 @@
 			children = (
 				7641406C1C31FE5400DF9A6C /* EVCJobsDetailsViewController.xib */,
 				76C37F121C2A0AFA005D8960 /* EVCJobsViewController.xib */,
+				76995CAE1DA0A86B004ED977 /* EVCJobsFilter.xib */,
 			);
 			name = Jobs;
 			sourceTree = "<group>";
@@ -1462,6 +1487,7 @@
 		76CCA8D51D94A94800DB935B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				76995CB21DA17A94004ED977 /* FXBlurView */,
 				76CCAB381D94ABBC00DB935B /* AFNetworking */,
 				76CCAB391D94ABCD00DB935B /* AHKActionSheet */,
 				76CCAB3A1D94ABDA00DB935B /* RestAPI */,
@@ -1986,7 +2012,6 @@
 				76CCAAD61D94AB8A00DB935B /* DLAVAlertViewTextFieldTheme.h in Headers */,
 				76CCAB061D94AB8A00DB935B /* Post.h in Headers */,
 				76CCAAFA1D94AB8A00DB935B /* HealthInfo.h in Headers */,
-				76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */,
 				76CCAAD01D94AB8A00DB935B /* DLAVAlertViewButtonTheme.h in Headers */,
 				76CCAB0C1D94AB8A00DB935B /* Reachability.h in Headers */,
 				76CCAAF61D94AB8A00DB935B /* GroupPrefs.h in Headers */,
@@ -2056,7 +2081,9 @@
 				76CCAABF1D94AB8A00DB935B /* AFURLResponseSerialization.h in Headers */,
 				76CCAB191D94AB8A00DB935B /* Stack.h in Headers */,
 				76CCAAEE1D94AB8A00DB935B /* FXFormScreenNameCell.h in Headers */,
+				76995CB51DA17F53004ED977 /* FXBlurView.h in Headers */,
 				76CCAB301D94AB8A00DB935B /* VerveUser.h in Headers */,
+				76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */,
 				76CCA8D81D94A94800DB935B /* API.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2190,6 +2217,7 @@
 				76264E621BE6E7F500292FBF /* group2.png in Resources */,
 				7630B5881BACD57600FA2617 /* search-icon-green.png in Resources */,
 				766A7D551A923CFF00B6C81E /* menu-icon.png in Resources */,
+				76995CAF1DA0A86B004ED977 /* EVCJobsFilter.xib in Resources */,
 				767BDCA21D0653B3004DA0D8 /* phone-icon-gray.png in Resources */,
 				76A204E91BB200610028BFF8 /* newgroup.png in Resources */,
 				76264E751BE7078C00292FBF /* star-icon-white.png in Resources */,
@@ -2333,6 +2361,7 @@
 				76063C4F1B94B03A002F9171 /* EVCTravelTableViewController.m in Sources */,
 				761D652519A15A4D0062B525 /* EVCViewController.m in Sources */,
 				7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */,
+				76995CAD1DA0A77D004ED977 /* EVCJobsFilter.m in Sources */,
 				76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */,
 				76CCA8AE1D8F759000DB935B /* EVCRegistrationViewController.m in Sources */,
 				769EEA9419A8DBF900FF072E /* EVCMenuViewController.m in Sources */,
@@ -2368,6 +2397,7 @@
 				76CCAB1E1D94AB8A00DB935B /* UIImage+AHKAdditions.m in Sources */,
 				7681939D1D94B42C00F97CA5 /* SLKTextInputbar.m in Sources */,
 				768193DD1D94BAA100F97CA5 /* IQUIViewController+Additions.m in Sources */,
+				76995CB61DA17F53004ED977 /* FXBlurView.m in Sources */,
 				76CCAB0B1D94AB8A00DB935B /* Queue.m in Sources */,
 				76CCAB0F1D94AB8A00DB935B /* RECommonFunctions.m in Sources */,
 				76CCAAC21D94AB8A00DB935B /* AFURLSessionManager.m in Sources */,
@@ -2602,7 +2632,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 38MW53VVGD;
 				FRAMEWORK_SEARCH_PATHS = (

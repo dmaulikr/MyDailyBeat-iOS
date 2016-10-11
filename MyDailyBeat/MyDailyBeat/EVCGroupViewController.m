@@ -45,7 +45,6 @@
 
 - (void)writePost {
     EVCComposeViewControllerCompletionHandler completionHandler = ^(NSString* message, UIImage* image) {
-        NSLog(@"Text: %@", message);
         UIImage *attachedImage = image;
         NSString *postText = message;
         long long millis = [[NSDate date] timeIntervalSince1970];
@@ -228,7 +227,6 @@
                 
                 int id1 = [(Post *)obj1 post_id];
                 int id2 = [(Post *)obj2 post_id];
-                NSLog(@"Sorting, id1=%d, id2=%d", id1, id2);
                 return id1 > id2;
             }];
             max_post_height = 10;

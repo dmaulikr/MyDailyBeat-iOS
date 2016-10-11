@@ -74,7 +74,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         [self openURLinBrowser: [self.searchResults objectAtIndex:indexPath.row]];
     }];
     [sheet addButtonWithTitle:@"Add to Favorites" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
-        NSLog(@"%@", [self.searchResults objectAtIndex:indexPath.row]);
         [self addToFavs: [self.searchResults objectAtIndex:indexPath.row]];
     }];
     [sheet show];

@@ -89,26 +89,36 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void) makeCall:(NSString *) num {
-    NSString *dialstring = [[NSString alloc] initWithFormat:@"tel://%@", num];
+    NSString *dialstring = [[NSString alloc] initWithFormat:@"tel:%@", num];
     NSURL *url = [NSURL URLWithString:dialstring];
-    static UIWebView *webView = nil;
-    static dispatch_once_t onceToken;
-    [self saveToCallHistoryNumber:num withAccessCode:@""];
-    dispatch_once(&onceToken, ^{
-        webView = [UIWebView new];
-    });
-    [webView loadRequest:[NSURLRequest requestWithURL:url]];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:[[NSDictionary alloc] init] completionHandler:^(BOOL success) {
+            if (success) {
+                [self saveToCallHistoryNumber:num withAccessCode:@""];
+            }
+        }];
+    } else {
+        DLAVAlertView *alView = [[DLAVAlertView alloc] initWithTitle:@"Calling not supported." message:@"This device does not support phone calls." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+            return;
+        }];
+    }
 }
 - (void) makeCall:(NSString *) num withAccessCode: (NSString *) code{
-    NSString *dialstring = [[NSString alloc] initWithFormat:@"tel://%@,,%@", num, code];
+    NSString *dialstring = [[NSString alloc] initWithFormat:@"tel:%@,,%@", num, code];
     NSURL *url = [NSURL URLWithString:dialstring];
-    static UIWebView *webView = nil;
-    static dispatch_once_t onceToken;
-    [self saveToCallHistoryNumber:num withAccessCode:code];
-    dispatch_once(&onceToken, ^{
-        webView = [UIWebView new];
-    });
-    [webView loadRequest:[NSURLRequest requestWithURL:url]];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:[[NSDictionary alloc] init] completionHandler:^(BOOL success) {
+            if (success) {
+                [self saveToCallHistoryNumber:num withAccessCode:code];
+            }
+        }];
+    } else {
+        DLAVAlertView *alView = [[DLAVAlertView alloc] initWithTitle:@"Calling not supported." message:@"This device does not support phone calls." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+            return;
+        }];
+    }
 }
 
 - (void) saveToCallHistoryNumber: (NSString *) num withAccessCode: (NSString *) code {

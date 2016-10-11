@@ -125,7 +125,6 @@ static HealthDatabase *_database;
                 NSString *query2 = [NSString stringWithFormat:@"insert into prescripProviders values('%@', '%@')", prescripProviderOrNil.URL, prescripProviderOrNil.logoURL];
                 
                 const char* qstring2 = [query2 UTF8String];
-                NSLog(@"Query: %s", qstring2);
                 char * errMsg2;
                 
                 // Load all data from database to memory.
@@ -148,7 +147,6 @@ static HealthDatabase *_database;
                 NSString *query2 = [NSString stringWithFormat:@"insert into healthPortals values('%@', '%@')", healthPortalOrNil.URL, healthPortalOrNil.logoURL];
                 
                 const char* qstring2 = [query2 UTF8String];
-                NSLog(@"Query: %s", qstring2);
                 char * errMsg2;
                 
                 // Load all data from database to memory.

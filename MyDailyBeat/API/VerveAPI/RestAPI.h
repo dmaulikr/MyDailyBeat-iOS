@@ -48,10 +48,15 @@
 -(VerveUser *) getCurrentUser;
 - (BOOL) createUser: (VerveUser *) userData;
 - (BOOL) editUser: (VerveUser *) userData;
+- (BOOL) doesUserExistWithScreenName: (NSString *) screenName;
+- (BOOL) doesUserExistWithEmail:(NSString *)email;
+- (BOOL) doesUserExistWithMobile:(NSString *)mobile;
 - (BOOL) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password;
 - (void) refreshCurrentUserData;
 - (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName;
 - (BOOL) logout;
+- (BOOL) sendReferralFromUser: (VerveUser *) user toPersonWithName: (NSString *) name andEmail: (NSString *) email;
+
 
 -(BOOL)uploadProfilePicture:(NSData *)profilePicture withName: (NSString *) name;
 -(NSURL *) retrieveProfilePicture;

@@ -82,6 +82,8 @@ typedef enum {
     FRIENDS_MODE = 0, FLING_MODE = 1, RELATIONSHIP_MODE = 2
 } REL_MODE;
 
+#define BLUR_VIEW_TAG 9001
+
 #define PLACES_API_KEY @"AIzaSyD12-W6HiSv3gVnCIQSUCvDTNtXrQRp1o8"
 
 #endif

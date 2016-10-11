@@ -55,7 +55,6 @@
             }
         }
         
-        NSLog(@"Count: %lu", (unsigned long)[self.searchResults count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.mTableView reloadData];

@@ -30,7 +30,6 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    NSLog(@"Mode: %d", self.mode);
     [super viewDidAppear:animated];
     [[NSUserDefaults standardUserDefaults] setInteger:self.mode forKey:@"REL_MODE"];
 }

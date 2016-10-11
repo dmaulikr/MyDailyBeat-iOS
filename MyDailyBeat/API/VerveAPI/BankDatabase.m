@@ -80,10 +80,6 @@ static BankDatabase *_database;
     
     sqlite3_close(_database);
     
-    for (int i = 0 ; i < [retval count] ; i++) {
-        NSLog(@"Obj: %@", [retval objectAtIndex:i]);
-    }
-    
     return retval;
     
 }
@@ -102,7 +98,6 @@ static BankDatabase *_database;
             NSString *query2 = [NSString stringWithFormat:@"insert into banks values('%@', '%@', '%@')", bank.appName, bank.appURL, bank.iconURL];
             
             const char* qstring2 = [query2 UTF8String];
-            NSLog(@"Query: %s", qstring2);
             char * errMsg2;
             
             // Load all data from database to memory.

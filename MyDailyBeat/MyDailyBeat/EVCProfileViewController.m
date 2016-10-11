@@ -130,8 +130,15 @@
                 
                 break;
             case 2: {
+                NSString *mailto = [NSString stringWithFormat:@"mailto:legal@evervecorp.com?subject=%@", [[RestAPI getInstance] urlencode:@"Report a Violation"]];
+                NSLog(@"Opening mailto");
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailto]];
+                break;
+            }
+                
+            case 3: {
                 [self logout];
-
+                break;
             }
                 
             default:
@@ -165,7 +172,7 @@ titleForHeaderInSection:(NSInteger)section {
         case 0:
             return 5;
         case 1:
-            return 3;
+            return 4;
         default:
             return 1;
     }
@@ -263,6 +270,8 @@ titleForHeaderInSection:(NSInteger)section {
             cell.textLabel.text = @"Edit Profile";
         } else if (indexPath.row == 1){
             cell.textLabel.text = @"Preferences";
+        } else if (indexPath.row == 2) {
+            cell.textLabel.text = @"Report Violations";
         } else {
             cell.textLabel.text = @"Logout";
         }

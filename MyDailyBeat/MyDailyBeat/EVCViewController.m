@@ -27,8 +27,8 @@
     [super viewDidLoad];
     
     
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Refer a Friend", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"peeps", nil];
     
     /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -132,7 +132,6 @@
                     
                     break;
                 case 5: {
-                    NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:2];
                     [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
@@ -140,7 +139,6 @@
                     
                     break;
                 case 6: {
-                    NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:0];
                     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
@@ -181,6 +179,47 @@
                 case 7: {
                     EVCHealthViewController *health = [[EVCHealthViewController alloc] initWithNibName:@"EVCHealthViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
+                }
+                    break;
+                case 9: {
+                    DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Refer a Friend" message:@"Enter the name and email address of the person you wish to invite to join MyDailyBeat." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Invite", nil];
+                    [alert addTextFieldWithText:@"" placeholder:@"Name"];
+                    [alert addTextFieldWithText:@"" placeholder:@"E-mail Address"];
+                    [alert setKeyboardType:UIKeyboardTypeEmailAddress ofTextFieldAtIndex:1];
+                    [alert setAutoCapitalizationType:UITextAutocapitalizationTypeNone ofTextFieldAtIndex:1];
+                    [alert setAutoCorrectionType:UITextAutocorrectionTypeNo ofTextFieldAtIndex:0];
+                    [alert setAutoCorrectionType:UITextAutocorrectionTypeNo ofTextFieldAtIndex:1];
+                    [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+                        switch (buttonIndex) {
+                            case 0:
+                                // do nothing
+                                break;
+                            case 1: {
+                                NSString *name = [alertView textFieldTextAtIndex:0];
+                                NSString *email = [alertView textFieldTextAtIndex:1];
+                                dispatch_queue_t queue = dispatch_queue_create(APP_ID_C_STRING, NULL);
+                                dispatch_async(queue, ^{
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.view makeToastActivity];
+                                    });
+                                    BOOL result = [[RestAPI getInstance] sendReferralFromUser:[[RestAPI getInstance] getCurrentUser] toPersonWithName:name andEmail:email];
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.view hideToastActivity];
+                                        if (result) {
+                                            [self.view makeToast:@"Referral sent successfully!" duration:3.5 position:@"bottom"];
+                                        } else {
+                                            [self.view makeToast:@"Could not send referral." duration:3.5 position:@"bottom"];
+                                        }
+                                        
+                                    });
+                                });
+                            }
+                                break;
+                                
+                            default:
+                                break;
+                        }
+                    }];
                 }
                     break;
                     

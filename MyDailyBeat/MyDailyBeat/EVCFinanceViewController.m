@@ -19,7 +19,6 @@
     EVCBankViewController *bank;
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"myBank"];
     BankInfo * bankInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSLog(@"Bank Info: %@", bankInfo);
     bank = [[EVCBankViewController alloc] initWithNibName:@"EVCBankViewController" bundle:nil andBank:bankInfo];
     EVCFinanceHomeViewController *search = [[EVCFinanceHomeViewController alloc] initWithNibName:@"EVCFinanceHomeViewController" bundle:nil];
     EVCResourceLinksTableViewController *favs = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil andModuleName:@"Finance"];
