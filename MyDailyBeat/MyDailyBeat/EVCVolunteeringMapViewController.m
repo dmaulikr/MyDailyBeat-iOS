@@ -62,7 +62,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        self.volList = [[API getInstance] getVolunteeringList];
+        self.volList = [[RestAPI getInstance] getVolunteeringList];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
         });
@@ -100,9 +100,9 @@
         });
         NSMutableArray *results = [[NSMutableArray alloc] init];
         if ([currentType isEqualToString:@"name"]) {
-            results = [[API getInstance] getPlacesWithType:currentType withName:currentKeyword andCategory:nil fromLocation:currentCentre];
+            results = [[RestAPI getInstance] getPlacesWithType:currentType withName:currentKeyword andCategory:nil fromLocation:currentCentre];
         } else {
-            results = [[API getInstance] getPlacesWithType:currentType withName:nil andCategory:currentKeyword fromLocation:currentCentre];
+            results = [[RestAPI getInstance] getPlacesWithType:currentType withName:nil andCategory:currentKeyword fromLocation:currentCentre];
         }
         
         NSMutableArray *mapPoints = [[NSMutableArray alloc] init];
@@ -110,7 +110,7 @@
             NSDictionary *geo = [entry objectForKey:@"geometry"];
             NSDictionary *loc = [geo objectForKey:@"location"];
             NSString *placeID = [entry objectForKey:@"place_id"];
-            NSDictionary *details = [[API getInstance] getDetailsForPlaceWithID:placeID];
+            NSDictionary *details = [[RestAPI getInstance] getDetailsForPlaceWithID:placeID];
             NSString *name2 = [details objectForKey:@"name"];
             NSString *address = [details objectForKey:@"formatted_address"];
             
@@ -206,7 +206,7 @@
 - (void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     MapPoint *point = (MapPoint *) view.annotation;
     NSString *url = @"http://maps.apple.com?daddr=";
-    url = [url stringByAppendingString:[[API getInstance] urlencode:point.address]];
+    url = [url stringByAppendingString:[[RestAPI getInstance] urlencode:point.address]];
     url = [url stringByAppendingString:@"&zoom=10"];
     [self openURLinBrowser:url];
 }

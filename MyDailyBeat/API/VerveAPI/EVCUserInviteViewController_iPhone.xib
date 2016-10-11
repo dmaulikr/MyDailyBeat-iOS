@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EVCUserInviteViewController">
+            <connections>
+                <outlet property="messageTxtView" destination="6sB-Bc-V8o" id="QGG-Gg-IDL"/>
+                <outlet property="methodChooser" destination="zSW-Kh-S6D" id="Inl-Am-mZo"/>
+                <outlet property="nameLbl" destination="KDp-Yn-yYR" id="Buk-Pi-OGS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDp-Yn-yYR">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Message:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euO-TM-WcM">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="121" id="ATS-s6-szH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" text="Join my group!" translatesAutoresizingMaskIntoConstraints="NO" id="6sB-Bc-V8o">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="192" id="bkp-jB-L0n"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Method:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N75-ly-aen">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zSW-Kh-S6D">
+                    <segments>
+                        <segment title="Email"/>
+                        <segment title="Mobile"/>
+                    </segments>
+                    <connections>
+                        <action selector="changeSendingMethod:" destination="-1" eventType="valueChanged" id="oYO-o9-Vmu"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="KDp-Yn-yYR" secondAttribute="trailing" constant="78" id="0GY-ck-yDD"/>
+                <constraint firstItem="N75-ly-aen" firstAttribute="leading" secondItem="zSW-Kh-S6D" secondAttribute="leading" id="1Fv-zM-KW3"/>
+                <constraint firstItem="6sB-Bc-V8o" firstAttribute="trailing" secondItem="zSW-Kh-S6D" secondAttribute="trailing" id="7CN-jm-uEW"/>
+                <constraint firstItem="KDp-Yn-yYR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="114" id="D2L-ca-3SG"/>
+                <constraint firstItem="zSW-Kh-S6D" firstAttribute="top" secondItem="N75-ly-aen" secondAttribute="bottom" constant="8" symbolic="YES" id="GVz-sw-a3O"/>
+                <constraint firstItem="KDp-Yn-yYR" firstAttribute="trailing" secondItem="6sB-Bc-V8o" secondAttribute="trailing" id="Rjq-dT-4WO"/>
+                <constraint firstItem="N75-ly-aen" firstAttribute="top" secondItem="6sB-Bc-V8o" secondAttribute="bottom" constant="8" symbolic="YES" id="Vhh-ED-FrA"/>
+                <constraint firstItem="euO-TM-WcM" firstAttribute="top" secondItem="KDp-Yn-yYR" secondAttribute="bottom" constant="8" symbolic="YES" id="Z8V-Z1-3ve"/>
+                <constraint firstItem="6sB-Bc-V8o" firstAttribute="top" secondItem="euO-TM-WcM" secondAttribute="bottom" constant="1" id="ajg-Xp-cLn"/>
+                <constraint firstItem="euO-TM-WcM" firstAttribute="leading" secondItem="6sB-Bc-V8o" secondAttribute="leading" id="ccg-XU-Cur"/>
+                <constraint firstItem="KDp-Yn-yYR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="23" id="pVN-th-Mhk"/>
+                <constraint firstItem="KDp-Yn-yYR" firstAttribute="leading" secondItem="euO-TM-WcM" secondAttribute="leading" id="rdT-Y5-kU1"/>
+                <constraint firstItem="6sB-Bc-V8o" firstAttribute="leading" secondItem="N75-ly-aen" secondAttribute="leading" id="rjo-d9-4Yu"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+        </view>
+    </objects>
+</document>

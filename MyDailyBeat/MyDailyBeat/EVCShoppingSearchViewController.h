@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <API.h>
-#import <SVModalWebViewController.h>
+#import <RestAPI.h>
 #import "AHKActionSheet.h"
 
 @interface EVCShoppingSearchViewController : UIViewController <UISearchBarDelegate,UITableViewDataSource, UITableViewDelegate> {

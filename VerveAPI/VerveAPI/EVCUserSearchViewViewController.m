@@ -42,7 +42,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     VerveUser *user = [self.data objectAtIndex:indexPath.row];
-    EVCUserInviteViewController *inviteWriter = [[EVCUserInviteViewController alloc] initWithGroup:self.groupToInviteTo andRecipient:user withSender:[[API getInstance] getCurrentUser]];
+    EVCUserInviteViewController *inviteWriter = [[EVCUserInviteViewController alloc] initWithGroup:self.groupToInviteTo andRecipient:user withSender:[[RestAPI getInstance] getCurrentUser]];
     [self.navigationController pushViewController:inviteWriter animated:YES];
 }
 
@@ -106,7 +106,7 @@
     NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:self.data copyItems:YES];
     self.data = [[NSMutableArray alloc] init];
     for (VerveUser * user in temp) {
-        NSMutableArray *groupsForUser = [[API getInstance] getGroupsForUser:user];
+        NSMutableArray *groupsForUser = [[RestAPI getInstance] getGroupsForUser:user];
         if (groupsForUser != nil) {
             BOOL member = NO;
             for (Group *g in groupsForUser) {
@@ -177,7 +177,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view makeToastActivity];
             });
-            NSURL *url = [[API getInstance] retrieveProfilePictureForUserWithScreenName:user.screenName];
+            NSURL *url = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:user.screenName];
             if (url != nil) {
                 NSData *imageData = [NSData dataWithContentsOfURL:url];
                 dispatch_async(dispatch_get_main_queue(), ^{

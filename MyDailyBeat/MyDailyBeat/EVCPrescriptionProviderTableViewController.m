@@ -10,7 +10,7 @@
 #import "Constants.h"
 #import "HealthDatabase.h"
 #import <DLAVAlertView.h>
-#import "API.h"
+#import "RestAPI.h"
 #import "EVCCommonMethods.h"
 #import <AHKActionSheet.h>
 
@@ -26,9 +26,6 @@
     self.tableView.dataSource = self;
     
     self.pharmacyProviders = [[NSMutableArray alloc] initWithArray:[[HealthDatabase database] prescripProviders]];
-    for (int i = 0 ; i < [self.pharmacyProviders count] ; i++) {
-        NSLog(@"%@", ((PrescripProviderInfo *)[self.pharmacyProviders objectAtIndex:i]).URL);
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +64,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == [self.pharmacyProviders count]) {
-        DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Enter new prescription provider" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Enter new prescription provider" message:@"Enter the link to the prescription provider you wish to add." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alert addTextFieldWithText:@"" placeholder:@""];
         [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
             switch (buttonIndex) {

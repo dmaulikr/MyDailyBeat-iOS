@@ -43,8 +43,8 @@
             [self.view makeToastActivity];
         });
         
-        NSDictionary *dic = [[API getInstance] searchShoppingURLSWithQueryString:@"" withSortOrder:ASCENDING];
-        NSDictionary *dic2 = [[API getInstance] getShoppingFavoritesForUser:[[API getInstance] getCurrentUser] withSortOrder:ASCENDING];
+        NSDictionary *dic = [[RestAPI getInstance] searchShoppingURLSWithQueryString:@"" withSortOrder:ASCENDING];
+        NSDictionary *dic2 = [[RestAPI getInstance] getShoppingFavoritesForUser:[[RestAPI getInstance] getCurrentUser] withSortOrder:ASCENDING];
         NSMutableArray *arr =[dic2 objectForKey:@"items"];
         self.searchResults = [dic objectForKey:@"items"];
         
@@ -55,7 +55,6 @@
             }
         }
         
-        NSLog(@"Count: %lu", (unsigned long)[self.searchResults count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.mTableView reloadData];
@@ -109,7 +108,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        [[API getInstance] addShoppingFavoriteURL:url ForUser:[[API getInstance] getCurrentUser]];
+        [[RestAPI getInstance] addShoppingFavoriteURL:url ForUser:[[RestAPI getInstance] getCurrentUser]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self loadData];
@@ -132,8 +131,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        NSDictionary *dic = [[API getInstance] searchShoppingURLSWithQueryString:text withSortOrder:ASCENDING];
-        NSDictionary *dic2 = [[API getInstance] getShoppingFavoritesForUser:[[API getInstance] getCurrentUser] withSortOrder:ASCENDING];
+        NSDictionary *dic = [[RestAPI getInstance] searchShoppingURLSWithQueryString:text withSortOrder:ASCENDING];
+        NSDictionary *dic2 = [[RestAPI getInstance] getShoppingFavoritesForUser:[[RestAPI getInstance] getCurrentUser] withSortOrder:ASCENDING];
         NSMutableArray *arr =[dic2 objectForKey:@"items"];
         self.searchResults = [dic objectForKey:@"items"];
         

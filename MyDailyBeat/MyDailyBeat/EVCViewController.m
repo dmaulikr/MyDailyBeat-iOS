@@ -27,8 +27,8 @@
     [super viewDidLoad];
     
     
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", @"Test First Time Setup", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"hands", @"cart", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Refer a Friend", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"peeps", nil];
     
     /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -65,7 +65,7 @@
     
     self.mTableView.dataSource = self;
     self.mTableView.delegate = self;
-    api = [API getInstance];
+    api = [RestAPI getInstance];
     NSString *name = [api getCurrentUser].name;
     NSArray *fields = [name componentsSeparatedByString:@" "];
     [self navigationItem].title = [NSString stringWithFormat:@"Welcome %@!", fields[0]];
@@ -87,9 +87,9 @@
             NSArray *temp = TOP_TEN_BANKS;
             for (int i = 0; i < [temp count]; ++i) {
                 NSString *tempString = [temp objectAtIndex: i];
-                if ([[API getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
-                    VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
-                    BankInfo *info = [[BankInfo alloc] initWithUniqueId:0 name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
+                if ([[RestAPI getInstance] doesAppExistWithTerm:tempString andCountry:@"US"]) {
+                    VerveBankObject *bank = [[RestAPI getInstance] getBankInfoForBankWithName:tempString inCountry:@"US"];
+                    BankInfo *info = [[BankInfo alloc] initWithUniqueId:bank.uniqueID name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
                     [db insertIntoDatabase:info];
                 }
             }
@@ -98,6 +98,11 @@
                 [self.view makeToast:@"Database Initialization Complete" duration:3.5 position:@"bottom"];
             });
         });
+    }
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"FirstTimeLogin"]) {
+        EVCFirstTimeSetupViewController *first = [[EVCFirstTimeSetupViewController alloc] initWithNibName:@"EVCFirstTimeSetupViewController" bundle:nil];
+        [self.navigationController pushViewController:first animated:YES];
     }
     
     
@@ -121,20 +126,21 @@
             switch (indexPath.row) {
                 case 4: {
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:1];
+                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
                     break;
                 case 5: {
-                    NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:2];
+                    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
                     break;
                 case 6: {
-                    NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:0];
+                    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -158,20 +164,14 @@
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:finance] animated:YES];
                     break;
                 }
-                    
-                case 9: {
-                    EVCVolunteeringMapViewController *mapTest = [[EVCVolunteeringMapViewController alloc] initWithNibName:@"EVCVolunteeringMapViewController" bundle:nil];
-                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:mapTest] animated:YES];
-                    break;
-                }
                 case 8: {
-                    EVCTravelTableViewController *travel = [[EVCTravelTableViewController alloc] initWithNibName:@"EVCTravelTableViewController" bundle:nil];
+                    EVCTravelTabViewController *travel = [[EVCTravelTabViewController alloc] init];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:travel] animated:YES];
                     break;
                 }
                     
                 case 2: {
-                    EVCJobsViewController *jobs = [[EVCJobsViewController alloc] initWithNibName:@"EVCJobsViewController" bundle:nil];
+                    EVCJobsTabViewController *jobs = [[EVCJobsTabViewController alloc] init];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:jobs] animated:YES];
                     break;
                 }
@@ -181,10 +181,47 @@
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
                 }
                     break;
-                case 10: {
-                    EVCFirstTimeSetupViewController *first = [[EVCFirstTimeSetupViewController alloc] init];
-                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:first] animated:YES];
+                case 9: {
+                    DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Refer a Friend" message:@"Enter the name and email address of the person you wish to invite to join MyDailyBeat." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Invite", nil];
+                    [alert addTextFieldWithText:@"" placeholder:@"Name"];
+                    [alert addTextFieldWithText:@"" placeholder:@"E-mail Address"];
+                    [alert setKeyboardType:UIKeyboardTypeEmailAddress ofTextFieldAtIndex:1];
+                    [alert setAutoCapitalizationType:UITextAutocapitalizationTypeNone ofTextFieldAtIndex:1];
+                    [alert setAutoCorrectionType:UITextAutocorrectionTypeNo ofTextFieldAtIndex:0];
+                    [alert setAutoCorrectionType:UITextAutocorrectionTypeNo ofTextFieldAtIndex:1];
+                    [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+                        switch (buttonIndex) {
+                            case 0:
+                                // do nothing
+                                break;
+                            case 1: {
+                                NSString *name = [alertView textFieldTextAtIndex:0];
+                                NSString *email = [alertView textFieldTextAtIndex:1];
+                                dispatch_queue_t queue = dispatch_queue_create(APP_ID_C_STRING, NULL);
+                                dispatch_async(queue, ^{
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.view makeToastActivity];
+                                    });
+                                    BOOL result = [[RestAPI getInstance] sendReferralFromUser:[[RestAPI getInstance] getCurrentUser] toPersonWithName:name andEmail:email];
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.view hideToastActivity];
+                                        if (result) {
+                                            [self.view makeToast:@"Referral sent successfully!" duration:3.5 position:@"bottom"];
+                                        } else {
+                                            [self.view makeToast:@"Could not send referral." duration:3.5 position:@"bottom"];
+                                        }
+                                        
+                                    });
+                                });
+                            }
+                                break;
+                                
+                            default:
+                                break;
+                        }
+                    }];
                 }
+                    break;
                     
                     
                 default:
@@ -200,40 +237,38 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Celler";
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    
-    
-    if (cell == nil) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-    }
-    
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.numberOfLines = 0;
     
     
     switch (indexPath.section) {
         case 0: {
-            cell.textLabel.text = @"What would you like to do?";
-            cell.textLabel.textAlignment = NSTextAlignmentCenter;
-            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
+            
+            UILabel *textLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+            
+            
+            textLabel.text = @"What would you like to do?";
+            textLabel.textAlignment = NSTextAlignmentCenter;
+            textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
+            textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            textLabel.numberOfLines = 0;
+            [cell addSubview:textLabel];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
         }
         case 1: {
+            
+            
+            cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.textLabel.numberOfLines = 0;
             cell.textLabel.text = [options objectAtIndex:indexPath.row];
             cell.textLabel.textAlignment = NSTextAlignmentLeft;
             cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
             UIImage *icon = [UIImage imageNamed:[imageNames objectAtIndex:indexPath.row]];
             cell.imageView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];
+            break;
         }
-            break;
             
-        default:
-            break;
     }
     
     //cell.contentView.backgroundColor = UIColorFromHex(0xEEE2BE);

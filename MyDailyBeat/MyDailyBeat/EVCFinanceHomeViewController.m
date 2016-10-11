@@ -8,9 +8,9 @@
 
 #import "EVCFinanceHomeViewController.h"
 #import "BankDatabase.h"
-#import <DLAVAlertView.h>
+#import "DLAVAlertView.h"
 #import "EVCCommonMethods.h"
-#import <AHKActionSheet.h>
+#import "AHKActionSheet.h"
 
 @interface EVCFinanceHomeViewController ()
 
@@ -24,6 +24,10 @@
     self.iconList = [[NSMutableArray alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.tabBarController.tabBar.frame), 0);
+    self.tableView.contentInset = insets;
+    self.tableView.scrollIndicatorInsets = insets;
+    self.edgesForExtendedLayout = UIRectEdgeAll;
     [self retrieveBanksData];
     // Do any additional setup after loading the view from its nib.
     
@@ -65,7 +69,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return ([self.bankList count] >= 1) ? [self.bankList count] + 1 : 1;
+    return ([self.bankList count] >= 1) ? [self.bankList count] + 3 : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -79,9 +83,12 @@
         if (indexPath.row < [self.bankList count]) {
             cell.textLabel.text = ((BankInfo *)[self.bankList objectAtIndex:indexPath.row]).appName;
             cell.imageView.image = [self.iconList objectAtIndex:indexPath.row];
-        } else {
+        } else if (indexPath.row == [self.bankList count]) {
             cell.textLabel.text = @"Add Bank";
             cell.imageView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"plus-512.png"] scaledToSize:CGSizeMake(30, 30)];
+        } else {
+            cell.textLabel.text = @"";
+            cell.imageView.image = nil;
         }
     } else {
         cell.textLabel.text = @"Add Bank";
@@ -93,13 +100,14 @@
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Inside this method");
     if ([self.bankList count] >= 1) {
         if (indexPath.row < [self.bankList count]) {
             [self popupActionMenu:indexPath.row];
-        } else {
+        } else if (indexPath.row == [self.bankList count]){
             // add new bank
             [self addBank];
+        } else {
+            // do nothing
         }
         
     } else {
@@ -114,14 +122,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [sheet addButtonWithTitle:@"Open App" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         BankInfo *obj = [self.bankList objectAtIndex:row];
         
-        if ([self isAppInstalled:obj.appName]) {
-            NSString *name = obj.appName;
-            name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
-        } else {
-            NSLog(@"%@", obj);
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.appURL]];
-        }
+        NSString *appURL = obj.appURL;
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appURL]];
     }];
     [sheet addButtonWithTitle:@"Set as My Bank" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         BankInfo *obj = [self.bankList objectAtIndex:row];
@@ -141,8 +143,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view makeToastActivity];
             });
-            if ([[API getInstance] doesAppExistWithTerm:text andCountry:@"US"]) {
-                VerveBankObject *bank = [[API getInstance] getBankInfoForBankWithName:text inCountry:@"US"];
+            if ([[RestAPI getInstance] doesAppExistWithTerm:text andCountry:@"US"]) {
+                VerveBankObject *bank = [[RestAPI getInstance] getBankInfoForBankWithName:text inCountry:@"US"];
                 BankInfo *info = [[BankInfo alloc] initWithUniqueId:0 name:bank.appName appURL:bank.appStoreListing iconURL:bank.appIconURL];
                 BankDatabase *db = [BankDatabase database];
                 [db insertIntoDatabase:info];
@@ -157,7 +159,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (BOOL) isAppInstalled: (NSString *) name {
     name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-    NSLog(@"%@", [name stringByAppendingString:@"://"]);
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
 }
 
@@ -168,7 +169,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        val = [[API getInstance] doesAppExistWithTerm:name andCountry:@"US"];
+        val = [[RestAPI getInstance] doesAppExistWithTerm:name andCountry:@"US"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
         });

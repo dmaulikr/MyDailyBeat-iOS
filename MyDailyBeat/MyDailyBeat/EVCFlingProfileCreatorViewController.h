@@ -7,19 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <API.h>
-#import "EVCInterestsSelectorTableViewController.h"
+#import <RestAPI.h>
 #import "Constants.h"
 
 @interface EVCFlingProfileCreatorViewController : UIViewController
 
 @property (nonatomic, retain) IBOutlet UITextView *aboutMeView;
-@property (nonatomic, retain) IBOutlet UIButton *okButton, *interestsButton;
-@property (nonatomic, retain) NSMutableArray *interests;
+@property (nonatomic, retain) IBOutlet UIButton *okButton;
 
 @property (nonatomic) REL_MODE mode;
-
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(REL_MODE) mode;
 
 - (IBAction)save:(id)sender;
 

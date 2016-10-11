@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <DLAVAlertView.h>
-#import <API.h>
+#import <RestAPI.h>
 #import <UIView+Toast.h>
 #import "RESideMenu.h"
 #import "EVCProfileViewController.h"
@@ -19,17 +19,18 @@
 #import "EVCFeelingBlueTabViewController.h"
 #import "EVCFinanceViewController.h"
 #import "EVCVolunteeringMapViewController.h"
-#import "EVCTravelTableViewController.h"
-#import "EVCJobsViewController.h"
+#import "EVCTravelTabViewController.h"
+#import "EVCJobsTabViewController.h"
 #import "EVCHealthViewController.h"
 #import "EVCHobbiesViewController.h"
 #import "EVCFirstTimeSetupViewController.h"
+#import "DLAVAlertView.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EVCGroupSearchViewDelegate> {
     NSArray *options, *imageNames;
 }
 
 @property(nonatomic, retain) IBOutlet UITableView *mTableView;
-@property(strong, nonatomic) API *api;
+@property(strong, nonatomic) RestAPI *api;
 
 @end

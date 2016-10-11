@@ -32,7 +32,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        NSMutableArray *arr = [[API getInstance] getHobbiesMatchesForUserWithScreenName:[[API getInstance] getCurrentUser].screenName];
+        NSMutableArray *arr = [[RestAPI getInstance] getHobbiesMatchesForUserWithScreenName:[[RestAPI getInstance] getCurrentUser].screenName];
         dispatch_async(dispatch_get_main_queue(), ^{
             [matches addObjectsFromArray:arr];
             [self.view hideToastActivity];

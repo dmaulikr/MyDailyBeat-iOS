@@ -59,7 +59,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        BOOL success = [[API getInstance] inviteUser:self.recipient toJoinGroup:self.groupToInviteTo by:self.sendingmethod withMessage:self.inviteMessage];
+        BOOL success = [[RestAPI getInstance] inviteUser:self.recipient toJoinGroup:self.groupToInviteTo by:self.sendingmethod withMessage:self.inviteMessage];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

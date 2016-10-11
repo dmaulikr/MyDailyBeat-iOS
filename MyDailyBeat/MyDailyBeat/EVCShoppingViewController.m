@@ -7,6 +7,7 @@
 //
 
 #import "EVCShoppingViewController.h"
+#import "EVCResourceLinksTableViewController.h"
 
 @interface EVCShoppingViewController ()
 
@@ -20,18 +21,21 @@
     
     EVCShoppingSearchViewController *search = [[EVCShoppingSearchViewController alloc] initWithNibName:@"EVCShoppingSearchViewController" bundle:nil];
     EVCShoppingFavoritesTableViewController *favs = [[EVCShoppingFavoritesTableViewController alloc] initWithNibName:@"EVCShoppingFavoritesTableViewController" bundle:nil];
+    EVCResourceLinksTableViewController *rl = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil andModuleName:@"Shopping"];
     
     UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:search];
     UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:favs];
+    UINavigationController *third = [[UINavigationController alloc] initWithRootViewController:rl];
     
     UITabBar *bar = self.tabBar;
     
     self.navigationItem.title = @"Go Shopping";
     
-    self.viewControllers = [NSArray arrayWithObjects:first, second, nil];
+    self.viewControllers = [NSArray arrayWithObjects:first, second, third, nil];
     
     UITabBarItem *matchItem = [bar.items objectAtIndex:0];
     UITabBarItem *partnersItem = [bar.items objectAtIndex:1];
+    UITabBarItem *resItem = [bar.items objectAtIndex:2];
     
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
@@ -44,6 +48,12 @@
     
     partnersItem.title = @"View Favorites";
     [partnersItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
+    
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"res-icon-white"] scaledToSize:CGSizeMake(30, 30)];
+    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"res-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
+    
+    resItem.title = @"Resources";
+    [resItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);

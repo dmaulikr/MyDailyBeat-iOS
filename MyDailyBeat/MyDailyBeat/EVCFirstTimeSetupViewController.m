@@ -7,7 +7,6 @@
 //
 
 #import "EVCFirstTimeSetupViewController.h"
-#import "EVCLargeMessageViewController.h"
 #import "EVCFirstTimePreferencesViewController.h"
 
 @interface EVCFirstTimeSetupViewController ()
@@ -21,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    api = [API getInstance];
+    api = [RestAPI getInstance];
     [self.message setText:@"Welcome to MyDailyBeat! Before you begin, please set the following preferences."];
     
 }

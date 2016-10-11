@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewPagerController.h"
 #import "Constants.h"
-#import <API.h>
+#import <RestAPI.h>
 #import "VervePreferences.h"
 
 @interface EVCFirstTimeSetupViewController : UIViewController
 
-@property (strong, nonatomic) API *api;
+@property (strong, nonatomic) RestAPI *api;
 @property (strong, nonatomic) IBOutlet UILabel *message;
 @property (strong, nonatomic) IBOutlet UIButton *next;
 

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
-#import "API.h"
-#import "PrescripProviderInfo.h"
+#import "RestAPI.h"
+#import <PrescripProviderInfo.h>
 #import "HealthInfo.h"
 
 @interface EVCMyHealthViewController : UIViewController {

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <VerveUser.h>
-#import <API.h>
+#import <RestAPI.h>
 #import "EVCFlingMessagingViewController.h"
 #import "EVCFlingProfileCreatorViewController.h"
 #import "EVCFlingViewController.h"
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) VerveMatchingPreferences *matching;
 @property (nonatomic) REL_MODE mode;
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user andMode: (REL_MODE) mode;
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andUser: (VerveUser *) user;
 
 - (IBAction)fav:(id)sender;
 - (IBAction)message:(id)sender;

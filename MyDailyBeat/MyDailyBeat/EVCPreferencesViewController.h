@@ -10,7 +10,7 @@
 #import <Constants.h>
 #import "UIView+Toast.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "API.h"
+#import "RestAPI.h"
 #import "EVCProfilePicView.h"
 #import "EVCCommonMethods.h"
 #import "RESideMenu.h"
@@ -21,7 +21,7 @@
 @interface EVCPreferencesViewController : UIViewController <FXFormControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) API *api;
+@property (nonatomic, retain) RestAPI *api;
 @property (nonatomic, strong) FXFormController *formController;
 
 @end

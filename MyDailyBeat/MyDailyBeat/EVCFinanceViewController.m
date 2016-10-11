@@ -19,10 +19,10 @@
     EVCBankViewController *bank;
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"myBank"];
     BankInfo * bankInfo = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSLog(@"Bank Info: %@", bankInfo);
     bank = [[EVCBankViewController alloc] initWithNibName:@"EVCBankViewController" bundle:nil andBank:bankInfo];
     EVCFinanceHomeViewController *search = [[EVCFinanceHomeViewController alloc] initWithNibName:@"EVCFinanceHomeViewController" bundle:nil];
-    EVCResourceLinksTableViewController *favs = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil];
+    EVCResourceLinksTableViewController *favs = [[EVCResourceLinksTableViewController alloc] initWithNibName:@"EVCResourceLinksTableViewController" bundle:nil andModuleName:@"Finance"];
+    
     
     UINavigationController *first = [[UINavigationController alloc] initWithRootViewController:bank];
     UINavigationController *second = [[UINavigationController alloc] initWithRootViewController:search];
@@ -30,7 +30,7 @@
     
     UITabBar *bar = self.tabBar;
     
-    self.navigationItem.title = @"Check my Finances";
+    self.navigationItem.title = @"Check My Finances";
     
     self.viewControllers = [NSArray arrayWithObjects:first, second, third, nil];
     
@@ -41,7 +41,7 @@
     UIImage *firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     UIImage *secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
-    matchItem.title = @"Banking Applications";
+    matchItem.title = @"Banking Apps";
     [matchItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
     firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-white"] scaledToSize:CGSizeMake(30, 30)];
@@ -50,8 +50,8 @@
     favItem.title = @"My Bank";
     [favItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];
     
-    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-white"] scaledToSize:CGSizeMake(30, 30)];
-    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"star-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
+    firstIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"res-icon-white"] scaledToSize:CGSizeMake(30, 30)];
+    secondIm = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"res-icon-gray"] scaledToSize:CGSizeMake(30, 30)];
     
     resItem.title = @"Resource Links";
     [resItem setFinishedSelectedImage:firstIm withFinishedUnselectedImage:secondIm];

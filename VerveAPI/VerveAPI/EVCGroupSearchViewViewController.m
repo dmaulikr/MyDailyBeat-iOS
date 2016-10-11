@@ -61,7 +61,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.view makeToastActivity];
                 });
-                BOOL success = [[API getInstance] joinGroupWithName:selected.groupName];
+                BOOL success = [[RestAPI getInstance] joinGroupWithName:selected.groupName];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.view hideToastActivity];
                     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -112,7 +112,7 @@
     NSMutableArray *temp = [[NSMutableArray alloc] initWithArray:self.data copyItems:YES];
     self.data = [[NSMutableArray alloc] init];
     for (Group *g in temp) {
-        NSMutableArray *groupsForUser = [[API getInstance] getGroupsForCurrentUser];
+        NSMutableArray *groupsForUser = [[RestAPI getInstance] getGroupsForCurrentUser];
         if (groupsForUser != nil) {
             BOOL member = NO;
             for (Group *g2 in groupsForUser) {
@@ -183,7 +183,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view makeToastActivity];
             });
-            NSURL *url = [[API getInstance] retrieveGroupPictureForGroup:g];
+            NSURL *url = [[RestAPI getInstance] retrieveGroupPictureForGroup:g];
             if (url != nil) {
                 NSData *imageData = [NSData dataWithContentsOfURL:url];
                 dispatch_async(dispatch_get_main_queue(), ^{

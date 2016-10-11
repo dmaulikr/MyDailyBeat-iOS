@@ -9,7 +9,7 @@
 #import "EVCBankViewController.h"
 #import "Constants.h"
 #import "VerveBankObject.h"
-#import "API.h"
+#import "RestAPI.h"
 #import "EVCCommonMethods.h"
 
 @interface EVCBankViewController ()
@@ -47,19 +47,12 @@
 }
 
 - (IBAction)gotoBank:(id)sender {
-    if ([self isAppInstalled:self.bank.appName]) {
-        NSString *name = self.bank.appName;
-        name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
-    } else {
-        NSLog(@"%@", self.bank);
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.bank.appURL]];
-    }
+    NSString *appURL = self.bank.appURL;
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appURL]];
 }
 
 - (BOOL) isAppInstalled: (NSString *) name {
     name = [name stringByReplacingOccurrencesOfString:@" " withString:@"-"];
-    NSLog(@"%@", [name stringByAppendingString:@"://"]);
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[name stringByAppendingString:@"://"]]];
 }
 
@@ -70,7 +63,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        val = [[API getInstance] doesAppExistWithTerm:name andCountry:@"US"];
+        val = [[RestAPI getInstance] doesAppExistWithTerm:name andCountry:@"US"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
         });

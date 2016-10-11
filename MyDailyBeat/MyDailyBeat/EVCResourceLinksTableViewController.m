@@ -26,14 +26,18 @@
     [super viewDidLoad];
     path = RES_LINKS;
     resLinks = [NSDictionary dictionaryWithContentsOfFile:path];
-    
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, CGRectGetHeight(self.tabBarController.tabBar.frame), 0);
+    self.tableView.contentInset = insets;
+    self.tableView.scrollIndicatorInsets = insets;
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    [self reloadData];
      
     
 }
 
 - (void) reloadData {
     if ([module isEqualToString:@"Finance"]) {
-        _dataArr = [resLinks objectForKey:@"Finance"];
+        _dataArr = [resLinks objectForKey:@"Finances"];
     } else if ([module isEqualToString:@"FeelingBlue"]) {
         _dataArr = [resLinks objectForKey:@"FeelingBlue"];
     } else if ([module isEqualToString:@"Relationships"]) {
@@ -46,7 +50,9 @@
         _dataArr = [resLinks objectForKey:@"Travel"];
     } else if ([module isEqualToString:@"Volunteering"]) {
         _dataArr = [resLinks objectForKey:@"Volunteering"];
-    } else {
+    } else if ([module isEqualToString:@"Shopping"]) {
+        _dataArr = [resLinks objectForKey:@"Shopping"];
+    }else {
         _dataArr = [[NSArray alloc] init];
     }
     [self.tableView reloadData];

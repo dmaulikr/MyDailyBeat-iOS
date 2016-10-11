@@ -34,11 +34,11 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     self.view.backgroundColor = [UIColor clearColor];
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Volunteer", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"hearts2", @"hearts2", @"peeps2", @"health2", @"plane2", @"hands2", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Refer a Friend", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"hearts2", @"hearts2", @"peeps2", @"health2", @"plane2", @"peeps2", nil];
     self.logoView.image = [UIImage imageNamed:@"Logo.png"];
     self.logoView.backgroundColor = [UIColor whiteColor];
-    self.logoView.layer.cornerRadius = 52;
+    self.logoView.layer.cornerRadius = 55;
     self.logoView.clipsToBounds = YES;
 
 }
@@ -50,7 +50,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        self.groups = [[API getInstance] getGroupsForCurrentUser];
+        self.groups = [[RestAPI getInstance] getGroupsForCurrentUser];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
@@ -85,7 +85,7 @@
         case 2:
             if (indexPath.row == [groups count]) {
                 //create group here
-                DLAVAlertView *groupNameAlertView = [[DLAVAlertView alloc] initWithTitle:@"Enter Name of New Group" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                DLAVAlertView *groupNameAlertView = [[DLAVAlertView alloc] initWithTitle:@"New Group" message:@"Enter the name of the new group." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
                 groupNameAlertView.alertViewStyle = DLAVAlertViewStylePlainTextInput;
                 [groupNameAlertView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
                     if (buttonIndex == 1) {
@@ -106,20 +106,21 @@
             switch (indexPath.row) {
                 case 4: {
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:1];
+                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
                     break;
                 case 5: {
-                    NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:2];
+                    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
                     break;
                 case 6: {
-                    NSLog(@"Hello World");
                     EVCFlingViewController *fling = [[EVCFlingViewController alloc] initWithNibName:@"EVCFlingViewController" bundle:nil andInMode:0];
+                    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"REL_MODE"];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:fling] animated:YES];
                 }
                     
@@ -143,25 +144,62 @@
                 }
                     break;
                 case 2: {
-                    EVCJobsViewController *jobs = [[EVCJobsViewController alloc] initWithNibName:@"EVCJobsViewController" bundle:nil];
+                    EVCJobsTabViewController *jobs = [[EVCJobsTabViewController alloc] init];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:jobs] animated:YES];
                     break;
                 }
                     
                 case 8: {
-                    EVCTravelTableViewController *travel = [[EVCTravelTableViewController alloc] initWithNibName:@"EVCTravelTableViewController" bundle:nil];
+                    EVCTravelTabViewController *travel = [[EVCTravelTabViewController alloc] init];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:travel] animated:YES];
-                    break;
-                }
-                case 9: {
-                    EVCVolunteeringMapViewController *volunteer = [[EVCVolunteeringMapViewController alloc] initWithNibName:@"EVCVolunteeringMapViewController" bundle:nil];
-                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:volunteer] animated:YES];
                     break;
                 }
                 case 7: {
                     EVCHealthViewController *health = [[EVCHealthViewController alloc] initWithNibName:@"EVCHealthViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
                 }
+                    break;
+                case 9: {
+                    DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Refer a Friend" message:@"Enter the name and email address of the person you wish to invite to join MyDailyBeat." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Invite", nil];
+                    [alert addTextFieldWithText:@"" placeholder:@"Name"];
+                    [alert addTextFieldWithText:@"" placeholder:@"E-mail Address"];
+                    [alert setKeyboardType:UIKeyboardTypeEmailAddress ofTextFieldAtIndex:1];
+                    [alert setAutoCapitalizationType:UITextAutocapitalizationTypeNone ofTextFieldAtIndex:1];
+                    [alert setAutoCorrectionType:UITextAutocorrectionTypeNo ofTextFieldAtIndex:0];
+                    [alert setAutoCorrectionType:UITextAutocorrectionTypeNo ofTextFieldAtIndex:1];
+                    [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+                        switch (buttonIndex) {
+                            case 0:
+                                // do nothing
+                                break;
+                            case 1: {
+                                NSString *name = [alertView textFieldTextAtIndex:0];
+                                NSString *email = [alertView textFieldTextAtIndex:1];
+                                dispatch_queue_t queue = dispatch_queue_create(APP_ID_C_STRING, NULL);
+                                dispatch_async(queue, ^{
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.view makeToastActivity];
+                                    });
+                                    BOOL result = [[RestAPI getInstance] sendReferralFromUser:[[RestAPI getInstance] getCurrentUser] toPersonWithName:name andEmail:email];
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.view hideToastActivity];
+                                        if (result) {
+                                            [self.view makeToast:@"Referral sent successfully!" duration:3.5 position:@"bottom"];
+                                        } else {
+                                            [self.view makeToast:@"Could not send referral." duration:3.5 position:@"bottom"];
+                                        }
+                                        
+                                    });
+                                });
+                            }
+                                break;
+                                
+                            default:
+                                break;
+                        }
+                    }];
+                }
+                    break;
                     
                 default:
                     break;
@@ -187,14 +225,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        BOOL success = [[API getInstance] createGroupWithName:name];
-        self.groups = [[API getInstance] getGroupsForCurrentUser];
+        BOOL success = [[RestAPI getInstance] createGroupWithName:name];
+        self.groups = [[RestAPI getInstance] getGroupsForCurrentUser];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
-                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
             else {
-                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                 return;
             }
             [self.tableView reloadData];
@@ -278,7 +316,7 @@
                 cell.lbl.text = [[groups objectAtIndex:indexPath.row] groupName];
                 dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
                 dispatch_async(queue, ^{
-                    NSURL *imageURL = [[API getInstance] retrieveGroupPictureForGroup:[groups objectAtIndex:indexPath.row]];
+                    NSURL *imageURL = [[RestAPI getInstance] retrieveGroupPictureForGroup:[groups objectAtIndex:indexPath.row]];
                     if (imageURL == nil) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             UIImage *icon = [UIImage imageNamed:@"group2.png"];

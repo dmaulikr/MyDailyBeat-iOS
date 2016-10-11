@@ -185,7 +185,7 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register/private" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
         NSString *response = [result objectForKey:@"response"];
         if ([response isEqualToString:@"Operation succeeded"]) {

@@ -14,18 +14,10 @@
 
 @implementation EVCPartnerMatchViewController
 
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMode:(REL_MODE) mode {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.mode = mode;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.partners = [[NSMutableArray alloc] init];
+    self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     [self retrievePartners];
 }
 
@@ -35,12 +27,21 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        if (self.mode == FLING_MODE || self.mode == RELATIONSHIP_MODE) {
-            self.partners = [[NSMutableArray alloc] initWithArray:[[API getInstance] getFlingProfilesBasedOnPrefsOfUser:[[API getInstance] getCurrentUser]]];
+        if (self.mode != FRIENDS_MODE) {
+            self.partners = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingProfilesBasedOnPrefsOfUser:[[RestAPI getInstance] getCurrentUser]]];
+            if ([self.partners count] >= 1) {
+                if ([((FlingProfile *)[self.partners objectAtIndex:0]).screenName isEqualToString:[[RestAPI getInstance] getCurrentUser].screenName]) {
+                    [self.partners removeObjectAtIndex:0];
+                }
+            }
         } else {
+            NSArray *hobbMatches = [[RestAPI getInstance] getHobbiesMatchesForUserWithScreenName:[[RestAPI getInstance] getCurrentUser].screenName];
+            self.partners = [[NSMutableArray alloc] init];
+            for (HobbiesMatchObject *obj in hobbMatches) {
+                [self.partners addObject:[[RestAPI getInstance] getFlingProfileForUser:obj.userObj]];
+            }
             
         }
-        NSLog(@"Partners: %lu", (unsigned long)[self.partners count]);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
@@ -82,7 +83,7 @@
     __block UIImage *img;
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveProfilePictureForUserWithScreenName:screenName];
+        NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:screenName];
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -105,7 +106,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[API getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName] andMode:self.mode];
+    EVCFlingProfileViewController *prof = [[EVCFlingProfileViewController alloc] initWithNibName:@"EVCFlingProfileViewController" bundle:nil andUser:[[RestAPI getInstance] getUserDataForUserWithScreenName:((FlingProfile *)[self.partners objectAtIndex:indexPath.row]).screenName]];
     
     // Pass the selected object to the new view controller.
     

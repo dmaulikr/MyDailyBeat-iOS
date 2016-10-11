@@ -7,7 +7,7 @@
 //
 
 #import "EVCLoginViewController.h"
-#import "VerveAPI/Constants.h"
+#import "EVCRegistrationMessageViewController.h"
 
 @interface EVCLoginViewController ()
 
@@ -46,8 +46,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view makeToastActivity];
             });
-            [[API getInstance] loginWithScreenName:defScreenName andPassword:defPass];
-            groups = [[API getInstance] getGroupsForCurrentUser];
+            [[RestAPI getInstance] loginWithScreenName:defScreenName andPassword:defPass];
+            groups = [[RestAPI getInstance] getGroupsForCurrentUser];
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 RESideMenu *sideMenuViewController;
@@ -160,9 +160,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             [self.view makeToastActivity];
         });
         NSMutableArray *groups = [[NSMutableArray alloc] init];
-        BOOL success = [[API getInstance] loginWithScreenName:username andPassword:pass];
+        BOOL success = [[RestAPI getInstance] loginWithScreenName:username andPassword:pass];
         if (success) {
-            groups = [[API getInstance] getGroupsForCurrentUser];
+            groups = [[RestAPI getInstance] getGroupsForCurrentUser];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSUserDefaults standardUserDefaults] setObject:username forKey:KEY_SCREENNAME];
                 [[NSUserDefaults standardUserDefaults] setObject:pass forKey:KEY_PASSWORD];
@@ -177,7 +177,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                                                                    rightMenuViewController:menu];
                 sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
                 sideMenuViewController.delegate = (EVCAppDelegate *)[[UIApplication sharedApplication] delegate];
-                UIColor *bgcolor = UIColorFromHex(0xFCF58B);
+                UIColor *bgcolor = UIColorFromHex(0x0097A4);
                 CGSize bgsize = CGSizeMake(640, 1136);
                 sideMenuViewController.backgroundImage = [EVCCommonMethods imageWithColor:bgcolor size:bgsize];
                 sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
@@ -193,7 +193,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
-                [self.view makeToast:@"Username and password do not match." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.view makeToast:@"Username and password do not match." duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
             });
         }
         
@@ -203,8 +203,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (IBAction)signup:(id)sender {
-    EVCRegistrationViewController *controller = [[EVCRegistrationViewController alloc] initWithNibName:@"EVCRegistrationViewController_iPhone" bundle:nil];
-    [self.navigationController pushViewController:controller animated:YES];
+    EVCRegistrationMessageViewController *rm1 = [[EVCRegistrationMessageViewController alloc] initWithKey:1];
+    [self.navigationController pushViewController:rm1 animated:YES];
 }
 
 @end

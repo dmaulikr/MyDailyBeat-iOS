@@ -41,12 +41,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-    
-    if (indexPath.row < [self.healthPortals count]) {
-        cell.textLabel.text = ((HealthInfo * )[self.healthPortals objectAtIndex:indexPath.row]).URL;
-    } else {
-        cell.textLabel.text = @"Add Health Portal";
+    if (indexPath.row == [self.healthPortals count]) {
+        cell.textLabel.text = @"Add Portal";
         cell.imageView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"plus-512.png"] scaledToSize:CGSizeMake(30, 30)];
+    } else {
+        cell.textLabel.text = ((HealthInfo * )[self.healthPortals objectAtIndex:indexPath.row]).URL;
+        cell.imageView.image = nil;
     }
     
     
@@ -59,10 +59,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row < [self.healthPortals count]) {
-        [self popupActionMenu:indexPath.row];
-    } else {
-        DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Enter new health portal" message:@"" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    if (indexPath.row == [self.healthPortals count]) {
+        DLAVAlertView *alert = [[DLAVAlertView alloc] initWithTitle:@"Enter new health portal." message:@"Enter the link to the health portal you wish to add." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alert addTextFieldWithText:@"" placeholder:@""];
         [alert showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
             switch (buttonIndex) {
@@ -72,8 +70,8 @@
                 case 1: {
                     // ok
                     NSString *text = [alertView textFieldTextAtIndex:0];
-                    HealthInfo *info = [[HealthInfo alloc] initWithUniqueId:0 URL:text logoURL:@""];
-                    [[HealthDatabase database] insertIntoDatabase:info orPrescriptionProvider:nil];
+                    HealthInfo *portal = [[HealthInfo alloc] initWithUniqueId:0 URL:text logoURL:@""];
+                    [[HealthDatabase database] insertIntoDatabase:portal orPrescriptionProvider:nil];
                     self.healthPortals = [[NSMutableArray alloc] initWithArray:[[HealthDatabase database] healthPortals]];
                     [self.tableView reloadData];
                 }
@@ -82,6 +80,8 @@
                     break;
             }
         }];
+    } else {
+        [self popupActionMenu:indexPath.row];
     }
     
 }

@@ -56,7 +56,14 @@
         });
         
         self.peeps = [[NSMutableArray alloc] initWithArray:[search getUsersForFeelingBlue]];
-        NSLog(@"Partners: %lu", (unsigned long)[self.peeps count]);
+        for (int i = 0 ; i < [self.peeps count] ; ) {
+            VerveUser *user = [self.peeps objectAtIndex:i];
+            if ([user.screenName isEqualToString:[[RestAPI getInstance] getCurrentUser].screenName]) {
+                [self.peeps removeObjectAtIndex:i];
+            } else {
+                i++;
+            }
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
@@ -101,9 +108,60 @@
 }
 
 - (void) makeCall:(NSInteger) index {
-    NSString *dialstring = [[NSString alloc] initWithFormat:@"telprompt://*671%@", [[self.peeps objectAtIndex:index] mobile]];
+    NSString *dialstring = [[self.peeps objectAtIndex:index] mobile];
+    [self makeCall2:dialstring];
+}
+
+- (void) makeCall2:(NSString *) num {
+    NSString *dialstring = [[NSString alloc] initWithFormat:@"tel:%@", num];
     NSURL *url = [NSURL URLWithString:dialstring];
-    [[UIApplication sharedApplication] openURL:url];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:[[NSDictionary alloc] init] completionHandler:^(BOOL success) {
+            if (success) {
+                [self saveToCallHistoryNumber:num withAccessCode:@""];
+            }
+        }];
+    } else {
+        DLAVAlertView *alView = [[DLAVAlertView alloc] initWithTitle:@"Calling not supported" message:@"This device does not support phone calls." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+            return;
+        }];
+    }
+}
+
+- (void) saveToCallHistoryNumber: (NSString *) num withAccessCode: (NSString *) code {
+    if (code == nil) {
+        if ([num isEqualToString:@"1-800-273-8255"]) {
+            // suicide
+            NSMutableArray *callHistory = [[NSUserDefaults standardUserDefaults] objectForKey:@"callHistory"];
+            if (callHistory == nil) {
+                callHistory = [[NSMutableArray alloc] init];
+            }
+            
+            [callHistory insertObject:@"Suicide Hotline" atIndex:0];
+            [[NSUserDefaults standardUserDefaults] setObject:callHistory forKey:@"callHistory"];
+        } else {
+            // save number
+            NSMutableArray *callHistory = [[NSUserDefaults standardUserDefaults] objectForKey:@"callHistory"];
+            if (callHistory == nil) {
+                callHistory = [[NSMutableArray alloc] init];
+            }
+            
+            [callHistory insertObject:num atIndex:0];
+            [[NSUserDefaults standardUserDefaults] setObject:callHistory forKey:@"callHistory"];
+        }
+    } else {
+        // veterans
+        NSMutableArray *callHistory = [[NSUserDefaults standardUserDefaults] objectForKey:@"callHistory"];
+        if (callHistory == nil) {
+            callHistory = [[NSMutableArray alloc] init];
+        }
+        
+        [callHistory insertObject:@"Veterans' Hotline" atIndex:0];
+        [[NSUserDefaults standardUserDefaults] setObject:callHistory forKey:@"callHistory"];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) showMenu {

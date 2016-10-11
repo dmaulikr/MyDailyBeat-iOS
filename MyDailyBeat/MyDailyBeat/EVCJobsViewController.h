@@ -7,24 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <API.h>
+#import <RestAPI.h>
 #import "UIView+Toast.h"
 #import "Constants.h"
 #import <CoreLocation/CoreLocation.h>
 #import "EVCJobsDetailsViewController.h"
 #import "EVCCommonMethods.h"
 #import "RESideMenu.h"
+#import "EVCJobsFilter.h"
+#import "FXBlurView.h"
 
-@interface EVCJobsViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
+@interface EVCJobsViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, EVCJobsFilterDelegate> {
     CLLocationManager *manager;
     CLGeocoder *geocoder;
     NSString *currentZip, *currentQuery;
     int currentPage;
     int total;
+    JobType jobType;
+    JobSearchRadius searchRadius;
+    EVCJobsFilter *filterView;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *results;
-@property (nonatomic, retain) IBOutlet UISearchBar *mBar;
 @property (nonatomic, retain) NSDictionary *resultsDictionary;
 @property (nonatomic, retain) NSMutableArray *currentSet;
 

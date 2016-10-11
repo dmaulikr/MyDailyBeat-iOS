@@ -17,7 +17,7 @@
 - (void) EVCGroupSettingsViewControllerDelegateDidDeleteGroup:(EVCGroupSettingsViewController *) controller {
     [controller dismissViewControllerAnimated:YES completion:nil];
     EVCViewController *newcontroller = [[EVCViewController alloc] initWithNibName:@"EVCViewController_iPhone" bundle:nil];
-    [newcontroller.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+    [newcontroller.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:newcontroller] animated:YES];
     
 }
@@ -37,7 +37,7 @@
     dispatch_async(queue, ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
-            self.group.posts = [[API getInstance] getPostsForGroup:self.group];
+            self.group.posts = [[RestAPI getInstance] getPostsForGroup:self.group];
             [self.view hideToastActivity];
         });
     });
@@ -45,14 +45,13 @@
 
 - (void)writePost {
     EVCComposeViewControllerCompletionHandler completionHandler = ^(NSString* message, UIImage* image) {
-        NSLog(@"Text: %@", message);
         UIImage *attachedImage = image;
         NSString *postText = message;
         long long millis = [[NSDate date] timeIntervalSince1970];
         Post *written = [[Post alloc] init];
         written.postText = postText;
         written.dateTimeMillis = millis;
-        written.userScreenName = [[API getInstance] getCurrentUser].screenName;
+        written.userScreenName = [[RestAPI getInstance] getCurrentUser].screenName;
         dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
         dispatch_async(queue, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -62,13 +61,13 @@
             
             NSString *fileName = ASSET_FILENAME;
             
-            BOOL success = [[API getInstance] writePost:written withPictureData:imgData andPictureName:fileName toGroup:self.group];
+            BOOL success = [[RestAPI getInstance] writePost:written withPictureData:imgData andPictureName:fileName toGroup:self.group];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
                 if (success)
-                    [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                    [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
                 else {
-                    [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                    [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                     return;
                 }
                 [self refreshGroupData];
@@ -88,10 +87,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.scroll.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"texture.png"]];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
     if (self.scroll.bounds.size.height >= max_post_height) {
         self.scroll.contentSize = self.scroll.bounds.size;
     } else {
@@ -103,7 +98,7 @@
     self.imageView.layer.shadowOffset = CGSizeMake(0, 1);
     self.imageView.layer.shadowOpacity = 1;
     self.imageView.layer.shadowRadius = 1.0;
-    self.imageView.clipsToBounds = NO;
+    self.imageView.clipsToBounds = YES;
     
      _composeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(writePost)];
     
@@ -119,7 +114,7 @@
     
     self.title = self.group.groupName;
     
-    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-black"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image3 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"hamburger-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg = CGRectMake(0, 0, image3.size.width, image3.size.height);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
@@ -131,7 +126,7 @@
     
     self.navigationItem.rightBarButtonItem = menuButton;
     
-    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-black"] scaledToSize:CGSizeMake(30, 30)];
+    UIImage* image4 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"profile-icon-white"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg2 = CGRectMake(0, 0, image4.size.width, image4.size.height);
     UIButton *someButton2 = [[UIButton alloc] initWithFrame:frameimg2];
     [someButton2 setBackgroundImage:image4 forState:UIControlStateNormal];
@@ -142,7 +137,7 @@
     UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
     self.navigationItem.leftBarButtonItem = profileButton;
     
-    if ([[[API getInstance] getCurrentUser].screenName isEqualToString:self.group.adminName]) {
+    if ([[[RestAPI getInstance] getCurrentUser].screenName isEqualToString:self.group.adminName]) {
         [_settingsButton setEnabled:YES];
     } else {
         [_settingsButton setEnabled:NO];
@@ -165,11 +160,15 @@
 - (void) loadPicture {
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
-        NSURL *imageURL = [[API getInstance] retrieveGroupPictureForGroup:self.group];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        NSURL *imageURL = [[RestAPI getInstance] retrieveGroupPictureForGroup:self.group];
         if (imageURL == nil) return;
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
+            [self.view hideToastActivity];
             self.imageView.image = [UIImage imageWithData:imageData];
             
         });
@@ -184,13 +183,13 @@
             [self.view makeToastActivity];
         });
         
-        BOOL success = [[API getInstance] deletePost:p];
+        BOOL success = [[RestAPI getInstance] deletePost:p];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             if (success)
-                [self.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/check.png"]];
+                [self.view makeToast:@"Delete successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
             else {
-                [self.view makeToast:@"Delete failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"VerveAPIBundle.bundle/error.png"]];
+                [self.view makeToast:@"Delete failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
                 return;
             }
             [self refreshGroupData];
@@ -218,13 +217,16 @@
     }
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
         [self refreshGroupData];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
             [self.group.posts sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
                 
                 int id1 = [(Post *)obj1 post_id];
                 int id2 = [(Post *)obj2 post_id];
-                NSLog(@"Sorting, id1=%d, id2=%d", id1, id2);
                 return id1 > id2;
             }];
             max_post_height = 10;
