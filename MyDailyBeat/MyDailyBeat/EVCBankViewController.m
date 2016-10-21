@@ -85,7 +85,7 @@
                 [self.view makeToastActivity];
             });
             NSURL *imgurl = [NSURL URLWithString:self.bank.iconURL];
-            NSData *data = [NSData dataWithContentsOfURL:imgurl];
+            NSData *data = [[RestAPI getInstance] fetchImageAtRemoteURL:imgurl];
             UIImage *img = [[UIImage alloc] initWithData:data];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];

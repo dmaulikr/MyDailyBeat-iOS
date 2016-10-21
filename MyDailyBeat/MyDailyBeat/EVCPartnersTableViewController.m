@@ -29,8 +29,12 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
+        if (self.mode == FRIENDS_MODE) {
+            self.favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFriendsForUser:[[RestAPI getInstance] getCurrentUser]]];
+        } else {
+            self.favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingFavoritesForUser:[[RestAPI getInstance] getCurrentUser]]];
+        }
         
-        self.favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingFavoritesForUser:[[RestAPI getInstance] getCurrentUser]]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
             [self.tableView reloadData];
@@ -77,7 +81,7 @@
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:screenName];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI

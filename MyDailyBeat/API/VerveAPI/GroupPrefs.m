@@ -23,7 +23,7 @@
     dispatch_async(queue, ^{
         if (servingURL != nil) {
             NSURL *imageURL = [[NSURL alloc] initWithString:servingURL];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Update the UI
                 self.groupPicture = [UIImage imageWithData:imageData];

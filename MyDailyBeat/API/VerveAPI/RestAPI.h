@@ -10,7 +10,7 @@
 
 #import "Reachability.h"
 #import "VerveUser.h"
-#import "AFHTTPRequestOperation.h"
+#import "AFNetworking.h"
 #import <MobileCoreServices/UTType.h>
 #import <sys/time.h>
 #import "Group.h"
@@ -28,8 +28,14 @@
 #import "PrescripProviderInfo.h"
 #import "HobbiesPreferences.h"
 #import "HobbiesMatchObject.h"
+#import "CocoaWSSE.h"
+#import <JsonEncoder.h>
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
+#define VOLUNTEER_MATCH_API_KEY @"091831c0b92450d7a598b3e4640504b5"
+#define VOLUNTEER_MATCH_API_USER @"MyDailyBeat"
+#define VOLUNTEER_MATCH_API_URL @"https://www.volunteermatch.org/api/call"
+#define VOLUNTEER_MATCH_TEST_API_URL @"https://www.stage.volunteermatch.org/api/call"
 
 #define GET_REQUEST @"GET"
 #define POST_REQUEST @"POST"
@@ -48,14 +54,20 @@
 -(VerveUser *) getCurrentUser;
 - (BOOL) createUser: (VerveUser *) userData;
 - (BOOL) editUser: (VerveUser *) userData;
+- (BOOL) doesUserExistWithName: (NSString *) name;
 - (BOOL) doesUserExistWithScreenName: (NSString *) screenName;
 - (BOOL) doesUserExistWithEmail:(NSString *)email;
 - (BOOL) doesUserExistWithMobile:(NSString *)mobile;
 - (BOOL) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password;
 - (void) refreshCurrentUserData;
 - (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName;
+- (VerveUser *) getUserDataForUserWithName: (NSString *) name;
+- (VerveUser *) getUserDataForUserWithEmail: (NSString *) email;
+- (VerveUser *) getUserDataForUserWithMobile: (NSString *) mobile;
 - (BOOL) logout;
 - (BOOL) sendReferralFromUser: (VerveUser *) user toPersonWithName: (NSString *) name andEmail: (NSString *) email;
+
+- (NSMutableDictionary *) getOpportunitiesInLocation: (NSString *) zipcode onPage: (int) page;
 
 
 -(BOOL)uploadProfilePicture:(NSData *)profilePicture withName: (NSString *) name;
@@ -105,7 +117,9 @@
 
 - (NSArray *) getFlingProfilesBasedOnPrefsOfUser:(VerveUser *) user;
 - (NSArray *) getFlingFavoritesForUser: (VerveUser *) user;
+- (NSArray *) getFriendsForUser: (VerveUser *) user;
 - (BOOL) addUser:(VerveUser *) user1 ToFlingFavoritesOfUser:(VerveUser *) user2;
+- (BOOL) addUser:(VerveUser *) user1 ToFriendsOfUser:(VerveUser *) user2;
 - (FlingProfile *) getFlingProfileForUser:(VerveUser *) user;
 - (BOOL) saveFlingProfileForUser:(VerveUser *) user withAge: (int) age andDescription:(NSString *) about andInterests: (NSArray *) array;
 
@@ -124,5 +138,6 @@
 
 -(id)makeRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData;
 -(id)makeXMLRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData;
+-(NSData *) fetchImageAtRemoteURL: (NSURL *) location;
 
 @end

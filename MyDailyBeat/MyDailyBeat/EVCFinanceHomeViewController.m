@@ -47,10 +47,16 @@
         BankDatabase *db = [BankDatabase database];
         self.bankList = [[NSMutableArray alloc] initWithArray:[db bankInfos]];
         for (int i = 0 ; i < [self.bankList count] ; i++) {
-            NSURL *imgurl = [NSURL URLWithString:((BankInfo *)[self.bankList objectAtIndex:i]).iconURL];
-            NSData *data = [NSData dataWithContentsOfURL:imgurl];
-            UIImage *img = [[UIImage alloc] initWithData:data];
-            [self.iconList addObject:img];
+            BOOL load = [[NSUserDefaults standardUserDefaults] boolForKey:@"LOAD_BANK_IMAGES"];
+            if (load) {
+                NSURL *imgurl = [NSURL URLWithString:((BankInfo *)[self.bankList objectAtIndex:i]).iconURL];
+                NSData *data = [[RestAPI getInstance] fetchImageAtRemoteURL:imgurl];
+                UIImage *img = [[UIImage alloc] initWithData:data];
+                [self.iconList addObject:img];
+            } else {
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LOAD_BANK_IMAGES"];
+            }
+            
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
@@ -82,7 +88,11 @@
     if ([self.bankList count] >= 1) {
         if (indexPath.row < [self.bankList count]) {
             cell.textLabel.text = ((BankInfo *)[self.bankList objectAtIndex:indexPath.row]).appName;
-            cell.imageView.image = [self.iconList objectAtIndex:indexPath.row];
+            if (!([self.iconList count] == 0)) {
+                cell.imageView.image = [self.iconList objectAtIndex:indexPath.row];
+            } else {
+                cell.imageView.image = nil;
+            }
         } else if (indexPath.row == [self.bankList count]) {
             cell.textLabel.text = @"Add Bank";
             cell.imageView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"plus-512.png"] scaledToSize:CGSizeMake(30, 30)];

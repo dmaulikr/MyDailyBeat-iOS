@@ -1,0 +1,17 @@
+use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+target 'MyDailyBeat' do
+    pod 'AFNetworking', '~> 3.0'
+    pod 'CocoaWSSE'
+    pod 'FXBlurView', '~> 1.6'
+    pod 'AHKActionSheet'
+    pod 'DLAlertView'
+    pod 'DownPicker'
+    pod 'FXForms'
+    pod 'RESideMenu', '~> 4.0.7'
+    pod 'SlackTextViewController'
+    pod 'XMLDictionary'
+end

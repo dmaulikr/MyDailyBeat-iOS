@@ -60,7 +60,7 @@
     dispatch_async(queue, ^{
         if (self.postObj.servingURL != nil) {
             NSURL *imageURL = [[NSURL alloc] initWithString:self.postObj.servingURL];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Update the UI
                 [postPicView setImage:[UIImage imageWithData:imageData]];
@@ -79,7 +79,7 @@
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePicture];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             [profilePicView setImage:[UIImage imageWithData:imageData]];

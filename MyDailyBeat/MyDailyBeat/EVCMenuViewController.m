@@ -324,7 +324,7 @@
                             
                         });
                     } else {
-                        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
                         dispatch_async(dispatch_get_main_queue(), ^{
                             UIImage *icon = [UIImage imageWithData:imageData];
                             cell.imgView.image = [EVCCommonMethods imageWithImage:icon scaledToSize:CGSizeMake(30, 30)];

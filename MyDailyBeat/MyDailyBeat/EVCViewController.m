@@ -27,8 +27,8 @@
     [super viewDidLoad];
     
     
-    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Refer a Friend", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"peeps", nil];
+    options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Refer a Friend", @"Volunteering", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance", @"phone", @"briefcase", @"cart", @"hearts", @"hearts", @"peeps", @"health", @"plane", @"peeps", @"hands", nil];
     
     /*UIImage *image2 = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"search-icon-white.png"] scaledToSize:CGSizeMake(30, 30)];
     CGRect frameimg3 = CGRectMake(0, 0, image2.size.width, image2.size.height);
@@ -80,7 +80,7 @@
         dispatch_queue_t queue = dispatch_queue_create(APP_ID_C_STRING, NULL);
         dispatch_async(queue, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.view makeToast:@"Initializing database..." duration:3.5 position:@"bottom"];
+                [self.view makeToast:@"Fine Tuning Your Experience..." duration:3.5 position:@"bottom"];
                 [self.view makeToastActivity];
             });
             // initialize db
@@ -95,7 +95,8 @@
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
-                [self.view makeToast:@"Database Initialization Complete" duration:3.5 position:@"bottom"];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"LOAD_BANK_IMAGES"];
+                [self.view makeToast:@"Fine Tuning Complete" duration:3.5 position:@"bottom"];
             });
         });
     }
@@ -179,6 +180,11 @@
                 case 7: {
                     EVCHealthViewController *health = [[EVCHealthViewController alloc] initWithNibName:@"EVCHealthViewController" bundle:nil];
                     [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:health] animated:YES];
+                }
+                    break;
+                case 10: {
+                    EVCVolunteeringTabViewController *volunteer = [[EVCVolunteeringTabViewController alloc] init];
+                    [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:volunteer] animated:YES];
                 }
                     break;
                 case 9: {

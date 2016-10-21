@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FXForms.h"
+#import <RestAPI.h>
 
 @interface GroupPrefs : NSObject <FXForm>
 

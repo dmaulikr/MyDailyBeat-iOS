@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [messageLabel setText:self.message];
+    self.navigationController.navigationBar.tintColor = UIColorFromHex(0x0097A4);
 }
 
 - (void) message1 {

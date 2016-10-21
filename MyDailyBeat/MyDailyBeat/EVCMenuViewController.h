@@ -14,7 +14,6 @@
 #import "EVCMenuTableViewCell.h"
 #import "EVCJobsTabViewController.h"
 #import "EVCTravelTabViewController.h"
-#import "EVCVolunteeringMapViewController.h"
 #import "EVCFeelingBlueTabViewController.h"
 
 @interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {

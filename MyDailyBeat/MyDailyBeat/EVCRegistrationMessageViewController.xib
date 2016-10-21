@@ -15,19 +15,22 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="64" width="414" height="672"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf0-58-8B1">
-                    <frame key="frameInset" minX="43" minY="105" width="207" height="356"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf0-58-8B1">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="356" id="tmg-qG-V7N"/>
+                        <constraint firstAttribute="width" constant="207" id="un6-xs-7d2"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16e-wb-27h">
-                    <frame key="frameInset" minX="43" minY="469" width="45" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16e-wb-27h">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="Vo9-Vy-QGX"/>
+                    </constraints>
                     <state key="normal" title="Next"/>
                     <connections>
                         <action selector="next:" destination="-1" eventType="touchUpInside" id="Czd-kZ-AY0"/>
@@ -35,7 +38,13 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <constraints>
+                <constraint firstItem="wf0-58-8B1" firstAttribute="trailing" secondItem="16e-wb-27h" secondAttribute="trailing" id="Gv9-Ui-vRX"/>
+                <constraint firstItem="wf0-58-8B1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="43" id="PLD-tI-azn"/>
+                <constraint firstItem="16e-wb-27h" firstAttribute="top" secondItem="wf0-58-8B1" secondAttribute="bottom" constant="8" symbolic="YES" id="dd8-O4-Fwl"/>
+                <constraint firstItem="wf0-58-8B1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="f0N-JE-HdH"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <point key="canvasLocation" x="47.5" y="133.5"/>
         </view>
     </objects>

@@ -269,7 +269,7 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
         dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
         dispatch_async(queue, ^{
             NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:m.screenName];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
             
             
             dispatch_async(dispatch_get_main_queue(), ^{

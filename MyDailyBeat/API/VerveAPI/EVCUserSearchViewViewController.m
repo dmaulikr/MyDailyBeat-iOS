@@ -180,7 +180,7 @@
             });
             NSURL *url = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:user.screenName];
             if (url != nil) {
-                NSData *imageData = [NSData dataWithContentsOfURL:url];
+                NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:url];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.view hideToastActivity];
                     [cell.imageView setImage:[UIImage imageWithData:imageData]];
