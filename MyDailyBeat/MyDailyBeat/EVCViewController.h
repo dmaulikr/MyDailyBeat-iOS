@@ -7,13 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <DLAVAlertView.h>
-#import <RestAPI.h>
-#import <UIView+Toast.h>
-#import "RESideMenu.h"
 #import "EVCProfileViewController.h"
 #import "EVCCommonMethods.h"
-#import <EVCGroupSearchViewViewController.h>
 #import "EVCFlingViewController.h"
 #import "EVCShoppingViewController.h"
 #import "EVCFeelingBlueTabViewController.h"
@@ -23,7 +18,7 @@
 #import "EVCHealthViewController.h"
 #import "EVCHobbiesViewController.h"
 #import "EVCFirstTimeSetupViewController.h"
-#import "DLAVAlertView.h"
+#import "API.h"
 #import "EVCVolunteeringTabViewController.h"
 
 @interface EVCViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EVCGroupSearchViewDelegate> {

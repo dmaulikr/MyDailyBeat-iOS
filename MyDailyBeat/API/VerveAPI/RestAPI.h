@@ -29,7 +29,7 @@
 #import "HobbiesPreferences.h"
 #import "HobbiesMatchObject.h"
 #import "CocoaWSSE.h"
-#import <JsonEncoder.h>
+#import "JsonEncoder.h"
 
 #define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 #define VOLUNTEER_MATCH_API_KEY @"091831c0b92450d7a598b3e4640504b5"
@@ -95,6 +95,7 @@
 -(NSURL *) retrieveGroupPictureForGroup:(Group *) group;
 -(BOOL) writePost:(Post *) p withPictureData:(NSData *) attachedPic andPictureName:(NSString *) picName toGroup:(Group *) g;
 - (NSMutableArray *) getPostsForGroup:(Group *) g;
+- (BOOL) setHobbiesforGroup: (Group *) group;
 
 - (BOOL) deletePost:(Post *) p;
 - (BOOL) deleteGroup:(Group *) g;

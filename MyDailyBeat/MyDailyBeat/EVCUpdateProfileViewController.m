@@ -52,6 +52,7 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    img = [EVCCommonMethods fixOrientationForImage:img];
     
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
@@ -59,7 +60,6 @@
             [self.view makeToastActivity];
         });
         NSData *imgData = UIImagePNGRepresentation(img);
-        NSURL *assetURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         
         NSString *fileName = ASSET_FILENAME;
         

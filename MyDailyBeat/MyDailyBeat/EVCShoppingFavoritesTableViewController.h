@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestAPI.h>
-#import "RESideMenu.h"
 #import "EVCCommonMethods.h"
-#import "AHKActionSheet.h"
+#import "API.h"
 
 
 @interface EVCShoppingFavoritesTableViewController : UITableViewController

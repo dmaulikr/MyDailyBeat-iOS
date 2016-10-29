@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestAPI.h>
-#import "UIView+Toast.h"
-#import "Constants.h"
 #import <CoreLocation/CoreLocation.h>
 #import "EVCVolunteeringDetailsViewController.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
-#import "FXBlurView.h"
+#import "API.h"
 
 @interface EVCVolunteeringViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     CLLocationManager *manager;

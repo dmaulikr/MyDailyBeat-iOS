@@ -35,7 +35,11 @@
 }
 
 - (NSDictionary *) groupPictureField {
-    return @{FXFormFieldTitle: @"Change Group Picture"};
+    return @{FXFormFieldTitle: @"Change Group Picture", FXFormFieldAction: @"saveImage:"};
+}
+
+- (NSDictionary *) hobbiesField {
+    return @{FXFormFieldTitle: @"Select Hobbies", FXFormFieldOptions: @[@"Books", @"Golf", @"Cars", @"Walking", @"Hiking", @"Wine", @"Woodworking", @"Online Card Games", @"Card Games", @"Online Games", @"Arts & Crafts", @"Prayer", @"Support Groups", @"Shopping", @"Travel", @"Local Field Trips", @"History", @"Sports"], FXFormFieldViewController: @"EVCGroupSettingsHobbiesSelectionTableViewController"};
 }
 
 - (NSArray *)extraFields

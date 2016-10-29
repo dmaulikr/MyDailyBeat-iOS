@@ -10,9 +10,7 @@
 #import "EVCTextFieldTableViewCell.h"
 #import "EVCLabelTableViewCell.h"
 #import "EVCRegistrationViewController.h"
-#import "UIView+Toast.h"
-#import "Constants.h"
-#import "RESideMenu.h"
+#import "API.h"
 #import "EVCProfileViewController.h"
 
 @interface EVCLoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{

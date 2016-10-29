@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FCC6832BBF809459D96646E /* Pods_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876AA069685490CD2FDFC74B /* Pods_API.framework */; };
 		76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76003B131B93C38E00133773 /* EVCResourceLinksTableViewController.m */; };
 		76003B161B93C38E00133773 /* EVCResourceLinksTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76003B141B93C38E00133773 /* EVCResourceLinksTableViewController.xib */; };
 		76011C331B927BDB000EC003 /* EVCFinanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76011C311B927BDB000EC003 /* EVCFinanceViewController.m */; };
@@ -16,12 +17,9 @@
 		76063C4F1B94B03A002F9171 /* EVCTravelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76063C4D1B94B03A002F9171 /* EVCTravelTableViewController.m */; };
 		76063C501B94B03A002F9171 /* EVCTravelTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76063C4E1B94B03A002F9171 /* EVCTravelTableViewController.xib */; };
 		760ECE9F1BAD06E400F3D9A2 /* 1408346500_menu-alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECE9E1BAD06E400F3D9A2 /* 1408346500_menu-alt.png */; };
-		760ECEB21BAD073D00F3D9A2 /* asmedia_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAC1BAD073D00F3D9A2 /* asmedia_pause.png */; };
-		760ECEB31BAD073D00F3D9A2 /* asmedia_pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAD1BAD073D00F3D9A2 /* asmedia_pause@2x.png */; };
-		760ECEB41BAD073D00F3D9A2 /* asmedia_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAE1BAD073D00F3D9A2 /* asmedia_play.png */; };
-		760ECEB51BAD073D00F3D9A2 /* asmedia_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEAF1BAD073D00F3D9A2 /* asmedia_play@2x.png */; };
-		760ECEB61BAD073D00F3D9A2 /* asmedia_playbig.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEB01BAD073D00F3D9A2 /* asmedia_playbig.png */; };
-		760ECEB71BAD073D00F3D9A2 /* asmedia_playbig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760ECEB11BAD073D00F3D9A2 /* asmedia_playbig@2x.png */; };
+		761033991DBBCC39002E9518 /* fling.png in Resources */ = {isa = PBXBuildFile; fileRef = 761033971DBBCC39002E9518 /* fling.png */; };
+		7610339A1DBBCC39002E9518 /* fling2.png in Resources */ = {isa = PBXBuildFile; fileRef = 761033981DBBCC39002E9518 /* fling2.png */; };
+		7610339D1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7610339C1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m */; };
 		761962031DB9B7CE00C99862 /* Pods_MyDailyBeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761962021DB9B7CE00C99862 /* Pods_MyDailyBeat.framework */; };
 		761962041DB9BAD200C99862 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650D19A15A4D0062B525 /* CoreGraphics.framework */; };
 		761B963C1C68FA9D0019C224 /* hamburger-icon-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 761B963A1C68FA9D0019C224 /* hamburger-icon-black.png */; };
@@ -53,20 +51,11 @@
 		76264E741BE7078C00292FBF /* messages-icon-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 76264E711BE7078C00292FBF /* messages-icon-white.png */; };
 		76264E751BE7078C00292FBF /* star-icon-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 76264E721BE7078C00292FBF /* star-icon-white.png */; };
 		76264E761BE7078C00292FBF /* view-partners-icon-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 76264E731BE7078C00292FBF /* view-partners-icon-white.png */; };
-		762993961DB5A70900A8568F /* JsonEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 762993941DB5A70900A8568F /* JsonEncoder.h */; };
+		762993961DB5A70900A8568F /* JsonEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 762993941DB5A70900A8568F /* JsonEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		762993971DB5A70900A8568F /* JsonEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 762993951DB5A70900A8568F /* JsonEncoder.m */; };
 		762F13391BBCDC80001BD716 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762F13381BBCDC80001BD716 /* CoreLocation.framework */; };
 		762F133D1BBCDC8A001BD716 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762F133C1BBCDC8A001BD716 /* MapKit.framework */; };
 		7630B5881BACD57600FA2617 /* search-icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 7630B5871BACD57600FA2617 /* search-icon-green.png */; };
-		7630B59A1BACFA0A00FA2617 /* ASImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B58C1BACFA0A00FA2617 /* ASImageScrollView.m */; };
-		7630B59B1BACFA0A00FA2617 /* ASMediaFocusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B58E1BACFA0A00FA2617 /* ASMediaFocusController.m */; };
-		7630B59C1BACFA0A00FA2617 /* ASMediaFocusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7630B58F1BACFA0A00FA2617 /* ASMediaFocusController.xib */; };
-		7630B59D1BACFA0A00FA2617 /* ASMediaFocusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5911BACFA0A00FA2617 /* ASMediaFocusManager.m */; };
-		7630B59E1BACFA0A00FA2617 /* ASTransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5931BACFA0A00FA2617 /* ASTransparentView.m */; };
-		7630B59F1BACFA0A00FA2617 /* ASVideoBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5951BACFA0A00FA2617 /* ASVideoBehavior.m */; };
-		7630B5A01BACFA0A00FA2617 /* ASVideoControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5971BACFA0A00FA2617 /* ASVideoControlView.m */; };
-		7630B5A11BACFA0A00FA2617 /* ASVideoControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7630B5981BACFA0A00FA2617 /* ASVideoControlView.xib */; };
-		7630B5A51BACFA5200FA2617 /* ASBPlayerScrubbing.m in Sources */ = {isa = PBXBuildFile; fileRef = 7630B5A41BACFA5200FA2617 /* ASBPlayerScrubbing.m */; };
 		7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */; };
 		7636F6BA19CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */; };
 		7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 7636F6BE19CF7B0F000B68B0 /* user-50.png */; };
@@ -160,6 +149,8 @@
 		768193F21D94BAA100F97CA5 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 768193D31D94BAA100F97CA5 /* IQKeyboardManager.bundle */; };
 		768193F31D94BB7300F97CA5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 768E3EF81CEFED6700A26909 /* libsqlite3.tbd */; };
 		768193F51D94BB7300F97CA5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 768193F41D94BB7300F97CA5 /* libsqlite3.0.tbd */; };
+		7689DC1D1DB9C08700592E34 /* MessageTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7689DC1B1DB9C08700592E34 /* MessageTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7689DC1E1DB9C08800592E34 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DC1C1DB9C08700592E34 /* MessageTableViewCell.m */; };
 		768AFF371A7540AA0055F258 /* EVCShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768AFF351A7540AA0055F258 /* EVCShoppingViewController.m */; };
 		768AFF381A7540AA0055F258 /* EVCShoppingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 768AFF361A7540AA0055F258 /* EVCShoppingViewController.xib */; };
 		768AFF3E1A754E300055F258 /* EVCShoppingSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768AFF3C1A754E300055F258 /* EVCShoppingSearchViewController.m */; };
@@ -320,6 +311,7 @@
 		76DEDA921A476310009CD94F /* EVCFlingProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDA901A476310009CD94F /* EVCFlingProfileViewController.m */; };
 		76DEDA931A476310009CD94F /* EVCFlingProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DEDA911A476310009CD94F /* EVCFlingProfileViewController.xib */; };
 		76DEDABF1A48BAFA009CD94F /* EVCFlingMessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DEDABE1A48BAFA009CD94F /* EVCFlingMessagingViewController.m */; };
+		76E0B257277F203874E7D792 /* Pods_MyDailyBeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E0417A4C6DBF376CB44F2FB /* Pods_MyDailyBeat.framework */; };
 		76E64EFB19B933650022F189 /* plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64EFA19B933650022F189 /* plus-512.png */; };
 		76E64F0219B9338C0022F189 /* home-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 76E64F0119B9338C0022F189 /* home-512.png */; };
 		76EBBEA51A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EBBEA31A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.m */; };
@@ -329,6 +321,8 @@
 		76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996919FD3CA900E15A14 /* settings-25.png */; };
 		76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */; };
 		76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */; };
+		76F953061DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 76F953051DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h */; };
+		76F953081DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F953071DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,6 +351,7 @@
 
 /* Begin PBXFileReference section */
 		0C62B1D76D167C50DE8B47F4 /* Pods-MyDailyBeat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDailyBeat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDailyBeat/Pods-MyDailyBeat.debug.xcconfig"; sourceTree = "<group>"; };
+		137BD27A4A8782EB9B8F0D83 /* Pods-API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.debug.xcconfig"; path = "Pods/Target Support Files/Pods-API/Pods-API.debug.xcconfig"; sourceTree = "<group>"; };
 		4E0417A4C6DBF376CB44F2FB /* Pods_MyDailyBeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDailyBeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC52A2C21E674C6B58397BA /* Pods-MyDailyBeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDailyBeat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDailyBeat/Pods-MyDailyBeat.release.xcconfig"; sourceTree = "<group>"; };
 		76003B121B93C38E00133773 /* EVCResourceLinksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCResourceLinksTableViewController.h; sourceTree = "<group>"; };
@@ -372,12 +367,10 @@
 		76063C4D1B94B03A002F9171 /* EVCTravelTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCTravelTableViewController.m; sourceTree = "<group>"; };
 		76063C4E1B94B03A002F9171 /* EVCTravelTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCTravelTableViewController.xib; sourceTree = "<group>"; };
 		760ECE9E1BAD06E400F3D9A2 /* 1408346500_menu-alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1408346500_menu-alt.png"; sourceTree = "<group>"; };
-		760ECEAC1BAD073D00F3D9A2 /* asmedia_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asmedia_pause.png; sourceTree = "<group>"; };
-		760ECEAD1BAD073D00F3D9A2 /* asmedia_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asmedia_pause@2x.png"; sourceTree = "<group>"; };
-		760ECEAE1BAD073D00F3D9A2 /* asmedia_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asmedia_play.png; sourceTree = "<group>"; };
-		760ECEAF1BAD073D00F3D9A2 /* asmedia_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asmedia_play@2x.png"; sourceTree = "<group>"; };
-		760ECEB01BAD073D00F3D9A2 /* asmedia_playbig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asmedia_playbig.png; sourceTree = "<group>"; };
-		760ECEB11BAD073D00F3D9A2 /* asmedia_playbig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "asmedia_playbig@2x.png"; sourceTree = "<group>"; };
+		761033971DBBCC39002E9518 /* fling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fling.png; sourceTree = "<group>"; };
+		761033981DBBCC39002E9518 /* fling2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fling2.png; sourceTree = "<group>"; };
+		7610339B1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCGroupSettingsHobbiesSelectionTableViewController.h; sourceTree = "<group>"; };
+		7610339C1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSettingsHobbiesSelectionTableViewController.m; sourceTree = "<group>"; };
 		761923E61BC8B57E00E182F4 /* VerveAPIBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VerveAPIBundle.bundle; path = "../../../Library/Developer/Xcode/DerivedData/MyDailyBeat-bodvbyhjqpeiggdehnrkxwklpekv/Build/Products/Debug-iphoneos/VerveAPIBundle.bundle"; sourceTree = "<group>"; };
 		761962021DB9B7CE00C99862 /* Pods_MyDailyBeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_MyDailyBeat.framework; path = "Pods/../build/Debug-iphoneos/Pods_MyDailyBeat.framework"; sourceTree = "<group>"; };
 		761B963A1C68FA9D0019C224 /* hamburger-icon-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-icon-black.png"; sourceTree = "<group>"; };
@@ -419,22 +412,6 @@
 		762F13381BBCDC80001BD716 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		762F133C1BBCDC8A001BD716 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7630B5871BACD57600FA2617 /* search-icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-icon-green.png"; sourceTree = "<group>"; };
-		7630B58B1BACFA0A00FA2617 /* ASImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASImageScrollView.h; sourceTree = "<group>"; };
-		7630B58C1BACFA0A00FA2617 /* ASImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASImageScrollView.m; sourceTree = "<group>"; };
-		7630B58D1BACFA0A00FA2617 /* ASMediaFocusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMediaFocusController.h; sourceTree = "<group>"; };
-		7630B58E1BACFA0A00FA2617 /* ASMediaFocusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMediaFocusController.m; sourceTree = "<group>"; };
-		7630B58F1BACFA0A00FA2617 /* ASMediaFocusController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASMediaFocusController.xib; sourceTree = "<group>"; };
-		7630B5901BACFA0A00FA2617 /* ASMediaFocusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMediaFocusManager.h; sourceTree = "<group>"; };
-		7630B5911BACFA0A00FA2617 /* ASMediaFocusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMediaFocusManager.m; sourceTree = "<group>"; };
-		7630B5921BACFA0A00FA2617 /* ASTransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTransparentView.h; sourceTree = "<group>"; };
-		7630B5931BACFA0A00FA2617 /* ASTransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASTransparentView.m; sourceTree = "<group>"; };
-		7630B5941BACFA0A00FA2617 /* ASVideoBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVideoBehavior.h; sourceTree = "<group>"; };
-		7630B5951BACFA0A00FA2617 /* ASVideoBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoBehavior.m; sourceTree = "<group>"; };
-		7630B5961BACFA0A00FA2617 /* ASVideoControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVideoControlView.h; sourceTree = "<group>"; };
-		7630B5971BACFA0A00FA2617 /* ASVideoControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoControlView.m; sourceTree = "<group>"; };
-		7630B5981BACFA0A00FA2617 /* ASVideoControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASVideoControlView.xib; sourceTree = "<group>"; };
-		7630B5A31BACFA5200FA2617 /* ASBPlayerScrubbing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBPlayerScrubbing.h; sourceTree = "<group>"; };
-		7630B5A41BACFA5200FA2617 /* ASBPlayerScrubbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBPlayerScrubbing.m; sourceTree = "<group>"; };
 		7636F6B619CF25DB000B68B0 /* EVCProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCProfileViewController.h; sourceTree = "<group>"; };
 		7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCProfileViewController.m; sourceTree = "<group>"; };
 		7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCProfileViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -541,6 +518,8 @@
 		768193D11D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		768193D31D94BAA100F97CA5 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		768193F41D94BB7300F97CA5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		7689DC1B1DB9C08700592E34 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		7689DC1C1DB9C08700592E34 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		768AFF341A7540AA0055F258 /* EVCShoppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCShoppingViewController.h; sourceTree = "<group>"; };
 		768AFF351A7540AA0055F258 /* EVCShoppingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EVCShoppingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		768AFF361A7540AA0055F258 /* EVCShoppingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCShoppingViewController.xib; sourceTree = "<group>"; };
@@ -747,6 +726,10 @@
 		76EF996B19FD3EA200E15A14 /* EVCGroupSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCGroupSettingsViewController.h; sourceTree = "<group>"; };
 		76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupSettingsViewController.m; sourceTree = "<group>"; };
 		76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
+		76F953051DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLAVAlertView+TextFieldOptions.h"; sourceTree = "<group>"; };
+		76F953071DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLAVAlertView+TextFieldOptions.m"; sourceTree = "<group>"; };
+		859ED1139CCAA1F61663F36F /* Pods-API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.release.xcconfig"; path = "Pods/Target Support Files/Pods-API/Pods-API.release.xcconfig"; sourceTree = "<group>"; };
+		876AA069685490CD2FDFC74B /* Pods_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -762,6 +745,7 @@
 				761D651019A15A4D0062B525 /* UIKit.framework in Frameworks */,
 				761D650C19A15A4D0062B525 /* Foundation.framework in Frameworks */,
 				76CCA8DB1D94A94800DB935B /* API.framework in Frameworks */,
+				76E0B257277F203874E7D792 /* Pods_MyDailyBeat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +758,7 @@
 				768193F51D94BB7300F97CA5 /* libsqlite3.0.tbd in Frameworks */,
 				768193F31D94BB7300F97CA5 /* libsqlite3.tbd in Frameworks */,
 				761962031DB9B7CE00C99862 /* Pods_MyDailyBeat.framework in Frameworks */,
+				3FCC6832BBF809459D96646E /* Pods_API.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +856,7 @@
 				761D650D19A15A4D0062B525 /* CoreGraphics.framework */,
 				761D650F19A15A4D0062B525 /* UIKit.framework */,
 				4E0417A4C6DBF376CB44F2FB /* Pods_MyDailyBeat.framework */,
+				876AA069685490CD2FDFC74B /* Pods_API.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -879,8 +865,6 @@
 			isa = PBXGroup;
 			children = (
 				76EDB2911D35ECDE00200E9C /* FirstTimeSetup */,
-				7630B58A1BACF9C400FA2617 /* ASBPlayerScrubbing */,
-				7630B5891BACF9B200FA2617 /* ASMediaFocusManager */,
 				769EEA1119A42E1D00FF072E /* Headers */,
 				769EEA1219A42E2700FF072E /* Source */,
 				769EEA1319A42E3C00FF072E /* xib */,
@@ -893,6 +877,8 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				761033971DBBCC39002E9518 /* fling.png */,
+				761033981DBBCC39002E9518 /* fling2.png */,
 				7646C8C41C9EEC0E00D9D374 /* suicide.png */,
 				7646C8C51C9EEC0E00D9D374 /* anonymous.png */,
 				7646C8C61C9EEC0E00D9D374 /* veterans.png */,
@@ -988,42 +974,6 @@
 				762993951DB5A70900A8568F /* JsonEncoder.m */,
 			);
 			name = JsonConverter;
-			sourceTree = "<group>";
-		};
-		7630B5891BACF9B200FA2617 /* ASMediaFocusManager */ = {
-			isa = PBXGroup;
-			children = (
-				7630B58B1BACFA0A00FA2617 /* ASImageScrollView.h */,
-				7630B58C1BACFA0A00FA2617 /* ASImageScrollView.m */,
-				7630B58D1BACFA0A00FA2617 /* ASMediaFocusController.h */,
-				7630B58E1BACFA0A00FA2617 /* ASMediaFocusController.m */,
-				7630B58F1BACFA0A00FA2617 /* ASMediaFocusController.xib */,
-				7630B5901BACFA0A00FA2617 /* ASMediaFocusManager.h */,
-				7630B5911BACFA0A00FA2617 /* ASMediaFocusManager.m */,
-				7630B5921BACFA0A00FA2617 /* ASTransparentView.h */,
-				7630B5931BACFA0A00FA2617 /* ASTransparentView.m */,
-				7630B5941BACFA0A00FA2617 /* ASVideoBehavior.h */,
-				7630B5951BACFA0A00FA2617 /* ASVideoBehavior.m */,
-				7630B5961BACFA0A00FA2617 /* ASVideoControlView.h */,
-				7630B5971BACFA0A00FA2617 /* ASVideoControlView.m */,
-				7630B5981BACFA0A00FA2617 /* ASVideoControlView.xib */,
-				760ECEAC1BAD073D00F3D9A2 /* asmedia_pause.png */,
-				760ECEAD1BAD073D00F3D9A2 /* asmedia_pause@2x.png */,
-				760ECEAE1BAD073D00F3D9A2 /* asmedia_play.png */,
-				760ECEAF1BAD073D00F3D9A2 /* asmedia_play@2x.png */,
-				760ECEB01BAD073D00F3D9A2 /* asmedia_playbig.png */,
-				760ECEB11BAD073D00F3D9A2 /* asmedia_playbig@2x.png */,
-			);
-			name = ASMediaFocusManager;
-			sourceTree = "<group>";
-		};
-		7630B58A1BACF9C400FA2617 /* ASBPlayerScrubbing */ = {
-			isa = PBXGroup;
-			children = (
-				7630B5A31BACFA5200FA2617 /* ASBPlayerScrubbing.h */,
-				7630B5A41BACFA5200FA2617 /* ASBPlayerScrubbing.m */,
-			);
-			name = ASBPlayerScrubbing;
 			sourceTree = "<group>";
 		};
 		76603A2E1D98CC6F0030CDFB /* EVCModalLargeEditor */ = {
@@ -1193,6 +1143,7 @@
 				76CCA8AC1D8F759000DB935B /* EVCRegistrationViewController.h */,
 				76C2B09219F342430010E98B /* EVCTextFieldTableViewCell.h */,
 				76EF996B19FD3EA200E15A14 /* EVCGroupSettingsViewController.h */,
+				7610339B1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.h */,
 				76003B121B93C38E00133773 /* EVCResourceLinksTableViewController.h */,
 				76A204C91BB062730028BFF8 /* EVCMenuTableViewCell.h */,
 				76C2B09719F4111F0010E98B /* EVCCommonMethods.h */,
@@ -1227,6 +1178,7 @@
 				76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */,
 				76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */,
 				76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */,
+				7610339C1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m */,
 				76003B131B93C38E00133773 /* EVCResourceLinksTableViewController.m */,
 				76A204CA1BB062730028BFF8 /* EVCMenuTableViewCell.m */,
 				76C2B09819F4111F0010E98B /* EVCCommonMethods.m */,
@@ -1367,6 +1319,7 @@
 		76CCA8D51D94A94800DB935B /* API */ = {
 			isa = PBXGroup;
 			children = (
+				76F952FF1DBAF184007A30FE /* Categories */,
 				762993931DB5A6E200A8568F /* JsonConverter */,
 				76CCAB3A1D94ABDA00DB935B /* RestAPI */,
 				76CCAB461D94ACCB00DB935B /* DB */,
@@ -1520,6 +1473,8 @@
 		76CCAB481D94ACF700DB935B /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
+				7689DC1B1DB9C08700592E34 /* MessageTableViewCell.h */,
+				7689DC1C1DB9C08700592E34 /* MessageTableViewCell.m */,
 				76CCAAA21D94AB8A00DB935B /* VerveMessage.h */,
 				76CCAAA31D94AB8A00DB935B /* VerveMessage.m */,
 				76CCAA7A1D94AB8A00DB935B /* MessageChatroom.h */,
@@ -1712,11 +1667,30 @@
 			name = iPhone;
 			sourceTree = "<group>";
 		};
+		76F952FF1DBAF184007A30FE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				76F953001DBAF18E007A30FE /* DLAlertView */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		76F953001DBAF18E007A30FE /* DLAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				76F953051DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h */,
+				76F953071DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m */,
+			);
+			name = DLAlertView;
+			sourceTree = "<group>";
+		};
 		92C3DD8CA5485FE222CFAE33 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				0C62B1D76D167C50DE8B47F4 /* Pods-MyDailyBeat.debug.xcconfig */,
 				5DC52A2C21E674C6B58397BA /* Pods-MyDailyBeat.release.xcconfig */,
+				137BD27A4A8782EB9B8F0D83 /* Pods-API.debug.xcconfig */,
+				859ED1139CCAA1F61663F36F /* Pods-API.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1734,6 +1708,7 @@
 				768193E81D94BAA100F97CA5 /* IQBarButtonItem.h in Headers */,
 				768193F01D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.h in Headers */,
 				768193E11D94BAA100F97CA5 /* IQKeyboardManagerConstantsInternal.h in Headers */,
+				76F953061DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h in Headers */,
 				768193E41D94BAA100F97CA5 /* IQKeyboardReturnKeyHandler.h in Headers */,
 				768193E61D94BAA100F97CA5 /* IQTextView.h in Headers */,
 				768193D41D94BAA100F97CA5 /* IQNSArray+Sort.h in Headers */,
@@ -1782,6 +1757,7 @@
 				76CCAB191D94AB8A00DB935B /* Stack.h in Headers */,
 				76CCAAEE1D94AB8A00DB935B /* FXFormScreenNameCell.h in Headers */,
 				76CCAB301D94AB8A00DB935B /* VerveUser.h in Headers */,
+				7689DC1D1DB9C08700592E34 /* MessageTableViewCell.h in Headers */,
 				762993961DB5A70900A8568F /* JsonEncoder.h in Headers */,
 				76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */,
 				76CCA8D81D94A94800DB935B /* API.h in Headers */,
@@ -1817,10 +1793,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76CCA8DD1D94A94800DB935B /* Build configuration list for PBXNativeTarget "API" */;
 			buildPhases = (
+				CDF6678D926FE1B6298F2D77 /* [CP] Check Pods Manifest.lock */,
 				76CCA8CF1D94A94700DB935B /* Sources */,
 				76CCA8D01D94A94700DB935B /* Frameworks */,
 				76CCA8D11D94A94700DB935B /* Headers */,
 				76CCA8D21D94A94700DB935B /* Resources */,
+				EF185481DA35A749A87F08E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1878,7 +1856,6 @@
 			files = (
 				76011C341B927BDB000EC003 /* EVCFinanceViewController.xib in Resources */,
 				76264E6B1BE6E7F500292FBF /* profile-icon-white.png in Resources */,
-				760ECEB21BAD073D00F3D9A2 /* asmedia_pause.png in Resources */,
 				7636F6BA19CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib in Resources */,
 				766B1D2E1CB1680D00C69FAD /* add-friends-white.png in Resources */,
 				766B1D261CB0864B00C69FAD /* filter_icon_white.png in Resources */,
@@ -1895,8 +1872,6 @@
 				766B1D2F1CB1680D00C69FAD /* cadeucus-grey.png in Resources */,
 				767DF3E21B5DE1DA000D4D5D /* search-icon-gray.png in Resources */,
 				767DF3E01B5DE1DA000D4D5D /* profile-icon-gray.png in Resources */,
-				760ECEB71BAD073D00F3D9A2 /* asmedia_playbig@2x.png in Resources */,
-				7630B5A11BACFA0A00FA2617 /* ASVideoControlView.xib in Resources */,
 				7636F6C419CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib in Resources */,
 				767DF3E11B5DE1DA000D4D5D /* profile-icon-green.png in Resources */,
 				769EC5071D8D8DA7001CB282 /* res_links.plist in Resources */,
@@ -1909,7 +1884,6 @@
 				7671FC5A19FDCE28000ECDAF /* user-50_white.png in Resources */,
 				76264E6A1BE6E7F500292FBF /* plane2.png in Resources */,
 				76DEDA811A474E19009CD94F /* EVCFlingViewController.xib in Resources */,
-				760ECEB31BAD073D00F3D9A2 /* asmedia_pause@2x.png in Resources */,
 				76CCA8BF1D90DB1700DB935B /* EVCRegistrationMessageViewController.xib in Resources */,
 				76C37F141C2A0AFB005D8960 /* EVCJobsViewController.xib in Resources */,
 				76A204E71BB200580028BFF8 /* group.png in Resources */,
@@ -1932,7 +1906,6 @@
 				769EEA9619A8DCBB00FF072E /* Stars@2x.png in Resources */,
 				7667E73F1A241F0E00B006D5 /* menubg.jpg in Resources */,
 				76DEDA8E1A475E68009CD94F /* EVCPartnersTableViewController.xib in Resources */,
-				760ECEB51BAD073D00F3D9A2 /* asmedia_play@2x.png in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
 				76264E6C1BE6E7F500292FBF /* search-icon-white.png in Resources */,
 				76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */,
@@ -1952,7 +1925,6 @@
 				769B0A901A59F22C00BB287E /* EVCFlingProfileCreatorViewController.xib in Resources */,
 				76264E671BE6E7F500292FBF /* home2.png in Resources */,
 				7636F6BF19CF7B0F000B68B0 /* user-50.png in Resources */,
-				760ECEB41BAD073D00F3D9A2 /* asmedia_play.png in Resources */,
 				767BDCA01D0609D8004DA0D8 /* res-icon-white.png in Resources */,
 				7646C8C71C9EEC0E00D9D374 /* suicide.png in Resources */,
 				76A204DD1BB0E7D60028BFF8 /* plane.png in Resources */,
@@ -1972,13 +1944,14 @@
 				76ABFCA71B5DDF950092C5D1 /* star-icon-green.png in Resources */,
 				76DEDA931A476310009CD94F /* EVCFlingProfileViewController.xib in Resources */,
 				761B963C1C68FA9D0019C224 /* hamburger-icon-black.png in Resources */,
+				7610339A1DBBCC39002E9518 /* fling2.png in Resources */,
 				760ECE9F1BAD06E400F3D9A2 /* 1408346500_menu-alt.png in Resources */,
 				76BC590A1DB1C4CD000BC422 /* EVCVolunteeringViewController.xib in Resources */,
 				7671FC5F19FF316B000ECDAF /* delete_sign-25.png in Resources */,
 				76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */,
 				76264E691BE6E7F500292FBF /* phone2.png in Resources */,
-				760ECEB61BAD073D00F3D9A2 /* asmedia_playbig.png in Resources */,
 				76264E601BE6E7F500292FBF /* cart2.png in Resources */,
+				761033991DBBCC39002E9518 /* fling.png in Resources */,
 				76264E651BE6E7F500292FBF /* health2.png in Resources */,
 				766B1D311CB1680D00C69FAD /* pill-bottle-grey.png in Resources */,
 				76264E611BE6E7F500292FBF /* finance2.png in Resources */,
@@ -1996,7 +1969,6 @@
 				767DF3E71B5DE1DA000D4D5D /* view-partners-icon-green.png in Resources */,
 				76264E741BE7078C00292FBF /* messages-icon-white.png in Resources */,
 				76BC59091DB1C4CC000BC422 /* EVCVolunteeringDetailsViewController.xib in Resources */,
-				7630B59C1BACFA0A00FA2617 /* ASMediaFocusController.xib in Resources */,
 				768AFF381A7540AA0055F258 /* EVCShoppingViewController.xib in Resources */,
 				766DEF7E1A4BC6180049CA2A /* EVCChatroomTableViewController.xib in Resources */,
 				76EBBEA61A85B9B6006F6FF2 /* EVCFeelingBlueTableViewController.xib in Resources */,
@@ -2071,6 +2043,36 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		CDF6678D926FE1B6298F2D77 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF185481DA35A749A87F08E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-API/Pods-API-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2092,7 +2094,6 @@
 				7636F6C319CF9074000B68B0 /* EVCUpdateProfileViewController.m in Sources */,
 				769B0A8F1A59F22C00BB287E /* EVCFlingProfileCreatorViewController.m in Sources */,
 				76CCA8BE1D90DB1700DB935B /* EVCRegistrationMessageViewController.m in Sources */,
-				7630B59F1BACFA0A00FA2617 /* ASVideoBehavior.m in Sources */,
 				7641406D1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m in Sources */,
 				76DEDA801A474E19009CD94F /* EVCFlingViewController.m in Sources */,
 				7670EFB31CFA038600831967 /* EVCBankViewController.m in Sources */,
@@ -2100,13 +2101,10 @@
 				76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */,
 				76B70B541CA776A800AF735E /* EVCPrescriptionProviderTableViewController.m in Sources */,
 				76011C331B927BDB000EC003 /* EVCFinanceViewController.m in Sources */,
-				7630B59E1BACFA0A00FA2617 /* ASTransparentView.m in Sources */,
 				76995CAA1D9B6F5A004ED977 /* EVCJobsTabViewController.m in Sources */,
 				76DEDA871A47504B009CD94F /* EVCPartnerMatchViewController.m in Sources */,
-				7630B5A51BACFA5200FA2617 /* ASBPlayerScrubbing.m in Sources */,
 				769EEA9D19AA35A800FF072E /* EVCProfilePicView.m in Sources */,
 				768AFF3E1A754E300055F258 /* EVCShoppingSearchViewController.m in Sources */,
-				7630B59A1BACFA0A00FA2617 /* ASImageScrollView.m in Sources */,
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
 				76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */,
 				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
@@ -2122,10 +2120,8 @@
 				76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */,
 				7670EFD11CFCBD2400831967 /* EVCMyHealthViewController.m in Sources */,
 				76C37F131C2A0AFB005D8960 /* EVCJobsViewController.m in Sources */,
-				7630B5A01BACFA0A00FA2617 /* ASVideoControlView.m in Sources */,
 				76603A2D1D9851660030CDFB /* EVCTravelTabViewController.m in Sources */,
 				767BDCAB1D297250004DA0D8 /* EVCHobbiesViewController.m in Sources */,
-				7630B59B1BACFA0A00FA2617 /* ASMediaFocusController.m in Sources */,
 				76BC59101DB1C54F000BC422 /* EVCVolunteeringViewController.m in Sources */,
 				76DEDA8D1A475E68009CD94F /* EVCPartnersTableViewController.m in Sources */,
 				767BDC941CFFB6EB004DA0D8 /* EVCFeelingBlueTabViewController.m in Sources */,
@@ -2135,10 +2131,10 @@
 				769B0A981A607C2300BB287E /* EVCFeelingBlueViewController.m in Sources */,
 				766DEF7A1A4BC2870049CA2A /* EVCChatroomTableViewController.m in Sources */,
 				76B64AE91D689F5900CC7A7A /* EVCFirstTimeSetupViewController.m in Sources */,
+				7610339D1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m in Sources */,
 				76EDB29B1D35EFF100200E9C /* EVCFirstTimePreferencesViewController.m in Sources */,
 				768AFF371A7540AA0055F258 /* EVCShoppingViewController.m in Sources */,
 				761D651C19A15A4D0062B525 /* EVCAppDelegate.m in Sources */,
-				7630B59D1BACFA0A00FA2617 /* ASMediaFocusManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2157,6 +2153,7 @@
 				76CCAAEB1D94AB8A00DB935B /* FlingProfile.m in Sources */,
 				76CCAB011D94AB8A00DB935B /* MapPoint.m in Sources */,
 				76CCAB2F1D94AB8A00DB935B /* VerveRelationshipPrefs.m in Sources */,
+				7689DC1E1DB9C08800592E34 /* MessageTableViewCell.m in Sources */,
 				76CCAAF91D94AB8A00DB935B /* HealthDatabase.m in Sources */,
 				768193DF1D94BAA100F97CA5 /* IQUIWindow+Hierarchy.m in Sources */,
 				768193D71D94BAA100F97CA5 /* IQUIScrollView+Additions.m in Sources */,
@@ -2169,6 +2166,7 @@
 				76CCAB0D1D94AB8A00DB935B /* Reachability.m in Sources */,
 				76CCAAE31D94AB8A00DB935B /* EVCSearchEngine.m in Sources */,
 				76603A331D98CD0E0030CDFB /* EVCModalLargeEditor.m in Sources */,
+				76F953081DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m in Sources */,
 				76CCAACA1D94AB8A00DB935B /* BankDatabase.m in Sources */,
 				76CCAB071D94AB8A00DB935B /* Post.m in Sources */,
 				768193F11D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.m in Sources */,
@@ -2322,6 +2320,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 38MW53VVGD;
@@ -2353,6 +2353,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 38MW53VVGD;
@@ -2379,8 +2381,10 @@
 		};
 		76CCA8DE1D94A94800DB935B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137BD27A4A8782EB9B8F0D83 /* Pods-API.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -2423,8 +2427,10 @@
 		};
 		76CCA8DF1D94A94800DB935B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 859ED1139CCAA1F61663F36F /* Pods-API.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;

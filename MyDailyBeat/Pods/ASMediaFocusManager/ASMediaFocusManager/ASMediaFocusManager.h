@@ -62,6 +62,8 @@
 @property (nonatomic, assign) BOOL addPlayIconOnVideo;
 // Image used to show a play icon on video thumbnails. Defaults to nil (uses internal image).
 @property (nonatomic, strong) UIImage *playImage;
+// Controller used to show custom accessories. If none is specified a default controller is used with a simple close button.
+@property (nonatomic, strong) UIViewController *topAccessoryController;
 
 // Install focusing gesture on the specified array of views.
 - (void)installOnViews:(NSArray *)views;
@@ -71,5 +73,8 @@
 - (void)startFocusingView:(UIView *)view;
 // Start the close animation on the current focused view.
 - (void)endFocusing;
+
+// Set minimal customization to default "Done" button. (Text and Color)
+- (void)setDefaultDoneButtonText:(NSString *)text withColor:(UIColor *)color;
 
 @end

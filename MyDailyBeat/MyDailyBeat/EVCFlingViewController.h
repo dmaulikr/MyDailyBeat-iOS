@@ -12,11 +12,9 @@
 #import "EVCFlingProfileViewController.h"
 #import "EVCFlingMessagingViewController.h"
 #import "EVCChatroomTableViewController.h"
-#import <RestAPI.h>
 #import "EVCFlingProfileCreatorViewController.h"
-#import "RESideMenu.h"
 #import "EVCCommonMethods.h"
-#import "Constants.h"
+#import "API.h"
 
 @interface EVCFlingViewController : UITabBarController <UITabBarControllerDelegate>
 

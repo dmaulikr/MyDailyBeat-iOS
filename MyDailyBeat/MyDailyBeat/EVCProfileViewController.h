@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RESideMenu.h"
 #import "EVCPreferencesViewController.h"
-#import <RestAPI.h>
-#import <VerveUser.h>
+#import "API.h"
 #import <QuartzCore/QuartzCore.h>
 #import "EVCUpdateProfileViewController.h"
 

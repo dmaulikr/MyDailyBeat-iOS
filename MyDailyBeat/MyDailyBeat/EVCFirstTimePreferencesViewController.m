@@ -7,8 +7,7 @@
 //
 
 #import "EVCFirstTimePreferencesViewController.h"
-#import "VervePreferences.h"
-#import <RESideMenu.h>
+#import "API.h"
 #import "EVCViewController.h"
 
 @interface EVCFirstTimePreferencesViewController ()

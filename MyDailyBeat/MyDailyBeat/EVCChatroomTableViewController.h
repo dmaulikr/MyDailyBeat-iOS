@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <EVCChatroomCell.h>
-#import <UIView+Toast.h>
-#import <RestAPI.h>
+#import "EVCChatroomCell.h"
 #import "EVCFlingMessagingViewController.h"
-#import <DLAVAlertView.h>
+#import "API.h"
 
 @interface EVCChatroomTableViewController : UITableViewController
 

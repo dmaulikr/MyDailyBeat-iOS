@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FXForms.h"
-#import <RestAPI.h>
-#import "VerveUserPreferences.h"
-#import "VerveMatchingPreferences.h"
-#import "HobbiesPreferences.h"
+#import "API.h"
 
 @interface EVCFirstTimePreferencesViewController : UIViewController <FXFormControllerDelegate>
 

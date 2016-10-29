@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <DLAVAlertView.h>
-#import <RestAPI.h>
-#import <UIView+Toast.h>
-#import "RESideMenu.h"
+#import "API.h"
 #import "EVCAppDelegate.h"
+#import "EVCCommonMethods.h"
 
 @interface EVCUpdateProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     NSMutableArray *months, *years;

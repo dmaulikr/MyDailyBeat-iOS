@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestAPI.h>
-#import "FlingProfile.h"
 #import "EVCFlingProfileViewController.h"
-#import "Constants.h"
+#import "API.h"
 
 @interface EVCPartnerMatchViewController : UITableViewController
 

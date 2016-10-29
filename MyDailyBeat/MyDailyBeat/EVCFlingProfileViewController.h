@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <VerveUser.h>
-#import <RestAPI.h>
+#import "API.h"
 #import "EVCFlingMessagingViewController.h"
 #import "EVCFlingProfileCreatorViewController.h"
 #import "EVCFlingViewController.h"

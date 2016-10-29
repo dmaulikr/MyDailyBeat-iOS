@@ -7,15 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Constants.h>
-#import "UIView+Toast.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "RestAPI.h"
 #import "EVCProfilePicView.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
-#import "FXForms.h"
-#import "VervePreferences.h"
+#import "API.h"
 #import "EVCViewController.h"
 
 @interface EVCPreferencesViewController : UIViewController <FXFormControllerDelegate>

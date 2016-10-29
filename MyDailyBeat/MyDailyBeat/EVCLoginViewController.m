@@ -143,7 +143,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
 }
 
-- (int) numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 

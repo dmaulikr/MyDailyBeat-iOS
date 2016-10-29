@@ -10,7 +10,6 @@
 #import "EVCHobbiesMatchTableViewController.h"
 #import "EVCResourceLinksTableViewController.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
 
 @interface EVCHobbiesViewController ()
 

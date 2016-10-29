@@ -7,10 +7,7 @@
 //
 
 #import "EVCRegistrationViewController.h"
-#import "RegisterObject1.h"
-#import <RestAPI.h>
-#import "UIView+Toast.h"
-#import "Constants.h"
+#import "API.h"
 #import "EVCFirstTimeSetupViewController.h"
 
 @interface EVCRegistrationViewController ()

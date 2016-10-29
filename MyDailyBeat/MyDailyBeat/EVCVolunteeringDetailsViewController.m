@@ -8,7 +8,6 @@
 
 #import "EVCVolunteeringDetailsViewController.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
 
 @interface EVCVolunteeringDetailsViewController ()
 
@@ -49,8 +48,66 @@
     
     UIBarButtonItem *profileButton =[[UIBarButtonItem alloc] initWithCustomView:someButton2];
     self.tabBarController.navigationItem.leftBarButtonItem = profileButton;
+    
+    self.titleLbl.text = [self.opportunity objectForKey:@"title"];
+    self.locLabel.text = [self buildLocationString:[self.opportunity objectForKey:@"location"]];
+    NSDictionary *parentOrg = [self.opportunity objectForKey:@"parentOrg"];
+    self.parentOrgLabel.text = [parentOrg objectForKey:@"name"];
+    NSDictionary *availability = [self.opportunity objectForKey:@"availability"];
+    NSString *startDate = [availability objectForKey:@"startDate"];
+    if (startDate == nil) {
+        // flexible
+        self.startLabel.text = @"Flexible";
+        self.endLabel.hidden = YES;
+    } else {
+        NSArray *av = [self getAvailability:availability];
+        self.startLabel.text = [av objectAtIndex:0];
+        self.endLabel.text = [av objectAtIndex:1];
+    }
+    
+    self.urlTextView.text = [self.opportunity objectForKey:@"vmUrl"];
+    self.descripTextView.text = [self.opportunity objectForKey:@"plaintextDescription"];
+    NSString *imageURL = [self.opportunity objectForKey:@"imageUrl"];
+    if (imageURL != nil) {
+        [self fetchImage:imageURL];
+    }
 
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void) fetchImage: (NSString *) url {
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        NSURL *imgurl = [NSURL URLWithString:url];
+        NSData *data = [[RestAPI getInstance] fetchImageAtRemoteURL:imgurl];
+        UIImage *img = [[UIImage alloc] initWithData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            [self.imageView setImage:[EVCCommonMethods imageWithImage:img scaledToSize:CGSizeMake(128, 128)]];
+        });
+    });
+}
+
+- (NSArray *) getAvailability:(NSDictionary *) availability {
+    NSString *startDate = [availability objectForKey:@"startDate"];
+    NSString *startTime = [availability objectForKey:@"startTime"];
+    NSString *endDate = [availability objectForKey:@"endDate"];
+    NSString *endTime = [availability objectForKey:@"endTime"];
+    NSString *start = [NSString stringWithFormat:@"%@ %@", startDate, startTime];
+    NSString *end = [NSString stringWithFormat:@"%@ %@", endDate, endTime];
+    NSArray *arr = [[NSArray alloc] initWithObjects:start, end, nil];
+    return arr;
+}
+
+- (NSString *) buildLocationString:(NSDictionary *) locationDic {
+    NSString *city = [locationDic objectForKey:@"city"];
+    NSString *region = [locationDic objectForKey:@"region"];
+    NSString *zip = [locationDic objectForKey:@"postalCode"];
+    NSString *country = [locationDic objectForKey:@"country"];
+    return [NSString stringWithFormat:@"%@, %@ %@ %@", city, region, zip, country];
 }
 
 - (void)didReceiveMemoryWarning {

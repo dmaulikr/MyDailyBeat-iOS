@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ASBPlayerScrubbing.h>
+#import <ASBPlayerScrubbing/ASBPlayerScrubbing.h>
 
 @interface ASVideoControlView : UIView
 

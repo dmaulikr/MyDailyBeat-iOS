@@ -7,9 +7,7 @@
 //
 
 #import "EVCHealthPortalTableViewController.h"
-#import "Constants.h"
-#import "HealthDatabase.h"
-#import <AHKActionSheet.h>
+#import "API.h"
 
 @interface EVCHealthPortalTableViewController ()
 

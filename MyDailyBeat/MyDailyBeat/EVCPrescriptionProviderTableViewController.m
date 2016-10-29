@@ -7,12 +7,8 @@
 //
 
 #import "EVCPrescriptionProviderTableViewController.h"
-#import "Constants.h"
-#import "HealthDatabase.h"
-#import <DLAVAlertView.h>
-#import "RestAPI.h"
 #import "EVCCommonMethods.h"
-#import <AHKActionSheet.h>
+#import "API.h"
 
 @interface EVCPrescriptionProviderTableViewController ()
 

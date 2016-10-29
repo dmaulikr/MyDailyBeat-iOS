@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Constants.h"
-#import <RestAPI.h>
-#import "VervePreferences.h"
+#import "API.h"
 
 @interface EVCFirstTimeSetupViewController : UIViewController
 

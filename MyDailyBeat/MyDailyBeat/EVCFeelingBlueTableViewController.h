@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EVCSearchEngine.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
-#import "DLAVAlertView.h"
+#import "API.h"
 
 @interface EVCFeelingBlueTableViewController : UITableViewController {
     EVCSearchEngine *search;

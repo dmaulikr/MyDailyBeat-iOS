@@ -86,6 +86,8 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AHKActionSheet/AHKActionSheet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ASBPlayerScrubbing/ASBPlayerScrubbing.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ASMediaFocusManager/ASMediaFocusManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CocoaSecurity/CocoaSecurity.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CocoaWSSE/CocoaWSSE.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DLAlertView/DLAlertView.framework"
@@ -99,6 +101,8 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AHKActionSheet/AHKActionSheet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ASBPlayerScrubbing/ASBPlayerScrubbing.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ASMediaFocusManager/ASMediaFocusManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CocoaSecurity/CocoaSecurity.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CocoaWSSE/CocoaWSSE.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DLAlertView/DLAlertView.framework"

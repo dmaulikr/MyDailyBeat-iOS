@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FXForms.h"
-#import <RestAPI.h>
+#import "RestAPI.h"
 
 @interface GroupPrefs : NSObject <FXForm>
 
 @property (nonatomic, retain) UIImage *groupPicture;
+@property (nonatomic, retain) NSArray *hobbies;
 
 - (id) initWithServingURL:(NSString *) servingURL;
 

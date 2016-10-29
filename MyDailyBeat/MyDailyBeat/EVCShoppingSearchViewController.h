@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestAPI.h>
-#import "AHKActionSheet.h"
+#import "API.h"
 
 @interface EVCShoppingSearchViewController : UIViewController <UISearchBarDelegate,UITableViewDataSource, UITableViewDelegate> {
     BOOL isFiltered;

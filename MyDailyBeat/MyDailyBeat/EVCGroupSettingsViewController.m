@@ -45,34 +45,40 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+
 - (void) done {
-    GroupPrefs *prefs = self.formController.form;
-    
-    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
-    dispatch_async(queue, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.view makeToastActivity];
-        });
-        NSData *imgData = UIImagePNGRepresentation(prefs.groupPicture);
+    [self dismissViewControllerAnimated:YES completion:^{
+        // save group preferences
+        GroupPrefs *prefs = self.formController.form;
         
-        NSString *fileName = ASSET_FILENAME;
+        if ([prefs.hobbies count] > 3) {
+            [self.view makeToast:@"Cannot select more than 3 hobbies" duration:3.5 position:@"bottom"];
+            return;
+        }
         
-        BOOL success = [[RestAPI getInstance] uploadGroupPicture:imgData withName:fileName toGroup:self.g];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.view hideToastActivity];
-            if (success)
-                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
-            else {
-                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
-                return;
-            }
-            _handler();
+        dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+        dispatch_async(queue, ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view makeToastActivity];
+            });
+            self.g.hobbies = [[NSMutableArray alloc] initWithArray:prefs.hobbies];
+            BOOL success = [self.api setHobbiesforGroup:self.g];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view hideToastActivity];
+                if (success) {
+                    [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
+                    _handler();
+                } else {
+                    [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
+                    return;
+                }
+                
+            });
             
         });
         
-    });
-    [self dismissViewControllerAnimated:YES completion:nil];
-
+    }];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -100,6 +106,33 @@
         });
     });
     
+}
+
+- (void)saveImage:(UITableViewCell<FXFormFieldCell> *)cell {
+    GroupPrefs *prefs = self.formController.form;
+    
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view makeToastActivity];
+        });
+        NSData *imgData = UIImagePNGRepresentation(prefs.groupPicture);
+        
+        NSString *fileName = ASSET_FILENAME;
+        
+        BOOL success = [[RestAPI getInstance] uploadGroupPicture:imgData withName:fileName toGroup:self.g];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view hideToastActivity];
+            if (success)
+                [self.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
+            else {
+                [self.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
+                return;
+            }
+            
+        });
+        
+    });
 }
 
 - (void)deleteGroup:(UITableViewCell<FXFormFieldCell> *)cell {

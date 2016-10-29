@@ -7,10 +7,8 @@
 //
 
 #import "EVCFinanceHomeViewController.h"
-#import "BankDatabase.h"
-#import "DLAVAlertView.h"
 #import "EVCCommonMethods.h"
-#import "AHKActionSheet.h"
+#import "API.h"
 
 @interface EVCFinanceHomeViewController ()
 

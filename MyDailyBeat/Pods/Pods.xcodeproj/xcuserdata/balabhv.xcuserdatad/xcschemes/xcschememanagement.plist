@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ASBPlayerScrubbing.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ASMediaFocusManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CocoaSecurity.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,6 +59,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-API.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MyDailyBeat.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,12 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>35619E82F24E2747D35678090C486D26</key>
+		<key>36E8F839DAD659B40426F404DBD02241</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>36E8F839DAD659B40426F404DBD02241</key>
+		<key>40C793D14A6DDFE7E8F8CB10BA482027</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,12 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A35F7C017A765484E9495EC74B94ACE</key>
+		<key>53447653C50A80C1B4DB8C8AEBB127E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8FBF119BEAF05C3195CB99AB50EB4E08</key>
+		<key>5B674FDB6B3CB322FA69E14D13DB8FCC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>87C3D915DA771962B49346CBCAF623D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EA7527B01D1E44456CC9BC5BE55A689</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,17 +142,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BBEFEEC9721B12206A382626C9574BCE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>CD378EDFF42487A7E1BB47D45223953B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D17FAFD88CED3AC2161294ACB50D526A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA898E6F6048422867F4F8DC0D40CCD6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE374815A65ED9558CB38C77CE06189C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
