@@ -44,9 +44,9 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/login" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:PUBLIC_BASE_URL withPath:@"login" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
-        if ([resultDic objectForKey:@"name"] != nil) {
+        if ([resultDic objectForKey:@"token"] != nil) {
             currentUser = [[VerveUser alloc] init];
             currentUser.name = [resultDic objectForKey:@"name"];
             currentUser.email = [resultDic objectForKey:@"email"];
@@ -59,6 +59,7 @@ static VerveUser *currentUser;
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             currentUser.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
             currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
+            currentUser.auth_token = [resultDic objectForKey:@"token"];
             
             return YES;
         }
@@ -74,40 +75,14 @@ static VerveUser *currentUser;
 }
 
 - (BOOL) logout {
-    @try {
-        
-        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-        [postData setObject:currentUser.screenName forKey:@"screenName"];
-        [postData setObject:currentUser.password forKey:@"password"];
-        
-        NSError *error;
-        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
-        
-        if (error) {
-            NSLog(@"Error parsing object to JSON: %@", error);
-        }
-        
-        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/logout" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-        
-        NSString *response = [resultDic objectForKey:@"response"];
-        if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
-        }
-        return NO;
-        
-        
-    } @catch (NSException *e) {
-        NSLog(@"%@", e);
-    }
-    
-    return NO;
+    currentUser.auth_token = nil;
+    return YES;
 }
 
 - (void) refreshCurrentUserData {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
+    NSString *parameters = [@"token=" stringByAppendingString:currentUser.auth_token];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:@"users/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    if ([resultDic objectForKey:@"screenName"] != nil) {
         currentUser.name = [resultDic objectForKey:@"name"];
         currentUser.email = [resultDic objectForKey:@"email"];
         currentUser.screenName = [resultDic objectForKey:@"screenName"];
@@ -128,7 +103,7 @@ static VerveUser *currentUser;
     @try {
         
         NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-        [postData setObject:user.screenName forKey:@"screenName"];
+        [postData setObject:user.auth_token forKey:@"token"];
         [postData setObject:name forKey:@"name"];
         [postData setObject:email forKey:@"email"];
         
@@ -139,13 +114,12 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"user/refer" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:@"refer/send" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
-        NSString *response = [resultDic objectForKey:@"response"];
-        if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
+        if (resultDic == nil) {
+            return NO;
         }
-        return NO;
+        return YES;
         
         
     } @catch (NSException *e) {
@@ -157,8 +131,8 @@ static VerveUser *currentUser;
 
 - (NSMutableDictionary *) getOpportunitiesInLocation: (NSString *) zipcode onPage: (int) page {
     NSMutableDictionary *arr = [[NSMutableDictionary alloc] init];
-    NSString *params = [NSString stringWithFormat:@"page=%d&zip=%@", page, zipcode];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"volunteering/search" withParameters:params withRequestType:GET_REQUEST andPostData:nil];
+    NSString *params = [NSString stringWithFormat:@"page=%d&zip=%@&token=%@", page, zipcode, currentUser.auth_token];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:@"volunteering/search" withParameters:params withRequestType:GET_REQUEST andPostData:nil];
     NSString *json = [resultDic objectForKey:@"jsonString"];
     json = json.stringByRemovingPercentEncoding;
     json = [json stringByReplacingOccurrencesOfString:@"\\" withString:@""];
@@ -176,8 +150,9 @@ static VerveUser *currentUser;
 }
 
 - (NSMutableArray *) getPostsForGroup:(Group *) g {
-    NSString *parameters = [NSString stringWithFormat:@"id=%d", g.groupID];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/posts/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSString *parameters = [NSString stringWithFormat:@"token=%@", currentUser.auth_token];
+    NSString *path = [NSString stringWithFormat:@"groups/%d/posts/get", g.groupID];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     NSMutableArray *items = [resultDic objectForKey:@"items"];
     NSMutableArray *retItems = [[NSMutableArray alloc] init];
@@ -201,94 +176,6 @@ static VerveUser *currentUser;
     
 }
 
-- (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName {
-    VerveUser *user = nil;
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:screenName]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo2" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
-        user = [[VerveUser alloc] init];
-        user.name = [resultDic objectForKey:@"name"];
-        user.email = [resultDic objectForKey:@"email"];
-        user.screenName = screenName;
-        user.password = [resultDic objectForKey:@"password"];;
-        user.mobile = [resultDic objectForKey:@"mobile"];
-        user.zipcode = [resultDic objectForKey:@"zipcode"];
-        user.birth_month = [resultDic objectForKey:@"birth_month"];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        user.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
-        currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
-    }
-    
-    return user;
-}
-
-- (VerveUser *) getUserDataForUserWithName:(NSString *)name {
-    VerveUser *user = nil;
-    NSString *parameters = [@"name=" stringByAppendingString:[self urlencode:name]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo3" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
-        user = [[VerveUser alloc] init];
-        user.screenName = [resultDic objectForKey:@"screenName"];
-        user.email = [resultDic objectForKey:@"email"];
-        user.name = name;
-        user.password = [resultDic objectForKey:@"password"];;
-        user.mobile = [resultDic objectForKey:@"mobile"];
-        user.zipcode = [resultDic objectForKey:@"zipcode"];
-        user.birth_month = [resultDic objectForKey:@"birth_month"];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        user.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
-        currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
-    }
-    
-    return user;
-}
-
-- (VerveUser *) getUserDataForUserWithEmail:(NSString *)email {
-    VerveUser *user = nil;
-    NSString *parameters = [@"email=" stringByAppendingString:[self urlencode:email]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo4" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
-        user = [[VerveUser alloc] init];
-        user.name = [resultDic objectForKey:@"name"];
-        user.screenName = [resultDic objectForKey:@"screenName"];
-        user.email = email;
-        user.password = [resultDic objectForKey:@"password"];;
-        user.mobile = [resultDic objectForKey:@"mobile"];
-        user.zipcode = [resultDic objectForKey:@"zipcode"];
-        user.birth_month = [resultDic objectForKey:@"birth_month"];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        user.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
-        currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
-    }
-    
-    return user;
-}
-
-- (VerveUser *) getUserDataForUserWithMobile:(NSString *)mobile {
-    VerveUser *user = nil;
-    NSString *parameters = [@"mobile=" stringByAppendingString:[self urlencode:mobile]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo5" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
-        user = [[VerveUser alloc] init];
-        user.name = [resultDic objectForKey:@"name"];
-        user.email = [resultDic objectForKey:@"email"];
-        user.mobile = mobile;
-        user.password = [resultDic objectForKey:@"password"];;
-        user.screenName = [resultDic objectForKey:@"screenName"];
-        user.zipcode = [resultDic objectForKey:@"zipcode"];
-        user.birth_month = [resultDic objectForKey:@"birth_month"];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        user.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
-        currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
-    }
-    
-    return user;
-}
-
 - (BOOL) createUser: (VerveUser *) userData {
     
     @try {
@@ -302,12 +189,13 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *result = [self makeRequestWithBaseUrl:PUBLIC_BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         NSLog(@"%@", result);
-        NSString *response = [result objectForKey:@"response"];
-        if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
+        if (result == nil) {
+            return NO;
         }
+        
+        return YES;
         
     } @catch (NSException *e) {
         NSLog(@"%@", e);

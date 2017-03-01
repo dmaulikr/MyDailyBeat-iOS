@@ -2745,6 +2745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 725287AC0B90EC3E8A267E5A8B32760A /* Pods-MyDailyBeat.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2935,6 +2936,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3FDDB027FB277431B253B26D058BEA80 /* Pods-MyDailyBeat.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";

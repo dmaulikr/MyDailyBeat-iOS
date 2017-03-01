@@ -28,7 +28,9 @@
     self.formController = [[FXFormController alloc] init];
     self.formController.tableView = self.tableView;
     self.formController.delegate = self;
-    self.formController.form = [[GroupPrefs alloc] init];
+    GroupPrefs *prefs = [[GroupPrefs alloc] initWithServingURL:self.g.servingURL];
+    prefs.hobbies = [[NSArray alloc] initWithArray:self.g.hobbies];
+    self.formController.form = prefs;
     self.api = [RestAPI getInstance];
     
     UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];

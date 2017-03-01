@@ -1,0 +1,31 @@
+use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+
+def shared_pods
+    pod 'Alamofire', '~> 4.3'
+    pod 'SwiftyJSON'
+    pod 'CocoaWSSE'
+    pod 'FXBlurView', '~> 1.6'
+    pod 'AHKActionSheet'
+    pod 'DLAlertView'
+    pod 'DownPicker'
+    pod 'FXForms'
+    pod 'RESideMenu', '~> 4.0.7'
+    pod 'SlackTextViewController'
+    pod 'JSQMessagesViewController'
+    pod 'XMLDictionary'
+    pod 'ASMediaFocusManager'
+    pod 'IQKeyboardManagerSwift'
+    pod 'Toast-Swift', '~> 2.0.0'
+    pod 'PhoneNumberKit', '~> 1.2'
+end
+
+target 'MyDailyBeat' do
+    shared_pods
+end
+
+target 'API' do
+    shared_pods
+end

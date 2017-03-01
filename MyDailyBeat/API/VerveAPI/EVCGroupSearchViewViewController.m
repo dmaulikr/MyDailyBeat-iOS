@@ -149,7 +149,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rowCount;
+    NSInteger rowCount;
     if(isFiltered)
         rowCount = self.data.count;
     else

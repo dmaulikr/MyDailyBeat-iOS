@@ -10,7 +10,7 @@
 #import "EVCCommonMethods.h"
 #import "API.h"
 
-
+@import API;
 @interface EVCShoppingFavoritesTableViewController : UITableViewController
 
 @property (nonatomic) NSMutableArray *searchResults;

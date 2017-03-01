@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "API.h"
 
+@import API;
 @interface EVCVolunteeringDetailsViewController : UIViewController
 
 @property (nonatomic, retain) NSDictionary *opportunity;

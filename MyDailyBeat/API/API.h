@@ -59,7 +59,9 @@ FOUNDATION_EXPORT const unsigned char APIVersionString[];
 #import <API/VerveUser.h>
 #import <API/VerveUserPreferences.h>
 #import <API/VerveVolunteering.h>
+#import <API/GroupCreationForm.h>
 #import "API/DLAVAlertView+TextFieldOptions.h"
+#import "API/EVCRestAPI.swift"
 #import "RESideMenu.h"
 #import "AFNetworking.h"
 #import "AHKActionSheet.h"

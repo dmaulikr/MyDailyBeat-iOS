@@ -18,6 +18,7 @@
 @property(nonatomic, retain) NSString *zipcode;
 @property(nonatomic, retain) NSString *birth_month;
 @property(nonatomic) long birth_date, birth_year;
+@property (nonatomic, retain) NSString *auth_token;
 
 -(NSMutableDictionary *) toJSON;
 - (BOOL) hasNilField; 

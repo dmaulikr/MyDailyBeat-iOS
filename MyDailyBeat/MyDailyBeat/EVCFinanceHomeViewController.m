@@ -125,7 +125,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (void) popupActionMenu: (int) row {
+- (void) popupActionMenu: (NSInteger) row {
     AHKActionSheet *sheet = [[AHKActionSheet alloc] initWithTitle:@""];
     [sheet addButtonWithTitle:@"Open App" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         BankInfo *obj = [self.bankList objectAtIndex:row];

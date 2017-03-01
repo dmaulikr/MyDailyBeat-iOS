@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
+    self.mode = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     [self navigationItem].title = @"Edit Fling Profile";
     self.aboutMeView.layer.borderWidth = 1.0f;
     self.aboutMeView.layer.borderColor =  [UIColorFromHex(0x0097A4) CGColor];

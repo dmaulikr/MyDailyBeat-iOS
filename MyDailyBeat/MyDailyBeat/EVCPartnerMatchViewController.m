@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.partners = [[NSMutableArray alloc] init];
-    self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
+    self.mode = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     UIBarButtonItem *menuItem = self.navigationItem.rightBarButtonItem;
     
     if (self.mode == FRIENDS_MODE) {
@@ -31,7 +31,7 @@
         
         UIBarButtonItem *menuButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
         
-        self.navigationItem.rightBarButtonItems = @[menuItem, menuButton];
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:menuItem, menuButton, nil];
     }
 
     [self retrievePartners];
@@ -242,7 +242,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.partners count];
+    return ([self.partners count] == 0) ? 1 : [self.partners count];
 }
 
 
@@ -271,7 +271,9 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
-            img = [UIImage imageWithData:imageData];
+            if (imageData != nil) {
+                img = [UIImage imageWithData:imageData];
+            }
             
         });
         

@@ -230,7 +230,8 @@
                 return id1 > id2;
             }];
             max_post_height = 10;
-            for (int i = [self.group.posts count]-1 ; i >= 0 ; --i) {
+            int count = (int)[self.group.posts count];
+            for (int i = count - 1 ; i >= 0 ; --i) {
                 [self.scroll addSubview:[self createViewForPost:[self.group.posts objectAtIndex:i]]];
             }
             self.scroll.contentSize = CGSizeMake(self.scroll.bounds.size.width, max_post_height+10);

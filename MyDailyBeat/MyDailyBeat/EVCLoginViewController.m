@@ -19,13 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    fields.dataSource = self;
-    fields.delegate = self;
-    fields.scrollEnabled = FALSE;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
     header.image = [UIImage imageNamed:@"Logo.png"];
 
     
@@ -78,79 +76,13 @@
         }
         
     });
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    // Configure the cell...
-    
-    
-    tableView.separatorStyle= UITableViewCellSeparatorStyleSingleLine;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = @"User Name";
-            userNameFeild = [[UITextField alloc] initWithFrame:CGRectMake(115,12, 180, 31)];
-            userNameFeild.textAlignment = UITextAlignmentCenter;
-            userNameFeild.textColor = [UIColor blackColor];
-            userNameFeild.clearButtonMode  = UITextFieldViewModeAlways;
-            userNameFeild.font = [UIFont fontWithName:@"Helvetica" size:14.0];
-            userNameFeild.autocapitalizationType = UITextAutocapitalizationTypeNone;
-            userNameFeild.autocorrectionType = UITextAutocorrectionTypeNo;
-            [cell.contentView addSubview:userNameFeild];
-            break;
-        case 1:
-            cell.textLabel.text = @"Password";
-            passWordFeild = [[UITextField alloc] initWithFrame:CGRectMake(115,12, 180, 31)];
-            passWordFeild.textAlignment = UITextAlignmentCenter;
-            self.passWordFeild.textColor = [UIColor blackColor];
-            passWordFeild.clearButtonMode = UITextFieldViewModeAlways;
-            passWordFeild.secureTextEntry = YES;
-            passWordFeild.font = [UIFont fontWithName:@"Helvetica" size:14.0];
-            passWordFeild.autocapitalizationType = UITextAutocapitalizationTypeNone;
-            passWordFeild.autocorrectionType = UITextAutocorrectionTypeNo;
-            [cell.contentView addSubview:passWordFeild];
-            
-            break;
-        default:
-            break;
-    }
-    
-    
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
-}
-
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-
 - (IBAction)login:(id)sender {
     NSString *username = userNameFeild.text;
     NSString *pass = passWordFeild.text;
@@ -202,9 +134,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
-- (IBAction)signup:(id)sender {
-    EVCRegistrationMessageViewController *rm1 = [[EVCRegistrationMessageViewController alloc] initWithKey:1];
-    [self.navigationController pushViewController:rm1 animated:YES];
-}
+
 
 @end

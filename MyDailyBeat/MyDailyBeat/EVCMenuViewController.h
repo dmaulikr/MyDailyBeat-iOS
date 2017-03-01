@@ -14,6 +14,7 @@
 #import "EVCJobsTabViewController.h"
 #import "EVCTravelTabViewController.h"
 #import "EVCFeelingBlueTabViewController.h"
+#import "EVCGroupCreationTableViewController.h"
 
 @interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     NSArray *options, *imageNames;

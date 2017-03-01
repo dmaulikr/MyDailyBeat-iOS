@@ -8,8 +8,7 @@
 
 #import "EVCCommonMethods.h"
 #import "API.h"
-
-@class SLKTextViewController;
+@import API;
 @interface EVCFlingMessagingViewController : SLKTextViewController
 
 @property (nonatomic, strong) MessageChatroom *chatroom;

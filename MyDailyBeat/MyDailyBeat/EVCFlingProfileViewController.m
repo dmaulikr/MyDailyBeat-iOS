@@ -18,7 +18,7 @@
     self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.currentViewedUser = user;
-        self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
+        self.mode = (int) [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     }
     return self;
 }

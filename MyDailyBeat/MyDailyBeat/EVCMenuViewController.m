@@ -35,7 +35,7 @@
     self.tableView.bounces = NO;
     self.view.backgroundColor = [UIColor clearColor];
     options = [NSArray arrayWithObjects:@"Check My Finances", @"Reach Out ...\nI'm Feeling Blue", @"Find a Job", @"Go Shopping", @"Have a Fling", @"Start a Relationship", @"Make Friends", @"Manage My Health", @"Travel", @"Refer a Friend", @"Volunteering", nil];
-    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"fling2", @"hearts2", @"peeps2", @"health2", @"plane2", @"peeps2", @"hands2", nil];
+    imageNames = [NSArray arrayWithObjects:@"finance2", @"phone2", @"briefcase2", @"cart2", @"fling2", @"hearts2", @"peeps2", @"health2", @"plane2", @"refer2", @"hands2", nil];
     self.logoView.image = [EVCCommonMethods imageWithImage:[UIImage imageNamed:@"Logo.png"] scaledToSize:CGSizeMake(120, 120)];
     self.logoView.backgroundColor = [UIColor whiteColor];
     self.logoView.layer.cornerRadius = 54;
@@ -85,14 +85,10 @@
         case 2:
             if (indexPath.row == [groups count]) {
                 //create group here
-                DLAVAlertView *groupNameAlertView = [[DLAVAlertView alloc] initWithTitle:@"New Group" message:@"Enter the name of the new group." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-                groupNameAlertView.alertViewStyle = DLAVAlertViewStylePlainTextInput;
-                [groupNameAlertView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
-                    if (buttonIndex == 1) {
-                        [self.sideMenuViewController hideMenuViewController];
-                        [self createGroupWithName:[alertView textFieldTextAtIndex:0]];
-                    }
-                }];
+                
+                EVCGroupCreationTableViewController *create = [[EVCGroupCreationTableViewController alloc] init];
+                [self.sideMenuViewController hideMenuViewController];
+                [self.sideMenuViewController.contentViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:create] animated:true completion:nil];
             } else {
                 //add group selection here
                 Group *g = [groups objectAtIndex:indexPath.row];
@@ -225,25 +221,7 @@
 }
 
 - (void) createGroupWithName:(NSString *) name {
-    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
-    dispatch_async(queue, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.sideMenuViewController.contentViewController.view makeToastActivity];
-        });
-        BOOL success = [[RestAPI getInstance] createGroupWithName:name];
-        self.groups = [[RestAPI getInstance] getGroupsForCurrentUser];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.sideMenuViewController.contentViewController.view hideToastActivity];
-            if (success)
-                [self.sideMenuViewController.contentViewController.view makeToast:@"Upload successful!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"check.png"]];
-            else {
-                [self.sideMenuViewController.contentViewController.view makeToast:@"Upload failed!" duration:3.5 position:@"bottom" image:[UIImage imageNamed:@"error.png"]];
-                return;
-            }
-            [self.tableView reloadData];
-            [self.tableView layoutIfNeeded];
-        });
-    });
+    
     
 }
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3FCC6832BBF809459D96646E /* Pods_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876AA069685490CD2FDFC74B /* Pods_API.framework */; };
 		76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76003B131B93C38E00133773 /* EVCResourceLinksTableViewController.m */; };
 		76003B161B93C38E00133773 /* EVCResourceLinksTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76003B141B93C38E00133773 /* EVCResourceLinksTableViewController.xib */; };
 		76011C331B927BDB000EC003 /* EVCFinanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76011C311B927BDB000EC003 /* EVCFinanceViewController.m */; };
@@ -20,7 +19,6 @@
 		761033991DBBCC39002E9518 /* fling.png in Resources */ = {isa = PBXBuildFile; fileRef = 761033971DBBCC39002E9518 /* fling.png */; };
 		7610339A1DBBCC39002E9518 /* fling2.png in Resources */ = {isa = PBXBuildFile; fileRef = 761033981DBBCC39002E9518 /* fling2.png */; };
 		7610339D1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7610339C1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m */; };
-		761962031DB9B7CE00C99862 /* Pods_MyDailyBeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761962021DB9B7CE00C99862 /* Pods_MyDailyBeat.framework */; };
 		761962041DB9BAD200C99862 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761D650D19A15A4D0062B525 /* CoreGraphics.framework */; };
 		761B963C1C68FA9D0019C224 /* hamburger-icon-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 761B963A1C68FA9D0019C224 /* hamburger-icon-black.png */; };
 		761B963D1C68FA9D0019C224 /* profile-icon-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 761B963B1C68FA9D0019C224 /* profile-icon-black.png */; };
@@ -147,8 +145,10 @@
 		768193F01D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 768193D01D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		768193F11D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 768193D11D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.m */; };
 		768193F21D94BAA100F97CA5 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 768193D31D94BAA100F97CA5 /* IQKeyboardManager.bundle */; };
-		768193F31D94BB7300F97CA5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 768E3EF81CEFED6700A26909 /* libsqlite3.tbd */; };
-		768193F51D94BB7300F97CA5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 768193F41D94BB7300F97CA5 /* libsqlite3.0.tbd */; };
+		76891A611E50C74C00E3D727 /* Pods_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76891A601E50C74C00E3D727 /* Pods_API.framework */; };
+		76891A621E50C76700E3D727 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 768E3EF81CEFED6700A26909 /* libsqlite3.tbd */; };
+		76891A671E50C86F00E3D727 /* EVCLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76891A641E50C86F00E3D727 /* EVCLoginViewController_iPhone.xib */; };
+		76891A681E50C86F00E3D727 /* EVCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76891A661E50C86F00E3D727 /* EVCLoginViewController.m */; };
 		7689DC1D1DB9C08700592E34 /* MessageTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7689DC1B1DB9C08700592E34 /* MessageTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7689DC1E1DB9C08800592E34 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7689DC1C1DB9C08700592E34 /* MessageTableViewCell.m */; };
 		768AFF371A7540AA0055F258 /* EVCShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768AFF351A7540AA0055F258 /* EVCShoppingViewController.m */; };
@@ -156,6 +156,8 @@
 		768AFF3E1A754E300055F258 /* EVCShoppingSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768AFF3C1A754E300055F258 /* EVCShoppingSearchViewController.m */; };
 		768AFF3F1A754E300055F258 /* EVCShoppingSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 768AFF3D1A754E300055F258 /* EVCShoppingSearchViewController.xib */; };
 		768CDED91CE7701B000CC29A /* EVCCallHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */; };
+		76978B771DC7FDFF0095E040 /* refer2.png in Resources */ = {isa = PBXBuildFile; fileRef = 76978B751DC7FDFF0095E040 /* refer2.png */; };
+		76978B781DC7FDFF0095E040 /* refer.png in Resources */ = {isa = PBXBuildFile; fileRef = 76978B761DC7FDFF0095E040 /* refer.png */; };
 		76995CAA1D9B6F5A004ED977 /* EVCJobsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */; };
 		76995CAD1DA0A77D004ED977 /* EVCJobsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 76995CAC1DA0A77D004ED977 /* EVCJobsFilter.m */; };
 		76995CAF1DA0A86B004ED977 /* EVCJobsFilter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76995CAE1DA0A86B004ED977 /* EVCJobsFilter.xib */; };
@@ -199,8 +201,6 @@
 		76BC590E1DB1C54F000BC422 /* EVCVolunteeringDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BC590B1DB1C54F000BC422 /* EVCVolunteeringDetailsViewController.m */; };
 		76BC590F1DB1C54F000BC422 /* EVCVolunteeringTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BC590C1DB1C54F000BC422 /* EVCVolunteeringTabViewController.m */; };
 		76BC59101DB1C54F000BC422 /* EVCVolunteeringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76BC590D1DB1C54F000BC422 /* EVCVolunteeringViewController.m */; };
-		76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B08619F333300010E98B /* EVCLoginViewController.m */; };
-		76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08719F333300010E98B /* EVCLoginViewController_iPhone.xib */; };
 		76C2B09019F33EA60010E98B /* EVCLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */; };
 		76C2B09119F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib */; };
 		76C2B09519F342430010E98B /* EVCTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */; };
@@ -321,8 +321,11 @@
 		76EF996A19FD3CA900E15A14 /* settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996919FD3CA900E15A14 /* settings-25.png */; };
 		76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */; };
 		76EF996F19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */; };
-		76F953061DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 76F953051DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h */; };
+		76F953061DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 76F953051DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76F953081DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76F953071DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m */; };
+		76FC04F81DC803FC00483B68 /* GroupCreationForm.h in Headers */ = {isa = PBXBuildFile; fileRef = 76FC04F61DC803FC00483B68 /* GroupCreationForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76FC04F91DC803FC00483B68 /* GroupCreationForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FC04F71DC803FC00483B68 /* GroupCreationForm.m */; };
+		76FC04FC1DC805C800483B68 /* EVCGroupCreationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FC04FB1DC805C800483B68 /* EVCGroupCreationTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -518,6 +521,10 @@
 		768193D11D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		768193D31D94BAA100F97CA5 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		768193F41D94BB7300F97CA5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		76891A601E50C74C00E3D727 /* Pods_API.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_API.framework; path = "../../Library/Developer/Xcode/DerivedData/MyDailyBeat-doqyzaqwzphipjdalgdzhpabzsyq/Build/Products/Debug-iphonesimulator/Pods_API.framework"; sourceTree = "<group>"; };
+		76891A641E50C86F00E3D727 /* EVCLoginViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLoginViewController_iPhone.xib; sourceTree = "<group>"; };
+		76891A651E50C86F00E3D727 /* EVCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLoginViewController.h; sourceTree = "<group>"; };
+		76891A661E50C86F00E3D727 /* EVCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLoginViewController.m; sourceTree = "<group>"; };
 		7689DC1B1DB9C08700592E34 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		7689DC1C1DB9C08700592E34 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		768AFF341A7540AA0055F258 /* EVCShoppingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCShoppingViewController.h; sourceTree = "<group>"; };
@@ -529,6 +536,8 @@
 		768CDED71CE7701A000CC29A /* EVCCallHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCCallHistoryTableViewController.h; sourceTree = "<group>"; };
 		768CDED81CE7701A000CC29A /* EVCCallHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCCallHistoryTableViewController.m; sourceTree = "<group>"; };
 		768E3EF81CEFED6700A26909 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		76978B751DC7FDFF0095E040 /* refer2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refer2.png; sourceTree = "<group>"; };
+		76978B761DC7FDFF0095E040 /* refer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refer.png; sourceTree = "<group>"; };
 		76995CA81D9B6F59004ED977 /* EVCJobsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsTabViewController.h; sourceTree = "<group>"; };
 		76995CA91D9B6F59004ED977 /* EVCJobsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCJobsTabViewController.m; sourceTree = "<group>"; };
 		76995CAB1DA0A77D004ED977 /* EVCJobsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCJobsFilter.h; sourceTree = "<group>"; };
@@ -589,9 +598,6 @@
 		76BC59121DB1C580000BC422 /* EVCVolunteeringTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCVolunteeringTabViewController.h; sourceTree = "<group>"; };
 		76BC59131DB1C580000BC422 /* EVCVolunteeringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCVolunteeringViewController.h; sourceTree = "<group>"; };
 		76BD329219DF87FE0054ED88 /* edit_file-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_file-50.png"; sourceTree = "<group>"; };
-		76C2B08519F333300010E98B /* EVCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLoginViewController.h; sourceTree = "<group>"; };
-		76C2B08619F333300010E98B /* EVCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLoginViewController.m; sourceTree = "<group>"; };
-		76C2B08719F333300010E98B /* EVCLoginViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLoginViewController_iPhone.xib; sourceTree = "<group>"; };
 		76C2B08D19F33EA60010E98B /* EVCLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCLabelTableViewCell.h; sourceTree = "<group>"; };
 		76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCLabelTableViewCell.m; sourceTree = "<group>"; };
 		76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLabelTableViewCell_iPhone.xib; sourceTree = "<group>"; };
@@ -728,6 +734,10 @@
 		76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
 		76F953051DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DLAVAlertView+TextFieldOptions.h"; sourceTree = "<group>"; };
 		76F953071DBAF654007A30FE /* DLAVAlertView+TextFieldOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DLAVAlertView+TextFieldOptions.m"; sourceTree = "<group>"; };
+		76FC04F61DC803FC00483B68 /* GroupCreationForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCreationForm.h; sourceTree = "<group>"; };
+		76FC04F71DC803FC00483B68 /* GroupCreationForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCreationForm.m; sourceTree = "<group>"; };
+		76FC04FA1DC805C800483B68 /* EVCGroupCreationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVCGroupCreationTableViewController.h; sourceTree = "<group>"; };
+		76FC04FB1DC805C800483B68 /* EVCGroupCreationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVCGroupCreationTableViewController.m; sourceTree = "<group>"; };
 		859ED1139CCAA1F61663F36F /* Pods-API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.release.xcconfig"; path = "Pods/Target Support Files/Pods-API/Pods-API.release.xcconfig"; sourceTree = "<group>"; };
 		876AA069685490CD2FDFC74B /* Pods_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -753,12 +763,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76891A621E50C76700E3D727 /* libsqlite3.tbd in Frameworks */,
+				76891A611E50C74C00E3D727 /* Pods_API.framework in Frameworks */,
 				761962041DB9BAD200C99862 /* CoreGraphics.framework in Frameworks */,
 				76995CB11DA17A84004ED977 /* Accelerate.framework in Frameworks */,
-				768193F51D94BB7300F97CA5 /* libsqlite3.0.tbd in Frameworks */,
-				768193F31D94BB7300F97CA5 /* libsqlite3.tbd in Frameworks */,
-				761962031DB9B7CE00C99862 /* Pods_MyDailyBeat.framework in Frameworks */,
-				3FCC6832BBF809459D96646E /* Pods_API.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +852,7 @@
 		761D650A19A15A4D0062B525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76891A601E50C74C00E3D727 /* Pods_API.framework */,
 				761962021DB9B7CE00C99862 /* Pods_MyDailyBeat.framework */,
 				76995CB01DA17A84004ED977 /* Accelerate.framework */,
 				768193F41D94BB7300F97CA5 /* libsqlite3.0.tbd */,
@@ -864,6 +873,7 @@
 		761D651119A15A4D0062B525 /* MyDailyBeat */ = {
 			isa = PBXGroup;
 			children = (
+				76891A631E50C83A00E3D727 /* Login */,
 				76EDB2911D35ECDE00200E9C /* FirstTimeSetup */,
 				769EEA1119A42E1D00FF072E /* Headers */,
 				769EEA1219A42E2700FF072E /* Source */,
@@ -877,6 +887,8 @@
 		761D651219A15A4D0062B525 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				76978B751DC7FDFF0095E040 /* refer2.png */,
+				76978B761DC7FDFF0095E040 /* refer.png */,
 				761033971DBBCC39002E9518 /* fling.png */,
 				761033981DBBCC39002E9518 /* fling2.png */,
 				7646C8C41C9EEC0E00D9D374 /* suicide.png */,
@@ -1094,6 +1106,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		76891A631E50C83A00E3D727 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				76891A641E50C86F00E3D727 /* EVCLoginViewController_iPhone.xib */,
+				76891A651E50C86F00E3D727 /* EVCLoginViewController.h */,
+				76891A661E50C86F00E3D727 /* EVCLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		768CDED51CE76D8D000CC29A /* Feeling Blue */ = {
 			isa = PBXGroup;
 			children = (
@@ -1138,12 +1160,12 @@
 				7636F6B619CF25DB000B68B0 /* EVCProfileViewController.h */,
 				7636F6C019CF9074000B68B0 /* EVCUpdateProfileViewController.h */,
 				7636F6C719D4D881000B68B0 /* EVCGroupViewController.h */,
-				76C2B08519F333300010E98B /* EVCLoginViewController.h */,
 				76C2B08D19F33EA60010E98B /* EVCLabelTableViewCell.h */,
 				76CCA8AC1D8F759000DB935B /* EVCRegistrationViewController.h */,
 				76C2B09219F342430010E98B /* EVCTextFieldTableViewCell.h */,
 				76EF996B19FD3EA200E15A14 /* EVCGroupSettingsViewController.h */,
 				7610339B1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.h */,
+				76FC04FA1DC805C800483B68 /* EVCGroupCreationTableViewController.h */,
 				76003B121B93C38E00133773 /* EVCResourceLinksTableViewController.h */,
 				76A204C91BB062730028BFF8 /* EVCMenuTableViewCell.h */,
 				76C2B09719F4111F0010E98B /* EVCCommonMethods.h */,
@@ -1173,12 +1195,12 @@
 				7636F6B719CF25DB000B68B0 /* EVCProfileViewController.m */,
 				7636F6C119CF9074000B68B0 /* EVCUpdateProfileViewController.m */,
 				7636F6C819D4D881000B68B0 /* EVCGroupViewController.m */,
-				76C2B08619F333300010E98B /* EVCLoginViewController.m */,
 				76CCA8AD1D8F759000DB935B /* EVCRegistrationViewController.m */,
 				76C2B08E19F33EA60010E98B /* EVCLabelTableViewCell.m */,
 				76C2B09319F342430010E98B /* EVCTextFieldTableViewCell.m */,
 				76EF996C19FD3EA200E15A14 /* EVCGroupSettingsViewController.m */,
 				7610339C1DBEF68B002E9518 /* EVCGroupSettingsHobbiesSelectionTableViewController.m */,
+				76FC04FB1DC805C800483B68 /* EVCGroupCreationTableViewController.m */,
 				76003B131B93C38E00133773 /* EVCResourceLinksTableViewController.m */,
 				76A204CA1BB062730028BFF8 /* EVCMenuTableViewCell.m */,
 				76C2B09819F4111F0010E98B /* EVCCommonMethods.m */,
@@ -1214,7 +1236,6 @@
 				7636F6B819CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib */,
 				7636F6C219CF9074000B68B0 /* EVCUpdateProfileViewController_iPhone.xib */,
 				7636F6C919D4D881000B68B0 /* EVCGroupViewController_iPhone.xib */,
-				76C2B08719F333300010E98B /* EVCLoginViewController_iPhone.xib */,
 				76C2B08F19F33EA60010E98B /* EVCLabelTableViewCell_iPhone.xib */,
 				76C2B09419F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib */,
 				76EF996D19FD3EA200E15A14 /* EVCGroupSettingsViewController_iPhone.xib */,
@@ -1543,6 +1564,8 @@
 				76CCAAA91D94AB8A00DB935B /* VerveUser.m */,
 				76CCAAAA1D94AB8A00DB935B /* VerveUserPreferences.h */,
 				76CCAAAB1D94AB8A00DB935B /* VerveUserPreferences.m */,
+				76FC04F61DC803FC00483B68 /* GroupCreationForm.h */,
+				76FC04F71DC803FC00483B68 /* GroupCreationForm.m */,
 			);
 			name = VerveObjects;
 			sourceTree = "<group>";
@@ -1708,7 +1731,6 @@
 				768193E81D94BAA100F97CA5 /* IQBarButtonItem.h in Headers */,
 				768193F01D94BAA100F97CA5 /* IQUIView+IQKeyboardToolbar.h in Headers */,
 				768193E11D94BAA100F97CA5 /* IQKeyboardManagerConstantsInternal.h in Headers */,
-				76F953061DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h in Headers */,
 				768193E41D94BAA100F97CA5 /* IQKeyboardReturnKeyHandler.h in Headers */,
 				768193E61D94BAA100F97CA5 /* IQTextView.h in Headers */,
 				768193D41D94BAA100F97CA5 /* IQNSArray+Sort.h in Headers */,
@@ -1759,6 +1781,8 @@
 				76CCAB301D94AB8A00DB935B /* VerveUser.h in Headers */,
 				7689DC1D1DB9C08700592E34 /* MessageTableViewCell.h in Headers */,
 				762993961DB5A70900A8568F /* JsonEncoder.h in Headers */,
+				76F953061DBAF4B9007A30FE /* DLAVAlertView+TextFieldOptions.h in Headers */,
+				76FC04F81DC803FC00483B68 /* GroupCreationForm.h in Headers */,
 				76603A321D98CD0D0030CDFB /* EVCModalLargeEditor.h in Headers */,
 				76CCA8D81D94A94800DB935B /* API.h in Headers */,
 			);
@@ -1821,11 +1845,13 @@
 				TargetAttributes = {
 					761D650719A15A4D0062B525 = {
 						DevelopmentTeam = 38MW53VVGD;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					76CCA8D31D94A94700DB935B = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 38MW53VVGD;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1857,6 +1883,7 @@
 				76011C341B927BDB000EC003 /* EVCFinanceViewController.xib in Resources */,
 				76264E6B1BE6E7F500292FBF /* profile-icon-white.png in Resources */,
 				7636F6BA19CF25DB000B68B0 /* EVCProfileViewController_iPhone.xib in Resources */,
+				76891A671E50C86F00E3D727 /* EVCLoginViewController_iPhone.xib in Resources */,
 				766B1D2E1CB1680D00C69FAD /* add-friends-white.png in Resources */,
 				766B1D261CB0864B00C69FAD /* filter_icon_white.png in Resources */,
 				76264E681BE6E7F500292FBF /* peeps2.png in Resources */,
@@ -1908,13 +1935,13 @@
 				76DEDA8E1A475E68009CD94F /* EVCPartnersTableViewController.xib in Resources */,
 				761D652719A15A4D0062B525 /* Images.xcassets in Resources */,
 				76264E6C1BE6E7F500292FBF /* search-icon-white.png in Resources */,
-				76C2B08919F333300010E98B /* EVCLoginViewController_iPhone.xib in Resources */,
 				7670EFB41CFA038600831967 /* EVCBankViewController.xib in Resources */,
 				76264E641BE6E7F500292FBF /* hands2.png in Resources */,
 				766A7D4F1A900A5E00B6C81E /* EVCHeader.png in Resources */,
 				76E64F0219B9338C0022F189 /* home-512.png in Resources */,
 				76EDB29D1D35F0FA00200E9C /* EVCFirstTimePreferencesViewController.xib in Resources */,
 				76D3F5BB1CFD2548003C9B1F /* healthlist.sql in Resources */,
+				76978B781DC7FDFF0095E040 /* refer.png in Resources */,
 				76C2B0EF19F4AE5F0010E98B /* EVCPostView_WithoutPicture.xib in Resources */,
 				76C2B09619F342430010E98B /* EVCTextFieldTableViewCell_iPhone.xib in Resources */,
 				768AFF3F1A754E300055F258 /* EVCShoppingSearchViewController.xib in Resources */,
@@ -1929,6 +1956,7 @@
 				7646C8C71C9EEC0E00D9D374 /* suicide.png in Resources */,
 				76A204DD1BB0E7D60028BFF8 /* plane.png in Resources */,
 				7646C8C81C9EEC0E00D9D374 /* anonymous.png in Resources */,
+				76978B771DC7FDFF0095E040 /* refer2.png in Resources */,
 				76264E5F1BE6E7F500292FBF /* briefcase2.png in Resources */,
 				76B64AEB1D68A6BF00CC7A7A /* EVCFirstTimeSetupViewController.xib in Resources */,
 				76003B161B93C38E00133773 /* EVCResourceLinksTableViewController.xib in Resources */,
@@ -2097,6 +2125,7 @@
 				7641406D1C31FE5400DF9A6C /* EVCJobsDetailsViewController.m in Sources */,
 				76DEDA801A474E19009CD94F /* EVCFlingViewController.m in Sources */,
 				7670EFB31CFA038600831967 /* EVCBankViewController.m in Sources */,
+				76891A681E50C86F00E3D727 /* EVCLoginViewController.m in Sources */,
 				766DEF821A4BC8060049CA2A /* EVCChatroomCell.m in Sources */,
 				76C2B0EB19F4AD680010E98B /* EVCPostView.m in Sources */,
 				76B70B541CA776A800AF735E /* EVCPrescriptionProviderTableViewController.m in Sources */,
@@ -2107,10 +2136,10 @@
 				768AFF3E1A754E300055F258 /* EVCShoppingSearchViewController.m in Sources */,
 				7636F6B919CF25DB000B68B0 /* EVCProfileViewController.m in Sources */,
 				76003B151B93C38E00133773 /* EVCResourceLinksTableViewController.m in Sources */,
-				76C2B08819F333300010E98B /* EVCLoginViewController.m in Sources */,
 				76063C4F1B94B03A002F9171 /* EVCTravelTableViewController.m in Sources */,
 				761D652519A15A4D0062B525 /* EVCViewController.m in Sources */,
 				7636F6CA19D4D881000B68B0 /* EVCGroupViewController.m in Sources */,
+				76FC04FC1DC805C800483B68 /* EVCGroupCreationTableViewController.m in Sources */,
 				76995CAD1DA0A77D004ED977 /* EVCJobsFilter.m in Sources */,
 				76EF996E19FD3EA200E15A14 /* EVCGroupSettingsViewController.m in Sources */,
 				76CCA8AE1D8F759000DB935B /* EVCRegistrationViewController.m in Sources */,
@@ -2146,6 +2175,7 @@
 				768193ED1D94BAA100F97CA5 /* IQTitleBarButtonItem.m in Sources */,
 				768193DD1D94BAA100F97CA5 /* IQUIViewController+Additions.m in Sources */,
 				76CCAB0B1D94AB8A00DB935B /* Queue.m in Sources */,
+				76FC04F91DC803FC00483B68 /* GroupCreationForm.m in Sources */,
 				768193E71D94BAA100F97CA5 /* IQTextView.m in Sources */,
 				768193EB1D94BAA100F97CA5 /* IQPreviousNextView.m in Sources */,
 				76CCAAE61D94AB8A00DB935B /* EVCUserInviteViewController.m in Sources */,
@@ -2226,6 +2256,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2275,6 +2306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2321,7 +2353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 38MW53VVGD;
@@ -2340,6 +2372,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyDailyBeat/MyDailyBeat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat/** ${PODS_ROOT}/**";
 				WRAPPER_EXTENSION = app;
@@ -2354,7 +2389,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 38MW53VVGD;
@@ -2373,6 +2408,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyDailyBeat/MyDailyBeat-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat/** ${PODS_ROOT}/**";
 				WRAPPER_EXTENSION = app;
@@ -2386,6 +2423,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
@@ -2418,6 +2456,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.verve.API;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat/**";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2432,6 +2472,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
@@ -2463,6 +2504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.verve.API;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/balabhv/MyDailyBeat-iOS/MyDailyBeat/**";
 				VERSIONING_SYSTEM = "apple-generic";

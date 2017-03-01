@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B7y-yY-PTs">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="02r-EZ-KCr">
+            <objects>
+                <tableViewController id="85l-Vw-oJN" customClass="EVCShoppingFavoritesTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mru-Az-nww">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="85l-Vw-oJN" id="Anl-2W-jaB"/>
+                            <outlet property="delegate" destination="85l-Vw-oJN" id="yhp-Xu-axY"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="TW5-Xx-Dd1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qmq-Qh-ZHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-234" y="655"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="HGJ-5G-2XW">
+            <objects>
+                <tableViewController id="0Af-WW-2ox" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rv6-R1-Hyg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="0Af-WW-2ox" id="YPp-BS-Fi4"/>
+                            <outlet property="delegate" destination="0Af-WW-2ox" id="eNS-hn-CNb"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="4tI-oc-Rhe"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lX-OZ-JAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="623" y="666"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="5dI-cL-tVY">
+            <objects>
+                <viewController id="9q2-w8-dDl" customClass="EVCShoppingSearchViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A8n-yw-HcG"/>
+                        <viewControllerLayoutGuide type="bottom" id="4cG-Mx-Q3c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9sV-Cp-lFJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="ouP-Kk-dyq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0F-Ge-vcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1282" y="661"/>
+        </scene>
+        <!--Shopping View Controller-->
+        <scene sceneID="I2E-4c-8L2">
+            <objects>
+                <tabBarController id="B7y-yY-PTs" customClass="EVCShoppingViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="jf9-Yc-cPP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9q2-w8-dDl" kind="relationship" relationship="viewControllers" id="dlk-jn-aUq"/>
+                        <segue destination="85l-Vw-oJN" kind="relationship" relationship="viewControllers" id="Ygb-Zt-xlO"/>
+                        <segue destination="0Af-WW-2ox" kind="relationship" relationship="viewControllers" id="AH9-YA-iaW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuA-Tj-bqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746" y="-158"/>
+        </scene>
+    </scenes>
+</document>

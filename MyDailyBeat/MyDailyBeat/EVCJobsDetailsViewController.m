@@ -10,6 +10,7 @@
 #import "EVCCommonMethods.h"
 #import "API.h"
 
+@import API;
 @interface EVCJobsDetailsViewController ()
 
 @end

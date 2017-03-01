@@ -31,7 +31,8 @@
 #import "CocoaWSSE.h"
 #import "JsonEncoder.h"
 
-#define BASE_URL @"https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
+#define PUBLIC_BASE_URL @"http://mydailybeat.com"
+#define AUTH_BASE_URL @"http://mydailybeat.com/api"
 #define VOLUNTEER_MATCH_API_KEY @"091831c0b92450d7a598b3e4640504b5"
 #define VOLUNTEER_MATCH_API_USER @"MyDailyBeat"
 #define VOLUNTEER_MATCH_API_URL @"https://www.volunteermatch.org/api/call"
@@ -60,10 +61,6 @@
 - (BOOL) doesUserExistWithMobile:(NSString *)mobile;
 - (BOOL) loginWithScreenName:(NSString *) screenName andPassword:(NSString *) password;
 - (void) refreshCurrentUserData;
-- (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName;
-- (VerveUser *) getUserDataForUserWithName: (NSString *) name;
-- (VerveUser *) getUserDataForUserWithEmail: (NSString *) email;
-- (VerveUser *) getUserDataForUserWithMobile: (NSString *) mobile;
 - (BOOL) logout;
 - (BOOL) sendReferralFromUser: (VerveUser *) user toPersonWithName: (NSString *) name andEmail: (NSString *) email;
 

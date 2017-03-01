@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "API.h"
 
+@import API;
 @interface EVCShoppingSearchViewController : UIViewController <UISearchBarDelegate,UITableViewDataSource, UITableViewDelegate> {
     BOOL isFiltered;
 }
