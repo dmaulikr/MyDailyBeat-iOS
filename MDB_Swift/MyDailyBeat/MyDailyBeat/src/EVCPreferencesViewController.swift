@@ -40,15 +40,15 @@ class EVCPreferencesViewController: UIViewController, FXFormControllerDelegate {
     }
 
     func retrievePrefs() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             let prefs = VervePreferences()
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            prefs.userPreferences = self.api.getUserPreferences(for: self.api.getCurrentUser())
-            prefs.matchingPreferences = self.api.getMatchingPreferences(for: self.api.getCurrentUser())
-            prefs.hobbiesPreferences = self.api.getHobbiesPreferencesForUser(withScreenName: self.api.getCurrentUser().screenName)
+            prefs.userPreferences = self.api.getUserPreferences()
+            prefs.matchingPreferences = self.api.getMatchingPreferences()
+            prefs.hobbiesPreferences = self.api.getHobbiesPreferencesForUser()
             self.formController.form = prefs
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -59,13 +59,13 @@ class EVCPreferencesViewController: UIViewController, FXFormControllerDelegate {
 
     func submit(_ cell: FXFormBaseCell) {
         let prefs: VervePreferences? = cell.field.form as! VervePreferences?
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            let success: Bool = self.api.save((prefs?.userPreferences)!, andMatchingPreferences: (prefs?.matchingPreferences)!, for: self.api.getCurrentUser())
-            let success2 = self.api.save((prefs?.hobbiesPreferences)!, forUserWithScreenName: self.api.getCurrentUser().screenName)
+            let success: Bool = self.api.save((prefs?.userPreferences)!, andMatchingPreferences: (prefs?.matchingPreferences)!)
+            let success2 = self.api.save((prefs?.hobbiesPreferences)!)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if success && success2 {
@@ -78,10 +78,7 @@ class EVCPreferencesViewController: UIViewController, FXFormControllerDelegate {
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     
 }

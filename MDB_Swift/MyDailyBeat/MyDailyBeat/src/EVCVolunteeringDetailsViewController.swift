@@ -35,7 +35,7 @@ class EVCVolunteeringDetailsViewController: UIViewController {
         var parentOrg = self.opportunity["parentOrg"]
         self.parentOrgLabel.text = parentOrg["name"].stringValue
         var availability = self.opportunity["availability"]
-        let startDate: String? = availability["startDate"].string
+        let startDate: String? = availability["startDate"].stringValue
         if startDate == nil {
             // flexible
             self.startLabel.text = "Flexible"
@@ -46,18 +46,18 @@ class EVCVolunteeringDetailsViewController: UIViewController {
             self.startLabel.text = av[0]
             self.endLabel.text = av[1]
         }
-        self.urlTextView.text = self.opportunity["vmUrl"].string
-        self.descripTextView.text = self.opportunity["plaintextDescription"].string
-        let imageURL: String? = self.opportunity["imageUrl"].string
-        if imageURL != nil {
-            self.fetchImage(imageURL!)
-        }
+        self.urlTextView.text = self.opportunity["vmUrl"].stringValue
+        self.descripTextView.text = self.opportunity["plaintextDescription"].stringValue
+//        let imageURL: String? = self.opportunity["imageUrl"].stringValue
+//        if imageURL != nil {
+//            self.fetchImage(imageURL!)
+//        }
         // Do any additional setup after loading the view from its nib.
     }
 
     func fetchImage(_ url: String) {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -72,10 +72,10 @@ class EVCVolunteeringDetailsViewController: UIViewController {
     }
 
     func getAvailability(_ availability: JSON) -> [String] {
-        let startDate: String? = availability["startDate"].string
-        let startTime: String? = availability["startTime"].string
-        let endDate: String? = availability["endDate"].string
-        let endTime: String? = availability["endTime"].string
+        let startDate: String = availability["startDate"].stringValue
+        let startTime: String = availability["startTime"].stringValue
+        let endDate: String = availability["endDate"].stringValue
+        let endTime: String = availability["endTime"].stringValue
         let start: String = "\(startDate) \(startTime)"
         let end: String = "\(endDate) \(endTime)"
         let arr: [String] = [start, end]
@@ -83,15 +83,26 @@ class EVCVolunteeringDetailsViewController: UIViewController {
     }
 
     func buildLocationString(_ locationDic: JSON) -> String {
-        let city: String? = locationDic["city"].string
-        let region: String? = locationDic["region"].string
-        let zip: String? = locationDic["postalCode"].string
-        let country: String? = locationDic["country"].string
+        let city: String = locationDic["city"].stringValue
+        let region: String = locationDic["region"].stringValue
+        let zip: String = locationDic["postalCode"].stringValue
+        let country: String = locationDic["country"].stringValue
         return "\(city), \(region) \(zip) \(country)"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }

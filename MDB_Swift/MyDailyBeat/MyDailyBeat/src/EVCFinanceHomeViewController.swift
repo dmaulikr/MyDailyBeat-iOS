@@ -30,19 +30,15 @@ class EVCFinanceHomeViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view from its nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func retrieveBanksData() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            let db = BankDatabase.database
-            self.bankList = db!.bankInfos()
+            self.bankList = DataManager.getBanks()
             for i in 0..<self.bankList.count {
                 let load: Bool = UserDefaults.standard.bool(forKey: "LOAD_BANK_IMAGES")
                 if load {
@@ -81,7 +77,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
         if self.bankList.count >= 1 {
             if indexPath.row < self.bankList.count {
                 cell?.textLabel?.text = (self.bankList[indexPath.row] as? BankInfo)?.appName
-                if !(self.iconList.count == 0) {
+                if indexPath.row < self.iconList.count {
                     cell?.imageView?.image = self.iconList[indexPath.row]
                 }
                 else {
@@ -148,16 +144,15 @@ func numberOfSections(in tableView: UITableView) -> Int {
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let ok = UIAlertAction(title: "OK", style: .default) { (action) in
             var text: String = alert.textFields![0].text!
-            var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-            queue.async(execute: {() -> Void in
+            
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
                 if RestAPI.getInstance().doesAppExist(withTerm: text, andCountry: "US") {
                     var bank: VerveBankObject? = RestAPI.getInstance().getBankInfoForBank(withName: text, inCountry: "US")
                     var info = BankInfo(uniqueId: 0, name: (bank?.appName)!, appURL: (bank?.appStoreListing)!, iconURL: (bank?.appIconURL)!)
-                    var db = BankDatabase.database
-                    db?.insert(intoDatabase: info)
+                    DataManager.insertBank(info)
                 }
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.hideToastActivity()
@@ -174,8 +169,8 @@ func numberOfSections(in tableView: UITableView) -> Int {
 
     func doesAppExist(_ name: String) -> Bool {
         var val: Bool = false
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })

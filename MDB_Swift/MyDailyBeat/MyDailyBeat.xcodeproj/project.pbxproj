@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		2542E1E458EB25E4F120AB00 /* Pods_MyDailyBeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2ECDAD79E7DF22573364BE /* Pods_MyDailyBeat.framework */; };
+		7608D8111E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7608D8101E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib */; };
+		7608D8131E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608D8121E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift */; };
+		7628FD4F1E80A1900053D04A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7628FD4E1E80A1900053D04A /* MainViewController.swift */; };
+		7628FD511E80AEE40053D04A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7628FD501E80AEE40053D04A /* RegistrationViewController.swift */; };
+		7628FD551E80B0B60053D04A /* RegistrationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7628FD541E80B0B60053D04A /* RegistrationMessageViewController.xib */; };
+		7628FD571E80B15D0053D04A /* RegistrationScreenNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7628FD561E80B15D0053D04A /* RegistrationScreenNameViewController.xib */; };
+		7628FD591E80C4E70053D04A /* RegistrationScreenNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7628FD581E80C4E70053D04A /* RegistrationScreenNameViewController.swift */; };
+		7632E4A41E6926C700972F12 /* EVCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7632E4A31E6926C700972F12 /* EVCTabBarController.swift */; };
+		7637EF9F1E6C75CF00C5BC51 /* HealthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486CC1E5AA0520024331F /* HealthInfo.swift */; };
+		7637EFA01E6C75CF00C5BC51 /* PrescripProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486D31E5AA0520024331F /* PrescripProviderInfo.swift */; };
+		7637EFA21E6C762500C5BC51 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637EFA11E6C762500C5BC51 /* DataManager.swift */; };
 		7649B5C11E5E55B0001FBCDF /* SwiftyJSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7649B5C01E5E55B0001FBCDF /* SwiftyJSONExtension.swift */; };
 		7649B5C31E5FDE00001FBCDF /* Finance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7649B5C21E5FDE00001FBCDF /* Finance.storyboard */; };
 		7649B5C51E6130C8001FBCDF /* Relationships.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7649B5C41E6130C8001FBCDF /* Relationships.storyboard */; };
@@ -18,7 +29,6 @@
 		766AF8851E61F766005C1F71 /* Jobs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766AF8841E61F766005C1F71 /* Jobs.storyboard */; };
 		766AF8871E6214CC005C1F71 /* Health.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766AF8861E6214CC005C1F71 /* Health.storyboard */; };
 		766AF8891E623A69005C1F71 /* Travel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766AF8881E623A69005C1F71 /* Travel.storyboard */; };
-		767486EA1E5AA0520024331F /* BankDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486BA1E5AA0520024331F /* BankDatabase.swift */; };
 		767486EB1E5AA0520024331F /* BankInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486BB1E5AA0520024331F /* BankInfo.swift */; };
 		767486EC1E5AA0520024331F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486BC1E5AA0520024331F /* Constants.swift */; };
 		767486ED1E5AA0520024331F /* DLAVAlertView+TextFieldOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486BD1E5AA0520024331F /* DLAVAlertView+TextFieldOptions.swift */; };
@@ -34,13 +44,10 @@
 		767486F81E5AA0520024331F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486C81E5AA0520024331F /* Group.swift */; };
 		767486F91E5AA0520024331F /* GroupCreationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486C91E5AA0520024331F /* GroupCreationForm.swift */; };
 		767486FA1E5AA0520024331F /* GroupPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486CA1E5AA0520024331F /* GroupPrefs.swift */; };
-		767486FB1E5AA0520024331F /* HealthDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486CB1E5AA0520024331F /* HealthDatabase.swift */; };
-		767486FC1E5AA0520024331F /* HealthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486CC1E5AA0520024331F /* HealthInfo.swift */; };
 		767486FD1E5AA0520024331F /* HobbiesMatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486CD1E5AA0520024331F /* HobbiesMatchObject.swift */; };
 		767486FE1E5AA0520024331F /* HobbiesPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486CE1E5AA0520024331F /* HobbiesPreferences.swift */; };
 		767487001E5AA0520024331F /* MessageChatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486D01E5AA0520024331F /* MessageChatroom.swift */; };
 		767487021E5AA0520024331F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486D21E5AA0520024331F /* Post.swift */; };
-		767487031E5AA0520024331F /* PrescripProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486D31E5AA0520024331F /* PrescripProviderInfo.swift */; };
 		767487041E5AA0520024331F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486D41E5AA0520024331F /* Queue.swift */; };
 		767487061E5AA0520024331F /* RegisterForm2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486D61E5AA0520024331F /* RegisterForm2.swift */; };
 		767487071E5AA0520024331F /* RegisterForm3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767486D71E5AA0520024331F /* RegisterForm3.swift */; };
@@ -98,7 +105,6 @@
 		767487751E5B21100024331F /* EVCProfilePicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674873F1E5B21100024331F /* EVCProfilePicView.swift */; };
 		767487761E5B21100024331F /* EVCProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487401E5B21100024331F /* EVCProfileViewController.swift */; };
 		767487771E5B21100024331F /* EVCRegistrationMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487411E5B21100024331F /* EVCRegistrationMessageViewController.swift */; };
-		767487781E5B21100024331F /* EVCRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487421E5B21100024331F /* EVCRegistrationViewController.swift */; };
 		767487791E5B21100024331F /* EVCResourceLinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487431E5B21100024331F /* EVCResourceLinksTableViewController.swift */; };
 		7674877A1E5B21100024331F /* EVCShoppingFavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487441E5B21100024331F /* EVCShoppingFavoritesTableViewController.swift */; };
 		7674877B1E5B21100024331F /* EVCShoppingSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487451E5B21100024331F /* EVCShoppingSearchViewController.swift */; };
@@ -114,6 +120,10 @@
 		767487861E5BC4540024331F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487851E5BC4540024331F /* RootViewController.swift */; };
 		767487881E5BE26E0024331F /* BoolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767487871E5BE26E0024331F /* BoolExtension.swift */; };
 		7679FE3F1E66364100D4BCDF /* RootNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FE3E1E66364000D4BCDF /* RootNavController.swift */; };
+		769F391A1E83384700E036CA /* SwitchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769F39191E83384700E036CA /* SwitchViewCell.xib */; };
+		769F391C1E848DAB00E036CA /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 769F391B1E848DAB00E036CA /* Acknowledgements.plist */; };
+		769F391E1E84926100E036CA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 769F391D1E84926100E036CA /* About.storyboard */; };
+		769F39201E84957200E036CA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F391F1E84957200E036CA /* AboutViewController.swift */; };
 		76BD90C21E5A8CDE000ADD90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */; };
 		76BD90C71E5A8CDE000ADD90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76BD90C51E5A8CDE000ADD90 /* Main.storyboard */; };
 		76BD90CA1E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76BD90C81E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld */; };
@@ -122,6 +132,8 @@
 		76BD90DF1E5A8D38000ADD90 /* API.h in Headers */ = {isa = PBXBuildFile; fileRef = 76BD90DD1E5A8D37000ADD90 /* API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76BD90E21E5A8D38000ADD90 /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BD90DB1E5A8D37000ADD90 /* API.framework */; };
 		76BD90E31E5A8D38000ADD90 /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76BD90DB1E5A8D37000ADD90 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76CF9ACF1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76CF9ACE1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib */; };
+		76CF9AD11E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF9AD01E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift */; };
 		76E01ACE1E5A979600985562 /* EVCChatroomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A721E5A979600985562 /* EVCChatroomCell.xib */; };
 		76E01AD81E5A979600985562 /* EVCGroupSettingsViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A7C1E5A979600985562 /* EVCGroupSettingsViewController_iPhone.xib */; };
 		76E01AD91E5A979600985562 /* EVCGroupViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A7D1E5A979600985562 /* EVCGroupViewController_iPhone.xib */; };
@@ -129,10 +141,12 @@
 		76E01ADE1E5A979600985562 /* EVCLabelTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A821E5A979600985562 /* EVCLabelTableViewCell_iPhone.xib */; };
 		76E01AE41E5A979600985562 /* EVCPostView_WithoutPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A881E5A979600985562 /* EVCPostView_WithoutPicture.xib */; };
 		76E01AE51E5A979600985562 /* EVCPostView_WithPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A891E5A979600985562 /* EVCPostView_WithPicture.xib */; };
-		76E01AE81E5A979600985562 /* EVCRegistrationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A8C1E5A979600985562 /* EVCRegistrationMessageViewController.xib */; };
 		76E01AED1E5A979600985562 /* EVCTextFieldTableViewCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A911E5A979600985562 /* EVCTextFieldTableViewCell_iPhone.xib */; };
 		76E01AF11E5A979600985562 /* EVCVolunteeringDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A951E5A979600985562 /* EVCVolunteeringDetailsViewController.xib */; };
 		76E01AF21E5A979600985562 /* EVCVolunteeringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A961E5A979600985562 /* EVCVolunteeringViewController.xib */; };
+		76E8967C1EC7603100004BF8 /* EVCNewJobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E8967B1EC7603100004BF8 /* EVCNewJobsViewController.swift */; };
+		76E8967E1EC79E9600004BF8 /* res_links.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76E8967D1EC79E9600004BF8 /* res_links.plist */; };
+		76EEA13E1E7F22050084CBD3 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EEA13D1E7F22050084CBD3 /* CoreDataExtensions.swift */; };
 		CB886432F8E1130C7D7C8978 /* Pods_API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BEEFB3658C73F3C4A5EC83 /* Pods_API.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +178,16 @@
 		0E18F9773B9C7A3937002A63 /* Pods-MyDailyBeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDailyBeat.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDailyBeat/Pods-MyDailyBeat.release.xcconfig"; sourceTree = "<group>"; };
 		5554A29BBAF93C0D80A560E3 /* Pods-API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.debug.xcconfig"; path = "Pods/Target Support Files/Pods-API/Pods-API.debug.xcconfig"; sourceTree = "<group>"; };
 		68BEEFB3658C73F3C4A5EC83 /* Pods_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7608D8101E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationPersonalInfoViewController.xib; path = ui/RegistrationPersonalInfoViewController.xib; sourceTree = "<group>"; };
+		7608D8121E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalInfoViewController.swift; sourceTree = "<group>"; };
+		7628FD4E1E80A1900053D04A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7628FD501E80AEE40053D04A /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		7628FD541E80B0B60053D04A /* RegistrationMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationMessageViewController.xib; path = ui/RegistrationMessageViewController.xib; sourceTree = "<group>"; };
+		7628FD561E80B15D0053D04A /* RegistrationScreenNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationScreenNameViewController.xib; path = ui/RegistrationScreenNameViewController.xib; sourceTree = "<group>"; };
+		7628FD581E80C4E70053D04A /* RegistrationScreenNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationScreenNameViewController.swift; sourceTree = "<group>"; };
+		7632E4A31E6926C700972F12 /* EVCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCTabBarController.swift; sourceTree = "<group>"; };
+		7637EFA11E6C762500C5BC51 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		7637EFA41E6C879400C5BC51 /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
 		7649B5C01E5E55B0001FBCDF /* SwiftyJSONExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSONExtension.swift; sourceTree = "<group>"; };
 		7649B5C21E5FDE00001FBCDF /* Finance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Finance.storyboard; path = ui/Finance.storyboard; sourceTree = "<group>"; };
 		7649B5C41E6130C8001FBCDF /* Relationships.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Relationships.storyboard; path = ui/Relationships.storyboard; sourceTree = "<group>"; };
@@ -175,7 +199,6 @@
 		766AF8841E61F766005C1F71 /* Jobs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Jobs.storyboard; path = ui/Jobs.storyboard; sourceTree = "<group>"; };
 		766AF8861E6214CC005C1F71 /* Health.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Health.storyboard; path = ui/Health.storyboard; sourceTree = "<group>"; };
 		766AF8881E623A69005C1F71 /* Travel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Travel.storyboard; path = ui/Travel.storyboard; sourceTree = "<group>"; };
-		767486BA1E5AA0520024331F /* BankDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDatabase.swift; sourceTree = "<group>"; };
 		767486BB1E5AA0520024331F /* BankInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankInfo.swift; sourceTree = "<group>"; };
 		767486BC1E5AA0520024331F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		767486BD1E5AA0520024331F /* DLAVAlertView+TextFieldOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DLAVAlertView+TextFieldOptions.swift"; sourceTree = "<group>"; };
@@ -191,7 +214,6 @@
 		767486C81E5AA0520024331F /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		767486C91E5AA0520024331F /* GroupCreationForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCreationForm.swift; sourceTree = "<group>"; };
 		767486CA1E5AA0520024331F /* GroupPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPrefs.swift; sourceTree = "<group>"; };
-		767486CB1E5AA0520024331F /* HealthDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthDatabase.swift; sourceTree = "<group>"; };
 		767486CC1E5AA0520024331F /* HealthInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthInfo.swift; sourceTree = "<group>"; };
 		767486CD1E5AA0520024331F /* HobbiesMatchObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbiesMatchObject.swift; sourceTree = "<group>"; };
 		767486CE1E5AA0520024331F /* HobbiesPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbiesPreferences.swift; sourceTree = "<group>"; };
@@ -255,7 +277,6 @@
 		7674873F1E5B21100024331F /* EVCProfilePicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCProfilePicView.swift; sourceTree = "<group>"; };
 		767487401E5B21100024331F /* EVCProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCProfileViewController.swift; sourceTree = "<group>"; };
 		767487411E5B21100024331F /* EVCRegistrationMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCRegistrationMessageViewController.swift; sourceTree = "<group>"; };
-		767487421E5B21100024331F /* EVCRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCRegistrationViewController.swift; sourceTree = "<group>"; };
 		767487431E5B21100024331F /* EVCResourceLinksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCResourceLinksTableViewController.swift; sourceTree = "<group>"; };
 		767487441E5B21100024331F /* EVCShoppingFavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCShoppingFavoritesTableViewController.swift; sourceTree = "<group>"; };
 		767487451E5B21100024331F /* EVCShoppingSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCShoppingSearchViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +292,10 @@
 		767487851E5BC4540024331F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		767487871E5BE26E0024331F /* BoolExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolExtension.swift; sourceTree = "<group>"; };
 		7679FE3E1E66364000D4BCDF /* RootNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavController.swift; sourceTree = "<group>"; };
+		769F39191E83384700E036CA /* SwitchViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SwitchViewCell.xib; path = ui/SwitchViewCell.xib; sourceTree = "<group>"; };
+		769F391B1E848DAB00E036CA /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = SOURCE_ROOT; };
+		769F391D1E84926100E036CA /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = About.storyboard; path = ui/About.storyboard; sourceTree = "<group>"; };
+		769F391F1E84957200E036CA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		76BD90BE1E5A8CDE000ADD90 /* MyDailyBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDailyBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76BD90C61E5A8CDE000ADD90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -281,6 +306,8 @@
 		76BD90DB1E5A8D37000ADD90 /* API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BD90DD1E5A8D37000ADD90 /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		76BD90DE1E5A8D38000ADD90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76CF9ACE1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationContactInfoViewController.xib; path = ui/RegistrationContactInfoViewController.xib; sourceTree = "<group>"; };
+		76CF9AD01E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationContactInfoViewController.swift; sourceTree = "<group>"; };
 		76E01A721E5A979600985562 /* EVCChatroomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCChatroomCell.xib; sourceTree = "<group>"; };
 		76E01A7C1E5A979600985562 /* EVCGroupSettingsViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupSettingsViewController_iPhone.xib; sourceTree = "<group>"; };
 		76E01A7D1E5A979600985562 /* EVCGroupViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCGroupViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -288,10 +315,12 @@
 		76E01A821E5A979600985562 /* EVCLabelTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCLabelTableViewCell_iPhone.xib; sourceTree = "<group>"; };
 		76E01A881E5A979600985562 /* EVCPostView_WithoutPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithoutPicture.xib; sourceTree = "<group>"; };
 		76E01A891E5A979600985562 /* EVCPostView_WithPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCPostView_WithPicture.xib; sourceTree = "<group>"; };
-		76E01A8C1E5A979600985562 /* EVCRegistrationMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCRegistrationMessageViewController.xib; sourceTree = "<group>"; };
 		76E01A911E5A979600985562 /* EVCTextFieldTableViewCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCTextFieldTableViewCell_iPhone.xib; sourceTree = "<group>"; };
 		76E01A951E5A979600985562 /* EVCVolunteeringDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCVolunteeringDetailsViewController.xib; sourceTree = "<group>"; };
 		76E01A961E5A979600985562 /* EVCVolunteeringViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCVolunteeringViewController.xib; sourceTree = "<group>"; };
+		76E8967B1EC7603100004BF8 /* EVCNewJobsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCNewJobsViewController.swift; sourceTree = "<group>"; };
+		76E8967D1EC79E9600004BF8 /* res_links.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = res_links.plist; sourceTree = "<group>"; };
+		76EEA13D1E7F22050084CBD3 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
 		917A60E340FDD1C1DE912DB1 /* Pods-API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.release.xcconfig"; path = "Pods/Target Support Files/Pods-API/Pods-API.release.xcconfig"; sourceTree = "<group>"; };
 		CC2ECDAD79E7DF22573364BE /* Pods_MyDailyBeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDailyBeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -328,11 +357,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7637EFA31E6C877700C5BC51 /* CommonCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				7637EFA41E6C879400C5BC51 /* module.map */,
+			);
+			path = CommonCrypto;
+			sourceTree = "<group>";
+		};
 		767486B91E5AA0520024331F /* src */ = {
 			isa = PBXGroup;
 			children = (
-				767486BA1E5AA0520024331F /* BankDatabase.swift */,
 				767486BB1E5AA0520024331F /* BankInfo.swift */,
+				767486CC1E5AA0520024331F /* HealthInfo.swift */,
+				767486D31E5AA0520024331F /* PrescripProviderInfo.swift */,
 				767486BC1E5AA0520024331F /* Constants.swift */,
 				767486BD1E5AA0520024331F /* DLAVAlertView+TextFieldOptions.swift */,
 				767486BE1E5AA0520024331F /* EVCComposeViewController.swift */,
@@ -347,13 +385,10 @@
 				767486C81E5AA0520024331F /* Group.swift */,
 				767486C91E5AA0520024331F /* GroupCreationForm.swift */,
 				767486CA1E5AA0520024331F /* GroupPrefs.swift */,
-				767486CB1E5AA0520024331F /* HealthDatabase.swift */,
-				767486CC1E5AA0520024331F /* HealthInfo.swift */,
 				767486CD1E5AA0520024331F /* HobbiesMatchObject.swift */,
 				767486CE1E5AA0520024331F /* HobbiesPreferences.swift */,
 				767486D01E5AA0520024331F /* MessageChatroom.swift */,
 				767486D21E5AA0520024331F /* Post.swift */,
-				767486D31E5AA0520024331F /* PrescripProviderInfo.swift */,
 				767486D41E5AA0520024331F /* Queue.swift */,
 				767486D61E5AA0520024331F /* RegisterForm2.swift */,
 				767486D71E5AA0520024331F /* RegisterForm3.swift */,
@@ -409,8 +444,10 @@
 		76BD90C01E5A8CDE000ADD90 /* MyDailyBeat */ = {
 			isa = PBXGroup;
 			children = (
+				769F391B1E848DAB00E036CA /* Acknowledgements.plist */,
 				76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */,
 				76BD90C51E5A8CDE000ADD90 /* Main.storyboard */,
+				769F391D1E84926100E036CA /* About.storyboard */,
 				766AF8821E61DED4005C1F71 /* FeelingBlue.storyboard */,
 				7649B5C21E5FDE00001FBCDF /* Finance.storyboard */,
 				7649B5C41E6130C8001FBCDF /* Relationships.storyboard */,
@@ -423,6 +460,12 @@
 				76BD90CD1E5A8CDE000ADD90 /* LaunchScreen.storyboard */,
 				76BD90D01E5A8CDE000ADD90 /* Info.plist */,
 				76BD90C81E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld */,
+				7628FD541E80B0B60053D04A /* RegistrationMessageViewController.xib */,
+				7628FD561E80B15D0053D04A /* RegistrationScreenNameViewController.xib */,
+				7608D8101E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib */,
+				76CF9ACE1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib */,
+				769F39191E83384700E036CA /* SwitchViewCell.xib */,
+				76E8967D1EC79E9600004BF8 /* res_links.plist */,
 				76E01A391E5A979600985562 /* src */,
 				76E01A701E5A979600985562 /* ui */,
 			);
@@ -432,6 +475,7 @@
 		76BD90DC1E5A8D37000ADD90 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				7637EFA31E6C877700C5BC51 /* CommonCrypto */,
 				76BD90DD1E5A8D37000ADD90 /* API.h */,
 				76BD90DE1E5A8D38000ADD90 /* Info.plist */,
 				767486B91E5AA0520024331F /* src */,
@@ -469,6 +513,7 @@
 				767487321E5B21100024331F /* EVCJobsFilter.swift */,
 				767487331E5B21100024331F /* EVCJobsTabViewController.swift */,
 				767487341E5B21100024331F /* EVCJobsViewController.swift */,
+				76E8967B1EC7603100004BF8 /* EVCNewJobsViewController.swift */,
 				767487351E5B21100024331F /* EVCLabelTableViewCell.swift */,
 				767487361E5B21100024331F /* EVCLoginViewController.swift */,
 				767487371E5B21100024331F /* EVCMenuTableViewCell.swift */,
@@ -482,7 +527,6 @@
 				7674873F1E5B21100024331F /* EVCProfilePicView.swift */,
 				767487401E5B21100024331F /* EVCProfileViewController.swift */,
 				767487411E5B21100024331F /* EVCRegistrationMessageViewController.swift */,
-				767487421E5B21100024331F /* EVCRegistrationViewController.swift */,
 				767487431E5B21100024331F /* EVCResourceLinksTableViewController.swift */,
 				767487441E5B21100024331F /* EVCShoppingFavoritesTableViewController.swift */,
 				767487451E5B21100024331F /* EVCShoppingSearchViewController.swift */,
@@ -497,6 +541,15 @@
 				7674874E1E5B21100024331F /* EVCVolunteeringViewController.swift */,
 				767487851E5BC4540024331F /* RootViewController.swift */,
 				7679FE3E1E66364000D4BCDF /* RootNavController.swift */,
+				7632E4A31E6926C700972F12 /* EVCTabBarController.swift */,
+				7637EFA11E6C762500C5BC51 /* DataManager.swift */,
+				76EEA13D1E7F22050084CBD3 /* CoreDataExtensions.swift */,
+				7628FD4E1E80A1900053D04A /* MainViewController.swift */,
+				7628FD501E80AEE40053D04A /* RegistrationViewController.swift */,
+				7628FD581E80C4E70053D04A /* RegistrationScreenNameViewController.swift */,
+				7608D8121E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift */,
+				76CF9AD01E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift */,
+				769F391F1E84957200E036CA /* AboutViewController.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -511,7 +564,6 @@
 				76E01A821E5A979600985562 /* EVCLabelTableViewCell_iPhone.xib */,
 				76E01A881E5A979600985562 /* EVCPostView_WithoutPicture.xib */,
 				76E01A891E5A979600985562 /* EVCPostView_WithPicture.xib */,
-				76E01A8C1E5A979600985562 /* EVCRegistrationMessageViewController.xib */,
 				76E01A911E5A979600985562 /* EVCTextFieldTableViewCell_iPhone.xib */,
 				76E01A951E5A979600985562 /* EVCVolunteeringDetailsViewController.xib */,
 				76E01A961E5A979600985562 /* EVCVolunteeringViewController.xib */,
@@ -637,16 +689,23 @@
 				7649B5C51E6130C8001FBCDF /* Relationships.storyboard in Resources */,
 				76E01AED1E5A979600985562 /* EVCTextFieldTableViewCell_iPhone.xib in Resources */,
 				76BD90C71E5A8CDE000ADD90 /* Main.storyboard in Resources */,
+				7608D8111E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib in Resources */,
 				766AF8831E61DED4005C1F71 /* FeelingBlue.storyboard in Resources */,
+				769F391A1E83384700E036CA /* SwitchViewCell.xib in Resources */,
 				766AF8851E61F766005C1F71 /* Jobs.storyboard in Resources */,
+				769F391C1E848DAB00E036CA /* Acknowledgements.plist in Resources */,
 				76E01ADC1E5A979600985562 /* EVCJobsFilter.xib in Resources */,
+				76E8967E1EC79E9600004BF8 /* res_links.plist in Resources */,
 				76E01AF21E5A979600985562 /* EVCVolunteeringViewController.xib in Resources */,
 				76E01AD81E5A979600985562 /* EVCGroupSettingsViewController_iPhone.xib in Resources */,
+				7628FD571E80B15D0053D04A /* RegistrationScreenNameViewController.xib in Resources */,
+				76CF9ACF1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib in Resources */,
 				7649B5C31E5FDE00001FBCDF /* Finance.storyboard in Resources */,
 				7652C7D91E628E680028B693 /* Shopping.storyboard in Resources */,
+				7628FD551E80B0B60053D04A /* RegistrationMessageViewController.xib in Resources */,
+				769F391E1E84926100E036CA /* About.storyboard in Resources */,
 				76E01ADE1E5A979600985562 /* EVCLabelTableViewCell_iPhone.xib in Resources */,
 				76E01AD91E5A979600985562 /* EVCGroupViewController_iPhone.xib in Resources */,
-				76E01AE81E5A979600985562 /* EVCRegistrationMessageViewController.xib in Resources */,
 				76E01AF11E5A979600985562 /* EVCVolunteeringDetailsViewController.xib in Resources */,
 				76E01AE51E5A979600985562 /* EVCPostView_WithPicture.xib in Resources */,
 				76E01ACE1E5A979600985562 /* EVCChatroomCell.xib in Resources */,
@@ -753,8 +812,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7674875E1E5B21100024331F /* EVCFlingViewController.swift in Sources */,
+				7637EFA21E6C762500C5BC51 /* DataManager.swift in Sources */,
 				767487721E5B21100024331F /* EVCPostView.swift in Sources */,
 				767487861E5BC4540024331F /* RootViewController.swift in Sources */,
+				7628FD511E80AEE40053D04A /* RegistrationViewController.swift in Sources */,
 				767487821E5B21100024331F /* EVCVolunteeringDetailsViewController.swift in Sources */,
 				7674876F1E5B21100024331F /* EVCMyHealthViewController.swift in Sources */,
 				767487611E5B21100024331F /* EVCGroupSettingsViewController.swift in Sources */,
@@ -762,11 +823,12 @@
 				767487801E5B21100024331F /* EVCUpdateProfileViewController.swift in Sources */,
 				767487691E5B21100024331F /* EVCJobsTabViewController.swift in Sources */,
 				7674877E1E5B21100024331F /* EVCTravelTableViewController.swift in Sources */,
-				767487781E5B21100024331F /* EVCRegistrationViewController.swift in Sources */,
 				76BD90C21E5A8CDE000ADD90 /* AppDelegate.swift in Sources */,
 				767487591E5B21100024331F /* EVCFirstTimePreferencesViewController.swift in Sources */,
 				767487751E5B21100024331F /* EVCProfilePicView.swift in Sources */,
 				767487551E5B21100024331F /* EVCFeelingBlueTabViewController.swift in Sources */,
+				7608D8131E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift in Sources */,
+				7632E4A41E6926C700972F12 /* EVCTabBarController.swift in Sources */,
 				767487711E5B21100024331F /* EVCPartnersTableViewController.swift in Sources */,
 				7674875C1E5B21100024331F /* EVCFlingProfileCreatorViewController.swift in Sources */,
 				767487581E5B21100024331F /* EVCFinanceViewController.swift in Sources */,
@@ -783,16 +845,21 @@
 				7674875A1E5B21100024331F /* EVCFirstTimeSetupViewController.swift in Sources */,
 				767487501E5B21100024331F /* EVCCallHistoryTableViewController.swift in Sources */,
 				7674877D1E5B21100024331F /* EVCTextFieldTableViewCell.swift in Sources */,
+				76CF9AD11E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift in Sources */,
 				767487641E5B21100024331F /* EVCHealthViewController.swift in Sources */,
 				767487561E5B21100024331F /* EVCFeelingBlueViewController.swift in Sources */,
+				76EEA13E1E7F22050084CBD3 /* CoreDataExtensions.swift in Sources */,
 				767487831E5B21100024331F /* EVCVolunteeringTabViewController.swift in Sources */,
 				7674874F1E5B21100024331F /* EVCBankViewController.swift in Sources */,
 				767487511E5B21100024331F /* EVCChatroomCell.swift in Sources */,
+				7628FD4F1E80A1900053D04A /* MainViewController.swift in Sources */,
 				76BD90CA1E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld in Sources */,
 				767487631E5B21100024331F /* EVCHealthPortalTableViewController.swift in Sources */,
 				767487701E5B21100024331F /* EVCPartnerMatchViewController.swift in Sources */,
 				767487521E5B21100024331F /* EVCChatroomTableViewController.swift in Sources */,
+				769F39201E84957200E036CA /* AboutViewController.swift in Sources */,
 				767487531E5B21100024331F /* EVCCommonMethods.swift in Sources */,
+				76E8967C1EC7603100004BF8 /* EVCNewJobsViewController.swift in Sources */,
 				767487741E5B21100024331F /* EVCPrescriptionProviderTableViewController.swift in Sources */,
 				7674875D1E5B21100024331F /* EVCFlingProfileViewController.swift in Sources */,
 				767487791E5B21100024331F /* EVCResourceLinksTableViewController.swift in Sources */,
@@ -802,6 +869,7 @@
 				767487681E5B21100024331F /* EVCJobsFilter.swift in Sources */,
 				767487571E5B21100024331F /* EVCFinanceHomeViewController.swift in Sources */,
 				767487811E5B21100024331F /* EVCViewController.swift in Sources */,
+				7628FD591E80C4E70053D04A /* RegistrationScreenNameViewController.swift in Sources */,
 				7674876B1E5B21100024331F /* EVCLabelTableViewCell.swift in Sources */,
 				7674875B1E5B21100024331F /* EVCFlingMessagingViewController.swift in Sources */,
 				7674876E1E5B21100024331F /* EVCMenuViewController.swift in Sources */,
@@ -827,7 +895,6 @@
 				7674870F1E5AA0520024331F /* VervePreferences.swift in Sources */,
 				767486F61E5AA0520024331F /* FXFormTextCell.swift in Sources */,
 				7649B5C11E5E55B0001FBCDF /* SwiftyJSONExtension.swift in Sources */,
-				767486EA1E5AA0520024331F /* BankDatabase.swift in Sources */,
 				767487021E5AA0520024331F /* Post.swift in Sources */,
 				7674870E1E5AA0520024331F /* VerveMessage.swift in Sources */,
 				767486FD1E5AA0520024331F /* HobbiesMatchObject.swift in Sources */,
@@ -837,21 +904,20 @@
 				767486F51E5AA0520024331F /* FXFormScreenNameCell.swift in Sources */,
 				767487061E5AA0520024331F /* RegisterForm2.swift in Sources */,
 				7674870A1E5AA0520024331F /* Stack.swift in Sources */,
+				7637EFA01E6C75CF00C5BC51 /* PrescripProviderInfo.swift in Sources */,
 				767487071E5AA0520024331F /* RegisterForm3.swift in Sources */,
 				767486F91E5AA0520024331F /* GroupCreationForm.swift in Sources */,
-				767487031E5AA0520024331F /* PrescripProviderInfo.swift in Sources */,
 				767486ED1E5AA0520024331F /* DLAVAlertView+TextFieldOptions.swift in Sources */,
 				767487041E5AA0520024331F /* Queue.swift in Sources */,
 				767486EB1E5AA0520024331F /* BankInfo.swift in Sources */,
 				767486F01E5AA0520024331F /* EVCModalLargeEditor.swift in Sources */,
 				767486F21E5AA0520024331F /* EVCUserInviteViewController.swift in Sources */,
 				767487881E5BE26E0024331F /* BoolExtension.swift in Sources */,
+				7637EF9F1E6C75CF00C5BC51 /* HealthInfo.swift in Sources */,
 				767486EC1E5AA0520024331F /* Constants.swift in Sources */,
 				7674870C1E5AA0520024331F /* VerveBankObject.swift in Sources */,
 				767486FE1E5AA0520024331F /* HobbiesPreferences.swift in Sources */,
 				7652C7DB1E6344B30028B693 /* Extensions.swift in Sources */,
-				767486FC1E5AA0520024331F /* HealthInfo.swift in Sources */,
-				767486FB1E5AA0520024331F /* HealthDatabase.swift in Sources */,
 				767486F31E5AA0520024331F /* EVCUserSearchViewViewController.swift in Sources */,
 				767487101E5AA0520024331F /* VerveRelationshipPrefs.swift in Sources */,
 			);
@@ -984,11 +1050,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 38MW53VVGD;
 				INFOPLIST_FILE = MyDailyBeat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.verve.MyDailyBeat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -999,11 +1067,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 38MW53VVGD;
 				INFOPLIST_FILE = MyDailyBeat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.verve.MyDailyBeat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1025,6 +1095,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.verve.API;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "API/CommonCrypto/**";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1049,6 +1120,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.verve.API;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "API/CommonCrypto/**";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

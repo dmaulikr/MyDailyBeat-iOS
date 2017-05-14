@@ -10,7 +10,7 @@ import Foundation
 public class MessageChatroom: NSObject, NSCopying {
     public var chatroomID: Int = 0
     public var screenNames = [String]()
-    public var messages = [String]()
+    public var messages = [VerveMessage]()
 
 
     public func copy(with zone: NSZone?) -> Any {

@@ -10,18 +10,15 @@ import UIKit
 import Toast_Swift
 import API
 import DLAlertView
-class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var months = [String]()
-    var years = [String]()
+class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var mTableView: UITableView!
     var name: String = ""
     var email: String = ""
     var mobile: String = ""
     var zipcode: String = ""
-    var month: String = ""
-    var year: Int = 0
-    var picker: UIPickerView!
+    var picker: UIDatePicker!
+    var dob = Date()
     var imgPicker: UIImagePickerController!
 
 
@@ -38,34 +35,27 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         self.name = RestAPI.getInstance().getCurrentUser().name
         self.email = RestAPI.getInstance().getCurrentUser().email
         self.mobile = RestAPI.getInstance().getCurrentUser().mobile
-        self.month = RestAPI.getInstance().getCurrentUser().birth_month
-        self.year = RestAPI.getInstance().getCurrentUser().birth_year
         self.zipcode = RestAPI.getInstance().getCurrentUser().zipcode
+        self.dob = RestAPI.getInstance().getCurrentUser().dob
         self.imgPicker = UIImagePickerController()
         self.imgPicker.delegate = self
-        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        years = [String]()
-        self.picker = UIPickerView()
-        self.picker.dataSource = self
-        self.picker.delegate = self
-        var i = Calendar.current.component(.year, from: Date())
-        while i >= 1900 {
-            years.append("\(i)")
-            i -= 1
-        }
+        self.picker = UIDatePicker()
+        self.picker.date = self.dob
+        self.picker.minimumDate = Date(timeInterval: START_INTERVAL, since: Calendar.current.startOfDay(for: Date()))
+        self.picker.maximumDate = Date(timeInterval: END_INTERVAL, since: Calendar.current.startOfDay(for: Date()))
     }
-
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var img: UIImage? = (info[UIImagePickerControllerOriginalImage] as? UIImage)
         img = UIImage(cgImage: (img?.cgImage)!, scale: (img?.scale)!, orientation: .up)
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            let imgData: Data? = UIImagePNGRepresentation(img!)
-            let fileName: String = ASSET_FILENAME
+            let imgData: Data? = UIImageJPEGRepresentation(img!, 0.1)
+            let url = info[UIImagePickerControllerReferenceURL] as? NSURL
+            let fileName: String = url?.lastPathComponent ?? ASSET_FILENAME
             let success: Bool = RestAPI.getInstance().uploadProfilePicture(imgData!, withName: fileName)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -79,23 +69,6 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
             })
         })
         self.dismiss(animated: true, completion: { _ in })
-    }
-
-    func loadProfilePicture() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
-            let imageURL: URL? = RestAPI.getInstance().retrieveProfilePicture()
-            if imageURL == nil {
-                return
-            }
-            let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
-            DispatchQueue.main.async(execute: {() -> Void in
-                    // Update the UI
-                let profilePic = UIImage(data: imageData!)
-                let profile = EVCProfilePicView()
-                self.navigationController?.navigationBar.addSubview(profile)
-            })
-        })
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -166,8 +139,7 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
                     dobAlert?.show(completion: { (alert, buttonIndex) in
                         switch buttonIndex {
                         case 1:
-                            self.month = self.pickerView(self.picker, titleForRow: self.picker.selectedRow(inComponent: 0), forComponent: 0)!
-                            self.year = Int(self.years[self.picker.selectedRow(inComponent: 1)])!
+                            self.dob = self.picker.date
                         default:
                             break
                         }
@@ -197,18 +169,17 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         }
         else {
                 //save
-            let current: VerveUser? = RestAPI.getInstance().getCurrentUser()
-            current?.name = self.name
-            current?.email = self.email
-            current?.mobile = self.mobile
-            current?.birth_month = self.month
-            current?.birth_year = self.year
-            current?.zipcode = self.zipcode
+            let current: VerveUser = RestAPI.getInstance().getCurrentUser()
+            current.name = self.name
+            current.email = self.email
+            current.mobile = self.mobile
+            current.dob = self.dob
+            current.zipcode = self.zipcode
             DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
-                let result: Bool = RestAPI.getInstance().edit(current!)
+                let result: Bool = RestAPI.getInstance().edit(current)
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.hideToastActivity()
                     if result {
@@ -274,32 +245,6 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         }
 
         return cell!
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            return 12
-        }
-        else {
-            return years.count
-        }
-    }
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
-            return months[row]
-        }
-        else {
-            return years[row]
-        }
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // do nothing really
     }
     
 }

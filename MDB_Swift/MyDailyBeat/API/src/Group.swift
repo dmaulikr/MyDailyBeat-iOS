@@ -10,23 +10,19 @@ import Foundation
 import SwiftyJSON
 public class Group: NSObject, NSCopying {
     public var groupName: String = ""
-    public var adminName: String = ""
+    public var adminID: Int = 0
     public var groupID: Int = 0
     public var posts = [Post]()
     public var hobbies = [Bool]()
-    public var blobKey: String = ""
-    public var servingURL: String = ""
 
 
     public func copy(with zone: NSZone?) -> Any {
         let copy = Group()
         copy.groupName = self.groupName.copy() as! String
-        copy.adminName = self.adminName.copy() as! String
+        copy.adminID = self.adminID
         for post in self.posts {
             copy.posts.append(post.copy() as! Post)
         }
-        copy.blobKey = self.blobKey.copy() as! String
-        copy.servingURL = self.servingURL.copy() as! String
         copy.groupID = self.groupID
         for hobby in self.hobbies {
             copy.hobbies.append(hobby)
@@ -37,9 +33,7 @@ public class Group: NSObject, NSCopying {
     class func fromJSON(_ item: JSON) -> Group {
         let g = Group()
         g.groupName = item["groupName"].stringValue
-        g.adminName = item["adminScreenName"].stringValue
-        g.blobKey = item["blobKey"].stringValue
-        g.servingURL = item["servingURL"].stringValue
+        g.adminID = item["adminID"].intValue
         g.groupID = item["id"].intValue
         let postJSON = item["posts"].arrayValue
         g.posts = []

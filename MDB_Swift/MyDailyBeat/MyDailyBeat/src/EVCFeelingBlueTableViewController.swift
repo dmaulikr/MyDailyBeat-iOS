@@ -21,21 +21,18 @@ class EVCFeelingBlueTableViewController: UITableViewController {
         self.loadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func loadData() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
             self.peeps = self.search.getUsersForFeelingBlue()
             var i = 0
             while i < self.peeps.count {
-                var user: VerveUser? = self.peeps[i]
+                let user: VerveUser? = self.peeps[i]
                 if (user?.screenName == RestAPI.getInstance().getCurrentUser().screenName) {
                     self.peeps.remove(at: i)
                 }
@@ -67,7 +64,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "CellIdentifier")
         }
-        var user: VerveUser? = self.peeps[indexPath.row]
+        let user: VerveUser? = self.peeps[indexPath.row]
         cell?.textLabel?.text = user?.screenName
         return cell!
     }
@@ -79,13 +76,13 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func makeCall(_ index: Int) {
-        var dialstring: String = self.peeps[index].mobile
+        let dialstring: String = self.peeps[index].mobile
         self.makeCall2(dialstring)
     }
 
     func makeCall2(_ num: String) {
-        var dialstring: String = "tel:\(num)"
-        var url = URL(string: dialstring)
+        let dialstring: String = "tel:\(num)"
+        let url = URL(string: dialstring)
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: [:], completionHandler: {(_ success: Bool) -> Void in
                 if success {

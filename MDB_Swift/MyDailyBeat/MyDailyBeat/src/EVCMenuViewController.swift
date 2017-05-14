@@ -40,8 +40,8 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.sideMenuViewController.contentViewController.view.makeToastActivity(.center)
             })
@@ -52,6 +52,16 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.layoutIfNeeded()
             })
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCFlingViewController {
+            let mode = sender as? Int
+            dest.mode = REL_MODE(rawValue: mode!)!
+        } else if let dest = segue.destination as? EVCGroupViewController {
+            dest.group = sender as! Group
+            dest.parentController = self.parentController
+        }
     }
 // MARK: -
 // MARK: UITableView Delegate
@@ -76,9 +86,8 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 else {
                         //add group selection here
-//                    var g: Group? = groups[indexPath.row]
-//                    var controller = EVCGroupViewController(g, andParent: self.parentController)
-//                    self.sideMenuViewController.setContentView(UINavigationController(rootViewController: controller), animated: true)
+                    var g: Group = groups[indexPath.row]
+                    self.performSegue(withIdentifier: "GroupSegue", sender: g)
                 }
             case 1:
                 switch indexPath.row {
@@ -167,7 +176,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 && ((options[indexPath.row] as? String) == "Reach Out ...\nI'm Feeling Blue") {
+        if indexPath.section == 1 && (options[indexPath.row] == "Reach Out ...\nI'm Feeling Blue") {
             return 51
         }
         return 42
@@ -191,7 +200,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellIdentifier: String = "Cell"
         var cell = EVCMenuTableViewCell(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(320), height: CGFloat(42)), andTag: cellIdentifier)
-        if indexPath.section == 1 && ((options[indexPath.row] as? String) == "Reach Out ...\nI'm Feeling Blue") {
+        if indexPath.section == 1 && (options[indexPath.row] == "Reach Out ...\nI'm Feeling Blue") {
             cell = EVCMenuTableViewCell(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(320), height: CGFloat(70)), andTag: "feelingBlue")
         }
         cell.backgroundColor = UIColor.clear
@@ -215,8 +224,8 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 }
                 else {
                     cell.lbl.text = (groups[indexPath.row] as AnyObject).groupName
-                    var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-                    queue.async(execute: {() -> Void in
+                    
+                    DispatchQueue.global().async(execute: {() -> Void in
                         var imageURL: URL? = RestAPI.getInstance().retrieveGroupPicture(for: self.groups[indexPath.row])
                         if imageURL == nil {
                             DispatchQueue.main.async(execute: {() -> Void in

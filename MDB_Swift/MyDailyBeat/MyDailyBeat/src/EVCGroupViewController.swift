@@ -38,9 +38,9 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
             var written = Post()
             written.postText = postText
             written.dateTimeMillis = millis
-            written.userScreenName = RestAPI.getInstance().getCurrentUser().screenName
-            var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-            queue.async(execute: {() -> Void in
+            written.userid = RestAPI.getInstance().getCurrentUser().id
+            
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
@@ -80,8 +80,8 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
     }
 
     func deletePost(_ p: Post) {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -108,8 +108,8 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
     }
 
     func refreshGroupData() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
                 self.group.posts = RestAPI.getInstance().getPostsFor(self.group)
@@ -141,7 +141,7 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
         self.groupBar.setItems(items, animated: true)
         self.title = self.group.groupName
         
-        if (RestAPI.getInstance().getCurrentUser().screenName == self.group.adminName) {
+        if (RestAPI.getInstance().getCurrentUser().id == self.group.adminID) {
             self.settingsButton.isEnabled = true
         }
         else {
@@ -159,8 +159,8 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
     }
 
     func loadPicture() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -182,8 +182,8 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
         for v: UIView in viewsToRemove {
             v.removeFromSuperview()
         }
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -210,18 +210,18 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
     func createView(for inputPost: Post) -> UIView? {
         var postView: UIView?
         postView?.backgroundColor = UIColor.white
-        if inputPost.blobKey != nil {
-            var post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(400)), andPost: inputPost, with: EVCPostType.hasPicture, andParent: self)
-            postView = UIView(frame: CGRect(x: CGFloat(10), y: CGFloat(max_post_height), width: CGFloat(300), height: CGFloat(400)))
-            postView?.addSubview(post)
-            max_post_height += 430
-        }
-        else {
-            var post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(178)), andPost: inputPost, with: EVCPostType.doesNotHavePicture, andParent: self)
-            postView = UIView(frame: CGRect(x: CGFloat(10), y: CGFloat(max_post_height), width: CGFloat(300), height: CGFloat(178)))
-            postView?.addSubview(post)
-            max_post_height += 208
-        }
+//        if inputPost.blobKey != nil {
+//            var post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(400)), andPost: inputPost, with: EVCPostType.hasPicture, andParent: self)
+//            postView = UIView(frame: CGRect(x: CGFloat(10), y: CGFloat(max_post_height), width: CGFloat(300), height: CGFloat(400)))
+//            postView?.addSubview(post)
+//            max_post_height += 430
+//        }
+//        else {
+//            var post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(178)), andPost: inputPost, with: EVCPostType.doesNotHavePicture, andParent: self)
+//            postView = UIView(frame: CGRect(x: CGFloat(10), y: CGFloat(max_post_height), width: CGFloat(300), height: CGFloat(178)))
+//            postView?.addSubview(post)
+//            max_post_height += 208
+//        }
         // drop shadow
         postView?.layer.shadowColor = UIColor.black.cgColor
         postView?.layer.shadowOpacity = 0.8

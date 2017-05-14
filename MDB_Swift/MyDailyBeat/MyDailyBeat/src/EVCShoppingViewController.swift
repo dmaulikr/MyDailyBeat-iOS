@@ -7,7 +7,7 @@
 //  Copyright (c) 2015 eVerveCorp. All rights reserved.
 //
 import UIKit
-class EVCShoppingViewController: UITabBarController, UITabBarControllerDelegate {
+class EVCShoppingViewController: EVCTabBarController, UITabBarControllerDelegate {
 
 
     override func viewDidLoad() {
@@ -16,9 +16,6 @@ class EVCShoppingViewController: UITabBarController, UITabBarControllerDelegate 
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
 }

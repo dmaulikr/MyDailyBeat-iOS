@@ -12,16 +12,16 @@ public class GroupPrefs: NSObject, FXForm {
     public var groupPicture: UIImage!
     public var hobbies = [Bool]()
 
-    public init(servingURL: String) {
+    public init(servingURL: String = "") {
         super.init()
-        self.loadPicture(withServingURL: servingURL)
+        //self.loadPicture(withServingURL: servingURL)
     
     }
 
 
     func loadPicture(withServingURL servingURL: String) {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             let imageURL = URL(string: servingURL)
             let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
             DispatchQueue.main.async(execute: {() -> Void in

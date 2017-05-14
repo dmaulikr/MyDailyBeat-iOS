@@ -29,10 +29,7 @@ class EVCJobsDetailsViewController: UIViewController {
         self.urlTextView.text = self.jobEntry["url"].stringValue
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     
 }

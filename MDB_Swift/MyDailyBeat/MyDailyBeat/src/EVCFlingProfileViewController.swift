@@ -26,17 +26,17 @@ class EVCFlingProfileViewController: UIViewController {
     var mode: REL_MODE = .friends_MODE
 
     @IBAction func fav(_ sender: Any) {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
             var favs: [FlingProfile]? = nil
             if self.mode == .friends_MODE {
-                favs = RestAPI.getInstance().getFriendsFor(RestAPI.getInstance().getCurrentUser())
+                favs = RestAPI.getInstance().getFriends()
             }
             else {
-                favs = RestAPI.getInstance().getFlingFavorites(for: RestAPI.getInstance().getCurrentUser())
+                favs = RestAPI.getInstance().getFlingFavorites()
             }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -54,10 +54,10 @@ class EVCFlingProfileViewController: UIViewController {
                 } else {
                     self.addFavsBtn.setTitle("Remove Favorite", for: .normal)
                     if self.mode == .friends_MODE {
-                        _ = RestAPI.getInstance().add(self.currentViewedUser, toFriendsOf: RestAPI.getInstance().getCurrentUser())
+                        _ = RestAPI.getInstance().addToFriends(self.currentViewedUser)
                     }
                     else {
-                        _ = RestAPI.getInstance().add(self.currentViewedUser, toFlingFavoritesOf: RestAPI.getInstance().getCurrentUser())
+                        _ = RestAPI.getInstance().addToFlingFavorites(self.currentViewedUser)
                     }
                 }
             })
@@ -65,12 +65,12 @@ class EVCFlingProfileViewController: UIViewController {
     }
 
     @IBAction func message(_ sender: Any) {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var chatroom: MessageChatroom? = RestAPI.getInstance().createChatroomForUsers(withScreenName: RestAPI.getInstance().getCurrentUser().screenName, andScreenName: self.currentViewedUser.screenName)
+            var chatroom: MessageChatroom? = RestAPI.getInstance().createChatroomForUsers(withScreenName: self.currentViewedUser.screenName)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
 //                var message = EVCFlingMessagingViewController(chatroom)
@@ -108,8 +108,8 @@ class EVCFlingProfileViewController: UIViewController {
     }
 
     func loadPicture() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             var imageURL: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: self.currentViewedUser.screenName)
             var imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
             DispatchQueue.main.async(execute: {() -> Void in
@@ -120,8 +120,8 @@ class EVCFlingProfileViewController: UIViewController {
     }
 
     func loadProfile() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             let prof = RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)
             DispatchQueue.main.async(execute: {() -> Void in
                     // Update the UI
@@ -138,14 +138,14 @@ class EVCFlingProfileViewController: UIViewController {
     }
 
     func retrievePrefs() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            self.prefs = RestAPI.getInstance().getUserPreferences(for: RestAPI.getInstance().getCurrentUser())
-            self.matching = RestAPI.getInstance().getMatchingPreferences(for: RestAPI.getInstance().getCurrentUser())
-            var favs = [Any](arrayLiteral: RestAPI.getInstance().getFlingFavorites(for: RestAPI.getInstance().getCurrentUser()))
+            self.prefs = RestAPI.getInstance().getUserPreferences()
+            self.matching = RestAPI.getInstance().getMatchingPreferences()
+            var favs = RestAPI.getInstance().getFlingFavorites()
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if (favs as NSArray).index(of: RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)) != NSNotFound {

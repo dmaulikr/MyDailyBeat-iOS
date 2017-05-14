@@ -47,8 +47,8 @@ public class EVCUserInviteViewController: UIViewController, UITextViewDelegate {
     }
 
     func sendInvite() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
                 

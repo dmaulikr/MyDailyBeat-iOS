@@ -23,8 +23,8 @@ class EVCChatroomCell: UITableViewCell {
             let seconds: String = chatroom.screenNames[1]
             let thirds: String = chatroom.screenNames[2]
             self.chatroomNameLbl.text = "\(firsts), \(seconds), and \((chatroom.screenNames.count - 2)) others"
-            let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-            queue.async(execute: {() -> Void in
+            
+            DispatchQueue.global().async(execute: {() -> Void in
                 let imageURL: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: firsts)
                 let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
                 let imageURL2: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: seconds)
@@ -43,8 +43,8 @@ class EVCChatroomCell: UITableViewCell {
             let firsts: String = chatroom.screenNames[0]
             let seconds: String = chatroom.screenNames[1]
             self.chatroomNameLbl.text = "\(firsts) and \(seconds)"
-            let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-            queue.async(execute: {() -> Void in
+            
+            DispatchQueue.global().async(execute: {() -> Void in
                 let imageURL: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: firsts)
                 let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
                 let imageURL2: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: seconds)

@@ -33,19 +33,17 @@ class EVCShoppingSearchViewController: UIViewController, UISearchBarDelegate, UI
         self.loadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func loadData() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var dic = RestAPI.getInstance().searchShoppingURLS(withQueryString: "", with: .ascending)
-            var dic2 = RestAPI.getInstance().getShoppingFavorites(for: RestAPI.getInstance().getCurrentUser(), with: .ascending)
+            //var dic = RestAPI.getInstance().searchShoppingURLS(withQueryString: "", with: .ascending)
+            var dic = JSON([String]())
+            var dic2 = RestAPI.getInstance().getShoppingFavorites()
             var arr = dic2["items"].arrayValue
             self.searchResults = dic["items"].arrayValue
             for i in 0..<arr.count {
@@ -96,12 +94,12 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func add(toFavs url: String) {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            RestAPI.getInstance().addShoppingFavoriteURL(url, for: RestAPI.getInstance().getCurrentUser())
+            RestAPI.getInstance().addShoppingFavoriteURL(url)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.loadData()
@@ -117,13 +115,14 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func updateSearch(_ text: String) {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var dic = RestAPI.getInstance().searchShoppingURLS(withQueryString: text, with: .ascending)
-            var dic2 = RestAPI.getInstance().getShoppingFavorites(for: RestAPI.getInstance().getCurrentUser(), with: .ascending)
+            //var dic = RestAPI.getInstance().searchShoppingURLS(withQueryString: text, with: .ascending)
+            var dic = JSON([String]())
+            var dic2 = RestAPI.getInstance().getShoppingFavorites()
             var arr = dic2["items"].arrayValue
             self.searchResults = dic["items"].arrayValue
             for i in 0..<arr.count {

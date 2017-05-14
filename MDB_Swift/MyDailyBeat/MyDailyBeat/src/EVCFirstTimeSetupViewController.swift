@@ -16,14 +16,14 @@ class EVCFirstTimeSetupViewController: UIViewController {
 
     @IBAction func next(_ sender: Any) {
         var prefs = VervePreferences()
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            prefs.userPreferences = self.api.getUserPreferences(for: self.api.getCurrentUser())
-            prefs.matchingPreferences = self.api.getMatchingPreferences(for: self.api.getCurrentUser())
-            prefs.hobbiesPreferences = self.api.getHobbiesPreferencesForUser(withScreenName: self.api.getCurrentUser().screenName)
+            prefs.userPreferences = self.api.getUserPreferences()
+            prefs.matchingPreferences = self.api.getMatchingPreferences()
+            prefs.hobbiesPreferences = self.api.getHobbiesPreferencesForUser()
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 var prefsView = EVCFirstTimePreferencesViewController(nibName: "EVCFirstTimePreferencesViewController", bundle: nil)
@@ -40,8 +40,5 @@ class EVCFirstTimeSetupViewController: UIViewController {
         self.message.text = "Welcome to MyDailyBeat! Before you begin, please set the following preferences."
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 }

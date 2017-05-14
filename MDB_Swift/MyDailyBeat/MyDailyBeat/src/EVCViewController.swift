@@ -28,44 +28,44 @@ class EVCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.mTableView.separatorStyle = .none
         api = RestAPI.getInstance()
         let name: String = api.getCurrentUser().name
-        var fields: [Any] = name.components(separatedBy: " ")
+        var fields = name.components(separatedBy: " ")
         self.navigationItem.title = "Welcome \(fields[0])!"
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-//        var db = BankDatabase.database
-//        var arr: [Any] = db.bankInfos()
-//        if arr.count == 0 {
-//            var queue = DispatchQueue(label: APP_ID_C_STRING)
-//            queue.async(execute: {() -> Void in
-//                DispatchQueue.main.async(execute: {() -> Void in
-//                    self.view.makeToast("Fine Tuning Your Experience...", duration: 3.5, position: .bottom)
-//                    self.view.makeToastActivity(ToastPosition.center)
-//                })
-//                    // initialize db
-//                var temp: [Any] = TOP_TEN_BANKS
-//                for i in 0..<temp.count {
-//                    var tempString: String = temp[i]
-//                    if RestAPI.getInstance().doesAppExist(withTerm: tempString, andCountry: "US") {
-//                        var bank: VerveBankObject? = RestAPI.getInstance().getBankInfoForBank(withName: tempString, inCountry: "US")
-//                        var info = BankInfo(bank?.uniqueID, name: bank?.appName, appURL: bank?.appStoreListing, iconURL: bank?.appIconURL)
-//                        db.insert(intoDatabase: info)
-//                    }
-//                }
-//                DispatchQueue.main.async(execute: {() -> Void in
-//                    self.view.hideToastActivity()
-//                    UserDefaults.standard.set(false, forKey: "LOAD_BANK_IMAGES")
-//                    self.view.makeToast("Fine Tuning Complete", duration: 3.5, position: .bottom)
-//                })
-//            })
-//        }
-        if UserDefaults.standard.bool(forKey: "FirstTimeLogin") {
-            let first = EVCFirstTimeSetupViewController(nibName: "EVCFirstTimeSetupViewController", bundle: nil)
-            self.navigationController?.pushViewController(first, animated: true)
+        var arr = DataManager.getBanks()
+        if arr.count == 0 {
+            DispatchQueue.global().async(execute: {() -> Void in
+                DispatchQueue.main.async(execute: {() -> Void in
+                    self.view.makeToast("Fine Tuning Your Experience...", duration: 3.5, position: .bottom)
+                    self.view.makeToastActivity(ToastPosition.center)
+                })
+                    // initialize db
+                var temp = TOP_TEN_BANKS
+                for i in 0..<temp.count {
+                    var tempString: String = temp[i]
+                    if RestAPI.getInstance().doesAppExist(withTerm: tempString, andCountry: "US") {
+                        let bank: VerveBankObject = RestAPI.getInstance().getBankInfoForBank(withName: tempString, inCountry: "US")
+                        let info = BankInfo(uniqueId: bank.uniqueID, name: bank.appName, appURL: bank.appStoreListing, iconURL: bank.appIconURL)
+                        DataManager.insertBank(info)
+                    }
+                }
+                DispatchQueue.main.async(execute: {() -> Void in
+                    self.view.hideToastActivity()
+                    UserDefaults.standard.set(false, forKey: "LOAD_BANK_IMAGES")
+                    self.view.makeToast("Fine Tuning Complete", duration: 3.5, position: .bottom)
+                })
+            })
         }
+//        if UserDefaults.standard.bool(forKey: "FirstTimeLogin") {
+//            self.performSegue(withIdentifier: "FirstTimeSetupSegue", sender: self)
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let dest = segue.destination as? EVCFlingViewController {
+            let mode = sender as? Int
+            dest.mode = REL_MODE(rawValue: mode!)!
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

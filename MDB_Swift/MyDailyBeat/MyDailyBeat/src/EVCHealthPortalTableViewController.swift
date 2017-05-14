@@ -14,13 +14,10 @@ class EVCHealthPortalTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.healthPortals = HealthDatabase.database.healthPortals()
+        self.healthPortals = DataManager.getHealthPortals()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 // MARK: - Table view data source
 
 override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,8 +54,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 let text: String = alert.textFields![0].text!
                 let portal = HealthInfo(uniqueId: 0, url: text, logoURL: "")
-                HealthDatabase.database.insert(intoDatabase: portal, orPrescriptionProvider: nil)
-                self.healthPortals = HealthDatabase.database.healthPortals()
+               DataManager.insertHealthPortal(portal)
+                self.healthPortals = DataManager.getHealthPortals()
                 self.tableView.reloadData()
             })
             alert.addAction(cancel)

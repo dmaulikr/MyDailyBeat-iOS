@@ -19,9 +19,9 @@ public class VerveUserPreferences: NSObject, FXForm {
     public var drinker: Int = 0
     public var isSmoker: Bool = false
     public var isVeteran: Bool = false
-    public var isFeelingBlue: Bool = false
     public var otherEthnicity: String = ""
     public var otherBeliefs: String = ""
+    public var willingToConnectAnonymously: Bool = false
 
     func toJSON() -> JSON {
         var dic = [String: JSON]()
@@ -34,9 +34,9 @@ public class VerveUserPreferences: NSObject, FXForm {
         dic["contact"] = JSON(self.contact)
         dic["otherEthnicity"] = JSON(self.otherEthnicity)
         dic["otherBeliefs"] = JSON(self.otherBeliefs)
-        dic["smoker"] = JSON(self.isSmoker ? 1 : 0)
-        dic["veteran"] = JSON(self.isVeteran ? 1  : 0)
-        dic["feelingBlue"] = JSON(self.isFeelingBlue ? 1 : 0)
+        dic["smoker"] = JSON(self.isSmoker)
+        dic["veteran"] = JSON(self.isVeteran)
+        dic["connectAnonymously"] = JSON(self.willingToConnectAnonymously)
         return JSON(dic)
     }
 

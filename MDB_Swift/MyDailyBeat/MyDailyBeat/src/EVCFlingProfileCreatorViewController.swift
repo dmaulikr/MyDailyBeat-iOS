@@ -16,14 +16,14 @@ class EVCFlingProfileCreatorViewController: UIViewController {
 
     @IBAction func save(_ sender: Any) {
         let about: String = self.aboutMeView.text
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            let prefs: VerveUserPreferences? = RestAPI.getInstance().getUserPreferences(for: RestAPI.getInstance().getCurrentUser())
+            let prefs: VerveUserPreferences? = RestAPI.getInstance().getUserPreferences()
             let age: Int? = prefs?.age
-            _ = RestAPI.getInstance().saveFlingProfile(for: RestAPI.getInstance().getCurrentUser(), withAge: age!, andDescription: about)
+            _ = RestAPI.getInstance().saveFlingProfile(for: RestAPI.getInstance().getCurrentUser(), andDescription: about)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
 //                if success {

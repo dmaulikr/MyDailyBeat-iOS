@@ -27,7 +27,7 @@ public class BankInfo: NSObject, NSCoding {
     }
 
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(Int(self.uniqueId), forKey: "myBankUniqueID")
+        aCoder.encode(self.uniqueId, forKey: "myBankUniqueID")
         aCoder.encode(self.appName, forKey: "myBankAppName")
         aCoder.encode(self.appURL, forKey: "myBankAppURL")
         aCoder.encode(self.iconURL, forKey: "myBankIconURL")
@@ -36,7 +36,7 @@ public class BankInfo: NSObject, NSCoding {
     required public init?(coder: NSCoder) {
         super.init()
         
-        self.uniqueId = Int(CInt((coder.decodeObject(forKey: "myBankUniqueID") as? NSNumber)!))
+        self.uniqueId = coder.decodeInteger(forKey: "myBankUniqueID")
         self.appName = (coder.decodeObject(forKey: "myBankAppName") as? String)!
         self.appURL = (coder.decodeObject(forKey: "myBankAppURL") as? String)!
         self.iconURL = (coder.decodeObject(forKey: "myBankIconURL") as? String)!

@@ -82,8 +82,8 @@ public class EVCUserSearchViewViewController: UIViewController, UISearchBarDeleg
     }
 
     func updateSearch(_ text: String) {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -163,8 +163,8 @@ public class EVCUserSearchViewViewController: UIViewController, UISearchBarDeleg
         if isFiltered {
             let user: VerveUser = self.data[indexPath.row]
             cell?.textLabel?.text = user.screenName
-            let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-            queue.async(execute: {() -> Void in
+            
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })

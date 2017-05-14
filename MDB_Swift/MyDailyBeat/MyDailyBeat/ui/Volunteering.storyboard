@@ -10,29 +10,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 1-->
+        <!--Volunteering-->
         <scene sceneID="RgI-GE-Vvz">
             <objects>
                 <viewController id="g6t-Jm-txk" customClass="EVCVolunteeringViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="p3t-Od-PD0"/>
-                        <viewControllerLayoutGuide type="bottom" id="X4h-f8-LhV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gBj-vv-pqp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TBb-jH-4k7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="0R6-s8-oxF"/>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Volunteering" image="search-icon-gray" id="0R6-s8-oxF"/>
                     <connections>
-                        <segue destination="xuF-fa-Sbg" kind="show" id="qWP-S9-iFs"/>
+                        <segue destination="xuF-fa-Sbg" kind="show" identifier="DetailsSegue" id="qWP-S9-iFs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWo-VT-Obt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-897" y="982"/>
+            <point key="canvasLocation" x="-898.39999999999998" y="981.85907046476768"/>
         </scene>
-        <!--Item-->
+        <!--Resource Links-->
         <scene sceneID="48X-1P-G8e">
             <objects>
                 <tableViewController id="Ucd-mA-oNf" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +41,7 @@
                             <outlet property="delegate" destination="Ucd-mA-oNf" id="zQM-Qe-aLi"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="Gwu-T6-JBi"/>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="star-icon-gray" selectedImage="star-icon-white" id="Gwu-T6-JBi"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyG-T3-JKq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biw-0F-tFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-900" y="1753"/>
+            <point key="canvasLocation" x="-910" y="1951"/>
         </scene>
         <!--Volunteering Tab View Controller-->
         <scene sceneID="wY3-3b-c2s">
@@ -194,4 +190,9 @@
             <point key="canvasLocation" x="-324" y="197"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="search-icon-gray" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
 </document>

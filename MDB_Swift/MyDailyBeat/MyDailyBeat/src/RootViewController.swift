@@ -17,10 +17,7 @@ class RootViewController: RESideMenu {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     override func awakeFromNib() {
         self.contentViewController = self.storyboard?.instantiateViewController(withIdentifier: "contentViewController")
@@ -42,6 +39,16 @@ class RootViewController: RESideMenu {
 }
 
 extension UIViewController {
+    func showModalViewController(_ vc: UIViewController, animated: Bool, completion: (() -> ())?) {
+        if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController {
+            outerNav.present(vc, animated: animated, completion: completion)
+        }
+    }
+    
+    func showAboutScreen() {
+        self.sideMenuViewController.contentViewController.performSegue(withIdentifier: "AboutSegue", sender: nil)
+    }
+    
     func performEmbeddedSegue(withIdentifier identifier: String, andSender sender: Any?) {
         if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController, let root = outerNav.viewControllers[0] as? RootNavController, let innerNav = root.embedded {
             self.sideMenuViewController.hideViewController()
@@ -55,5 +62,24 @@ extension UIViewController {
             self.sideMenuViewController.hideViewController()
             innerNav.popToRootViewController(animated: true)
         }
+    }
+    
+    func setNavTitle(to title: String) {
+        if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController {
+            outerNav.navigationItem.title = title
+        }
+    }
+    
+    func performRequestToNetwork(request: @escaping (() -> ()), andOnComplete: (() -> ())) {
+        let semaphore = DispatchSemaphore(value: 0)
+        self.view.makeToastActivity(.center)
+        DispatchQueue.global().async {
+            request()
+            semaphore.signal()
+        }
+        
+        semaphore.wait()
+        andOnComplete()
+        self.view.hideToastActivity()
     }
 }

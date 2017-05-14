@@ -8,17 +8,44 @@
 //
 import UIKit
 import DLAlertView
+import API
+import Toast_Swift
 class EVCFeelingBlueViewController: UITableViewController {
-
+    var search: EVCSearchEngine!
+    
+    var peeps: [VerveUser] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        search = EVCSearchEngine()
+        self.loadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func loadData() {
+        
+        DispatchQueue.global().async(execute: {() -> Void in
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.makeToastActivity(ToastPosition.center)
+            })
+            self.peeps = self.search.getUsersForFeelingBlue()
+            var i = 0
+            while i < self.peeps.count {
+                let user: VerveUser? = self.peeps[i]
+                if (user?.screenName == RestAPI.getInstance().getCurrentUser().screenName) {
+                    self.peeps.remove(at: i)
+                }
+                else {
+                    i += 1
+                }
+                
+            }
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.hideToastActivity()
+                self.tableView.reloadData()
+            })
+        })
     }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let TAG: String = "TAG"
@@ -59,16 +86,20 @@ class EVCFeelingBlueViewController: UITableViewController {
             case 1:
                 self.makeCall("1-800-273-8255", withAccessCode: "1")
             case 2:
-                let table = EVCFeelingBlueTableViewController(nibName: "EVCFeelingBlueTableViewController", bundle: nil)
-                self.navigationController?.pushViewController(table, animated: true)
+                let randomIndex = Int(arc4random_uniform(UInt32(self.peeps.count)))
+                let peep = peeps[randomIndex]
+                self.makeCall(peep.mobile, anonymous: true)
             default:
                 break
         }
 
     }
 
-    func makeCall(_ num: String) {
-        let dialstring: String = "tel:\(num)"
+    func makeCall(_ num: String, anonymous: Bool = false) {
+        var dialstring: String = "tel:\(num)"
+        if anonymous {
+            dialstring = "tel:*67\(num)"
+        }
         let url = URL(string: dialstring)
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: [:], completionHandler: {(_ success: Bool) -> Void in
@@ -85,9 +116,12 @@ class EVCFeelingBlueViewController: UITableViewController {
         }
     }
 
-    func makeCall(_ num: String, withAccessCode code: String) {
+    func makeCall(_ num: String, withAccessCode code: String?, anonymous: Bool = false) {
         var dialstring: String = "tel:\(num),,\(code)"
-        var url = URL(string: dialstring)
+        if anonymous {
+            dialstring = "tel:*67\(num),,\(code)"
+        }
+        let url = URL(string: dialstring)
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: [:], completionHandler: {(_ success: Bool) -> Void in
                 if success {
@@ -103,7 +137,7 @@ class EVCFeelingBlueViewController: UITableViewController {
         }
     }
 
-    func save(toCallHistoryNumber num: String, withAccessCode code: String) {
+    func save(toCallHistoryNumber num: String, withAccessCode code: String?) {
         if code == nil {
             if (num == "1-800-273-8255") {
                     // suicide

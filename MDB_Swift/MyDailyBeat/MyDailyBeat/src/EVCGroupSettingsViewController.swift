@@ -29,7 +29,7 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
         self.formController = FXFormController()
         self.formController.tableView = self.tableView
         self.formController.delegate = self
-        var prefs = GroupPrefs(servingURL: self.g.servingURL)
+        var prefs = GroupPrefs()
         prefs.hobbies = self.g.hobbies
         self.formController.form = prefs
         self.api = RestAPI.getInstance()
@@ -51,8 +51,8 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
                 self.view.makeToast("Cannot select more than 3 hobbies", duration: 3.5, position: .bottom)
                 return
             }
-            var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-            queue.async(execute: {() -> Void in
+            
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
@@ -78,14 +78,11 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
         self.tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func loadGroupPicture() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             var imageURL: URL? = RestAPI.getInstance().retrieveGroupPicture(for: self.g)
             if imageURL == nil {
                 return
@@ -101,8 +98,8 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
 
     func saveImage(_ cell: FXFormBaseCell) {
         var prefs: GroupPrefs? = self.formController.form as! GroupPrefs?
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -123,8 +120,8 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
     }
 
     func deleteGroup(_ cell: FXFormBaseCell) {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })

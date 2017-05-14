@@ -11,7 +11,7 @@ import CoreLocation
 import Toast_Swift
 import API
 import SwiftyJSON
-class EVCVolunteeringViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+class EVCVolunteeringViewController: UITableViewController, CLLocationManagerDelegate {
     var manager: CLLocationManager!
     var geocoder: CLGeocoder!
     var currentZip: String = ""
@@ -19,23 +19,27 @@ class EVCVolunteeringViewController: UIViewController, CLLocationManagerDelegate
     var currentPage: Int = 0
     var total: Int = 0
 
-    @IBOutlet var results: UITableView!
+
     var resultsDictionary = JSON([:])
     var currentSet = [JSON]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    private var numCells: Int {
+        get {
+            return Int(tableView.frame.size.height / CGFloat(44))
+        }
+    }
 
     func hasMore() -> Bool {
-        let pagecount: Int = Int(Double(total) / 10)
+        let pagecount: Int = Int(total / numCells)
         return (pagecount > currentPage)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.results.dataSource = self
-        self.results.delegate = self
         self.currentSet = [JSON]()
         currentZip = RestAPI.getInstance().getCurrentUser().zipcode
         currentPage = 1
@@ -44,8 +48,8 @@ class EVCVolunteeringViewController: UIViewController, CLLocationManagerDelegate
     }
 
     func run(_ query: String) {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -55,13 +59,14 @@ class EVCVolunteeringViewController: UIViewController, CLLocationManagerDelegate
             self.total = self.resultsDictionary["resultsSize"].intValue
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
-                self.results.reloadData()
+                self.tableView.reloadData()
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             })
         })
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var identifiter: String = "Cell"
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifiter: String = "Cell"
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: identifiter)
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: identifiter)
@@ -89,7 +94,7 @@ class EVCVolunteeringViewController: UIViewController, CLLocationManagerDelegate
         return cell!
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.hasMore() {
             return self.currentSet.count + 3
         }
@@ -98,11 +103,11 @@ class EVCVolunteeringViewController: UIViewController, CLLocationManagerDelegate
         }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row < self.currentSet.count {
-            var result = self.currentSet[indexPath.row]
-            // todo: insert segue
+            let opp = self.currentSet[indexPath.row]
+            self.performSegue(withIdentifier: "DetailsSegue", sender: opp)
         }
         else if indexPath.row == self.currentSet.count && self.hasMore() {
             currentPage += 1
@@ -114,5 +119,12 @@ class EVCVolunteeringViewController: UIViewController, CLLocationManagerDelegate
 
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let dest = segue.destination as? EVCVolunteeringDetailsViewController, let opp = sender as? JSON {
+            dest.opportunity = opp
+        }
+    }
     
 }

@@ -16,13 +16,10 @@ class EVCPrescriptionProviderTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.pharmacyProviders = HealthDatabase.database.prescripProviders()
+        self.pharmacyProviders = DataManager.getPrescriptionProviders()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 // MARK: - Table view data source
 
 override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,8 +54,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 var text: String = alert.textFields![0].text!
                 var prov = PrescripProviderInfo(uniqueId: 0, url: text, logoURL: "")
-                HealthDatabase.database.insert(intoDatabase: nil, orPrescriptionProvider: prov)
-                self.pharmacyProviders = HealthDatabase.database.prescripProviders()
+                DataManager.insertPrescriptionProvider(prov)
+                self.pharmacyProviders = DataManager.getPrescriptionProviders()
                 self.tableView.reloadData()
             })
             alert.addAction(cancel)

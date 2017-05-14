@@ -11,6 +11,7 @@ import QuartzCore
 import Toast_Swift
 import API
 import PhoneNumberKit
+
 class EVCProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var profilePicView: UIImageView!
     var profilePic: UIImage!
@@ -44,10 +45,7 @@ class EVCProfileViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.navigationBar.isTranslucent = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -55,21 +53,28 @@ class EVCProfileViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func refreshUserData() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
-                RestAPI.getInstance().refreshCurrentUserData()
-                self.view.hideToastActivity()
             })
+            RestAPI.getInstance().refreshCurrentUserData()
+            DispatchQueue.main.async {
+                self.view.hideToastActivity()
+            }
         })
     }
 
     func loadProfilePicture() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        DispatchQueue.global().async(execute: {() -> Void in
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.makeToastActivity(ToastPosition.center)
+            })
             let imageURL: URL? = RestAPI.getInstance().retrieveProfilePicture()
             if imageURL == nil {
+                DispatchQueue.main.async {
+                    self.view.hideToastActivity()
+                }
                 return
             }
             let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
@@ -78,23 +83,24 @@ class EVCProfileViewController: UIViewController, UITableViewDataSource, UITable
                 self.profilePic = UIImage(data: imageData!)
                 self.profilePic = EVCCommonMethods.image(with: self.profilePic, scaledTo: CGSize(width: CGFloat(100), height: CGFloat(100)))
                 self.profilePicView.image = self.profilePic
+                self.view.hideToastActivity()
             })
         })
     }
 
     func logout() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
-                _ = RestAPI.getInstance().logout()
-                self.view.hideToastActivity()
-                var login = EVCLoginViewController(nibName: "EVCLoginViewController_iPhone", bundle: nil)
-                self.sideMenuViewController.contentViewController.view.window?.rootViewController = UINavigationController(rootViewController: login)
-                UserDefaults.standard.removeObject(forKey: KEY_SCREENNAME)
-                UserDefaults.standard.removeObject(forKey: KEY_PASSWORD)
-                _ = self.sideMenuViewController.contentViewController.navigationController?.popToRootViewController(animated: true)
             })
+            _ = RestAPI.getInstance().logout()
+            UserDefaults.standard.removeObject(forKey: KEY_SCREENNAME)
+            UserDefaults.standard.removeObject(forKey: KEY_PASSWORD)
+            DispatchQueue.main.async {
+                self.view.hideToastActivity()
+                _ = self.sideMenuViewController.navigationController?.popToRootViewController(animated: true)
+            }
         })
     }
 
@@ -110,13 +116,16 @@ class EVCProfileViewController: UIViewController, UITableViewDataSource, UITable
                     self.performSegue(withIdentifier: "UpdateProfileSegue", sender: nil)
                 case 1:
                     self.sideMenuViewController.hideViewController()
-                    self.sideMenuViewController.contentViewController.performSegue(withIdentifier: "PrefsSegue", sender: nil)
+                    self.performEmbeddedSegue(withIdentifier: "PrefsSegue", andSender: self)
                 case 2:
                     var mailto: String = "mailto:legal@evervecorp.com?subject=\(RestAPI.getInstance().urlencode("Report a Violation"))"
                     print("Opening mailto")
                     UIApplication.shared.openURL(URL(string: mailto)!)
-                case 3:
+                case 4:
                     self.logout()
+                case 3:
+                    self.showAboutScreen()
+                    
                 default:
                     break
             }
@@ -132,14 +141,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return 5
-            case 1:
-                return 4
-            default:
-                return 1
-        }
+        return 5
 
     }
 
@@ -178,8 +180,9 @@ func numberOfSections(in tableView: UITableView) -> Int {
                     }
                 case 3:
                     cell?.textLabel?.text = "DOB"
-                    var dob: String = RestAPI.getInstance().getCurrentUser().birth_month
-                    cell?.detailTextLabel?.text = "\(dob) \(RestAPI.getInstance().getCurrentUser().birth_year)"
+                    let formatter = DateFormatter()
+                    formatter.setLocalizedDateFormatFromTemplate("EEEE, MMMM d, yyyy")
+                    cell?.detailTextLabel?.text = formatter.string(from: RestAPI.getInstance().getCurrentUser().dob)
                 case 4:
                     cell?.textLabel?.text = "Zip Code"
                     cell?.detailTextLabel?.text = RestAPI.getInstance().getCurrentUser().zipcode
@@ -197,8 +200,10 @@ func numberOfSections(in tableView: UITableView) -> Int {
             else if indexPath.row == 2 {
                 cell?.textLabel?.text = "Report Violations"
             }
-            else {
+            else if indexPath.row == 4 {
                 cell?.textLabel?.text = "Logout"
+            } else {
+                cell?.textLabel?.text = "About"
             }
         }
         return cell!

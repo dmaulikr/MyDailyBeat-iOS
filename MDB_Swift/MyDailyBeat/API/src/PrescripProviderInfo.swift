@@ -34,7 +34,7 @@ public class PrescripProviderInfo: NSObject, NSCoding {
     required public init?(coder: NSCoder) {
         super.init()
         
-        self.uniqueId = Int(CInt((coder.decodeObject(forKey: "myPrescripProviderUniqueID") as? NSNumber)!))
+        self.uniqueId = coder.decodeInteger(forKey: "myPrescripProviderUniqueID")
         self.url = (coder.decodeObject(forKey: "myPrescripProviderURL") as? String)!
         self.logoURL = (coder.decodeObject(forKey: "myPrescripProviderlogoURL") as? String)!
     

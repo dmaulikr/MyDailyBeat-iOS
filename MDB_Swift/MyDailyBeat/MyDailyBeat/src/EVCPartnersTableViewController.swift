@@ -10,28 +10,28 @@ import UIKit
 import Toast_Swift
 import API
 class EVCPartnersTableViewController: UITableViewController {
-    var favs = [Any]()
+    var favs = [FlingProfile]()
     var mode: REL_MODE = .friends_MODE
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.favs = [Any]()
+        self.favs = [FlingProfile]()
         self.mode = REL_MODE(rawValue: UserDefaults.standard.integer(forKey: "REL_MODE"))!
         self.retrievePartners()
     }
 
     func retrievePartners() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
             if self.mode == .friends_MODE {
-                self.favs = [Any](arrayLiteral: RestAPI.getInstance().getFriendsFor(RestAPI.getInstance().getCurrentUser()))
+                self.favs = RestAPI.getInstance().getFriends()
             }
             else {
-                self.favs = [Any](arrayLiteral: RestAPI.getInstance().getFlingFavorites(for: RestAPI.getInstance().getCurrentUser()))
+                self.favs = RestAPI.getInstance().getFlingFavorites()
             }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -40,10 +40,7 @@ class EVCPartnersTableViewController: UITableViewController {
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 // MARK: - Table view data source
 
 override func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,8 +65,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 
     func loadPicture(forUser screenName: String) -> UIImage {
         var img: UIImage?
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             let imageURL: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: screenName)
             let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
             DispatchQueue.main.async(execute: {() -> Void in

@@ -12,15 +12,21 @@ class EVCRegistrationMessageViewController: UIViewController {
 
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var nextButton: UIButton!
+    @IBOutlet var imageView: UIImageView!
     var message: String = ""
-    var key: Int = 0
+    var image: UIImage? = nil
+    var index = 0
+    var nextPage: (() -> ()) = {
+        // empty by default
+    }
 
     @IBAction func next(_ sender: Any) {
-        if self.key == 1 {
-            self.message1()
-        }
-        else {
-            self.message2()
+        self.nextPage()
+    }
+    
+    override var nibName: String? {
+        get {
+            return "RegistrationMessageViewController"
         }
     }
 
@@ -28,21 +34,11 @@ class EVCRegistrationMessageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         messageLabel.text = self.message
-        self.navigationController?.navigationBar.tintColor = UIColor(netHex: 0x0097a4)
+        if let nonNil = self.image {
+            self.imageView.image = nonNil
+        }
+        
     }
 
-    func message1() {
-//        var message2 = EVCRegistrationMessageViewController(coder: 2)
-//        self.navigationController?.pushViewController(message2, animated: true)
-    }
-
-    func message2() {
-//        let controller = EVCRegistrationViewController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 }

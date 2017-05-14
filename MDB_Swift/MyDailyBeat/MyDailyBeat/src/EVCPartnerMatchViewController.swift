@@ -10,13 +10,13 @@ import UIKit
 import Toast_Swift
 import API
 class EVCPartnerMatchViewController: UITableViewController {
-    var partners = [Any]()
+    var partners = [FlingProfile]()
     var mode: REL_MODE = .friends_MODE
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.partners = [Any]()
+        self.partners = [FlingProfile]()
         self.mode = REL_MODE(rawValue: Int(UserDefaults.standard.integer(forKey: "REL_MODE")))!
         let menuItem: UIBarButtonItem? = self.navigationItem.rightBarButtonItem
         if self.mode == .friends_MODE {
@@ -64,7 +64,7 @@ class EVCPartnerMatchViewController: UITableViewController {
             let email: String = alert.textFields![2].text!
             let mobile: String = alert.textFields![3].text!
             let queue = DispatchQueue.global()
-            queue.async(execute: {() -> Void in
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
@@ -72,8 +72,8 @@ class EVCPartnerMatchViewController: UITableViewController {
                     // search by Screen Name
                     let exists: Bool = RestAPI.getInstance().doesUserExist(withScreenName: screenName)
                     if exists {
-                        let other: VerveUser? = RestAPI.getInstance().getUserData(forUserWithScreenName: screenName)
-                        _ = RestAPI.getInstance().add(other!, toFriendsOf: RestAPI.getInstance().getCurrentUser())
+//                        let other: VerveUser? = RestAPI.getInstance().getUserData(for: screenName)
+                        //_ = RestAPI.getInstance().add(other!, toFriendsOf: RestAPI.getInstance().getCurrentUser())
                     }
                     else {
                         // a user with that screenName does not exist.
@@ -150,7 +150,7 @@ class EVCPartnerMatchViewController: UITableViewController {
             let name: String = alert.textFields![0].text!
             let email: String = alert.textFields![1].text!
             let queue = DispatchQueue.global()
-            queue.async(execute: {() -> Void in
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
@@ -175,7 +175,7 @@ class EVCPartnerMatchViewController: UITableViewController {
         }
         _ = UIAlertAction(title: "Yes", style: .default) { (action) in
             let queue = DispatchQueue.global()
-            queue.async(execute: {() -> Void in
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
@@ -194,13 +194,13 @@ class EVCPartnerMatchViewController: UITableViewController {
     }
 
     func retrievePartners() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
             if self.mode != .friends_MODE {
-                self.partners = [Any](arrayLiteral: RestAPI.getInstance().getFlingProfilesBased(onPrefsOf: RestAPI.getInstance().getCurrentUser()))
+                self.partners = RestAPI.getInstance().getFlingProfiles()
                 if self.partners.count >= 1 {
                     if ((self.partners[0] as? FlingProfile)?.screenName == RestAPI.getInstance().getCurrentUser().screenName) {
                         self.partners.remove(at: 0)
@@ -208,11 +208,8 @@ class EVCPartnerMatchViewController: UITableViewController {
                 }
             }
             else {
-                var hobbMatches = RestAPI.getInstance().getHobbiesMatchesForUser(withScreenName: RestAPI.getInstance().getCurrentUser().screenName)
-                self.partners = [Any]()
-                for obj: HobbiesMatchObject in hobbMatches {
-                    self.partners.append(RestAPI.getInstance().getFlingProfile(for: obj.userObj))
-                }
+                var hobbMatches = RestAPI.getInstance().getHobbiesMatchesForUser()
+                self.partners = hobbMatches
             }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -241,16 +238,16 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             cell?.textLabel?.text = "No Results Found"
         }
         else {
-            cell?.textLabel?.text = (self.partners[indexPath.row] as? FlingProfile)?.screenName
-            cell?.imageView?.image = self.loadPicture(forUser: ((self.partners[indexPath.row] as? FlingProfile)?.screenName)!)
+            cell?.textLabel?.text = self.partners[indexPath.row].screenName
+            cell?.imageView?.image = self.loadPicture(forUser: self.partners[indexPath.row].screenName)
         }
         return cell!
     }
 
     func loadPicture(forUser screenName: String) -> UIImage {
         var img: UIImage?
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             let imageURL: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: screenName)
             let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
             DispatchQueue.main.async(execute: {() -> Void in

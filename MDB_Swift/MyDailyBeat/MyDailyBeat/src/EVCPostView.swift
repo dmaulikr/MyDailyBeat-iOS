@@ -44,7 +44,7 @@ class EVCPostView: UIView, ASMediasFocusDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     @IBAction func deletePost(_ sender: Any) {
@@ -58,7 +58,6 @@ class EVCPostView: UIView, ASMediasFocusDelegate {
         }
         self.loadProfilePicture()
         self.postTextLbl.text = postObj.postText
-        self.screenNameLbl.text = postObj.userScreenName
         let date = Date(timeIntervalSince1970: TimeInterval(postObj.dateTimeMillis / 1000))
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy hh:mm:ss"
@@ -66,10 +65,10 @@ class EVCPostView: UIView, ASMediasFocusDelegate {
     }
 
     func loadPicture() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
-            if self.postObj.servingURL != "" {
-                let imageURL = URL(string: self.postObj.servingURL)
+        
+        DispatchQueue.global().async(execute: {() -> Void in
+            if self.postObj.imageUrl != "" {
+                let imageURL = URL(string: self.postObj.imageUrl)
                 let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
                 DispatchQueue.main.async(execute: {() -> Void in
                     // Update the UI
@@ -84,13 +83,15 @@ class EVCPostView: UIView, ASMediasFocusDelegate {
     }
 
     func loadProfilePicture() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
+            let screenName = ""
             let imageURL: URL? = RestAPI.getInstance().retrieveProfilePicture()
             let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
             DispatchQueue.main.async(execute: {() -> Void in
                 // Update the UI
                 self.profilePicView.image = UIImage(data: imageData!)
+                self.screenNameLbl.text = screenName
             })
         })
     }
@@ -104,7 +105,7 @@ class EVCPostView: UIView, ASMediasFocusDelegate {
     // Returns the URL where the media (image or video) is stored. The URL may be local (file://) or distant (http://).
 
     func mediaFocusManager(_ mediaFocusManager: ASMediaFocusManager, mediaURLFor view: UIView) -> URL {
-        let imageURL = URL(string: self.postObj.servingURL)
+        let imageURL = URL(string: self.postObj.imageUrl)
         return imageURL!
     }
     // Returns the title for this media view. Return nil if you don't want any title to appear.

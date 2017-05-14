@@ -21,7 +21,7 @@ public class HealthInfo: NSObject, NSCoding {
 
 
     public func encode(with coder: NSCoder) {
-        coder.encode(Int(self.uniqueId), forKey: "myHealthPortalUniqueID")
+        coder.encode(self.uniqueId, forKey: "myHealthPortalUniqueID")
         coder.encode(self.url, forKey: "myHealthPortalURL")
         coder.encode(self.logoURL, forKey: "myHealthPortallogoURL")
     }

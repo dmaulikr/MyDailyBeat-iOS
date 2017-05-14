@@ -127,8 +127,8 @@ class EVCComposeViewController: UIViewController, UINavigationControllerDelegate
     }
 
     func loadProfilePicture() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             let imageURL: URL? = RestAPI.getInstance().retrieveProfilePicture()
             if imageURL == nil {
                 return

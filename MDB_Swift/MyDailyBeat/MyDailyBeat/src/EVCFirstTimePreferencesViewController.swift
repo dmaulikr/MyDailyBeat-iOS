@@ -28,15 +28,15 @@ class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerD
     }
 
     func retrievePrefs() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             var prefs = VervePreferences()
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            self.prefs?.userPreferences = self.api.getUserPreferences(for: self.api.getCurrentUser())
-            self.prefs?.matchingPreferences = self.api.getMatchingPreferences(for: self.api.getCurrentUser())
-            self.prefs?.hobbiesPreferences = self.api.getHobbiesPreferencesForUser(withScreenName: self.api.getCurrentUser().screenName)
+            self.prefs?.userPreferences = self.api.getUserPreferences()
+            self.prefs?.matchingPreferences = self.api.getMatchingPreferences()
+            self.prefs?.hobbiesPreferences = self.api.getHobbiesPreferencesForUser()
             self.formController.form = self.prefs
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -45,10 +45,7 @@ class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerD
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func selectEthnicity(_ cell: FXFormBaseCell) {
         let prefs: VervePreferences? = cell.field.form as? VervePreferences
@@ -64,13 +61,13 @@ class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerD
 
     func submit(_ cell: FXFormBaseCell) {
         var prefs: VervePreferences? = cell.field.form as! VervePreferences?
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var success: Bool = self.api.save(self.prefs!.userPreferences, andMatchingPreferences: self.prefs!.matchingPreferences, for: self.api.getCurrentUser())
-            var success2: Bool = self.api.save(self.prefs!.hobbiesPreferences, forUserWithScreenName: self.api.getCurrentUser().screenName)
+            var success: Bool = self.api.save(self.prefs!.userPreferences, andMatchingPreferences: self.prefs!.matchingPreferences)
+            var success2: Bool = self.api.save(self.prefs!.hobbiesPreferences)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if success && success2 {

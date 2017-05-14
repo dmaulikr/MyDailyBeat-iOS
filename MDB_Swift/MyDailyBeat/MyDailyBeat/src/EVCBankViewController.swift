@@ -31,17 +31,13 @@ class EVCBankViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         var data: Data? = UserDefaults.standard.object(forKey: "myBank") as! Data?
-        var temp: BankInfo? = NSKeyedUnarchiver.unarchiveObject(with: data!) as? BankInfo
-        if temp != nil {
+        if let bankData = data, let temp =  NSKeyedUnarchiver.unarchiveObject(with: bankData) as? BankInfo {
             self.bank = temp
             self.retrieveBankData()
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func isAppInstalled(_ name: String) -> Bool {
         var realname = name.replacingOccurrences(of: " ", with: "-")
@@ -50,8 +46,8 @@ class EVCBankViewController: UIViewController {
 
     func doesAppExist(_ name: String) -> Bool {
         var val: Bool = false
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
@@ -69,8 +65,8 @@ class EVCBankViewController: UIViewController {
             imgView.isHidden = false
             btn.isHidden = false
             bankNameLbl.isHidden = false
-            var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-            queue.async(execute: {() -> Void in
+            
+            DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })

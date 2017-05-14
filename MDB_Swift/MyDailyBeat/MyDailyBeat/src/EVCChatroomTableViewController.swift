@@ -10,7 +10,7 @@ import UIKit
 import API
 import Toast_Swift
 class EVCChatroomTableViewController: UITableViewController {
-    var chatrooms = [Any]()
+    var chatrooms = [MessageChatroom]()
     var addChatroom: UIBarButtonItem!
     var mode: REL_MODE = .friends_MODE
 
@@ -23,19 +23,16 @@ class EVCChatroomTableViewController: UITableViewController {
         self.loadChatroomsAsync()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func loadChatroomsAsync() {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            self.chatrooms = [Any]()
-            let temp: [Any] = RestAPI.getInstance().getChatroomsFor(RestAPI.getInstance().getCurrentUser()) /* copyItems: true */
+            self.chatrooms = [MessageChatroom]()
+            let temp = RestAPI.getInstance().getChatrooms() /* copyItems: true */
             if temp.count > 0 {
                 self.chatrooms = temp
             }
@@ -44,6 +41,13 @@ class EVCChatroomTableViewController: UITableViewController {
                 self.tableView.reloadData()
             })
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCFlingMessagingViewController {
+            let chatroom = sender as! MessageChatroom
+            dest.chatroom = chatroom
+        }
     }
 // MARK: - Table view data source
 
@@ -72,7 +76,7 @@ class EVCChatroomTableViewController: UITableViewController {
             if cell == nil {
                 cell = EVCChatroomCell(style: .default, reuseIdentifier: CellIdentifier)
             }
-            cell = cell?.change(self.chatrooms[indexPath.row] as! MessageChatroom)
+            cell = cell?.change(self.chatrooms[indexPath.row])
             return cell!
         }
     }
@@ -97,8 +101,7 @@ class EVCChatroomTableViewController: UITableViewController {
             // do nothing
         }
         else {
-            var messaging = EVCFlingMessagingViewController(chatroom: self.chatrooms[indexPath.row] as! MessageChatroom)
-            self.navigationController?.pushViewController(messaging, animated: true)
+            self.performSegue(withIdentifier: "ChatroomSegue", sender: self.chatrooms[indexPath.row])
         }
     }
 }

@@ -87,44 +87,35 @@ class EVCJobsViewController: UIViewController, CLLocationManagerDelegate, UITabl
     }
 
     func run(_ query: String) {
-        var baseUrl: String = "http://api.indeed.com"
-        var path: String = "ads/apisearch"
-        var parameters: String = "publisher=3873225971566005&q=" + query
-        parameters = parameters + "&l="
-        parameters = parameters + currentZip
-        parameters = parameters + "&sort=&radius="
+        var radius = ""
         switch searchRadius {
             case .twenty_FIVE_MILES:
-                parameters = parameters + "25"
+                radius = "25"
             case .fifty_MILES:
-                parameters = parameters + "50"
+                radius = "50"
             case .seventy_FIVE_MILES:
-                parameters = parameters + "75"
+                radius = "75"
             case .one_HUNDRED_MILES:
-                parameters = parameters + "100"
+                radius = "100"
             default:
                 break
         }
 
-        parameters = parameters + "&st=&jt="
+        var type = ""
         switch jobType {
             case .full_TIME:
-                parameters = parameters + "fulltime"
+                type =  "fulltime"
             case .part_TIME:
-                parameters = parameters + "parttime"
+                type = "parttime"
             default:
                 break
         }
-
-        var page: String = "&start=\(currentPage)"
-        parameters = parameters + page
-        parameters = parameters + "&limit=30000&fromage=&filter=1&latlong=1&co=&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2"
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            self.resultsDictionary = RestAPI.getInstance().makeRequest(withBaseUrl: baseUrl, withPath: path, withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
+            self.resultsDictionary = RestAPI.getInstance().getJobs(onPage: self.currentPage, inLocation: self.currentZip, inRadius: radius, andType: type, andQuery: query)
             var resultsDic = self.resultsDictionary["results"].dictionaryValue
             var temp: [JSON] = resultsDic["result"]!.arrayValue
             self.currentSet.append(contentsOf: temp)

@@ -36,29 +36,24 @@ class EVCMyHealthViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let data1: Data? = UserDefaults.standard.object(forKey: "myHealthPortal") as! Data?
-        let temp1: HealthInfo? = NSKeyedUnarchiver.unarchiveObject(with: data1!) as? HealthInfo
-        if temp1 != nil {
+        let data1: Data? = UserDefaults.standard.object(forKey: "myHealthPortal") as? Data
+        if let portal = data1, let temp1 = NSKeyedUnarchiver.unarchiveObject(with: portal) as? HealthInfo {
             self.portal = temp1
         }
-        let data2: Data? = UserDefaults.standard.object(forKey: "myPrescripProvider") as! Data?
-        let temp2: PrescripProviderInfo? = NSKeyedUnarchiver.unarchiveObject(with: data2!) as? PrescripProviderInfo
-        if temp2 != nil {
+        let data2: Data? = UserDefaults.standard.object(forKey: "myPrescripProvider") as? Data
+        if let provider = data2, let temp2 = NSKeyedUnarchiver.unarchiveObject(with: provider) as? PrescripProviderInfo {
             self.provider = temp2
         }
         self.setup()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func setup() {
         if self.provider != nil && self.portal != nil {
             if !(self.portal.logoURL == "") {
-                let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-                queue.async(execute: {() -> Void in
+                
+                DispatchQueue.global().async(execute: {() -> Void in
                     DispatchQueue.main.async(execute: {() -> Void in
                         self.view.makeToastActivity(ToastPosition.center)
                     })
@@ -76,8 +71,8 @@ class EVCMyHealthViewController: UIViewController {
                 healthPortalLogoView.image = EVCCommonMethods.image(with: img!, scaledTo: CGSize(width: CGFloat(304), height: CGFloat(128)))
             }
             if !(self.provider.logoURL == "") {
-                let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-                queue.async(execute: {() -> Void in
+                
+                DispatchQueue.global().async(execute: {() -> Void in
                     DispatchQueue.main.async(execute: {() -> Void in
                         self.view.makeToastActivity(ToastPosition.center)
                     })

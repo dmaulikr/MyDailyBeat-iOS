@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import API
+import EasyTipView
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -30,6 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         selectedAttrs[NSFontAttributeName] = UIFont.systemFont(ofSize: 15)
         UITabBarItem.appearance().setTitleTextAttributes(normalAttrs, for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(selectedAttrs, for: .selected)
+        //UserDefaults.standard.set(true, forKey: "FirstTimeLogin")
+        var preferences = EasyTipView.Preferences()
+        preferences.drawing.arrowPosition = .bottom
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.backgroundColor = UIColor(netHex: 0x0097A4)
+        EasyTipView.globalPreferences = preferences
         return true
     }
 

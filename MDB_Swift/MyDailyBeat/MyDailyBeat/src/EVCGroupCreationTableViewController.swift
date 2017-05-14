@@ -31,8 +31,8 @@ class EVCGroupCreationTableViewController: UITableViewController, FXFormControll
     func createGroup(_ cell: FXFormBaseCell) {
         var frm: GroupCreationForm? = cell.field.form as? GroupCreationForm
         var name: String? = frm?.groupName
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.sideMenuViewController.contentViewController.view.makeToastActivity(.center)
             })

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -58,13 +59,34 @@
                     <view key="view" contentMode="scaleToFill" id="9sV-Cp-lFJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uuq-ZN-nYE">
+                                <rect key="frame" x="0.0" y="-13" width="375" height="631"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uuq-ZN-nYE" firstAttribute="leading" secondItem="9sV-Cp-lFJ" secondAttribute="leadingMargin" constant="-16" id="jwr-WJ-NpQ"/>
+                            <constraint firstItem="4cG-Mx-Q3c" firstAttribute="top" secondItem="uuq-ZN-nYE" secondAttribute="bottom" id="kPp-uA-MGM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uuq-ZN-nYE" secondAttribute="trailing" constant="-16" id="oHy-AS-pRF"/>
+                            <constraint firstItem="uuq-ZN-nYE" firstAttribute="top" secondItem="A8n-yw-HcG" secondAttribute="bottom" constant="-33" id="yxL-rv-YqW"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="ouP-Kk-dyq"/>
+                    <connections>
+                        <outlet property="mTableView" destination="uuq-ZN-nYE" id="fic-rN-Ekn"/>
+                        <outlet property="sBar" destination="wYm-fw-YA8" id="Ibn-hB-BdS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0F-Ge-vcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="wYm-fw-YA8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </objects>
-            <point key="canvasLocation" x="-1282" y="661"/>
+            <point key="canvasLocation" x="-1282.4000000000001" y="660.71964017991013"/>
         </scene>
         <!--Shopping View Controller-->
         <scene sceneID="I2E-4c-8L2">

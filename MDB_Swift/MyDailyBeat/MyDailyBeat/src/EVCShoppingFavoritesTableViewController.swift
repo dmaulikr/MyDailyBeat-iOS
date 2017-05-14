@@ -19,18 +19,15 @@ class EVCShoppingFavoritesTableViewController: UITableViewController {
         self.loadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
     func loadData() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var dic2 = RestAPI.getInstance().getShoppingFavorites(for: RestAPI.getInstance().getCurrentUser(), with: .ascending)
+            var dic2 = RestAPI.getInstance().getShoppingFavorites()
             self.searchResults = dic2["items"].arrayValue
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -78,12 +75,12 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func add(toFavs url: String) {
-        let queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            _ = RestAPI.getInstance().addShoppingFavoriteURL(url, for: RestAPI.getInstance().getCurrentUser())
+            _ = RestAPI.getInstance().addShoppingFavoriteURL(url)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.tableView.reloadData()

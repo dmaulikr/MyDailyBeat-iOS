@@ -9,7 +9,7 @@
 import UIKit
 import API
 import DLAlertView
-class EVCFlingViewController: UITabBarController, UITabBarControllerDelegate {
+class EVCFlingViewController: EVCTabBarController, UITabBarControllerDelegate {
     var mode: REL_MODE = .friends_MODE
 
     override func viewDidAppear(_ animated: Bool) {
@@ -34,8 +34,8 @@ class EVCFlingViewController: UITabBarController, UITabBarControllerDelegate {
     }
 
     func flingProf() {
-        var queue = DispatchQueue(label: "dispatch_queue_t_dialog")
-        queue.async(execute: {() -> Void in
+        
+        DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 var alert = UIAlertController(title: "Create your Profile", message: "To fully enjoy all the features of MyDailyBeat, you need to create a relationship profile. This unified profile is used across the Have a Fling, Start a Relationship, and Make Friends sections of this app.", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in

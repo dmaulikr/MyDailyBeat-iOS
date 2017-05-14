@@ -9,7 +9,7 @@
 import UIKit
 import RESideMenu
 import API
-class EVCHealthViewController: UITabBarController, UITabBarControllerDelegate {
+class EVCHealthViewController: EVCTabBarController, UITabBarControllerDelegate {
 
 
     override func viewDidLoad() {
@@ -20,9 +20,6 @@ class EVCHealthViewController: UITabBarController, UITabBarControllerDelegate {
 //        var temp2: PrescripProviderInfo? = NSKeyedUnarchiver.unarchiveObject(withData: data2)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
 
 }
