@@ -118,9 +118,8 @@ class EVCProfileViewController: UIViewController, UITableViewDataSource, UITable
                     self.sideMenuViewController.hideViewController()
                     self.performEmbeddedSegue(withIdentifier: "PrefsSegue", andSender: self)
                 case 2:
-                    var mailto: String = "mailto:legal@evervecorp.com?subject=\(RestAPI.getInstance().urlencode("Report a Violation"))"
-                    print("Opening mailto")
-                    UIApplication.shared.openURL(URL(string: mailto)!)
+                    let mailto: String = "mailto:legal@mydailybeat.com?subject=\(RestAPI.getInstance().urlencode("Report a Violation"))"
+                    UIApplication.shared.open(URL(string: mailto)!, options: [:], completionHandler: nil)
                 case 4:
                     self.logout()
                 case 3:

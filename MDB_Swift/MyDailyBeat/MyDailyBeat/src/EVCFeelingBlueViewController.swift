@@ -11,41 +11,10 @@ import DLAlertView
 import API
 import Toast_Swift
 class EVCFeelingBlueViewController: UITableViewController {
-    var search: EVCSearchEngine!
-    
-    var peeps: [VerveUser] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        search = EVCSearchEngine()
-        self.loadData()
     }
-
-    func loadData() {
-        
-        DispatchQueue.global().async(execute: {() -> Void in
-            DispatchQueue.main.async(execute: {() -> Void in
-                self.view.makeToastActivity(ToastPosition.center)
-            })
-            self.peeps = self.search.getUsersForFeelingBlue()
-            var i = 0
-            while i < self.peeps.count {
-                let user: VerveUser? = self.peeps[i]
-                if (user?.screenName == RestAPI.getInstance().getCurrentUser().screenName) {
-                    self.peeps.remove(at: i)
-                }
-                else {
-                    i += 1
-                }
-                
-            }
-            DispatchQueue.main.async(execute: {() -> Void in
-                self.view.hideToastActivity()
-                self.tableView.reloadData()
-            })
-        })
-    }
-    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let TAG: String = "TAG"
@@ -86,9 +55,7 @@ class EVCFeelingBlueViewController: UITableViewController {
             case 1:
                 self.makeCall("1-800-273-8255", withAccessCode: "1")
             case 2:
-                let randomIndex = Int(arc4random_uniform(UInt32(self.peeps.count)))
-                let peep = peeps[randomIndex]
-                self.makeCall(peep.mobile, anonymous: true)
+                self.performSegue(withIdentifier: "CallAnonymousSegue", sender: nil)
             default:
                 break
         }

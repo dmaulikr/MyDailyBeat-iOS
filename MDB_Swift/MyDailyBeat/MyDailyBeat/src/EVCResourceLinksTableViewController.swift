@@ -9,6 +9,10 @@
 import UIKit
 import API
 import SwiftyJSON
+
+fileprivate let resLinks: [String: [String]] = ["Finance": ["finance.yahoo.com", "money.cnn.com", "bloomberg.com"],
+                                                "FeelingBlue": ["suicidepreventionlifeline.org", "psychcentral.com/helpme.htm", "hopeline.com"]
+]
 class EVCResourceLinksTableViewController: UITableViewController {
     var path: String = ""
     var module: String = ""

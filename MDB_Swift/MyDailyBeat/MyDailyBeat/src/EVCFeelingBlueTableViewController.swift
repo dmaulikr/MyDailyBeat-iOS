@@ -47,6 +47,16 @@ class EVCFeelingBlueTableViewController: UITableViewController {
             })
         })
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 // MARK: - Table view data source
 
 override func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,6 +66,9 @@ override func numberOfSections(in tableView: UITableView) -> Int {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
+        guard self.peeps.count > 0 else {
+            return 1
+        }
         return self.peeps.count
     }
 
@@ -63,6 +76,10 @@ override func numberOfSections(in tableView: UITableView) -> Int {
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "CellIdentifier")
+        }
+        guard self.peeps.count > 0 else {
+            cell?.textLabel?.text = "No users found"
+            return cell!
         }
         let user: VerveUser? = self.peeps[indexPath.row]
         cell?.textLabel?.text = user?.screenName
@@ -72,64 +89,16 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.makeCall(indexPath.row)
+        self.performSegue(withIdentifier: "ViewProfileSegue", sender: indexPath.row)
     }
-
-    func makeCall(_ index: Int) {
-        let dialstring: String = self.peeps[index].mobile
-        self.makeCall2(dialstring)
-    }
-
-    func makeCall2(_ num: String) {
-        let dialstring: String = "tel:\(num)"
-        let url = URL(string: dialstring)
-        if UIApplication.shared.canOpenURL(url!) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: {(_ success: Bool) -> Void in
-                if success {
-                    self.save(toCallHistoryNumber: num, withAccessCode: "")
-                }
-            })
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCFlingProfileViewController {
+            let row = sender as! Int
+            dest.currentViewedUser = self.peeps[row]
+            dest.inRel = false
+            dest.mode = .friends_MODE
         }
-        else {
-            let alView = UIAlertController(title: "Calling not supported", message: "This device does not support phone calls.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alView.addAction(action)
-            self.present(alView, animated: true, completion: nil)
-            
-        }
-    }
-
-    func save(toCallHistoryNumber num: String, withAccessCode code: String) {
-        if code == "" {
-            if (num == "1-800-273-8255") {
-                    // suicide
-                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-                if callHistory == nil {
-                    callHistory = [Any]()
-                }
-                callHistory?.insert("Suicide Hotline", at: 0)
-                UserDefaults.standard.set(callHistory, forKey: "callHistory")
-            }
-            else {
-                    // save number
-                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-                if callHistory == nil {
-                    callHistory = [Any]()
-                }
-                callHistory?.insert(num, at: 0)
-                UserDefaults.standard.set(callHistory, forKey: "callHistory")
-            }
-        }
-        else {
-                // veterans
-            var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-            if callHistory == nil {
-                callHistory = [Any]()
-            }
-            callHistory?.insert("Veterans' Hotline", at: 0)
-            UserDefaults.standard.set(callHistory, forKey: "callHistory")
-        }
-        UserDefaults.standard.synchronize()
     }
 
     

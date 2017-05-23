@@ -18,12 +18,12 @@ class EVCFlingProfileViewController: UIViewController {
     @IBOutlet var orientationlbl: UILabel!
     @IBOutlet var addFavsBtn: UIButton!
     @IBOutlet var sendMessageBtn: UIButton!
-    @IBOutlet var editBtn: UIButton!
     @IBOutlet var aboutMeView: UILabel!
     var currentViewedUser: VerveUser!
     var prefs: VerveUserPreferences!
     var matching: VerveMatchingPreferences!
     var mode: REL_MODE = .friends_MODE
+    var inRel = true
 
     @IBAction func fav(_ sender: Any) {
         
@@ -73,15 +73,13 @@ class EVCFlingProfileViewController: UIViewController {
             var chatroom: MessageChatroom? = RestAPI.getInstance().createChatroomForUsers(withScreenName: self.currentViewedUser.screenName)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
-//                var message = EVCFlingMessagingViewController(chatroom)
-//                self.navigationController?.pushViewController(message, animated: true)
+                self.performSegue(withIdentifier: "SendMessageSegue", sender: chatroom)
             })
         })
     }
 
-    @IBAction func edit(_ sender: Any) {
-        let edit = EVCFlingProfileCreatorViewController(nibName: "EVCFlingProfileCreatorViewController", bundle: nil)
-        self.navigationController?.pushViewController(edit, animated: true)
+    func edit() {
+        self.performSegue(withIdentifier: "EditProfileSegue", sender: nil)
     }
 
 
@@ -95,16 +93,97 @@ class EVCFlingProfileViewController: UIViewController {
         if self.currentViewedUser.isEqual(RestAPI.getInstance().getCurrentUser()) {
             self.addFavsBtn.isHidden = true
             self.sendMessageBtn.isHidden = true
-            self.editBtn.isHidden = false
         }
         else {
-            self.editBtn.isHidden = true
+            if !inRel {
+                self.addFavsBtn.isHidden = true
+                self.sendMessageBtn.isHidden = true
+            }
         }
         self.retrievePrefs()
         self.nameLbl.text = self.currentViewedUser.screenName
         self.distanceLbl.text = ""
         self.loadProfile()
         self.loadPicture()
+        
+        if !inRel {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Call", style: .done, target: self, action: #selector(call))
+        } else {
+            if self.currentViewedUser.isEqual(RestAPI.getInstance().getCurrentUser()) {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(edit))
+            }
+        }
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    func call() {
+        let dialstring: String = currentViewedUser.mobile
+        self.makeCall(dialstring)
+    }
+    
+    func makeCall(_ num: String) {
+        let dialstring: String = "tel:*67\(num)"
+        let url = URL(string: dialstring)
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: {(_ success: Bool) -> Void in
+                if success {
+                    self.save(toCallHistoryNumber: num, withAccessCode: "")
+                }
+            })
+        }
+        else {
+            let alView = UIAlertController(title: "Calling not supported", message: "This device does not support phone calls.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alView.addAction(action)
+            self.present(alView, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func save(toCallHistoryNumber num: String, withAccessCode code: String) {
+        if code == "" {
+            if (num == "1-800-273-8255") {
+                // suicide
+                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
+                if callHistory == nil {
+                    callHistory = [Any]()
+                }
+                callHistory?.insert("Suicide Hotline", at: 0)
+                UserDefaults.standard.set(callHistory, forKey: "callHistory")
+            }
+            else {
+                // save number
+                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
+                if callHistory == nil {
+                    callHistory = [Any]()
+                }
+                callHistory?.insert(num, at: 0)
+                UserDefaults.standard.set(callHistory, forKey: "callHistory")
+            }
+        }
+        else {
+            // veterans
+            var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
+            if callHistory == nil {
+                callHistory = [Any]()
+            }
+            callHistory?.insert("Veterans' Hotline", at: 0)
+            UserDefaults.standard.set(callHistory, forKey: "callHistory")
+        }
+        UserDefaults.standard.synchronize()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCFlingMessagingViewController {
+            let chatroom = sender as! MessageChatroom
+            dest.chatroom = chatroom
+        }
     }
 
     func loadPicture() {

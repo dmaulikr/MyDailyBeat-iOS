@@ -45,17 +45,17 @@ class RegistrationPersonalInfoViewController: UIViewController {
     }
     
     var isValidInput: Bool {
-        let result = !userExists
         guard allFieldsFilledIn else {
             return false
         }
         
-        return result
+        self.textFieldDidEndEditing(self.lastField)
+        return !userExists
     }
     
     var allFieldsFilledIn: Bool {
         var result = false
-        if let _ = self.firstField.text, let _ = self.lastField.text, let _ = self.dobField.text {
+        if self.firstField.text != nil && self.lastField.text != nil && self.dobField.text != nil {
             result = true
         }
         return result

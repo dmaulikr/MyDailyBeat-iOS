@@ -124,6 +124,7 @@
 		769F391C1E848DAB00E036CA /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 769F391B1E848DAB00E036CA /* Acknowledgements.plist */; };
 		769F391E1E84926100E036CA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 769F391D1E84926100E036CA /* About.storyboard */; };
 		769F39201E84957200E036CA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F391F1E84957200E036CA /* AboutViewController.swift */; };
+		76ADF55C1ED1220D00B7868F /* EVCFlingProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76ADF55B1ED1220D00B7868F /* EVCFlingProfileViewController.xib */; };
 		76BD90C21E5A8CDE000ADD90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */; };
 		76BD90C71E5A8CDE000ADD90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76BD90C51E5A8CDE000ADD90 /* Main.storyboard */; };
 		76BD90CA1E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76BD90C81E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld */; };
@@ -296,6 +297,7 @@
 		769F391B1E848DAB00E036CA /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = SOURCE_ROOT; };
 		769F391D1E84926100E036CA /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = About.storyboard; path = ui/About.storyboard; sourceTree = "<group>"; };
 		769F391F1E84957200E036CA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		76ADF55B1ED1220D00B7868F /* EVCFlingProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFlingProfileViewController.xib; sourceTree = "<group>"; };
 		76BD90BE1E5A8CDE000ADD90 /* MyDailyBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDailyBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76BD90C61E5A8CDE000ADD90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				7608D8101E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib */,
 				76CF9ACE1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib */,
 				769F39191E83384700E036CA /* SwitchViewCell.xib */,
+				76ADF55B1ED1220D00B7868F /* EVCFlingProfileViewController.xib */,
 				76E8967D1EC79E9600004BF8 /* res_links.plist */,
 				76E01A391E5A979600985562 /* src */,
 				76E01A701E5A979600985562 /* ui */,
@@ -700,6 +703,7 @@
 				76E01AD81E5A979600985562 /* EVCGroupSettingsViewController_iPhone.xib in Resources */,
 				7628FD571E80B15D0053D04A /* RegistrationScreenNameViewController.xib in Resources */,
 				76CF9ACF1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib in Resources */,
+				76ADF55C1ED1220D00B7868F /* EVCFlingProfileViewController.xib in Resources */,
 				7649B5C31E5FDE00001FBCDF /* Finance.storyboard in Resources */,
 				7652C7D91E628E680028B693 /* Shopping.storyboard in Resources */,
 				7628FD551E80B0B60053D04A /* RegistrationMessageViewController.xib in Resources */,

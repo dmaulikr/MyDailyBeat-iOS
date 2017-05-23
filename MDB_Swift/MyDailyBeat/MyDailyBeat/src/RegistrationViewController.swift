@@ -57,7 +57,6 @@ class RegistrationViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        self.delegate = self
         let first = self.messageViewController(0)
         self.setViewControllers([first], direction: .forward, animated: true, completion: nil)
         // Do any additional setup after loading the view.
@@ -156,50 +155,6 @@ extension RegistrationViewController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let nextMessage = viewController as? EVCRegistrationMessageViewController, nextMessage.index <= 2 {
-            return self.messageViewController(nextMessage.index)
-        } else if viewController is EVCRegistrationMessageViewController {
-            let next = RegistrationScreenNameViewController()
-            next.nextPage = {
-                let personalInfo = RegistrationPersonalInfoViewController()
-                personalInfo.nextPage = {
-                    let contactInfo = RegistrationContactInfoViewController()
-                    contactInfo.nextPage = {
-                        self.register()
-                    }
-                    self.setViewControllers([contactInfo], direction: .forward, animated: true, completion: nil)
-                }
-                self.setViewControllers([personalInfo], direction: .forward, animated: true, completion: nil)
-            }
-            return next
-        } else if viewController is RegistrationScreenNameViewController {
-            let personalInfo = RegistrationPersonalInfoViewController()
-            personalInfo.nextPage = {
-                let contactInfo = RegistrationContactInfoViewController()
-                contactInfo.nextPage = {
-                    self.register()
-                }
-                self.setViewControllers([contactInfo], direction: .forward, animated: true, completion: nil)
-            }
-            return personalInfo
-        } else if viewController is RegistrationPersonalInfoViewController {
-            let contactInfo = RegistrationContactInfoViewController()
-            contactInfo.nextPage = {
-                self.register()
-            }
-            return contactInfo
-        }
-        
         return nil
-    }
-}
-
-extension RegistrationViewController: UIPageViewControllerDelegate {
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return 4
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return presentationIndex
     }
 }

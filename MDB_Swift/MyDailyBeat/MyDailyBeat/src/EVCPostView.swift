@@ -9,6 +9,7 @@
 import UIKit
 import ASMediaFocusManager
 import API
+import DateToolsSwift
 enum EVCPostType : Int {
     case hasPicture = 1
     case doesNotHavePicture = 0
@@ -59,9 +60,7 @@ class EVCPostView: UIView, ASMediasFocusDelegate {
         self.loadProfilePicture()
         self.postTextLbl.text = postObj.postText
         let date = Date(timeIntervalSince1970: TimeInterval(postObj.dateTimeMillis / 1000))
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy hh:mm:ss"
-        self.whenLbl.text = formatter.string(from: date)
+        whenLbl.text = date.timeAgoSinceNow
     }
 
     func loadPicture() {

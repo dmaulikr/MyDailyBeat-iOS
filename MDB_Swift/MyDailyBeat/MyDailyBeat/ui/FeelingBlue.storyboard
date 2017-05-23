@@ -23,10 +23,52 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="pJA-DG-lfO"/>
+                    <connections>
+                        <segue destination="qiD-4W-U9z" kind="show" identifier="CallAnonymousSegue" id="hmr-4a-O4b"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSB-Ns-sPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1130" y="670"/>
+        </scene>
+        <!--Feeling Blue Table View Controller-->
+        <scene sceneID="491-yP-cxD">
+            <objects>
+                <tableViewController id="qiD-4W-U9z" customClass="EVCFeelingBlueTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="s0W-f6-Gbj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hUD-KT-TQV">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUD-KT-TQV" id="LAl-QT-8w4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qiD-4W-U9z" id="S8W-36-1Rc"/>
+                            <outlet property="delegate" destination="qiD-4W-U9z" id="iOh-na-n2S"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="VQU-yG-6AR" kind="show" identifier="ViewProfileSegue" id="OBg-e2-zrC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="25N-3Y-iMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1130" y="1424"/>
+        </scene>
+        <!--Fling Profile View Controller-->
+        <scene sceneID="xJq-sp-LeY">
+            <objects>
+                <viewController id="VQU-yG-6AR" customClass="EVCFlingProfileViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FZZ-HB-HF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-286" y="1422"/>
         </scene>
         <!--Item-->
         <scene sceneID="6eh-67-JEW">

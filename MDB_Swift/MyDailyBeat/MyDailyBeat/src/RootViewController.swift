@@ -39,6 +39,7 @@ class RootViewController: RESideMenu {
 }
 
 extension UIViewController {
+    
     func showModalViewController(_ vc: UIViewController, animated: Bool, completion: (() -> ())?) {
         if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController {
             outerNav.present(vc, animated: animated, completion: completion)
@@ -54,13 +55,6 @@ extension UIViewController {
             self.sideMenuViewController.hideViewController()
             innerNav.popToRootViewController(animated: true)
             innerNav.visibleViewController?.performSegue(withIdentifier: identifier, sender: sender)
-        }
-    }
-    
-    func returnToEmbeddedHome() {
-        if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController, let root = outerNav.viewControllers[0] as? RootNavController, let innerNav = root.embedded {
-            self.sideMenuViewController.hideViewController()
-            innerNav.popToRootViewController(animated: true)
         }
     }
     

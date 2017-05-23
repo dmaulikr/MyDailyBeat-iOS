@@ -52,6 +52,9 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.layoutIfNeeded()
             })
         })
+        if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController, let root = outerNav.viewControllers[0] as? RootNavController, let innerNav = root.embedded {
+            self.parentController = innerNav.viewControllers[0]
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,7 +75,7 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
             case 0:
                 switch indexPath.row {
                     case 0:
-                        self.returnToEmbeddedHome()
+                        _ = self.self.parentController.navigationController?.popToViewController(self.parentController, animated: true)
                     default:
                         break
                 }
