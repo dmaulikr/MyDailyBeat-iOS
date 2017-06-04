@@ -11,7 +11,6 @@ import MobileCoreServices
 import Alamofire
 import SwiftyJSON
 
-let BASE_URL = "https://1-dot-mydailybeat-api.appspot.com/_ah/api/mydailybeat/v1"
 let PUBLIC_BASE_URL = "https://mydailybeat.herokuapp.com"
 let AUTH_BASE_URL = PUBLIC_BASE_URL + "/api"
 public let GET_REQUEST = "GET"
@@ -80,41 +79,25 @@ public class RestAPI: NSObject {
     public func doesUserExist(withName name: String) -> Bool {
         let parameters: String = "name=" + self.urlencode(name)
         var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/exists", withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        return result["success"].boolValue
     }
 
     public func doesUserExist(withScreenName screenName: String) -> Bool {
         let parameters: String = "screenName=" + self.urlencode(screenName)
         var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/exists", withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        return result["success"].boolValue
     }
 
     public func doesUserExist(withEmail email: String) -> Bool {
         let parameters: String = "email=" + self.urlencode(email)
         var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/exists", withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        return result["success"].boolValue
     }
 
     public func doesUserExist(withMobile mobile: String) -> Bool {
         let parameters: String = "mobile=" + self.urlencode(mobile)
         var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/exists", withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        return result["success"].boolValue
     }
 
     public func login(withScreenName screenName: String, andPassword password: String) -> Bool {
@@ -127,6 +110,9 @@ public class RestAPI: NSObject {
             currentUser = VerveUser.fromJSON(json: result)
             auth_token = result["auth_token"].stringValue
             print("Auth Token = " + auth_token!)
+            print(self.preferencesExistForUser())
+            print(self.matchingPreferencesExistForUser())
+            print(self.hobbiesPreferencesExistForUser())
             return true
         }
         return false
@@ -231,32 +217,58 @@ public class RestAPI: NSObject {
     public func getUserPreferences() -> VerveUserPreferences {
         let prefs = VerveUserPreferences()
         var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/user/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
-        prefs.gender = resultDic["gender"].intValue
-        prefs.age = resultDic["age"].intValue
-        prefs.status = resultDic["status"].intValue
-        prefs.ethnicity = resultDic["ethnicity"].intValue
-        prefs.beliefs = resultDic["beliefs"].intValue
-        prefs.contact = resultDic["contact"].intValue
-        prefs.drinker = resultDic["gender"].intValue
-        prefs.isSmoker = resultDic["smoker"].boolValue
-        prefs.isVeteran = resultDic["veteran"].boolValue
-        prefs.otherEthnicity = resultDic["otherEthnicity"].stringValue
-        prefs.otherBeliefs = resultDic["otherBeliefs"].stringValue
-        prefs.willingToConnectAnonymously = resultDic["connectAnonymously"].boolValue
+        prefs.gender = resultDic["gndr_ref_id"].intValue
+        prefs.status = resultDic["mrrtl_ref_id"].intValue
+        prefs.ethnicity = resultDic["ethnct_ref_id"].intValue
+        prefs.beliefs = resultDic["relgs_ref_id"].intValue
+        prefs.drinker = resultDic["drnkr_ref_id"].intValue
+        prefs.isSmoker = resultDic["smkr_yn"].boolValue
+        prefs.isVeteran = resultDic["vtrn_yn"].boolValue
+        prefs.willingToConnectAnonymously = resultDic["flng_bl_cnt_anm"].boolValue
         return prefs
     }
 
     public func getMatchingPreferences() -> VerveMatchingPreferences {
         let prefs = VerveMatchingPreferences()
         var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/matching/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
-        prefs.gender = resultDic["gender"].intValue
-        prefs.age = resultDic["age"].intValue
-        prefs.status = resultDic["status"].intValue
-        prefs.ethnicity = resultDic["ethnicity"].intValue
-        prefs.beliefs = resultDic["beliefs"].intValue
-        prefs.drinker = resultDic["gender"].intValue
-        prefs.isSmoker = resultDic["smoker"].boolValue
-        prefs.isVeteran = resultDic["veteran"].boolValue
+        var arr = resultDic["gender"].arrayValue
+        if !arr.isEmpty {
+            prefs.gender = arr[0].intValue
+        } else {
+            prefs.gender = 0
+        }
+        arr = resultDic["age"].arrayValue
+        if !arr.isEmpty {
+            prefs.age = arr[0].intValue
+        } else {
+            prefs.age = 0
+        }
+        arr = resultDic["mrrtl"].arrayValue
+        if !arr.isEmpty {
+            prefs.status = arr[0].intValue
+        } else {
+            prefs.status = 0
+        }
+        arr = resultDic["ethnct"].arrayValue
+        if !arr.isEmpty {
+            prefs.ethnicity = arr[0].intValue
+        } else {
+            prefs.ethnicity = 0
+        }
+        arr = resultDic["relgs"].arrayValue
+        if !arr.isEmpty {
+            prefs.beliefs = arr[0].intValue
+        } else {
+            prefs.beliefs = 0
+        }
+        arr = resultDic["drnkr"].arrayValue
+        if !arr.isEmpty {
+            prefs.drinker = arr[0].intValue
+        } else {
+            prefs.drinker = 0
+        }
+        prefs.isSmoker = resultDic["smkr_threechoice_id"].intValue
+        prefs.isVeteran = resultDic["vtrn_threechoice_id"].intValue
         return prefs
     }
 
@@ -265,13 +277,29 @@ public class RestAPI: NSObject {
     }
 
     public func save(preferences prefs: VerveUserPreferences) -> Bool {
-        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/user/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: prefs.toJSON())
+        var postDic = [String: JSON]()
+        postDic["prefs"] = prefs.toJSON()
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/user/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
+    }
+    
+    public func preferencesExistForUser() -> Bool {
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/user/exists", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return resultDic["success"].boolValue
     }
 
     public func save(matchingPreferences prefs: VerveMatchingPreferences) -> Bool {
-        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/matching/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: prefs.toJSON())
+        var postDic = [String: JSON]()
+        postDic["prefs"] = prefs.toJSON()
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/matching/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
+    }
+    
+    public func matchingPreferencesExistForUser() -> Bool {
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/matching/exists", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return resultDic["success"].boolValue
     }
 
     public func doesAppExist(withTerm name: String, andCountry country: String) -> Bool {
@@ -306,25 +334,33 @@ public class RestAPI: NSObject {
     }
 
     public func getHobbiesPreferencesForUser() -> HobbiesPreferences {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/hobbies/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/hobbies/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         return HobbiesPreferences.fromJSON(resultDic.arrayValue)
+    }
+    
+    public func hobbiesPreferencesExistForUser() -> Bool {
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/hobbies/exists", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return resultDic["success"].boolValue
     }
 
     public func save(_ prefs: HobbiesPreferences) -> Bool {
         let array: JSON = HobbiesPreferences.toJSON(prefs)
-        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/hobbies/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: array)
+        var postDic = [String: JSON]()
+        postDic["hobbies"] = array
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/hobbies/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
     }
 
     public func getHobbiesMatchesForUser() -> [FlingProfile] {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/match", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/match", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = resultDic.arrayValue
         var retItems = [FlingProfile]()
         for i in 0..<items.count {
             let profile = FlingProfile()
             let item = items[i]
-            profile.screenName = item["screenname"].stringValue
-            profile.aboutMe = item["aboutme"].stringValue
+            profile.id = item["user_id"].intValue
+            profile.aboutMe = item["abt_me"].stringValue
             retItems.append(profile)
         }
         return retItems
@@ -360,7 +396,7 @@ public class RestAPI: NSObject {
     }
 
     public func uploadGroupPicture(_ groupPicture: Data, withName name: String, to group: Group) -> Bool {
-        var returnVal: Bool = true
+        let returnVal: Bool = true
 //        var parsedJSONResponse: JSON? = nil
 //        let semaphore = DispatchSemaphore(value: 0)
 //            //start by getting upload url
@@ -476,36 +512,32 @@ public class RestAPI: NSObject {
         return retItems
     }
 
-    public func setHobbiesforGroup(_ group: Group) -> Bool {
+    public func setHobbiesforGroup(ID: Int, _ groupPrefs: GroupPrefs) -> Bool {
         var postDic = [String: JSON]()
         var bools: [JSON] = []
-        for hobby in group.hobbies {
-            bools.append(JSON(hobby))
+        for hobby in groupPrefs.hobbies.filter({ (key, value) -> Bool in
+            return value
+        }) {
+            bools.append(JSON(hobby.key))
         }
         postDic["hobbies"] = JSON(bools)
         let postData = JSON(postDic)
-        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/\(group.groupID)/edit", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/\(ID)/edit", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
+    }
+    
+    public func getHobbiesForGroup(_ group: Group) -> JSON {
+        return self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/\(group.groupID)/hobbies/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
     }
 
     public func delete(post p: Post) -> Bool {
-        let parameters: String = "id=" + "\(p.post_id)"
-        var result = self.makeRequest(withBaseUrl: BASE_URL, withPath: "groups/posts/delete", withParameters: parameters, andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/posts/\(p.post_id)/delete", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return result["success"].boolValue
     }
 
     public func delete(group g: Group) -> Bool {
-        let parameters: String = "id=" + "\(g.groupID)"
-        var result = self.makeRequest(withBaseUrl: BASE_URL, withPath: "groups/delete", withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/\(g.groupID)/delete", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return result["success"].boolValue
     }
 
     public func invite(_ invitee: VerveUser, toJoin groupOfChoice: Group, by method: EVCUserInviteSendingMethod, withMessage inviteMessage: String) -> Bool {
@@ -526,7 +558,7 @@ public class RestAPI: NSObject {
     }
     
     public func getUserData(for id: Int) -> VerveUser {
-        var resultDic = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/\(id)/get", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/\(id)/get", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
         return VerveUser.fromJSON(json: resultDic)
     }
     
@@ -545,9 +577,8 @@ public class RestAPI: NSObject {
     }
 
     public func searchGroups(withQueryString query: String, with sortOrder: EVCSearchSortOrder) -> JSON {
-        var parameters: String = "query=" + self.urlencode(query)
-        parameters = parameters + "&sort_order=" + "\(sortOrder)"
-        return self.makeRequest(withBaseUrl: BASE_URL, withPath: "groups/search", withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
+        let parameters: String = "query=" + self.urlencode(query)
+        return self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/search", withParameters: parameters, andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
     }
     
     
@@ -558,11 +589,7 @@ public class RestAPI: NSObject {
         postDic["message_body"] = JSON(message)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: path, withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        return result["success"].boolValue
     }
 
     public func createChatroomForUsers(withScreenName secondUser: String) -> MessageChatroom? {
@@ -580,7 +607,7 @@ public class RestAPI: NSObject {
     }
 
     public func getChatrooms() -> [MessageChatroom] {
-        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "messaging/rooms/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "messaging/rooms/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = result.arrayValue
         var retItems = [MessageChatroom]()
         for i in 0..<items.count {
@@ -606,7 +633,7 @@ public class RestAPI: NSObject {
     
     public func getMessagesForChatroom(withID ID: Int) -> [VerveMessage] {
         let path = "messaging/rooms/\(ID)/messages/get"
-        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: path, withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: path, withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = result.arrayValue
         var retItems = [VerveMessage]()
         for i in 0..<items.count {
@@ -621,28 +648,28 @@ public class RestAPI: NSObject {
     }
 
     public func getFlingProfiles() -> [FlingProfile] {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/match", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/match", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = resultDic.arrayValue
         var retItems = [FlingProfile]()
         for i in 0..<items.count {
             var item = items[i]
             let prof = FlingProfile()
-            prof.screenName = item["screenName"].stringValue
-            prof.aboutMe = item["aboutMe"] .stringValue
+            prof.id = item["user_id"].intValue
+            prof.aboutMe = item["abt_me"] .stringValue
             retItems.append(prof)
         }
         return retItems
     }
     
     public func getRelationshipProfiles() -> [FlingProfile] {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/match", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/match", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = resultDic.arrayValue
         var retItems = [FlingProfile]()
         for i in 0..<items.count {
             var item = items[i]
             let prof = FlingProfile()
-            prof.screenName = item["screenName"].stringValue
-            prof.aboutMe = item["aboutMe"] .stringValue
+            prof.id = item["user_id"].intValue
+            prof.aboutMe = item["abt_me"] .stringValue
             retItems.append(prof)
         }
         return retItems
@@ -650,14 +677,14 @@ public class RestAPI: NSObject {
     
 
     public func getFlingFavorites() -> [FlingProfile] {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/favorites/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/favorites/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = resultDic.arrayValue
         var retItems = [FlingProfile]()
         for i in 0..<items.count {
             var item = items[i]
             let prof = FlingProfile()
-            prof.screenName = item["screenName"].stringValue
-            prof.aboutMe = item["aboutMe"] .stringValue
+            prof.id = item["user_id"].intValue
+            prof.aboutMe = item["abt_me"] .stringValue
             retItems.append(prof)
         }
         return retItems
@@ -665,14 +692,14 @@ public class RestAPI: NSObject {
     }
     
     public func getRelationshipFavorites() -> [FlingProfile] {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/favorites/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/favorites/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = resultDic.arrayValue
         var retItems = [FlingProfile]()
         for i in 0..<items.count {
             var item = items[i]
             let prof = FlingProfile()
-            prof.screenName = item["screenName"].stringValue
-            prof.aboutMe = item["aboutMe"] .stringValue
+            prof.id = item["user_id"].intValue
+            prof.aboutMe = item["abt_me"] .stringValue
             retItems.append(prof)
         }
         return retItems
@@ -680,14 +707,14 @@ public class RestAPI: NSObject {
     }
 
     public func getFriends() -> [FlingProfile] {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items: [JSON] = resultDic.arrayValue
         var retItems = [FlingProfile]()
         for i in 0..<items.count {
             var item = items[i]
             let prof = FlingProfile()
-            prof.screenName = item["screenName"].stringValue
-            prof.aboutMe = item["aboutMe"] .stringValue
+            prof.id = item["user_id"].intValue
+            prof.aboutMe = item["abt_me"] .stringValue
             retItems.append(prof)
         }
         return retItems
@@ -721,30 +748,29 @@ public class RestAPI: NSObject {
     public func getFlingProfile(for user: VerveUser) -> FlingProfile {
         var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/profile/\(user.screenName)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         let prof = FlingProfile()
-        prof.screenName = resultDic["screenName"].stringValue
-        prof.aboutMe = resultDic["aboutMe"].stringValue
+        prof.id = resultDic["user_id"].intValue
+        prof.aboutMe = resultDic["abt_me"].stringValue
         return prof
     }
     
     public func getRelationshipProfile(for user: VerveUser) -> FlingProfile {
         var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/profile/\(user.screenName)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         let prof = FlingProfile()
-        prof.screenName = resultDic["screenName"].stringValue
-        prof.aboutMe = resultDic["aboutMe"].stringValue
+        prof.id = resultDic["user_id"].intValue
+        prof.aboutMe = resultDic["abt_me"].stringValue
         return prof
     }
     
     public func getFriendsProfile(for user: VerveUser) -> FlingProfile {
         var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/profile/\(user.screenName)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         let prof = FlingProfile()
-        prof.screenName = resultDic["screenName"].stringValue
-        prof.aboutMe = resultDic["aboutMe"].stringValue
+        prof.id = resultDic["user_id"].intValue
+        prof.aboutMe = resultDic["abt_me"].stringValue
         return prof
     }
 
     public func saveFlingProfile(for user: VerveUser, andDescription about: String) -> Bool {
         var postDic = [String: JSON]()
-        postDic["screenName"] = JSON(user.screenName)
         postDic["aboutMe"] = JSON(about)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/profile/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
@@ -753,7 +779,6 @@ public class RestAPI: NSObject {
     
     public func saveRelationshipProfile(for user: VerveUser, andDescription about: String) -> Bool {
         var postDic = [String: JSON]()
-        postDic["screenName"] = JSON(user.screenName)
         postDic["aboutMe"] = JSON(about)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/profile/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
@@ -762,7 +787,6 @@ public class RestAPI: NSObject {
     
     public func saveFriendsProfile(for user: VerveUser, andDescription about: String) -> Bool {
         var postDic = [String: JSON]()
-        postDic["screenName"] = JSON(user.screenName)
         postDic["aboutMe"] = JSON(about)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/profile/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
@@ -770,19 +794,29 @@ public class RestAPI: NSObject {
     }
 
     public func getShoppingFavorites() -> JSON {
-        return self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "shopping/url/favorites/get", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        let list = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "favorites/get/shopping", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return list["items"]
+    }
+    
+    public func getTravelFavorites() -> JSON {
+        let list = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "favorites/get/travel", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return list["items"]
     }
 
     public func addShoppingFavoriteURL(_ string: String) -> Bool {
         var postDic = [String: JSON]()
         postDic["url"] = JSON(string)
         let postData = JSON(postDic)
-        var result = self.makeRequest(withBaseUrl: BASE_URL, withPath: "shopping/url/favorites/add", withParameters: "", withRequestType: POST_REQUEST, andPost: postData)
-        let response: String? = result["response"].string
-        if (response! == "Operation succeeded") {
-            return true
-        }
-        return false
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "favorites/add/shopping", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
+    }
+    
+    public func addTravelFavoriteURL(_ string: String) -> Bool {
+        var postDic = [String: JSON]()
+        postDic["url"] = JSON(string)
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "favorites/add/travel", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
     }
 
     public func getUsersForFeelingBlue() -> JSON {
@@ -792,6 +826,61 @@ public class RestAPI: NSObject {
     public func getJobs(onPage page: Int, inLocation loc: String, inRadius radius: String, andType type: String, andQuery query: String) -> JSON {
         let path = "jobs/get/\(loc)/\(type)/\(radius)/\(page)"
         return self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: path, withParameters: "query=\(query)", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+    }
+    
+    public func getHobbiesRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "hobbies", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["hobbies"]
+    }
+    
+    public func getTravelRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "travel", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["urls"]
+    }
+    
+    public func searchShoppingURLs(withQueryString query: String?) -> JSON {
+        if let queryS = query {
+            let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "shopping/search", withParameters: "query=\(queryS)", withRequestType: GET_REQUEST, andPost: nil)
+            return list["urls"]
+        } else {
+            let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "shopping", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+            return list["urls"]
+        }
+        
+    }
+    
+    public func getGenderRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "gender", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["gender"]
+    }
+    
+    public func getAgeRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "age", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["age"]
+    }
+    
+    public func getMaritalRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "marital", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["marital"]
+    }
+    
+    public func getEthnicityRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "ethnicity", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["ethnicity"]
+    }
+    
+    public func getDrinkerRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "drinker", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["drinker"]
+    }
+    
+    public func getReligionRefList() -> JSON {let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "religion", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["religion"]
+    }
+    
+    public func getThreeChoiceRefList() -> JSON {
+        let list = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "threechoiceref", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        return list["threechoiceref"]
     }
 
     public func urlencode(_ input: String) -> String {

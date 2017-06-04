@@ -59,8 +59,8 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? EVCFlingViewController {
-            let mode = sender as? Int
-            dest.mode = REL_MODE(rawValue: mode!)!
+            let mode = sender as! Int
+            dest.mode = REL_MODE(rawValue: mode)!
         } else if let dest = segue.destination as? EVCGroupViewController {
             dest.group = sender as! Group
             dest.parentController = self.parentController
@@ -95,13 +95,10 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
             case 1:
                 switch indexPath.row {
                 case 4:
-                    UserDefaults.standard.set(1, forKey: "REL_MODE")
                     self.performSegue(withIdentifier: "RelationshipSegue", sender: 1)
                 case 5:
-                    UserDefaults.standard.set(2, forKey: "REL_MODE")
                     self.performSegue(withIdentifier: "RelationshipSegue", sender: 2)
                 case 6:
-                    UserDefaults.standard.set(0, forKey: "REL_MODE")
                     self.performSegue(withIdentifier: "RelationshipSegue", sender: 0)
                 case 3:
                     self.performSegue(withIdentifier: "ShoppingSegue", sender: nil)

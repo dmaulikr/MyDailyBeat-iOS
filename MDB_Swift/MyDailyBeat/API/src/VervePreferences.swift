@@ -9,12 +9,15 @@
 import UIKit
 import FXForms
 public class VervePreferences: NSObject, FXForm {
-    public var userPreferences: VerveUserPreferences!
-    public var matchingPreferences: VerveMatchingPreferences!
-    public var hobbiesPreferences: HobbiesPreferences!
-
-
-    public func extraFields() -> [Any] {
-        return [[FXFormFieldTitle: "Save", FXFormFieldHeader: "", FXFormFieldAction: "submit:"]]
+    public var userPreferences: VerveUserPreferences?
+    public var matchingPreferences: VerveMatchingPreferences?
+    public var hobbiesPreferences: HobbiesPreferences?
+    
+    public func fields() -> [Any]! {
+        return [[FXFormFieldTitle: "User Preferences", FXFormFieldHeader: "", FXFormFieldKey: "userPreferences"],
+                [FXFormFieldTitle: "Matching Preferences", FXFormFieldKey: "matchingPreferences"],
+                [FXFormFieldTitle: "Hobbies Preferences", FXFormFieldKey: "hobbiesPreferences"],
+                [FXFormFieldTitle: "Save", FXFormFieldHeader: "", FXFormFieldAction: "submit:"]
+        ]
     }
 }

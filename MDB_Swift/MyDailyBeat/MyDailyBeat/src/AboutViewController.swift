@@ -134,16 +134,24 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "AboutDetailsSegue", sender: indexPath)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let dest = segue.destination as? AboutDetailsViewController, let path = sender as? IndexPath {
+            if path.section == 0 {
+                
+            } else {
+                dest.text = self.acknowledgements[path.row].values.first ?? ""
+            }
+        }
     }
-    */
+    
 
 }

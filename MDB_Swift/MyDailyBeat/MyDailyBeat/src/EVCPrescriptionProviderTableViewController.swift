@@ -46,14 +46,14 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == self.pharmacyProviders.count {
-            var alert = UIAlertController(title: "Enter new prescription provider", message: "Enter the link to the prescription provider you wish to add.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Enter new prescription provider", message: "Enter the link to the prescription provider you wish to add.", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in
                 textField.placeholder = ""
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                var text: String = alert.textFields![0].text!
-                var prov = PrescripProviderInfo(uniqueId: 0, url: text, logoURL: "")
+                let text: String = alert.textFields![0].text!
+                let prov = PrescripProviderInfo(uniqueId: 0, url: text, logoURL: "")
                 DataManager.insertPrescriptionProvider(prov)
                 self.pharmacyProviders = DataManager.getPrescriptionProviders()
                 self.tableView.reloadData()
@@ -68,19 +68,24 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func openURLinBrowser(_ url: String) {
-        let fullURL: String = "\(url)"
-        UIApplication.shared.openURL(URL(string: fullURL)!)
+        let fullURL: String
+        if url.hasPrefix("http://") || url.hasPrefix("https://") {
+            fullURL = "\(url)"
+        } else {
+            fullURL = "http://\(url)"
+        }
+        UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
     }
 
     func popupActionMenu(_ row: Int) {
         let sheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        let browserAction = UIAlertAction(title: "Open App", style: .default) { (action) in
-            var obj: PrescripProviderInfo = self.pharmacyProviders[row]
+        let browserAction = UIAlertAction(title: "Open Site", style: .default) { (action) in
+            let obj: PrescripProviderInfo = self.pharmacyProviders[row]
             self.openURLinBrowser(obj.url)
         }
-        let addAction = UIAlertAction(title: "Set as My Bank", style: .default) { (action) in
-            var obj: PrescripProviderInfo = self.pharmacyProviders[row]
-            var encoded = NSKeyedArchiver.archivedData(withRootObject: obj)
+        let addAction = UIAlertAction(title: "Set as My Prescription Provider", style: .default) { (action) in
+            let obj: PrescripProviderInfo = self.pharmacyProviders[row]
+            let encoded = NSKeyedArchiver.archivedData(withRootObject: obj)
             UserDefaults.standard.set(encoded, forKey: "myPrescripProvider")
         }
         sheet.addAction(browserAction)

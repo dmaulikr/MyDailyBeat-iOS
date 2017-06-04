@@ -12,6 +12,7 @@ import API
 class EVCFlingProfileCreatorViewController: UIViewController {
     @IBOutlet var aboutMeView: UITextView!
     @IBOutlet var okButton: UIButton!
+    var isModal: Bool = false
     var mode: REL_MODE = .friends_MODE
 
     @IBAction func save(_ sender: Any) {
@@ -21,19 +22,21 @@ class EVCFlingProfileCreatorViewController: UIViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            let prefs: VerveUserPreferences? = RestAPI.getInstance().getUserPreferences()
-            let age: Int? = prefs?.age
-            _ = RestAPI.getInstance().saveFlingProfile(for: RestAPI.getInstance().getCurrentUser(), andDescription: about)
+            let success = RestAPI.getInstance().saveFlingProfile(for: RestAPI.getInstance().getCurrentUser(), andDescription: about)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
-//                if success {
-//                    self.view.makeToast("Upload successful!", duration: 3.5, position: .bottom, image: UIImage(named: "check.png"))
-//                    self.navigationController?.popViewController(animated: true)
-//                }
-//                else {
-//                    self.view.makeToast("Upload failed!", duration: 3.5, position: .bottom, image: UIImage(named: "error.png"))
-//                    return
-//                }
+                if success {
+                    self.view.makeToast("Upload successful!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "check.png"), style: nil, completion: nil)
+                    if self.isModal {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    }
+                }
+                else {
+                    self.view.makeToast("Upload failed!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "error.png"), style: nil, completion: nil)
+                    return
+                }
             })
         })
     }
@@ -41,7 +44,6 @@ class EVCFlingProfileCreatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mode = REL_MODE(rawValue: Int(UserDefaults.standard.integer(forKey: "REL_MODE")))!
         self.navigationItem.title = "Edit Fling Profile"
         self.aboutMeView.layer.borderWidth = 1.0
         self.aboutMeView.layer.borderColor = UIColor(netHex: 0x0097a4).cgColor

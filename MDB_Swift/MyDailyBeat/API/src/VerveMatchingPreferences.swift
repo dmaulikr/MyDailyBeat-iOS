@@ -16,44 +16,71 @@ public class VerveMatchingPreferences: NSObject, FXForm {
     public var ethnicity: Int = 0
     public var beliefs: Int = 0
     public var drinker: Int = 0
-    public var isSmoker: Bool = false
-    public var isVeteran: Bool = false
+    public var isSmoker: Int = 0
+    public var isVeteran: Int = 0
 
     func toJSON() -> JSON {
         var dic = [String: JSON]()
-        dic["gender"] = JSON(self.gender)
-        dic["age"] = JSON(self.age)
-        dic["status"] = JSON(self.status)
-        dic["ethnicity"] = JSON(self.ethnicity)
-        dic["drinker"] = JSON(self.drinker)
-        dic["beliefs"] = JSON(self.beliefs)
-        dic["smoker"] = JSON(self.isSmoker)
-        dic["veteran"] = JSON(self.isVeteran)
+        dic["gender"] = JSON([JSON(self.gender)])
+        dic["age"] = JSON([JSON(self.age)])
+        dic["mrrtl"] = JSON([JSON(self.status)])
+        dic["ethnct"] = JSON([JSON(self.ethnicity)])
+        dic["drnkr"] = JSON([JSON(self.drinker)])
+        dic["relgs"] = JSON([JSON(self.beliefs)])
+        dic["smkr_threechoice_id"] = JSON(self.isSmoker)
+        dic["vtrn_threechoice_id"] = JSON(self.isVeteran)
         return JSON(dic)
+    }
+    
+    func isSmokerField() -> [AnyHashable: Any] {
+        return [FXFormFieldOptions: ThreeChoiceRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            return value
+        }), FXFormFieldValueTransformer: ThreeChoiceValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
+    }
+    
+    func isVeteranField() -> [AnyHashable: Any] {
+        return [FXFormFieldOptions: ThreeChoiceRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            return value
+        }), FXFormFieldValueTransformer: ThreeChoiceValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
     }
 
 
     func genderField() -> [AnyHashable: Any] {
-        return [FXFormFieldOptions: GENDER_STRING_LIST]
+        return [FXFormFieldOptions: GenderRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            return value
+        }), FXFormFieldValueTransformer: GenderValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
     }
-
+    
     func statusField() -> [AnyHashable: Any] {
-        return [FXFormFieldOptions: STATUS_STRING_LIST]
+        return [FXFormFieldOptions: MaritalRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            return value
+        }), FXFormFieldValueTransformer: MaritalValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
     }
-
+    
     func ethnicityField() -> [AnyHashable: Any] {
-        return [FXFormFieldOptions: ETHNICITY_STRING_LIST_2]
+        return [FXFormFieldOptions: EthnicityRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            return value
+        }), FXFormFieldValueTransformer: EthnicityValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
     }
-
+    
     func drinkerField() -> [AnyHashable: Any] {
-        return [FXFormFieldOptions: DRINKER_STRING_LIST]
+        return [FXFormFieldOptions: DrinkerRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            return value
+        }), FXFormFieldValueTransformer: DrinkerValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
     }
-
+    
     func beliefsField() -> [AnyHashable: Any] {
-        return [FXFormFieldOptions: BELIEFS_STRING_LIST_2]
+        return [FXFormFieldOptions: ReligionRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            return value
+        }), FXFormFieldValueTransformer: ReligionValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
     }
 
     func ageField() -> [AnyHashable: Any] {
-        return [FXFormFieldOptions: AGE_STRING_LIST]
+        return [FXFormFieldOptions: AgeRefList.getInstance().list.reversed().map({ (key, value) -> String in
+            guard value.max < 120 else {
+                return "\(value.min)+"
+            }
+            return "\(value.min) - \(value.max)"
+        }), FXFormFieldValueTransformer: AgeValueTransformer(), FXFormFieldType: FXFormFieldTypeOption]
     }
 }

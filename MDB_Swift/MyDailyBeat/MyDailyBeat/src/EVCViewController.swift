@@ -11,6 +11,7 @@ import Toast_Swift
 import API
 import DLAlertView
 import RESideMenu
+import GBVersionTracking
 class EVCViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var options = [String]()
     var imageNames = [String]()
@@ -32,39 +33,70 @@ class EVCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.navigationItem.title = "Welcome \(fields[0])!"
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        var arr = DataManager.getBanks()
-        if arr.count == 0 {
+        let arr = DataManager.getBanks()
+        let arr2 = DataManager.getHealthPortals()
+        let arr3 = DataManager.getPrescriptionProviders()
+        if arr.isEmpty || arr2.isEmpty || arr3.isEmpty {
             DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToast("Fine Tuning Your Experience...", duration: 3.5, position: .bottom)
                     self.view.makeToastActivity(ToastPosition.center)
                 })
                     // initialize db
-                var temp = TOP_TEN_BANKS
-                for i in 0..<temp.count {
-                    var tempString: String = temp[i]
-                    if RestAPI.getInstance().doesAppExist(withTerm: tempString, andCountry: "US") {
-                        let bank: VerveBankObject = RestAPI.getInstance().getBankInfoForBank(withName: tempString, inCountry: "US")
-                        let info = BankInfo(uniqueId: bank.uniqueID, name: bank.appName, appURL: bank.appStoreListing, iconURL: bank.appIconURL)
-                        DataManager.insertBank(info)
+                if arr.isEmpty {
+                    var temp = TOP_TEN_BANKS
+                    for i in 0..<temp.count {
+                        let tempString: String = temp[i]
+                        if RestAPI.getInstance().doesAppExist(withTerm: tempString, andCountry: "US") {
+                            let bank: VerveBankObject = RestAPI.getInstance().getBankInfoForBank(withName: tempString, inCountry: "US")
+                            let info = BankInfo(uniqueId: bank.uniqueID, name: bank.appName, appURL: bank.appStoreListing, iconURL: bank.appIconURL)
+                            DataManager.insertBank(info)
+                        }
                     }
                 }
+                
+                if arr2.isEmpty {
+                    var temp = HEALTH_PORTALS
+                    for i in 0..<temp.count {
+                        let tempString: String = temp[i]
+                        let logoURL = HEALTH_PORTAL_LOGO_URLS[i]
+                        let info = HealthInfo(uniqueId: i, url: tempString, logoURL: logoURL)
+                        DataManager.insertHealthPortal(info)
+                    }
+                }
+                
+                if arr3.isEmpty {
+                    var temp = PRESCRIP_PROVIDERS
+                    for i in 0..<temp.count {
+                        let tempString: String = temp[i]
+                        let logoURL = PRESCRIP_PROVIDER_LOGO_URLS[i]
+                        let info = PrescripProviderInfo(uniqueId: i, url: tempString, logoURL: logoURL)
+                        DataManager.insertPrescriptionProvider(info)
+                    }
+                }
+                
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.hideToastActivity()
                     UserDefaults.standard.set(false, forKey: "LOAD_BANK_IMAGES")
                     self.view.makeToast("Fine Tuning Complete", duration: 3.5, position: .bottom)
+                    if GBVersionTracking.isFirstLaunchEver() {
+                        self.showModalSegue(withIdentifier: "FirstTimeSetupSegue", andSender: self)
+                    }
                 })
             })
         }
-//        if UserDefaults.standard.bool(forKey: "FirstTimeLogin") {
-//            self.performSegue(withIdentifier: "FirstTimeSetupSegue", sender: self)
-//        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? EVCFlingViewController {
-            let mode = sender as? Int
-            dest.mode = REL_MODE(rawValue: mode!)!
+            let mode = sender as! Int
+            dest.mode = REL_MODE(rawValue: mode)!
         }
     }
 
@@ -74,13 +106,10 @@ class EVCViewController: UIViewController, UITableViewDataSource, UITableViewDel
             case 1:
                 switch indexPath.row {
                     case 4:
-                        UserDefaults.standard.set(1, forKey: "REL_MODE")
                         self.performSegue(withIdentifier: "RelationshipSegue", sender: 1)
                     case 5:
-                        UserDefaults.standard.set(2, forKey: "REL_MODE")
                         self.performSegue(withIdentifier: "RelationshipSegue", sender: 2)
                     case 6:
-                        UserDefaults.standard.set(0, forKey: "REL_MODE")
                         self.performSegue(withIdentifier: "RelationshipSegue", sender: 0)
                     case 3:
                         self.performSegue(withIdentifier: "ShoppingSegue", sender: nil)

@@ -101,13 +101,13 @@
                         <constraint firstAttribute="width" secondItem="eKf-sa-1kA" secondAttribute="height" multiplier="1:1" id="vdA-tc-QYb"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="smF-qY-0wJ">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="smF-qY-0wJ">
                     <rect key="frame" x="39" y="351" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="smF-qY-0wJ" secondAttribute="height" multiplier="1:1" id="Iue-U8-CVP"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-px-7eE">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-px-7eE">
                     <rect key="frame" x="39" y="276" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5Fb-px-7eE" secondAttribute="height" multiplier="1:1" id="JOM-zm-ZrG"/>
@@ -179,5 +179,6 @@
     </objects>
     <resources>
         <image name="Logo" width="120" height="120"/>
+        <image name="password" width="23" height="23"/>
     </resources>
 </document>

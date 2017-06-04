@@ -68,13 +68,18 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func openURLinBrowser(_ url: String) {
-        let fullURL: String = "\(url)"
-        UIApplication.shared.openURL(URL(string: fullURL)!)
+        let fullURL: String
+        if url.hasPrefix("http://") || url.hasPrefix("https://") {
+            fullURL = "\(url)"
+        } else {
+            fullURL = "http://\(url)"
+        }
+        UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
     }
 
     func popupActionMenu(_ row: Int) {
         let sheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        let browserAction = UIAlertAction(title: "Open App", style: .default) { (action) in
+        let browserAction = UIAlertAction(title: "Open Site", style: .default) { (action) in
             let obj: HealthInfo? = self.healthPortals[row]
             self.openURLinBrowser((obj?.url)!)
         }

@@ -68,6 +68,9 @@ class RegistrationScreenNameViewController: UIViewController {
         self.screenNameField.delegate = self
         self.passField.delegate = self
         self.pass2Field.delegate = self
+        self.userOuter.delegate = DisableOuterField()
+        self.passOuter.delegate = DisableOuterField()
+        self.pass2Outer.delegate = DisableOuterField()
         self.screenNameField.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         self.pass2Field.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         self.passField.backgroundColor = UIColor.white.withAlphaComponent(0.7)
@@ -106,8 +109,7 @@ class RegistrationScreenNameViewController: UIViewController {
         screenNameField.attributedPlaceholder = NSAttributedString(string: "Screen Name", attributes: [NSForegroundColorAttributeName: UIColor(netHex: 0x0097A4)])
         passField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor(netHex: 0x0097A4)])
         pass2Field.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSForegroundColorAttributeName: UIColor(netHex: 0x0097A4)])
-        
-        
+    
         // Do any additional setup after loading the view.
     }
 
@@ -128,6 +130,16 @@ class RegistrationScreenNameViewController: UIViewController {
     }
     */
 
+}
+
+class DisableOuterField: NSObject, UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
 }
 
 extension RegistrationScreenNameViewController: UITextFieldDelegate {

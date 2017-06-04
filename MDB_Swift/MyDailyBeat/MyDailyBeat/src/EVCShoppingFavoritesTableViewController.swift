@@ -11,7 +11,7 @@ import API
 import Toast_Swift
 import SwiftyJSON
 class EVCShoppingFavoritesTableViewController: UITableViewController {
-    var searchResults = [JSON]()
+    var searchResults = [String]()
 
 
     override func viewDidLoad() {
@@ -27,8 +27,22 @@ class EVCShoppingFavoritesTableViewController: UITableViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var dic2 = RestAPI.getInstance().getShoppingFavorites()
-            self.searchResults = dic2["items"].arrayValue
+            let dic = RestAPI.getInstance().searchShoppingURLs(withQueryString: nil)
+            let dic2 = RestAPI.getInstance().getShoppingFavorites()
+            let arr = dic2.arrayValue.map({ (json) -> Int in
+                return json["shpng_ref_id"].intValue
+            })
+            
+            let arr2 = dic.arrayValue.filter({ (json) -> Bool in
+                let value: Int = json["shpng_ref_id"].intValue
+                return arr.contains(value)
+            })
+            
+            self.searchResults = arr2.map({ (json) -> String in
+                return json["shpng_url"].stringValue
+            })
+            
+            
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.tableView.reloadData()
@@ -52,17 +66,17 @@ override func numberOfSections(in tableView: UITableView) -> Int {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "CellIdentifier")
         }
-        cell?.textLabel?.text = self.searchResults[indexPath.row].stringValue
+        cell?.textLabel?.text = self.searchResults[indexPath.row]
         return cell!
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         let browserAction = UIAlertAction(title: "Open in Browser", style: .default) { (action) in
-            self.openURLinBrowser(self.searchResults[indexPath.row].stringValue)
+            self.openURLinBrowser(self.searchResults[indexPath.row])
         }
         let addAction = UIAlertAction(title: "Add to Favorites", style: .default) { (action) in
-            self.add(toFavs: self.searchResults[indexPath.row].stringValue)
+            self.add(toFavs: self.searchResults[indexPath.row])
         }
         sheet.addAction(browserAction)
         sheet.addAction(addAction)
@@ -70,8 +84,13 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func openURLinBrowser(_ url: String) {
-        let fullURL: String = "http://www.\(url)"
-        UIApplication.shared.openURL(URL(string: fullURL)!)
+        let fullURL: String
+        if url.hasPrefix("http://") || url.hasPrefix("https://") {
+            fullURL = "\(url)"
+        } else {
+            fullURL = "http://\(url)"
+        }
+        UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
     }
 
     func add(toFavs url: String) {

@@ -16,7 +16,7 @@ class EVCTabBarController: UITabBarController {
         if let items = tab.items {
             for item in items {
                 if let image = item.image, let selected = item.selectedImage {
-                    item.image = EVCCommonMethods.image(with: image, scaledTo: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysOriginal)
+                    item.image = EVCCommonMethods.image(with: image, scaledTo: CGSize(width: 30, height: 30)).withRenderingMode(.automatic)
                     item.selectedImage = EVCCommonMethods.image(with: selected, scaledTo: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysOriginal)
                 }
             }

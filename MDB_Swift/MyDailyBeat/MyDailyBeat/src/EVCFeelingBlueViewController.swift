@@ -108,30 +108,21 @@ class EVCFeelingBlueViewController: UITableViewController {
         if code == nil {
             if (num == "1-800-273-8255") {
                     // suicide
-                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-                if callHistory == nil {
-                    callHistory = [Any]()
-                }
-                callHistory?.insert("Suicide Hotline", at: 0)
+                var callHistory = UserDefaults.standard.stringArray(forKey: "callHistory") ?? [String]()
+                callHistory.insert("Suicide Hotline", at: 0)
                 UserDefaults.standard.set(callHistory, forKey: "callHistory")
             }
             else {
                     // save number
-                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-                if callHistory == nil {
-                    callHistory = [Any]()
-                }
-                callHistory?.insert(num, at: 0)
+                var callHistory = UserDefaults.standard.stringArray(forKey: "callHistory") ?? [String]()
+                callHistory.insert(num, at: 0)
                 UserDefaults.standard.set(callHistory, forKey: "callHistory")
             }
         }
         else {
                 // veterans
-            var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-            if callHistory == nil {
-                callHistory = [Any]()
-            }
-            callHistory?.insert("Veterans' Hotline", at: 0)
+            var callHistory = UserDefaults.standard.stringArray(forKey: "callHistory") ?? [String]()
+            callHistory.insert("Veterans' Hotline", at: 0)
             UserDefaults.standard.set(callHistory, forKey: "callHistory")
         }
         UserDefaults.standard.synchronize()

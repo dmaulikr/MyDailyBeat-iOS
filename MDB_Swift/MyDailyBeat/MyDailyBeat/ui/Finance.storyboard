@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Banks-->
         <scene sceneID="gdl-JH-biy">
             <objects>
                 <viewController id="fh6-rg-gWU" customClass="EVCFinanceHomeViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                             <constraint firstItem="SjH-XZ-WV8" firstAttribute="centerY" secondItem="rf9-xV-xp7" secondAttribute="centerY" id="bhU-1O-9aC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="4JV-Au-bzi"/>
+                    <tabBarItem key="tabBarItem" title="Banks" image="finance" selectedImage="finance2" id="4JV-Au-bzi"/>
                     <connections>
                         <outlet property="tableView" destination="SjH-XZ-WV8" id="u6t-ec-lAH"/>
                     </connections>
@@ -44,7 +44,7 @@
             </objects>
             <point key="canvasLocation" x="-391.19999999999999" y="845.1274362818591"/>
         </scene>
-        <!--Item-->
+        <!--Resource Links-->
         <scene sceneID="Rel-xe-hka">
             <objects>
                 <tableViewController id="dgN-GF-MnY" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,13 +57,13 @@
                             <outlet property="delegate" destination="dgN-GF-MnY" id="qjm-qI-qEm"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="bDp-gM-uGy"/>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="bDp-gM-uGy"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ffd-jb-eMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="463" y="839"/>
         </scene>
-        <!--Item 1-->
+        <!--My Bank-->
         <scene sceneID="0Gn-s2-5lb">
             <objects>
                 <viewController id="sj7-qf-yPU" customClass="EVCBankViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -133,7 +133,7 @@
                             <constraint firstItem="lT6-aX-gx7" firstAttribute="top" secondItem="XML-IF-5sL" secondAttribute="bottom" constant="8" symbolic="YES" id="p43-mG-P80"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="vur-vi-B8e"/>
+                    <tabBarItem key="tabBarItem" title="My Bank" image="star-icon-gray" selectedImage="star-icon-white" id="vur-vi-B8e"/>
                     <connections>
                         <outlet property="bankNameLbl" destination="XML-IF-5sL" id="9fd-Ze-UPf"/>
                         <outlet property="btn" destination="t0J-5E-0PU" id="Ftl-Rg-OCu"/>
@@ -165,4 +165,12 @@
             <point key="canvasLocation" x="-132" y="87"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="finance" width="183" height="183"/>
+        <image name="finance2" width="183" height="183"/>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
 </document>

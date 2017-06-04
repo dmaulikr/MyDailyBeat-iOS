@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import API
 import EasyTipView
+import GBVersionTracking
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -37,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         preferences.drawing.foregroundColor = UIColor.white
         preferences.drawing.backgroundColor = UIColor(netHex: 0x0097A4)
         EasyTipView.globalPreferences = preferences
+        GBVersionTracking.track()
         return true
     }
 

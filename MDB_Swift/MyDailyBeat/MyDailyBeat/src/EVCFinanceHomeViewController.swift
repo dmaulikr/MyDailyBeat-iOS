@@ -124,7 +124,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
         let browserAction = UIAlertAction(title: "Open App", style: .default) { (action) in
             let obj: BankInfo? = self.bankList[row]
             let appURL: String? = obj?.appURL
-            UIApplication.shared.openURL(URL(string: appURL!)!)
+            UIApplication.shared.open(URL(string: appURL!)!, options: [:], completionHandler: nil)
         }
         let addAction = UIAlertAction(title: "Set as My Bank", style: .default) { (action) in
             let obj: BankInfo = self.bankList[row]

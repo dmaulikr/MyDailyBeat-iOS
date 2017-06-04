@@ -23,7 +23,7 @@ class Queue: NSObject {
     }
 
     func pop() -> Any {
-        var retval: Any? = self.queue[0]
+        let retval: Any? = self.queue[0]
         self.queue.remove(at: 0)
         return retval!
     }

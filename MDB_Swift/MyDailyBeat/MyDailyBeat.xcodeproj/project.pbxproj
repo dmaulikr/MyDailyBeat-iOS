@@ -10,6 +10,20 @@
 		2542E1E458EB25E4F120AB00 /* Pods_MyDailyBeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2ECDAD79E7DF22573364BE /* Pods_MyDailyBeat.framework */; };
 		7608D8111E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7608D8101E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib */; };
 		7608D8131E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608D8121E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift */; };
+		762289191EDA0F4200F6B586 /* GenderRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762289181EDA0F4200F6B586 /* GenderRefList.swift */; };
+		7622891B1EDA82A300F6B586 /* AgeRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622891A1EDA82A300F6B586 /* AgeRefList.swift */; };
+		7622891D1EDA8CFC00F6B586 /* MaritalRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622891C1EDA8CFC00F6B586 /* MaritalRefList.swift */; };
+		7622891F1EDA91D400F6B586 /* EthnicityRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622891E1EDA91D400F6B586 /* EthnicityRefList.swift */; };
+		762289211EDA923500F6B586 /* DrinkerRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762289201EDA923500F6B586 /* DrinkerRefList.swift */; };
+		762289231EDA936500F6B586 /* ReligionRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762289221EDA936500F6B586 /* ReligionRefList.swift */; };
+		762289251EDA93AB00F6B586 /* ThreeChoiceRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762289241EDA93AB00F6B586 /* ThreeChoiceRefList.swift */; };
+		762289271EDBDD1300F6B586 /* AboutDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762289261EDBDD1200F6B586 /* AboutDetailsViewController.swift */; };
+		762289291EDCE0C200F6B586 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 762289281EDCE0C200F6B586 /* Preferences.storyboard */; };
+		7622892B1EDCE3F600F6B586 /* EVCUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622892A1EDCE3F600F6B586 /* EVCUserPreferencesViewController.swift */; };
+		7622892D1EDCE6EE00F6B586 /* ToggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622892C1EDCE6EE00F6B586 /* ToggleTableViewCell.swift */; };
+		7622892F1EDCF93200F6B586 /* EVCMatchingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622892E1EDCF93200F6B586 /* EVCMatchingPreferencesViewController.swift */; };
+		762289311EDCFC8D00F6B586 /* TravelRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762289301EDCFC8C00F6B586 /* TravelRefList.swift */; };
+		762289331EDCFE3700F6B586 /* EVCHobbiesPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762289321EDCFE3700F6B586 /* EVCHobbiesPreferencesViewController.swift */; };
 		7628FD4F1E80A1900053D04A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7628FD4E1E80A1900053D04A /* MainViewController.swift */; };
 		7628FD511E80AEE40053D04A /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7628FD501E80AEE40053D04A /* RegistrationViewController.swift */; };
 		7628FD551E80B0B60053D04A /* RegistrationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7628FD541E80B0B60053D04A /* RegistrationMessageViewController.xib */; };
@@ -125,6 +139,7 @@
 		769F391E1E84926100E036CA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 769F391D1E84926100E036CA /* About.storyboard */; };
 		769F39201E84957200E036CA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F391F1E84957200E036CA /* AboutViewController.swift */; };
 		76ADF55C1ED1220D00B7868F /* EVCFlingProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76ADF55B1ED1220D00B7868F /* EVCFlingProfileViewController.xib */; };
+		76ADF55E1ED3BCBD00B7868F /* EVCTravelFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADF55D1ED3BCBD00B7868F /* EVCTravelFavoritesViewController.swift */; };
 		76BD90C21E5A8CDE000ADD90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */; };
 		76BD90C71E5A8CDE000ADD90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76BD90C51E5A8CDE000ADD90 /* Main.storyboard */; };
 		76BD90CA1E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76BD90C81E5A8CDE000ADD90 /* MyDailyBeat.xcdatamodeld */; };
@@ -133,6 +148,7 @@
 		76BD90DF1E5A8D38000ADD90 /* API.h in Headers */ = {isa = PBXBuildFile; fileRef = 76BD90DD1E5A8D37000ADD90 /* API.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76BD90E21E5A8D38000ADD90 /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76BD90DB1E5A8D37000ADD90 /* API.framework */; };
 		76BD90E31E5A8D38000ADD90 /* API.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76BD90DB1E5A8D37000ADD90 /* API.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76C20FD41ED6782D00CBF62F /* HobbiesRefList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C20FD31ED6782D00CBF62F /* HobbiesRefList.swift */; };
 		76CF9ACF1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76CF9ACE1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib */; };
 		76CF9AD11E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF9AD01E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift */; };
 		76E01ACE1E5A979600985562 /* EVCChatroomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E01A721E5A979600985562 /* EVCChatroomCell.xib */; };
@@ -181,6 +197,20 @@
 		68BEEFB3658C73F3C4A5EC83 /* Pods_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7608D8101E89E4A800B92C0F /* RegistrationPersonalInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationPersonalInfoViewController.xib; path = ui/RegistrationPersonalInfoViewController.xib; sourceTree = "<group>"; };
 		7608D8121E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalInfoViewController.swift; sourceTree = "<group>"; };
+		762289181EDA0F4200F6B586 /* GenderRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderRefList.swift; sourceTree = "<group>"; };
+		7622891A1EDA82A300F6B586 /* AgeRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeRefList.swift; sourceTree = "<group>"; };
+		7622891C1EDA8CFC00F6B586 /* MaritalRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaritalRefList.swift; sourceTree = "<group>"; };
+		7622891E1EDA91D400F6B586 /* EthnicityRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EthnicityRefList.swift; sourceTree = "<group>"; };
+		762289201EDA923500F6B586 /* DrinkerRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkerRefList.swift; sourceTree = "<group>"; };
+		762289221EDA936500F6B586 /* ReligionRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReligionRefList.swift; sourceTree = "<group>"; };
+		762289241EDA93AB00F6B586 /* ThreeChoiceRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeChoiceRefList.swift; sourceTree = "<group>"; };
+		762289261EDBDD1200F6B586 /* AboutDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutDetailsViewController.swift; sourceTree = "<group>"; };
+		762289281EDCE0C200F6B586 /* Preferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Preferences.storyboard; path = ui/Preferences.storyboard; sourceTree = "<group>"; };
+		7622892A1EDCE3F600F6B586 /* EVCUserPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCUserPreferencesViewController.swift; sourceTree = "<group>"; };
+		7622892C1EDCE6EE00F6B586 /* ToggleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleTableViewCell.swift; sourceTree = "<group>"; };
+		7622892E1EDCF93200F6B586 /* EVCMatchingPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCMatchingPreferencesViewController.swift; sourceTree = "<group>"; };
+		762289301EDCFC8C00F6B586 /* TravelRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelRefList.swift; sourceTree = "<group>"; };
+		762289321EDCFE3700F6B586 /* EVCHobbiesPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCHobbiesPreferencesViewController.swift; sourceTree = "<group>"; };
 		7628FD4E1E80A1900053D04A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7628FD501E80AEE40053D04A /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		7628FD541E80B0B60053D04A /* RegistrationMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationMessageViewController.xib; path = ui/RegistrationMessageViewController.xib; sourceTree = "<group>"; };
@@ -298,6 +328,7 @@
 		769F391D1E84926100E036CA /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = About.storyboard; path = ui/About.storyboard; sourceTree = "<group>"; };
 		769F391F1E84957200E036CA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		76ADF55B1ED1220D00B7868F /* EVCFlingProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCFlingProfileViewController.xib; sourceTree = "<group>"; };
+		76ADF55D1ED3BCBD00B7868F /* EVCTravelFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCTravelFavoritesViewController.swift; sourceTree = "<group>"; };
 		76BD90BE1E5A8CDE000ADD90 /* MyDailyBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDailyBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76BD90C61E5A8CDE000ADD90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -308,6 +339,7 @@
 		76BD90DB1E5A8D37000ADD90 /* API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BD90DD1E5A8D37000ADD90 /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		76BD90DE1E5A8D38000ADD90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76C20FD31ED6782D00CBF62F /* HobbiesRefList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbiesRefList.swift; sourceTree = "<group>"; };
 		76CF9ACE1E9F0163004E4EE7 /* RegistrationContactInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegistrationContactInfoViewController.xib; path = ui/RegistrationContactInfoViewController.xib; sourceTree = "<group>"; };
 		76CF9AD01E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationContactInfoViewController.swift; sourceTree = "<group>"; };
 		76E01A721E5A979600985562 /* EVCChatroomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVCChatroomCell.xib; sourceTree = "<group>"; };
@@ -389,6 +421,15 @@
 				767486CA1E5AA0520024331F /* GroupPrefs.swift */,
 				767486CD1E5AA0520024331F /* HobbiesMatchObject.swift */,
 				767486CE1E5AA0520024331F /* HobbiesPreferences.swift */,
+				76C20FD31ED6782D00CBF62F /* HobbiesRefList.swift */,
+				762289181EDA0F4200F6B586 /* GenderRefList.swift */,
+				7622891C1EDA8CFC00F6B586 /* MaritalRefList.swift */,
+				7622891E1EDA91D400F6B586 /* EthnicityRefList.swift */,
+				762289201EDA923500F6B586 /* DrinkerRefList.swift */,
+				7622891A1EDA82A300F6B586 /* AgeRefList.swift */,
+				762289221EDA936500F6B586 /* ReligionRefList.swift */,
+				762289241EDA93AB00F6B586 /* ThreeChoiceRefList.swift */,
+				762289301EDCFC8C00F6B586 /* TravelRefList.swift */,
 				767486D01E5AA0520024331F /* MessageChatroom.swift */,
 				767486D21E5AA0520024331F /* Post.swift */,
 				767486D41E5AA0520024331F /* Queue.swift */,
@@ -449,6 +490,7 @@
 				769F391B1E848DAB00E036CA /* Acknowledgements.plist */,
 				76BD90C11E5A8CDE000ADD90 /* AppDelegate.swift */,
 				76BD90C51E5A8CDE000ADD90 /* Main.storyboard */,
+				762289281EDCE0C200F6B586 /* Preferences.storyboard */,
 				769F391D1E84926100E036CA /* About.storyboard */,
 				766AF8821E61DED4005C1F71 /* FeelingBlue.storyboard */,
 				7649B5C21E5FDE00001FBCDF /* Finance.storyboard */,
@@ -526,8 +568,12 @@
 				7674873B1E5B21100024331F /* EVCPartnersTableViewController.swift */,
 				7674873C1E5B21100024331F /* EVCPostView.swift */,
 				7674873D1E5B21100024331F /* EVCPreferencesViewController.swift */,
+				7622892A1EDCE3F600F6B586 /* EVCUserPreferencesViewController.swift */,
+				7622892E1EDCF93200F6B586 /* EVCMatchingPreferencesViewController.swift */,
+				762289321EDCFE3700F6B586 /* EVCHobbiesPreferencesViewController.swift */,
 				7674873E1E5B21100024331F /* EVCPrescriptionProviderTableViewController.swift */,
 				7674873F1E5B21100024331F /* EVCProfilePicView.swift */,
+				7622892C1EDCE6EE00F6B586 /* ToggleTableViewCell.swift */,
 				767487401E5B21100024331F /* EVCProfileViewController.swift */,
 				767487411E5B21100024331F /* EVCRegistrationMessageViewController.swift */,
 				767487431E5B21100024331F /* EVCResourceLinksTableViewController.swift */,
@@ -537,6 +583,7 @@
 				767487471E5B21100024331F /* EVCTextFieldTableViewCell.swift */,
 				767487481E5B21100024331F /* EVCTravelTableViewController.swift */,
 				767487491E5B21100024331F /* EVCTravelTabViewController.swift */,
+				76ADF55D1ED3BCBD00B7868F /* EVCTravelFavoritesViewController.swift */,
 				7674874A1E5B21100024331F /* EVCUpdateProfileViewController.swift */,
 				7674874B1E5B21100024331F /* EVCViewController.swift */,
 				7674874C1E5B21100024331F /* EVCVolunteeringDetailsViewController.swift */,
@@ -553,6 +600,7 @@
 				7608D8121E89E9F100B92C0F /* RegistrationPersonalInfoViewController.swift */,
 				76CF9AD01E9F017A004E4EE7 /* RegistrationContactInfoViewController.swift */,
 				769F391F1E84957200E036CA /* AboutViewController.swift */,
+				762289261EDBDD1200F6B586 /* AboutDetailsViewController.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -708,6 +756,7 @@
 				7652C7D91E628E680028B693 /* Shopping.storyboard in Resources */,
 				7628FD551E80B0B60053D04A /* RegistrationMessageViewController.xib in Resources */,
 				769F391E1E84926100E036CA /* About.storyboard in Resources */,
+				762289291EDCE0C200F6B586 /* Preferences.storyboard in Resources */,
 				76E01ADE1E5A979600985562 /* EVCLabelTableViewCell_iPhone.xib in Resources */,
 				76E01AD91E5A979600985562 /* EVCGroupViewController_iPhone.xib in Resources */,
 				76E01AF11E5A979600985562 /* EVCVolunteeringDetailsViewController.xib in Resources */,
@@ -837,7 +886,9 @@
 				7674875C1E5B21100024331F /* EVCFlingProfileCreatorViewController.swift in Sources */,
 				767487581E5B21100024331F /* EVCFinanceViewController.swift in Sources */,
 				7674877F1E5B21100024331F /* EVCTravelTabViewController.swift in Sources */,
+				762289331EDCFE3700F6B586 /* EVCHobbiesPreferencesViewController.swift in Sources */,
 				767487761E5B21100024331F /* EVCProfileViewController.swift in Sources */,
+				76ADF55E1ED3BCBD00B7868F /* EVCTravelFavoritesViewController.swift in Sources */,
 				7674876A1E5B21100024331F /* EVCJobsViewController.swift in Sources */,
 				7674877A1E5B21100024331F /* EVCShoppingFavoritesTableViewController.swift in Sources */,
 				7674877B1E5B21100024331F /* EVCShoppingSearchViewController.swift in Sources */,
@@ -865,7 +916,11 @@
 				767487531E5B21100024331F /* EVCCommonMethods.swift in Sources */,
 				76E8967C1EC7603100004BF8 /* EVCNewJobsViewController.swift in Sources */,
 				767487741E5B21100024331F /* EVCPrescriptionProviderTableViewController.swift in Sources */,
+				7622892B1EDCE3F600F6B586 /* EVCUserPreferencesViewController.swift in Sources */,
+				7622892D1EDCE6EE00F6B586 /* ToggleTableViewCell.swift in Sources */,
+				7622892F1EDCF93200F6B586 /* EVCMatchingPreferencesViewController.swift in Sources */,
 				7674875D1E5B21100024331F /* EVCFlingProfileViewController.swift in Sources */,
+				762289271EDBDD1300F6B586 /* AboutDetailsViewController.swift in Sources */,
 				767487791E5B21100024331F /* EVCResourceLinksTableViewController.swift in Sources */,
 				767487671E5B21100024331F /* EVCJobsDetailsViewController.swift in Sources */,
 				767487731E5B21100024331F /* EVCPreferencesViewController.swift in Sources */,
@@ -898,9 +953,11 @@
 				767486F81E5AA0520024331F /* Group.swift in Sources */,
 				7674870F1E5AA0520024331F /* VervePreferences.swift in Sources */,
 				767486F61E5AA0520024331F /* FXFormTextCell.swift in Sources */,
+				762289311EDCFC8D00F6B586 /* TravelRefList.swift in Sources */,
 				7649B5C11E5E55B0001FBCDF /* SwiftyJSONExtension.swift in Sources */,
 				767487021E5AA0520024331F /* Post.swift in Sources */,
 				7674870E1E5AA0520024331F /* VerveMessage.swift in Sources */,
+				762289211EDA923500F6B586 /* DrinkerRefList.swift in Sources */,
 				767486FD1E5AA0520024331F /* HobbiesMatchObject.swift in Sources */,
 				767486F11E5AA0520024331F /* EVCSearchEngine.swift in Sources */,
 				767487081E5AA0520024331F /* RegisterObject1.swift in Sources */,
@@ -908,6 +965,7 @@
 				767486F51E5AA0520024331F /* FXFormScreenNameCell.swift in Sources */,
 				767487061E5AA0520024331F /* RegisterForm2.swift in Sources */,
 				7674870A1E5AA0520024331F /* Stack.swift in Sources */,
+				762289231EDA936500F6B586 /* ReligionRefList.swift in Sources */,
 				7637EFA01E6C75CF00C5BC51 /* PrescripProviderInfo.swift in Sources */,
 				767487071E5AA0520024331F /* RegisterForm3.swift in Sources */,
 				767486F91E5AA0520024331F /* GroupCreationForm.swift in Sources */,
@@ -918,12 +976,18 @@
 				767486F21E5AA0520024331F /* EVCUserInviteViewController.swift in Sources */,
 				767487881E5BE26E0024331F /* BoolExtension.swift in Sources */,
 				7637EF9F1E6C75CF00C5BC51 /* HealthInfo.swift in Sources */,
+				7622891F1EDA91D400F6B586 /* EthnicityRefList.swift in Sources */,
+				762289251EDA93AB00F6B586 /* ThreeChoiceRefList.swift in Sources */,
 				767486EC1E5AA0520024331F /* Constants.swift in Sources */,
 				7674870C1E5AA0520024331F /* VerveBankObject.swift in Sources */,
+				7622891B1EDA82A300F6B586 /* AgeRefList.swift in Sources */,
 				767486FE1E5AA0520024331F /* HobbiesPreferences.swift in Sources */,
 				7652C7DB1E6344B30028B693 /* Extensions.swift in Sources */,
 				767486F31E5AA0520024331F /* EVCUserSearchViewViewController.swift in Sources */,
+				7622891D1EDA8CFC00F6B586 /* MaritalRefList.swift in Sources */,
+				76C20FD41ED6782D00CBF62F /* HobbiesRefList.swift in Sources */,
 				767487101E5AA0520024331F /* VerveRelationshipPrefs.swift in Sources */,
+				762289191EDA0F4200F6B586 /* GenderRefList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

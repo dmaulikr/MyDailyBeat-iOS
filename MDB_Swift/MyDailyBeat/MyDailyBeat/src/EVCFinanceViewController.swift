@@ -13,7 +13,9 @@ class EVCFinanceViewController: EVCTabBarController, UITabBarControllerDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            }
+        
+        
+    }
 
     
 

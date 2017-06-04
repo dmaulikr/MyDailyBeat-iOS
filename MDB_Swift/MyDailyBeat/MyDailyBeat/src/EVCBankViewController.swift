@@ -18,8 +18,9 @@ class EVCBankViewController: UIViewController {
     var bank: BankInfo!
 
     @IBAction func gotoBank(_ sender: Any) {
-        var appURL: String = self.bank.appURL
-        UIApplication.shared.openURL(URL(string: appURL)!)
+        let appURL: String = self.bank.appURL
+        UIApplication.shared.open(URL(string: appURL)!, options: [:], completionHandler: nil)
+        
     }
 
 

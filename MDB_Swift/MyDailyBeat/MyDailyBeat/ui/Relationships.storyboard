@@ -25,13 +25,14 @@
                         <segue destination="CLx-at-rWT" kind="relationship" relationship="viewControllers" id="gPi-MA-iwd"/>
                         <segue destination="D9R-Ob-I7u" kind="relationship" relationship="viewControllers" id="bGA-XQ-x6D"/>
                         <segue destination="Zzc-hE-ggc" kind="relationship" relationship="viewControllers" id="6jD-Pv-53h"/>
+                        <segue destination="h0r-mn-UYU" kind="presentation" identifier="EditProfileSegue" modalPresentationStyle="currentContext" id="hIu-Rv-mRg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcY-f1-81f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="17" y="142"/>
         </scene>
-        <!--Item-->
+        <!--Match-->
         <scene sceneID="IUh-Bf-sVw">
             <objects>
                 <tableViewController id="KXH-cz-rLM" customClass="EVCPartnerMatchViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,13 +45,16 @@
                             <outlet property="delegate" destination="KXH-cz-rLM" id="ChB-w5-BuM"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="2p5-5B-p1l"/>
+                    <tabBarItem key="tabBarItem" title="Match" image="search-icon-gray" selectedImage="search-icon-white-1" id="2p5-5B-p1l"/>
+                    <connections>
+                        <segue destination="D9R-Ob-I7u" kind="show" identifier="ShowProfileSegue" id="LMY-V9-Z9B"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="euY-YK-s36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-689" y="893"/>
         </scene>
-        <!--Item-->
+        <!--Favorites-->
         <scene sceneID="nhA-Li-Z6E">
             <objects>
                 <tableViewController id="EeF-Ls-c9A" customClass="EVCPartnersTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,13 +67,16 @@
                             <outlet property="delegate" destination="EeF-Ls-c9A" id="VeG-cY-I70"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="DzS-CM-yNn"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="view-partners-icon-gray" selectedImage="view-partners-icon-white" id="DzS-CM-yNn"/>
+                    <connections>
+                        <segue destination="D9R-Ob-I7u" kind="show" identifier="ShowProfileSegue" id="6mE-2k-IEc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZ0-sw-K2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="17" y="1111"/>
         </scene>
-        <!--Item-->
+        <!--Messaging-->
         <scene sceneID="HON-ge-r3X">
             <objects>
                 <tableViewController id="CLx-at-rWT" customClass="EVCChatroomTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,7 +89,7 @@
                             <outlet property="delegate" destination="CLx-at-rWT" id="umV-TT-4oA"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="FMj-iH-Oiy"/>
+                    <tabBarItem key="tabBarItem" title="Messaging" image="messages-icon-gray" selectedImage="messages-icon-white" id="FMj-iH-Oiy"/>
                     <connections>
                         <segue destination="HY6-0X-qys" kind="show" identifier="ChatroomSegue" id="CJp-wf-3Xt"/>
                     </connections>
@@ -91,11 +98,11 @@
             </objects>
             <point key="canvasLocation" x="1102" y="926"/>
         </scene>
-        <!--Item-->
+        <!--My Profile-->
         <scene sceneID="e8F-7d-tKa">
             <objects>
                 <viewController id="D9R-Ob-I7u" customClass="EVCFlingProfileViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Qho-PY-u3B"/>
+                    <tabBarItem key="tabBarItem" title="My Profile" image="profile-icon-gray" selectedImage="profile-icon-white" id="Qho-PY-u3B"/>
                     <connections>
                         <segue destination="h0r-mn-UYU" kind="show" identifier="EditProfileSegue" id="cHh-Jd-HXk"/>
                         <segue destination="HY6-0X-qys" kind="show" identifier="SendMessageSegue" id="6fs-Z6-a2z"/>
@@ -178,7 +185,7 @@
             </objects>
             <point key="canvasLocation" x="2063" y="1623"/>
         </scene>
-        <!--Item-->
+        <!--Resource Links-->
         <scene sceneID="3oY-lK-g5b">
             <objects>
                 <tableViewController id="Zzc-hE-ggc" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -191,14 +198,28 @@
                             <outlet property="delegate" destination="Zzc-hE-ggc" id="NKn-Fm-WnU"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="eMj-rA-4ky"/>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="eMj-rA-4ky"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udl-Tf-2s2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3010" y="904"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="messages-icon-gray" width="183" height="183"/>
+        <image name="messages-icon-white" width="183" height="183"/>
+        <image name="profile-icon-gray" width="183" height="183"/>
+        <image name="profile-icon-white" width="183" height="183"/>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="search-icon-gray" width="183" height="183"/>
+        <image name="search-icon-white-1" width="183" height="183"/>
+        <image name="view-partners-icon-gray" width="183" height="183"/>
+        <image name="view-partners-icon-white" width="183" height="183"/>
+    </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hIu-Rv-mRg"/>
+        <segue reference="bGA-XQ-x6D"/>
         <segue reference="6fs-Z6-a2z"/>
     </inferredMetricsTieBreakers>
 </document>

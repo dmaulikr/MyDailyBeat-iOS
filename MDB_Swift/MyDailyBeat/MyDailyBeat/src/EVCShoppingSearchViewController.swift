@@ -15,7 +15,7 @@ class EVCShoppingSearchViewController: UIViewController, UISearchBarDelegate, UI
 
     @IBOutlet var mTableView: UITableView!
     @IBOutlet var sBar: UISearchBar!
-    var searchResults = [JSON]()
+    var searchResults = [String]()
 
 
     override func viewDidLoad() {
@@ -41,16 +41,21 @@ class EVCShoppingSearchViewController: UIViewController, UISearchBarDelegate, UI
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            //var dic = RestAPI.getInstance().searchShoppingURLS(withQueryString: "", with: .ascending)
-            var dic = JSON([String]())
-            var dic2 = RestAPI.getInstance().getShoppingFavorites()
-            var arr = dic2["items"].arrayValue
-            self.searchResults = dic["items"].arrayValue
-            for i in 0..<arr.count {
-                if self.searchResults.contains(arr[i]) {
-                    self.searchResults.remove(at: self.searchResults.index(of: arr[i]) ?? -1)
-                }
-            }
+            let dic = RestAPI.getInstance().searchShoppingURLs(withQueryString: nil)
+            let dic2 = RestAPI.getInstance().getShoppingFavorites()
+            let arr = dic2.arrayValue.map({ (json) -> Int in
+                return json["shpng_ref_id"].intValue
+            })
+            
+            let arr2 = dic.arrayValue.filter({ (json) -> Bool in
+                let value: Int = json["shpng_ref_id"].intValue
+                return !arr.contains(value)
+            })
+            
+            self.searchResults = arr2.map({ (json) -> String in
+                return json["shpng_url"].stringValue
+            })
+            
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.mTableView.reloadData()
@@ -63,7 +68,7 @@ class EVCShoppingSearchViewController: UIViewController, UISearchBarDelegate, UI
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "CellIdentifier")
         }
-        cell?.textLabel?.text = self.searchResults[indexPath.row].stringValue
+        cell?.textLabel?.text = self.searchResults[indexPath.row]
         return cell!
     }
 
@@ -78,10 +83,10 @@ func numberOfSections(in tableView: UITableView) -> Int {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         let browserAction = UIAlertAction(title: "Open in Browser", style: .default) { (action) in
-            self.openURLinBrowser(self.searchResults[indexPath.row].stringValue)
+            self.openURLinBrowser(self.searchResults[indexPath.row])
         }
         let addAction = UIAlertAction(title: "Add to Favorites", style: .default) { (action) in
-            self.add(toFavs: self.searchResults[indexPath.row].stringValue)
+            self.add(toFavs: self.searchResults[indexPath.row])
         }
         sheet.addAction(browserAction)
         sheet.addAction(addAction)
@@ -89,8 +94,13 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func openURLinBrowser(_ url: String) {
-        let fullURL: String = "http://www.\(url)"
-        UIApplication.shared.openURL(URL(string: fullURL)!)
+        let fullURL: String
+        if url.hasPrefix("http://") || url.hasPrefix("https://") {
+            fullURL = "\(url)"
+        } else {
+            fullURL = "http://\(url)"
+        }
+        UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
     }
 
     func add(toFavs url: String) {
@@ -99,7 +109,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            RestAPI.getInstance().addShoppingFavoriteURL(url)
+            _ = RestAPI.getInstance().addShoppingFavoriteURL(url)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.loadData()
@@ -120,16 +130,26 @@ func numberOfSections(in tableView: UITableView) -> Int {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            //var dic = RestAPI.getInstance().searchShoppingURLS(withQueryString: text, with: .ascending)
-            var dic = JSON([String]())
-            var dic2 = RestAPI.getInstance().getShoppingFavorites()
-            var arr = dic2["items"].arrayValue
-            self.searchResults = dic["items"].arrayValue
-            for i in 0..<arr.count {
-                if self.searchResults.contains(arr[i]) {
-                    self.searchResults.remove(at: self.searchResults.index(of: arr[i]) ?? -1)
-                }
+            
+            let dic: JSON
+            if text == "" {
+                dic = RestAPI.getInstance().searchShoppingURLs(withQueryString: nil)
+            } else {
+                dic = RestAPI.getInstance().searchShoppingURLs(withQueryString: text)
             }
+            let dic2 = RestAPI.getInstance().getShoppingFavorites()
+            let arr = dic2.arrayValue.map({ (json) -> Int in
+                return json["shpng_ref_id"].intValue
+            })
+            
+            let arr2 = dic.arrayValue.filter({ (json) -> Bool in
+                let value: Int = json["shpng_ref_id"].intValue
+                return !arr.contains(value)
+            })
+            
+            self.searchResults = arr2.map({ (json) -> String in
+                return json["shpng_url"].stringValue
+            })
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.mTableView.reloadData()
@@ -145,7 +165,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
         }
         else {
             isFiltered = true
-            self.searchResults = [Any]() as! [JSON]
+            self.searchResults = [String]()
             self.updateSearch(text)
         }
     }

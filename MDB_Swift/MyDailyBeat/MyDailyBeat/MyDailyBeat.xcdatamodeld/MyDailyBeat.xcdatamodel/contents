@@ -9,10 +9,11 @@
     <entity name="HealthRecord" representedClassName="HealthRecord" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="logoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="BankRecord" positionX="-173" positionY="-150" width="128" height="105"/>
-        <element name="HealthRecord" positionX="-54" positionY="18" width="128" height="90"/>
+        <element name="HealthRecord" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
 </model>

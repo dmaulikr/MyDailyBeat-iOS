@@ -15,7 +15,7 @@ public class VerveMessage: NSObject, NSCopying, JSQMessageData {
 
 
     public func copy(with zone: NSZone?) -> Any {
-        var other = VerveMessage()
+        let other = VerveMessage()
         other.screenName = self.screenName
         other.message = self.message
         other.date_created = date_created

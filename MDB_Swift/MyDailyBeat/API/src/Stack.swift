@@ -26,7 +26,7 @@ class Stack: NSObject {
     }
 
     func pop() -> Any {
-        var retval: Any? = self.stack[self.top]
+        let retval: Any? = self.stack[self.top]
         self.stack.remove(at: self.top)
         self.top = self.top - 1
         return retval!

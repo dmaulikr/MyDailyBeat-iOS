@@ -12,7 +12,6 @@ import API
 import FXForms
 class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerDelegate {
     @IBOutlet var tableView: UITableView!
-    var prefs: VervePreferences?
     var api: RestAPI!
     var formController: FXFormController!
 
@@ -26,6 +25,15 @@ class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerD
         api = RestAPI.getInstance()
         self.retrievePrefs()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
     func retrievePrefs() {
         
@@ -34,10 +42,10 @@ class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerD
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            self.prefs?.userPreferences = self.api.getUserPreferences()
-            self.prefs?.matchingPreferences = self.api.getMatchingPreferences()
-            self.prefs?.hobbiesPreferences = self.api.getHobbiesPreferencesForUser()
-            self.formController.form = self.prefs
+            prefs.userPreferences = self.api.getUserPreferences()
+            prefs.matchingPreferences = self.api.getMatchingPreferences()
+            prefs.hobbiesPreferences = self.api.getHobbiesPreferencesForUser()
+            self.formController.form = prefs
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.tableView.reloadData()
@@ -45,34 +53,19 @@ class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerD
         })
     }
 
-    
-
-    func selectEthnicity(_ cell: FXFormBaseCell) {
-        let prefs: VervePreferences? = cell.field.form as? VervePreferences
-        self.formController.form = prefs
-        self.tableView.reloadData()
-    }
-
-    func selectBeliefs(_ cell: FXFormBaseCell) {
-        let prefs: VervePreferences? = cell.field.form as! VervePreferences?
-        self.formController.form = prefs
-        self.tableView.reloadData()
-    }
-
     func submit(_ cell: FXFormBaseCell) {
-        var prefs: VervePreferences? = cell.field.form as! VervePreferences?
+        let prefs: VervePreferences? = cell.field.form as! VervePreferences?
         
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var success: Bool = self.api.save(self.prefs!.userPreferences, andMatchingPreferences: self.prefs!.matchingPreferences)
-            var success2: Bool = self.api.save(self.prefs!.hobbiesPreferences)
+            let success: Bool = self.api.save((prefs?.userPreferences)!, andMatchingPreferences: (prefs?.matchingPreferences)!)
+            let success2 = self.api.save((prefs?.hobbiesPreferences)!)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if success && success2 {
-                    UserDefaults.standard.set(false, forKey: "FirstTimeLogin")
-                    _ = self.navigationController?.popToRootViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 }
                 else {
                     print("Failed")

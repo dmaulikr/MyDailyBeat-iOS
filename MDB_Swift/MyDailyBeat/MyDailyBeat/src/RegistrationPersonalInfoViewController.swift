@@ -71,6 +71,9 @@ class RegistrationPersonalInfoViewController: UIViewController {
         self.firstField.delegate = self
         self.lastField.delegate = self
         self.dobField.delegate = self
+        self.firstOuter.delegate = DisableOuterField()
+        self.lastOuter.delegate = DisableOuterField()
+        self.dobOuter.delegate = DisableOuterField()
         self.firstField.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         self.dobField.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         self.lastField.backgroundColor = UIColor.white.withAlphaComponent(0.7)

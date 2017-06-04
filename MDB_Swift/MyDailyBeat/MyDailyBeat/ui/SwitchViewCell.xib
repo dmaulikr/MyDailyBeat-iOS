@@ -20,13 +20,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="ELD-Q2-skU">
-                        <rect key="frame" x="0.0" y="-1" width="375" height="150"/>
-                    </imageView>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqn-B0-h59">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.5337160867874069" green="0.5337160867874069" blue="0.5337160867874069" alpha="0.79558171452702697" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.67450980390000004" green="0.85490196080000003" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRY-gb-tkg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -69,12 +66,8 @@
                 <constraints>
                     <constraint firstItem="JRY-gb-tkg" firstAttribute="width" secondItem="TzR-by-cW2" secondAttribute="width" id="A8V-t7-ZZ5"/>
                     <constraint firstItem="JRY-gb-tkg" firstAttribute="leading" secondItem="TzR-by-cW2" secondAttribute="leadingMargin" constant="-8" id="DkX-rs-myR"/>
-                    <constraint firstItem="ELD-Q2-skU" firstAttribute="centerY" secondItem="TzR-by-cW2" secondAttribute="centerY" id="Nl0-9f-vxD"/>
                     <constraint firstItem="JRY-gb-tkg" firstAttribute="top" secondItem="TzR-by-cW2" secondAttribute="topMargin" constant="-8" id="YKV-lU-xiX"/>
-                    <constraint firstItem="ELD-Q2-skU" firstAttribute="centerX" secondItem="TzR-by-cW2" secondAttribute="centerX" id="bUf-Nf-mJy"/>
                     <constraint firstItem="JRY-gb-tkg" firstAttribute="height" secondItem="TzR-by-cW2" secondAttribute="height" id="fjo-iK-nf9"/>
-                    <constraint firstItem="ELD-Q2-skU" firstAttribute="leading" secondItem="TzR-by-cW2" secondAttribute="leadingMargin" constant="-8" id="hmo-2C-dhT"/>
-                    <constraint firstItem="ELD-Q2-skU" firstAttribute="top" secondItem="TzR-by-cW2" secondAttribute="topMargin" constant="-9" id="u9U-xP-x9e"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -84,7 +77,4 @@
             <point key="canvasLocation" x="63.5" y="24"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Background" width="5184" height="3456"/>
-    </resources>
 </document>

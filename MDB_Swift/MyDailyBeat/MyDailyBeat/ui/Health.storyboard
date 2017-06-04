@@ -10,26 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
-        <scene sceneID="A4o-bi-1AL">
-            <objects>
-                <viewController id="NL8-z5-PmN" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dFM-sz-gNU"/>
-                        <viewControllerLayoutGuide type="bottom" id="IjZ-Ke-Trl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jrQ-Yv-FWV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="mCk-fy-A29"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Obe-f3-HHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="201" y="827"/>
-        </scene>
-        <!--Item 1-->
+        <!--My Health-->
         <scene sceneID="c9z-hu-U8Q">
             <objects>
                 <viewController id="fQW-9h-nYi" customClass="EVCMyHealthViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +87,7 @@
                             <constraint firstItem="yS5-Ax-XXF" firstAttribute="leading" secondItem="OLU-xg-qzb" secondAttribute="leading" id="zNT-3L-rt5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="p86-Df-oRd"/>
+                    <tabBarItem key="tabBarItem" title="My Health" image="star-icon-gray" selectedImage="star-icon-white" id="p86-Df-oRd"/>
                     <connections>
                         <outlet property="healthPortalLogoView" destination="WfC-0w-sWJ" id="c5U-4F-lkm"/>
                         <outlet property="healthTap" destination="QST-Kl-dnL" id="R9a-e5-UrZ"/>
@@ -122,6 +103,63 @@
             </objects>
             <point key="canvasLocation" x="-1220" y="765"/>
         </scene>
+        <!--Health Portals-->
+        <scene sceneID="lVV-PY-cGQ">
+            <objects>
+                <tableViewController id="GJV-H9-zPI" customClass="EVCHealthPortalTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rOQ-eG-m0L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="GJV-H9-zPI" id="1BQ-bb-5qL"/>
+                            <outlet property="delegate" destination="GJV-H9-zPI" id="hm9-cm-NrK"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Health Portals" image="cadeucus-grey" selectedImage="cadeucus-white" id="YR5-Ox-FOj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOK-1V-pEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-435" y="729"/>
+        </scene>
+        <!--Providers-->
+        <scene sceneID="pYL-Vo-Gwj">
+            <objects>
+                <tableViewController id="7An-YO-96K" customClass="EVCPrescriptionProviderTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lWm-3O-27S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="7An-YO-96K" id="y8a-D8-rmW"/>
+                            <outlet property="delegate" destination="7An-YO-96K" id="gd0-GZ-7h3"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Providers" image="pill-bottle-grey" selectedImage="pill-bottle-white" id="QHz-6Z-QQM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="28g-T8-cRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="716"/>
+        </scene>
+        <!--Resource Links-->
+        <scene sceneID="WcT-AB-hPH">
+            <objects>
+                <tableViewController id="IQG-sl-Bvm" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4AE-xy-Pww">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="IQG-sl-Bvm" id="LNE-Pi-3l4"/>
+                            <outlet property="delegate" destination="IQG-sl-Bvm" id="Bor-sm-uGR"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="NyU-NW-UBr"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1C1-bA-6gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="-131"/>
+        </scene>
         <!--Health View Controller-->
         <scene sceneID="sVz-HU-IPd">
             <objects>
@@ -133,7 +171,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="fQW-9h-nYi" kind="relationship" relationship="viewControllers" id="088-L5-bgI"/>
-                        <segue destination="NL8-z5-PmN" kind="relationship" relationship="viewControllers" id="Rme-tN-SZM"/>
+                        <segue destination="GJV-H9-zPI" kind="relationship" relationship="viewControllers" id="EQK-QG-rsP"/>
+                        <segue destination="7An-YO-96K" kind="relationship" relationship="viewControllers" id="BNf-Fl-mYH"/>
+                        <segue destination="IQG-sl-Bvm" kind="relationship" relationship="viewControllers" id="jZl-Nr-wcE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jey-Wh-cZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,4 +181,14 @@
             <point key="canvasLocation" x="-748" y="-130"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cadeucus-grey" width="183" height="183"/>
+        <image name="cadeucus-white" width="183" height="183"/>
+        <image name="pill-bottle-grey" width="183" height="183"/>
+        <image name="pill-bottle-white" width="183" height="183"/>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
 </document>

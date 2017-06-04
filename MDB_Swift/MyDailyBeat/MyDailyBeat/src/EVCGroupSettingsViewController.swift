@@ -29,9 +29,6 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
         self.formController = FXFormController()
         self.formController.tableView = self.tableView
         self.formController.delegate = self
-        var prefs = GroupPrefs()
-        prefs.hobbies = self.g.hobbies
-        self.formController.form = prefs
         self.api = RestAPI.getInstance()
         var cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancel))
         self.navigationItem.leftBarButtonItem = cancelBarButton
@@ -56,12 +53,13 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
-                self.g.hobbies = (prefs?.hobbies)!
-                var success: Bool = self.api.setHobbiesforGroup(self.g)
+                var success: Bool = self.api.setHobbiesforGroup(ID: self.g.groupID, prefs!)
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.hideToastActivity()
                     if success {
-                        self.view.makeToast("Upload successful!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "check.png"), style: nil, completion: nil)
+                        self.view.makeToast("Upload successful!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "check.png"), style: nil, completion: { (done) in
+                            self.handler()
+                        })
                     }
                     else {
                         self.view.makeToast("Upload failed!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "error.png"), style: nil, completion: nil)
@@ -74,6 +72,7 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.loadData()
         self.loadGroupPicture()
         self.tableView.reloadData()
     }
@@ -92,6 +91,25 @@ class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate
                     // Update the UI
                 var prefs: GroupPrefs? = self.formController.form as? GroupPrefs
                 prefs?.groupPicture = UIImage(data: imageData!)
+            })
+        })
+    }
+    
+    func loadData() {
+        DispatchQueue.global().async(execute: {() -> Void in
+            let jsonHobbies = self.api.getHobbiesForGroup(self.g).arrayValue.map({ (json) -> Int in
+                return json.intValue
+            })
+            var list: [Int: Bool] = [:]
+            for hobby in HobbiesRefList.getInstance().list {
+                list[hobby.key] = (jsonHobbies.contains(hobby.key))
+            }
+            
+            DispatchQueue.main.async(execute: {() -> Void in
+                // Update the UI
+                let prefs = GroupPrefs()
+                prefs.hobbies = list
+                self.formController.form = prefs
             })
         })
     }

@@ -31,19 +31,28 @@ class EVCFlingProfileViewController: UIViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var favs: [FlingProfile]? = nil
+            var favs: [FlingProfile] = []
             if self.mode == .friends_MODE {
                 favs = RestAPI.getInstance().getFriends()
             }
-            else {
+            else if self.mode == .fling_MODE {
                 favs = RestAPI.getInstance().getFlingFavorites()
+            } else {
+                favs = RestAPI.getInstance().getRelationshipFavorites()
             }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 var loc = -1
-                let user = RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)
-                for i in 0..<(favs?.count)! {
-                    if favs?[i] == user {
+                let user: FlingProfile
+                if self.mode == .fling_MODE {
+                    user = RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)
+                } else if self.mode == .friends_MODE {
+                    user = RestAPI.getInstance().getFriendsProfile(for: self.currentViewedUser)
+                } else {
+                    user = RestAPI.getInstance().getRelationshipProfile(for: self.currentViewedUser)
+                }
+                for i in 0..<favs.count {
+                    if favs[i] == user {
                         loc = i
                         break
                     }
@@ -56,8 +65,10 @@ class EVCFlingProfileViewController: UIViewController {
                     if self.mode == .friends_MODE {
                         _ = RestAPI.getInstance().addToFriends(self.currentViewedUser)
                     }
-                    else {
+                    else if self.mode == .fling_MODE{
                         _ = RestAPI.getInstance().addToFlingFavorites(self.currentViewedUser)
+                    } else {
+                        _ = RestAPI.getInstance().addToRelationshipFavorites(self.currentViewedUser)
                     }
                 }
             })
@@ -90,7 +101,7 @@ class EVCFlingProfileViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if self.currentViewedUser.isEqual(RestAPI.getInstance().getCurrentUser()) {
+        if self.currentViewedUser.id == RestAPI.getInstance().getCurrentUser().id {
             self.addFavsBtn.isHidden = true
             self.sendMessageBtn.isHidden = true
         }
@@ -109,7 +120,7 @@ class EVCFlingProfileViewController: UIViewController {
         if !inRel {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Call", style: .done, target: self, action: #selector(call))
         } else {
-            if self.currentViewedUser.isEqual(RestAPI.getInstance().getCurrentUser()) {
+            if self.currentViewedUser.id == RestAPI.getInstance().getCurrentUser().id {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(edit))
             }
         }
@@ -150,30 +161,21 @@ class EVCFlingProfileViewController: UIViewController {
         if code == "" {
             if (num == "1-800-273-8255") {
                 // suicide
-                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-                if callHistory == nil {
-                    callHistory = [Any]()
-                }
-                callHistory?.insert("Suicide Hotline", at: 0)
+                var callHistory = UserDefaults.standard.stringArray(forKey: "callHistory") ?? [String]()
+                callHistory.insert("Suicide Hotline", at: 0)
                 UserDefaults.standard.set(callHistory, forKey: "callHistory")
             }
             else {
                 // save number
-                var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-                if callHistory == nil {
-                    callHistory = [Any]()
-                }
-                callHistory?.insert(num, at: 0)
+                var callHistory = UserDefaults.standard.stringArray(forKey: "callHistory") ?? [String]()
+                callHistory.insert(num, at: 0)
                 UserDefaults.standard.set(callHistory, forKey: "callHistory")
             }
         }
         else {
             // veterans
-            var callHistory: [Any]? = UserDefaults.standard.object(forKey: "callHistory") as! [Any]?
-            if callHistory == nil {
-                callHistory = [Any]()
-            }
-            callHistory?.insert("Veterans' Hotline", at: 0)
+            var callHistory = UserDefaults.standard.stringArray(forKey: "callHistory") ?? [String]()
+            callHistory.insert("Veterans' Hotline", at: 0)
             UserDefaults.standard.set(callHistory, forKey: "callHistory")
         }
         UserDefaults.standard.synchronize()
@@ -183,6 +185,8 @@ class EVCFlingProfileViewController: UIViewController {
         if let dest = segue.destination as? EVCFlingMessagingViewController {
             let chatroom = sender as! MessageChatroom
             dest.chatroom = chatroom
+        } else if let dest = segue.destination as? EVCFlingProfileCreatorViewController {
+            dest.mode = self.mode
         }
     }
 
@@ -201,7 +205,14 @@ class EVCFlingProfileViewController: UIViewController {
     func loadProfile() {
         
         DispatchQueue.global().async(execute: {() -> Void in
-            let prof = RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)
+            let prof: FlingProfile
+            if self.mode == .fling_MODE {
+                prof = RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)
+            } else if self.mode == .friends_MODE {
+                prof = RestAPI.getInstance().getFriendsProfile(for: self.currentViewedUser)
+            } else {
+                prof = RestAPI.getInstance().getRelationshipProfile(for: self.currentViewedUser)
+            }
             DispatchQueue.main.async(execute: {() -> Void in
                     // Update the UI
                 let style: NSMutableParagraphStyle? = NSMutableParagraphStyle()
@@ -224,10 +235,18 @@ class EVCFlingProfileViewController: UIViewController {
             })
             self.prefs = RestAPI.getInstance().getUserPreferences()
             self.matching = RestAPI.getInstance().getMatchingPreferences()
-            var favs = RestAPI.getInstance().getFlingFavorites()
+            var favs: [FlingProfile] = []
+            if self.mode == .friends_MODE {
+                favs = RestAPI.getInstance().getFriends()
+            }
+            else if self.mode == .fling_MODE {
+                favs = RestAPI.getInstance().getFlingFavorites()
+            } else {
+                favs = RestAPI.getInstance().getRelationshipFavorites()
+            }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
-                if (favs as NSArray).index(of: RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)) != NSNotFound {
+                if favs.index(of: RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)) != NSNotFound {
                     self.addFavsBtn.setTitle("Remove Favorite", for: .normal)
                 }
                 if self.prefs == nil {
@@ -300,8 +319,6 @@ class EVCFlingProfileViewController: UIViewController {
                         self.distanceLbl.text = "Native American Indian/Native Alaskan"
                     case 4:
                         self.distanceLbl.text = "Latino/Hispanic"
-                    case 5:
-                        self.distanceLbl.text = self.prefs.otherEthnicity
                 default:
                     self.distanceLbl.text = ""
                 }

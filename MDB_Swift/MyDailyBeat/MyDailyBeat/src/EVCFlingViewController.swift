@@ -9,12 +9,12 @@
 import UIKit
 import API
 import DLAlertView
+import GBVersionTracking
 class EVCFlingViewController: EVCTabBarController, UITabBarControllerDelegate {
     var mode: REL_MODE = .friends_MODE
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UserDefaults.standard.set(self.mode, forKey: "REL_MODE")
         var title: String = ""
         switch self.mode {
             case .friends_MODE:
@@ -26,6 +26,9 @@ class EVCFlingViewController: EVCTabBarController, UITabBarControllerDelegate {
         }
 
         self.navigationItem.title = title
+        if GBVersionTracking.isFirstLaunchEver() {
+            self.flingProf()
+        }
     }
 
     override func viewDidLoad() {
@@ -47,7 +50,16 @@ class EVCFlingViewController: EVCTabBarController, UITabBarControllerDelegate {
         })
     }
     
-    func filter() {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCFlingProfileCreatorViewController {
+            dest.mode = self.mode
+            dest.isModal = true
+        } else if let dest = segue.destination as? EVCPartnerMatchViewController {
+            dest.mode = self.mode
+        } else if let dest = segue.destination as? EVCPartnersTableViewController {
+            dest.mode = self.mode
+        } else if let dest = segue.destination as? EVCFlingProfileViewController {
+            dest.mode = self.mode
+        }
     }
 }

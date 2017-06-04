@@ -8,8 +8,7 @@
 //
 import UIKit
 import IQKeyboardManagerSwift
-typealias EVCComposeViewControllerCompletionHandler = (_ message: String, _ image: UIImage) -> Void
-class EVCComposeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
+public class EVCComposeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
     var wasKeyboardManagerEnabled: Bool = false
 
     @IBOutlet var profilePicView: UIImageView!
@@ -21,7 +20,7 @@ class EVCComposeViewController: UIViewController, UINavigationControllerDelegate
     var attachedImage: UIImage!
     var isHasAttachment: Bool = false
     var postText: String = ""
-    var completionHandler: EVCComposeViewControllerCompletionHandler? = nil
+    open var completionHandler: ((_ message: String, _ image: UIImage) -> Void)? = nil
 
     @IBAction func addPhoto(fromLibrary sender: UIButton) {
         let picker = UIImagePickerController()
@@ -77,18 +76,18 @@ class EVCComposeViewController: UIViewController, UINavigationControllerDelegate
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.wasKeyboardManagerEnabled = IQKeyboardManager.sharedManager().enable
         IQKeyboardManager.sharedManager().enable = false
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.sharedManager().enable = self.wasKeyboardManagerEnabled
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.loadProfilePicture()
         self.postTextView.inputAccessoryView = self.accessoryViewBar
@@ -113,7 +112,7 @@ class EVCComposeViewController: UIViewController, UINavigationControllerDelegate
         
     }
 
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         if textView.text.characters.count == 0 {
             self.navigationItem.rightBarButtonItem?.isEnabled = false
         }
@@ -142,12 +141,25 @@ class EVCComposeViewController: UIViewController, UINavigationControllerDelegate
         })
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: { _ in })
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let chosenImage: UIImage? = info[UIImagePickerControllerEditedImage] as! UIImage?
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage: UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        let smallest = min(chosenImage.size.width, chosenImage.size.height);
+        let largest = max(chosenImage.size.width, chosenImage.size.height);
+        
+        let ratio = largest/smallest;
+        
+        let maximumRatioForNonePanorama = CGFloat(4) / CGFloat(3);
+        guard ratio <= maximumRatioForNonePanorama else {
+            // it is probably a panorama
+            self.isHasAttachment = false
+            picker.dismiss(animated: true, completion: nil)
+            return
+            
+        }
         self.attachedImage = chosenImage
         self.attachmentImageView.image = self.attachedImage
         self.isHasAttachment = true

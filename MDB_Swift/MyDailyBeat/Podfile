@@ -23,6 +23,7 @@ def shared_pods
     pod 'EasyTipView', '~> 1.0.2'
     pod "RFAboutView-Swift", '~> 2.0.1'
     pod 'DateToolsSwift'
+    pod 'GBVersionTracking'
 end
 
 post_install do |installer|

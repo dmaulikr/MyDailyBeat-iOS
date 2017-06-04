@@ -17,8 +17,6 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
     var email: String = ""
     var mobile: String = ""
     var zipcode: String = ""
-    var picker: UIDatePicker!
-    var dob = Date()
     var imgPicker: UIImagePickerController!
 
 
@@ -36,24 +34,32 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         self.email = RestAPI.getInstance().getCurrentUser().email
         self.mobile = RestAPI.getInstance().getCurrentUser().mobile
         self.zipcode = RestAPI.getInstance().getCurrentUser().zipcode
-        self.dob = RestAPI.getInstance().getCurrentUser().dob
         self.imgPicker = UIImagePickerController()
         self.imgPicker.delegate = self
-        self.picker = UIDatePicker()
-        self.picker.date = self.dob
-        self.picker.minimumDate = Date(timeInterval: START_INTERVAL, since: Calendar.current.startOfDay(for: Date()))
-        self.picker.maximumDate = Date(timeInterval: END_INTERVAL, since: Calendar.current.startOfDay(for: Date()))
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        var img: UIImage? = (info[UIImagePickerControllerOriginalImage] as? UIImage)
-        img = UIImage(cgImage: (img?.cgImage)!, scale: (img?.scale)!, orientation: .up)
+        var img: UIImage = (info[UIImagePickerControllerOriginalImage] as! UIImage)
+        let smallest = min(img.size.width, img.size.height);
+        let largest = max(img.size.width, img.size.height);
+        
+        let ratio = largest/smallest;
+        
+        let maximumRatioForNonePanorama = CGFloat(4) / CGFloat(3);
+        
+        guard ratio <= maximumRatioForNonePanorama else {
+            // it is probably a panorama
+            picker.dismiss(animated: true, completion: nil)
+            return
+            
+        }
+        img = UIImage(cgImage: (img.cgImage)!, scale: (img.scale), orientation: .up)
         
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            let imgData: Data? = UIImageJPEGRepresentation(img!, 0.1)
+            let imgData: Data? = UIImageJPEGRepresentation(img, 0.1)
             let url = info[UIImagePickerControllerReferenceURL] as? NSURL
             let fileName: String = url?.lastPathComponent ?? ASSET_FILENAME
             let success: Bool = RestAPI.getInstance().uploadProfilePicture(imgData!, withName: fileName)
@@ -133,18 +139,6 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
                     mobileAlert.addAction(ok)
                     self.present(mobileAlert, animated: true, completion: nil)
                 case 3:
-                    //dob
-                    let dobAlert = DLAVAlertView(title: "Enter New Date of Birth", message: "Enter your date of birth.", delegate: nil, cancelButtonTitle: "Cancel")
-                    dobAlert?.contentView = self.picker
-                    dobAlert?.show(completion: { (alert, buttonIndex) in
-                        switch buttonIndex {
-                        case 1:
-                            self.dob = self.picker.date
-                        default:
-                            break
-                        }
-                    })
-                case 4:
                     //zipcode
                     let zipAlert = UIAlertController(title: "Enter New Zip Code", message: "Enter your zip code.", preferredStyle: .alert)
                     zipAlert.addTextField(configurationHandler: { (textField) in
@@ -173,7 +167,6 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
             current.name = self.name
             current.email = self.email
             current.mobile = self.mobile
-            current.dob = self.dob
             current.zipcode = self.zipcode
             DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
@@ -202,7 +195,7 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return 5
+            return 4
         }
         return 1
     }
@@ -233,8 +226,6 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
                 case 2:
                     cell?.textLabel?.text = "Mobile"
                 case 3:
-                    cell?.textLabel?.text = "DOB"
-                case 4:
                     cell?.textLabel?.text = "Zip Code"
                 default:
                     cell?.detailTextLabel?.text = ""

@@ -76,16 +76,21 @@ class RegistrationViewController: UIPageViewController {
     */
     func messageViewController(_ index: Int) -> EVCRegistrationMessageViewController {
         let message: String
+        let image: UIImage
         if index == 0 {
             message = "You are about to join a vibrant community for older adults..."
+            image = #imageLiteral(resourceName: "community-ico-screen-1")
         } else if index == 1 {
             message = "Let this be the place you come to everyday to help manage your life..."
+            image = #imageLiteral(resourceName: "calendar-ico-screen-2")
         } else {
             message = "Keep yourself engaged, socialize, and stay connected!"
+            image = #imageLiteral(resourceName: "messages-ico-screen-3")
         }
         let vc = EVCRegistrationMessageViewController()
         vc.message = message
         vc.index = index
+        vc.image = image
         vc.nextPage = {
             self.presentationIndex = index + 1
             if index < 2 {

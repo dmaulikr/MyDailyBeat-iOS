@@ -95,7 +95,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
                 </textField>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-sa-1kA">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-sa-1kA">
                     <rect key="frame" x="39" y="201" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="eKf-sa-1kA" secondAttribute="height" multiplier="1:1" id="vdA-tc-QYb"/>
@@ -179,5 +179,6 @@
     </objects>
     <resources>
         <image name="Logo" width="120" height="120"/>
+        <image name="mail" width="22" height="17"/>
     </resources>
 </document>

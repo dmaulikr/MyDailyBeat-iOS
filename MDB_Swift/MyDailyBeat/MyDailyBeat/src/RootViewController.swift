@@ -46,6 +46,12 @@ extension UIViewController {
         }
     }
     
+    func showModalSegue(withIdentifier identifier: String, andSender sender: Any?) {
+        if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController, let root = outerNav.viewControllers[0] as? RootNavController{
+            root.performSegue(withIdentifier: identifier, sender: sender)
+        }
+    }
+    
     func showAboutScreen() {
         self.sideMenuViewController.contentViewController.performSegue(withIdentifier: "AboutSegue", sender: nil)
     }

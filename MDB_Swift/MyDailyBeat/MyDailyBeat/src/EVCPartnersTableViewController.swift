@@ -11,13 +11,13 @@ import Toast_Swift
 import API
 class EVCPartnersTableViewController: UITableViewController {
     var favs = [FlingProfile]()
+    var favUsers = [VerveUser]()
     var mode: REL_MODE = .friends_MODE
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.favs = [FlingProfile]()
-        self.mode = REL_MODE(rawValue: UserDefaults.standard.integer(forKey: "REL_MODE"))!
         self.retrievePartners()
     }
 
@@ -32,6 +32,11 @@ class EVCPartnersTableViewController: UITableViewController {
             }
             else {
                 self.favs = RestAPI.getInstance().getFlingFavorites()
+            }
+            
+            for fav in self.favs {
+                let user = RestAPI.getInstance().getUserData(for: fav.id)
+                self.favUsers.append(user)
             }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -58,8 +63,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "CellIdentifier")
         }
-        cell?.textLabel?.text = (self.favs[indexPath.row] as? FlingProfile)?.screenName
-        cell?.imageView?.image = self.loadPicture(forUser: ((self.favs[indexPath.row] as? FlingProfile)?.screenName)!)
+        cell?.textLabel?.text = self.favUsers[indexPath.row].screenName
+        cell?.imageView?.image = self.loadPicture(forUser: self.favUsers[indexPath.row].screenName)
         return cell!
     }
 
@@ -82,10 +87,17 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             // Navigation logic may go here, for example:
             // Create the next view controller.
-        
-//        var prof = EVCFlingProfileViewController(nibName: "EVCFlingProfileViewController", bundle: nil, andUser: RestAPI.getInstance().getUserDataForUser(withScreenName: (self.favs[indexPath.row] as? FlingProfile)?.screenName))
-//        // Pass the selected object to the new view controller.
-//        // Push the view controller.
-//        self.navigationController?.pushViewController(prof, animated: true)
+        self.performSegue(withIdentifier: "ShowProfileSegue", sender: indexPath.row)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCFlingProfileViewController {
+            let userRow = sender as! Int
+            let user = RestAPI.getInstance().getUserData(for: userRow)
+            dest.currentViewedUser  = user
+            dest.mode = self.mode
+        }
+    }
+    
+    
 }

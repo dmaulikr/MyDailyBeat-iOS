@@ -29,8 +29,8 @@ class EVCGroupCreationTableViewController: UITableViewController, FXFormControll
     }
 
     func createGroup(_ cell: FXFormBaseCell) {
-        var frm: GroupCreationForm? = cell.field.form as? GroupCreationForm
-        var name: String? = frm?.groupName
+        let frm: GroupCreationForm? = cell.field.form as? GroupCreationForm
+        let name: String? = frm?.groupName
         
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
@@ -40,10 +40,11 @@ class EVCGroupCreationTableViewController: UITableViewController, FXFormControll
             if frm?.hobbies != nil && (frm?.hobbies.count)! > 0 {
                 var groups = RestAPI.getInstance().getGroupsForCurrentUser()
                 for i in 0..<groups.count {
-                    var g: Group? = groups[i]
+                    let g: Group? = groups[i]
                     if (g?.groupName == name) {
-                        g?.hobbies = (frm?.hobbies)!
-                        success = RestAPI.getInstance().setHobbiesforGroup(g!)
+                        let prefs = GroupPrefs()
+                        prefs.hobbies = (frm?.hobbies)!
+                        success = RestAPI.getInstance().setHobbiesforGroup(ID: (g?.groupID)!, prefs)
                         break
                     }
                 }

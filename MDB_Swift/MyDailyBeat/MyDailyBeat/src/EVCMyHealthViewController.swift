@@ -17,19 +17,19 @@ class EVCMyHealthViewController: UIViewController {
     @IBOutlet var portalLabel: UILabel!
     @IBOutlet var prescripTap: UITapGestureRecognizer!
     @IBOutlet var healthTap: UITapGestureRecognizer!
-    var provider: PrescripProviderInfo!
-    var portal: HealthInfo!
+    var provider: PrescripProviderInfo?
+    var portal: HealthInfo?
 
     @IBAction func go(toProvider sender: Any) {
-        if self.provider != nil {
-            let trueU: String = "http://www." + self.provider.url
+        if let provider = self.provider {
+            let trueU: String = "http://www." + provider.url
             self.openURLinBrowser(trueU)
         }
     }
 
     @IBAction func go(toPortal sender: Any) {
-        if self.portal != nil {
-            self.openURLinBrowser(self.portal.url)
+        if let portal = self.portal {
+            self.openURLinBrowser(portal.url)
         }
     }
 
@@ -50,14 +50,41 @@ class EVCMyHealthViewController: UIViewController {
     
 
     func setup() {
-        if self.provider != nil && self.portal != nil {
-            if !(self.portal.logoURL == "") {
+        if let provider = self.provider {
+            if provider.logoURL != "" {
                 
                 DispatchQueue.global().async(execute: {() -> Void in
                     DispatchQueue.main.async(execute: {() -> Void in
                         self.view.makeToastActivity(ToastPosition.center)
                     })
-                    let imgurl = URL(string: self.portal.logoURL)
+                    if let imgurl = URL(string: provider.logoURL) {
+                        let data = RestAPI.getInstance().fetchImage(atRemoteURL: imgurl)
+                        let img = UIImage(data: data)
+                        DispatchQueue.main.async(execute: {() -> Void in
+                            self.view.hideToastActivity()
+                            self.prescripProviderLogoView.image = EVCCommonMethods.image(with: img!, scaledTo: CGSize(width: CGFloat(304), height: CGFloat(128)))
+                        })
+                    } else {
+                        DispatchQueue.main.async(execute: {() -> Void in
+                            self.view.hideToastActivity()
+                        })
+                    }
+                    
+                })
+            }
+            prescripLabel.text = provider.url
+        } else {
+            prescripLabel.text = "Prescription Provider not set"
+        }
+        
+        if let portal = self.portal {
+            if portal.logoURL != "" {
+                
+                DispatchQueue.global().async(execute: {() -> Void in
+                    DispatchQueue.main.async(execute: {() -> Void in
+                        self.view.makeToastActivity(ToastPosition.center)
+                    })
+                    let imgurl = URL(string: portal.logoURL)
                     let data: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imgurl!)
                     let img = UIImage(data: data!)
                     DispatchQueue.main.async(execute: {() -> Void in
@@ -66,40 +93,20 @@ class EVCMyHealthViewController: UIViewController {
                     })
                 })
             }
-            else {
-                let img = UIImage(named: "404-logo")
-                healthPortalLogoView.image = EVCCommonMethods.image(with: img!, scaledTo: CGSize(width: CGFloat(304), height: CGFloat(128)))
-            }
-            if !(self.provider.logoURL == "") {
-                
-                DispatchQueue.global().async(execute: {() -> Void in
-                    DispatchQueue.main.async(execute: {() -> Void in
-                        self.view.makeToastActivity(ToastPosition.center)
-                    })
-                    let imgurl = URL(string: self.provider.logoURL)
-                    let data: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imgurl!)
-                    let img = UIImage(data: data!)
-                    DispatchQueue.main.async(execute: {() -> Void in
-                        self.view.hideToastActivity()
-                        self.prescripProviderLogoView.image = EVCCommonMethods.image(with: img!, scaledTo: CGSize(width: CGFloat(304), height: CGFloat(128)))
-                    })
-                })
-            }
-            else {
-                let img = UIImage(named: "404-logo")
-                prescripProviderLogoView.image = EVCCommonMethods.image(with: img!, scaledTo: CGSize(width: CGFloat(304), height: CGFloat(128)))
-            }
-            prescripLabel.text = self.provider.url
-            portalLabel.text = self.portal.url
-        }
-        else {
-            prescripLabel.text = "Prescription Provider not set"
+            
+            portalLabel.text = portal.url
+        } else {
             portalLabel.text = "Health Portal not set"
         }
     }
 
     func openURLinBrowser(_ url: String) {
-        let fullURL: String = "\(url)"
-        UIApplication.shared.openURL(URL(string: fullURL)!)
+        let fullURL: String
+        if url.hasPrefix("http://") || url.hasPrefix("https://") {
+            fullURL = "\(url)"
+        } else {
+            fullURL = "http://\(url)"
+        }
+        UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
     }
 }

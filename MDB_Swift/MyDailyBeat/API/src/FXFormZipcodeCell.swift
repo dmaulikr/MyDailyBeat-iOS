@@ -66,7 +66,7 @@ class FXFormZipcodeCell: FXFormDefaultCell, UITextFieldDelegate {
         if !self.isReturnKeyOverridden {
                 //get return key type
             var returnKeyType: UIReturnKeyType = .done
-            var nextCell: FXFormBaseCell? = self.nextCell as? FXFormBaseCell
+            let nextCell: FXFormBaseCell? = self.nextCell as? FXFormBaseCell
             if (nextCell?.canBecomeFirstResponder)! {
                 returnKeyType = .next
             }

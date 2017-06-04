@@ -8,6 +8,8 @@
 //
 import UIKit
 import API
+import Toast_Swift
+import SwiftyJSON
 class EVCTravelTableViewController: UITableViewController {
     var travelSites = [String]()
 
@@ -15,6 +17,31 @@ class EVCTravelTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.travelSites = TRAVEL_SITES /* copyItems: true */
+        self.loadData()
+    }
+    
+    func loadData() {
+        DispatchQueue.global().async(execute: {() -> Void in
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.makeToastActivity(ToastPosition.center)
+            })
+            
+            let dic2 = RestAPI.getInstance().getTravelFavorites()
+            let arr = dic2.arrayValue.map({ (json) -> Int in
+                return json["trvl_ref_id"].intValue
+            })
+            
+            self.travelSites = TravelRefList.getInstance().list.filter({ (key, value) -> Bool in
+                return !arr.contains(key)
+            }).map({ (key, value) -> String in
+                return value
+            })
+            
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.hideToastActivity()
+                self.tableView.reloadData()
+            })
+        })
     }
 
     
@@ -43,15 +70,36 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             self.openURLinBrowser(self.travelSites[indexPath.row])
         }
         let addAction = UIAlertAction(title: "Add to Favorites", style: .default) { (action) in
-            self.openURLinBrowser(self.travelSites[indexPath.row])
+            self.add(toFavs: self.travelSites[indexPath.row])
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         sheet.addAction(browserAction)
         sheet.addAction(addAction)
+        sheet.addAction(cancelAction)
         self.present(sheet, animated: true, completion: nil)
     }
 
     func openURLinBrowser(_ url: String) {
-        let fullURL: String = "http://www.\(url)"
-        UIApplication.shared.openURL(URL(string: fullURL)!)
+        let fullURL: String
+        if url.hasPrefix("http://") || url.hasPrefix("https://") {
+            fullURL = "\(url)"
+        } else {
+            fullURL = "http://\(url)"
+        }
+        UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
+    }
+    
+    func add(toFavs url: String) {
+        
+        DispatchQueue.global().async(execute: {() -> Void in
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.makeToastActivity(ToastPosition.center)
+            })
+            _ = RestAPI.getInstance().addTravelFavoriteURL(url)
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.hideToastActivity()
+                self.tableView.reloadData()
+            })
+        })
     }
 }

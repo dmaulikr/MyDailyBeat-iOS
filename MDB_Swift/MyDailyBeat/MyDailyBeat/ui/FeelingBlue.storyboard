@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Feeling Blue-->
         <scene sceneID="KUx-66-agf">
             <objects>
                 <tableViewController id="ywo-9V-6NG" customClass="EVCFeelingBlueViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                             <outlet property="delegate" destination="ywo-9V-6NG" id="eGw-eL-jrK"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="pJA-DG-lfO"/>
+                    <tabBarItem key="tabBarItem" title="Feeling Blue" image="phone" selectedImage="phone2" id="pJA-DG-lfO"/>
                     <connections>
                         <segue destination="qiD-4W-U9z" kind="show" identifier="CallAnonymousSegue" id="hmr-4a-O4b"/>
                     </connections>
@@ -39,16 +39,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hUD-KT-TQV">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUD-KT-TQV" id="LAl-QT-8w4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="qiD-4W-U9z" id="S8W-36-1Rc"/>
                             <outlet property="delegate" destination="qiD-4W-U9z" id="iOh-na-n2S"/>
@@ -70,7 +60,7 @@
             </objects>
             <point key="canvasLocation" x="-286" y="1422"/>
         </scene>
-        <!--Item-->
+        <!--Call History-->
         <scene sceneID="6eh-67-JEW">
             <objects>
                 <tableViewController id="X1R-54-aLO" customClass="EVCCallHistoryTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,13 +73,13 @@
                             <outlet property="delegate" destination="X1R-54-aLO" id="QTH-ss-ZLe"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="846-bT-1hi"/>
+                    <tabBarItem key="tabBarItem" title="Call History" image="star-icon-gray" selectedImage="star-icon-white" id="846-bT-1hi"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zkx-ud-4te" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-138" y="709"/>
         </scene>
-        <!--Item-->
+        <!--Resource Links-->
         <scene sceneID="yhK-fV-ffi">
             <objects>
                 <tableViewController id="94R-sU-bxb" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,7 +92,7 @@
                             <outlet property="delegate" destination="94R-sU-bxb" id="2eL-6v-LH1"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="Jgh-m6-DyT"/>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="Jgh-m6-DyT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKN-gA-cOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -128,4 +118,12 @@
             <point key="canvasLocation" x="-597" y="-153"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="phone" width="183" height="183"/>
+        <image name="phone2" width="183" height="183"/>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
 </document>

@@ -15,7 +15,7 @@ class EVCFirstTimeSetupViewController: UIViewController {
     @IBOutlet var nextButton: UIButton!
 
     @IBAction func next(_ sender: Any) {
-        var prefs = VervePreferences()
+        let prefs = VervePreferences()
         
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
@@ -26,8 +26,7 @@ class EVCFirstTimeSetupViewController: UIViewController {
             prefs.hobbiesPreferences = self.api.getHobbiesPreferencesForUser()
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
-                var prefsView = EVCFirstTimePreferencesViewController(nibName: "EVCFirstTimePreferencesViewController", bundle: nil)
-                self.navigationController?.pushViewController(prefsView, animated: true)
+                self.performSegue(withIdentifier: "PrefsSegue", sender: nil)
             })
         })
     }
@@ -38,6 +37,14 @@ class EVCFirstTimeSetupViewController: UIViewController {
         // Do any additional setup after loading the view.
         api = RestAPI.getInstance()
         self.message.text = "Welcome to MyDailyBeat! Before you begin, please set the following preferences."
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCPreferencesViewController {
+            dest.onSuccess = { (success, vc) in
+                vc.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 
     

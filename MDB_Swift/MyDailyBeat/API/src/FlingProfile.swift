@@ -9,13 +9,13 @@
 import Foundation
 import SwiftyJSON
 public class FlingProfile: NSObject {
-    public var screenName: String = ""
+    public var id: Int = 0
     public var aboutMe: String = ""
     
     func toJSON() -> JSON {
         var dic = [String : JSON]()
-        dic["screenName"] = JSON(self.screenName)
-        dic["aboutMe"] = JSON(self.aboutMe)
+        dic["user_id"] = JSON(self.id)
+        dic["abt_me"] = JSON(self.aboutMe)
         return JSON(dic)
     }
 }

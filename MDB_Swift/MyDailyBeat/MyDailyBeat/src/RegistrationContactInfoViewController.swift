@@ -65,6 +65,9 @@ class RegistrationContactInfoViewController: UIViewController {
         self.emailField.delegate = self
         self.mobileField.delegate = self
         self.zipField.delegate = self
+        self.emailOuter.delegate = DisableOuterField()
+        self.mobileOuter.delegate = DisableOuterField()
+        self.zipOuter.delegate = DisableOuterField()
         self.emailField.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         self.zipField.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         self.mobileField.backgroundColor = UIColor.white.withAlphaComponent(0.7)

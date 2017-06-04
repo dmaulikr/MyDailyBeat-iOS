@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Favorites-->
         <scene sceneID="02r-EZ-KCr">
             <objects>
                 <tableViewController id="85l-Vw-oJN" customClass="EVCShoppingFavoritesTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,13 +23,13 @@
                             <outlet property="delegate" destination="85l-Vw-oJN" id="yhp-Xu-axY"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="TW5-Xx-Dd1"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star-icon-gray" selectedImage="star-icon-white" id="TW5-Xx-Dd1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qmq-Qh-ZHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-234" y="655"/>
+            <point key="canvasLocation" x="-44" y="665"/>
         </scene>
-        <!--Item-->
+        <!--Resource Links-->
         <scene sceneID="HGJ-5G-2XW">
             <objects>
                 <tableViewController id="0Af-WW-2ox" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,13 +42,13 @@
                             <outlet property="delegate" destination="0Af-WW-2ox" id="eNS-hn-CNb"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="4tI-oc-Rhe"/>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="4tI-oc-Rhe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lX-OZ-JAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="623" y="666"/>
         </scene>
-        <!--Item 1-->
+        <!--Shopping Sites-->
         <scene sceneID="5dI-cL-tVY">
             <objects>
                 <viewController id="9q2-w8-dDl" customClass="EVCShoppingSearchViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                             <constraint firstItem="uuq-ZN-nYE" firstAttribute="top" secondItem="A8n-yw-HcG" secondAttribute="bottom" constant="-33" id="yxL-rv-YqW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="ouP-Kk-dyq"/>
+                    <tabBarItem key="tabBarItem" title="Shopping Sites" image="search-icon-gray" selectedImage="search-icon-white-1" id="ouP-Kk-dyq"/>
                     <connections>
                         <outlet property="mTableView" destination="uuq-ZN-nYE" id="fic-rN-Ekn"/>
                         <outlet property="sBar" destination="wYm-fw-YA8" id="Ibn-hB-BdS"/>
@@ -86,7 +86,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="-1282.4000000000001" y="660.71964017991013"/>
+            <point key="canvasLocation" x="-746" y="665"/>
         </scene>
         <!--Shopping View Controller-->
         <scene sceneID="I2E-4c-8L2">
@@ -108,4 +108,12 @@
             <point key="canvasLocation" x="-746" y="-158"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="search-icon-gray" width="183" height="183"/>
+        <image name="search-icon-white-1" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
 </document>

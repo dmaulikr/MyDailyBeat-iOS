@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Job Search-->
         <scene sceneID="YES-3e-FFT">
             <objects>
                 <viewController id="oid-aO-Xqr" customClass="EVCNewJobsViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                             <constraint firstItem="unc-pG-hfe" firstAttribute="leading" secondItem="GBf-CI-kj3" secondAttribute="leadingMargin" constant="-16" id="w0w-ZV-kgt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="76b-HS-WaM"/>
+                    <tabBarItem key="tabBarItem" title="Job Search" image="search-icon-gray" selectedImage="search-icon-white-1" id="76b-HS-WaM"/>
                     <connections>
                         <outlet property="webView" destination="unc-pG-hfe" id="REc-ZK-XHN"/>
                     </connections>
@@ -44,7 +44,7 @@
             </objects>
             <point key="canvasLocation" x="-871.20000000000005" y="908.9955022488756"/>
         </scene>
-        <!--Item-->
+        <!--Resource Links-->
         <scene sceneID="c1N-cP-dzh">
             <objects>
                 <tableViewController id="D5d-Oi-Cse" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +57,7 @@
                             <outlet property="delegate" destination="D5d-Oi-Cse" id="sIC-cj-1S8"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="ptL-ID-HYB"/>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="ptL-ID-HYB"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fat-iG-aBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,4 +82,10 @@
             <point key="canvasLocation" x="-641" y="80"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="search-icon-gray" width="183" height="183"/>
+        <image name="search-icon-white-1" width="183" height="183"/>
+    </resources>
 </document>

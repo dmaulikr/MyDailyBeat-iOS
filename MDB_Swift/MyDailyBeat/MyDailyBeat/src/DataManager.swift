@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 import API
+
+enum HealthTypes: Int64 {
+    case PORTAL = 0
+    case PROVIDER = 1
+}
 class DataManager: NSObject {
     class func getBanks() -> [BankInfo] {
         
@@ -48,6 +53,7 @@ class DataManager: NSObject {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let request = NSFetchRequest<HealthRecord>(entityName: "HealthRecord")
+        request.predicate = NSPredicate(format: "type == %d", HealthTypes.PORTAL.rawValue)
         var people: [HealthRecord] = []
         do {
             people = try context.fetch(request)
@@ -81,6 +87,7 @@ class DataManager: NSObject {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let request = NSFetchRequest<HealthRecord>(entityName: "HealthRecord")
+        request.predicate = NSPredicate(format: "type == %d", HealthTypes.PROVIDER.rawValue)
         var people: [HealthRecord] = []
         do {
             people = try context.fetch(request)
@@ -107,6 +114,41 @@ class DataManager: NSObject {
             try context.save()
         } catch _ as NSError {
             print("Could not add prescriotion provider.")
+        }
+    }
+    
+    class func deleteAllBanks() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "BankRecord")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        do {
+            try context.execute(request)
+        } catch {
+            fatalError("Failed to execute request: \(error)")
+        }
+    }
+    
+    class func deleteAllPortals() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthRecord")
+        fetch.predicate = NSPredicate(format: "type == %d", HealthTypes.PORTAL.rawValue)
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        do {
+            try context.execute(request)
+        } catch {
+            fatalError("Failed to execute request: \(error)")
+        }
+    }
+    
+    class func deleteAllProviders() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthRecord")
+        fetch.predicate = NSPredicate(format: "type == %d", HealthTypes.PROVIDER.rawValue)
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        do {
+            try context.execute(request)
+        } catch {
+            fatalError("Failed to execute request: \(error)")
         }
     }
 }
@@ -136,6 +178,7 @@ extension HealthRecord {
         self.id = Int64(info.uniqueId)
         self.url = info.url
         self.logoURL = info.logoURL
+        self.type = HealthTypes.PORTAL.rawValue
     }
     
     func toPrescriptionProviderInfo() -> PrescripProviderInfo {
@@ -147,5 +190,6 @@ extension HealthRecord {
         self.id = Int64(info.uniqueId)
         self.url = info.url
         self.logoURL = info.logoURL
+        self.type = HealthTypes.PROVIDER.rawValue
     }
 }

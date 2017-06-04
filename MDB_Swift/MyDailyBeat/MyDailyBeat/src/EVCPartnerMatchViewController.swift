@@ -11,14 +11,13 @@ import Toast_Swift
 import API
 class EVCPartnerMatchViewController: UITableViewController {
     var partners = [FlingProfile]()
+    var partnerUsers = [VerveUser]()
     var mode: REL_MODE = .friends_MODE
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.partners = [FlingProfile]()
-        self.mode = REL_MODE(rawValue: Int(UserDefaults.standard.integer(forKey: "REL_MODE")))!
-        let menuItem: UIBarButtonItem? = self.navigationItem.rightBarButtonItem
         if self.mode == .friends_MODE {
             let image3 = EVCCommonMethods.image(with: UIImage(named: "search-icon-white")!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
             let frameimg = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(image3.size.width), height: CGFloat(image3.size.height))
@@ -27,7 +26,7 @@ class EVCPartnerMatchViewController: UITableViewController {
             someButton.addTarget(self, action: #selector(self.searchFriend), for: .touchUpInside)
             someButton.showsTouchWhenHighlighted = true
             let menuButton = UIBarButtonItem(customView: someButton)
-            self.navigationItem.rightBarButtonItems = [menuItem!, menuButton]
+            self.navigationItem.rightBarButtonItem = menuButton
         }
         self.retrievePartners()
     }
@@ -202,7 +201,7 @@ class EVCPartnerMatchViewController: UITableViewController {
             if self.mode != .friends_MODE {
                 self.partners = RestAPI.getInstance().getFlingProfiles()
                 if self.partners.count >= 1 {
-                    if ((self.partners[0] as? FlingProfile)?.screenName == RestAPI.getInstance().getCurrentUser().screenName) {
+                    if (self.partners[0].id == RestAPI.getInstance().getCurrentUser().id) {
                         self.partners.remove(at: 0)
                     }
                 }
@@ -210,6 +209,10 @@ class EVCPartnerMatchViewController: UITableViewController {
             else {
                 var hobbMatches = RestAPI.getInstance().getHobbiesMatchesForUser()
                 self.partners = hobbMatches
+            }
+            for partner in self.partners {
+                let user = RestAPI.getInstance().getUserData(for: partner.id)
+                self.partnerUsers.append(user)
             }
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
@@ -238,8 +241,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             cell?.textLabel?.text = "No Results Found"
         }
         else {
-            cell?.textLabel?.text = self.partners[indexPath.row].screenName
-            cell?.imageView?.image = self.loadPicture(forUser: self.partners[indexPath.row].screenName)
+            cell?.textLabel?.text = self.partnerUsers[indexPath.row].screenName
+            cell?.imageView?.image = self.loadPicture(forUser: self.partnerUsers[indexPath.row].screenName)
         }
         return cell!
     }
@@ -265,9 +268,15 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             // Navigation logic may go here, for example:
             // Create the next view controller.
-//        var prof = EVCFlingProfileViewController(nibName: "EVCFlingProfileViewController", bundle: nil, andUser: RestAPI.getInstance().getUserDataForUser(withScreenName: (self.partners[indexPath.row] as? FlingProfile)?.screenName))
-//        // Pass the selected object to the new view controller.
-//        // Push the view controller.
-//        self.navigationController?.pushViewController(prof, animated: true)
+        self.performSegue(withIdentifier: "ShowProfileSegue", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCFlingProfileViewController {
+            let userRow = sender as! Int
+            let user = RestAPI.getInstance().getUserData(for: userRow)
+            dest.currentViewedUser  = user
+            dest.mode = self.mode
+        }
     }
 }

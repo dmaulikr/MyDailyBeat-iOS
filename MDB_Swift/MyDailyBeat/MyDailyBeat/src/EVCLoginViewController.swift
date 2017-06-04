@@ -27,10 +27,8 @@ class EVCLoginViewController: UIViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var groups = [Any]()
             let success: Bool = RestAPI.getInstance().login(withScreenName: username, andPassword: pass)
             if success {
-                groups = RestAPI.getInstance().getGroupsForCurrentUser()
                 DispatchQueue.main.async(execute: {() -> Void in
                     UserDefaults.standard.set(username, forKey: KEY_SCREENNAME)
                     UserDefaults.standard.set(pass, forKey: KEY_PASSWORD)
@@ -92,13 +90,11 @@ class EVCLoginViewController: UIViewController {
         DispatchQueue.global().async(execute: {() -> Void in
             let defScreenName: String? = UserDefaults.standard.string(forKey: KEY_SCREENNAME)
             let defPass: String? = UserDefaults.standard.string(forKey: KEY_PASSWORD)
-            var groups = [Any]()
             if defScreenName != nil {
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
                 _ = RestAPI.getInstance().login(withScreenName: defScreenName!, andPassword: defPass!)
-                groups = RestAPI.getInstance().getGroupsForCurrentUser()
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.hideToastActivity()
                     if let performer = self.seguePerformer {
