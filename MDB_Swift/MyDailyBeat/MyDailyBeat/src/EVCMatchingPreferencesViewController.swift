@@ -53,60 +53,65 @@ class EVCMatchingPreferencesViewController: UITableViewController {
         if indexPath.section == 0 {
             cell.textLabel?.text = GenderRefList.getInstance().list[indexPath.row + 1]
             cell.update()
-            cell.toggleSwitch.setOn(indexPath.row + 1 == self.prefs.gender, animated: true)
+            cell.toggleSwitch.setOn(self.prefs.gender.contains(indexPath.row + 1), animated: true)
             cell.onToggle = {
                 if cell.toggleSwitch.isOn {
-                    self.prefs.gender = indexPath.row + 1
+                    self.prefs.gender.append(indexPath.row + 1)
                 } else {
-                    self.prefs.gender = 0
+                    let index = self.prefs.gender.index(of: indexPath.row + 1)!
+                    self.prefs.gender.remove(at: index)
                 }
                 self.tableView.reloadData()
             }
         } else if indexPath.section == 1 {
             cell.textLabel?.text = MaritalRefList.getInstance().list[indexPath.row + 1]
             cell.update()
-            cell.toggleSwitch.setOn(indexPath.row + 1 == self.prefs.status, animated: true)
+            cell.toggleSwitch.setOn(self.prefs.status.contains(indexPath.row + 1), animated: true)
             cell.onToggle = {
                 if cell.toggleSwitch.isOn {
-                    self.prefs.status = indexPath.row + 1
+                    self.prefs.status.append(indexPath.row + 1)
                 } else {
-                    self.prefs.status = 0
+                    let index = self.prefs.status.index(of: indexPath.row + 1)!
+                    self.prefs.status.remove(at: index)
                 }
                 self.tableView.reloadData()
             }
         } else if indexPath.section == 2 {
             cell.textLabel?.text = EthnicityRefList.getInstance().list[indexPath.row + 1]
             cell.update()
-            cell.toggleSwitch.setOn(indexPath.row + 1 == self.prefs.ethnicity, animated: true)
+            cell.toggleSwitch.setOn(self.prefs.ethnicity.contains(indexPath.row + 1), animated: true)
             cell.onToggle = {
                 if cell.toggleSwitch.isOn {
-                    self.prefs.ethnicity = indexPath.row + 1
+                    self.prefs.ethnicity.append(indexPath.row + 1)
                 } else {
-                    self.prefs.ethnicity = 0
+                    let index = self.prefs.ethnicity.index(of: indexPath.row + 1)!
+                    self.prefs.ethnicity.remove(at: index)
                 }
                 self.tableView.reloadData()
             }
         } else if indexPath.section == 3 {
             cell.textLabel?.text = ReligionRefList.getInstance().list[indexPath.row + 1]
             cell.update()
-            cell.toggleSwitch.setOn(indexPath.row + 1 == self.prefs.beliefs, animated: true)
+            cell.toggleSwitch.setOn(self.prefs.beliefs.contains(indexPath.row + 1), animated: true)
             cell.onToggle = {
                 if cell.toggleSwitch.isOn {
-                    self.prefs.beliefs = indexPath.row + 1
+                    self.prefs.beliefs.append(indexPath.row + 1)
                 } else {
-                    self.prefs.beliefs = 0
+                    let index = self.prefs.beliefs.index(of: indexPath.row + 1)!
+                    self.prefs.beliefs.remove(at: index)
                 }
                 self.tableView.reloadData()
             }
         } else if indexPath.section == 4 {
             cell.textLabel?.text = DrinkerRefList.getInstance().list[indexPath.row + 1]
             cell.update()
-            cell.toggleSwitch.setOn(indexPath.row + 1 == self.prefs.drinker, animated: true)
+            cell.toggleSwitch.setOn(self.prefs.drinker.contains(indexPath.row + 1), animated: true)
             cell.onToggle = {
                 if cell.toggleSwitch.isOn {
-                    self.prefs.drinker = indexPath.row + 1
+                    self.prefs.drinker.append(indexPath.row + 1)
                 } else {
-                    self.prefs.drinker = 0
+                    let index = self.prefs.drinker.index(of: indexPath.row + 1)!
+                    self.prefs.drinker.remove(at: index)
                 }
                 self.tableView.reloadData()
             }
@@ -123,12 +128,13 @@ class EVCMatchingPreferencesViewController: UITableViewController {
                 cell.textLabel?.text = AGE_STRING_LIST[indexPath.row]
             }
             cell.update()
-            cell.toggleSwitch.setOn(indexPath.row + 1 == self.prefs.age, animated: true)
+            cell.toggleSwitch.setOn(self.prefs.age.contains(indexPath.row + 1), animated: true)
             cell.onToggle = {
                 if cell.toggleSwitch.isOn {
-                    self.prefs.age = indexPath.row + 1
+                    self.prefs.age.append(indexPath.row + 1)
                 } else {
-                    self.prefs.age = 0
+                    let index = self.prefs.age.index(of: indexPath.row + 1)!
+                    self.prefs.age.remove(at: index)
                 }
                 self.tableView.reloadData()
             }

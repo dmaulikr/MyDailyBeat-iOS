@@ -28,11 +28,11 @@ public class Post: NSObject, NSCopying {
     
     class func fromJSON(_ post: JSON) -> Post {
         let p = Post()
-        p.postText = post["postText"].stringValue
-        p.imageUrl = post["imageUrl"].stringValue
-        p.post_id = post["id"].intValue
-        p.userid = post["userid"].intValue
-        p.dateTimeMillis = post["when"].int64Value
+        p.postText = post["post_bd"].stringValue
+        p.imageUrl = post["pic_url"].stringValue
+        p.post_id = post["post_id"].intValue
+        p.userid = post["user_id"].intValue
+        p.dateTimeMillis = post["create_sec_since_1970"].int64Value
         return p
     }
 }

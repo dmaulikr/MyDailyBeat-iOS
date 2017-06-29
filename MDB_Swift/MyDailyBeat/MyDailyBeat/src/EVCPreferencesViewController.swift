@@ -18,6 +18,7 @@ class EVCPreferencesViewController: UITableViewController {
     var userPreferences: VerveUserPreferences!
     var matchingPreferences: VerveMatchingPreferences!
     var hobbiesPreferences: HobbiesPreferences!
+    var unwindSegueID: String = "RegularUnwindSegue"
     var onSuccess: ((Bool, UIViewController) -> ()) = { (success, vc) in
         _ = vc.sideMenuViewController.contentViewController.navigationController?.popToRootViewController(animated: true)
     }
@@ -85,8 +86,10 @@ class EVCPreferencesViewController: UITableViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if success && success2 {
-                    self.navigationController?.setNavigationBarHidden(true, animated: false)
-                    self.onSuccess(success && success2, self)
+                    if self.unwindSegueID == "RegularUnwindSegue" {
+                        self.navigationController?.setNavigationBarHidden(true, animated: true)
+                    }
+                    self.performSegue(withIdentifier: self.unwindSegueID, sender: self)
                 }
                 else {
                     print("Failed")

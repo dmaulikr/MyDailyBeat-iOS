@@ -18,6 +18,7 @@ class EVCFlingProfileViewController: UIViewController {
     @IBOutlet var orientationlbl: UILabel!
     @IBOutlet var addFavsBtn: UIButton!
     @IBOutlet var sendMessageBtn: UIButton!
+    @IBOutlet var editButton: UIButton!
     @IBOutlet var aboutMeView: UILabel!
     var currentViewedUser: VerveUser!
     var prefs: VerveUserPreferences!
@@ -58,10 +59,25 @@ class EVCFlingProfileViewController: UIViewController {
                     }
                 }
                 if loc == -1 {
-                    self.addFavsBtn.setTitle("Add Favorite", for: .normal)
-                    // remove favorite
+                    if self.mode == .friends_MODE {
+                        self.addFavsBtn.setTitle("Send Friend Request", for: .normal)
+                    } else {
+                        self.addFavsBtn.setTitle("Add Favorite", for: .normal)
+                    }
+                    if self.mode == .friends_MODE {
+                        _ = RestAPI.getInstance().unfriend(self.currentViewedUser)
+                    }
+                    else if self.mode == .fling_MODE{
+                        _ = RestAPI.getInstance().removeFromFlingFavorites(self.currentViewedUser)
+                    } else {
+                        _ = RestAPI.getInstance().removeFromRelationshipFavorites(self.currentViewedUser)
+                    }
                 } else {
-                    self.addFavsBtn.setTitle("Remove Favorite", for: .normal)
+                    if self.mode == .friends_MODE {
+                        self.addFavsBtn.setTitle("Unfriend", for: .normal)
+                    } else {
+                        self.addFavsBtn.setTitle("Remove Favorite", for: .normal)
+                    }
                     if self.mode == .friends_MODE {
                         _ = RestAPI.getInstance().addToFriends(self.currentViewedUser)
                     }
@@ -81,7 +97,7 @@ class EVCFlingProfileViewController: UIViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            var chatroom: MessageChatroom? = RestAPI.getInstance().createChatroomForUsers(withScreenName: self.currentViewedUser.screenName)
+            let chatroom: MessageChatroom? = RestAPI.getInstance().createChatroomForUsers(withScreenName: self.currentViewedUser.screenName)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 self.performSegue(withIdentifier: "SendMessageSegue", sender: chatroom)
@@ -89,7 +105,7 @@ class EVCFlingProfileViewController: UIViewController {
         })
     }
 
-    func edit() {
+    @IBAction func edit() {
         self.performSegue(withIdentifier: "EditProfileSegue", sender: nil)
     }
 
@@ -101,6 +117,13 @@ class EVCFlingProfileViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.currentViewedUser.id == RestAPI.getInstance().getCurrentUser().id {
             self.addFavsBtn.isHidden = true
             self.sendMessageBtn.isHidden = true
@@ -118,14 +141,14 @@ class EVCFlingProfileViewController: UIViewController {
         self.loadPicture()
         
         if !inRel {
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Call", style: .done, target: self, action: #selector(call))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Call", style: .plain, target: self, action: #selector(call))
         } else {
             if self.currentViewedUser.id == RestAPI.getInstance().getCurrentUser().id {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(edit))
+                self.editButton.isHidden = false
+            } else {
+                self.editButton.isHidden = true
             }
         }
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -193,12 +216,13 @@ class EVCFlingProfileViewController: UIViewController {
     func loadPicture() {
         
         DispatchQueue.global().async(execute: {() -> Void in
-            var imageURL: URL? = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: self.currentViewedUser.screenName)
-            var imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
-            DispatchQueue.main.async(execute: {() -> Void in
-                // Update the UI
-                self.profilePicView.image = UIImage(data: imageData!)
-            })
+            if let imageURL = RestAPI.getInstance().retrieveProfilePictureForUser(withScreenName: self.currentViewedUser.screenName) {
+                let imageData = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL)
+                DispatchQueue.main.async(execute: {() -> Void in
+                    // Update the UI
+                    self.profilePicView.image = UIImage(data: imageData)
+                })
+            }
         })
     }
 
@@ -220,7 +244,7 @@ class EVCFlingProfileViewController: UIViewController {
                 style?.firstLineHeadIndent = 10.0
                 style?.headIndent = 10.0
                 style?.tailIndent = -10.0
-                var attrText = NSAttributedString(string: prof.aboutMe, attributes: [NSParagraphStyleAttributeName: style!])
+                let attrText = NSAttributedString(string: prof.aboutMe, attributes: [NSParagraphStyleAttributeName: style!])
                 self.aboutMeView.attributedText = attrText
                 self.aboutMeView.numberOfLines = 0
             })
@@ -247,7 +271,18 @@ class EVCFlingProfileViewController: UIViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if favs.index(of: RestAPI.getInstance().getFlingProfile(for: self.currentViewedUser)) != NSNotFound {
-                    self.addFavsBtn.setTitle("Remove Favorite", for: .normal)
+                    if self.mode == .friends_MODE {
+                        self.addFavsBtn.setTitle("Unfriend", for: .normal)
+                    } else {
+                        self.addFavsBtn.setTitle("Remove Favorite", for: .normal)
+                    }
+                    
+                } else {
+                    if self.mode == .friends_MODE {
+                        self.addFavsBtn.setTitle("Send Friend Request", for: .normal)
+                    } else {
+                        self.addFavsBtn.setTitle("Add Favorite", for: .normal)
+                    }
                 }
                 if self.prefs == nil {
                     self.prefs = VerveUserPreferences()
@@ -280,44 +315,48 @@ class EVCFlingProfileViewController: UIViewController {
                 }
 
                 switch self.prefs.gender {
-                    case 0:
-                        self.genderLbl.text = "Male"
                     case 1:
-                        self.genderLbl.text = "Female"
+                        self.genderLbl.text = "Male"
                     case 2:
-                        self.genderLbl.text = "Transgender Male"
+                        self.genderLbl.text = "Female"
                     case 3:
+                        self.genderLbl.text = "Transgender Male"
+                    case 4:
                         self.genderLbl.text = "Transgender Female"
                 default:
                     self.genderLbl.text = ""
                 }
 
                 var orientation: String = ""
-                switch self.matching.gender {
-                    case 0:
-                        orientation = "Male"
+                orientation += self.matching.gender.map({ (id) -> String in
+                    switch id {
+                        
                     case 1:
-                        orientation = "Female"
+                        return "Male"
                     case 2:
-                        orientation = "Transgender Male"
+                        return "Female"
                     case 3:
-                        orientation = "Transgender Female"
-                default:
-                    orientation = ""
-                }
+                        return "Transgender Male"
+                    case 4:
+                        return "Transgender Female"
+                    default:
+                        return ""
+                    }
+                }).joined(separator: ", ")
+                
 
                 orientation = "Looking for a\n" + orientation
                 self.orientationlbl.text = orientation
                 switch self.prefs.ethnicity {
-                    case 0:
-                        self.distanceLbl.text = "White/Caucasian"
                     case 1:
-                        self.distanceLbl.text = "Black/African-American"
+                        self.distanceLbl.text = "White/Caucasian"
                     case 2:
-                        self.distanceLbl.text = "Asian"
+                        self.distanceLbl.text = "Black/African-American"
                     case 3:
-                        self.distanceLbl.text = "Native American Indian/Native Alaskan"
+                        self.distanceLbl.text = "Asian"
                     case 4:
+                        self.distanceLbl.text = "Native American Indian/Native Alaskan"
+                    case 5:
                         self.distanceLbl.text = "Latino/Hispanic"
                 default:
                     self.distanceLbl.text = ""

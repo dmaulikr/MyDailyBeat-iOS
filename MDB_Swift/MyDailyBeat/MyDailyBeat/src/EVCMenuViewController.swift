@@ -56,16 +56,7 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
             self.parentController = innerNav.viewControllers[0]
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? EVCFlingViewController {
-            let mode = sender as! Int
-            dest.mode = REL_MODE(rawValue: mode)!
-        } else if let dest = segue.destination as? EVCGroupViewController {
-            dest.group = sender as! Group
-            dest.parentController = self.parentController
-        }
-    }
+
 // MARK: -
 // MARK: UITableView Delegate
 
@@ -83,13 +74,12 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
             case 2:
                 if indexPath.row == groups.count {
                         //create group here
-                    var create = EVCGroupCreationTableViewController()
                     self.sideMenuViewController.hideViewController()
-                    self.sideMenuViewController.contentViewController.present(UINavigationController(rootViewController: create), animated: true, completion: { _ in })
+                    self.performSegue(withIdentifier: "GroupCreateSegue", sender: nil)
                 }
                 else {
                         //add group selection here
-                    var g: Group = groups[indexPath.row]
+                    let g: Group = groups[indexPath.row]
                     self.performSegue(withIdentifier: "GroupSegue", sender: g)
                 }
             case 1:
@@ -116,7 +106,7 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.performSegue(withIdentifier: "VolunteeringSegue", sender: nil)
 
                     case 9:
-                        var alert = UIAlertController(title: "Refer a Friend", message: "Enter the name and email address of the person you wish to invite to join MyDailyBeat.", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Refer a Friend", message: "Enter the name and email address of the person you wish to invite to join MyDailyBeat.", preferredStyle: .alert)
                         alert.addTextField(configurationHandler: { (nameField) in
                             nameField.placeholder = "Name"
                             nameField.autocapitalizationType = .none
@@ -133,13 +123,13 @@ class EVCMenuViewController: UIViewController, UITableViewDataSource, UITableVie
                         })
                         let ok = UIAlertAction(title: "Invite", style: .default, handler: { (inviteAction) in
                             if let fields = alert.textFields {
-                                var name = fields[0].text
-                                var email = fields[1].text
+                                let name = fields[0].text
+                                let email = fields[1].text
                                 DispatchQueue.global().async(execute: {() -> Void in
                                     DispatchQueue.main.async(execute: {() -> Void in
                                         self.sideMenuViewController.contentViewController.view.makeToastActivity(ToastPosition.center)
                                     })
-                                    var result: Bool = RestAPI.getInstance().sendReferral(from: RestAPI.getInstance().getCurrentUser(), toPersonWithName: name!, andEmail: email!)
+                                    let result: Bool = RestAPI.getInstance().sendReferral(from: RestAPI.getInstance().getCurrentUser(), toPersonWithName: name!, andEmail: email!)
                                     DispatchQueue.main.async(execute: {() -> Void in
                                         self.view.hideToastActivity()
                                         if result {
@@ -193,12 +183,10 @@ func numberOfSections(in tableView: UITableView) -> Int {
             default:
                 return 1
         }
-
-        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cellIdentifier: String = "Cell"
+        let cellIdentifier: String = "Cell"
         var cell = EVCMenuTableViewCell(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(320), height: CGFloat(42)), andTag: cellIdentifier)
         if indexPath.section == 1 && (options[indexPath.row] == "Reach Out ...\nI'm Feeling Blue") {
             cell = EVCMenuTableViewCell(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(320), height: CGFloat(70)), andTag: "feelingBlue")
@@ -214,29 +202,29 @@ func numberOfSections(in tableView: UITableView) -> Int {
         switch indexPath.section {
             case 0:
                 cell.lbl.text = "Home"
-                var icon = UIImage(named: "home2.png")
+                let icon = UIImage(named: "home2.png")
                 cell.imgView.image = EVCCommonMethods.image(with: icon!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
             case 2:
                 if indexPath.row == groups.count {
                     cell.lbl.text = CREATE_NEW_GROUP
-                    var icon = UIImage(named: "newgroup2.png")
+                    let icon = UIImage(named: "newgroup2.png")
                     cell.imgView.image = EVCCommonMethods.image(with: icon!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
                 }
                 else {
                     cell.lbl.text = (groups[indexPath.row] as AnyObject).groupName
                     
                     DispatchQueue.global().async(execute: {() -> Void in
-                        var imageURL: URL? = RestAPI.getInstance().retrieveGroupPicture(for: self.groups[indexPath.row])
+                        let imageURL: URL? = RestAPI.getInstance().retrieveGroupPicture(for: self.groups[indexPath.row])
                         if imageURL == nil {
                             DispatchQueue.main.async(execute: {() -> Void in
-                                var icon = UIImage(named: "group2.png")
+                                let icon = UIImage(named: "group2.png")
                                 cell.imgView.image = EVCCommonMethods.image(with: icon!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
                             })
                         }
                         else {
-                            var imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
+                            let imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
                             DispatchQueue.main.async(execute: {() -> Void in
-                                var icon = UIImage(data: imageData!)
+                                let icon = UIImage(data: imageData!)
                                 cell.imgView.image = EVCCommonMethods.image(with: icon!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
                             })
                         }
@@ -244,7 +232,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 }
             case 1:
                 cell.lbl.text = options[indexPath.row]
-                var icon = UIImage(named: imageNames[indexPath.row] as! String)
+                let icon = UIImage(named: imageNames[indexPath.row] )
                 cell.imgView.image = EVCCommonMethods.image(with: icon!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
             default:
                 break

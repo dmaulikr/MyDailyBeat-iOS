@@ -28,7 +28,7 @@ public class ThreeChoiceRefList: NSObject {
         let arr = json.arrayValue
         for value in arr {
             let id = value["threechoice_id"].intValue
-            let desc = value["threechoice_dsc"].stringValue
+            let desc = value["threechoice_desc"].stringValue
             list[id] = desc
         }
         self.loaded = true

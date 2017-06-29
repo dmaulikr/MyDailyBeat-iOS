@@ -17,7 +17,7 @@ class EVCMenuTableViewCell: UITableViewCell {
         if (tag == "feelingBlue") {
             self.lbl = UILabel(frame: CGRect(x: CGFloat(8), y: CGFloat(8), width: CGFloat(260), height: CGFloat(43)))
             self.imgView = UIImageView(frame: CGRect(x: CGFloat(275), y: CGFloat(15), width: CGFloat(30), height: CGFloat(30)))
-            var placeholder = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(51), width: CGFloat(320), height: CGFloat(8)))
+            let placeholder = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(51), width: CGFloat(320), height: CGFloat(8)))
             self.contentView.addSubview(placeholder)
         }
         else {

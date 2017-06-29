@@ -89,7 +89,10 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ViewProfileSegue", sender: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if self.peeps.count > 0 {
+            self.performSegue(withIdentifier: "ViewProfileSegue", sender: indexPath.row)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

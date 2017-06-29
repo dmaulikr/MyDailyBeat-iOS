@@ -17,8 +17,10 @@ class RootNavController: UIViewController {
         super.viewDidLoad()
         let image3 = EVCCommonMethods.image(with: UIImage(named: "hamburger-icon-white")!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
         self.menuButton.image = image3.withRenderingMode(.alwaysOriginal)
+        self.menuButton.title = ""
         let image4 = EVCCommonMethods.image(with: UIImage(named: "profile-icon-white")!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
         self.profileButton.image = image4.withRenderingMode(.alwaysOriginal)
+        self.profileButton.title = ""
         // Do any additional setup after loading the view.
     }
 
@@ -36,6 +38,10 @@ class RootNavController: UIViewController {
             dest.setNavigationBarHidden(true, animated: false)
             self.embedded = dest
         }
+    }
+    
+    @IBAction func modalUnwindSegue(segue: UIStoryboardSegue) {
+        
     }
     
 

@@ -52,10 +52,22 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                let text: String = alert.textFields![0].text!
-                let portal = HealthInfo(uniqueId: 0, url: text, logoURL: "")
-               DataManager.insertHealthPortal(portal)
-                self.healthPortals = DataManager.getHealthPortals()
+                
+                if let text: String = alert.textFields![0].text, !self.healthPortals.contains(where: { (info) -> Bool in
+                    return info.url == text
+                }){
+                    let fullURL: String
+                    if text.hasPrefix("http://") || text.hasPrefix("https://") {
+                        fullURL = "\(text)"
+                    } else {
+                        fullURL = "http://\(text)"
+                    }
+                    if let url = URL(string: fullURL), isURLValid(url) {
+                        let portal = HealthInfo(uniqueId: 0, url: text, logoURL: "")
+                        DataManager.insertHealthPortal(portal)
+                        self.healthPortals = DataManager.getHealthPortals()
+                    }
+                }
                 self.tableView.reloadData()
             })
             alert.addAction(cancel)
@@ -88,8 +100,10 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             let encoded = NSKeyedArchiver.archivedData(withRootObject: obj)
             UserDefaults.standard.set(encoded, forKey: "myHealthPortal")
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         sheet.addAction(browserAction)
         sheet.addAction(addAction)
+        sheet.addAction(cancelAction)
         self.present(sheet, animated: true, completion: nil)
     }
 }

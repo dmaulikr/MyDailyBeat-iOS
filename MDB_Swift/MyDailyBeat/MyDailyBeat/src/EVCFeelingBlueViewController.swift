@@ -83,10 +83,10 @@ class EVCFeelingBlueViewController: UITableViewController {
         }
     }
 
-    func makeCall(_ num: String, withAccessCode code: String?, anonymous: Bool = false) {
-        var dialstring: String = "tel:\(num),,\(code)"
+    func makeCall(_ num: String, withAccessCode code: String, anonymous: Bool = false) {
+        var dialstring: String = "tel:\(num),,\(code)#"
         if anonymous {
-            dialstring = "tel:*67\(num),,\(code)"
+            dialstring = "tel:*67\(num),,\(code)#"
         }
         let url = URL(string: dialstring)
         if UIApplication.shared.canOpenURL(url!) {

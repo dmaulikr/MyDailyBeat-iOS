@@ -28,9 +28,7 @@ class EVCViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.mTableView.delegate = self
         self.mTableView.separatorStyle = .none
         api = RestAPI.getInstance()
-        let name: String = api.getCurrentUser().name
-        var fields = name.components(separatedBy: " ")
-        self.navigationItem.title = "Welcome \(fields[0])!"
+        
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         let arr = DataManager.getBanks()
@@ -91,13 +89,26 @@ class EVCViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        let name: String = api.getCurrentUser().firstName
+        
+        self.setNavTitle(to: "Welcome \(name)!")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? EVCFlingViewController {
             let mode = sender as! Int
             dest.mode = REL_MODE(rawValue: mode)!
+            if let controllers = dest.viewControllers, let match = controllers[0] as? EVCPartnerMatchViewController {
+                match.mode = dest.mode
+            }
+        } else if let dest = segue.destination as? EVCGroupViewController {
+            dest.group = sender as! Group
+            dest.parentController = self
         }
+    }
+    
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

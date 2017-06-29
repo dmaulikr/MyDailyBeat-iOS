@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eRN-0M-5D3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eRN-0M-5D3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,8 +98,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4NH-nY-mqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="TxD-Q7-hvL"/>
-                <tapGestureRecognizer id="QST-Kl-dnL"/>
+                <tapGestureRecognizer id="TxD-Q7-hvL">
+                    <connections>
+                        <action selector="goToProvider:" destination="fQW-9h-nYi" id="GYg-ze-y2F"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="QST-Kl-dnL">
+                    <connections>
+                        <action selector="goToPortal:" destination="fQW-9h-nYi" id="coG-VE-UHI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1220" y="765"/>
         </scene>

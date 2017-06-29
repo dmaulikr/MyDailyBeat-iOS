@@ -45,7 +45,7 @@ class EVCFlingMessagingViewController: JSQMessagesViewController {
                 self.view.makeToastActivity(ToastPosition.center)
             })
             _ = RestAPI.getInstance().writeMessage(message, inChatRoomWithID: self.chatroom.chatroomID)
-            var m = VerveMessage()
+            let m = VerveMessage()
             m.message = message
             m.screenName = self.senderId
             DispatchQueue.main.async(execute: {() -> Void in

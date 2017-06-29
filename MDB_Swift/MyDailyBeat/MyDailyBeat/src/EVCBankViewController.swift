@@ -31,7 +31,7 @@ class EVCBankViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        var data: Data? = UserDefaults.standard.object(forKey: "myBank") as! Data?
+        let data: Data? = UserDefaults.standard.object(forKey: "myBank") as! Data?
         if let bankData = data, let temp =  NSKeyedUnarchiver.unarchiveObject(with: bankData) as? BankInfo {
             self.bank = temp
             self.retrieveBankData()
@@ -41,7 +41,7 @@ class EVCBankViewController: UIViewController {
     
 
     func isAppInstalled(_ name: String) -> Bool {
-        var realname = name.replacingOccurrences(of: " ", with: "-")
+        let realname = name.replacingOccurrences(of: " ", with: "-")
         return UIApplication.shared.canOpenURL(URL(string: realname + "://")!)
     }
 
@@ -71,9 +71,9 @@ class EVCBankViewController: UIViewController {
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
-                var imgurl = URL(string: self.bank.iconURL)
-                var data: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imgurl!)
-                var img = UIImage(data: data!)
+                let imgurl = URL(string: self.bank.iconURL)
+                let data: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imgurl!)
+                let img = UIImage(data: data!)
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.hideToastActivity()
                     self.imgView.image = EVCCommonMethods.image(with: img!, scaledTo: CGSize(width: CGFloat(120), height: CGFloat(120)))

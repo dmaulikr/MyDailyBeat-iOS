@@ -140,12 +140,16 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if section == 0 {
+            return 6
+        } else {
+            return 5
+        }
 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cellIdentifier: String = "CellIdentifier"
+        let cellIdentifier: String = "CellIdentifier"
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
@@ -161,12 +165,15 @@ func numberOfSections(in tableView: UITableView) -> Int {
         if indexPath.section == 0 {
             switch indexPath.row {
                 case 0:
-                    cell?.textLabel?.text = "Name"
-                    cell?.detailTextLabel?.text = RestAPI.getInstance().getCurrentUser().name
+                    cell?.textLabel?.text = "First Name"
+                    cell?.detailTextLabel?.text = RestAPI.getInstance().getCurrentUser().firstName
                 case 1:
+                    cell?.textLabel?.text = "Last Name"
+                    cell?.detailTextLabel?.text = RestAPI.getInstance().getCurrentUser().lastName
+                case 2:
                     cell?.textLabel?.text = "Email"
                     cell?.detailTextLabel?.text = RestAPI.getInstance().getCurrentUser().email
-                case 2:
+                case 3:
                     cell?.textLabel?.text = "Mobile"
                     var mobile: String = RestAPI.getInstance().getCurrentUser().mobile
                     let kit = PhoneNumberKit()
@@ -177,12 +184,12 @@ func numberOfSections(in tableView: UITableView) -> Int {
                         
                         
                     }
-                case 3:
+                case 4:
                     cell?.textLabel?.text = "DOB"
                     let formatter = DateFormatter()
                     formatter.setLocalizedDateFormatFromTemplate("EEEE, MMMM d, yyyy")
                     cell?.detailTextLabel?.text = formatter.string(from: RestAPI.getInstance().getCurrentUser().dob)
-                case 4:
+                case 5:
                     cell?.textLabel?.text = "Zip Code"
                     cell?.detailTextLabel?.text = RestAPI.getInstance().getCurrentUser().zipcode
                 default:

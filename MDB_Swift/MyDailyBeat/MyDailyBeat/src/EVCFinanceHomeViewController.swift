@@ -13,13 +13,13 @@ import DLAlertView
 class EVCFinanceHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     var bankList = [BankInfo]()
-    var iconList = [UIImage]()
+    var iconList = [UIImage?]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bankList = [BankInfo]()
-        self.iconList = [UIImage]()
+        self.iconList = [UIImage?]()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         let insets: UIEdgeInsets? = UIEdgeInsetsMake(0, 0, (self.tabBarController?.tabBar.frame.height)!, 0)
@@ -39,13 +39,16 @@ class EVCFinanceHomeViewController: UIViewController, UITableViewDelegate, UITab
                 self.view.makeToastActivity(ToastPosition.center)
             })
             self.bankList = DataManager.getBanks()
+            self.iconList = [UIImage?](repeating: nil, count: self.bankList.count)
             for i in 0..<self.bankList.count {
                 let load: Bool = UserDefaults.standard.bool(forKey: "LOAD_BANK_IMAGES")
                 if load {
-                    let imgurl = URL(string: ((self.bankList[i] as? BankInfo)?.iconURL)!)
-                    let data: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imgurl!)
-                    let img = UIImage(data: data!)
-                    self.iconList.append(img!)
+                    let imgurl = URL(string: self.bankList[i].iconURL)
+                    let data = RestAPI.getInstance().fetchImage(atRemoteURL: imgurl!)
+                    if let img = UIImage(data: data) {
+                        self.iconList[i] = img
+                    }
+                    
                 }
                 else {
                     UserDefaults.standard.set(true, forKey: "LOAD_BANK_IMAGES")
@@ -66,7 +69,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return (self.bankList.count >= 1) ? self.bankList.count + 3 : 1
+        return (self.bankList.count > 0) ? self.bankList.count + 1 : 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,26 +77,19 @@ func numberOfSections(in tableView: UITableView) -> Int {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "CellIdentifier")
         }
-        if self.bankList.count >= 1 {
+        if self.bankList.count > 0 {
             if indexPath.row < self.bankList.count {
-                cell?.textLabel?.text = (self.bankList[indexPath.row] as? BankInfo)?.appName
-                if indexPath.row < self.iconList.count {
-                    cell?.imageView?.image = self.iconList[indexPath.row]
-                }
-                else {
+                cell?.textLabel?.text = self.bankList[indexPath.row].appName
+                if let image = self.iconList[indexPath.row] {
+                    cell?.imageView?.image = image
+                } else {
                     cell?.imageView?.image = nil
                 }
-            }
-            else if indexPath.row == self.bankList.count {
+            } else {
                 cell?.textLabel?.text = "Add Bank"
                 cell?.imageView?.image = EVCCommonMethods.image(with: UIImage(named: "plus-512.png")!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
             }
-            else {
-                cell?.textLabel?.text = ""
-                cell?.imageView?.image = nil
-            }
-        }
-        else {
+        } else {
             cell?.textLabel?.text = "Add Bank"
             cell?.imageView?.image = EVCCommonMethods.image(with: UIImage(named: "plus-512.png")!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
         }
@@ -101,19 +97,14 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.bankList.count >= 1 {
+        if self.bankList.count > 0 {
             if indexPath.row < self.bankList.count {
                 self.popupActionMenu(indexPath.row)
-            }
-            else if indexPath.row == self.bankList.count {
+            } else {
                 // add new bank
                 self.addBank()
             }
-            else {
-                // do nothing
-            }
-        }
-        else {
+        } else {
             // add new bank
             self.addBank()
         }
@@ -131,8 +122,11 @@ func numberOfSections(in tableView: UITableView) -> Int {
             let bankEncoded = NSKeyedArchiver.archivedData(withRootObject: obj)
             UserDefaults.standard.set(bankEncoded, forKey: "myBank")
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         sheet.addAction(browserAction)
         sheet.addAction(addAction)
+        sheet.addAction(cancelAction)
         self.present(sheet, animated: true, completion: nil)
     }
 
@@ -141,17 +135,17 @@ func numberOfSections(in tableView: UITableView) -> Int {
         alert.addTextField { (textField) in
             textField.placeholder = "Bank name"
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let ok = UIAlertAction(title: "OK", style: .default) { (action) in
-            var text: String = alert.textFields![0].text!
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            let text: String = alert.textFields![0].text!
             
             DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
-                if RestAPI.getInstance().doesAppExist(withTerm: text, andCountry: "US") {
-                    var bank: VerveBankObject? = RestAPI.getInstance().getBankInfoForBank(withName: text, inCountry: "US")
-                    var info = BankInfo(uniqueId: 0, name: (bank?.appName)!, appURL: (bank?.appStoreListing)!, iconURL: (bank?.appIconURL)!)
+                if RestAPI.getInstance().doesAppExist(withTerm: "\(text) bank", andCountry: "US") {
+                    let bank: VerveBankObject? = RestAPI.getInstance().getBankInfoForBank(withName: "\(text) bank", inCountry: "US")
+                    let info = BankInfo(uniqueId: 0, name: (bank?.appName)!, appURL: (bank?.appStoreListing)!, iconURL: (bank?.appIconURL)!)
                     DataManager.insertBank(info)
                 }
                 DispatchQueue.main.async(execute: {() -> Void in
@@ -160,6 +154,9 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 })
             })
         }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
     func isAppInstalled(_ name: String) -> Bool {

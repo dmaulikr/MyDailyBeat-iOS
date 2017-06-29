@@ -41,7 +41,7 @@ class EVCHobbiesPreferencesViewController: UITableViewController {
         cell.update()
         cell.toggleSwitch.setOn(self.prefs.hobbies[indexPath.row + 1]!, animated: true)
         cell.onToggle = {
-            self.prefs.hobbies[indexPath.row] = cell.toggleSwitch.isOn
+            self.prefs.hobbies[indexPath.row + 1] = cell.toggleSwitch.isOn
         }
 
         // Configure the cell...

@@ -27,21 +27,37 @@ class EVCLoginViewController: UIViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            let success: Bool = RestAPI.getInstance().login(withScreenName: username, andPassword: pass)
-            if success {
+            let verified = RestAPI.getInstance().isUserVerified(screenName: username, password: pass)
+            if verified {
+                let success: Bool = RestAPI.getInstance().login(withScreenName: username, andPassword: pass)
+                if success {
+                    DispatchQueue.main.async(execute: {() -> Void in
+                        UserDefaults.standard.set(username, forKey: KEY_SCREENNAME)
+                        UserDefaults.standard.set(pass, forKey: KEY_PASSWORD)
+                        self.view.hideToastActivity()
+                        if let performer = self.seguePerformer {
+                            performer("LoginSegue", nil)
+                        }
+                    })
+                } else {
+                    DispatchQueue.main.async(execute: {() -> Void in
+                        self.view.hideToastActivity()
+                        self.view.makeToast("Username and password do not match.", duration: 3.5, position: .bottom)
+                    })
+                }
+            } else {
                 DispatchQueue.main.async(execute: {() -> Void in
-                    UserDefaults.standard.set(username, forKey: KEY_SCREENNAME)
-                    UserDefaults.standard.set(pass, forKey: KEY_PASSWORD)
                     self.view.hideToastActivity()
-                    if let performer = self.seguePerformer {
-                        performer("LoginSegue", nil)
-                    }
-                })
-            }
-            else {
-                DispatchQueue.main.async(execute: {() -> Void in
-                    self.view.hideToastActivity()
-                    self.view.makeToast("Username and password do not match.", duration: 3.5, position: .bottom)
+                    let alert = UIAlertController(title: "Verify your user information.", message: "You must verify your user information before logging in. Check the email you used to register.", preferredStyle: .alert)
+                    let okaction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(okaction)
+                    let resendAction = UIAlertAction(title: "Re-send Activation Email", style: .default, handler: { (action) in
+                        DispatchQueue.global().async {
+                            RestAPI.getInstance().resendEmail(screenName: username, password: pass)
+                        }
+                    })
+                    alert.addAction(resendAction)
+                    self.present(alert, animated: true, completion: nil)
                 })
             }
         })
@@ -94,13 +110,31 @@ class EVCLoginViewController: UIViewController {
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
-                _ = RestAPI.getInstance().login(withScreenName: defScreenName!, andPassword: defPass!)
-                DispatchQueue.main.async(execute: {() -> Void in
-                    self.view.hideToastActivity()
-                    if let performer = self.seguePerformer {
-                        performer("LoginSegue", nil)
-                    }
-                })
+                let verified = RestAPI.getInstance().isUserVerified(screenName: defScreenName!, password: defPass!)
+                if verified {
+                    _ = RestAPI.getInstance().login(withScreenName: defScreenName!, andPassword: defPass!)
+                    DispatchQueue.main.async(execute: {() -> Void in
+                        self.view.hideToastActivity()
+                        if let performer = self.seguePerformer {
+                            performer("LoginSegue", nil)
+                        }
+                    })
+                } else {
+                    DispatchQueue.main.async(execute: {() -> Void in
+                        self.view.hideToastActivity()
+                        let alert = UIAlertController(title: "Verify your user information.", message: "You must verify your user information before logging in. Check the email you used to register.", preferredStyle: .alert)
+                        let okaction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alert.addAction(okaction)
+                        let resendAction = UIAlertAction(title: "Re-send Activation Email", style: .default, handler: { (action) in
+                            DispatchQueue.global().async {
+                                RestAPI.getInstance().resendEmail(screenName: defScreenName!, password: defPass!)
+                            }
+                        })
+                        alert.addAction(resendAction)
+                        self.present(alert, animated: true, completion: nil)
+                    })
+                }
+                
             }
         })
     }

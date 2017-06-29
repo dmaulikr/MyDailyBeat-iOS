@@ -21,13 +21,21 @@ public class EVCUserInviteViewController: UIViewController, UITextViewDelegate {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.inviteMessage = "Hey, \(self.recipient.name), join my group on MyDailyBeat, \(self.groupToInviteTo.groupName)!"
+        self.inviteMessage = "Hey, \(self.recipient.firstName), join my group on MyDailyBeat, \(self.groupToInviteTo.groupName)!"
         self.messageTxtView.text = self.inviteMessage
         self.messageTxtView.delegate = self
         self.nameLbl.text = "Recipient Screen Name: \(self.recipient.screenName)"
         let sendItem = UIBarButtonItem(title: "Send Invite", style: .done, target: self, action: #selector(self.sendInvite))
         self.navigationItem.rightBarButtonItem = sendItem
         self.navigationItem.title = "Write Invite"
+    }
+    
+    public override var nibName: String? {
+        return "EVCUserInviteViewController_iPhone"
+    }
+    
+    public override var nibBundle: Bundle? {
+        return Bundle.init(for: EVCUserInviteViewController.self)
     }
 
     @IBAction func changeSendingMethod(_ sender: UISegmentedControl) {

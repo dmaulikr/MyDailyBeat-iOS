@@ -70,7 +70,7 @@ class EVCJobsViewController: UIViewController, CLLocationManagerDelegate, UITabl
     }
 
     func hasMore() -> Bool {
-        var pagecount = total / 25
+        let pagecount = total / 25
         return (pagecount > currentPage)
     }
 
@@ -97,8 +97,6 @@ class EVCJobsViewController: UIViewController, CLLocationManagerDelegate, UITabl
                 radius = "75"
             case .one_HUNDRED_MILES:
                 radius = "100"
-            default:
-                break
         }
 
         var type = ""
@@ -117,7 +115,7 @@ class EVCJobsViewController: UIViewController, CLLocationManagerDelegate, UITabl
             })
             self.resultsDictionary = RestAPI.getInstance().getJobs(onPage: self.currentPage, inLocation: self.currentZip, inRadius: radius, andType: type, andQuery: query)
             var resultsDic = self.resultsDictionary["results"].dictionaryValue
-            var temp: [JSON] = resultsDic["result"]!.arrayValue
+            let temp: [JSON] = resultsDic["result"]!.arrayValue
             self.currentSet.append(contentsOf: temp)
             self.total = self.resultsDictionary["totalresults"].intValue
             DispatchQueue.main.async(execute: {() -> Void in
@@ -187,7 +185,7 @@ class EVCJobsViewController: UIViewController, CLLocationManagerDelegate, UITabl
         if imgView == nil {
             imgView = UIImageView(frame: self.view.bounds)
             imgView?.tag = BLUR_VIEW_TAG
-            var screenShot: UIImage? = EVCCommonMethods.image(with: UIColor(netHex: 0x0097a4), size: self.view.bounds.size)
+            let screenShot: UIImage? = EVCCommonMethods.image(with: UIColor(netHex: 0x0097a4), size: self.view.bounds.size)
             imgView?.image = screenShot?.blurredImage(withRadius: 40, iterations: 2, tintColor: UIColor.clear)
             imgView?.alpha = 0
             filterView.alpha = 0

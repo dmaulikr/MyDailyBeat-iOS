@@ -11,6 +11,11 @@ class EVCTravelFavoritesViewController: UITableViewController {
         self.loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadData()
+    }
+    
     
     
     func loadData() {
@@ -61,8 +66,12 @@ class EVCTravelFavoritesViewController: UITableViewController {
         let browserAction = UIAlertAction(title: "Open in Browser", style: .default) { (action) in
             self.openURLinBrowser(self.searchResults[indexPath.row])
         }
+        let addAction = UIAlertAction(title: "Remove from Favorites", style: .default) { (action) in
+            self.remove(fromFavs: self.searchResults[indexPath.row])
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         sheet.addAction(browserAction)
+        sheet.addAction(addAction)
         sheet.addAction(cancelAction)
         self.present(sheet, animated: true, completion: nil)
     }
@@ -77,16 +86,15 @@ class EVCTravelFavoritesViewController: UITableViewController {
         UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
     }
     
-    func add(toFavs url: String) {
-        
+    func remove(fromFavs url: String) {
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            _ = RestAPI.getInstance().addShoppingFavoriteURL(url)
+            _ = RestAPI.getInstance().removeTravelFavoriteURL(url)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
-                self.tableView.reloadData()
+                self.loadData()
             })
         })
     }

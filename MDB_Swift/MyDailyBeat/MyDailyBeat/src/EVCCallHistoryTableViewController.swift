@@ -16,7 +16,7 @@ class EVCCallHistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var userDefaults = UserDefaults.standard
+        let userDefaults = UserDefaults.standard
         self.callHistory = userDefaults.stringArray(forKey: "callHistory") ?? [String]()
     }
 
@@ -79,7 +79,7 @@ class EVCCallHistoryTableViewController: UITableViewController {
     }
 
     func makeCall(_ num: String, withAccessCode code: String) {
-        let dialstring: String = "tel:\(num),,\(code)"
+        let dialstring: String = "tel:\(num),,\(code)#"
         let url = URL(string: dialstring)
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: [:], completionHandler: {(_ success: Bool) -> Void in

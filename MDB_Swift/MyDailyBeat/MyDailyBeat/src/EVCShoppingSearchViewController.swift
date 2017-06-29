@@ -10,26 +10,21 @@ import UIKit
 import API
 import Toast_Swift
 import SwiftyJSON
-class EVCShoppingSearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
-    var isFiltered: Bool = false
+class EVCShoppingSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var mTableView: UITableView!
-    @IBOutlet var sBar: UISearchBar!
     var searchResults = [String]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sBar.delegate = self
         self.mTableView.delegate = self
         self.mTableView.dataSource = self
-        self.mTableView.tableHeaderView = self.sBar
-        self.sBar.showsScopeBar = true
-        self.sBar.setShowsCancelButton(false, animated: true)
-        self.sBar.sizeToFit()
-        self.sBar.autocorrectionType = .no
-        self.sBar.autocapitalizationType = .none
-        isFiltered = false
+        self.loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.loadData()
     }
 
@@ -115,58 +110,5 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 self.loadData()
             })
         })
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if (searchText.characters.count ) == 0 && isFiltered {
-            isFiltered = false
-            self.mTableView.reloadData()
-        }
-    }
-
-    func updateSearch(_ text: String) {
-        
-        DispatchQueue.global().async(execute: {() -> Void in
-            DispatchQueue.main.async(execute: {() -> Void in
-                self.view.makeToastActivity(ToastPosition.center)
-            })
-            
-            let dic: JSON
-            if text == "" {
-                dic = RestAPI.getInstance().searchShoppingURLs(withQueryString: nil)
-            } else {
-                dic = RestAPI.getInstance().searchShoppingURLs(withQueryString: text)
-            }
-            let dic2 = RestAPI.getInstance().getShoppingFavorites()
-            let arr = dic2.arrayValue.map({ (json) -> Int in
-                return json["shpng_ref_id"].intValue
-            })
-            
-            let arr2 = dic.arrayValue.filter({ (json) -> Bool in
-                let value: Int = json["shpng_ref_id"].intValue
-                return !arr.contains(value)
-            })
-            
-            self.searchResults = arr2.map({ (json) -> String in
-                return json["shpng_url"].stringValue
-            })
-            DispatchQueue.main.async(execute: {() -> Void in
-                self.view.hideToastActivity()
-                self.mTableView.reloadData()
-            })
-        })
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        var text: String = searchBar.text!
-        if (text.characters.count ) == 0 {
-            isFiltered = false
-        }
-        else {
-            isFiltered = true
-            self.searchResults = [String]()
-            self.updateSearch(text)
-        }
     }
 }

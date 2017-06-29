@@ -18,6 +18,11 @@ class EVCShoppingFavoritesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.loadData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadData()
+    }
 
     
 
@@ -75,8 +80,8 @@ override func numberOfSections(in tableView: UITableView) -> Int {
         let browserAction = UIAlertAction(title: "Open in Browser", style: .default) { (action) in
             self.openURLinBrowser(self.searchResults[indexPath.row])
         }
-        let addAction = UIAlertAction(title: "Add to Favorites", style: .default) { (action) in
-            self.add(toFavs: self.searchResults[indexPath.row])
+        let addAction = UIAlertAction(title: "Remove from Favorites", style: .default) { (action) in
+            self.remove(fromFavs: self.searchResults[indexPath.row])
         }
         sheet.addAction(browserAction)
         sheet.addAction(addAction)
@@ -93,16 +98,15 @@ override func numberOfSections(in tableView: UITableView) -> Int {
         UIApplication.shared.open(URL(string: fullURL)!, options: [:], completionHandler: nil)
     }
 
-    func add(toFavs url: String) {
-        
+    func remove(fromFavs url: String) {
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            _ = RestAPI.getInstance().addShoppingFavoriteURL(url)
+            _ = RestAPI.getInstance().removeShoppingFavoriteURL(url)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
-                self.tableView.reloadData()
+                self.loadData()
             })
         })
     }

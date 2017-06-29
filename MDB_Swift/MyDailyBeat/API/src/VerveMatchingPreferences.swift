@@ -10,23 +10,23 @@ import Foundation
 import FXForms
 import SwiftyJSON
 public class VerveMatchingPreferences: NSObject, FXForm {
-    public var gender: Int = 0
-    public var age: Int = 0
-    public var status: Int = 0
-    public var ethnicity: Int = 0
-    public var beliefs: Int = 0
-    public var drinker: Int = 0
+    public var gender: [Int] = []
+    public var age: [Int] = []
+    public var status: [Int] = []
+    public var ethnicity: [Int] = []
+    public var beliefs: [Int] = []
+    public var drinker: [Int] = []
     public var isSmoker: Int = 0
     public var isVeteran: Int = 0
 
     func toJSON() -> JSON {
         var dic = [String: JSON]()
-        dic["gender"] = JSON([JSON(self.gender)])
-        dic["age"] = JSON([JSON(self.age)])
-        dic["mrrtl"] = JSON([JSON(self.status)])
-        dic["ethnct"] = JSON([JSON(self.ethnicity)])
-        dic["drnkr"] = JSON([JSON(self.drinker)])
-        dic["relgs"] = JSON([JSON(self.beliefs)])
+        dic["gender"] = JSON(self.gender)
+        dic["age"] = JSON(self.age)
+        dic["mrrtl"] = JSON(self.status)
+        dic["ethnct"] = JSON(self.ethnicity)
+        dic["drnkr"] = JSON(self.drinker)
+        dic["relgs"] = JSON(self.beliefs)
         dic["smkr_threechoice_id"] = JSON(self.isSmoker)
         dic["vtrn_threechoice_id"] = JSON(self.isVeteran)
         return JSON(dic)

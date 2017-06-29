@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 import Toast_Swift
 import API
-class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDelegate {
+class EVCGroupViewController: UIViewController {
     var max_post_height: Int = 0
 
     @IBOutlet var scroll: UIScrollView!
@@ -28,6 +28,10 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
         self.group = g
         self.parentController = parent
     
+    }
+    
+    override var nibName: String? {
+        return "EVCGroupViewController_iPhone"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,13 +55,18 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
         self.settingsButton = UIBarButtonItem(image: UIImage(named: "settings-25.png"), style: .plain, target: self, action: #selector(self.groupSettings))
         let items = [self.composeButton!, space, self.inviteButton!, self.settingsButton!]
         self.groupBar.setItems(items, animated: true)
-        self.title = self.group.groupName
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setNavTitle(to: self.group.groupName)
         
         if (RestAPI.getInstance().getCurrentUser().id == self.group.adminID) {
             self.settingsButton.isEnabled = true
-        }
-        else {
+            self.inviteButton.isEnabled = true
+        } else {
             self.settingsButton.isEnabled = false
+            self.inviteButton.isEnabled = false
         }
         self.refreshGroupData()
         self.loadPicture()
@@ -65,7 +74,7 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
     }
 
     func writePost() {
-        let completionHandler: (_ message: String, _ image: UIImage) -> Void = { (message, image) in
+        let completionHandler: (_ message: String, _ image: UIImage?) -> Void = { (message, image) in
             let attachedImage: UIImage? = image
             let postText: String = message
             let millis: Int64 = Int64(Date().timeIntervalSince1970)
@@ -78,7 +87,12 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
                 })
-                let imgData: Data? = UIImagePNGRepresentation(attachedImage!)
+                let imgData: Data?
+                if let attachment = attachedImage {
+                    imgData = UIImagePNGRepresentation(attachment)
+                } else {
+                    imgData = nil
+                }
                 let fileName: String = ASSET_FILENAME
                 let success: Bool = RestAPI.getInstance().write(written, withPictureData: imgData, andPictureName: fileName, to: self.group)
                 DispatchQueue.main.async(execute: {() -> Void in
@@ -104,16 +118,7 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
     }
 
     func groupSettings() {
-        let settingsController = EVCGroupSettingsViewController()
-        settingsController.g = self.group
-        settingsController.handler = {
-            self.refreshGroupData()
-            self.loadPicture()
-            self.loadPosts()
-        }
-        settingsController.delegate = self
-        settingsController.title = "Group Settings"
-        self.present(UINavigationController(rootViewController: settingsController), animated: true, completion: { _ in })
+        self.performSegue(withIdentifier: "EditGroupSegue", sender: nil)
     }
 
     func deletePost(_ p: Post) {
@@ -136,12 +141,6 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
                 self.loadPosts()
             })
         })
-    }
-
-
-    func evcGroupSettingsViewControllerDelegateDidDeleteGroup(_ controller: EVCGroupSettingsViewController) {
-        controller.dismiss(animated: true, completion: { _ in })
-        _ = self.sideMenuViewController.contentViewController.navigationController?.popToRootViewController(animated: true)
     }
 
     func refreshGroupData() {
@@ -213,13 +212,13 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
     func createView(for inputPost: Post) -> UIView? {
         let postView: UIView?
         if inputPost.imageUrl != "" {
-            var post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(400)), andPost: inputPost, with: EVCPostType.hasPicture, andParent: self)
+            let post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(400)), andPost: inputPost, with: EVCPostType.hasPicture, andParent: self)
             postView = UIView(frame: CGRect(x: CGFloat(10), y: CGFloat(max_post_height), width: CGFloat(300), height: CGFloat(400)))
             postView?.addSubview(post)
             max_post_height += 430
         }
         else {
-            var post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(178)), andPost: inputPost, with: EVCPostType.doesNotHavePicture, andParent: self)
+            let post = EVCPostView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(300), height: CGFloat(178)), andPost: inputPost, with: EVCPostType.doesNotHavePicture, andParent: self)
             postView = UIView(frame: CGRect(x: CGFloat(10), y: CGFloat(max_post_height), width: CGFloat(300), height: CGFloat(178)))
             postView?.addSubview(post)
             max_post_height += 208
@@ -231,6 +230,13 @@ class EVCGroupViewController: UIViewController, EVCGroupSettingsViewControllerDe
         postView?.layer.shadowRadius = 3.0
         postView?.layer.shadowOffset = CGSize(width: CGFloat(2.0), height: CGFloat(2.0))
         return postView!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? EVCGroupSettingsViewController {
+            dest.group = self.group
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
 
     

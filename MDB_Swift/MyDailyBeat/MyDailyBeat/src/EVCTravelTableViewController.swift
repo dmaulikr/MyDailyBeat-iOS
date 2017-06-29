@@ -20,6 +20,11 @@ class EVCTravelTableViewController: UITableViewController {
         self.loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadData()
+    }
+    
     func loadData() {
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
@@ -97,8 +102,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             })
             _ = RestAPI.getInstance().addTravelFavoriteURL(url)
             DispatchQueue.main.async(execute: {() -> Void in
-                self.view.hideToastActivity()
-                self.tableView.reloadData()
+                self.loadData()
             })
         })
     }

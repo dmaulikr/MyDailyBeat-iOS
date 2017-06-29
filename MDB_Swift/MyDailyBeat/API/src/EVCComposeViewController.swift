@@ -20,7 +20,15 @@ public class EVCComposeViewController: UIViewController, UINavigationControllerD
     var attachedImage: UIImage!
     var isHasAttachment: Bool = false
     var postText: String = ""
-    open var completionHandler: ((_ message: String, _ image: UIImage) -> Void)? = nil
+    open var completionHandler: ((_ message: String, _ image: UIImage?) -> Void)? = nil
+    
+    public override var nibName: String? {
+        return "EVCComposeViewController_iPhone"
+    }
+    
+    public override var nibBundle: Bundle? {
+        return Bundle.init(for: EVCComposeViewController.self)
+    }
 
     @IBAction func addPhoto(fromLibrary sender: UIButton) {
         let picker = UIImagePickerController()
@@ -78,6 +86,11 @@ public class EVCComposeViewController: UIViewController, UINavigationControllerD
 
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.loadProfilePicture()
+        self.postTextView.inputAccessoryView = self.accessoryViewBar
+        self.postTextView.becomeFirstResponder()
+        self.postTextView.delegate = self
+        self.postTextView.frame = CGRect(x: CGFloat(75), y: CGFloat(65), width: CGFloat(248), height: CGFloat(151))
         self.wasKeyboardManagerEnabled = IQKeyboardManager.sharedManager().enable
         IQKeyboardManager.sharedManager().enable = false
     }
@@ -89,11 +102,6 @@ public class EVCComposeViewController: UIViewController, UINavigationControllerD
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.loadProfilePicture()
-        self.postTextView.inputAccessoryView = self.accessoryViewBar
-        self.postTextView.becomeFirstResponder()
-        self.postTextView.delegate = self
-        self.postTextView.frame = CGRect(x: CGFloat(75), y: CGFloat(65), width: CGFloat(248), height: CGFloat(151))
         let cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelPost))
         self.navigationItem.leftBarButtonItem = cancelBarButton
         let postBarButton = UIBarButtonItem(title: "Post", style: .done, target: self, action: #selector(self.writePost))

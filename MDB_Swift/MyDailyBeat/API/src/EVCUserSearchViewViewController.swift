@@ -45,14 +45,19 @@ public class EVCUserSearchViewViewController: UIViewController, UISearchBarDeleg
         mSearchBar.showsScopeBar = true
         mSearchBar.setShowsCancelButton(false, animated: true)
         mSearchBar.sizeToFit()
+        mSearchBar.autocorrectionType = .no
+        mSearchBar.autocapitalizationType = .none
         self.navigationItem.title = "Search for Users"
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        _ = self.data[indexPath.row]
-//        let inviteWriter = EVCUserInviteViewController(group: self.groupToInviteTo, andRecipient: user, withSender: RestAPI.getInstance().getCurrentUser())
-//        self.navigationController?.pushViewController(inviteWriter, animated: true)
+        let user = self.data[indexPath.row]
+        let inviteWriter = EVCUserInviteViewController()
+        inviteWriter.groupToInviteTo = self.groupToInviteTo
+        inviteWriter.recipient = user
+        inviteWriter.sender = RestAPI.getInstance().getCurrentUser()
+        self.navigationController?.pushViewController(inviteWriter, animated: true)
     }
 
     func cancelInvite() {
@@ -111,13 +116,12 @@ public class EVCUserSearchViewViewController: UIViewController, UISearchBarDeleg
             let user = obj
             let groupsForUser: [Group] = RestAPI.getInstance().getGroupsFor(user)
             var member: Bool = false
-            for gobj in groupsForUser {
-                let g = gobj
-                if g.groupID == self.groupToInviteTo.groupID {
-                    member = true
-                }
-            }
-            if !member {
+            let t = groupsForUser.map({ (group) -> Int in
+                return group.groupID
+            }).filter({ (id) -> Bool in
+                return id == self.groupToInviteTo.groupID
+            })
+            if t.isEmpty {
                 self.data.append(user)
             }
         }

@@ -25,7 +25,7 @@ public class HobbiesPreferences: NSObject, FXForm {
         }
         
         let myList = array.map { (json) -> Int in
-            return json.intValue
+            return json["hby_ref_id"].intValue
         }
         
         for hobby in masterList {

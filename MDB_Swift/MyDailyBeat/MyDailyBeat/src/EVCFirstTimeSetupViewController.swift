@@ -37,13 +37,12 @@ class EVCFirstTimeSetupViewController: UIViewController {
         // Do any additional setup after loading the view.
         api = RestAPI.getInstance()
         self.message.text = "Welcome to MyDailyBeat! Before you begin, please set the following preferences."
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? EVCPreferencesViewController {
-            dest.onSuccess = { (success, vc) in
-                vc.dismiss(animated: true, completion: nil)
-            }
+            dest.unwindSegueID = "ModalUnwindSegue"
         }
     }
 

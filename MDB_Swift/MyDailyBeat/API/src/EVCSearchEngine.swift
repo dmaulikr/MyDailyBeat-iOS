@@ -12,18 +12,15 @@ import SwiftyJSON
 public class EVCSearchEngine: NSObject {
 
     public func getUsers(withScreenName screenName: String, withSortOrder order: EVCSearchSortOrder) -> [VerveUser] {
-        let rawDict = RestAPI.getInstance().searchUsers(with: screenName, andQueryType: .searchByScreenName, withSortOrder: order)
-        return self.dictofUsers(toArray: rawDict)
+        return RestAPI.getInstance().searchUsers(with: screenName, andQueryType: .searchByScreenName, withSortOrder: order)
     }
     
     public func getUsers(withEmail email: String, withSortOrder order: EVCSearchSortOrder) -> [VerveUser] {
-        let rawDict = RestAPI.getInstance().searchUsers(with: email, andQueryType: .searchByEmail, withSortOrder: order)
-        return self.dictofUsers(toArray: rawDict)
+        return RestAPI.getInstance().searchUsers(with: email, andQueryType: .searchByEmail, withSortOrder: order)
     }
     
     public func getUsers(withName name: String, withSortOrder order: EVCSearchSortOrder) -> [VerveUser] {
-        let rawDict = RestAPI.getInstance().searchUsers(with: name, andQueryType: .searchByName, withSortOrder: order)
-        return self.dictofUsers(toArray: rawDict)
+        return RestAPI.getInstance().searchUsers(with: name, andQueryType: .searchByName, withSortOrder: order)
     }
     
     public func getUsersForFeelingBlue() -> [VerveUser] {

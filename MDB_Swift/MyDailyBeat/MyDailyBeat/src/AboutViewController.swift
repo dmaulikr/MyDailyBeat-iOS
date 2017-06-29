@@ -19,19 +19,23 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
     private var appName: String? = nil
     private var appVersion: String? = nil
     private var appBuild: String? = nil
-    open var pubYear = 2016
     open var copyrightHolder: String = "eVerve Corporation"
-    private let agreements: [String] = ["Terms of Service", "Privacy Policy", "Legal"]
+    private let agreements: [String] = ["Terms of Service", "Privacy Policy", "Online Dating Safety Tips"]
+    private let agreementUrls: [String] = ["/terms", "/privacy", "/tips"]
     @IBAction func back() {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func showWebsite() {
-        
+        let urlS = "http://www.evervecorp.com"
+        let url = URL(string: urlS)!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func showMailEditor() {
-        
+        let urlS = "mailto:support@eVerveCorp.com"
+        let url = URL(string: urlS)!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
     override func viewDidLoad() {
@@ -47,7 +51,11 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CELL")
         self.appNameLabel.text = self.appName
-        self.appCopyrightLabel.text = String(format: "Version %@ (%@)\n\u{A9} Copyright %d, %@", appVersion!, appBuild!, pubYear, copyrightHolder)
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateFormat = "yyyy"
+        self.appCopyrightLabel.text = String(format: "Version %@ (%@)\n\u{A9} Copyright %@, %@", appVersion!, appBuild!, formatter.string(from: date), copyrightHolder)
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
@@ -134,7 +142,11 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.performSegue(withIdentifier: "AboutDetailsSegue", sender: indexPath)
+        if indexPath.section == 0 {
+            self.performSegue(withIdentifier: "WebViewDetailSegue", sender: indexPath)
+        } else {
+            self.performSegue(withIdentifier: "AboutDetailsSegue", sender: indexPath)
+        }
     }
     
     
@@ -145,11 +157,9 @@ class AboutViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if let dest = segue.destination as? AboutDetailsViewController, let path = sender as? IndexPath {
-            if path.section == 0 {
-                
-            } else {
-                dest.text = self.acknowledgements[path.row].values.first ?? ""
-            }
+            dest.text = self.acknowledgements[path.row].values.first ?? ""
+        } else if let dest = segue.destination as? AboutDetailsWebViewController, let path = sender as? IndexPath {
+            dest.url = "http://www.mydailybeat.com" + self.agreementUrls[path.row]
         }
     }
     

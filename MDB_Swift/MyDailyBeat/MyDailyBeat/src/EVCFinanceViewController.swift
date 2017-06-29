@@ -14,12 +14,15 @@ class EVCFinanceViewController: EVCTabBarController, UITabBarControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.delegate = self
     }
 
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let dest = viewController as? EVCResourceLinksTableViewController {
+            dest.module = "Finance"
+        }
+    }
     
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
+    
 }

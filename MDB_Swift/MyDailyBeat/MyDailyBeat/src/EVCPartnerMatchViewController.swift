@@ -18,6 +18,11 @@ class EVCPartnerMatchViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.partners = [FlingProfile]()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if self.mode == .friends_MODE {
             let image3 = EVCCommonMethods.image(with: UIImage(named: "search-icon-white")!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
             let frameimg = CGRect(x: CGFloat(0), y: CGFloat(0), width: CGFloat(image3.size.width), height: CGFloat(image3.size.height))
@@ -62,7 +67,6 @@ class EVCPartnerMatchViewController: UITableViewController {
             let name: String = alert.textFields![1].text!
             let email: String = alert.textFields![2].text!
             let mobile: String = alert.textFields![3].text!
-            let queue = DispatchQueue.global()
             DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
@@ -71,8 +75,14 @@ class EVCPartnerMatchViewController: UITableViewController {
                     // search by Screen Name
                     let exists: Bool = RestAPI.getInstance().doesUserExist(withScreenName: screenName)
                     if exists {
-//                        let other: VerveUser? = RestAPI.getInstance().getUserData(for: screenName)
-                        //_ = RestAPI.getInstance().add(other!, toFriendsOf: RestAPI.getInstance().getCurrentUser())
+                        let other: VerveUser = RestAPI.getInstance().getUserData(screenName: screenName)
+                        if self.mode == .friends_MODE {
+                            _ = RestAPI.getInstance().addToFriends(other)
+                        } else if self.mode == .fling_MODE {
+                            _ = RestAPI.getInstance().addToFlingFavorites(other)
+                        } else {
+                            _ = RestAPI.getInstance().addToRelationshipFavorites(other)
+                        }
                     }
                     else {
                         // a user with that screenName does not exist.
@@ -97,18 +107,28 @@ class EVCPartnerMatchViewController: UITableViewController {
                     let existsMobile: Bool = (mobile != "") ? RestAPI.getInstance().doesUserExist(withMobile: mobile) : false
                     let exists: Bool = existsName || existsEmail || existsMobile
                     if exists {
-//                        if existsName {
-//                            var other: VerveUser? = RestAPI.getInstance().getUserDataForUser(withName: name)
-//                            RestAPI.getInstance().add(other!, toFriendsOf: RestAPI.getInstance().getCurrentUser())
-//                        }
-//                        else if existsEmail {
-//                            var other: VerveUser? = RestAPI.getInstance().getUserDataForUser(withEmail: email)
-//                            RestAPI.getInstance().add(other!, toFriendsOf: RestAPI.getInstance().getCurrentUser())
-//                        }
-//                        else if existsMobile {
-//                            var other: VerveUser? = RestAPI.getInstance().getUserDataForUser(withMobile: mobile)
-//                            RestAPI.getInstance().add(other!, toFriendsOf: RestAPI.getInstance().getCurrentUser())
-//                        }
+                        let otherUser: VerveUser?
+                        if existsName {
+                            otherUser = RestAPI.getInstance().getUserData(name: name)
+                        }
+                        else if existsEmail {
+                            otherUser = RestAPI.getInstance().getUserData(email: email)
+                        }
+                        else if existsMobile {
+                            otherUser = RestAPI.getInstance().getUserData(mobile: mobile)
+                        } else {
+                            otherUser = nil
+                        }
+                        if let other = otherUser {
+                            if self.mode == .friends_MODE {
+                                _ = RestAPI.getInstance().addToFriends(other)
+                            } else if self.mode == .fling_MODE {
+                                _ = RestAPI.getInstance().addToFlingFavorites(other)
+                            } else {
+                                _ = RestAPI.getInstance().addToRelationshipFavorites(other)
+                            }
+                        }
+                        
                     }
                     else {
                         if name != "" && email != "" {
@@ -148,7 +168,6 @@ class EVCPartnerMatchViewController: UITableViewController {
         _ = UIAlertAction(title: "Invite", style: .default) { (action) in
             let name: String = alert.textFields![0].text!
             let email: String = alert.textFields![1].text!
-            let queue = DispatchQueue.global()
             DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
@@ -173,7 +192,6 @@ class EVCPartnerMatchViewController: UITableViewController {
             // do nothing
         }
         _ = UIAlertAction(title: "Yes", style: .default) { (action) in
-            let queue = DispatchQueue.global()
             DispatchQueue.global().async(execute: {() -> Void in
                 DispatchQueue.main.async(execute: {() -> Void in
                     self.view.makeToastActivity(ToastPosition.center)
@@ -198,16 +216,22 @@ class EVCPartnerMatchViewController: UITableViewController {
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })
-            if self.mode != .friends_MODE {
+            if self.mode == .fling_MODE {
                 self.partners = RestAPI.getInstance().getFlingProfiles()
                 if self.partners.count >= 1 {
                     if (self.partners[0].id == RestAPI.getInstance().getCurrentUser().id) {
                         self.partners.remove(at: 0)
                     }
                 }
-            }
-            else {
-                var hobbMatches = RestAPI.getInstance().getHobbiesMatchesForUser()
+            } else if self.mode == .relationship_MODE {
+                self.partners = RestAPI.getInstance().getRelationshipProfiles()
+                if self.partners.count >= 1 {
+                    if (self.partners[0].id == RestAPI.getInstance().getCurrentUser().id) {
+                        self.partners.remove(at: 0)
+                    }
+                }
+            } else {
+                let hobbMatches = RestAPI.getInstance().getHobbiesMatchesForUser()
                 self.partners = hobbMatches
             }
             for partner in self.partners {
@@ -268,7 +292,10 @@ override func numberOfSections(in tableView: UITableView) -> Int {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             // Navigation logic may go here, for example:
             // Create the next view controller.
-        self.performSegue(withIdentifier: "ShowProfileSegue", sender: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if !self.partners.isEmpty {
+            self.performSegue(withIdentifier: "ShowProfileSegue", sender: indexPath.row)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

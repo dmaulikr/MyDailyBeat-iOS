@@ -6,153 +6,146 @@
 //  Created by Virinchi Balabhadrapatruni on 10/26/14.
 //  Copyright (c) 2014 eVerveCorp. All rights reserved.
 //
+
 import UIKit
-import Toast_Swift
 import API
+import Toast_Swift
 import FXForms
-protocol EVCGroupSettingsViewControllerDelegate {
-    func evcGroupSettingsViewControllerDelegateDidDeleteGroup(_ controller: EVCGroupSettingsViewController)
-}
-class EVCGroupSettingsViewController: UIViewController, FXFormControllerDelegate {
-    @IBOutlet var tableView: UITableView!
-    var api: RestAPI!
-    var formController: FXFormController!
-    var g: Group!
-    var handler: (() -> ()) = {
-        
-    }
-    var delegate: EVCGroupSettingsViewControllerDelegate?
-
-
+class EVCGroupSettingsViewController: UITableViewController {
+    var frm = GroupPrefs()
+    var group = Group()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.formController = FXFormController()
-        self.formController.tableView = self.tableView
-        self.formController.delegate = self
-        self.api = RestAPI.getInstance()
-        var cancelBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancel))
-        self.navigationItem.leftBarButtonItem = cancelBarButton
-        var postBarButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.done))
-        self.navigationItem.rightBarButtonItem = postBarButton
+        self.navigationItem.title = "Edit Group"
+        self.tableView.register(ToggleTableViewCell.self, forCellReuseIdentifier: "HobbiesCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DeleteCell")
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editGroup))
+        self.navigationItem.rightBarButtonItem = saveButton
     }
-
-    func cancel() {
-        self.dismiss(animated: true, completion: { _ in })
-    }
-
-    func done() {
-        self.dismiss(animated: true, completion: {() -> Void in
-                // save group preferences
-            var prefs: GroupPrefs? = self.formController.form as? GroupPrefs
-            if (prefs?.hobbies.count)! > 3 {
-                self.view.makeToast("Cannot select more than 3 hobbies", duration: 3.5, position: .bottom)
-                return
-            }
-            
-            DispatchQueue.global().async(execute: {() -> Void in
-                DispatchQueue.main.async(execute: {() -> Void in
-                    self.view.makeToastActivity(ToastPosition.center)
-                })
-                var success: Bool = self.api.setHobbiesforGroup(ID: self.g.groupID, prefs!)
-                DispatchQueue.main.async(execute: {() -> Void in
-                    self.view.hideToastActivity()
-                    if success {
-                        self.view.makeToast("Upload successful!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "check.png"), style: nil, completion: { (done) in
-                            self.handler()
-                        })
-                    }
-                    else {
-                        self.view.makeToast("Upload failed!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "error.png"), style: nil, completion: nil)
-                        return
-                    }
-                })
-            })
-        })
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.loadData()
-        self.loadGroupPicture()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
-
     
-
-    func loadGroupPicture() {
-        
-        DispatchQueue.global().async(execute: {() -> Void in
-            var imageURL: URL? = RestAPI.getInstance().retrieveGroupPicture(for: self.g)
-            if imageURL == nil {
-                return
-            }
-            var imageData: Data? = RestAPI.getInstance().fetchImage(atRemoteURL: imageURL!)
-            DispatchQueue.main.async(execute: {() -> Void in
-                    // Update the UI
-                var prefs: GroupPrefs? = self.formController.form as? GroupPrefs
-                prefs?.groupPicture = UIImage(data: imageData!)
-            })
-        })
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadPrefs()
     }
     
-    func loadData() {
+    func loadPrefs() {
         DispatchQueue.global().async(execute: {() -> Void in
-            let jsonHobbies = self.api.getHobbiesForGroup(self.g).arrayValue.map({ (json) -> Int in
-                return json.intValue
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.view.makeToastActivity(.center)
             })
-            var list: [Int: Bool] = [:]
-            for hobby in HobbiesRefList.getInstance().list {
-                list[hobby.key] = (jsonHobbies.contains(hobby.key))
+            let hobbies = RestAPI.getInstance().getHobbiesForGroup(self.group).map({ (json) -> Int in
+                return json["hby_ref_id"].intValue
+            })
+            
+            for key in HobbiesRefList.getInstance().list.keys {
+                self.frm.hobbies[key] = hobbies.contains(key)
             }
             
             DispatchQueue.main.async(execute: {() -> Void in
-                // Update the UI
-                let prefs = GroupPrefs()
-                prefs.hobbies = list
-                self.formController.form = prefs
+                self.view.hideToastActivity()
+                self.tableView.reloadData()
             })
         })
     }
-
-    func saveImage(_ cell: FXFormBaseCell) {
-        var prefs: GroupPrefs? = self.formController.form as! GroupPrefs?
-        
+    
+    
+    func deleteGroup() {
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
-                self.view.makeToastActivity(ToastPosition.center)
+                self.view.makeToastActivity(.center)
             })
-            var imgData: Data? = UIImagePNGRepresentation((prefs?.groupPicture)!)
-            var fileName: String = ASSET_FILENAME
-            var success: Bool = RestAPI.getInstance().uploadGroupPicture(imgData!, withName: fileName, to: self.g)
+            let success: Bool = RestAPI.getInstance().delete(group: self.group)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if success {
-                    self.view.makeToast("Upload successful!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "check.png"), style: nil, completion: nil)
+                    self.view.makeToast("Group delete successful!", duration: 3.5, position: .bottom)
                 }
                 else {
-                    self.view.makeToast("Upload failed!", duration: 3.5, position: .bottom, title: nil, image: UIImage(named: "error.png"), style: nil, completion: nil)
+                    self.view.makeToast("Group delete failed!", duration: 3.5, position: .bottom)
                     return
                 }
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             })
         })
     }
-
-    func deleteGroup(_ cell: FXFormBaseCell) {
-        
+    
+    func editGroup() {
         DispatchQueue.global().async(execute: {() -> Void in
             DispatchQueue.main.async(execute: {() -> Void in
-                self.view.makeToastActivity(ToastPosition.center)
+                self.view.makeToastActivity(.center)
             })
-            var success: Bool = RestAPI.getInstance().delete(group: self.g)
+            let success: Bool = RestAPI.getInstance().setHobbiesforGroup(ID: self.group.groupID, self.frm)
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.hideToastActivity()
                 if success {
-                    self.delegate?.evcGroupSettingsViewControllerDelegateDidDeleteGroup(self)
+                    self.view.makeToast("Group editing successful!", duration: 3.5, position: .bottom)
                 }
                 else {
-                    print("Failed")
+                    self.view.makeToast("Group editing failed!", duration: 3.5, position: .bottom)
+                    return
                 }
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             })
         })
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return 1
+        } else {
+            return HobbiesRefList.getInstance().list.count
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return nil
+        } else {
+            return "Group Hobbies"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let textCell = tableView.dequeueReusableCell(withIdentifier: "DeleteCell", for: indexPath)
+            textCell.textLabel?.textAlignment = .center
+            textCell.textLabel?.textColor = UIColor.white
+            textCell.backgroundColor = UIColor.red
+            textCell.textLabel?.text = "Delete Group"
+            return textCell
+        } else {
+            let toggleCell = tableView.dequeueReusableCell(withIdentifier: "HobbiesCell", for: indexPath) as! ToggleTableViewCell
+            let list = HobbiesRefList.getInstance()
+            toggleCell.textLabel?.text = list.list[indexPath.row + 1]!
+            toggleCell.update()
+            toggleCell.toggleSwitch.setOn(self.frm.hobbies[indexPath.row + 1] ?? false, animated: true)
+            toggleCell.onToggle = {
+                self.frm.toggle(key: indexPath.row + 1, value: toggleCell.toggleSwitch.isOn)
+                self.tableView.reloadData()
+            }
+            return toggleCell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 {
+            self.deleteGroup()
+        }
+    }
+    
+    
 }
+

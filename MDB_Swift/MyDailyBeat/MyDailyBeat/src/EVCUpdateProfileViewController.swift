@@ -13,7 +13,8 @@ import DLAlertView
 class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var mTableView: UITableView!
-    var name: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
     var email: String = ""
     var mobile: String = ""
     var zipcode: String = ""
@@ -30,7 +31,8 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         self.mTableView.bounces = false
         self.view.backgroundColor = UIColor.clear
         self.mTableView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth]
-        self.name = RestAPI.getInstance().getCurrentUser().name
+        self.firstName = RestAPI.getInstance().getCurrentUser().firstName
+        self.lastName = RestAPI.getInstance().getCurrentUser().lastName
         self.email = RestAPI.getInstance().getCurrentUser().email
         self.mobile = RestAPI.getInstance().getCurrentUser().mobile
         self.zipcode = RestAPI.getInstance().getCurrentUser().zipcode
@@ -85,23 +87,40 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         else if indexPath.section == 1 {
             switch indexPath.row {
                 case 0:
-                    let nameAlert = UIAlertController(title: "Enter New Name", message: "Enter your updated name.", preferredStyle: .alert)
+                    let nameAlert = UIAlertController(title: "Enter New First Name", message: "Enter your updated first name.", preferredStyle: .alert)
                     nameAlert.addTextField(configurationHandler: { (textField) in
                         textField.autocapitalizationType = .words
                         textField.autocorrectionType = .no
-                        textField.placeholder = "Name"
-                        textField.text = RestAPI.getInstance().getCurrentUser().name
+                        textField.placeholder = "First Name"
+                        textField.text = RestAPI.getInstance().getCurrentUser().firstName
                     })
                     let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (cancelAction) in
                         // do nothing here
                     })
                     nameAlert.addAction(cancel)
                     let ok = UIAlertAction(title: "OK", style: .default, handler: { (okAction) in
-                        self.name = (nameAlert.textFields?[0].text!)!
+                        self.firstName = (nameAlert.textFields?[0].text!)!
                     })
                     nameAlert.addAction(ok)
                     self.present(nameAlert, animated: true, completion: nil)
                 case 1:
+                    let nameAlert = UIAlertController(title: "Enter New Last Name", message: "Enter your updated last name.", preferredStyle: .alert)
+                    nameAlert.addTextField(configurationHandler: { (textField) in
+                        textField.autocapitalizationType = .words
+                        textField.autocorrectionType = .no
+                        textField.placeholder = "Last Name"
+                        textField.text = RestAPI.getInstance().getCurrentUser().lastName
+                    })
+                    let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { (cancelAction) in
+                        // do nothing here
+                    })
+                    nameAlert.addAction(cancel)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler: { (okAction) in
+                        self.lastName = (nameAlert.textFields?[0].text!)!
+                    })
+                    nameAlert.addAction(ok)
+                    self.present(nameAlert, animated: true, completion: nil)
+                case 2:
                     let emailAlert = UIAlertController(title: "Enter New Email", message: "Enter your new email address.", preferredStyle: .alert)
                     emailAlert.addTextField(configurationHandler: { (textField) in
                         textField.autocapitalizationType = .words
@@ -164,7 +183,8 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         else {
                 //save
             let current: VerveUser = RestAPI.getInstance().getCurrentUser()
-            current.name = self.name
+            current.firstName = self.firstName
+            current.lastName = self.lastName
             current.email = self.email
             current.mobile = self.mobile
             current.zipcode = self.zipcode
@@ -195,7 +215,7 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return 4
+            return 5
         }
         return 1
     }
@@ -220,12 +240,14 @@ class EVCUpdateProfileViewController: UIViewController, UITableViewDataSource, U
         else if indexPath.section == 1 {
             switch indexPath.row {
                 case 0:
-                    cell?.textLabel?.text = "Name"
+                    cell?.textLabel?.text = "First Name"
                 case 1:
-                    cell?.textLabel?.text = "Email"
+                    cell?.textLabel?.text = "Last Name"
                 case 2:
-                    cell?.textLabel?.text = "Mobile"
+                    cell?.textLabel?.text = "Email"
                 case 3:
+                    cell?.textLabel?.text = "Mobile"
+                case 4:
                     cell?.textLabel?.text = "Zip Code"
                 default:
                     cell?.detailTextLabel?.text = ""

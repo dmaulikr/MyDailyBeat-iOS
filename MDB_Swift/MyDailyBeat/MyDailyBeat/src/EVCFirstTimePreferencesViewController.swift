@@ -38,7 +38,7 @@ class EVCFirstTimePreferencesViewController: UIViewController, FXFormControllerD
     func retrievePrefs() {
         
         DispatchQueue.global().async(execute: {() -> Void in
-            var prefs = VervePreferences()
+            let prefs = VervePreferences()
             DispatchQueue.main.async(execute: {() -> Void in
                 self.view.makeToastActivity(ToastPosition.center)
             })

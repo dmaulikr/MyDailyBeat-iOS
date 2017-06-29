@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3yM-sX-dLo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3yM-sX-dLo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -142,18 +142,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1o-a1-CAA">
-                                <rect key="frame" x="16" y="169" width="343" height="231"/>
+                                <rect key="frame" x="16" y="169" width="343" height="441"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-uD-pGV">
-                                <rect key="frame" x="16" y="408" width="343" height="30"/>
-                                <state key="normal" title="OK"/>
-                                <connections>
-                                    <action selector="save:" destination="h0r-mn-UYU" eventType="touchUpInside" id="1Yp-qH-G1O"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MO-IJ-Exw">
                                 <rect key="frame" x="16" y="89" width="88" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -164,28 +157,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3MO-IJ-Exw" firstAttribute="top" secondItem="hPS-8Y-6zE" secondAttribute="bottom" constant="69" id="7Gx-Od-p6Y"/>
-                            <constraint firstItem="NnX-zr-Zfe" firstAttribute="top" secondItem="1hg-uD-pGV" secondAttribute="bottom" constant="180" id="9mO-C8-Hzy"/>
                             <constraint firstItem="y9B-Kp-a41" firstAttribute="top" secondItem="3MO-IJ-Exw" secondAttribute="bottom" constant="31" id="A8H-g8-IJr"/>
                             <constraint firstItem="3MO-IJ-Exw" firstAttribute="leading" secondItem="QK6-cB-4FG" secondAttribute="leadingMargin" id="Ed2-RN-QUA"/>
                             <constraint firstItem="L1o-a1-CAA" firstAttribute="trailing" secondItem="QK6-cB-4FG" secondAttribute="trailingMargin" id="GQo-8A-acn"/>
-                            <constraint firstItem="L1o-a1-CAA" firstAttribute="leading" secondItem="1hg-uD-pGV" secondAttribute="leading" id="UAV-Rl-056"/>
+                            <constraint firstItem="NnX-zr-Zfe" firstAttribute="top" secondItem="L1o-a1-CAA" secondAttribute="bottom" constant="8" id="cEz-3h-8Ju"/>
                             <constraint firstItem="y9B-Kp-a41" firstAttribute="leading" secondItem="L1o-a1-CAA" secondAttribute="leading" id="iec-gB-lri"/>
                             <constraint firstItem="3MO-IJ-Exw" firstAttribute="leading" secondItem="y9B-Kp-a41" secondAttribute="leading" id="jRk-Yc-yDC"/>
                             <constraint firstItem="L1o-a1-CAA" firstAttribute="top" secondItem="y9B-Kp-a41" secondAttribute="bottom" constant="7" id="lon-sF-gHy"/>
-                            <constraint firstItem="1hg-uD-pGV" firstAttribute="top" secondItem="L1o-a1-CAA" secondAttribute="bottom" constant="8" symbolic="YES" id="o8g-ys-nGy"/>
-                            <constraint firstItem="L1o-a1-CAA" firstAttribute="trailing" secondItem="1hg-uD-pGV" secondAttribute="trailing" id="ua4-Gt-IgU"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="aboutMeView" destination="L1o-a1-CAA" id="GBs-tP-m64"/>
-                        <outlet property="okButton" destination="1hg-uD-pGV" id="8dS-kd-yPu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZg-He-WHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2063" y="1623"/>
+            <point key="canvasLocation" x="2062.5" y="1622.5"/>
         </scene>
-        <!--Resource Links-->
+        <!--Resources-->
         <scene sceneID="3oY-lK-g5b">
             <objects>
                 <tableViewController id="Zzc-hE-ggc" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
@@ -198,7 +187,7 @@
                             <outlet property="delegate" destination="Zzc-hE-ggc" id="NKn-Fm-WnU"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="eMj-rA-4ky"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="res-icon-gray" selectedImage="res-icon-white" id="eMj-rA-4ky"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udl-Tf-2s2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,8 +207,8 @@
         <image name="view-partners-icon-white" width="183" height="183"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hIu-Rv-mRg"/>
-        <segue reference="bGA-XQ-x6D"/>
+        <segue reference="6mE-2k-IEc"/>
         <segue reference="6fs-Z6-a2z"/>
+        <segue reference="cHh-Jd-HXk"/>
     </inferredMetricsTieBreakers>
 </document>

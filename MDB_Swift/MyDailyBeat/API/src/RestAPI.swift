@@ -61,7 +61,7 @@ public class RestAPI: NSObject {
         postDic["year"] = JSON(year)
         let postData: JSON = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/register", withParameters: "", withRequestType: POST_REQUEST, andPost: postData)
-        if result["name"].string != nil {
+        if result["fname"].string != nil {
             return true
         }
         return false
@@ -70,7 +70,7 @@ public class RestAPI: NSObject {
     public func edit(_ userData: VerveUser) -> Bool {
         let postData = userData.toJSON()
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/edit", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
-        if result["name"].string != nil {
+        if result["fname"].string != nil {
             return true
         }
         return false
@@ -99,6 +99,23 @@ public class RestAPI: NSObject {
         var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/exists", withParameters: parameters, withRequestType: GET_REQUEST, andPost: nil)
         return result["success"].boolValue
     }
+    
+    public func isUserVerified(screenName: String, password: String) -> Bool {
+        var postDic = [String: JSON]()
+        postDic["screenName"] = JSON(screenName)
+        postDic["password"] = JSON(password)
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "user/verified/check", withParameters: "", withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
+    }
+    
+    public func resendEmail(screenName: String, password: String) {
+        var postDic = [String: JSON]()
+        postDic["screenName"] = JSON(screenName)
+        postDic["password"] = JSON(password)
+        let postData = JSON(postDic)
+        _ = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "user/verify/resend", withParameters: "", withRequestType: POST_REQUEST, andPost: postData)
+    }
 
     public func login(withScreenName screenName: String, andPassword password: String) -> Bool {
         var postDic = [String: JSON]()
@@ -106,7 +123,7 @@ public class RestAPI: NSObject {
         postDic["password"] = JSON(password)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "login", withParameters: "", withRequestType: POST_REQUEST, andPost: postData)
-        if result["name"].string != nil {
+        if result["fname"].string != nil {
             currentUser = VerveUser.fromJSON(json: result)
             auth_token = result["auth_token"].stringValue
             print("Auth Token = " + auth_token!)
@@ -151,7 +168,7 @@ public class RestAPI: NSObject {
         json = json.replacingOccurrences(of: "\\", with: "")
         
         let range = json.range(of: "{")
-        if !(range?.isEmpty)! {
+        if let r = range, !r.isEmpty {
             json = json.substring(from: (range?.lowerBound)!)
         } else {
             print("Error: Malformed Result: \(json)")
@@ -233,39 +250,51 @@ public class RestAPI: NSObject {
         var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/matching/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var arr = resultDic["gender"].arrayValue
         if !arr.isEmpty {
-            prefs.gender = arr[0].intValue
+            prefs.gender = arr.map({ (json) -> Int in
+                return json.intValue
+            })
         } else {
-            prefs.gender = 0
+            prefs.gender = []
         }
         arr = resultDic["age"].arrayValue
         if !arr.isEmpty {
-            prefs.age = arr[0].intValue
+            prefs.age = arr.map({ (json) -> Int in
+                return json.intValue
+            })
         } else {
-            prefs.age = 0
+            prefs.age = []
         }
         arr = resultDic["mrrtl"].arrayValue
         if !arr.isEmpty {
-            prefs.status = arr[0].intValue
+            prefs.status = arr.map({ (json) -> Int in
+                return json.intValue
+            })
         } else {
-            prefs.status = 0
+            prefs.status = []
         }
         arr = resultDic["ethnct"].arrayValue
         if !arr.isEmpty {
-            prefs.ethnicity = arr[0].intValue
+            prefs.ethnicity = arr.map({ (json) -> Int in
+                return json.intValue
+            })
         } else {
-            prefs.ethnicity = 0
+            prefs.ethnicity = []
         }
         arr = resultDic["relgs"].arrayValue
         if !arr.isEmpty {
-            prefs.beliefs = arr[0].intValue
+            prefs.beliefs = arr.map({ (json) -> Int in
+                return json.intValue
+            })
         } else {
-            prefs.beliefs = 0
+            prefs.beliefs = []
         }
         arr = resultDic["drnkr"].arrayValue
         if !arr.isEmpty {
-            prefs.drinker = arr[0].intValue
+            prefs.drinker = arr.map({ (json) -> Int in
+                return json.intValue
+            })
         } else {
-            prefs.drinker = 0
+            prefs.drinker = []
         }
         prefs.isSmoker = resultDic["smkr_threechoice_id"].intValue
         prefs.isVeteran = resultDic["vtrn_threechoice_id"].intValue
@@ -291,6 +320,9 @@ public class RestAPI: NSObject {
 
     public func save(matchingPreferences prefs: VerveMatchingPreferences) -> Bool {
         var postDic = [String: JSON]()
+        while let index = prefs.beliefs.index(of: 0) {
+            prefs.beliefs.remove(at: index)
+        }
         postDic["prefs"] = prefs.toJSON()
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/matching/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
@@ -335,7 +367,7 @@ public class RestAPI: NSObject {
 
     public func getHobbiesPreferencesForUser() -> HobbiesPreferences {
         let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "preferences/hobbies/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
-        return HobbiesPreferences.fromJSON(resultDic.arrayValue)
+        return HobbiesPreferences.fromJSON(resultDic["items"].arrayValue)
     }
     
     public func hobbiesPreferencesExistForUser() -> Bool {
@@ -371,7 +403,7 @@ public class RestAPI: NSObject {
     }
 
     public func getGroupsFor(_ user: VerveUser) -> [Group] {
-        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/get/\(user.id)", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         var items = resultDic["groups"].arrayValue
         var retItems = [Group]()
         for i in 0..<items.count {
@@ -464,10 +496,14 @@ public class RestAPI: NSObject {
             let headers = [
                 "x-access-token": auth_token ?? ""
             ]
+            var url = try! URLRequest(url: uploadurl, method: .post, headers: headers)
+            var postData: [String: String] = [String:String]()
+            postData["text"] = p.postText
+            url.httpBody = NSKeyedArchiver.archivedData(withRootObject: postData)
             Alamofire.upload(multipartFormData: { (formData) in
                 formData.append(attachedPic!, withName: "file", fileName: picName, mimeType: self.getMimeType(picName))
                 formData.append((picName.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlUserAllowed)?.data(using: String.Encoding.utf8))!, withName: "name")
-            }, to: uploadurl, method: .post, headers: headers, encodingCompletion: { (encodingResult) in
+            }, with: url, encodingCompletion: { (encodingResult) in
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseSwiftyJSON(completionHandler: { (response) in
@@ -480,7 +516,6 @@ public class RestAPI: NSObject {
                     returnVal = false
                     semaphore.signal()
                 }
-                
             })
             
             _ = semaphore.wait(timeout: DispatchTime.distantFuture)
@@ -492,9 +527,9 @@ public class RestAPI: NSObject {
             return returnVal
         } else {
             var postDic = [String: JSON]()
-            postDic["postText"] = JSON(p.postText)
+            postDic["text"] = JSON(p.postText)
             let postData = JSON(postDic)
-            var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: uploadurl, withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+            var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/\(g.groupID)/posts/new", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
             return result["success"].boolValue
         }
         
@@ -503,7 +538,7 @@ public class RestAPI: NSObject {
     public func getPostsFor(_ g: Group) -> [Post] {
         let path: String = "groups/\(g.groupID)/posts/get"
         var resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: path, withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
-        var items: [JSON] = resultDic["items"].arrayValue
+        var items: [JSON] = resultDic["posts"].arrayValue
         var retItems = [Post]()
         for i in 0..<items.count {
             let p = Post.fromJSON(items[i])
@@ -526,8 +561,9 @@ public class RestAPI: NSObject {
         return result["success"].boolValue
     }
     
-    public func getHobbiesForGroup(_ group: Group) -> JSON {
-        return self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/\(group.groupID)/hobbies/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+    public func getHobbiesForGroup(_ group: Group) -> [JSON] {
+        let list = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "groups/\(group.groupID)/hobbies/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return list["items"].arrayValue
     }
 
     public func delete(post p: Post) -> Bool {
@@ -558,11 +594,31 @@ public class RestAPI: NSObject {
     }
     
     public func getUserData(for id: Int) -> VerveUser {
-        let resultDic = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "users/\(id)/get", withParameters: "", withRequestType: GET_REQUEST, andPost: nil)
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/\(id)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
         return VerveUser.fromJSON(json: resultDic)
     }
     
-    public func searchUsers(with query: String, andQueryType type: UserSearchType, withSortOrder order: EVCSearchSortOrder) -> JSON {
+    public func getUserData(screenName: String) -> VerveUser {
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/screenName/\(screenName)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return VerveUser.fromJSON(json: resultDic)
+    }
+    
+    public func getUserData(name: String) -> VerveUser {
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/name/\(name)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return VerveUser.fromJSON(json: resultDic)
+    }
+    
+    public func getUserData(email: String) -> VerveUser {
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/email/\(email)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return VerveUser.fromJSON(json: resultDic)
+    }
+    
+    public func getUserData(mobile: String) -> VerveUser {
+        let resultDic = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/mobile/\(mobile)/get", withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        return VerveUser.fromJSON(json: resultDic)
+    }
+    
+    public func searchUsers(with query: String, andQueryType type: UserSearchType, withSortOrder order: EVCSearchSortOrder) -> [VerveUser] {
         let parameters = "query=\(self.urlencode(query))"
         var path = "name"
         switch type {
@@ -573,7 +629,14 @@ public class RestAPI: NSObject {
         case .searchByEmail:
             path = "email"
         }
-        return self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/search/\(path)/\(order.rawValue)", withParameters: parameters, andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let rawDict = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "users/search/\(path)/\(order.rawValue)", withParameters: parameters, andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
+        let rawList = rawDict["items"].arrayValue
+        var users: [VerveUser] = []
+        rawList.forEach { (json) in
+            let user = VerveUser.fromJSON2(json: json)
+            users.append(user)
+        }
+        return users
     }
 
     public func searchGroups(withQueryString query: String, with sortOrder: EVCSearchSortOrder) -> JSON {
@@ -634,7 +697,7 @@ public class RestAPI: NSObject {
     public func getMessagesForChatroom(withID ID: Int) -> [VerveMessage] {
         let path = "messaging/rooms/\(ID)/messages/get"
         let result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: path, withParameters: "", andAuthToken: auth_token, withRequestType: GET_REQUEST, andPost: nil)
-        var items: [JSON] = result.arrayValue
+        var items: [JSON] = result["items"].arrayValue
         var retItems = [VerveMessage]()
         for i in 0..<items.count {
             let m = VerveMessage()
@@ -729,11 +792,27 @@ public class RestAPI: NSObject {
         return result["success"].boolValue
     }
     
+    public func removeFromFlingFavorites(_ user1: VerveUser) -> Bool {
+        var postDic = [String: JSON]()
+        postDic["other"] = JSON(user1.screenName)
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/favorites/remove", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
+    }
+    
     public func addToRelationshipFavorites(_ user1: VerveUser) -> Bool {
         var postDic = [String: JSON]()
         postDic["other"] = JSON(user1.screenName)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/favorites/add", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
+    }
+    
+    public func removeFromRelationshipFavorites(_ user1: VerveUser) -> Bool {
+        var postDic = [String: JSON]()
+        postDic["other"] = JSON(user1.screenName)
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/favorites/remove", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
     }
 
@@ -742,6 +821,14 @@ public class RestAPI: NSObject {
         postDic["other"] = JSON(user1.screenName)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/add", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
+    }
+    
+    public func unfriend(_ user1: VerveUser) -> Bool {
+        var postDic = [String: JSON]()
+        postDic["other"] = JSON(user1.screenName)
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/remove", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
     }
 
@@ -771,7 +858,7 @@ public class RestAPI: NSObject {
 
     public func saveFlingProfile(for user: VerveUser, andDescription about: String) -> Bool {
         var postDic = [String: JSON]()
-        postDic["aboutMe"] = JSON(about)
+        postDic["about"] = JSON(about)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "fling/profile/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
@@ -779,7 +866,7 @@ public class RestAPI: NSObject {
     
     public func saveRelationshipProfile(for user: VerveUser, andDescription about: String) -> Bool {
         var postDic = [String: JSON]()
-        postDic["aboutMe"] = JSON(about)
+        postDic["about"] = JSON(about)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "relationship/profile/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
@@ -787,7 +874,7 @@ public class RestAPI: NSObject {
     
     public func saveFriendsProfile(for user: VerveUser, andDescription about: String) -> Bool {
         var postDic = [String: JSON]()
-        postDic["aboutMe"] = JSON(about)
+        postDic["about"] = JSON(about)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "friends/profile/save", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
@@ -811,11 +898,27 @@ public class RestAPI: NSObject {
         return result["success"].boolValue
     }
     
+    public func removeShoppingFavoriteURL(_ string: String) -> Bool {
+        var postDic = [String: JSON]()
+        postDic["url"] = JSON(string)
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "favorites/remove/shopping", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
+    }
+    
     public func addTravelFavoriteURL(_ string: String) -> Bool {
         var postDic = [String: JSON]()
         postDic["url"] = JSON(string)
         let postData = JSON(postDic)
         var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "favorites/add/travel", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
+        return result["success"].boolValue
+    }
+    
+    public func removeTravelFavoriteURL(_ string: String) -> Bool {
+        var postDic = [String: JSON]()
+        postDic["url"] = JSON(string)
+        let postData = JSON(postDic)
+        var result = self.makeRequest(withBaseUrl: AUTH_BASE_URL, withPath: "favorites/remove/travel", withParameters: "", andAuthToken: auth_token, withRequestType: POST_REQUEST, andPost: postData)
         return result["success"].boolValue
     }
 
@@ -953,7 +1056,7 @@ public class RestAPI: NSObject {
         let pathExtension: CFString = (pathNS.pathExtension as CFString)
         let type: CFString = (UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension, nil)?.takeRetainedValue())!
             // The UTI can be converted to a mime type:
-        let mimeType: String? = (UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType)?.takeRetainedValue() as? String)
+        let mimeType: String? = (UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType)?.takeRetainedValue() as String?)
         return mimeType!
     }
     /*

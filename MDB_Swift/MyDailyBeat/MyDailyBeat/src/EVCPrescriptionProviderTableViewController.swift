@@ -37,7 +37,7 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             cell.imageView?.image = EVCCommonMethods.image(with: UIImage(named: "plus-512.png")!, scaledTo: CGSize(width: CGFloat(30), height: CGFloat(30)))
         }
         else {
-            cell.textLabel?.text = (self.pharmacyProviders[indexPath.row] as? PrescripProviderInfo)?.url
+            cell.textLabel?.text = self.pharmacyProviders[indexPath.row].url
         }
         // Configure the cell...
         return cell
@@ -52,10 +52,21 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                let text: String = alert.textFields![0].text!
-                let prov = PrescripProviderInfo(uniqueId: 0, url: text, logoURL: "")
-                DataManager.insertPrescriptionProvider(prov)
-                self.pharmacyProviders = DataManager.getPrescriptionProviders()
+                if let text: String = alert.textFields![0].text, !self.pharmacyProviders.contains(where: { (info) -> Bool in
+                    return info.url == text
+                }){
+                    let fullURL: String
+                    if text.hasPrefix("http://") || text.hasPrefix("https://") {
+                        fullURL = "\(text)"
+                    } else {
+                        fullURL = "http://\(text)"
+                    }
+                    if let url = URL(string: fullURL), isURLValid(url) {
+                        let prov = PrescripProviderInfo(uniqueId: 0, url: text, logoURL: "")
+                        DataManager.insertPrescriptionProvider(prov)
+                        self.pharmacyProviders = DataManager.getPrescriptionProviders()
+                    }
+                }
                 self.tableView.reloadData()
             })
             alert.addAction(cancel)
@@ -88,8 +99,10 @@ override func numberOfSections(in tableView: UITableView) -> Int {
             let encoded = NSKeyedArchiver.archivedData(withRootObject: obj)
             UserDefaults.standard.set(encoded, forKey: "myPrescripProvider")
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         sheet.addAction(browserAction)
         sheet.addAction(addAction)
+        sheet.addAction(cancelAction)
         self.present(sheet, animated: true, completion: nil)
 
     }

@@ -9,12 +9,28 @@
 import UIKit
 import RESideMenu
 import API
-class RootViewController: RESideMenu {
+class RootViewController: RESideMenu, RESideMenuDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    func sideMenu(_ sideMenu: RESideMenu!, didShowMenuViewController menuViewController: UIViewController!) {
+        menuViewController.viewDidAppear(true)
+    }
+    
+    func sideMenu(_ sideMenu: RESideMenu!, didHideMenuViewController menuViewController: UIViewController!) {
+        menuViewController.viewDidDisappear(true)
+    }
+    
+    func sideMenu(_ sideMenu: RESideMenu!, willShowMenuViewController menuViewController: UIViewController!) {
+        menuViewController.viewWillAppear(true)
+    }
+    
+    func sideMenu(_ sideMenu: RESideMenu!, willHideMenuViewController menuViewController: UIViewController!) {
+        menuViewController.viewWillDisappear(true)
     }
 
     
@@ -53,6 +69,7 @@ extension UIViewController {
     }
     
     func showAboutScreen() {
+        self.sideMenuViewController.hideViewController()
         self.sideMenuViewController.contentViewController.performSegue(withIdentifier: "AboutSegue", sender: nil)
     }
     
@@ -65,8 +82,8 @@ extension UIViewController {
     }
     
     func setNavTitle(to title: String) {
-        if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController {
-            outerNav.navigationItem.title = title
+        if let outerNav = self.sideMenuViewController.contentViewController as? UINavigationController, let root = outerNav.viewControllers[0] as? RootNavController {
+            root.navigationItem.title = title
         }
     }
     
