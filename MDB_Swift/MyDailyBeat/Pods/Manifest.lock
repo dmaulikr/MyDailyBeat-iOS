@@ -4,6 +4,7 @@ PODS:
   - ASBPlayerScrubbing (0.1)
   - ASMediaFocusManager (0.6):
     - ASBPlayerScrubbing (~> 0.1)
+  - Chronos-Swift (0.3.0)
   - CocoaSecurity (1.2.4)
   - CocoaWSSE (0.1.0):
     - CocoaSecurity
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - AHKActionSheet
   - Alamofire (~> 4.3)
   - ASMediaFocusManager
+  - Chronos-Swift
   - CocoaWSSE
   - DateToolsSwift
   - DLAlertView
@@ -58,6 +60,7 @@ SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   ASBPlayerScrubbing: 0fc5e76aad6fdbcf14380734fb7f2c127cd28b66
   ASMediaFocusManager: 564dc75d983e4e0dacf24855b5f8a7b4d4a9caec
+  Chronos-Swift: 0f14508c33b7f2ede194f45fd604308b387ef455
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   CocoaWSSE: a41ec103e23525ae830cb379b6af425ac3a7fe25
   DateToolsSwift: 27336736d877c8734159da1f37afbda2aa704649
@@ -78,6 +81,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-PODFILE CHECKSUM: dbc20f6a7424cb780ef5939bb479c3d741f759b2
+PODFILE CHECKSUM: c2cee4c05d70f06be6a08b73236e62a26742e1a2
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

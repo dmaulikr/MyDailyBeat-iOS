@@ -39,6 +39,18 @@ public class RestAPI: NSObject {
 //        return !(networkStatus == NotReachable)
         return true
     }
+    
+    public func validateToken() -> Bool {
+        if let token = auth_token {
+            var postDic = [String: JSON]()
+            postDic["token"] = JSON(token)
+            let postData: JSON = JSON(postDic)
+            var result = self.makeRequest(withBaseUrl: PUBLIC_BASE_URL, withPath: "token/validate", withParameters: "", withRequestType: POST_REQUEST, andPost: postData)
+            return result["success"].boolValue
+        } else {
+            return false
+        }
+    }
 
     public func getCurrentUser() -> VerveUser {
         return currentUser

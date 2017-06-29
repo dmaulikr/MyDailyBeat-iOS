@@ -9,12 +9,37 @@
 import UIKit
 import RESideMenu
 import API
+import Chronos
 class RootViewController: RESideMenu, RESideMenuDelegate {
 
+    var timer: DispatchTimer?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let SEC_PER_DAY: TimeInterval = 3600 * 24
+        timer = DispatchTimer(interval: SEC_PER_DAY, closure: { (timer, count) in
+            var result = RestAPI.getInstance().validateToken()
+            if !result {
+                let alertController = UIAlertController(title: "Session Expired", message: "Your session has expired. For your security, please login to MyDailyBeat.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                self.navigationController?.present(alertController, animated: true, completion: { 
+                    _ = self.navigationController?.popToRootViewController(animated: true)
+                })
+            }
+        }, queue: DispatchQueue.global())
+        timer?.start(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.cancel()
+        timer = nil
     }
     
     func sideMenu(_ sideMenu: RESideMenu!, didShowMenuViewController menuViewController: UIViewController!) {
