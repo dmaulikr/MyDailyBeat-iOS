@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RESideMenu.h"
 #import "EVCGroupViewController.h"
 #import "EVCViewController.h"
-#import <RestAPI.h>
+#import "API.h"
 #import "EVCMenuTableViewCell.h"
 #import "EVCJobsTabViewController.h"
 #import "EVCTravelTabViewController.h"
-#import "EVCVolunteeringMapViewController.h"
 #import "EVCFeelingBlueTabViewController.h"
+#import "EVCGroupCreationTableViewController.h"
 
 @interface EVCMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     NSArray *options, *imageNames;

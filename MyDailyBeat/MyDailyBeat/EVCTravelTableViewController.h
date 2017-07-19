@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Constants.h"
-#import "AHKActionSheet.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
+#import "API.h"
 
+@import API;
 @interface EVCTravelTableViewController : UITableViewController
 
 @property (nonatomic, retain) NSMutableArray *travelSites;

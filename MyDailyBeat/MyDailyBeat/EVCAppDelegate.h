@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EVCViewController.h"
 #import "EVCRegistrationViewController.h"
-#import "RESideMenu.h"
 #import "EVCMenuViewController.h"
 #import "EVCProfileViewController.h"
 #import "EVCLoginViewController.h"
-#import "Constants.h"
+#import "API.h"
 
 @interface EVCAppDelegate : UIResponder <UIApplicationDelegate, RESideMenuDelegate>
 

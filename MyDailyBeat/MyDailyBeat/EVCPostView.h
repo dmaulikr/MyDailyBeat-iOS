@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Post.h"
-#import <RestAPI.h>
+#import "API.h"
 #import "EVCGroupViewController.h"
-#import <ASMediaFocusManager.h>
+#import "ASMediaFocusManager.h"
 
 typedef enum {
     EVCPostTypeHasPicture = 1,

@@ -8,8 +8,9 @@
 
 #import "EVCJobsDetailsViewController.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
+#import "API.h"
 
+@import API;
 @interface EVCJobsDetailsViewController ()
 
 @end

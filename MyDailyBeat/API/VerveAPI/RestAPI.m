@@ -44,9 +44,9 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/login" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:PUBLIC_BASE_URL withPath:@"login" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
-        if ([resultDic objectForKey:@"name"] != nil) {
+        if ([resultDic objectForKey:@"token"] != nil) {
             currentUser = [[VerveUser alloc] init];
             currentUser.name = [resultDic objectForKey:@"name"];
             currentUser.email = [resultDic objectForKey:@"email"];
@@ -59,6 +59,7 @@ static VerveUser *currentUser;
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             currentUser.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
             currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
+            currentUser.auth_token = [resultDic objectForKey:@"token"];
             
             return YES;
         }
@@ -74,40 +75,14 @@ static VerveUser *currentUser;
 }
 
 - (BOOL) logout {
-    @try {
-        
-        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-        [postData setObject:currentUser.screenName forKey:@"screenName"];
-        [postData setObject:currentUser.password forKey:@"password"];
-        
-        NSError *error;
-        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
-        
-        if (error) {
-            NSLog(@"Error parsing object to JSON: %@", error);
-        }
-        
-        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/logout" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
-        
-        NSString *response = [resultDic objectForKey:@"response"];
-        if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
-        }
-        return NO;
-        
-        
-    } @catch (NSException *e) {
-        NSLog(@"%@", e);
-    }
-    
-    return NO;
+    currentUser.auth_token = nil;
+    return YES;
 }
 
 - (void) refreshCurrentUserData {
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:currentUser.screenName]];
-    parameters = [parameters stringByAppendingString:[@"&password=" stringByAppendingString:[self urlencode:currentUser.password]]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
+    NSString *parameters = [@"token=" stringByAppendingString:currentUser.auth_token];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:@"users/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    if ([resultDic objectForKey:@"screenName"] != nil) {
         currentUser.name = [resultDic objectForKey:@"name"];
         currentUser.email = [resultDic objectForKey:@"email"];
         currentUser.screenName = [resultDic objectForKey:@"screenName"];
@@ -128,7 +103,7 @@ static VerveUser *currentUser;
     @try {
         
         NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-        [postData setObject:user.screenName forKey:@"screenName"];
+        [postData setObject:user.auth_token forKey:@"token"];
         [postData setObject:name forKey:@"name"];
         [postData setObject:email forKey:@"email"];
         
@@ -139,13 +114,12 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"user/refer" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:@"refer/send" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         
-        NSString *response = [resultDic objectForKey:@"response"];
-        if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
+        if (resultDic == nil) {
+            return NO;
         }
-        return NO;
+        return YES;
         
         
     } @catch (NSException *e) {
@@ -155,9 +129,30 @@ static VerveUser *currentUser;
     return NO;
 }
 
+- (NSMutableDictionary *) getOpportunitiesInLocation: (NSString *) zipcode onPage: (int) page {
+    NSMutableDictionary *arr = [[NSMutableDictionary alloc] init];
+    NSString *params = [NSString stringWithFormat:@"page=%d&zip=%@&token=%@", page, zipcode, currentUser.auth_token];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:@"volunteering/search" withParameters:params withRequestType:GET_REQUEST andPostData:nil];
+    NSString *json = [resultDic objectForKey:@"jsonString"];
+    json = json.stringByRemovingPercentEncoding;
+    json = [json stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    NSRange range = [json rangeOfString:@"{"];
+    if (range.location != NSNotFound) {
+        json = [json substringFromIndex:range.location];
+    } else {
+        NSLog(@"Error: Malformed Result: %@", json);
+    }
+    NSLog(@"%@", json);
+    NSDictionary *temp = [NSDictionary dictionaryFromString:json options:NSJSONReadingMutableContainers];
+    arr = [[NSMutableDictionary alloc] initWithDictionary:temp];
+    
+    return arr;
+}
+
 - (NSMutableArray *) getPostsForGroup:(Group *) g {
-    NSString *parameters = [NSString stringWithFormat:@"id=%d", g.groupID];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/posts/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    NSString *parameters = [NSString stringWithFormat:@"token=%@", currentUser.auth_token];
+    NSString *path = [NSString stringWithFormat:@"groups/%d/posts/get", g.groupID];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:AUTH_BASE_URL withPath:path withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
     
     NSMutableArray *items = [resultDic objectForKey:@"items"];
     NSMutableArray *retItems = [[NSMutableArray alloc] init];
@@ -181,28 +176,6 @@ static VerveUser *currentUser;
     
 }
 
-- (VerveUser *) getUserDataForUserWithScreenName: (NSString *) screenName {
-    VerveUser *user = nil;
-    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:screenName]];
-    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/getInfo2" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
-    if ([resultDic objectForKey:@"name"] != nil) {
-        user = [[VerveUser alloc] init];
-        user.name = [resultDic objectForKey:@"name"];
-        user.email = [resultDic objectForKey:@"email"];
-        user.screenName = screenName;
-        user.password = [resultDic objectForKey:@"password"];;
-        user.mobile = [resultDic objectForKey:@"mobile"];
-        user.zipcode = [resultDic objectForKey:@"zipcode"];
-        user.birth_month = [resultDic objectForKey:@"birth_month"];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        user.birth_year = [[f numberFromString:[resultDic objectForKey:@"birth_year"]] longValue];
-        currentUser.birth_date = [[f numberFromString:[resultDic objectForKey:@"birth_date"]] longValue];
-    }
-    
-    return user;
-}
-
 - (BOOL) createUser: (VerveUser *) userData {
     
     @try {
@@ -216,18 +189,31 @@ static VerveUser *currentUser;
             NSLog(@"Error parsing object to JSON: %@", error);
         }
         
-        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        NSDictionary *result = [self makeRequestWithBaseUrl:PUBLIC_BASE_URL withPath:@"users/register" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
         NSLog(@"%@", result);
-        NSString *response = [result objectForKey:@"response"];
-        if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
+        if (result == nil) {
+            return NO;
         }
+        
+        return YES;
         
     } @catch (NSException *e) {
         NSLog(@"%@", e);
     }
     
     return NO;
+}
+
+- (BOOL) doesUserExistWithName: (NSString *) name {
+    NSString *parameters = [@"name=" stringByAppendingString:[self urlencode:name]];
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"users/exists/name" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSString *response = [resultDic objectForKey:@"response"];
+    if ([response isEqualToString:@"Operation succeeded"]) {
+        return NO;
+    }
+    return YES;
+    
 }
 
 - (BOOL) doesUserExistWithScreenName: (NSString *) screenName {
@@ -417,6 +403,34 @@ static VerveUser *currentUser;
     return NO;
 }
 
+- (BOOL) setHobbiesforGroup: (Group *) group {
+    @try {
+        
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:[NSNumber numberWithInt:group.groupID] forKey:@"id"];
+        [postData setObject:group.hobbies forKey:@"hobbies"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"groups/edit" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+}
+
 -(NSURL *) retrieveProfilePicture {
     return [self retrieveProfilePictureForUserWithScreenName:currentUser.screenName];
 }
@@ -441,7 +455,8 @@ static VerveUser *currentUser;
     AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
     NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:profilePicture name:@"file" fileName:name mimeType:[self getMimeType:name]];
-        [formData appendPartWithFormData:[[name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+        
+        [formData appendPartWithFormData:[[name stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
     } error:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
@@ -449,12 +464,38 @@ static VerveUser *currentUser;
     [request setTimeoutInterval:30];
     NSLog(@"%@", request);
     // send the request
-    NSError *requestError;
-    NSHTTPURLResponse *urlResponse;
-    NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    if (requestError) NSLog(@"Error received from server: %@", requestError);
-    if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
-        NSDictionary *parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingMutableContainers error:&requestError];
+    __block NSError *requestError = nil;
+    __block BOOL returnVal = NO;
+    __block NSDictionary *parsedJSONResponse = nil;
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) NSLog(@"Error received from server: %@", error);
+        if (((NSHTTPURLResponse *) response).statusCode >= 200 && ((NSHTTPURLResponse *) response).statusCode < 300) {
+            parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&requestError];
+        } else if (((NSHTTPURLResponse *) response).statusCode == 401) {
+            NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 422) {
+            NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 500) {
+            NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 404) {
+            NSLog(@"Not found. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else {
+            NSLog(@"Unrecognized status code = %ld. %@", (long)((NSHTTPURLResponse *) response).statusCode, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }
+        
+        dispatch_semaphore_signal(semaphore);
+        
+    }];
+    
+    [task resume];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    if (parsedJSONResponse != nil) {
         NSString *blobKey = [parsedJSONResponse objectForKey:@"blobKey"];
         NSString *servingURL = [parsedJSONResponse objectForKey:@"servingUrl"];
         
@@ -470,21 +511,16 @@ static VerveUser *currentUser;
         
         NSString *response = [result objectForKey:@"response"];
         if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
-        } else
-            return NO;
-        
-        
-    } else if (urlResponse.statusCode == 401) {
-        NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 422) {
-        NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 500) {
-        NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+            returnVal = YES;
+        } else {
+            returnVal =  NO;
+        }
+
     } else {
-        NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+        returnVal = NO;
     }
-    return NO;
+
+    return returnVal;
 }
 
 -(NSURL *) retrieveGroupPictureForGroup:(Group *) group {
@@ -512,7 +548,7 @@ static VerveUser *currentUser;
         AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
         NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             [formData appendPartWithFileData:attachedPic name:@"file" fileName:picName mimeType:[self getMimeType:picName]];
-            [formData appendPartWithFormData:[[picName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+            [formData appendPartWithFormData:[[picName stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
         } error:nil];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
@@ -521,11 +557,39 @@ static VerveUser *currentUser;
         NSLog(@"%@", request);
         // send the request
         
-        NSHTTPURLResponse *urlResponse;
-        NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-        if (requestError) NSLog(@"Error received from server: %@", requestError);
-        if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
-            NSDictionary *parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingMutableContainers error:&requestError];
+        __block NSError *requestError = nil;
+        __block BOOL returnVal = NO;
+        __block NSDictionary *parsedJSONResponse = nil;
+        NSURLSession *session = [NSURLSession sharedSession];
+        
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) NSLog(@"Error received from server: %@", error);
+            if (((NSHTTPURLResponse *) response).statusCode >= 200 && ((NSHTTPURLResponse *) response).statusCode < 300) {
+                parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&requestError];
+                
+            } else if (((NSHTTPURLResponse *) response).statusCode == 401) {
+                NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            } else if (((NSHTTPURLResponse *) response).statusCode == 422) {
+                NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            } else if (((NSHTTPURLResponse *) response).statusCode == 500) {
+                NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            } else if (((NSHTTPURLResponse *) response).statusCode == 404) {
+                NSLog(@"Not found. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            } else {
+                NSLog(@"Unrecognized status code = %ld. %@", (long)((NSHTTPURLResponse *) response).statusCode, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            }
+            
+            dispatch_semaphore_signal(semaphore);
+            
+        }];
+        
+        [task resume];
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        if (parsedJSONResponse != nil) {
             NSString *blobKey = [parsedJSONResponse objectForKey:@"blobKey"];
             NSString *servingURL = [parsedJSONResponse objectForKey:@"servingUrl"];
             
@@ -544,20 +608,16 @@ static VerveUser *currentUser;
             
             NSString *response = [result objectForKey:@"response"];
             if ([response isEqualToString:@"Operation succeeded"]) {
-                return YES;
-            } else
-                return NO;
-            
-            
-        } else if (urlResponse.statusCode == 401) {
-            NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-        } else if (urlResponse.statusCode == 422) {
-            NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-        } else if (urlResponse.statusCode == 500) {
-            NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+                returnVal = YES;
+            } else {
+                returnVal = NO;
+            }
         } else {
-            NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+            returnVal = NO;
         }
+        
+        return returnVal;
+
     } else {
         NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
         [postData setObject:@"" forKey:@"blobKey"];
@@ -591,7 +651,7 @@ static VerveUser *currentUser;
     AFHTTPRequestSerializer *ser = [AFHTTPRequestSerializer serializer];
     NSMutableURLRequest *request = [ser multipartFormRequestWithMethod:POST_REQUEST URLString:uploadurl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:groupPicture name:@"file" fileName:name mimeType:[self getMimeType:name]];
-        [formData appendPartWithFormData:[[name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+        [formData appendPartWithFormData:[[name stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]] dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
     } error:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
@@ -599,12 +659,39 @@ static VerveUser *currentUser;
     [request setTimeoutInterval:30];
     NSLog(@"%@", request);
     // send the request
-    NSError *requestError;
-    NSHTTPURLResponse *urlResponse;
-    NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    if (requestError) NSLog(@"Error received from server: %@", requestError);
-    if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
-        NSDictionary *parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingMutableContainers error:&requestError];
+    
+    __block NSError *requestError = nil;
+    __block BOOL returnVal = NO;
+    __block NSDictionary *parsedJSONResponse = nil;
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) NSLog(@"Error received from server: %@", error);
+        if (((NSHTTPURLResponse *) response).statusCode >= 200 && ((NSHTTPURLResponse *) response).statusCode < 300) {
+            parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&requestError];
+        } else if (((NSHTTPURLResponse *) response).statusCode == 401) {
+            NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 422) {
+            NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 500) {
+            NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 404) {
+            NSLog(@"Not found. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else {
+            NSLog(@"Unrecognized status code = %ld. %@", (long)((NSHTTPURLResponse *) response).statusCode, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }
+        
+        dispatch_semaphore_signal(semaphore);
+        
+    }];
+    
+    [task resume];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    if (parsedJSONResponse != nil) {
         NSString *blobKey = [parsedJSONResponse objectForKey:@"blobKey"];
         NSString *servingURL = [parsedJSONResponse objectForKey:@"servingUrl"];
         
@@ -619,21 +706,17 @@ static VerveUser *currentUser;
         
         NSString *response = [result objectForKey:@"response"];
         if ([response isEqualToString:@"Operation succeeded"]) {
-            return YES;
-        } else
-            return NO;
+            returnVal = YES;
+        } else {
+           returnVal = NO;
+        }
         
-        
-    } else if (urlResponse.statusCode == 401) {
-        NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 422) {
-        NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 500) {
-        NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
     } else {
-        NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
+        returnVal = NO;
     }
-    return NO;
+    
+    return returnVal;
+    
 }
 
 
@@ -797,6 +880,8 @@ static VerveUser *currentUser;
             [posts addObject:p];
         }
         g.posts = posts;
+        NSMutableArray *hobbies = [item objectForKey:@"hobbies"];
+        g.hobbies = hobbies;
         [retItems addObject:g];
     }
     
@@ -1169,6 +1254,56 @@ static VerveUser *currentUser;
     
 }
 
+- (NSArray *) getFriendsForUser: (VerveUser *) user {
+    NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
+    
+    NSDictionary *resultDic = [self makeRequestWithBaseUrl:BASE_URL withPath:@"friends/get" withParameters:parameters withRequestType:GET_REQUEST andPostData:nil];
+    
+    NSMutableArray *items = [resultDic objectForKey:@"items"];
+    NSMutableArray *retItems = [[NSMutableArray alloc] init];
+    
+    for (int i = 0 ; i < [items count] ; ++i) {
+        NSDictionary *item = [items objectAtIndex:i];
+        FlingProfile *prof = [[FlingProfile alloc] init];
+        
+        prof.screenName = [item objectForKey:@"screenName"];
+        prof.aboutMe = [ item objectForKey:@"aboutMe"];
+        
+        [retItems addObject:prof];
+    }
+    
+    return retItems;
+    
+}
+- (BOOL) addUser:(VerveUser *) user1 ToFriendsOfUser:(VerveUser *) user2 {
+    @try {
+        NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+        [postData setObject:user2.screenName forKey:@"screenName"];
+        [postData setObject:[self getFlingProfileForUser:user1] forKey:@"other"];
+        
+        NSError *error;
+        NSData *postReqData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&error];
+        
+        if (error) {
+            NSLog(@"Error parsing object to JSON: %@", error);
+        }
+        
+        NSDictionary *result = [self makeRequestWithBaseUrl:BASE_URL withPath:@"friends/add" withParameters:@"" withRequestType:POST_REQUEST andPostData:postReqData];
+        
+        
+        NSString *response = [result objectForKey:@"response"];
+        if ([response isEqualToString:@"Operation succeeded"]) {
+            return YES;
+        }
+        
+    } @catch (NSException *e) {
+        NSLog(@"%@", e);
+    }
+    
+    return NO;
+    
+}
+
 - (NSArray *) getFlingFavoritesForUser: (VerveUser *) user {
     NSString *parameters = [@"screen_name=" stringByAppendingString:[self urlencode:user.screenName]];
     
@@ -1386,67 +1521,128 @@ static VerveUser *currentUser;
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)postData.length] forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:postData];
-        NSString *LOG_STR = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
     }
-    NSError *requestError;
-    NSHTTPURLResponse *urlResponse;
-    NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    if (requestError) NSLog(@"Error received from server: %@", requestError);
-    if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
-        id parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingMutableContainers error:&requestError];
-        return parsedJSONResponse;
-    } else if (urlResponse.statusCode == 401) {
-        NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 422) {
-        NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 500) {
-        NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 404) {
-        NSLog(@"Not found. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else {
-        NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    }
-    return nil;
+    __block NSError *requestError = nil;
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    __block id parsedJSONResponse = nil;
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) NSLog(@"Error received from server: %@", requestError);
+        if (((NSHTTPURLResponse *) response).statusCode >= 200 && ((NSHTTPURLResponse *) response).statusCode < 300) {
+            parsedJSONResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&requestError];
+        } else if (((NSHTTPURLResponse *) response).statusCode == 401) {
+            NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 422) {
+            NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 500) {
+            NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 404) {
+            NSLog(@"Not found. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else {
+            NSLog(@"Unrecognized status code = %ld. %@", (long)((NSHTTPURLResponse *) response).statusCode, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }
+        
+        dispatch_semaphore_signal(semaphore);
+        
+    }];
+    
+    [task resume];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    return parsedJSONResponse;
 }
 
 -(id)makeXMLRequestWithBaseUrl:(NSString *)baseUrl withPath:(NSString *)path withParameters:(NSString *)parameters withRequestType:(NSString *)reqType andPostData:(NSData *)postData {
     NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/%@?%@", baseUrl, path, parameters]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-                                                       timeoutInterval:10];
+                                                       timeoutInterval:30];
     [request setHTTPMethod:reqType];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     if (postData) {
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)postData.length] forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:postData];
-        NSString *LOG_STR = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
     }
-    NSError *requestError;
-    NSHTTPURLResponse *urlResponse;
-    NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    if (requestError) NSLog(@"Error received from server: %@", requestError);
-    if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
-        XMLDictionaryParser *parser = [[XMLDictionaryParser alloc] init];
-        return [parser dictionaryWithData:dataResponse];
-    } else if (urlResponse.statusCode == 401) {
-        NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 422) {
-        NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 500) {
-        NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else if (urlResponse.statusCode == 404) {
-        NSLog(@"Not found. %@", [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    } else {
-        NSLog(@"Unrecognized status code = %ld. %@", (long)urlResponse.statusCode, [[NSString alloc] initWithData:dataResponse encoding:NSUTF8StringEncoding]);
-    }
-    return nil;
+    __block NSError *requestError = nil;
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    XMLDictionaryParser *parser = [[XMLDictionaryParser alloc] init];
+    __block id parsedJSONResponse = nil;
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) NSLog(@"Error received from server: %@", requestError);
+        if (((NSHTTPURLResponse *) response).statusCode >= 200 && ((NSHTTPURLResponse *) response).statusCode < 300) {
+            parsedJSONResponse = [parser dictionaryWithData:data];
+        } else if (((NSHTTPURLResponse *) response).statusCode == 401) {
+            NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 422) {
+            NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 500) {
+            NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 404) {
+            NSLog(@"Not found. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else {
+            NSLog(@"Unrecognized status code = %ld. %@", (long)((NSHTTPURLResponse *) response).statusCode, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }
+        
+        dispatch_semaphore_signal(semaphore);
+        
+    }];
+    
+    [task resume];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    return parsedJSONResponse;
+}
+
+-(NSData *) fetchImageAtRemoteURL: (NSURL *) location {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:location
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                       timeoutInterval:30];
+    
+    __block NSError *requestError = nil;
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    __block NSData *imageData = nil;
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) NSLog(@"Error received from server: %@", requestError);
+        if (((NSHTTPURLResponse *) response).statusCode >= 200 && ((NSHTTPURLResponse *) response).statusCode < 300) {
+            imageData = [NSData dataWithData:data];
+        } else if (((NSHTTPURLResponse *) response).statusCode == 401) {
+            NSLog(@"Unauthorized. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 422) {
+            NSLog(@"Unprocessable entity. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 500) {
+            NSLog(@"Internal server error. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else if (((NSHTTPURLResponse *) response).statusCode == 404) {
+            NSLog(@"Not found. %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        } else {
+            NSLog(@"Unrecognized status code = %ld. %@", (long)((NSHTTPURLResponse *) response).statusCode, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }
+        
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    [task resume];
+    
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
+    return imageData;
+
 }
 
 - (NSString *)urlencode: (NSString *) input {
     NSMutableString *output = [NSMutableString string];
     const unsigned char *source = (const unsigned char *)[input UTF8String];
-    int sourceLen = strlen((const char *)source);
+    int sourceLen = (int) strlen((const char *)source);
     for (int i = 0; i < sourceLen; ++i) {
         const unsigned char thisChar = source[i];
         if (thisChar == ' '){

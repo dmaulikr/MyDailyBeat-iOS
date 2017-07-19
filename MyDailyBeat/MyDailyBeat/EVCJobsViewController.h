@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestAPI.h>
-#import "UIView+Toast.h"
-#import "Constants.h"
 #import <CoreLocation/CoreLocation.h>
 #import "EVCJobsDetailsViewController.h"
 #import "EVCCommonMethods.h"
-#import "RESideMenu.h"
+#import "API.h"
 #import "EVCJobsFilter.h"
-#import "FXBlurView.h"
 
 @interface EVCJobsViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, EVCJobsFilterDelegate> {
     CLLocationManager *manager;

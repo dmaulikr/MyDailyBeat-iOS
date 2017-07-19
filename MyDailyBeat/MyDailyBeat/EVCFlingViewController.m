@@ -32,6 +32,19 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[NSUserDefaults standardUserDefaults] setInteger:self.mode forKey:@"REL_MODE"];
+    NSString *title = @"";
+    switch (self.mode) {
+        case FRIENDS_MODE:
+            title = @"Make Friends";
+            break;
+        case FLING_MODE:
+            title = @"Have a Fling";
+            break;
+        case RELATIONSHIP_MODE:
+            title = @"Start a Relationship";
+            break;
+    }
+    self.navigationItem.title = title;
 }
 
 - (void)viewDidLoad {

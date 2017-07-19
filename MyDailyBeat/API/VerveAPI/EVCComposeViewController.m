@@ -87,7 +87,7 @@
         if (imageURL == nil) {
             return;
         }
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             UIImage *profilePic  = [UIImage imageWithData:imageData];
@@ -107,21 +107,31 @@
     if (!_hasAttachment) {
         if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             
-            UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                  message:@"Device has no camera"
-                                                                 delegate:nil
-                                                        cancelButtonTitle:@"OK"
-                                                        otherButtonTitles: nil];
+            UIAlertController *myAlertView = [UIAlertController alertControllerWithTitle:@"Error" message:@"Device has no camera" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                // no need to do anything here
+            }];
+            [myAlertView addAction:okAction];
             
-            [myAlertView show];
+            [self presentViewController:myAlertView animated:YES completion:nil];
             
         } else {
             [self presentViewController:picker animated:YES completion:NULL];
         }
         
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"This post already has an attachment!" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        [alert show];
+        UIAlertController *myAlertView = [UIAlertController alertControllerWithTitle:@"" message:@"This post already has an attachment!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            // no need to do anything here
+        }];
+        [myAlertView addAction:cancelAction];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // no need to do anything here
+        }];
+        [myAlertView addAction:okAction];
+        
+        [self presentViewController:myAlertView animated:YES completion:nil];
     }
     
 }
@@ -136,8 +146,18 @@
     if (!_hasAttachment) {
         [self presentViewController:picker animated:YES completion:NULL];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"This post already has an attachment!" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        [alert show];
+        UIAlertController *myAlertView = [UIAlertController alertControllerWithTitle:@"" message:@"This post already has an attachment!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            // no need to do anything here
+        }];
+        [myAlertView addAction:cancelAction];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // no need to do anything here
+        }];
+        [myAlertView addAction:okAction];
+        
+        [self presentViewController:myAlertView animated:YES completion:nil];
     }
     
     

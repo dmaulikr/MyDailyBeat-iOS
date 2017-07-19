@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestAPI.h>
-#import <FXForms.h>
-#import <EVCProfilePicView.h>
-#import "UIView+Toast.h"
-#import "GroupPrefs.h"
+#import "EVCProfilePicView.h"
+#import "API.h"
 
 @class EVCGroupSettingsViewController;
 

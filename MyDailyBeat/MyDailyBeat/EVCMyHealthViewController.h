@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Constants.h"
-#import "RestAPI.h"
-#import <PrescripProviderInfo.h>
-#import "HealthInfo.h"
+#import "API.h"
 
 @interface EVCMyHealthViewController : UIViewController {
     IBOutlet UIImageView *prescripProviderLogoView, *healthPortalLogoView;

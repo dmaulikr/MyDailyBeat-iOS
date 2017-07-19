@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hGd-Nm-ZE6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Banks-->
+        <scene sceneID="gdl-JH-biy">
+            <objects>
+                <viewController id="fh6-rg-gWU" customClass="EVCFinanceHomeViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UYC-y6-qmn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fc4-5F-HSL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rf9-xV-xp7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SjH-XZ-WV8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SjH-XZ-WV8" firstAttribute="width" secondItem="rf9-xV-xp7" secondAttribute="width" id="Fj1-0r-tNo"/>
+                            <constraint firstItem="SjH-XZ-WV8" firstAttribute="height" secondItem="rf9-xV-xp7" secondAttribute="height" id="U8x-4M-bG1"/>
+                            <constraint firstItem="SjH-XZ-WV8" firstAttribute="centerX" secondItem="rf9-xV-xp7" secondAttribute="centerX" id="Yt2-nd-ZWu"/>
+                            <constraint firstItem="SjH-XZ-WV8" firstAttribute="centerY" secondItem="rf9-xV-xp7" secondAttribute="centerY" id="bhU-1O-9aC"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Banks" image="finance" selectedImage="finance2" id="4JV-Au-bzi"/>
+                    <connections>
+                        <outlet property="tableView" destination="SjH-XZ-WV8" id="u6t-ec-lAH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W87-PE-Xmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-391.19999999999999" y="845.1274362818591"/>
+        </scene>
+        <!--Resource Links-->
+        <scene sceneID="Rel-xe-hka">
+            <objects>
+                <tableViewController id="dgN-GF-MnY" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="YuH-BR-glv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="dgN-GF-MnY" id="egI-Xw-t78"/>
+                            <outlet property="delegate" destination="dgN-GF-MnY" id="qjm-qI-qEm"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="bDp-gM-uGy"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ffd-jb-eMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463" y="839"/>
+        </scene>
+        <!--My Bank-->
+        <scene sceneID="0Gn-s2-5lb">
+            <objects>
+                <viewController id="sj7-qf-yPU" customClass="EVCBankViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bwb-aj-oYG"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xyv-yg-ufx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4TR-xz-Frc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0J-5E-0PU">
+                                <rect key="frame" x="101.5" y="329" width="172" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LB0-tG-xGE"/>
+                                    <constraint firstAttribute="width" constant="172" id="i3z-rB-8dB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Go to my Bank"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="gotoBank:" destination="sj7-qf-yPU" eventType="touchUpInside" id="a5L-pH-DtT"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kHr-uF-BTn">
+                                <rect key="frame" x="51" y="83" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="f5w-5C-Vrf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XML-IF-5sL">
+                                <rect key="frame" x="191" y="83" width="132" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="aic-pl-8Dk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lT6-aX-gx7">
+                                <rect key="frame" x="51" y="182" width="272" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kHr-uF-BTn" firstAttribute="top" secondItem="XML-IF-5sL" secondAttribute="top" id="5hR-sT-L7H"/>
+                            <constraint firstItem="Xyv-yg-ufx" firstAttribute="top" secondItem="t0J-5E-0PU" secondAttribute="bottom" constant="245" id="HJZ-Y9-T2t"/>
+                            <constraint firstItem="t0J-5E-0PU" firstAttribute="centerX" secondItem="4TR-xz-Frc" secondAttribute="centerX" id="Kjh-Za-vES"/>
+                            <constraint firstItem="kHr-uF-BTn" firstAttribute="top" secondItem="Bwb-aj-oYG" secondAttribute="bottom" constant="63" id="KkI-cN-6Jd"/>
+                            <constraint firstItem="kHr-uF-BTn" firstAttribute="leading" secondItem="lT6-aX-gx7" secondAttribute="leading" id="ReJ-uU-0h6"/>
+                            <constraint firstItem="XML-IF-5sL" firstAttribute="trailing" secondItem="lT6-aX-gx7" secondAttribute="trailing" id="WO6-kM-QYc"/>
+                            <constraint firstItem="XML-IF-5sL" firstAttribute="leading" secondItem="kHr-uF-BTn" secondAttribute="trailing" constant="20" id="Xlc-ca-qc3"/>
+                            <constraint firstItem="lT6-aX-gx7" firstAttribute="bottom" secondItem="kHr-uF-BTn" secondAttribute="bottom" id="aVc-I7-opF"/>
+                            <constraint firstItem="kHr-uF-BTn" firstAttribute="leading" secondItem="4TR-xz-Frc" secondAttribute="leadingMargin" constant="35" id="bOw-gh-0Ax"/>
+                            <constraint firstItem="lT6-aX-gx7" firstAttribute="centerX" secondItem="4TR-xz-Frc" secondAttribute="centerX" id="bPo-3y-Fw9"/>
+                            <constraint firstItem="lT6-aX-gx7" firstAttribute="top" secondItem="XML-IF-5sL" secondAttribute="bottom" constant="8" symbolic="YES" id="p43-mG-P80"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Bank" image="star-icon-gray" selectedImage="star-icon-white" id="vur-vi-B8e"/>
+                    <connections>
+                        <outlet property="bankNameLbl" destination="XML-IF-5sL" id="9fd-Ze-UPf"/>
+                        <outlet property="btn" destination="t0J-5E-0PU" id="Ftl-Rg-OCu"/>
+                        <outlet property="imgView" destination="kHr-uF-BTn" id="WNS-4Q-2EH"/>
+                        <outlet property="nilLabel" destination="lT6-aX-gx7" id="DTh-QW-In0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LtI-SD-f6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1138" y="846"/>
+        </scene>
+        <!--Finance View Controller-->
+        <scene sceneID="Cl7-AC-wXr">
+            <objects>
+                <tabBarController id="hGd-Nm-ZE6" customClass="EVCFinanceViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="7DK-Db-xb2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="sj7-qf-yPU" kind="relationship" relationship="viewControllers" id="XVP-04-INU"/>
+                        <segue destination="fh6-rg-gWU" kind="relationship" relationship="viewControllers" id="efG-R2-0eM"/>
+                        <segue destination="dgN-GF-MnY" kind="relationship" relationship="viewControllers" id="JKn-hY-fg9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="22Q-5J-qZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-132" y="87"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="finance" width="183" height="183"/>
+        <image name="finance2" width="183" height="183"/>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
+</document>

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BankInfo.h>
+#import "BankInfo.h"
 #import <sqlite3.h>
 
 @interface BankDatabase : NSObject {

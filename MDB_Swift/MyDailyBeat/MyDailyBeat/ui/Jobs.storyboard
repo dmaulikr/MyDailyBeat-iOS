@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F9M-YI-GUx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Job Search-->
+        <scene sceneID="YES-3e-FFT">
+            <objects>
+                <viewController id="oid-aO-Xqr" customClass="EVCNewJobsViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pzb-6j-0ll"/>
+                        <viewControllerLayoutGuide type="bottom" id="W9V-ij-ntL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GBf-CI-kj3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="unc-pG-hfe">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="unc-pG-hfe" secondAttribute="trailing" constant="-16" id="bHD-LT-nLB"/>
+                            <constraint firstItem="W9V-ij-ntL" firstAttribute="top" secondItem="unc-pG-hfe" secondAttribute="bottom" id="nv2-qY-QFW"/>
+                            <constraint firstItem="unc-pG-hfe" firstAttribute="top" secondItem="pzb-6j-0ll" secondAttribute="bottom" id="t8k-Gb-Xql"/>
+                            <constraint firstItem="unc-pG-hfe" firstAttribute="leading" secondItem="GBf-CI-kj3" secondAttribute="leadingMargin" constant="-16" id="w0w-ZV-kgt"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Job Search" image="search-icon-gray" selectedImage="search-icon-white-1" id="76b-HS-WaM"/>
+                    <connections>
+                        <outlet property="webView" destination="unc-pG-hfe" id="REc-ZK-XHN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o05-7K-jtj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-871.20000000000005" y="908.9955022488756"/>
+        </scene>
+        <!--Resource Links-->
+        <scene sceneID="c1N-cP-dzh">
+            <objects>
+                <tableViewController id="D5d-Oi-Cse" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y3K-tz-eTv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="D5d-Oi-Cse" id="mbZ-zp-ixg"/>
+                            <outlet property="delegate" destination="D5d-Oi-Cse" id="sIC-cj-1S8"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="ptL-ID-HYB"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fat-iG-aBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22" y="904"/>
+        </scene>
+        <!--Jobs Tab View Controller-->
+        <scene sceneID="YRI-Nk-FO3">
+            <objects>
+                <tabBarController id="F9M-YI-GUx" customClass="EVCJobsTabViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="FhJ-zQ-Jwm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oid-aO-Xqr" kind="relationship" relationship="viewControllers" id="Awz-cu-xJY"/>
+                        <segue destination="D5d-Oi-Cse" kind="relationship" relationship="viewControllers" id="ukR-2l-bW1"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HxX-Yd-J9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-641" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="search-icon-gray" width="183" height="183"/>
+        <image name="search-icon-white-1" width="183" height="183"/>
+    </resources>
+</document>

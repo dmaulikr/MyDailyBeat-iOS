@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RESideMenu.h"
 #import "EVCFinanceHomeViewController.h"
 #import "EVCResourceLinksTableViewController.h"
 #import "EVCBankViewController.h"
 #import "EVCCommonMethods.h"
+#import "API.h"
 
 @interface EVCFinanceViewController : UITabBarController <UITabBarControllerDelegate>
 

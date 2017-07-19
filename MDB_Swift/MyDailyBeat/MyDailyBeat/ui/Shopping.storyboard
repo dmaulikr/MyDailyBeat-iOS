@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B7y-yY-PTs">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favorites-->
+        <scene sceneID="02r-EZ-KCr">
+            <objects>
+                <tableViewController id="85l-Vw-oJN" customClass="EVCShoppingFavoritesTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mru-Az-nww">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="85l-Vw-oJN" id="Anl-2W-jaB"/>
+                            <outlet property="delegate" destination="85l-Vw-oJN" id="yhp-Xu-axY"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star-icon-gray" selectedImage="star-icon-white" id="TW5-Xx-Dd1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qmq-Qh-ZHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="665"/>
+        </scene>
+        <!--Resource Links-->
+        <scene sceneID="HGJ-5G-2XW">
+            <objects>
+                <tableViewController id="0Af-WW-2ox" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rv6-R1-Hyg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="0Af-WW-2ox" id="YPp-BS-Fi4"/>
+                            <outlet property="delegate" destination="0Af-WW-2ox" id="eNS-hn-CNb"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="4tI-oc-Rhe"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lX-OZ-JAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="623" y="666"/>
+        </scene>
+        <!--Shopping Sites-->
+        <scene sceneID="5dI-cL-tVY">
+            <objects>
+                <viewController id="9q2-w8-dDl" customClass="EVCShoppingSearchViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A8n-yw-HcG"/>
+                        <viewControllerLayoutGuide type="bottom" id="4cG-Mx-Q3c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9sV-Cp-lFJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uuq-ZN-nYE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uuq-ZN-nYE" firstAttribute="leading" secondItem="9sV-Cp-lFJ" secondAttribute="leadingMargin" constant="-16" id="jwr-WJ-NpQ"/>
+                            <constraint firstItem="4cG-Mx-Q3c" firstAttribute="top" secondItem="uuq-ZN-nYE" secondAttribute="bottom" id="kPp-uA-MGM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uuq-ZN-nYE" secondAttribute="trailing" constant="-16" id="oHy-AS-pRF"/>
+                            <constraint firstItem="uuq-ZN-nYE" firstAttribute="top" secondItem="A8n-yw-HcG" secondAttribute="bottom" id="yxL-rv-YqW"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Shopping Sites" image="search-icon-gray" selectedImage="search-icon-white-1" id="ouP-Kk-dyq"/>
+                    <connections>
+                        <outlet property="mTableView" destination="uuq-ZN-nYE" id="fic-rN-Ekn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0F-Ge-vcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746.39999999999998" y="664.31784107946032"/>
+        </scene>
+        <!--Shopping View Controller-->
+        <scene sceneID="I2E-4c-8L2">
+            <objects>
+                <tabBarController id="B7y-yY-PTs" customClass="EVCShoppingViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="jf9-Yc-cPP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9q2-w8-dDl" kind="relationship" relationship="viewControllers" id="dlk-jn-aUq"/>
+                        <segue destination="85l-Vw-oJN" kind="relationship" relationship="viewControllers" id="Ygb-Zt-xlO"/>
+                        <segue destination="0Af-WW-2ox" kind="relationship" relationship="viewControllers" id="AH9-YA-iaW"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuA-Tj-bqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746" y="-158"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="search-icon-gray" width="183" height="183"/>
+        <image name="search-icon-white-1" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
+</document>

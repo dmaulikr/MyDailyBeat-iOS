@@ -41,7 +41,7 @@
     self.picker.dataSource = self;
     self.picker.delegate = self;
     
-    for (int i = [[[NSCalendar currentCalendar]
+    for (int i = (int) [[[NSCalendar currentCalendar]
                    components:NSYearCalendarUnit fromDate:[NSDate date]]
                   year] ; i >= 1900 ; i--) {
         [years addObject:[NSString stringWithFormat:@"%d", i]];
@@ -52,6 +52,7 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    img = [UIImage imageWithCGImage:[img CGImage] scale:[img scale] orientation:UIImageOrientationUp];
     
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
@@ -59,7 +60,6 @@
             [self.view makeToastActivity];
         });
         NSData *imgData = UIImagePNGRepresentation(img);
-        NSURL *assetURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         
         NSString *fileName = ASSET_FILENAME;
         
@@ -85,7 +85,7 @@
     dispatch_async(queue, ^{
         NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePicture];
         if (imageURL == nil) return;
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             UIImage *profilePic = [UIImage imageWithData:imageData];

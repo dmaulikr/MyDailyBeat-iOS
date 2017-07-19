@@ -18,7 +18,7 @@
     self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.currentViewedUser = user;
-        self.mode = [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
+        self.mode = (int) [[NSUserDefaults standardUserDefaults] integerForKey:@"REL_MODE"];
     }
     return self;
 }
@@ -54,7 +54,7 @@
     dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
     dispatch_async(queue, ^{
         NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:self.currentViewedUser.screenName];
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             [self.profilePicView setImage:[UIImage imageWithData:imageData]];
@@ -203,18 +203,27 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view makeToastActivity];
         });
-        
-        NSMutableArray *favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingFavoritesForUser:[[RestAPI getInstance] getCurrentUser]]];
+        NSMutableArray *favs = nil;
+        if (self.mode == FRIENDS_MODE) {
+            favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFriendsForUser:[[RestAPI getInstance] getCurrentUser]]];
+        } else {
+            favs = [[NSMutableArray alloc] initWithArray:[[RestAPI getInstance] getFlingFavoritesForUser:[[RestAPI getInstance] getCurrentUser]]];
+        }
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view hideToastActivity];
-            if ([favs indexOfObject:[[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser]] != NSNotFound) {
+            if ([favs indexOfObject:[[RestAPI getInstance] getFlingProfileForUser:self.currentViewedUser]] == NSNotFound) {
                 [self.addFavsBtn setTitle:@"Add Favorite" forState:UIControlStateNormal];
                 // remove favorite
             } else {
                 [self.addFavsBtn setTitle:@"Remove Favorite" forState:UIControlStateNormal];
-                [[RestAPI getInstance] addUser:self.currentViewedUser ToFlingFavoritesOfUser:[[RestAPI getInstance] getCurrentUser]];
+                if (self.mode == FRIENDS_MODE) {
+                    [[RestAPI getInstance] addUser:self.currentViewedUser ToFriendsOfUser:[[RestAPI getInstance] getCurrentUser]];
+                } else {
+                    [[RestAPI getInstance] addUser:self.currentViewedUser ToFlingFavoritesOfUser:[[RestAPI getInstance] getCurrentUser]];
+                }
+                
             }
         });
     });

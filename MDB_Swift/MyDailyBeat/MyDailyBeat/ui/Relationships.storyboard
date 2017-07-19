@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3yM-sX-dLo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Fling View Controller-->
+        <scene sceneID="gc5-lk-Ryi">
+            <objects>
+                <tabBarController id="3yM-sX-dLo" customClass="EVCFlingViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="XE5-Xj-bh7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="KXH-cz-rLM" kind="relationship" relationship="viewControllers" id="ftN-km-vpm"/>
+                        <segue destination="EeF-Ls-c9A" kind="relationship" relationship="viewControllers" id="sjC-RT-FJy"/>
+                        <segue destination="CLx-at-rWT" kind="relationship" relationship="viewControllers" id="gPi-MA-iwd"/>
+                        <segue destination="D9R-Ob-I7u" kind="relationship" relationship="viewControllers" id="bGA-XQ-x6D"/>
+                        <segue destination="Zzc-hE-ggc" kind="relationship" relationship="viewControllers" id="6jD-Pv-53h"/>
+                        <segue destination="h0r-mn-UYU" kind="presentation" identifier="EditProfileSegue" modalPresentationStyle="currentContext" id="hIu-Rv-mRg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AcY-f1-81f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17" y="142"/>
+        </scene>
+        <!--Match-->
+        <scene sceneID="IUh-Bf-sVw">
+            <objects>
+                <tableViewController id="KXH-cz-rLM" customClass="EVCPartnerMatchViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xFF-vn-SlQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="KXH-cz-rLM" id="hdQ-mZ-r7Y"/>
+                            <outlet property="delegate" destination="KXH-cz-rLM" id="ChB-w5-BuM"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Match" image="search-icon-gray" selectedImage="search-icon-white-1" id="2p5-5B-p1l"/>
+                    <connections>
+                        <segue destination="D9R-Ob-I7u" kind="show" identifier="ShowProfileSegue" id="LMY-V9-Z9B"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="euY-YK-s36" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-689" y="893"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="nhA-Li-Z6E">
+            <objects>
+                <tableViewController id="EeF-Ls-c9A" customClass="EVCPartnersTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="461-CY-BF3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="EeF-Ls-c9A" id="y32-9L-u6J"/>
+                            <outlet property="delegate" destination="EeF-Ls-c9A" id="VeG-cY-I70"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="view-partners-icon-gray" selectedImage="view-partners-icon-white" id="DzS-CM-yNn"/>
+                    <connections>
+                        <segue destination="D9R-Ob-I7u" kind="show" identifier="ShowProfileSegue" id="6mE-2k-IEc"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DZ0-sw-K2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17" y="1111"/>
+        </scene>
+        <!--Messaging-->
+        <scene sceneID="HON-ge-r3X">
+            <objects>
+                <tableViewController id="CLx-at-rWT" customClass="EVCChatroomTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UAE-6M-sdK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="CLx-at-rWT" id="8Bf-4H-9MJ"/>
+                            <outlet property="delegate" destination="CLx-at-rWT" id="umV-TT-4oA"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Messaging" image="messages-icon-gray" selectedImage="messages-icon-white" id="FMj-iH-Oiy"/>
+                    <connections>
+                        <segue destination="HY6-0X-qys" kind="show" identifier="ChatroomSegue" id="CJp-wf-3Xt"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9jE-H2-xo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102" y="926"/>
+        </scene>
+        <!--My Profile-->
+        <scene sceneID="e8F-7d-tKa">
+            <objects>
+                <viewController id="D9R-Ob-I7u" customClass="EVCFlingProfileViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Profile" image="profile-icon-gray" selectedImage="profile-icon-white" id="Qho-PY-u3B"/>
+                    <connections>
+                        <segue destination="h0r-mn-UYU" kind="show" identifier="EditProfileSegue" id="cHh-Jd-HXk"/>
+                        <segue destination="HY6-0X-qys" kind="show" identifier="SendMessageSegue" id="6fs-Z6-a2z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sdP-Y2-AbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2022" y="888"/>
+        </scene>
+        <!--Fling Messaging View Controller-->
+        <scene sceneID="hrO-3R-Zol">
+            <objects>
+                <viewController id="HY6-0X-qys" customClass="EVCFlingMessagingViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ViD-rf-5P3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1102" y="1905"/>
+        </scene>
+        <!--Fling Profile Creator View Controller-->
+        <scene sceneID="H1o-Af-O6M">
+            <objects>
+                <viewController id="h0r-mn-UYU" customClass="EVCFlingProfileCreatorViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hPS-8Y-6zE"/>
+                        <viewControllerLayoutGuide type="bottom" id="NnX-zr-Zfe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QK6-cB-4FG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Me:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9B-Kp-a41">
+                                <rect key="frame" x="16" y="141" width="80" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="ICI-gd-2vf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1o-a1-CAA">
+                                <rect key="frame" x="16" y="169" width="343" height="441"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MO-IJ-Exw">
+                                <rect key="frame" x="16" y="89" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3MO-IJ-Exw" firstAttribute="top" secondItem="hPS-8Y-6zE" secondAttribute="bottom" constant="69" id="7Gx-Od-p6Y"/>
+                            <constraint firstItem="y9B-Kp-a41" firstAttribute="top" secondItem="3MO-IJ-Exw" secondAttribute="bottom" constant="31" id="A8H-g8-IJr"/>
+                            <constraint firstItem="3MO-IJ-Exw" firstAttribute="leading" secondItem="QK6-cB-4FG" secondAttribute="leadingMargin" id="Ed2-RN-QUA"/>
+                            <constraint firstItem="L1o-a1-CAA" firstAttribute="trailing" secondItem="QK6-cB-4FG" secondAttribute="trailingMargin" id="GQo-8A-acn"/>
+                            <constraint firstItem="NnX-zr-Zfe" firstAttribute="top" secondItem="L1o-a1-CAA" secondAttribute="bottom" constant="8" id="cEz-3h-8Ju"/>
+                            <constraint firstItem="y9B-Kp-a41" firstAttribute="leading" secondItem="L1o-a1-CAA" secondAttribute="leading" id="iec-gB-lri"/>
+                            <constraint firstItem="3MO-IJ-Exw" firstAttribute="leading" secondItem="y9B-Kp-a41" secondAttribute="leading" id="jRk-Yc-yDC"/>
+                            <constraint firstItem="L1o-a1-CAA" firstAttribute="top" secondItem="y9B-Kp-a41" secondAttribute="bottom" constant="7" id="lon-sF-gHy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutMeView" destination="L1o-a1-CAA" id="GBs-tP-m64"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jZg-He-WHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2062.5" y="1622.5"/>
+        </scene>
+        <!--Resources-->
+        <scene sceneID="3oY-lK-g5b">
+            <objects>
+                <tableViewController id="Zzc-hE-ggc" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nyp-cb-4Qv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Zzc-hE-ggc" id="rtk-7g-7fZ"/>
+                            <outlet property="delegate" destination="Zzc-hE-ggc" id="NKn-Fm-WnU"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Resources" image="res-icon-gray" selectedImage="res-icon-white" id="eMj-rA-4ky"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="udl-Tf-2s2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3010" y="904"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="messages-icon-gray" width="183" height="183"/>
+        <image name="messages-icon-white" width="183" height="183"/>
+        <image name="profile-icon-gray" width="183" height="183"/>
+        <image name="profile-icon-white" width="183" height="183"/>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="search-icon-gray" width="183" height="183"/>
+        <image name="search-icon-white-1" width="183" height="183"/>
+        <image name="view-partners-icon-gray" width="183" height="183"/>
+        <image name="view-partners-icon-white" width="183" height="183"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6mE-2k-IEc"/>
+        <segue reference="6fs-Z6-a2z"/>
+        <segue reference="cHh-Jd-HXk"/>
+    </inferredMetricsTieBreakers>
+</document>

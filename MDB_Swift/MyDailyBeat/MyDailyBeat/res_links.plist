@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Shopping</key>
+	<array/>
+	<key>Finances</key>
+	<array>
+		<string>finance.yahoo.com</string>
+		<string>money.cnn.com</string>
+		<string>bloomberg.com</string>
+	</array>
+	<key>FeelingBlue</key>
+	<array>
+		<string>suicidepreventionlifeline.org</string>
+		<string>psychcentral.com/helpme.htm</string>
+		<string>hopeline.com</string>
+	</array>
+	<key>Relationships</key>
+	<array/>
+	<key>Jobs</key>
+	<array>
+		<string>livecareer.com</string>
+		<string>careerservices.princeton.edu</string>
+	</array>
+	<key>Health</key>
+	<array>
+		<string>webmd.com</string>
+		<string>mayoclinic.org</string>
+		<string>cdc.gov</string>
+		<string>medicineonline.com</string>
+		<string>online-medical-dictionary.org</string>
+	</array>
+	<key>Travel</key>
+	<array>
+		<string>travelchannel.com</string>
+		<string>cnn.com/travel</string>
+		<string>forbestravelguide.com</string>
+		<string>tripadvisor.com</string>
+	</array>
+	<key>Volunteering</key>
+	<array>
+		<string>volunteerspot.com</string>
+		<string>agingnetworkvolunteercollaborative.org</string>
+		<string>communityservice.org</string>
+		<string>returedbrains.com/senior-living-resources/volunteering</string>
+	</array>
+</dict>
+</plist>

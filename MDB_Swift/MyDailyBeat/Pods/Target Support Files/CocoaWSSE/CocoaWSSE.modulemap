@@ -1,0 +1,6 @@
+framework module CocoaWSSE {
+  umbrella header "CocoaWSSE-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <DLAVAlertView.h>
+#import "API.h"
 #import "EVCCommonMethods.h"
 
 @interface EVCHealthPortalTableViewController : UITableViewController

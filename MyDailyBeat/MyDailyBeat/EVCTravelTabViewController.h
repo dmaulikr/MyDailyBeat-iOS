@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EVCTravelTableViewController.h"
 #import "EVCResourceLinksTableViewController.h"
-#import "RESideMenu.h"
+#import "API.h"
 
 @interface EVCTravelTabViewController : UITabBarController
 

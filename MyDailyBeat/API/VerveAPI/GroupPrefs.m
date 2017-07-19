@@ -23,7 +23,7 @@
     dispatch_async(queue, ^{
         if (servingURL != nil) {
             NSURL *imageURL = [[NSURL alloc] initWithString:servingURL];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Update the UI
                 self.groupPicture = [UIImage imageWithData:imageData];
@@ -35,7 +35,11 @@
 }
 
 - (NSDictionary *) groupPictureField {
-    return @{FXFormFieldTitle: @"Change Group Picture"};
+    return @{FXFormFieldTitle: @"Change Group Picture", FXFormFieldAction: @"saveImage:"};
+}
+
+- (NSDictionary *) hobbiesField {
+    return @{FXFormFieldTitle: @"Select Hobbies", FXFormFieldOptions: @[@"Books", @"Golf", @"Cars", @"Walking", @"Hiking", @"Wine", @"Woodworking", @"Online Card Games", @"Card Games", @"Online Games", @"Arts & Crafts", @"Prayer", @"Support Groups", @"Shopping", @"Travel", @"Local Field Trips", @"History", @"Sports"], FXFormFieldViewController: @"EVCGroupSettingsHobbiesSelectionTableViewController"};
 }
 
 - (NSArray *)extraFields

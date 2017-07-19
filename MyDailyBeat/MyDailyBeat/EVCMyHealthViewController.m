@@ -7,7 +7,7 @@
 //
 
 #import "EVCMyHealthViewController.h"
-#import <EVCCommonMethods.h>
+#import "EVCCommonMethods.h"
 
 @interface EVCMyHealthViewController ()
 
@@ -54,7 +54,7 @@
                     [self.view makeToastActivity];
                 });
                 NSURL *imgurl = [NSURL URLWithString:self.portal.logoURL];
-                NSData *data = [NSData dataWithContentsOfURL:imgurl];
+                NSData *data = [[RestAPI getInstance] fetchImageAtRemoteURL:imgurl];
                 UIImage *img = [[UIImage alloc] initWithData:data];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.view hideToastActivity];
@@ -73,7 +73,7 @@
                     [self.view makeToastActivity];
                 });
                 NSURL *imgurl = [NSURL URLWithString:self.provider.logoURL];
-                NSData *data = [NSData dataWithContentsOfURL:imgurl];
+                NSData *data = [[RestAPI getInstance] fetchImageAtRemoteURL:imgurl];
                 UIImage *img = [[UIImage alloc] initWithData:data];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.view hideToastActivity];

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="150" id="Jao-cO-zQ2" customClass="SwitchViewCell" customModule="MyDailyBeat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jao-cO-zQ2" id="TzR-by-cW2">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqn-B0-h59">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.67450980390000004" green="0.85490196080000003" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRY-gb-tkg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1gP-Ko-AO4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoH-yQ-Sfx">
+                                    <rect key="frame" x="28" y="30" width="319" height="33"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="33" id="uiE-NN-reY"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zA7-Wv-TdZ">
+                                    <rect key="frame" x="127" y="86" width="120" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="zA7-Wv-TdZ" secondAttribute="height" multiplier="5:2" id="DkI-t1-8bi"/>
+                                        <constraint firstAttribute="height" constant="48" id="t4i-8m-r7g"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="AoH-yQ-Sfx" firstAttribute="leading" secondItem="1gP-Ko-AO4" secondAttribute="leading" constant="28" id="Ayy-ih-E4z"/>
+                                <constraint firstItem="zA7-Wv-TdZ" firstAttribute="top" secondItem="AoH-yQ-Sfx" secondAttribute="bottom" constant="23" id="BxW-RZ-659"/>
+                                <constraint firstAttribute="bottom" secondItem="zA7-Wv-TdZ" secondAttribute="bottom" constant="16" id="Nhe-Ei-ufh"/>
+                                <constraint firstItem="AoH-yQ-Sfx" firstAttribute="centerX" secondItem="1gP-Ko-AO4" secondAttribute="centerX" id="QYZ-qZ-Kxp"/>
+                                <constraint firstItem="AoH-yQ-Sfx" firstAttribute="top" secondItem="1gP-Ko-AO4" secondAttribute="top" constant="30" id="ffq-Lf-k5s"/>
+                                <constraint firstItem="zA7-Wv-TdZ" firstAttribute="leading" secondItem="1gP-Ko-AO4" secondAttribute="leading" constant="127" id="qh5-i0-ZqU"/>
+                                <constraint firstItem="zA7-Wv-TdZ" firstAttribute="centerX" secondItem="1gP-Ko-AO4" secondAttribute="centerX" id="xLE-88-wA2"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JRY-gb-tkg" firstAttribute="width" secondItem="TzR-by-cW2" secondAttribute="width" id="A8V-t7-ZZ5"/>
+                    <constraint firstItem="JRY-gb-tkg" firstAttribute="leading" secondItem="TzR-by-cW2" secondAttribute="leadingMargin" constant="-8" id="DkX-rs-myR"/>
+                    <constraint firstItem="JRY-gb-tkg" firstAttribute="top" secondItem="TzR-by-cW2" secondAttribute="topMargin" constant="-8" id="YKV-lU-xiX"/>
+                    <constraint firstItem="JRY-gb-tkg" firstAttribute="height" secondItem="TzR-by-cW2" secondAttribute="height" id="fjo-iK-nf9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="button" destination="zA7-Wv-TdZ" id="Nci-lQ-YXd"/>
+                <outlet property="label" destination="AoH-yQ-Sfx" id="bGA-Us-rTc"/>
+            </connections>
+            <point key="canvasLocation" x="63.5" y="24"/>
+        </tableViewCell>
+    </objects>
+</document>

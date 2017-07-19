@@ -78,7 +78,7 @@
         if (imageURL == nil) {
             return;
         }
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             self.profilePic = [UIImage imageWithData:imageData];

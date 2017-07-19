@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BankInfo.h"
+#import "API.h"
 
 @interface EVCBankViewController : UIViewController {
     IBOutlet UIImageView *imgView;

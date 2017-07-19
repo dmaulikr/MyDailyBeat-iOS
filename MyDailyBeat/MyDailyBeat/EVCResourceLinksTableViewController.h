@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Constants.h"
+#import "API.h"
 
 @interface EVCResourceLinksTableViewController : UITableViewController {
     NSString *path, *module;

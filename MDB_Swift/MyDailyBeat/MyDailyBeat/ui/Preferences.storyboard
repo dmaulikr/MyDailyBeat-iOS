@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gqj-Av-Vhk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Preferences View Controller-->
+        <scene sceneID="P1i-rB-7Kj">
+            <objects>
+                <tableViewController id="gqj-Av-Vhk" customClass="EVCPreferencesViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="fiv-gB-fOw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="gqj-Av-Vhk" id="qXu-zT-Du5"/>
+                            <outlet property="delegate" destination="gqj-Av-Vhk" id="TDP-z0-7e3"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="7Zw-G7-6DG" kind="show" identifier="UserPrefSegue" id="9O3-Jy-XBy"/>
+                        <segue destination="ibd-M7-Lao" kind="show" identifier="MatchingPrefSegue" id="wyR-5r-8uh"/>
+                        <segue destination="fzR-DP-X5F" kind="show" identifier="HobbyPrefSegue" id="Tw7-nf-UGE"/>
+                        <segue destination="bb2-fx-qGc" kind="unwind" identifier="RegularUnwindSegue" unwindAction="unwindSegueWithSegue:" id="c5O-jm-vd1"/>
+                        <segue destination="bb2-fx-qGc" kind="unwind" identifier="ModalUnwindSegue" unwindAction="modalUnwindSegueWithSegue:" id="zGk-XV-xcI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6y-Hc-aeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bb2-fx-qGc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="211"/>
+        </scene>
+        <!--Matching Preferences View Controller-->
+        <scene sceneID="Wtl-zA-7qb">
+            <objects>
+                <tableViewController id="ibd-M7-Lao" customClass="EVCMatchingPreferencesViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="wue-rW-sGu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="ibd-M7-Lao" id="73N-a2-wPN"/>
+                            <outlet property="delegate" destination="ibd-M7-Lao" id="MA8-Ih-l13"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="oUR-0g-dgr" kind="unwind" identifier="BackToPrefsSegue" unwindAction="backToPrefsWithSender:" id="Lli-Nc-hnA"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QaS-m8-IKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oUR-0g-dgr" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1135" y="414"/>
+        </scene>
+        <!--Hobbies Preferences View Controller-->
+        <scene sceneID="hRx-5y-dyK">
+            <objects>
+                <tableViewController id="fzR-DP-X5F" customClass="EVCHobbiesPreferencesViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="bx8-Yz-OKC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="fzR-DP-X5F" id="h5I-f0-4HQ"/>
+                            <outlet property="delegate" destination="fzR-DP-X5F" id="HzI-2Q-k5C"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="kBW-c0-EH8" kind="unwind" identifier="BackToPrefsSegue" unwindAction="backToPrefsWithSender:" id="6hw-fJ-oot"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wG2-2K-H5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kBW-c0-EH8" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1122" y="1141"/>
+        </scene>
+        <!--User Preferences View Controller-->
+        <scene sceneID="Af1-1f-N8l">
+            <objects>
+                <tableViewController id="7Zw-G7-6DG" customClass="EVCUserPreferencesViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="1Ux-XX-LnZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="7Zw-G7-6DG" id="ykT-5m-aer"/>
+                            <outlet property="delegate" destination="7Zw-G7-6DG" id="Dgu-zw-yqO"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="YpM-qT-e1S" kind="unwind" identifier="BackToPrefsSegue" unwindAction="backToPrefsWithSender:" id="dmB-bK-DFi"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xHp-aB-V6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="YpM-qT-e1S" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1142" y="-302"/>
+        </scene>
+    </scenes>
+</document>

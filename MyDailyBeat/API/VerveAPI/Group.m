@@ -10,7 +10,7 @@
 
 @implementation Group
 
-@synthesize groupName, adminName, groupID, posts, blobKey, servingURL;
+@synthesize groupName, adminName, groupID, posts, blobKey, servingURL, hobbies;
 
 - (id) copyWithZone:(NSZone *)zone {
     id copy = [[[self class] alloc] init];
@@ -22,6 +22,7 @@
         [copy setBlobKey:[self.blobKey copyWithZone:zone]];
         [copy setServingURL:[self.servingURL copyWithZone:zone]];
         [copy setGroupID:self.groupID];
+        [copy setHobbies:[self.hobbies copyWithZone:zone]];
     }
     
     return copy;

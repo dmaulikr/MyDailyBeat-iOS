@@ -13,6 +13,7 @@
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 + (UIButton *) barButtonSystemItem:(UIBarButtonSystemItem) item withText:(NSString *) title;
 + (UIImage*) imageWithColor:(UIColor*)color size:(CGSize)size;
++ (UIImage *)fixOrientationForImage: (UIImage *) inputImage;
 
 + (double) metersForRadius: (double) miles;
 + (double) milesForRadius: (double) meters;

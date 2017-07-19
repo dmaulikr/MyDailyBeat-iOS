@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eRN-0M-5D3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Health-->
+        <scene sceneID="c9z-hu-U8Q">
+            <objects>
+                <viewController id="fQW-9h-nYi" customClass="EVCMyHealthViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A43-ip-hyN"/>
+                        <viewControllerLayoutGuide type="bottom" id="T1k-Et-Eep"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NOp-74-WnH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WfC-0w-sWJ">
+                                <rect key="frame" x="35" y="248" width="304" height="111"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="QST-Kl-dnL" appends="YES" id="hrs-eZ-6dZ"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Prescription Provider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS5-Ax-XXF">
+                                <rect key="frame" x="35" y="28" width="304" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ra5-jp-xkU">
+                                <rect key="frame" x="35" y="80" width="304" height="111"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="PVO-09-jm9"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TxD-Q7-hvL" appends="YES" id="CRF-DY-EUp"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Health Portal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1n-aL-f6T">
+                                <rect key="frame" x="35" y="198" width="304" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLU-xg-qzb">
+                                <rect key="frame" x="35" y="51" width="304" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knQ-cc-gFG">
+                                <rect key="frame" x="35" y="222" width="304" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OLU-xg-qzb" firstAttribute="leading" secondItem="ra5-jp-xkU" secondAttribute="leading" id="3Sa-f8-Ry8"/>
+                            <constraint firstItem="c1n-aL-f6T" firstAttribute="leading" secondItem="knQ-cc-gFG" secondAttribute="leading" id="EbZ-XM-rm8"/>
+                            <constraint firstItem="yS5-Ax-XXF" firstAttribute="trailing" secondItem="OLU-xg-qzb" secondAttribute="trailing" id="GO6-us-sTy"/>
+                            <constraint firstItem="WfC-0w-sWJ" firstAttribute="top" secondItem="knQ-cc-gFG" secondAttribute="bottom" constant="5" id="MRS-dx-yIB"/>
+                            <constraint firstItem="T1k-Et-Eep" firstAttribute="top" secondItem="WfC-0w-sWJ" secondAttribute="bottom" constant="259" id="SQf-bX-pbb"/>
+                            <constraint firstItem="knQ-cc-gFG" firstAttribute="trailing" secondItem="WfC-0w-sWJ" secondAttribute="trailing" id="WBK-mO-ag8"/>
+                            <constraint firstItem="knQ-cc-gFG" firstAttribute="leading" secondItem="WfC-0w-sWJ" secondAttribute="leading" id="cia-c5-1Jv"/>
+                            <constraint firstItem="knQ-cc-gFG" firstAttribute="top" secondItem="c1n-aL-f6T" secondAttribute="bottom" constant="3" id="cri-rI-KCx"/>
+                            <constraint firstItem="yS5-Ax-XXF" firstAttribute="centerX" secondItem="NOp-74-WnH" secondAttribute="centerX" id="gWc-Tn-m45"/>
+                            <constraint firstItem="yS5-Ax-XXF" firstAttribute="leading" secondItem="NOp-74-WnH" secondAttribute="leadingMargin" constant="19" id="pw7-EZ-Ea7"/>
+                            <constraint firstItem="ra5-jp-xkU" firstAttribute="top" secondItem="OLU-xg-qzb" secondAttribute="bottom" constant="8" symbolic="YES" id="raw-cN-DAt"/>
+                            <constraint firstItem="yS5-Ax-XXF" firstAttribute="top" secondItem="A43-ip-hyN" secondAttribute="bottom" constant="8" symbolic="YES" id="sUc-wz-n8Y"/>
+                            <constraint firstItem="ra5-jp-xkU" firstAttribute="leading" secondItem="c1n-aL-f6T" secondAttribute="leading" id="tRz-HX-BPl"/>
+                            <constraint firstItem="c1n-aL-f6T" firstAttribute="top" secondItem="ra5-jp-xkU" secondAttribute="bottom" constant="7" id="tir-Nr-kRo"/>
+                            <constraint firstItem="OLU-xg-qzb" firstAttribute="top" secondItem="yS5-Ax-XXF" secondAttribute="bottom" constant="2" id="vDi-eq-lDX"/>
+                            <constraint firstItem="OLU-xg-qzb" firstAttribute="trailing" secondItem="ra5-jp-xkU" secondAttribute="trailing" id="wnx-SC-Y0g"/>
+                            <constraint firstItem="ra5-jp-xkU" firstAttribute="trailing" secondItem="c1n-aL-f6T" secondAttribute="trailing" id="xwa-YU-2pL"/>
+                            <constraint firstItem="c1n-aL-f6T" firstAttribute="trailing" secondItem="knQ-cc-gFG" secondAttribute="trailing" id="yaj-Yt-4jS"/>
+                            <constraint firstItem="yS5-Ax-XXF" firstAttribute="leading" secondItem="OLU-xg-qzb" secondAttribute="leading" id="zNT-3L-rt5"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Health" image="star-icon-gray" selectedImage="star-icon-white" id="p86-Df-oRd"/>
+                    <connections>
+                        <outlet property="healthPortalLogoView" destination="WfC-0w-sWJ" id="c5U-4F-lkm"/>
+                        <outlet property="healthTap" destination="QST-Kl-dnL" id="R9a-e5-UrZ"/>
+                        <outlet property="portalLabel" destination="knQ-cc-gFG" id="JfT-UX-Sss"/>
+                        <outlet property="prescripLabel" destination="OLU-xg-qzb" id="Egi-ll-WeP"/>
+                        <outlet property="prescripProviderLogoView" destination="ra5-jp-xkU" id="Rf0-a3-DL7"/>
+                        <outlet property="prescripTap" destination="TxD-Q7-hvL" id="33K-38-02Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4NH-nY-mqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TxD-Q7-hvL">
+                    <connections>
+                        <action selector="goToProvider:" destination="fQW-9h-nYi" id="GYg-ze-y2F"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="QST-Kl-dnL">
+                    <connections>
+                        <action selector="goToPortal:" destination="fQW-9h-nYi" id="coG-VE-UHI"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="765"/>
+        </scene>
+        <!--Health Portals-->
+        <scene sceneID="lVV-PY-cGQ">
+            <objects>
+                <tableViewController id="GJV-H9-zPI" customClass="EVCHealthPortalTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rOQ-eG-m0L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="GJV-H9-zPI" id="1BQ-bb-5qL"/>
+                            <outlet property="delegate" destination="GJV-H9-zPI" id="hm9-cm-NrK"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Health Portals" image="cadeucus-grey" selectedImage="cadeucus-white" id="YR5-Ox-FOj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOK-1V-pEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-435" y="729"/>
+        </scene>
+        <!--Providers-->
+        <scene sceneID="pYL-Vo-Gwj">
+            <objects>
+                <tableViewController id="7An-YO-96K" customClass="EVCPrescriptionProviderTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lWm-3O-27S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="7An-YO-96K" id="y8a-D8-rmW"/>
+                            <outlet property="delegate" destination="7An-YO-96K" id="gd0-GZ-7h3"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Providers" image="pill-bottle-grey" selectedImage="pill-bottle-white" id="QHz-6Z-QQM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="28g-T8-cRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="716"/>
+        </scene>
+        <!--Resource Links-->
+        <scene sceneID="WcT-AB-hPH">
+            <objects>
+                <tableViewController id="IQG-sl-Bvm" customClass="EVCResourceLinksTableViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4AE-xy-Pww">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="IQG-sl-Bvm" id="LNE-Pi-3l4"/>
+                            <outlet property="delegate" destination="IQG-sl-Bvm" id="Bor-sm-uGR"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Resource Links" image="res-icon-gray" selectedImage="res-icon-white" id="NyU-NW-UBr"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1C1-bA-6gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="-131"/>
+        </scene>
+        <!--Health View Controller-->
+        <scene sceneID="sVz-HU-IPd">
+            <objects>
+                <tabBarController id="eRN-0M-5D3" customClass="EVCHealthViewController" customModule="MyDailyBeat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="D4y-Bc-q4T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="fQW-9h-nYi" kind="relationship" relationship="viewControllers" id="088-L5-bgI"/>
+                        <segue destination="GJV-H9-zPI" kind="relationship" relationship="viewControllers" id="EQK-QG-rsP"/>
+                        <segue destination="7An-YO-96K" kind="relationship" relationship="viewControllers" id="BNf-Fl-mYH"/>
+                        <segue destination="IQG-sl-Bvm" kind="relationship" relationship="viewControllers" id="jZl-Nr-wcE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jey-Wh-cZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-748" y="-130"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cadeucus-grey" width="183" height="183"/>
+        <image name="cadeucus-white" width="183" height="183"/>
+        <image name="pill-bottle-grey" width="183" height="183"/>
+        <image name="pill-bottle-white" width="183" height="183"/>
+        <image name="res-icon-gray" width="183" height="183"/>
+        <image name="res-icon-white" width="183" height="183"/>
+        <image name="star-icon-gray" width="183" height="183"/>
+        <image name="star-icon-white" width="182" height="182"/>
+    </resources>
+</document>

@@ -7,13 +7,10 @@
 //
 
 #import "EVCPrescriptionProviderTableViewController.h"
-#import "Constants.h"
-#import "HealthDatabase.h"
-#import <DLAVAlertView.h>
-#import "RestAPI.h"
 #import "EVCCommonMethods.h"
-#import <AHKActionSheet.h>
+#import "API.h"
 
+@import API;
 @interface EVCPrescriptionProviderTableViewController ()
 
 @end
@@ -97,7 +94,7 @@
     
 }
 
-- (void) popupActionMenu: (int) row {
+- (void) popupActionMenu: (NSInteger) row {
     AHKActionSheet *sheet = [[AHKActionSheet alloc] initWithTitle:@""];
     [sheet addButtonWithTitle:@"Open App" type:AHKActionSheetButtonTypeDefault handler:^(AHKActionSheet *actionSheet) {
         PrescripProviderInfo *obj = [self.pharmacyProviders objectAtIndex:row];

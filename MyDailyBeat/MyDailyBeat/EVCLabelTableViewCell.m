@@ -22,6 +22,7 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.messageLbl.text = self.message;
 }
 

@@ -8,9 +8,6 @@
 
 #import "EVCFlingMessagingViewController.h"
 
-static NSString *MessengerCellIdentifier = @"MessengerCell";
-static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
-
 @interface EVCFlingMessagingViewController ()
 
 @property (nonatomic, strong) NSMutableArray *messages;
@@ -54,8 +51,8 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
         [self.rightButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
         
         [self.textInputbar.editorTitle setTextColor:[UIColor darkGrayColor]];
-        [self.textInputbar.editortLeftButton setTintColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
-        [self.textInputbar.editortRightButton setTintColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
+        [self.textInputbar.editorLeftButton setTintColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
+        [self.textInputbar.editorRightButton setTintColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
         
         self.textInputbar.autoHideRightButton = YES;
         self.textInputbar.maxCharCount = 140;
@@ -257,30 +254,28 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
     cell.usedForMessage = YES;
     VerveMessage *m = [self.messages2 objectAtIndex:indexPath.row];
     
-    if (cell.needsPlaceholder)
-    {
-        CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(nativeScale)]) {
+        scale = [UIScreen mainScreen].nativeScale;
+    }
+    
+    CGSize imgSize = CGSizeMake(kMessageTableViewCellAvatarHeight*scale, kMessageTableViewCellAvatarHeight*scale);
+    dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
+    dispatch_async(queue, ^{
+        NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:m.screenName];
+        NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:imageURL];
         
-        if ([[UIScreen mainScreen] respondsToSelector:@selector(nativeScale)]) {
-            scale = [UIScreen mainScreen].nativeScale;
-        }
         
-        CGSize imgSize = CGSizeMake(kAvatarSize*scale, kAvatarSize*scale);
-        dispatch_queue_t queue = dispatch_queue_create("dispatch_queue_t_dialog", NULL);
-        dispatch_async(queue, ^{
-            NSURL *imageURL = [[RestAPI getInstance] retrieveProfilePictureForUserWithScreenName:m.screenName];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            UIImage *img = [UIImage imageWithData:imageData];
             
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Update the UI
-                UIImage *img = [UIImage imageWithData:imageData];
-                [cell setPlaceholder:[EVCCommonMethods imageWithImage:img scaledToSize:imgSize] scale:scale];
-                
-            });
+            cell.imageView.image = [EVCCommonMethods imageWithImage:img scaledToSize:imgSize];
             
         });
-    }
+        
+    });
     
     // Cells must inherit the table view's transform
     // This is very important, since the main table view may be inverted
@@ -302,7 +297,7 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:16.0],
                                      NSParagraphStyleAttributeName: paragraphStyle};
         
-        CGFloat width = CGRectGetWidth(tableView.frame)-(kAvatarSize*2.0+10);
+        CGFloat width = CGRectGetWidth(tableView.frame)-(kMessageTableViewCellAvatarHeight*2.0+10);
         
         CGRect bounds = [message boundingRectWithSize:CGSizeMake(width, 0.0) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:NULL];
         
@@ -310,16 +305,16 @@ static NSString *AutoCompletionCellIdentifier = @"AutoCompletionCell";
             return 0.0;
         }
         
-        CGFloat height = roundf(CGRectGetHeight(bounds)+kAvatarSize);
+        CGFloat height = roundf(CGRectGetHeight(bounds)+kMessageTableViewCellAvatarHeight);
         
-        if (height < kMinimumHeight) {
-            height = kMinimumHeight;
+        if (height < kMessageTableViewCellMinimumHeight) {
+            height = kMessageTableViewCellMinimumHeight;
         }
         
         return height;
     }
     else {
-        return kMinimumHeight;
+        return kMessageTableViewCellMinimumHeight;
     }
 }
 

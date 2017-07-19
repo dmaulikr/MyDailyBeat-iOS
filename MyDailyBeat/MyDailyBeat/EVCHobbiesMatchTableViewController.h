@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestAPI.h>
-#import "UIView+Toast.h"
+#import "API.h"
 
 @interface EVCHobbiesMatchTableViewController : UITableViewController
 

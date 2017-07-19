@@ -149,7 +149,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rowCount;
+    NSInteger rowCount;
     if(isFiltered)
         rowCount = self.data.count;
     else
@@ -184,7 +184,7 @@
             });
             NSURL *url = [[RestAPI getInstance] retrieveGroupPictureForGroup:g];
             if (url != nil) {
-                NSData *imageData = [NSData dataWithContentsOfURL:url];
+                NSData *imageData = [[RestAPI getInstance] fetchImageAtRemoteURL:url];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.view hideToastActivity];
                     [cell.imageView setImage:[UIImage imageWithData:imageData]];
